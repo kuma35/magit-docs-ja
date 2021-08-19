@@ -1,12 +1,29 @@
 -include ../../config.mk
 include ../../default.mk
 
+SRC_TEXIS = $(addsuffix .texi,$(filter-out git-commit,$(PACKAGES)))
 TEXIPAGES = $(addsuffix .ja.texi,$(filter-out git-commit,$(PACKAGES)))
+POFILES = $(addsuffix .ja.po,$(filter-out git-commit,$(PACKAGES)))
 INFOPAGES = $(addsuffix .ja.info,$(filter-out git-commit,$(PACKAGES)))
 HTMLFILES = $(addsuffix .ja.html,$(filter-out git-commit,$(PACKAGES)))
 HTMLDIRS  = $(filter-out git-commit,$(PACKAGES))
 PDFFILES  = $(addsuffix .ja.pdf,$(filter-out git-commit,$(PACKAGES)))
 EPUBFILES = $(addsuffix .ja.epub,$(filter-out git-commit,$(PACKAGES)))
+
+SRC_DIR = ..
+SED_OUT_DIR = sed-out
+PO_DIR = po
+TRANSLATE_RAW_DIR = translate-raw
+# TARGET_DIR = .
+
+TARGET_SED_OUT = $(addprefix $(SED_OUT_DIR)/,$(SRC_TEXIS))
+TARGET_PO = $(addprefix $(PO_DIR)/,$(POFILES))
+TARGET_TEXI = $(TEXIPAGES)
+TARGET_TRANSLATE_RAW_TEXI = $(addprefix $(TRANSLATE_RAW_DIR)/,$(TEXIPAGES))
+
+# target_dir/hoge.ja.info -> src_dir/hoge.texi
+# $1 SRC_DIR, $2 target $3 .texi
+src_file = $(addsuffix $(3),$(addprefix $(1)/,$(notdir $(basename $(basename $(2))))))
 
 ## ###################################################################
 
@@ -23,14 +40,26 @@ html: $(HTMLFILES)
 pdf:  $(PDFFILES)
 epub: $(EPUBFILES)
 
-%.ja.info: %.ja.texi
-	@printf "Generating $@\n"
-	$(MAKEINFO) --no-split $< -o $@
+$(TARGET_SED_OUT): $(SED_OUT_DIR)/%.texi : $(SRC_DIR)/%.texi
+	sed -f ./html-out.sed < $< > $@
 
-dir: magit.ja.info magit-section.ja.info
+$(TARGET_PO): $(PO_DIR)/%.ja.po : $(SED_OUT_DIR)/%.texi
+	po4a-updatepo -M utf8 -f texinfo -m $< -p $@
+
+$(TARGET_TRANSLATE_RAW_TEXI): $(TRANSLATE_RAW_DIR)/%.ja.texi : $(PO_DIR)/%.ja.po
+	po4a-translate -f texinfo -keep 0 -M utf8 -m $(call src_file,$(SED_OUT_DIR),$@,.texi) -p $< -l $@
+
+$(TARGET_TEXI): %.ja.texi : $(TRANSLATE_RAW_DIR)/%.ja.texi
+	gawk -f fix-menu-wrap.awk $< > $@
+
+$(INFOPAGES): %.ja.info : %.ja.texi
+	@printf "Generating $@\n"
+	$(MAKEINFO) --no-split --paragraph-indent=none $< -o $@
+
+dir: $(INFOPAGES)
 	@printf "Generating $@\n"
 	rm -f $@
-	echo $^ | xargs -n 1 $(INSTALL_INFO) --dir=$@
+	echo $^ | xargs -n 1 $(INSTALL_INFO) --max-width=80 --dir=$@
 
 HTML_FIXUP_CSS    = '/<link rel="stylesheet" type="text\/css" href="\/assets\/page.css">/a\
 <link rel="icon" href="/assets/magit_alt1.ico">\
