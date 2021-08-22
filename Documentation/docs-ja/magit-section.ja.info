@@ -15,7 +15,7 @@ magit-section.ja.texi.
 
 INFO-DIR-SECTION Magit文書翻訳
 START-INFO-DIR-ENTRY
-* Magit-Section(ja): (magit-section.ja). Use Magit sections in your own packages.
+* Magit-Section(ja): (magit-section.ja).  あなた独自のパッケージでMagit                                              sectionを使用します。
 END-INFO-DIR-ENTRY
 
 
@@ -24,14 +24,14 @@ File: magit-section.ja.info,  Node: Top,  Next: Introduction,  Up: (dir)
 Magit-Section Developer Manual
 ******************************
 
-このパッケージは、Magitのメインユーザーインターフェイス（バッファーを構
-成する折りたたみ可能なセクション）を実装します。 このパッケージは、以前
-はMagitの一部として配布されていましたが、今やMagitやGitとは関係のない他
-のパッケージでも使用することができます。
+This package implements the main user interface of Magit — the
+collapsible sections that make up its buffers.  This package used to be
+distributed as part of Magit but how it can also be used by other
+packages that have nothing to do with Magit or Git.
 
-   sectionの要旨と使用可能なコマンドおよびユーザーオプションの詳細につい
-ては、 *note (magit)Sections:: を参照してください。 この説明書では、あな
-た独自のパッケージでsectionを使用する方法について説明します。
+To learn more about the section abstraction and available commands and
+user options see *note (magit)Sections::.  This manual documents how you
+can use sections in your own packages.
 
 This manual is for Magit-Section version 3.2.1.
 
@@ -65,11 +65,11 @@ collapsible sections that make up its buffers.  This package used to be
 distributed as part of Magit but how it can also be used by other
 packages that have nothing to do with Magit or Git.
 
-   To learn more about the section abstraction and available commands
-and user options see *note (magit)Sections::.  This manual documents how
-you can use sections in your own packages.
+To learn more about the section abstraction and available commands and
+user options see *note (magit)Sections::.  This manual documents how you
+can use sections in your own packages.
 
-   When the documentation leaves something unaddressed, then please
+When the documentation leaves something unaddressed, then please
 consider that Magit uses this library extensively and search its source
 for suitable examples before asking me for help.  Thanks!
 
@@ -275,11 +275,11 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
 
 
 Tag Table:
-Node: Top813
-Node: Introduction2319
-Node: Creating Sections3092
-Node: Core Functions7612
-Node: Matching Functions8941
+Node: Top889
+Node: Introduction2170
+Node: Creating Sections2937
+Node: Core Functions7457
+Node: Matching Functions8786
 
 End Tag Table
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
 "POT-Creation-Date: 2021-08-20 03:37+0900\n"
-"PO-Revision-Date: 2021-08-22 13:23+0900\n"
+"PO-Revision-Date: 2021-08-23 08:06+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -19,7 +19,7 @@ msgstr ""
 #: sed-out/magit.texi:4 sed-out/magit.texi:33 sed-out/magit.texi:45
 #, no-wrap
 msgid "Magit User Manual"
-msgstr "Magit ユーザー マニュアル"
+msgstr "Magit User Manual"
 
 #. type: Plain text
 #: sed-out/magit.texi:8
@@ -245,7 +245,7 @@ msgstr "一時的引数とバッファー変数::"
 msgid ""
 "Completion, Confirmation and the Selection: Completion Confirmation and the "
 "Selection"
-msgstr "Completion, Confirmation and the Selection: Completion Confirmation and the Selection"
+msgstr "Completion(完了)とConfirmation(確認)とSelection(選択状態): Completion Confirmation(完了確認)とSelection(選択状態)"
 
 #. type: section
 #: sed-out/magit.texi:109 sed-out/magit.texi:140 sed-out/magit.texi:717 sed-out/magit.texi:2433 sed-out/magit.texi:2434
@@ -326,7 +326,7 @@ msgstr "Section Options"
 #: sed-out/magit.texi:130 sed-out/magit.texi:1938
 #, no-wrap
 msgid "Completion, Confirmation and the Selection"
-msgstr "Completion, Confirmation and the Selection"
+msgstr "Completion(完了)とConfirmation(確認)とSelection(選択状態)"
 
 #. type: menuentry
 #: sed-out/magit.texi:137 sed-out/magit.texi:1947
@@ -2030,12 +2030,12 @@ msgstr "magit-buffer-name-format"
 #. type: defopt
 #: sed-out/magit.texi:911
 msgid "The format string used to name Magit buffers."
-msgstr ""
+msgstr "Magitバッファに名前を付けるために使用されるフォーマット文字列。"
 
 #. type: defopt
 #: sed-out/magit.texi:913
 msgid "At least the following %-sequences are supported:"
-msgstr ""
+msgstr "少なくとも以下の%シーケンスがサポートされています:"
 
 #. type: code{#1}
 #: sed-out/magit.texi:917
@@ -2045,7 +2045,7 @@ msgstr "%m"
 #. type: itemize
 #: sed-out/magit.texi:919
 msgid "The name of the major-mode, but with the @code{-mode} suffix removed."
-msgstr ""
+msgstr "メジャーモードの名前ですが、@code{-mode}後置部分が削除されています。"
 
 #. type: code{#1}
 #: sed-out/magit.texi:923
@@ -2055,7 +2055,7 @@ msgstr "%M"
 #. type: itemize
 #: sed-out/magit.texi:925
 msgid "Like @code{%m} but abbreviate @code{magit-status-mode} as @code{magit}."
-msgstr ""
+msgstr "@code{%m}に似ていますが、@code{magit-status-mode}を@code{magit}と省略します。"
 
 #. type: code{#1}
 #: sed-out/magit.texi:929
@@ -2248,7 +2248,7 @@ msgstr ""
 #: sed-out/magit.texi:1032 sed-out/magit.texi:1033
 #, no-wrap
 msgid "Automatic Refreshing of Magit Buffers"
-msgstr ""
+msgstr "Automatic Refreshing of Magit Buffers"
 
 #. type: Plain text
 #: sed-out/magit.texi:1040
@@ -2258,7 +2258,7 @@ msgid ""
 "refreshed. The status buffer can be automatically refreshed whenever a "
 "buffer is saved to a file inside the respective repository by adding a hook, "
 "like so:"
-msgstr ""
+msgstr "現在のリポジトリの状態を変更する可能性のあるコマンドを実行した後で、現在のMagitバッファと対応するステータスバッファが更新されます。ステータスバッファは、以下のようにフックを追加することで、バッファがそれぞれのリポジトリ内のファイルに保存されるたびに自動的に更新できます:"
 
 #. type: lisp
 #: sed-out/magit.texi:1044
@@ -2278,7 +2278,7 @@ msgid ""
 "delay in big repositories.  Other Magit buffers are not refreshed to keep "
 "the delay to a minimum and also because doing so can sometimes be "
 "undesirable."
-msgstr ""
+msgstr "Magitバッファー達を自動的に更新すると、表示される情報はほとんどの場合最新であることが保証されますが、大きなリポジトリーで顕著な遅延が発生する可能性があります。他のMagitバッファー達は、遅延を最小限に抑えるために更新されません。また、更新することが望ましくない場合があるためです。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1055
@@ -2286,7 +2286,7 @@ msgid ""
 "Buffers can also be refreshed explicitly, which is useful in buffers that "
 "weren't current during the last refresh and after changes were made to the "
 "repository outside of Magit."
-msgstr ""
+msgstr "バッファーは明示的に更新することもできます。これは、最後の更新時およびMagitの外部のリポジトリーに変更が加えられた後、最新ではなかったバッファーで役立ちます。"
 
 #. type: kindex
 #: sed-out/magit.texi:1057
@@ -2311,7 +2311,7 @@ msgstr "@kbd{g} @tie{}@tie{}@tie{}@tie{}(@code{magit-refresh})"
 msgid ""
 "This command refreshes the current buffer if its major mode derives from "
 "@code{magit-mode} as well as the corresponding status buffer."
-msgstr ""
+msgstr "このコマンドは、メジャーモードが@code{magit-mode}および対応するステータスバッファーから派生している場合、現在のバッファーを更新します。"
 
 #. type: table
 #: sed-out/magit.texi:1067
@@ -2319,7 +2319,7 @@ msgid ""
 "If the option @code{magit-revert-buffers} calls for it, then it also reverts "
 "all unmodified buffers that visit files being tracked in the current "
 "repository."
-msgstr ""
+msgstr "オプション@code{magit-revert-buffers}がそれを要求する場合、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファも元に戻します。"
 
 #. type: kindex
 #: sed-out/magit.texi:1068
@@ -2345,14 +2345,14 @@ msgid ""
 "This command refreshes all Magit buffers belonging to the current repository "
 "and also reverts all unmodified buffers that visit files being tracked in "
 "the current repository."
-msgstr ""
+msgstr "このコマンドは、現在のリポジトリに属するすべてのMagitバッファーを更新し、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファーを元に戻します。"
 
 #. type: table
 #: sed-out/magit.texi:1078
 msgid ""
 "The file-visiting buffers are always reverted, even if "
 "@code{magit-revert-buffers} is nil."
-msgstr ""
+msgstr "@code{magit-revert-buffers}がnilの場合でも、file-visitingバッファーは常に元に戻されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:1081
@@ -2365,7 +2365,7 @@ msgstr "magit-refresh-buffer-hook"
 msgid ""
 "This hook is run in each Magit buffer that was refreshed during the current "
 "refresh - normally the current buffer and the status buffer."
-msgstr ""
+msgstr "このフックは、現在更新中に更新された各Magitバッファー(通常は現在のバッファーとステータスバッファー)で実行されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:1087
@@ -2379,14 +2379,14 @@ msgid ""
 "When this option is non-nil, then the status buffer is automatically "
 "refreshed after running git for side-effects, in addition to the current "
 "Magit buffer, which is always refreshed automatically."
-msgstr ""
+msgstr "このオプションがnil以外の場合、現在のMagitバッファーに加えて、副作用としてgitを実行した後、ステータスバッファーが自動的に更新されます。これは、常に自動的に更新されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:1095
 msgid ""
 "Only set this to nil after exhausting all other options to improve "
 "performance."
-msgstr ""
+msgstr "パフォーマンスを向上させるために他のすべてのオプションを使い果たした後でのみ、これをnilに設定してください。"
 
 #. type: defun
 #: sed-out/magit.texi:1097
@@ -2400,7 +2400,7 @@ msgid ""
 "This function is intended to be added to @code{after-save-hook}.  After "
 "doing that the corresponding status buffer is refreshed whenever a buffer is "
 "saved to a file inside a repository."
-msgstr ""
+msgstr "この関数は、@code{after-save-hook}に追加することを目的としています。その後、リポジトリ内のファイルにバッファが保存されるたびに、対応するステータスバッファが更新されます。"
 
 #. type: defun
 #: sed-out/magit.texi:1107
@@ -2409,13 +2409,13 @@ msgid ""
 "scratch, which can be slow in large repositories.  If you are not satisfied "
 "with Magit's performance, then you should obviously not add this function to "
 "that hook."
-msgstr ""
+msgstr "Magitバッファーの更新は、その内容を最初から再作成することによって行われることに注意してください。これは、大規模なリポジトリーでは遅くなる可能性があります。Magitのパフォーマンスに満足できない場合は、明らかにこの関数をそのフックに追加しないでください。"
 
 #. type: subsection
 #: sed-out/magit.texi:1109 sed-out/magit.texi:1110
 #, no-wrap
 msgid "Automatic Saving of File-Visiting Buffers"
-msgstr ""
+msgstr "Automatic Saving of File-Visiting Buffers"
 
 #. type: Plain text
 #: sed-out/magit.texi:1118
@@ -2426,7 +2426,7 @@ msgid ""
 "interact with Git, one can be fairly confident.  When in doubt or after "
 "outside changes, type @code{g} (@code{magit-refresh}) to save and refresh "
 "explicitly."
-msgstr ""
+msgstr "file-visitingバッファーは、デフォルトで特定の時点で保存されます。これは、Magitバッファーが常に最新であることを保証するものではありませんが、Emacsでファイルを編集するだけでファイルを編集し、Magitのみを使用してGitと対話する場合には、かなり自信があります。疑わしい場合やまたは外部の変更後は、@code{g} (@code{magit-refresh})と入力して、明示的に保存および更新します。"
 
 #. type: defopt
 #: sed-out/magit.texi:1119
@@ -2439,7 +2439,7 @@ msgstr "magit-save-repository-buffers"
 msgid ""
 "This option controls whether file-visiting buffers are saved before certain "
 "events."
-msgstr ""
+msgstr "このオプションは、特定のイベントの前にfile-visitingバッファーを保存するかどうかを制御します。"
 
 #. type: defopt
 #: sed-out/magit.texi:1129
@@ -2449,7 +2449,7 @@ msgid ""
 "Magit buffers, and before explicitly refreshing such buffers.  If this is "
 "@code{dontask} then this is done without user intervention.  If it is "
 "@code{t} then the user has to confirm each save."
-msgstr ""
+msgstr "これがnil以外の場合、現在のリポジトリに属するすべての変更されたfile-visitingバッファーは、コマンドを実行する前、新しいMagitバッファーを作成する前、およびそのようなバッファーを明示的に更新する前に保存できます。これが@code{dontask}の場合、これはユーザーの介入なしに実行されます。@code{t}の場合、ユーザーは各保存を確認する必要があります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1138
@@ -2458,7 +2458,7 @@ msgid ""
 "are being tracked in a Git repository, after they have changed on disk.  "
 "When using Magit one often changes files on disk by running Git, "
 "i.e. \"outside Emacs\", making this a rather important feature."
-msgstr ""
+msgstr "デフォルトでは、Magitは、ディスク上で変更された後、Gitリポジトリで追跡されているファイルにアクセスしているバッファを自動的に元に戻します。Magitを使用する場合、Gitを実行してディスク上のファイルを変更することがよくあります。つまり、「Emacsの外部」(outside Emacs)であるため、これはかなり重要な機能です。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1144
@@ -2468,7 +2468,7 @@ msgid ""
 "have \"changed on disk\".  If Magit did not automatically revert the buffer, "
 "then you would have to type @code{M-x revert-buffer RET RET} in the visiting "
 "buffer before you could continue making changes."
-msgstr ""
+msgstr "たとえば、ステータスバッファの変更を破棄する場合、@code{git apply --reverse ...}を実行することでそれが行われ、Emacsはファイルが「ディスク上で変更された」と見なします。 Magitがバッファを自動的に元に戻さなかった場合は、変更を続行する前に、訪問中のバッファに@code{M-x revert-buffer RET RET}と入力する必要があります。"
 
 #. type: defopt
 #: sed-out/magit.texi:1145
@@ -2675,14 +2675,14 @@ msgstr ""
 #: sed-out/magit.texi:1250 sed-out/magit.texi:1252 sed-out/magit.texi:1253
 #, no-wrap
 msgid "Risk of Reverting Automatically"
-msgstr ""
+msgstr "自動的に元に戻るリスク"
 
 #. type: Plain text
 #: sed-out/magit.texi:1257
 msgid ""
 "For the vast majority of users, automatically reverting file-visiting "
 "buffers after they have changed on disk is harmless."
-msgstr ""
+msgstr "大多数のユーザーにとって、ディスク上で変更された後にfile-visitingバッファーを自動的に元に戻すことは無害です。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1265
@@ -2694,7 +2694,7 @@ msgid ""
 "would cause these changes to be lost.  In other words, if there is anything "
 "that could be lost, then either Git or Emacs will refuse to discard the "
 "changes."
-msgstr ""
+msgstr "バッファが変更された場合(つまり、まだ保存されていない変更が含まれている場合)、Emacsは自動的にバッファを元に戻すことを拒否します。以前に変更されたバッファーを保存すると、Gitはコミットされていない変更と見なします。その後、Gitは、これらの変更が失われる原因となるコマンドの実行を拒否します。言い換えれば、失われる可能性のあるものがある場合、GitまたはEmacsのいずれかが変更の破棄を拒否します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1270
@@ -2740,7 +2740,7 @@ msgid ""
 "expanded, similar to how sections are handled in Org mode.  Each section "
 "also has a type, and some sections also have a value.  For each section type "
 "there can also be a local keymap, shared by all sections of that type."
-msgstr ""
+msgstr "Magitバッファーはネストされたセクションに編成され、Orgモードでセクションが処理されるのと同様に、折りたたんだり展開したりできます。各セクションにもタイプがあり、一部のセクションにも値があります。セクションタイプごとに、そのタイプのすべてのセクションで共有されるローカルキーマップを作成することもできます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1309
@@ -2750,7 +2750,7 @@ msgid ""
 "same type, all of the selected sections.  Commands that only make sense for "
 "a particular section type (as opposed to just behaving differently depending "
 "on the type) are usually bound in section type keymaps."
-msgstr ""
+msgstr "セクションの値とタイプを利用して、多くのコマンドが現在のセクションで動作します。または、regionがアクティブで同じタイプのセクションを選択すると、選択されたすべてのセクションが操作されます。特定のセクションタイプに対してのみ意味のあるコマンド(（タイプによって動作が異なるだけではなく）は、通常、セクションタイプのキーマップにバインドされます。"
 
 #. type: subsection
 #: sed-out/magit.texi:1318 sed-out/magit.texi:1319
@@ -3372,7 +3372,7 @@ msgstr "magit-section-show"
 #: sed-out/magit.texi:1535
 #, no-wrap
 msgid "Command magit-section-show"
-msgstr "Command magit-section-show"
+msgstr "magit-section-show コマンド"
 
 #. type: deffn
 #: sed-out/magit.texi:1538
@@ -3389,7 +3389,7 @@ msgstr "magit-section-hide"
 #: sed-out/magit.texi:1541
 #, no-wrap
 msgid "Command magit-section-hide"
-msgstr ""
+msgstr "magit-section-hide コマンド"
 
 #. type: deffn
 #: sed-out/magit.texi:1544
@@ -3406,7 +3406,7 @@ msgstr "magit-section-show-headings"
 #: sed-out/magit.texi:1547
 #, no-wrap
 msgid "Command magit-section-show-headings"
-msgstr ""
+msgstr "magit-section-show-headings コマンド"
 
 #. type: deffn
 #: sed-out/magit.texi:1551
@@ -3425,7 +3425,7 @@ msgstr "magit-section-show-children"
 #: sed-out/magit.texi:1554
 #, no-wrap
 msgid "Command magit-section-show-children"
-msgstr ""
+msgstr "magit-section-show-children コマンド"
 
 #. type: deffn
 #: sed-out/magit.texi:1559
@@ -3445,7 +3445,7 @@ msgstr "magit-section-hide-children"
 #: sed-out/magit.texi:1562
 #, no-wrap
 msgid "Command magit-section-hide-children"
-msgstr ""
+msgstr "magit-section-hide-children コマンド"
 
 #. type: deffn
 #: sed-out/magit.texi:1565
@@ -3462,7 +3462,7 @@ msgstr "magit-section-toggle-children"
 #: sed-out/magit.texi:1568
 #, no-wrap
 msgid "Command magit-section-toggle-children"
-msgstr ""
+msgstr "magit-section-toggle-children コマンド"
 
 #. type: deffn
 #: sed-out/magit.texi:1571
@@ -3894,7 +3894,7 @@ msgid ""
 "or saved permanently, see @ref{Saving Values,,,transient,}.  It is also "
 "possible to cycle through previously used sets of arguments using @code{M-p} "
 "and @code{M-n}, see @ref{Using History,,,transient,}."
-msgstr ""
+msgstr "Magitの一時的な前置コマンドの多くの中置引数は、それらの引数で呼び出された@code{git}コマンドが返されると、効果がなくなります。コミットを作成するコマンドは、この良い例です。ユーザーが引数を変更した場合、それは次の後置コマンドの呼び出しにのみ影響します。 同じ一時前置コマンドが後で再度呼び出された場合、引数は最初にデフォルト値にリセットされます。このデフォルト値は、現在のEmacsセッションに設定することも、永続的に保存することもできます(@ref{Saving Values,,,transient,})。 @code{M-p}と@code{M-n}を使用して、以前に使用した引数のセットを循環させることもできます(@ref{Using History,,,transient,})。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1808
@@ -3906,7 +3906,7 @@ msgid ""
 "continue to have an effect for as long as the respective diff or log is "
 "being displayed.  Furthermore the used arguments are stored in buffer-local "
 "variables for future reference."
-msgstr ""
+msgstr "ただし、他の多くの一時コマンドの中置引数は、それらの引数で呼び出された@code{git}コマンドが返された後でも引き続き有効です。このような最も重要なコマンドは、専用のバッファーに差分やログを表示したりするコマンドです。それぞれの差分またはログが表示されている限り、それらの引数は明らかに効果を持ち続けます。さらに、使用された引数は、将来の参照のためにバッファローカル変数に格納されます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1812
@@ -3914,7 +3914,7 @@ msgid ""
 "For commands in the second group it isn't always desirable to reset their "
 "arguments to the global value when the transient prefix command is invoked "
 "again."
-msgstr ""
+msgstr "2番目のグループのコマンドの場合、一時的前置コマンドが再度呼び出されたときに、引数をグローバル値にリセットすることが常に望ましいとは限りません。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1820
@@ -3925,7 +3925,7 @@ msgid ""
 "that is active in the existing buffer is only a few @code{M-p} away.  Magit "
 "can be configured to behave like that, but because I expect that most users "
 "would not find that very convenient, it is not the default."
-msgstr ""
+msgstr "上記のように、一時的なポップアップが表示されている間に、以前に使用された引数のセットを循環させることができます。つまり、既存のバッファでアクティブになっている引数のセットは@code{M-p}の数個しか離れていないため、中置引数を常にデフォルトにリセットできます。Magitはそのように動作するように構成できますが、ほとんどのユーザーにとってはそれほど便利ではないと思うので、デフォルトではありません。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1832
@@ -3941,7 +3941,7 @@ msgid ""
 "prefixes are about @strong{changing} the arguments used in the current "
 "buffer, they @strong{always} start out with the set of arguments that are "
 "currently in effect in that buffer."
-msgstr ""
+msgstr "また、@code{D}と@code{L}でそれぞれの「refresh」一時前置コマンドを使用して、現在のバッファ(diffセクションとlogセクションの両方を含むステータスバッファを含む)で使用されるdiff引数とlog引数を変更できることにも注意してください。(一方、@code{d}と@code{l}は、差分またはログの表示方法を変更することを@strong{目的}としています。差分またはログの@strong{表示方法}を同時に変更することもできますが、後者のみを実行する場合は、refresh派生コマンドを使用する必要があります。）これらのセカンダリdiffおよびlog一時前置は、現在のバッファで使用される引数の@strong{変更}に関するものであるため、常に、そのバッファで現在有効な引数のセットから開始します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1838
@@ -3951,7 +3951,7 @@ msgid ""
 "@code{magit-show-commit} is usually invoked by typing @code{RET} while point "
 "is on a commit in a log, but it can also be invoked from the "
 "@code{magit-diff} transient prefix."
-msgstr ""
+msgstr "一部のコマンドは、一時的な前置コマンドの後置として呼び出すこともできますが、通常は直接呼び出されます。最も目立つように、@code{magit-show-commit}は通常、ポイントがログのコミット中に@code{RET}と入力することで呼び出されますが、@code{magit-diff}一時前置から呼び出すこともできます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1847
@@ -4100,7 +4100,7 @@ msgstr ""
 #: sed-out/magit.texi:1937
 #, no-wrap
 msgid "Completion Confirmation and the Selection"
-msgstr ""
+msgstr "Completion Confirmation(完了確認)とSelection(選択状態)"
 
 #. type: subsection
 #: sed-out/magit.texi:1949 sed-out/magit.texi:1950
@@ -4399,7 +4399,7 @@ msgid ""
 "these commands the default is the thing at point, provided that it actually "
 "is a valid thing to act on.  For many commands that act on a branch, the "
 "current branch serves as the default if there is no branch at point."
-msgstr ""
+msgstr "多くのMagitコマンドは、ユーザーに、実行可能なもののリストから選択するように求めますが、デフォルトとして最も可能性の高い選択肢を提供します。これらのコマンドの多くでは、実際に実行することできるという条件のものが提供され、デフォルトはその時点でのものです。ブランチに作用する多くのコマンドでは、ポイントにブランチがない場合、現在のブランチがデフォルトになります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:2178
@@ -4408,7 +4408,7 @@ msgid ""
 "act on into a single action.  The user can confirm the default target using "
 "@code{RET} or abort using @code{C-g}.  This is similar to a @code{y-or-n-p} "
 "prompt, but the keys to confirm or abort differ."
-msgstr ""
+msgstr "これらのコマンドは、確認(confirm)を求めることと、アクションを実行するターゲットを求めることを組み合わせて1つのアクションにします。ユーザーは、@code{RET}を使用してデフォルトのターゲットを確認するか、@code{C-g}を使用して中止(abort)することができます。これは@code{y-or-n-p}プロンプトに似ていますが、確認(confirm)または中止(abort)するためのキーが異なります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:2183
@@ -4417,7 +4417,7 @@ msgid ""
 "target, which is useful because for some commands and/or in some situations "
 "you might want to select the action before selecting the target by moving to "
 "it."
-msgstr ""
+msgstr "同時に、ユーザーには別のターゲットを選択する機会も与えられます。これは、コマンドや状況によっては、ターゲットに移動して選択する前にアクションを選択したい場合があるため便利です。"
 
 #. type: Plain text
 #: sed-out/magit.texi:2189
@@ -4427,7 +4427,7 @@ msgid ""
 "default without requiring any confirmation at all.  The option "
 "@code{magit-dwim-selection} can be used to configure certain commands to "
 "that effect."
-msgstr ""
+msgstr "けれども、一部のコマンドでは、デフォルトのターゲットがあればそれを常に使用したい場合や、確認をまったく必要とせずにコマンドをデフォルトで動作させたい場合もあります。オプション@code{magit-dwim-selection}を使用して、その効果をもたらす特定のコマンドを構成できます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:2197
@@ -4439,7 +4439,7 @@ msgid ""
 "selection exists that is valid for the invoked command, then that command "
 "never offers to act on something else, and whether it asks for confirmation "
 "is not controlled by this option."
-msgstr ""
+msgstr "regionがアクティブな場合、多くの場合、確認を求めた後、regionに基づくメカニズムを使用して選択されたものに多くのコマンド達が作用することに注意してください。このregionベースのメカニズムは「selection」(選択状態)と呼ばれ、次の節で詳しく説明します。呼び出されたコマンドに有効なselectionが存在する場合、そのコマンドは他の何かに作用することを提案することはなく、確認を求めるかどうかはこのオプションによって制御されません。"
 
 #. type: Plain text
 #: sed-out/magit.texi:2201
@@ -4447,13 +4447,13 @@ msgid ""
 "Also note that Magit asks for confirmation of certain actions that are not "
 "coupled with completion (or the selection).  Such dialogs are also not "
 "affected by this option and are described in the previous section."
-msgstr ""
+msgstr "また、Magitは、completion(またはselection)と結び付けられていない特定のアクションの確認を要求することにも注意してください。このようなダイアログもこのオプションの影響を受けず、前の節で説明済です。"
 
 #. type: defopt
 #: sed-out/magit.texi:2202
 #, no-wrap
 msgid "magit-dwim-selection"
-msgstr ""
+msgstr "magit-dwim-selection"
 
 #. type: Plain text
 #: sed-out/magit.texi:2208
@@ -5363,7 +5363,7 @@ msgstr "@kbd{M-x magit-version} @tie{}@tie{}@tie{}@tie{}(@code{magit-version})"
 msgid ""
 "This command shows the currently used versions of Magit, Git, and Emacs in "
 "the echo area.  Non-interactively this just returns the Magit version."
-msgstr ""
+msgstr "このコマンドは、現在使用されているMagit、Git、およびEmacsのバージョンをエコー領域に表示します。非インタラクティブでは、これは単にMagitバージョンを返すだけです。"
 
 #. type: defopt
 #: sed-out/magit.texi:2669
@@ -5416,7 +5416,7 @@ msgid ""
 "manipulating and transferring it.  Then follows a section about "
 "miscellaneous functionality, which cannot easily be fit into this "
 "distinction."
-msgstr ""
+msgstr "Magitが提供する機能は、既存のデータの検査、既存のデータの操作または新しいデータの追加、データの転送の3つのグループに大別できます。もちろん、それはかなり大雑把な区別であり、しばしば不十分ですが、まったく区別しないよりも便利です。この節はデータの検査に関係し、次の2つはデータの操作と転送に関係します。次に、この区別に簡単に当てはまらないその他の機能に関する節が続きます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:2712
@@ -5426,7 +5426,7 @@ msgid ""
 "Emacs' distinction between interactive commands and non-interactive "
 "functions.  All of the sections mentioned before are mainly concerned with "
 "the porcelain -- Magit's plumbing layer is described later."
-msgstr ""
+msgstr "もちろん、他の区別も意味があります。Gitでの磁器コマンドと配管コマンドの区別。これは、ほとんどの場合、Emacsでのインタラクティブコマンドと非インタラクティブ機能の区別に相当します。前述のすべての節は、主に磁器に関係しています。Magitの配管コマンド層については後で説明します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:2733
@@ -5435,7 +5435,7 @@ msgid ""
 "log, the status buffer contains the diffs for staged and unstaged changes, "
 "logs for unpushed and unpulled commits, lists of stashes and untracked "
 "files, and information related to the current branch."
-msgstr ""
+msgstr "他のMagitバッファ達では、例えば、1つの特定の差分または1つの特定のログや、ステータスバッファーならばステージングされた変更とステージングされていない変更の差分、プッシュされていないコミットとプルされていないコミットのログ、スタッシュと追跡されていないファイル(untracked files)のリスト、および現在のブランチに関連する情報が含まれます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:2737
@@ -5443,7 +5443,7 @@ msgid ""
 "During certain incomplete operations -- for example when a merge resulted in "
 "a conflict -- additional information is displayed that helps proceeding with "
 "or aborting the operation."
-msgstr ""
+msgstr "特定の不完全な操作の途中(たとえば、マージによって競合が発生した場合)、操作の続行または中止に役立つ追加情報が表示されます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:2741
@@ -5451,7 +5451,7 @@ msgid ""
 "The command @code{magit-status} displays the status buffer belonging to the "
 "current repository in another window.  This command is used so often that it "
 "should be bound globally.  We recommend using @code{C-x g}:"
-msgstr ""
+msgstr "コマンド@code{magit-status}は、現在のリポジトリに属するステータスバッファを別のウィンドウに表示します。このコマンドは頻繁に使用されるため、グローバルにバインドすべきです。我々は@code{C-x g}をお勧めします:"
 
 #. type: lisp
 #: sed-out/magit.texi:2744
@@ -5482,7 +5482,7 @@ msgstr "@kbd{C-x g} @tie{}@tie{}@tie{}@tie{}(@code{magit-status})"
 msgid ""
 "When invoked from within an existing Git repository, then this command shows "
 "the status of that repository in a buffer."
-msgstr ""
+msgstr "既存のGitリポジトリ内から呼び出されると、このコマンドはバッファ内のそのリポジトリのステータスを表示します。"
 
 #. type: table
 #: sed-out/magit.texi:2758
@@ -5491,14 +5491,14 @@ msgid ""
 "command prompts for an existing repository or an arbitrary directory, "
 "depending on the option @code{magit-repository-directories}, and the status "
 "for the selected repository is shown instead."
-msgstr ""
+msgstr "現在のディレクトリがGitリポジトリ内にない場合、このコマンドは、オプション@code{magit-repository-directories}に応じて、既存のリポジトリまたは任意のディレクトリの入力を求め、その代わりに選択したリポジトリのステータスが表示されます。"
 
 #. type: itemize
 #: sed-out/magit.texi:2763
 msgid ""
 "If that option specifies any existing repositories, then the user is asked "
 "to select one of them."
-msgstr ""
+msgstr "そのオプションで既存のリポジトリ達が指定されている場合、ユーザーはそれらの1つを選択するように求められます。"
 
 #. type: itemize
 #: sed-out/magit.texi:2770
@@ -5506,21 +5506,21 @@ msgid ""
 "Otherwise the user is asked to select an arbitrary directory using regular "
 "file-name completion.  If the selected directory is the top-level directory "
 "of an existing working tree, then the status buffer for that is shown."
-msgstr ""
+msgstr "それ以外の場合、ユーザーは通常のファイル名補完を使用して任意のディレクトリを選択するように求められます。選択したディレクトリが既存の作業ツリーの最上位ディレクトリである場合、そのステータスバッファが表示されます。"
 
 #. type: itemize
 #: sed-out/magit.texi:2776
 msgid ""
 "Otherwise the user is offered to initialize the selected directory as a new "
 "repository.  After creating the repository its status buffer is shown."
-msgstr ""
+msgstr "それ以外の場合、ユーザーは選択したディレクトリを新しいリポジトリとして初期化するように提案されます。リポジトリを作成すると、そのステータスバッファが表示されます。"
 
 #. type: table
 #: sed-out/magit.texi:2780
 msgid ""
 "These fallback behaviors can also be forced using one or more prefix "
 "arguments:"
-msgstr ""
+msgstr "これらのフォールバック動作は、1つ以上の前置引数を使用して強制することもできます。"
 
 #. type: itemize
 #: sed-out/magit.texi:2787
@@ -5577,7 +5577,7 @@ msgstr "magit-status-quick"
 #: sed-out/magit.texi:2814
 #, no-wrap
 msgid "Command magit-status-quick"
-msgstr ""
+msgstr "magit-status-quick コマンド"
 
 #. type: deffn
 #: sed-out/magit.texi:2818
@@ -5644,7 +5644,7 @@ msgstr "ido-enter-magit-status"
 #: sed-out/magit.texi:2844
 #, no-wrap
 msgid "Command ido-enter-magit-status"
-msgstr ""
+msgstr "ido-enter-magit-status コマンド"
 
 #. type: deffn
 #: sed-out/magit.texi:2849
@@ -6466,7 +6466,7 @@ msgstr "magit-list-repositories"
 #: sed-out/magit.texi:3267
 #, no-wrap
 msgid "Command magit-list-repositories"
-msgstr ""
+msgstr "magit-list-repositories コマンド"
 
 #. type: deffn
 #: sed-out/magit.texi:3270
@@ -11425,7 +11425,7 @@ msgid ""
 "part of a hunk.  To stage individual hunks and parts of hunks using Git "
 "directly, one has to use the very modal and rather clumsy interface of a "
 "@code{git add --interactive} session."
-msgstr ""
+msgstr "もちろん、Gitと同様Magitは、完全なファイルをステージング(stage)およびステージング解除(unstage)できます。Gitとは異なり、ユーザーは個々のハンクやハンクの一部を適切にステージング解除/ステージングすることもできます。Gitを直接使用して個々のハンクとハンクの一部をステージングするには、@code{git add --interactive}セッションの、モーダルでかなり不器用なインターフェースを使用する必要があります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:5719
@@ -11438,7 +11438,7 @@ msgid ""
 "un-/stage.  To stage multiple files or hunks at once use a region that "
 "starts inside the heading of such a section and ends inside the heading of a "
 "sibling section of the same type."
-msgstr ""
+msgstr "一方、Magitを使用すると、ステータスバッファまたは別のdiffバッファに表示されているdiff内のそれぞれのセクションにポイントを移動し、@code{s}または@code{u}と入力するだけで、個々のハンクのステージングを解除(unstage)/ステージング(stage)できます。ハンクの一部だけを操作するには、regionを使用してステージング解除/ステージングする必要のある変更にマークを付けてから、ステージング解除/ステージングに使用するのと同じキーを押します。複数のファイルまたはハンクを一度にステージングするには、そのようなセクションの見出しの内側で始まり、同じタイプの兄弟セクションの見出しの内側で終わるregionを使用します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:5724
@@ -11447,12 +11447,12 @@ msgid ""
 "variants\" that can also operate on a file, multiple files at once, a hunk, "
 "multiple hunks at once, and on parts of a hunk.  These apply variants are "
 "described in the next section."
-msgstr ""
+msgstr "ステージング(stage)とステージング解除(unstage)に加えて、Magitは、ファイルや一度に複数のファイルやハンクや一度に複数のハンクやハンクの一部を操作できる他のいくつかの「applyh派生」(apply variants)も提供します。 これらのapply派生(apply variants)については、次の節で説明します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:5726
 msgid "You can also use Ediff to stage and unstage.  See @ref{Ediffing}."
-msgstr ""
+msgstr "あなたはEdiffを使用してステージング(stage)およびステージング解除(unstage)することもできます→@ref{Ediffing}"
 
 #. type: kindex
 #: sed-out/magit.texi:5728 sed-out/magit.texi:7577
@@ -20592,7 +20592,7 @@ msgid ""
 "as well as an Emacs package, so it makes sense to customize it using both "
 "Git variables as well as Emacs options.  However this flexibility doesn't "
 "come without problems, including but not limited to the following."
-msgstr ""
+msgstr "GitとEmacsはどちらも高度にカスタマイズ可能です。MagitはGit磁器であると同時にEmacsパッケージでもあるため、Git変数とEmacsオプションの両方を使用してカスタマイズすることは理にかなっています。ただし、この柔軟性には、以下のような問題もあります。"
 
 #. type: itemize
 #: sed-out/magit.texi:10044
@@ -20600,7 +20600,7 @@ msgid ""
 "Some Git variables automatically have an effect in Magit without requiring "
 "any explicit support.  Sometimes that is desirable - in other cases, it "
 "breaks Magit."
-msgstr ""
+msgstr "一部のGit変数は、明示的なサポートを必要とせずに、Magitで自動的に効果を発揮します。それが望ましい場合もあれば、一方でMagitを壊す場合もあります。"
 
 #. type: itemize
 #: sed-out/magit.texi:10050
@@ -20609,7 +20609,7 @@ msgid ""
 "setting on the command line, then that can be accomplished by overriding the "
 "value for Magit only by appending something like @code{(\"-c\" "
 "\"some.variable=compatible-value\")} to @code{magit-git-global-arguments}."
-msgstr ""
+msgstr "特定のGit設定がMagitを壊したが、コマンドラインでその設定を使い続けたい場合は、@code{magit-git-global-arguments}に@code{(\"-c\" \"some.variable=compatible-value\")}のようなものを追加してMagitの値をオーバーライドすることで実現できます。"
 
 #. type: itemize
 #: sed-out/magit.texi:10061
@@ -20622,12 +20622,12 @@ msgid ""
 "suffix commands anyway.  So pruning might happen despite the @code{--prune} "
 "arguments being displayed in a way that seems to indicate that no pruning "
 "will happen."
-msgstr ""
+msgstr "@code{fetch.prune=true}のような特定の設定は、(単にそれぞれのGitコマンドを呼び出すため)Magitコマンドによって尊重されますが、それらの値はそれぞれの一時バッファーに反映されません。この場合、@code{magit-fetch}の@code{--prune}引数はアクティブまたは非アクティブである可能性がありますが、それでもGit変数が後置コマンドによって尊重されることを妨げません。したがって、@code{--prune}引数が、pruningが発生しないことを示しているように見える方法で表示されているにもかかわらず、pruningが発生する可能性があります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10064
 msgid "I intend to address these and similar issues in a future release."
-msgstr ""
+msgstr "今後のリリースで、これらの問題や同様の問題に対処する予定です。"
 
 #. type: section
 #: sed-out/magit.texi:10070 sed-out/magit.texi:10071
@@ -20837,7 +20837,7 @@ msgid ""
 "visited file changes on disk.  This isn't as risky as it might seem, but to "
 "make an informed decision you should see @ref{Risk of Reverting "
 "Automatically}."
-msgstr ""
+msgstr "デフォルトでは、訪問したファイルがディスク上で変更されると、訪問したファイルは自動的に元に戻されます。 これは見た目ほど危険ではありませんが、十分な情報に基づいて決定を下すには確認が必要です→@ref{自動的に元に戻るリスク}"
 
 #. type: subsection
 #: sed-out/magit.texi:10210 sed-out/magit.texi:10211
@@ -21289,7 +21289,7 @@ msgstr ""
 msgid ""
 "The following sections describe how to use several of Magit's core "
 "abstractions to extend Magit itself or implement a separate extension."
-msgstr ""
+msgstr "以下の節では、Magitのコア抽象化のいくつかを使用して、Magit自体を拡張する方法、または個別の拡張を実装する方法について説明します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10478
@@ -21299,7 +21299,7 @@ msgid ""
 "without having to depend on Magit.  See @ref{Top,,,with-editor,} for "
 "information about @code{with-editor}.  @code{transient} doesn't have a "
 "manual yet."
-msgstr ""
+msgstr "Magitで使用される低レベルの機能のいくつかは、個別の ライブラリ/パッケージ に分解されているため、Magitに依存することなく他のパッケージで使用できます。@code{with-editor}については→@ref{Top,,,with-editor,} @code{transient}にはまだマニュアルがありません。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10482
@@ -21307,7 +21307,7 @@ msgid ""
 "If you are trying to find an unused key that you can bind to a command "
 "provided by your own Magit extension, then checkout "
 "@uref{https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry}."
-msgstr ""
+msgstr "独自のMagit拡張機能によって提供されるコマンドにバインドできる未使用のキーを見つけようとしている場合は、@uref{https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry}をチェックアウトしてください。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10497
@@ -22663,12 +22663,12 @@ msgid ""
 "frequently @strong{and recently} asked questions, i.e. questions that "
 "haven't made it into the manual yet, see "
 "@uref{https://github.com/magit/magit/wiki/FAQ}."
-msgstr ""
+msgstr "次の2つのノードには、よくある質問が一覧表示されます。よくある@strong{および最近}の質問、つまりまだマニュアルに記載されていない質問のリストについては→@uref{https://github.com/magit/magit/wiki/FAQ}"
 
 #. type: Plain text
 #: sed-out/magit.texi:11294
 msgid "Please also use the @ref{Debugging Tools}."
-msgstr ""
+msgstr "デバッグツールも使用できます→@ref{Debugging Tools}"
 
 #. type: appendixsubsec
 #: sed-out/magit.texi:11313 sed-out/magit.texi:11314
@@ -23338,7 +23338,7 @@ msgid ""
 "Magit and its dependencies provide a few debugging tools, and we appreciate "
 "it very much if you use those tools before reporting an issue.  Please "
 "include all relevant output when reporting an issue."
-msgstr ""
+msgstr "Magitとその依存関係には、いくつかのデバッグツールが用意されています。問題を報告する前にこれらのツールを使用していただければ幸いです。問題を報告するときは、関連するすべての出力を含めてください。"
 
 #. type: kindex
 #: sed-out/magit.texi:11694
@@ -23365,7 +23365,7 @@ msgstr "@kbd{M-x magit-emacs-Q-command} @tie{}@tie{}@tie{}@tie{}(@code{magit-ema
 msgid ""
 "This command shows a debugging shell command in the echo area and adds it to "
 "the kill ring.  Paste that command into a shell and run it."
-msgstr ""
+msgstr "このコマンドは、エコー領域にデバッグシェルコマンドを表示し、それをキルリングに追加します。そのコマンドをシェルに貼り付けして実行します。"
 
 #. type: table
 #: sed-out/magit.texi:11706
@@ -23374,14 +23374,14 @@ msgid ""
 "dependencies loaded.  Neither your configuration nor other installed "
 "packages are loaded.  This makes it easier to determine whether some issue "
 "lays with Magit or something else."
-msgstr ""
+msgstr "このシェルコマンドは、@code{magit}とその依存関係のみがロードされた状態で@code{emacs}を開始します。構成も他のインストール済みパッケージもロードされません。これにより、Magitに問題があるのか他の問題にあるのかを簡単に判断できます。"
 
 #. type: table
 #: sed-out/magit.texi:11709
 msgid ""
 "If you run Magit from its Git repository, then you should be able to use "
 "@code{make emacs-Q} instead of the output of this command."
-msgstr ""
+msgstr "あなたがMagitをそのGitリポジトリから実行する場合は、このコマンドの出力の代わりに@code{make emacs-Q}を使用できるはずです。"
 
 #. type: kindex
 #: sed-out/magit.texi:11710
@@ -23409,7 +23409,7 @@ msgid ""
 "This command toggles whether Magit refreshes buffers verbosely.  Enabling "
 "this helps figuring out which sections are bottlenecks.  The additional "
 "output can be found in the @code{*Messages*} buffer."
-msgstr ""
+msgstr "このコマンドは、Magitがバッファを詳細に更新するかどうかを切り替えます。これを有効にすると、どのセクションがボトルネックであるかを把握するのに役立ちます。追加の出力は、@code{*Messages*}バッファーにあります。"
 
 #. type: table
 #: sed-out/magit.texi:11725
@@ -23417,12 +23417,12 @@ msgid ""
 "This command displays a buffer containing information about the available "
 "and used @code{git} executable(s), and can be useful when investigating "
 "@code{exec-path} issues."
-msgstr ""
+msgstr "このコマンドは、使用可能で使用されている@code{git}実行可能ファイルに関する情報を含むバッファーを表示し、@code{exec-path}の問題を調査するときに役立ちます。"
 
 #. type: table
 #: sed-out/magit.texi:11727
 msgid "Also see @ref{Git Executable}."
-msgstr ""
+msgstr "こちらもご覧ください→@ref{Git Executable}"
 
 #. type: kindex
 #: sed-out/magit.texi:11728
@@ -23451,17 +23451,17 @@ msgid ""
 "and used @code{emacsclient} executable(s), and can be useful when "
 "investigating why Magit (or rather @code{with-editor}) cannot find an "
 "appropriate @code{emacsclient} executable."
-msgstr ""
+msgstr "このコマンドは、使用可能で使用されている@code{emacsclient}実行可能ファイルに関する情報を含むバッファーを表示し、Magit(または@code{with-editor})が適切な@code{emacsclient}実行可能ファイルを見つけられない理由を調査するときに役立ちます。"
 
 #. type: table
 #: sed-out/magit.texi:11738
 msgid "Also see @ref{Debugging,,,with-editor,}."
-msgstr ""
+msgstr "こちらもご覧ください→@ref{Debugging,,,with-editor,}"
 
 #. type: Plain text
 #: sed-out/magit.texi:11741
 msgid "Please also see the @ref{FAQ}."
-msgstr ""
+msgstr "FAQもご覧ください→@ref{FAQ}"
 
 #. type: appendix
 #: sed-out/magit.texi:11742 sed-out/magit.texi:11743

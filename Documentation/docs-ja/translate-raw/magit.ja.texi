@@ -6,7 +6,7 @@
 @c ===========================================================================
 @c %**start of header
 @setfilename magit.info
-@settitle Magit ユーザー マニュアル
+@settitle Magit User Manual
 @c %**end of header
 @documentencoding UTF-8 @documentlanguage en
 
@@ -33,7 +33,7 @@ more details.
 
 @finalout
 @titlepage
-@title Magit ユーザー マニュアル
+@title Magit User Manual
 @subtitle for version 3.2.1 (v3.2.1-24-gb8e64dcb9+1)
 @author Jonas Bernoulli
 @page
@@ -45,7 +45,7 @@ more details.
 
 @ifnottex
 @node Top
-@top Magit ユーザー マニュアル
+@top Magit User Manual
 
 Magitは、バージョン管理システムGitへのインターフェースであり、Emacsパッケージとして実装されています。Magitは完全なGit磁器を目指しています。MagitがすべてのGitコマンドをラップして改善するとは(まだ)主張できませんが、経験豊富なGitユーザーでさえEmacs内から直接毎日のバージョン管理タスクのほとんどすべてを実行できるほど十分に完全です。多くの優れたGitクライアントが存在しますが、磁器と呼ばれるのはMagitとGit自体だけです。(訳注:低レベルのを配管(plumbing)コマンド、よりユーザーフレンドリーなのを磁器(porcelain)コマンドと称する)
 
@@ -106,16 +106,16 @@ Interface Concepts
 * Sections::
 * 一時的(transient)コマンド::
 * 一時的引数とバッファー変数::
-* Completion, Confirmation and the Selection: Completion Confirmation and the
-Selection.  
+* Completion(完了)とConfirmation(確認)とSelection(選択状態): Completion
+Confirmation(完了確認)とSelection(選択状態).  
 * Running Git::              
 
 Modes and Buffers
 
 
 
-* Switching Buffers::
-* Naming Buffers::
+* バッファーの切り替え::
+* バッファーの名付け::
 * Quitting Windows::
 * Automatic Refreshing of Magit Buffers::
 * Automatic Saving of File-Visiting Buffers::
@@ -135,7 +135,7 @@ Sections
 
 
 
-Completion, Confirmation and the Selection
+Completion(完了)とConfirmation(確認)とSelection(選択状態)
 
 
 
@@ -154,7 +154,7 @@ Running Git
 
 * Viewing Git Output::
 * Git Process Status::
-* Running Git Manually::
+* Gitを手動で実行::
 * Git Executable::
 * Global Git Arguments::     
 
@@ -660,66 +660,36 @@ changes)またはステージングされてない変更(unstaged
 changes)はありません。いくつかのファイルを編集し、変更を保存します。それから@code{C-x
 g}と入力して、ステータスバッファに戻り、同時に更新します(ステータスバッファー、またはそのためのMagitバッファーが現在のバッファーである場合は、@code{g}だけを使用して更新することもできます)。
 
-Move between sections using @code{p} and @code{n}.  Note that the bodies of
-some sections are hidden.  Type @code{TAB} to expand or collapse the section
-at point.  You can also use @code{C-tab} to cycle the visibility of the
-current section and its children.  Move to a file section inside the section
-named "Unstaged changes" and type @code{s} to stage the changes you have
-made to that file.  That file now appears under "Staged changes".
+@code{p}と@code{n}を使用してセクション間を移動します。一部のセクションの本文は非表示になっていることに注意してください。@code{TAB}と入力して、ポイントでセクションを展開または折りたたみます。@code{C-tab}を使用して、現在のセクションとその子の表示を循環させることもできます。"Unstaged
+changes"という名前のセクション内のファイルセクションに移動し、@code{s}と入力して、そのファイルに加えた変更をステージングします。
+そのファイルは"Staged changes"の下に表れます。
 
-Magit can stage and unstage individual hunks, not just complete files.  Move
-to the file you have just staged, expand it using @code{TAB}, move to one of
-the hunks using @code{n}, and unstage just that by typing @code{u}.  Note
-how the staging (@code{s}) and unstaging (@code{u}) commands operate on the
-change at point.  Many other commands behave the same way.
+Magitは、完全なファイルだけでなく、個々のハンクをステージング(stage)およびステージング解除(unstage)できます。ステージングしたファイルに移動し、@code{TAB}を使用して展開し、@code{n}を使用してハンクのいずれかに移動し、@code{u}と入力してステージングを解除します。ステージング(@code{s})コマンドとステージング解除(@code{u})コマンドがポイントでの変更に対してどのように動作するかに注意してください。他の多くのコマンドも同じように動作します。
 
-You can also un-/stage just part of a hunk.  Inside the body of a hunk
-section (move there using @code{C-n}), set the mark using @code{C-SPC} and
-move down until some added and/or removed lines fall inside the region but
-not all of them.  Again type @code{s} to stage.
+ハンクの一部だけをステージング解除(unstage)/ステージング(stage)することもできます。ハンクセクションの本体内(@code{C-n}を使用してそこに移動する)で、@code{C-SPC}を使用してマークを設定し、追加または削除された行がすべてregion内に収まるまで下に移動します。そして、もう一度@code{s}と入力してステージングします。
 
-It is also possible to un-/stage multiple files at once.  Move to a file
-section, type @code{C-SPC}, move to the next file using @code{n}, and then
-@code{s} to stage both files.  Note that both the mark and point have to be
-on the headings of sibling sections for this to work.  If the region looks
-like it does in other buffers, then it doesn't select Magit sections that
-can be acted on as a unit.
+複数のファイルを一度にステージ解除(unstage)/ステージング(stage)することも可能です。ファイルセクションに移動し、@code{C-SPC}と入力し、@code{n}を使用して次のファイルに移動し、次に@code{s}を使用して両方のファイルをステージングします。これが機能するには、マークとポイントの両方が兄弟セクションの見出しにある必要があることに注意してください。regionが他のバッファーと同じように見える場合、ユニットとして機能できるMagitセクションは選択されません。
 
-And then of course you want to commit your changes.  Type @code{c}.  This
-shows the available commit commands and arguments in a buffer at the bottom
-of the frame.  Each command and argument is prefixed with the key that
-invokes/sets it.  Do not worry about this for now.  We want to create a
-"normal" commit, which is done by typing @code{c} again.
+そしてもちろん、変更をコミットする必要があります。@code{c}と入力します。ここで、フレームの下部にあるバッファーで使用可能なコミットコマンドと引数を示しています。各コマンドと引数には、それを呼び出す/設定するキーが前置として付けられます。ここではこれについて気にする必要はありません。「通常の」コミットを作成します。これは、@code{c}をもう一度入力することで実行されます。
 
-Now two new buffers appear.  One is for writing the commit message, the
-other shows a diff with the changes that you are about to commit.  Write a
-message and then type @code{C-c C-c} to actually create the commit.
+これで、2つの新しいバッファが表示されます。1つはコミットメッセージを書き込むためのもので、もう1つはコミットしようとしている変更との差分を示します。メッセージを書き込んでから、@code{C-c
+C-c}と入力して、実際にコミットを作成します。
 
-You probably don't want to push the commit you just created because you just
-committed some random changes, but if that is not the case you could push it
-by typing @code{P} to show all the available push commands and arguments and
-then @code{p} to push to a branch with the same name as the local branch
-onto the remote configured as the push-remote.  (If the push-remote is not
-configured yet, then you would first be prompted for the remote to push to.)
+ランダムな変更をコミットしただけなので、作成したばかりのコミットをプッシュしたくない場合がありますが、そうでない場合は、@code{P}と入力して、使用可能なすべてのプッシュコマンドと引数を表示してからプッシュできます。@code{p}は、ローカルブランチと同じ名前のブランチにpush-remoteとして構成されたremoteにプッシュします。(push-remoteがまだ構成されていない場合は、最初にプッシュするためのremoteを求められます。)
 
 これまで、commit、push、およびlogメニューコマンドについて説明してきました。これらはおそらくあなたが最も使用するメニューの1つですが、他にもたくさんあります。他のすべてのメニュー(およびさまざまなapplyコマンドやその他の重要なコマンド)を一覧表示するメニューを表示するには、@code{h}と入力します。
 いくつか試してみてください。(このようなメニューは、「一時的前置コマンド」("transient prefix
 commands")または単に「一時的コマンド」("transients")とも呼ばれます。）
 
-The key bindings in that menu correspond to the bindings in Magit buffers,
-including but not limited to the status buffer.  So you could type @code{h
-d} to bring up the diff menu, but once you remember that "d" stands for
-"diff", you would usually do so by just typing @code{d}.  But this "prefix
-of prefixes" is useful even once you have memorized all the bindings, as it
-can provide easy access to Magit commands from non-Magit buffers.  The
-global binding is @code{C-x M-g}.
+そのメニューのキーバインディングは、ステータスバッファーを含むがこれに限定されない、Magitバッファーのバインディングに対応します。したがって、@code{h
+d}と入力してdiffメニューを表示できますが、「d」が「diff」を表すことを思い出したら、通常は@code{d}と入力するだけです。ただし、この「前置の前置」は、すべてのバインディングを記憶した後でも、Magit以外のバッファからMagitコマンドに簡単にアクセスできるため便利です。グローバルバインディングは@code{C-x
+M-g}です。
 
-In file visiting buffers @code{C-c M-g} brings up a similar menu featuring
-commands that act on just the visited file, see @ref{Commands for Buffers
-Visiting Files}.
+file visitingバッファでは、@code{C-c
+M-g}は、訪問したファイルのみに作用する機能コマンド群である同様のメニューを表示します(@ref{Commands for Buffers
+Visiting Files})。
 
-It is not necessary that you do so now, but if you stick with Magit, then it
-is highly recommended that you read the next section too.
+今すぐでなくて構いませんが、Magitを使い続ける場合は、次の節も読むことを強くお勧めします。
 
 @node Interface Concepts
 @chapter Interface Concepts
@@ -729,180 +699,127 @@ is highly recommended that you read the next section too.
 * Sections::
 * 一時的(transient)コマンド::
 * 一時的引数とバッファー変数::
-* Completion, Confirmation and the Selection: Completion Confirmation and the
-Selection.  
+* Completion(完了)とConfirmation(確認)とSelection(選択状態): Completion
+Confirmation(完了確認)とSelection(選択状態).  
 * Running Git::              
 @end menu
 
 @node Modes and Buffers
 @section Modes and Buffers
 
-Magit provides several major-modes.  For each of these modes there usually
-exists only one buffer per repository.  Separate modes and thus buffers
-exist for commits, diffs, logs, and some other things.
+Magitはいくつかのメジャーモードを提供します。
+これらのモードのそれぞれについて、通常、リポジトリごとに1つのバッファのみが存在します。個別のモードとそのためのバッファは、コミット、差分、ログ、およびその他のいくつかのもののために存在します。
 
-Besides these special purpose buffers, there also exists an overview buffer,
-called the @strong{status buffer}.  It's usually from this buffer that the
-user invokes Git commands, or creates or visits other buffers.
+これらの特別な目的のバッファに加えて、@strong{ステータスバッファ}と呼ばれる概要バッファもあります。ユーザーがGitコマンドを呼び出すか、他のバッファーを作成またはアクセスするのは、通常、このバッファーからです。
 
-In this manual we often speak about "Magit buffers".  By that we mean
-buffers whose major-modes derive from @code{magit-mode}.
+このマニュアルでは、「Magitバッファ」についてよく話します。つまり、メジャーモードが@code{magit-mode}から派生するバッファを意味します。
 
 @table @asis
 @kindex M-x magit-toggle-buffer-lock
 @cindex magit-toggle-buffer-lock
 @item @kbd{M-x magit-toggle-buffer-lock} @tie{}@tie{}@tie{}@tie{}(@code{magit-toggle-buffer-lock})
 
-This command locks the current buffer to its value or if the buffer is
-already locked, then it unlocks it.
+このコマンドは、現在のバッファーをその値にロックします。バッファーがすでにロックされている場合は、ロックを解除します。
 
-Locking a buffer to its value prevents it from being reused to display
-another value.  The name of a locked buffer contains its value, which allows
-telling it apart from other locked buffers and the unlocked buffer.
+バッファをその値にロックすると、別の値を表示するためにバッファが再利用されるのを防ぐことができます。ロックされたバッファの名前にはその値が含まれているため、他のロックされたバッファやロックされていないバッファと区別することができます。
 
-Not all Magit buffers can be locked to their values; for example, it
-wouldn't make sense to lock a status buffer.
+すべてのMagitバッファをそれらの値にロックできるわけではありません。たとえば、ステータスバッファをロックすることは意味がありません。
 
-There can only be a single unlocked buffer using a certain major-mode per
-repository.  So when a buffer is being unlocked and another unlocked buffer
-already exists for that mode and repository, then the former buffer is
-instead deleted and the latter is displayed in its place.
+リポジトリごとに特定のメジャーモードを使用するロック解除されたバッファは1つだけです。したがって、バッファがロック解除されていて、そのモードとリポジトリ用に別のロック解除されたバッファがすでに存在する場合、前者のバッファは代わりに削除され、後者がその場所に表示されます。
 @end table
 
 @menu
-* Switching Buffers::
-* Naming Buffers::
+* バッファーの切り替え::
+* バッファーの名付け::
 * Quitting Windows::
 * Automatic Refreshing of Magit Buffers::
 * Automatic Saving of File-Visiting Buffers::
 * Automatic Reverting of File-Visiting Buffers::  
 @end menu
 
-@node Switching Buffers
-@subsection Switching Buffers
+@node バッファーの切り替え
+@subsection バッファーの切り替え
 
 @defun magit-display-buffer buffer &optional display-function
 
-This function is a wrapper around @code{display-buffer} and is used to
-display any Magit buffer.  It displays BUFFER in some window and, unlike
-@code{display-buffer}, also selects that window, provided
-@code{magit-display-buffer-noselect} is @code{nil}.  It also runs the hooks
-mentioned below.
+この関数は@code{display-buffer}のラッパーであり、Magitバッファーを表示するために使用されます。一部のウィンドウにBUFFERを表示し、@code{display-buffer}とは異なり、@code{magit-display-buffer-noselect}が@code{nil}の場合、そのウィンドウも選択します。また、以下に説明するフックを実行します。
 
-If optional DISPLAY-FUNCTION is non-nil, then that is used to display the
-buffer.  Usually that is @code{nil} and the function specified by
-@code{magit-display-buffer-function} is used.
+オプションのDISPLAY-FUNCTIONがnil以外の場合、それはバッファーを表示するために使用されます。通常、これは@code{nil}であり、@code{magit-display-buffer-function}で指定された関数が使用されます。
 @end defun
 
 @defvar magit-display-buffer-noselect
 
-When this is non-nil, then @code{magit-display-buffer} only displays the
-buffer but forgoes also selecting the window.  This variable should not be
-set globally, it is only intended to be let-bound, by code that
-automatically updates "the other window".  This is used for example when the
-revision buffer is updated when you move inside the log buffer.
+これがnil以外の場合、@code{magit-display-buffer}はバッファのみを表示し、ウィンドウの選択も行いません。この変数はグローバルに設定しないでください。「もう一方のウィンドウ」(the
+other
+window)を自動的に更新するコードによって、制限されることのみを目的としています。これは、たとえば、ログバッファ内に移動したときにリビジョンバッファが更新されるときに使用されます。
 @end defvar
 
 @defopt magit-display-buffer-function
 
-The function specified here is called by @code{magit-display-buffer} with
-one argument, a buffer, to actually display that buffer.  This function
-should call @code{display-buffer} with that buffer as first and a list of
-display actions as second argument.
+ここで指定された関数は、@code{magit-display-buffer}によって呼び出され、1つの引数、つまりバッファーを使用して、そのバッファーを実際に表示します。この関数は、最初にそのバッファーを使用し、2番目の引数として表示アクションのリストを使用して@code{display-buffer}を呼び出す必要があります。
 
-Magit provides several functions, listed below, that are suitable values for
-this option.  If you want to use different rules, then a good way of doing
-that is to start with a copy of one of these functions and then adjust it to
-your needs.
+Magitは、このオプションに適した値である、以下にリストされているいくつかの関数を提供します。あなたが別のルールを使用したい場合は、これらの関数の1つのコピーから始めて、あなたの必要に応じて調整(adjust)することをお勧めします。
 
-Instead of using a wrapper around @code{display-buffer}, that function
-itself can be used here, in which case the display actions have to be
-specified by adding them to @code{display-buffer-alist} instead.
+@code{display-buffer}のラッパーを使用する代わりに、その関数自体をここで使用できます。その場合、代わりに@code{display-buffer-alist}に追加して表示アクションを指定する必要があります。
 
-To learn about display actions, see @ref{Choosing Window,,,elisp,}.
+表示アクションについては→@ref{Choosing Window,,,elisp,}
 @end defopt
 
 @defun magit-display-buffer-traditional buffer
 
-This function is the current default value of the option
-@code{magit-display-buffer-function}.  Before that option and this function
-were added, the behavior was hard-coded in many places all over the code
-base but now all the rules are contained in this one function (except for
-the "noselect" special case mentioned above).
+この関数は、オプション@code{magit-display-buffer-function}の現在のデフォルト値です。そのオプションとこの関数が追加される前は、動作はコードベース全体の多くの場所でハードコーディングされていましたが、現在はすべてのルールがこの1つの関数に含まれています(上記の「noselect」特殊ケースを除く)。
 @end defun
 
 @defun magit-display-buffer-same-window-except-diff-v1
 
-This function displays most buffers in the currently selected window.  If a
-buffer's mode derives from @code{magit-diff-mode} or
-@code{magit-process-mode}, it is displayed in another window.
+この関数は、現在選択されているウィンドウにほとんどのバッファを表示します。バッファのモードが@code{magit-diff-mode}または@code{magit-process-mode}から派生している場合、別のウィンドウに表示されます。
 @end defun
 
 @defun magit-display-buffer-fullframe-status-v1
 
-This function fills the entire frame when displaying a status buffer.
-Otherwise, it behaves like @code{magit-display-buffer-traditional}.
+この関数は、ステータスバッファを表示するときにフレーム全体を埋めます。それ以外の場合は、@code{magit-display-buffer-traditional}のように動作します。
 @end defun
 
 @defun magit-display-buffer-fullframe-status-topleft-v1
 
-This function fills the entire frame when displaying a status buffer.  It
-behaves like @code{magit-display-buffer-fullframe-status-v1} except that it
-displays buffers that derive from @code{magit-diff-mode} or
-@code{magit-process-mode} to the top or left of the current buffer rather
-than to the bottom or right.  As a result, Magit buffers tend to pop up on
-the same side as they would if @code{magit-display-buffer-traditional} were
-in use.
+この関数は、ステータスバッファを表示するときにフレーム全体を埋めます。@code{magit-display-buffer-fullframe-status-v1}と同じように動作しますが、@code{magit-diff-mode}または@code{magit-process-mode}から派生したバッファーが、現在のバッファーの下部または右側ではなく、上部または左側に表示される点が異なります。その結果、Magitバッファーは、@code{magit-display-buffer-traditional}が使用されている場合と同じ側にポップアップする傾向があります。
 @end defun
 
 @defun magit-display-buffer-fullcolumn-most-v1
 
-This function displays most buffers so that they fill the entire height of
-the frame.  However, the buffer is displayed in another window if (1) the
-buffer's mode derives from @code{magit-process-mode}, or (2) the buffer's
-mode derives from @code{magit-diff-mode}, provided that the mode of the
-current buffer derives from @code{magit-log-mode} or
-@code{magit-cherry-mode}.
+この関数は、ほとんどのバッファーを表示して、フレームの高さ全体を埋めるようにします。
+ただし、(1)バッファのモードが@code{magit-process-mode}から派生している場合、または(2)バッファのモードが@code{magit-diff-mode}から派生している場合、現在のバッファのモードが@code{magit-log-mode}または@code{magit-cherry-mode}から派生している場合、バッファは別のウィンドウに表示されます。
 @end defun
 
 @defopt magit-pre-display-buffer-hook
 
-This hook is run by @code{magit-display-buffer} before displaying the
-buffer.
+このフックは、バッファを表示する前に@code{magit-display-buffer}によって実行されます。
 @end defopt
 
 @defun magit-save-window-configuration
 
-This function saves the current window configuration.  Later when the buffer
-is buried, it may be restored by @code{magit-restore-window-configuration}.
+この関数は、現在のウィンドウ構成を保存します。後でバッファが葬られると、@code{magit-restore-window-configuration}によって復元される可能性があります。
 @end defun
 
 @defopt magit-post-display-buffer-hook
 
-This hook is run by @code{magit-display-buffer} after displaying the buffer.
+このフックは、バッファを表示した後、@code{magit-display-buffer}によって実行されます。
 @end defopt
 
 @defun magit-maybe-set-dedicated
 
-This function remembers if a new window had to be created to display the
-buffer, or whether an existing window was reused.  This information is later
-used by @code{magit-mode-quit-window}, to determine whether the window
-should be deleted when its last Magit buffer is buried.
+この関数は、バッファを表示するために新しいウィンドウを作成する必要があるかどうか、または既存のウィンドウが再利用されたかどうかを記憶しています。
+この情報は、後で@code{magit-mode-quit-window}によって使用され、最後のMagitバッファが葬られたときにウィンドウを削除する必要があるかどうかを判断します。
 @end defun
 
-@node Naming Buffers
-@subsection Naming Buffers
+@node バッファーの名付け
+@subsection バッファーの名付け
 
 @defopt magit-generate-buffer-name-function
 
-The function used to generate the names of Magit buffers.
+Magitバッファーの名前を生成するために使用される関数。
 
-Such a function should take the options @code{magit-uniquify-buffer-names}
-as well as @code{magit-buffer-name-format} into account.  If it doesn't,
-then should be clearly stated in the doc-string.  And if it supports
-%-sequences beyond those mentioned in the doc-string of the option
-@code{magit-buffer-name-format}, then its own doc-string should describe the
-additions.
+このような関数は、オプション@code{magit-uniquify-buffer-names}と@code{magit-buffer-name-format}を考慮に入れる必要があります。そうでない場合は、doc-stringに明確に記載する必要があります。また、オプション@code{magit-buffer-name-format}のdoc-stringに記載されている以外の%-sequencesをサポートしている場合は、独自のdoc-stringで追加を説明する必要があります。
 @end defopt
 
 @defun magit-generate-buffer-name-default-function mode
@@ -918,21 +835,21 @@ the option @code{magit-uniquify-buffer-names}.
 
 @defopt magit-buffer-name-format
 
-The format string used to name Magit buffers.
+Magitバッファに名前を付けるために使用されるフォーマット文字列。
 
-At least the following %-sequences are supported:
+少なくとも以下の%シーケンスがサポートされています:
 
 @itemize
 @item
 @code{%m}
 
-The name of the major-mode, but with the @code{-mode} suffix removed.
+メジャーモードの名前ですが、@code{-mode}後置部分が削除されています。
 
 
 @item
 @code{%M}
 
-Like @code{%m} but abbreviate @code{magit-status-mode} as @code{magit}.
+@code{%m}に似ていますが、@code{magit-status-mode}を@code{magit}と省略します。
 
 
 @item
@@ -1038,115 +955,78 @@ the window, then that is deleted.
 @node Automatic Refreshing of Magit Buffers
 @subsection Automatic Refreshing of Magit Buffers
 
-After running a command which may change the state of the current
-repository, the current Magit buffer and the corresponding status buffer are
-refreshed. The status buffer can be automatically refreshed whenever a
-buffer is saved to a file inside the respective repository by adding a hook,
-like so:
+現在のリポジトリの状態を変更する可能性のあるコマンドを実行した後で、現在のMagitバッファと対応するステータスバッファが更新されます。ステータスバッファは、以下のようにフックを追加することで、バッファがそれぞれのリポジトリ内のファイルに保存されるたびに自動的に更新できます:
 
 @lisp
 (with-eval-after-load 'magit-mode
   (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
 @end lisp
 
-Automatically refreshing Magit buffers ensures that the displayed
-information is up-to-date most of the time but can lead to a noticeable
-delay in big repositories.  Other Magit buffers are not refreshed to keep
-the delay to a minimum and also because doing so can sometimes be
-undesirable.
+Magitバッファー達を自動的に更新すると、表示される情報はほとんどの場合最新であることが保証されますが、大きなリポジトリーで顕著な遅延が発生する可能性があります。他のMagitバッファー達は、遅延を最小限に抑えるために更新されません。また、更新することが望ましくない場合があるためです。
 
-Buffers can also be refreshed explicitly, which is useful in buffers that
-weren't current during the last refresh and after changes were made to the
-repository outside of Magit.
+バッファーは明示的に更新することもできます。これは、最後の更新時およびMagitの外部のリポジトリーに変更が加えられた後、最新ではなかったバッファーで役立ちます。
 
 @table @asis
 @kindex g
 @cindex magit-refresh
 @item @kbd{g} @tie{}@tie{}@tie{}@tie{}(@code{magit-refresh})
 
-This command refreshes the current buffer if its major mode derives from
-@code{magit-mode} as well as the corresponding status buffer.
+このコマンドは、メジャーモードが@code{magit-mode}および対応するステータスバッファーから派生している場合、現在のバッファーを更新します。
 
-If the option @code{magit-revert-buffers} calls for it, then it also reverts
-all unmodified buffers that visit files being tracked in the current
-repository.
+オプション@code{magit-revert-buffers}がそれを要求する場合、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファも元に戻します。
 
 @kindex G
 @cindex magit-refresh-all
 @item @kbd{G} @tie{}@tie{}@tie{}@tie{}(@code{magit-refresh-all})
 
-This command refreshes all Magit buffers belonging to the current repository
-and also reverts all unmodified buffers that visit files being tracked in
-the current repository.
+このコマンドは、現在のリポジトリに属するすべてのMagitバッファーを更新し、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファーを元に戻します。
 
-The file-visiting buffers are always reverted, even if
-@code{magit-revert-buffers} is nil.
+@code{magit-revert-buffers}がnilの場合でも、file-visitingバッファーは常に元に戻されます。
 
 @end table
 
 @defopt magit-refresh-buffer-hook
 
-This hook is run in each Magit buffer that was refreshed during the current
-refresh - normally the current buffer and the status buffer.
+このフックは、現在更新中に更新された各Magitバッファー(通常は現在のバッファーとステータスバッファー)で実行されます。
 @end defopt
 
 @defopt magit-refresh-status-buffer
 
-When this option is non-nil, then the status buffer is automatically
-refreshed after running git for side-effects, in addition to the current
-Magit buffer, which is always refreshed automatically.
+このオプションがnil以外の場合、現在のMagitバッファーに加えて、副作用としてgitを実行した後、ステータスバッファーが自動的に更新されます。これは、常に自動的に更新されます。
 
-Only set this to nil after exhausting all other options to improve
-performance.
+パフォーマンスを向上させるために他のすべてのオプションを使い果たした後でのみ、これをnilに設定してください。
 @end defopt
 
 @defun magit-after-save-refresh-status
 
-This function is intended to be added to @code{after-save-hook}.  After
-doing that the corresponding status buffer is refreshed whenever a buffer is
-saved to a file inside a repository.
+この関数は、@code{after-save-hook}に追加することを目的としています。その後、リポジトリ内のファイルにバッファが保存されるたびに、対応するステータスバッファが更新されます。
 
-Note that refreshing a Magit buffer is done by re-creating its contents from
-scratch, which can be slow in large repositories.  If you are not satisfied
-with Magit's performance, then you should obviously not add this function to
-that hook.
+Magitバッファーの更新は、その内容を最初から再作成することによって行われることに注意してください。これは、大規模なリポジトリーでは遅くなる可能性があります。Magitのパフォーマンスに満足できない場合は、明らかにこの関数をそのフックに追加しないでください。
 @end defun
 
 @node Automatic Saving of File-Visiting Buffers
 @subsection Automatic Saving of File-Visiting Buffers
 
-File-visiting buffers are by default saved at certain points in time.  This
-doesn't guarantee that Magit buffers are always up-to-date, but, provided
-one only edits files by editing them in Emacs and uses only Magit to
-interact with Git, one can be fairly confident.  When in doubt or after
-outside changes, type @code{g} (@code{magit-refresh}) to save and refresh
-explicitly.
+file-visitingバッファーは、デフォルトで特定の時点で保存されます。これは、Magitバッファーが常に最新であることを保証するものではありませんが、Emacsでファイルを編集するだけでファイルを編集し、Magitのみを使用してGitと対話する場合には、かなり自信があります。疑わしい場合やまたは外部の変更後は、@code{g}
+(@code{magit-refresh})と入力して、明示的に保存および更新します。
 
 @defopt magit-save-repository-buffers
 
-This option controls whether file-visiting buffers are saved before certain
-events.
+このオプションは、特定のイベントの前にfile-visitingバッファーを保存するかどうかを制御します。
 
-If this is non-nil then all modified file-visiting buffers belonging to the
-current repository may be saved before running commands, before creating new
-Magit buffers, and before explicitly refreshing such buffers.  If this is
-@code{dontask} then this is done without user intervention.  If it is
-@code{t} then the user has to confirm each save.
+これがnil以外の場合、現在のリポジトリに属するすべての変更されたfile-visitingバッファーは、コマンドを実行する前、新しいMagitバッファーを作成する前、およびそのようなバッファーを明示的に更新する前に保存できます。これが@code{dontask}の場合、これはユーザーの介入なしに実行されます。@code{t}の場合、ユーザーは各保存を確認する必要があります。
 @end defopt
 
 @node Automatic Reverting of File-Visiting Buffers
 @subsection Automatic Reverting of File-Visiting Buffers
 
-By default Magit automatically reverts buffers that are visiting files that
-are being tracked in a Git repository, after they have changed on disk.
-When using Magit one often changes files on disk by running Git,
-i.e. "outside Emacs", making this a rather important feature.
+デフォルトでは、Magitは、ディスク上で変更された後、Gitリポジトリで追跡されているファイルにアクセスしているバッファを自動的に元に戻します。Magitを使用する場合、Gitを実行してディスク上のファイルを変更することがよくあります。つまり、「Emacsの外部」(outside
+Emacs)であるため、これはかなり重要な機能です。
 
-For example, if you discard a change in the status buffer, then that is done
-by running @code{git apply --reverse ...}, and Emacs considers the file to
-have "changed on disk".  If Magit did not automatically revert the buffer,
-then you would have to type @code{M-x revert-buffer RET RET} in the visiting
-buffer before you could continue making changes.
+たとえば、ステータスバッファの変更を破棄する場合、@code{git apply --reverse
+...}を実行することでそれが行われ、Emacsはファイルが「ディスク上で変更された」と見なします。
+Magitがバッファを自動的に元に戻さなかった場合は、変更を続行する前に、訪問中のバッファに@code{M-x revert-buffer RET
+RET}と入力する必要があります。
 
 @defopt magit-auto-revert-mode
 
@@ -1250,22 +1130,15 @@ group named @code{auto-revert}.  The other, Magit-specific, options are
 located in the @code{magit} group.
 
 @menu
-* Risk of Reverting Automatically::  
+* 自動的に元に戻るリスク::  
 @end menu
 
-@node Risk of Reverting Automatically
-@unnumberedsubsubsec Risk of Reverting Automatically
+@node 自動的に元に戻るリスク
+@unnumberedsubsubsec 自動的に元に戻るリスク
 
-For the vast majority of users, automatically reverting file-visiting
-buffers after they have changed on disk is harmless.
+大多数のユーザーにとって、ディスク上で変更された後にfile-visitingバッファーを自動的に元に戻すことは無害です。
 
-If a buffer is modified (i.e. it contains changes that haven't been saved
-yet), then Emacs will refuse to automatically revert it.  If you save a
-previously modified buffer, then that results in what is seen by Git as an
-uncommitted change.  Git will then refuse to carry out any commands that
-would cause these changes to be lost.  In other words, if there is anything
-that could be lost, then either Git or Emacs will refuse to discard the
-changes.
+バッファが変更された場合(つまり、まだ保存されていない変更が含まれている場合)、Emacsは自動的にバッファを元に戻すことを拒否します。以前に変更されたバッファーを保存すると、Gitはコミットされていない変更と見なします。その後、Gitは、これらの変更が失われる原因となるコマンドの実行を拒否します。言い換えれば、失われる可能性のあるものがある場合、GitまたはEmacsのいずれかが変更の破棄を拒否します。
 
 However, if you use file-visiting buffers as a sort of ad hoc "staging
 area", then the automatic reverts could potentially cause data loss.  So far
@@ -1295,16 +1168,9 @@ you want to save the buffer (because it isn't modified).
 @node Sections
 @section Sections
 
-Magit buffers are organized into nested sections, which can be collapsed and
-expanded, similar to how sections are handled in Org mode.  Each section
-also has a type, and some sections also have a value.  For each section type
-there can also be a local keymap, shared by all sections of that type.
+Magitバッファーはネストされたセクションに編成され、Orgモードでセクションが処理されるのと同様に、折りたたんだり展開したりできます。各セクションにもタイプがあり、一部のセクションにも値があります。セクションタイプごとに、そのタイプのすべてのセクションで共有されるローカルキーマップを作成することもできます。
 
-Taking advantage of the section value and type, many commands operate on the
-current section, or when the region is active and selects sections of the
-same type, all of the selected sections.  Commands that only make sense for
-a particular section type (as opposed to just behaving differently depending
-on the type) are usually bound in section type keymaps.
+セクションの値とタイプを利用して、多くのコマンドが現在のセクションで動作します。または、regionがアクティブで同じタイプのセクションを選択すると、選択されたすべてのセクションが操作されます。特定のセクションタイプに対してのみ意味のあるコマンド(（タイプによって動作が異なるだけではなく）は、通常、セクションタイプのキーマップにバインドされます。
 
 @menu
 * Section Movement::
@@ -1505,7 +1371,7 @@ Cycle the visibility of all sections in the current buffer.
 @cindex magit-section-show-level-4
 @item @kbd{4} @tie{}@tie{}@tie{}@tie{}(@code{magit-section-show-level-4})
 
-Show sections surrounding the current section up to level N@.
+レベルN@@までの現在のセクションを囲むセクションを表示します。
 
 @kindex M-1
 @cindex magit-section-show-level-1-all
@@ -1520,7 +1386,7 @@ Show sections surrounding the current section up to level N@.
 @cindex magit-section-show-level-4-all
 @item @kbd{M-4} @tie{}@tie{}@tie{}@tie{}(@code{magit-section-show-level-4-all})
 
-Show all sections up to level N@.
+レベルN@@までのすべてのセクションを表示します。
 @end table
 
 Some functions, which are used to implement the above commands, are also
@@ -1529,26 +1395,26 @@ commands, as they are generally perceived to be much less useful.  But your
 mileage may vary.
 
 @cindex magit-section-show
-@deffn Command magit-section-show
+@deffn magit-section-show コマンド
 
 Show the body of the current section.
 @end deffn
 
 @cindex magit-section-hide
-@deffn Command magit-section-hide
+@deffn magit-section-hide コマンド
 
 Hide the body of the current section.
 @end deffn
 
 @cindex magit-section-show-headings
-@deffn Command magit-section-show-headings
+@deffn magit-section-show-headings コマンド
 
 Recursively show headings of children of the current section.  Only show the
 headings.  Previously shown text-only bodies are hidden.
 @end deffn
 
 @cindex magit-section-show-children
-@deffn Command magit-section-show-children
+@deffn magit-section-show-children コマンド
 
 Recursively show the bodies of children of the current section.  With a
 prefix argument show children down to the level of the current section, and
@@ -1556,13 +1422,13 @@ hide deeper children.
 @end deffn
 
 @cindex magit-section-hide-children
-@deffn Command magit-section-hide-children
+@deffn magit-section-hide-children コマンド
 
 Recursively hide the bodies of children of the current section.
 @end deffn
 
 @cindex magit-section-toggle-children
-@deffn Command magit-section-toggle-children
+@deffn magit-section-toggle-children コマンド
 
 Toggle visibility of bodies of children of the current section.
 @end deffn
@@ -1773,53 +1639,21 @@ Transientの文書は→@ref{Top,,,transient,}
 @node 一時的引数とバッファー変数
 @section 一時的引数とバッファー変数
 
-The infix arguments of many of Magit's transient prefix commands cease to
-have an effect once the @code{git} command that is called with those
-arguments has returned.  Commands that create a commit are a good example
-for this.  If the user changes the arguments, then that only affects the
-next invocation of a suffix command.  If the same transient prefix command
-is later invoked again, then the arguments are initially reset to the
-default value.  This default value can be set for the current Emacs session
-or saved permanently, see @ref{Saving Values,,,transient,}.  It is also
-possible to cycle through previously used sets of arguments using @code{M-p}
-and @code{M-n}, see @ref{Using History,,,transient,}.
+Magitの一時的な前置コマンドの多くの中置引数は、それらの引数で呼び出された@code{git}コマンドが返されると、効果がなくなります。コミットを作成するコマンドは、この良い例です。ユーザーが引数を変更した場合、それは次の後置コマンドの呼び出しにのみ影響します。
+同じ一時前置コマンドが後で再度呼び出された場合、引数は最初にデフォルト値にリセットされます。このデフォルト値は、現在のEmacsセッションに設定することも、永続的に保存することもできます(@ref{Saving
+Values,,,transient,})。
+@code{M-p}と@code{M-n}を使用して、以前に使用した引数のセットを循環させることもできます(@ref{Using
+History,,,transient,})。
 
-However the infix arguments of many other transient commands continue to
-have an effect even after the @code{git} command that was called with those
-arguments has returned.  The most important commands like this are those
-that display a diff or log in a dedicated buffer.  Their arguments obviously
-continue to have an effect for as long as the respective diff or log is
-being displayed.  Furthermore the used arguments are stored in buffer-local
-variables for future reference.
+ただし、他の多くの一時コマンドの中置引数は、それらの引数で呼び出された@code{git}コマンドが返された後でも引き続き有効です。このような最も重要なコマンドは、専用のバッファーに差分やログを表示したりするコマンドです。それぞれの差分またはログが表示されている限り、それらの引数は明らかに効果を持ち続けます。さらに、使用された引数は、将来の参照のためにバッファローカル変数に格納されます。
 
-For commands in the second group it isn't always desirable to reset their
-arguments to the global value when the transient prefix command is invoked
-again.
+2番目のグループのコマンドの場合、一時的前置コマンドが再度呼び出されたときに、引数をグローバル値にリセットすることが常に望ましいとは限りません。
 
-As mentioned above, it is possible to cycle through previously used sets of
-arguments while a transient popup is visible.  That means that we could
-always reset the infix arguments to the default because the set of arguments
-that is active in the existing buffer is only a few @code{M-p} away.  Magit
-can be configured to behave like that, but because I expect that most users
-would not find that very convenient, it is not the default.
+上記のように、一時的なポップアップが表示されている間に、以前に使用された引数のセットを循環させることができます。つまり、既存のバッファでアクティブになっている引数のセットは@code{M-p}の数個しか離れていないため、中置引数を常にデフォルトにリセットできます。Magitはそのように動作するように構成できますが、ほとんどのユーザーにとってはそれほど便利ではないと思うので、デフォルトではありません。
 
-Also note that it is possible to change the diff and log arguments used in
-the current buffer (including the status buffer, which contains both diff
-and log sections) using the respective "refresh" transient prefix commands
-on @code{D} and @code{L}.  (@code{d} and @code{l} on the other hand are
-intended to change @strong{what} diff or log is being displayed.  It is
-possible to also change @strong{how} the diff or log is being displayed at
-the same time, but if you only want to do the latter, then you should use
-the refresh variants.)  Because these secondary diff and log transient
-prefixes are about @strong{changing} the arguments used in the current
-buffer, they @strong{always} start out with the set of arguments that are
-currently in effect in that buffer.
+また、@code{D}と@code{L}でそれぞれの「refresh」一時前置コマンドを使用して、現在のバッファ(diffセクションとlogセクションの両方を含むステータスバッファを含む)で使用されるdiff引数とlog引数を変更できることにも注意してください。(一方、@code{d}と@code{l}は、差分またはログの表示方法を変更することを@strong{目的}としています。差分またはログの@strong{表示方法}を同時に変更することもできますが、後者のみを実行する場合は、refresh派生コマンドを使用する必要があります。）これらのセカンダリdiffおよびlog一時前置は、現在のバッファで使用される引数の@strong{変更}に関するものであるため、常に、そのバッファで現在有効な引数のセットから開始します。
 
-Some commands are usually invoked directly even though they can also be
-invoked as the suffix of a transient prefix command.  Most prominently
-@code{magit-show-commit} is usually invoked by typing @code{RET} while point
-is on a commit in a log, but it can also be invoked from the
-@code{magit-diff} transient prefix.
+一部のコマンドは、一時的な前置コマンドの後置として呼び出すこともできますが、通常は直接呼び出されます。最も目立つように、@code{magit-show-commit}は通常、ポイントがログのコミット中に@code{RET}と入力することで呼び出されますが、@code{magit-diff}一時前置から呼び出すこともできます。
 
 When such a command is invoked directly, then it is important to reuse the
 arguments as specified by the respective buffer-local values, instead of
@@ -1916,8 +1750,8 @@ without a prefix argument, then it acts as a direct command and therefore
 respects @code{magit-direct-use-buffer-arguments}.
 @end itemize
 
-@node Completion Confirmation and the Selection
-@section Completion, Confirmation and the Selection
+@node Completion Confirmation(完了確認)とSelection(選択状態)
+@section Completion(完了)とConfirmation(確認)とSelection(選択状態)
 
 @menu
 * Action Confirmation::
@@ -2137,39 +1971,17 @@ adding all of these symbols individually.
 @node Completion and Confirmation
 @subsection Completion and Confirmation
 
-Many Magit commands ask the user to select from a list of possible things to
-act on, while offering the most likely choice as the default.  For many of
-these commands the default is the thing at point, provided that it actually
-is a valid thing to act on.  For many commands that act on a branch, the
-current branch serves as the default if there is no branch at point.
+多くのMagitコマンドは、ユーザーに、実行可能なもののリストから選択するように求めますが、デフォルトとして最も可能性の高い選択肢を提供します。これらのコマンドの多くでは、実際に実行することできるという条件のものが提供され、デフォルトはその時点でのものです。ブランチに作用する多くのコマンドでは、ポイントにブランチがない場合、現在のブランチがデフォルトになります。
 
-These commands combine asking for confirmation and asking for a target to
-act on into a single action.  The user can confirm the default target using
-@code{RET} or abort using @code{C-g}.  This is similar to a @code{y-or-n-p}
-prompt, but the keys to confirm or abort differ.
+これらのコマンドは、確認(confirm)を求めることと、アクションを実行するターゲットを求めることを組み合わせて1つのアクションにします。ユーザーは、@code{RET}を使用してデフォルトのターゲットを確認するか、@code{C-g}を使用して中止(abort)することができます。これは@code{y-or-n-p}プロンプトに似ていますが、確認(confirm)または中止(abort)するためのキーが異なります。
 
-At the same time the user is also given the opportunity to select another
-target, which is useful because for some commands and/or in some situations
-you might want to select the action before selecting the target by moving to
-it.
+同時に、ユーザーには別のターゲットを選択する機会も与えられます。これは、コマンドや状況によっては、ターゲットに移動して選択する前にアクションを選択したい場合があるため便利です。
 
-However you might find that for some commands you always want to use the
-default target, if any, or even that you want the command to act on the
-default without requiring any confirmation at all.  The option
-@code{magit-dwim-selection} can be used to configure certain commands to
-that effect.
+けれども、一部のコマンドでは、デフォルトのターゲットがあればそれを常に使用したい場合や、確認をまったく必要とせずにコマンドをデフォルトで動作させたい場合もあります。オプション@code{magit-dwim-selection}を使用して、その効果をもたらす特定のコマンドを構成できます。
 
-Note that when the region is active then many commands act on the things
-that are selected using a mechanism based on the region, in many cases after
-asking for confirmation.  This region-based mechanism is called the
-"selection" and is described in detail in the next section.  When a
-selection exists that is valid for the invoked command, then that command
-never offers to act on something else, and whether it asks for confirmation
-is not controlled by this option.
+regionがアクティブな場合、多くの場合、確認を求めた後、regionに基づくメカニズムを使用して選択されたものに多くのコマンド達が作用することに注意してください。このregionベースのメカニズムは「selection」(選択状態)と呼ばれ、次の節で詳しく説明します。呼び出されたコマンドに有効なselectionが存在する場合、そのコマンドは他の何かに作用することを提案することはなく、確認を求めるかどうかはこのオプションによって制御されません。
 
-Also note that Magit asks for confirmation of certain actions that are not
-coupled with completion (or the selection).  Such dialogs are also not
-affected by this option and are described in the previous section.
+また、Magitは、completion(またはselection)と結び付けられていない特定のアクションの確認を要求することにも注意してください。このようなダイアログもこのオプションの影響を受けず、前の節で説明済です。
 
 @defopt magit-dwim-selection
 @end defopt
@@ -2403,7 +2215,7 @@ default, refs are sorted alphabetically by their full name (e.g.,
 @menu
 * Viewing Git Output::
 * Git Process Status::
-* Running Git Manually::
+* Gitを手動で実行::
 * Git Executable::
 * Global Git Arguments::     
 @end menu
@@ -2468,8 +2280,8 @@ customize the @code{magit-process-display-mode-line-error} user option.
 
 Process errors are additionally indicated at the top of the status buffer.
 
-@node Running Git Manually
-@subsection Running Git Manually
+@node Gitを手動で実行
+@subsection Gitを手動で実行
 
 While Magit provides many Emacs commands to interact with Git, it does not
 cover everything.  In those cases your existing Git knowledge will come in
@@ -2488,11 +2300,9 @@ buffer)に表示します。
 @cindex magit-git-command-topdir
 @item @kbd{! !} @tie{}@tie{}@tie{}@tie{}(@code{magit-git-command-topdir})
 
-This command reads a command from the user and executes it in the top-level
-directory of the current working tree.
+このコマンドは、ユーザーからコマンドを読み取り、現在の作業ツリーの最上位ディレクトリで実行します。
 
-The string "git " is used as initial input when prompting the user for the
-command.  It can be removed to run another command.
+文字列「git」は、ユーザーにコマンドの入力を求めるときの初期入力として使用されます。別のコマンドを実行するために削除できます。
 
 @kindex ! p
 @cindex magit-git-command
@@ -2502,15 +2312,13 @@ This command reads a command from the user and executes it in
 @code{default-directory}.  With a prefix argument the command is executed in
 the top-level directory of the current working tree instead.
 
-The string "git " is used as initial input when prompting the user for the
-command.  It can be removed to run another command.
+文字列「git」は、ユーザーにコマンドの入力を求めるときの初期入力として使用されます。別のコマンドを実行するために削除できます。
 
 @kindex ! s
 @cindex magit-shell-command-topdir
 @item @kbd{! s} @tie{}@tie{}@tie{}@tie{}(@code{magit-shell-command-topdir})
 
-This command reads a command from the user and executes it in the top-level
-directory of the current working tree.
+このコマンドは、ユーザーからコマンドを読み取り、現在の作業ツリーの最上位ディレクトリで実行します。
 
 @kindex ! S
 @cindex magit-shell-command
@@ -2622,8 +2430,7 @@ This command displays a buffer with information about
 @cindex magit-version
 @item @kbd{M-x magit-version} @tie{}@tie{}@tie{}@tie{}(@code{magit-version})
 
-This command shows the currently used versions of Magit, Git, and Emacs in
-the echo area.  Non-interactively this just returns the Magit version.
+このコマンドは、現在使用されているMagit、Git、およびEmacsのバージョンをエコー領域に表示します。非インタラクティブでは、これは単にMagitバージョンを返すだけです。
 @end table
 
 @node Global Git Arguments
@@ -2657,20 +2464,9 @@ for any purpose.
 @node Inspecting
 @chapter Inspecting
 
-The functionality provided by Magit can be roughly divided into three
-groups: inspecting existing data, manipulating existing data or adding new
-data, and transferring data.  Of course that is a rather crude distinction
-that often falls short, but it's more useful than no distinction at all.
-This section is concerned with inspecting data, the next two with
-manipulating and transferring it.  Then follows a section about
-miscellaneous functionality, which cannot easily be fit into this
-distinction.
+Magitが提供する機能は、既存のデータの検査、既存のデータの操作または新しいデータの追加、データの転送の3つのグループに大別できます。もちろん、それはかなり大雑把な区別であり、しばしば不十分ですが、まったく区別しないよりも便利です。この節はデータの検査に関係し、次の2つはデータの操作と転送に関係します。次に、この区別に簡単に当てはまらないその他の機能に関する節が続きます。
 
-Of course other distinctions make sense too, e.g. Git's distinction between
-porcelain and plumbing commands, which for the most part is equivalent to
-Emacs' distinction between interactive commands and non-interactive
-functions.  All of the sections mentioned before are mainly concerned with
-the porcelain -- Magit's plumbing layer is described later.
+もちろん、他の区別も意味があります。Gitでの磁器コマンドと配管コマンドの区別。これは、ほとんどの場合、Emacsでのインタラクティブコマンドと非インタラクティブ機能の区別に相当します。前述のすべての節は、主に磁器に関係しています。Magitの配管コマンド層については後で説明します。
 
 @menu
 * Status Buffer::
@@ -2687,18 +2483,13 @@ the porcelain -- Magit's plumbing layer is described later.
 @node Status Buffer
 @section Status Buffer
 
-While other Magit buffers contain e.g. one particular diff or one particular
-log, the status buffer contains the diffs for staged and unstaged changes,
-logs for unpushed and unpulled commits, lists of stashes and untracked
-files, and information related to the current branch.
+他のMagitバッファ達では、例えば、1つの特定の差分または1つの特定のログや、ステータスバッファーならばステージングされた変更とステージングされていない変更の差分、プッシュされていないコミットとプルされていないコミットのログ、スタッシュと追跡されていないファイル(untracked
+files)のリスト、および現在のブランチに関連する情報が含まれます。
 
-During certain incomplete operations -- for example when a merge resulted in
-a conflict -- additional information is displayed that helps proceeding with
-or aborting the operation.
+特定の不完全な操作の途中(たとえば、マージによって競合が発生した場合)、操作の続行または中止に役立つ追加情報が表示されます。
 
-The command @code{magit-status} displays the status buffer belonging to the
-current repository in another window.  This command is used so often that it
-should be bound globally.  We recommend using @code{C-x g}:
+コマンド@code{magit-status}は、現在のリポジトリに属するステータスバッファを別のウィンドウに表示します。このコマンドは頻繁に使用されるため、グローバルにバインドすべきです。我々は@code{C-x
+g}をお勧めします:
 
 @lisp
 (global-set-key (kbd "C-x g") 'magit-status)
@@ -2709,33 +2500,24 @@ should be bound globally.  We recommend using @code{C-x g}:
 @cindex magit-status
 @item @kbd{C-x g} @tie{}@tie{}@tie{}@tie{}(@code{magit-status})
 
-When invoked from within an existing Git repository, then this command shows
-the status of that repository in a buffer.
+既存のGitリポジトリ内から呼び出されると、このコマンドはバッファ内のそのリポジトリのステータスを表示します。
 
-If the current directory isn't located within a Git repository, then this
-command prompts for an existing repository or an arbitrary directory,
-depending on the option @code{magit-repository-directories}, and the status
-for the selected repository is shown instead.
+現在のディレクトリがGitリポジトリ内にない場合、このコマンドは、オプション@code{magit-repository-directories}に応じて、既存のリポジトリまたは任意のディレクトリの入力を求め、その代わりに選択したリポジトリのステータスが表示されます。
 
 @itemize
 @item
-If that option specifies any existing repositories, then the user is asked
-to select one of them.
+そのオプションで既存のリポジトリ達が指定されている場合、ユーザーはそれらの1つを選択するように求められます。
 
 
 @item
-Otherwise the user is asked to select an arbitrary directory using regular
-file-name completion.  If the selected directory is the top-level directory
-of an existing working tree, then the status buffer for that is shown.
+それ以外の場合、ユーザーは通常のファイル名補完を使用して任意のディレクトリを選択するように求められます。選択したディレクトリが既存の作業ツリーの最上位ディレクトリである場合、そのステータスバッファが表示されます。
 
 
 @item
-Otherwise the user is offered to initialize the selected directory as a new
-repository.  After creating the repository its status buffer is shown.
+それ以外の場合、ユーザーは選択したディレクトリを新しいリポジトリとして初期化するように提案されます。リポジトリを作成すると、そのステータスバッファが表示されます。
 @end itemize
 
-These fallback behaviors can also be forced using one or more prefix
-arguments:
+これらのフォールバック動作は、1つ以上の前置引数を使用して強制することもできます。
 
 @itemize
 @item
@@ -2768,7 +2550,7 @@ see)  in potentially surprising ways (see above).
 @end defopt
 
 @cindex magit-status-quick
-@deffn Command magit-status-quick
+@deffn magit-status-quick コマンド
 
 This command is an alternative to @code{magit-status} that usually avoids
 refreshing the status buffer.
@@ -2798,7 +2580,7 @@ repository; not just the status buffer.
 @end deffn
 
 @cindex ido-enter-magit-status
-@deffn Command ido-enter-magit-status
+@deffn ido-enter-magit-status コマンド
 
 From an Ido prompt used to open a file, instead drop into
 @code{magit-status}.  This is similar to @code{ido-magic-delete-char},
@@ -3209,7 +2991,7 @@ Also see the proceeding section for more options concerning status buffers.
 @section Repository List
 
 @cindex magit-list-repositories
-@deffn Command magit-list-repositories
+@deffn magit-list-repositories コマンド
 
 This command displays a list of repositories in a separate buffer.
 
@@ -3334,9 +3116,9 @@ a separate log buffer.
 ただし、一時的ログ(log
 transient)の場合、これらの引数は、@code{magit-prefix-use-buffer-arguments}の値に応じて、現在のリポジトリのログバッファで現在使用されている引数から取得される場合があります(@ref{一時的引数とバッファー変数})。
 
-For information about the various arguments, see 
+さまざまな引数の情報ついては→ 
 @ifinfo
-@ref{git-log,,,gitman,}.
+@ref{git-log,,,gitman,}
 @end ifinfo
 @ifhtml
 @c html
@@ -3910,7 +3692,7 @@ transient)の場合、これらの引数は、@code{magit-prefix-use-buffer-argu
 
 Also see 
 @ifinfo
-@ref{git-diff,,,gitman,}.
+(@ref{git-diff,,,gitman,})
 @end ifinfo
 @ifhtml
 @c html
@@ -4375,7 +4157,7 @@ argument and returns such a list.  These arguments are allowed here:
 @code{--stat-width}, @code{--stat-name-width}, @code{--stat-graph-width} and
 @code{--compact-summary}.  Also see 
 @ifinfo
-@ref{git-diff,,,gitman,}.
+(@ref{git-diff,,,gitman,})
 @end ifinfo
 @ifhtml
 @c html
@@ -5590,27 +5372,15 @@ including the name of the owner.
 @node Staging and Unstaging
 @section Staging and Unstaging
 
-Like Git, Magit can of course stage and unstage complete files.  Unlike Git,
-it also allows users to gracefully un-/stage individual hunks and even just
-part of a hunk.  To stage individual hunks and parts of hunks using Git
-directly, one has to use the very modal and rather clumsy interface of a
-@code{git add --interactive} session.
+もちろん、Gitと同様Magitは、完全なファイルをステージング(stage)およびステージング解除(unstage)できます。Gitとは異なり、ユーザーは個々のハンクやハンクの一部を適切にステージング解除/ステージングすることもできます。Gitを直接使用して個々のハンクとハンクの一部をステージングするには、@code{git
+add --interactive}セッションの、モーダルでかなり不器用なインターフェースを使用する必要があります。
 
-With Magit, on the other hand, one can un-/stage individual hunks by just
-moving point into the respective section inside a diff displayed in the
-status buffer or a separate diff buffer and typing @code{s} or @code{u}.  To
-operate on just parts of a hunk, mark the changes that should be un-/staged
-using the region and then press the same key that would be used to
-un-/stage.  To stage multiple files or hunks at once use a region that
-starts inside the heading of such a section and ends inside the heading of a
-sibling section of the same type.
+一方、Magitを使用すると、ステータスバッファまたは別のdiffバッファに表示されているdiff内のそれぞれのセクションにポイントを移動し、@code{s}または@code{u}と入力するだけで、個々のハンクのステージングを解除(unstage)/ステージング(stage)できます。ハンクの一部だけを操作するには、regionを使用してステージング解除/ステージングする必要のある変更にマークを付けてから、ステージング解除/ステージングに使用するのと同じキーを押します。複数のファイルまたはハンクを一度にステージングするには、そのようなセクションの見出しの内側で始まり、同じタイプの兄弟セクションの見出しの内側で終わるregionを使用します。
 
-Besides staging and unstaging, Magit also provides several other "apply
-variants" that can also operate on a file, multiple files at once, a hunk,
-multiple hunks at once, and on parts of a hunk.  These apply variants are
-described in the next section.
+ステージング(stage)とステージング解除(unstage)に加えて、Magitは、ファイルや一度に複数のファイルやハンクや一度に複数のハンクやハンクの一部を操作できる他のいくつかの「applyh派生」(apply
+variants)も提供します。 これらのapply派生(apply variants)については、次の節で説明します。
 
-You can also use Ediff to stage and unstage.  See @ref{Ediffing}.
+あなたはEdiffを使用してステージング(stage)およびステージング解除(unstage)することもできます→@ref{Ediffing}
 
 @table @asis
 @kindex s
@@ -6910,7 +6680,7 @@ These commands are not available from the transient @code{magit-branch} by
 default.
 
 @cindex magit-branch-shelve
-@deffn Command magit-branch-shelve
+@deffn magit-branch-shelve コマンド
 
 This command shelves a branch.  This is done by deleting the branch, and
 creating a new reference "refs/shelved/BRANCH-NAME" pointing at the same
@@ -6922,7 +6692,7 @@ to completely discard it yet.
 @end deffn
 
 @cindex magit-branch-unshelve
-@deffn Command magit-branch-unshelve
+@deffn magit-branch-unshelve コマンド
 
 This command unshelves a branch that was previously shelved using
 @code{magit-branch-shelve}.  This is done by deleting the reference
@@ -9286,16 +9056,16 @@ current buffer, then show it in Dired instead.
 @section Common Commands
 
 @cindex magit-switch-to-repository-buffer
-@deffn Command magit-switch-to-repository-buffer
+@deffn magit-switch-to-repository-buffer コマンド
 @end deffn
 @cindex magit-switch-to-repository-buffer-other-window
-@deffn Command magit-switch-to-repository-buffer-other-window
+@deffn magit-switch-to-repository-buffer-other-window コマンド
 @end deffn
 @cindex magit-switch-to-repository-buffer-other-frame
-@deffn Command magit-switch-to-repository-buffer-other-frame
+@deffn magit-switch-to-repository-buffer-other-frame コマンド
 @end deffn
 @cindex magit-display-repository-buffer
-@deffn Command magit-display-repository-buffer
+@deffn magit-display-repository-buffer コマンド
 
 These commands read any existing Magit buffer that belongs to the current
 repository from the user and then switch to the selected buffer (without
@@ -9396,7 +9166,7 @@ To view the log for a branch and its wip refs use the commands
 @code{--graph} when using these commands.
 
 @cindex magit-wip-log
-@deffn Command magit-wip-log
+@deffn magit-wip-log コマンド
 
 This command shows the log for a branch and its wip refs.  With a negative
 prefix argument only the worktree wip ref is shown.
@@ -9407,7 +9177,7 @@ The absolute numeric value of the prefix argument controls how many
 @end deffn
 
 @cindex magit-wip-log-current
-@deffn Command magit-wip-log-current
+@deffn magit-wip-log-current コマンド
 
 This command shows the log for the current branch and its wip refs.  With a
 negative prefix argument only the worktree wip ref is shown.
@@ -9767,25 +9537,25 @@ There are a few additional commands that operate on a single file but are
 not enabled in the file transient command by default:
 
 @cindex magit-file-rename
-@deffn Command magit-file-rename
+@deffn magit-file-rename コマンド
 
 This command renames a file read from the user.
 @end deffn
 
 @cindex magit-file-delete
-@deffn Command magit-file-delete
+@deffn magit-file-delete コマンド
 
 This command deletes a file read from the user.
 @end deffn
 
 @cindex magit-file-untrack
-@deffn Command magit-file-untrack
+@deffn magit-file-untrack コマンド
 
 This command untracks a file read from the user.
 @end deffn
 
 @cindex magit-file-checkout
-@deffn Command magit-file-checkout
+@deffn magit-file-checkout コマンド
 
 This command updates a file in the working tree and index to the contents
 from a revision.  Both the revision and file are read from the user.
@@ -9828,35 +9598,21 @@ Kill the current buffer.
 @node Customizing
 @chapter Customizing
 
-Both Git and Emacs are highly customizable.  Magit is both a Git porcelain
-as well as an Emacs package, so it makes sense to customize it using both
-Git variables as well as Emacs options.  However this flexibility doesn't
-come without problems, including but not limited to the following.
+GitとEmacsはどちらも高度にカスタマイズ可能です。MagitはGit磁器であると同時にEmacsパッケージでもあるため、Git変数とEmacsオプションの両方を使用してカスタマイズすることは理にかなっています。ただし、この柔軟性には、以下のような問題もあります。
 
 @itemize
 @item
-Some Git variables automatically have an effect in Magit without requiring
-any explicit support.  Sometimes that is desirable - in other cases, it
-breaks Magit.
+一部のGit変数は、明示的なサポートを必要とせずに、Magitで自動的に効果を発揮します。それが望ましい場合もあれば、一方でMagitを壊す場合もあります。
 
-When a certain Git setting breaks Magit but you want to keep using that
-setting on the command line, then that can be accomplished by overriding the
-value for Magit only by appending something like @code{("-c"
-"some.variable=compatible-value")} to @code{magit-git-global-arguments}.
+特定のGit設定がMagitを壊したが、コマンドラインでその設定を使い続けたい場合は、@code{magit-git-global-arguments}に@code{("-c"
+"some.variable=compatible-value")}のようなものを追加してMagitの値をオーバーライドすることで実現できます。
 
 
 @item
-Certain settings like @code{fetch.prune=true} are respected by Magit
-commands (because they simply call the respective Git command) but their
-value is not reflected in the respective transient buffers.  In this case
-the @code{--prune} argument in @code{magit-fetch} might be active or
-inactive, but that doesn't keep the Git variable from being honored by the
-suffix commands anyway.  So pruning might happen despite the @code{--prune}
-arguments being displayed in a way that seems to indicate that no pruning
-will happen.
+@code{fetch.prune=true}のような特定の設定は、(単にそれぞれのGitコマンドを呼び出すため)Magitコマンドによって尊重されますが、それらの値はそれぞれの一時バッファーに反映されません。この場合、@code{magit-fetch}の@code{--prune}引数はアクティブまたは非アクティブである可能性がありますが、それでもGit変数が後置コマンドによって尊重されることを妨げません。したがって、@code{--prune}引数が、pruningが発生しないことを示しているように見える方法で表示されているにもかかわらず、pruningが発生する可能性があります。
 @end itemize
 
-I intend to address these and similar issues in a future release.
+今後のリリースで、これらの問題や同様の問題に対処する予定です。
 
 @menu
 * Per-Repository Configuration::
@@ -9998,10 +9754,8 @@ the system trash is used, which is the case by default.  Nevertheless,
 @code{trash} isn't a member of @code{magit-no-confirm} - you might want to
 change that.
 
-By default buffers visiting files are automatically reverted when the
-visited file changes on disk.  This isn't as risky as it might seem, but to
-make an informed decision you should see @ref{Risk of Reverting
-Automatically}.
+デフォルトでは、訪問したファイルがディスク上で変更されると、訪問したファイルは自動的に元に戻されます。
+これは見た目ほど危険ではありませんが、十分な情報に基づいて決定を下すには確認が必要です→@ref{自動的に元に戻るリスク}
 
 @node Performance
 @subsection Performance
@@ -10261,18 +10015,13 @@ Conventions,,,elisp,}.
 @node 配管コマンド(Plumbing)
 @chapter 配管コマンド(Plumbing)
 
-The following sections describe how to use several of Magit's core
-abstractions to extend Magit itself or implement a separate extension.
+以下の節では、Magitのコア抽象化のいくつかを使用して、Magit自体を拡張する方法、または個別の拡張を実装する方法について説明します。
 
-A few of the low-level features used by Magit have been factored out into
-separate libraries/packages, so that they can be used by other packages,
-without having to depend on Magit.  See @ref{Top,,,with-editor,} for
-information about @code{with-editor}.  @code{transient} doesn't have a
-manual yet.
+Magitで使用される低レベルの機能のいくつかは、個別の ライブラリ/パッケージ
+に分解されているため、Magitに依存することなく他のパッケージで使用できます。@code{with-editor}については→@ref{Top,,,with-editor,}
+@code{transient}にはまだマニュアルがありません。
 
-If you are trying to find an unused key that you can bind to a command
-provided by your own Magit extension, then checkout
-@uref{https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry}.
+独自のMagit拡張機能によって提供されるコマンドにバインドできる未使用のキーを見つけようとしている場合は、@uref{https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry}をチェックアウトしてください。
 
 @menu
 * Calling Git::
@@ -11063,12 +10812,9 @@ do it right or not at all.
 @node FAQ
 @appendix FAQ
 
-The next two nodes lists frequently asked questions.  For a list of
-frequently @strong{and recently} asked questions, i.e. questions that
-haven't made it into the manual yet, see
-@uref{https://github.com/magit/magit/wiki/FAQ}.
+次の2つのノードには、よくある質問が一覧表示されます。よくある@strong{および最近}の質問、つまりまだマニュアルに記載されていない質問のリストについては→@uref{https://github.com/magit/magit/wiki/FAQ}
 
-Please also use the @ref{Debugging Tools}.
+デバッグツールも使用できます→@ref{Debugging Tools}
 
 @menu
 * FAQ - How to @dots{}?::
@@ -11446,64 +11192,49 @@ for more details.
 @node Debugging Tools
 @chapter Debugging Tools
 
-Magit and its dependencies provide a few debugging tools, and we appreciate
-it very much if you use those tools before reporting an issue.  Please
-include all relevant output when reporting an issue.
+Magitとその依存関係には、いくつかのデバッグツールが用意されています。問題を報告する前にこれらのツールを使用していただければ幸いです。問題を報告するときは、関連するすべての出力を含めてください。
 
 @table @asis
 @kindex M-x magit-version
 @cindex magit-version
 @item @kbd{M-x magit-version} @tie{}@tie{}@tie{}@tie{}(@code{magit-version})
 
-This command shows the currently used versions of Magit, Git, and Emacs in
-the echo area.  Non-interactively this just returns the Magit version.
+このコマンドは、現在使用されているMagit、Git、およびEmacsのバージョンをエコー領域に表示します。非インタラクティブでは、これは単にMagitバージョンを返すだけです。
 
 @kindex M-x magit-emacs-Q-command
 @cindex magit-emacs-Q-command
 @item @kbd{M-x magit-emacs-Q-command} @tie{}@tie{}@tie{}@tie{}(@code{magit-emacs-Q-command})
 
-This command shows a debugging shell command in the echo area and adds it to
-the kill ring.  Paste that command into a shell and run it.
+このコマンドは、エコー領域にデバッグシェルコマンドを表示し、それをキルリングに追加します。そのコマンドをシェルに貼り付けして実行します。
 
-This shell command starts @code{emacs} with only @code{magit} and its
-dependencies loaded.  Neither your configuration nor other installed
-packages are loaded.  This makes it easier to determine whether some issue
-lays with Magit or something else.
+このシェルコマンドは、@code{magit}とその依存関係のみがロードされた状態で@code{emacs}を開始します。構成も他のインストール済みパッケージもロードされません。これにより、Magitに問題があるのか他の問題にあるのかを簡単に判断できます。
 
-If you run Magit from its Git repository, then you should be able to use
-@code{make emacs-Q} instead of the output of this command.
+あなたがMagitをそのGitリポジトリから実行する場合は、このコマンドの出力の代わりに@code{make emacs-Q}を使用できるはずです。
 
 @kindex M-x magit-toggle-verbose-refresh
 @cindex magit-toggle-verbose-refresh
 @item @kbd{M-x magit-toggle-verbose-refresh} @tie{}@tie{}@tie{}@tie{}(@code{magit-toggle-verbose-refresh})
 
-This command toggles whether Magit refreshes buffers verbosely.  Enabling
-this helps figuring out which sections are bottlenecks.  The additional
-output can be found in the @code{*Messages*} buffer.
+このコマンドは、Magitがバッファを詳細に更新するかどうかを切り替えます。これを有効にすると、どのセクションがボトルネックであるかを把握するのに役立ちます。追加の出力は、@code{*Messages*}バッファーにあります。
 
 @kindex M-x magit-debug-git-executable
 @cindex magit-debug-git-executable
 @item @kbd{M-x magit-debug-git-executable} @tie{}@tie{}@tie{}@tie{}(@code{magit-debug-git-executable})
 
-This command displays a buffer containing information about the available
-and used @code{git} executable(s), and can be useful when investigating
-@code{exec-path} issues.
+このコマンドは、使用可能で使用されている@code{git}実行可能ファイルに関する情報を含むバッファーを表示し、@code{exec-path}の問題を調査するときに役立ちます。
 
-Also see @ref{Git Executable}.
+こちらもご覧ください→@ref{Git Executable}
 
 @kindex M-x with-editor-debug
 @cindex with-editor-debug
 @item @kbd{M-x with-editor-debug} @tie{}@tie{}@tie{}@tie{}(@code{with-editor-debug})
 
-This command displays a buffer containing information about the available
-and used @code{emacsclient} executable(s), and can be useful when
-investigating why Magit (or rather @code{with-editor}) cannot find an
-appropriate @code{emacsclient} executable.
+このコマンドは、使用可能で使用されている@code{emacsclient}実行可能ファイルに関する情報を含むバッファーを表示し、Magit(または@code{with-editor})が適切な@code{emacsclient}実行可能ファイルを見つけられない理由を調査するときに役立ちます。
 
-Also see @ref{Debugging,,,with-editor,}.
+こちらもご覧ください→@ref{Debugging,,,with-editor,}
 @end table
 
-Please also see the @ref{FAQ}.
+FAQもご覧ください→@ref{FAQ}
 
 @node Keystroke Index
 @appendix Keystroke Index
