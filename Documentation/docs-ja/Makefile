@@ -10,6 +10,8 @@ HTMLDIRS  = $(filter-out git-commit,$(PACKAGES))
 PDFFILES  = $(addsuffix .ja.pdf,$(filter-out git-commit,$(PACKAGES)))
 EPUBFILES = $(addsuffix .ja.epub,$(filter-out git-commit,$(PACKAGES)))
 
+DOCBOOK_XSL = /usr/share/xml/docbook/stylesheet/docbook-xsl-ns/epub/docbook.xsl
+
 SRC_DIR = ..
 SED_OUT_DIR = sed-out
 PO_DIR = po
@@ -73,33 +75,33 @@ HTML_FIXUP_MENU   = '/<\/body>/i<div id="s-css-s--menu"><\/div>'
 
 %.ja.html: %.ja.texi
 	@printf "Generating $@\n"
-	@$(MAKEINFO) --html --no-split $(MANUAL_HTML_ARGS) $<
+	@$(MAKEINFO) --html --no-split $(MANUAL_HTML_ARGS) $< -o $@
 	@sed -i -e $(HTML_FIXUP_CSS) -e $(HTML_FIXUP_ONLOAD) -e $(HTML_FIXUP_MENU) $@
 
 html-dir: $(TEXIFILES)
-	@printf "Generating magit/*.html\n"
+	@printf "Generating magit/*.ja.html\n"
 	@$(MAKEINFO) --html $(MANUAL_HTML_ARGS) magit.ja.texi
-	@for f in $$(find magit -name '*.html') ; do \
+	@for f in $$(find magit -name '*.ja.html') ; do \
 	sed -i -e $(HTML_FIXUP_CSS) -e $(HTML_FIXUP_ONLOAD) -e $(HTML_FIXUP_MENU) $$f ; \
 	done
-	@printf "Generating magit-section/*.html\n"
+	@printf "Generating magit-section/*.ja.html\n"
 	@$(MAKEINFO) --html $(MANUAL_HTML_ARGS) magit-section.ja.texi
-	@for f in $$(find magit-section -name '*.html') ; do \
+	@for f in $$(find magit-section -name '*.ja.html') ; do \
 	sed -i -e $(HTML_FIXUP_CSS) -e $(HTML_FIXUP_ONLOAD) -e $(HTML_FIXUP_MENU) $$f ; \
 	done
 
 %.ja.pdf: %.ja.texi
 	@printf "Generating $@\n"
-	@texi2pdf --clean $< > /dev/null
+	texi2pdf --clean $< > /dev/null
 
 %.ja.epub: %.ja.texi
-	@printf "Generating $@\n"
-	@$(MAKEINFO) --docbook $< -o epub.xml
-	@xsltproc $(DOCBOOK_XSL) epub.xml 2> /dev/null
-	@echo "application/epub+zip" > mimetype
-	@zip -X --quiet --recurse-paths -0 $@ mimetype
-	@zip -X --quiet --recurse-paths -9 --no-dir-entries $@ META-INF OEBPS
-	@$(RMDIR) $(EPUBTRASH)
+	printf "Generating $@\n"
+	$(MAKEINFO) --docbook $< -o epub.xml
+	xsltproc $(DOCBOOK_XSL) epub.xml 2> /dev/null
+	echo "application/epub+zip" > mimetype
+	zip -X --quiet --recurse-paths -0 $@ mimetype
+	zip -X --quiet --recurse-paths -9 --no-dir-entries $@ META-INF OEBPS
+	$(RMDIR) $(EPUBTRASH)
 
 ## Install ###########################################################
 
