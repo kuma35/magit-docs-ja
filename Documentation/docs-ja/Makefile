@@ -35,7 +35,7 @@ all: info
 
 ## Build #############################################################
 
-$(warning INFOPAGES = $(INFOPAGES))
+# $(warning INFOPAGES = $(INFOPAGES))
 
 info: $(INFOPAGES) dir
 html: $(HTMLFILES)
@@ -55,11 +55,9 @@ $(TARGET_TEXI): %.ja.texi : $(TRANSLATE_RAW_DIR)/%.ja.texi
 	gawk -f fix-menu-wrap.awk $< > $@
 
 $(INFOPAGES): %.ja.info : %.ja.texi
-	@printf "Generating $@\n"
 	$(MAKEINFO) --no-split --paragraph-indent=none $< -o $@
 
 dir: $(INFOPAGES)
-	@printf "Generating $@\n"
 	rm -f $@
 	echo $^ | xargs -n 1 $(INSTALL_INFO) --max-width=80 --dir=$@
 
