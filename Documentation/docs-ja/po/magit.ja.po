@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
 "POT-Creation-Date: 2021-08-20 03:37+0900\n"
-"PO-Revision-Date: 2021-09-01 23:57+0900\n"
+"PO-Revision-Date: 2021-09-04 23:45+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -7700,7 +7700,7 @@ msgstr "the git-reflog(1) manpage."
 msgid ""
 "These reflog commands are available from the log transient.  See "
 "@ref{Logging}."
-msgstr ""
+msgstr "これらのreflogコマンドは、ログ一時コマンド(transient)ら使用できます→@ref{Logging}"
 
 #. type: kindex
 #: sed-out/magit.texi:3852
@@ -8538,7 +8538,7 @@ msgid ""
 "rebase to make the commit editable, or if that is not possible because the "
 "commit is not reachable from @code{HEAD} by checking out that commit "
 "directly.  This also causes the actual worktree file to be visited."
-msgstr ""
+msgstr "次に@code{magit-edit-line-commit}を呼び出し、@code{HEAD}からそのコミットを直接チェックチェックアウトすることで到達することは不可能な、インタラクティブなリベースを使用してコミットを編集可能にし、これにより実際の作業ツリーのファイルにもアクセスできます。"
 
 #. type: table
 #: sed-out/magit.texi:4267
@@ -8546,7 +8546,7 @@ msgid ""
 "Neither the blob nor the file buffer are killed when finishing the rebase.  "
 "If that is undesirable, then it might be better to use "
 "@code{magit-rebase-edit-command} instead of this command."
-msgstr ""
+msgstr "リベースの終了時に、blobもファイルバッファも強制終了(kill)されません。それが望ましくない場合は、このコマンドの代わりに@code{magit-rebase-edit-command}を使用する方がよい場合があります。"
 
 #. type: cindex
 #: sed-out/magit.texi:4269
@@ -8566,7 +8566,7 @@ msgid ""
 "This command jumps to the diffstat or diff.  When point is on a file inside "
 "the diffstat section, then jump to the respective diff section.  Otherwise, "
 "jump to the diffstat section or a child thereof."
-msgstr ""
+msgstr "このコマンドは、diffstatまたはdiffにジャンプします。ポイントがdiffstatセクション内のファイル上にある場合は、それぞれのdiffセクションにジャンプします。 それ以外の場合は、diffstatセクションまたはその子にジャンプします。"
 
 #. type: Plain text
 #: sed-out/magit.texi:4281
@@ -8574,13 +8574,13 @@ msgid ""
 "The next two commands are not specific to Magit-Diff mode (or and Magit "
 "buffer for that matter), but it might be worth pointing out that they are "
 "available here too."
-msgstr ""
+msgstr "次の2つのコマンドは、Magit-Diffモード(または、さらに言えばMagitバッファ)に固有のものではありませんが、ここでも使用できることを指摘しておく価値があります。"
 
 #. type: cindex
 #: sed-out/magit.texi:4284
 #, no-wrap
 msgid "scroll-up"
-msgstr ""
+msgstr "scroll-up"
 
 #. type: item
 #: sed-out/magit.texi:4285
@@ -8591,13 +8591,13 @@ msgstr "@kbd{SPC} @tie{}@tie{}@tie{}@tie{}(@code{scroll-up})"
 #. type: table
 #: sed-out/magit.texi:4288
 msgid "This command scrolls text upward."
-msgstr ""
+msgstr "このコマンドは、テキストを上にスクロールします。"
 
 #. type: cindex
 #: sed-out/magit.texi:4290
 #, no-wrap
 msgid "scroll-down"
-msgstr ""
+msgstr "scroll-down"
 
 #. type: item
 #: sed-out/magit.texi:4291
@@ -8608,13 +8608,13 @@ msgstr "@kbd{DEL} @tie{}@tie{}@tie{}@tie{}(@code{scroll-down})"
 #. type: table
 #: sed-out/magit.texi:4294
 msgid "This command scrolls text downward."
-msgstr ""
+msgstr "このコマンドは、テキストを下にスクロールします。"
 
 #. type: subsection
 #: sed-out/magit.texi:4296 sed-out/magit.texi:4297
 #, no-wrap
 msgid "Diff Options"
-msgstr ""
+msgstr "Diff Options"
 
 #. type: defopt
 #: sed-out/magit.texi:4299
@@ -8625,22 +8625,22 @@ msgstr "magit-diff-refine-hunk"
 #. type: defopt
 #: sed-out/magit.texi:4302
 msgid "Whether to show word-granularity differences within diff hunks."
-msgstr ""
+msgstr "diffハンク内で単語の粒度(word-granularity)のdiffを表示するかどうか。"
 
 #. type: itemize
 #: sed-out/magit.texi:4306
 msgid "@code{nil} Never show fine differences."
-msgstr ""
+msgstr "@code{nil} 細かい違いを表示しないでください。"
 
 #. type: itemize
 #: sed-out/magit.texi:4309
 msgid "@code{t} Show fine differences for the current diff hunk only."
-msgstr ""
+msgstr "@code{t} 現在のdiffハンクのみの細かい違いを表示します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4312
 msgid "@code{all} Show fine differences for all displayed diff hunks."
-msgstr ""
+msgstr "@code{all} 表示されているすべてのdiffハンクの細かい違いを表示します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4315
@@ -8651,7 +8651,7 @@ msgstr "magit-diff-refine-ignore-whitespace"
 #. type: defopt
 #: sed-out/magit.texi:4319
 msgid "Whether to ignore whitespace changes in word-granularity differences."
-msgstr ""
+msgstr "単語の粒度(word-granularity)の違いにおける空白の変更を無視するかどうか。"
 
 #. type: defopt
 #: sed-out/magit.texi:4321
@@ -8662,7 +8662,7 @@ msgstr "magit-diff-adjust-tab-width"
 #. type: defopt
 #: sed-out/magit.texi:4324
 msgid "Whether to adjust the width of tabs in diffs."
-msgstr ""
+msgstr "diffでタブの幅を調整するかどうか。"
 
 #. type: defopt
 #: sed-out/magit.texi:4329
@@ -8671,14 +8671,14 @@ msgid ""
 "and/or many files, so the widths are cached in the variable "
 "@code{magit-diff--tab-width-cache}.  Set that to nil to invalidate the "
 "cache."
-msgstr ""
+msgstr "大きなファイルや多数のファイルを開く必要がある場合、正しい幅を決定するのはコストがかかる可能性があるため、幅は変数@code{magit-diff--tab-width-cache}にキャッシュされます。キャッシュを無効にするには、これをnilに設定します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4334
 msgid ""
 "@code{nil} Never adjust tab width.  Use `tab-width's value from the Magit "
 "buffer itself instead."
-msgstr ""
+msgstr "@code{nil} タブ幅は調整しません。代わりに、Magitバッファ自体の`tab-width'の値を使います。"
 
 #. type: itemize
 #: sed-out/magit.texi:4340
@@ -8686,19 +8686,19 @@ msgid ""
 "@code{t} If the corresponding file-visiting buffer exits, then use "
 "@code{tab-width}'s value from that buffer.  Doing this is cheap, so this "
 "value is used even if a corresponding cache entry exists."
-msgstr ""
+msgstr "@code{t} 対応するfile-visitingバッファが存在する場合は、そのバッファの@code{tab-width}の値を使用します。これを行うのは安価であるため、対応するキャッシュエントリが存在する場合でも、この値が使用されます。"
 
 #. type: itemize
 #: sed-out/magit.texi:4345
 msgid ""
 "@code{always} If there is no such buffer, then temporarily visit the file to "
 "determine the value."
-msgstr ""
+msgstr "@code{always} そのようなバッファがない場合は、一時的(temporarily)にファイルにアクセスして値を決定します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4350
 msgid "NUMBER Like @code{always}, but don't visit files larger than NUMBER bytes."
-msgstr ""
+msgstr "NUMBER @code{always}と同様ですが、NUMBERバイトより大きいファイルにはアクセスしないでください。"
 
 #. type: defopt
 #: sed-out/magit.texi:4353
@@ -8709,7 +8709,7 @@ msgstr "magit-diff-paint-whitespace"
 #. type: defopt
 #: sed-out/magit.texi:4356
 msgid "Specify where to highlight whitespace errors."
-msgstr ""
+msgstr "空白エラー達を強調表示(highlight)する場所を指定します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4361
@@ -8717,17 +8717,17 @@ msgid ""
 "See @code{magit-diff-highlight-trailing}, "
 "@code{magit-diff-highlight-indentation}.  The symbol @code{t} means in all "
 "diffs, @code{status} means only in the status buffer, and nil means nowhere."
-msgstr ""
+msgstr "@code{magit-diff-highlight-trailing}、@code{magit-diff-highlight-indentation}を参照してください。 シンボル@code{t}はすべての差分を意味し、@code{status}はステータスバッファ内のみを意味し、nilはどこにも存在しないことを意味します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4365
 msgid "@code{nil} Never highlight whitespace errors."
-msgstr ""
+msgstr "@code{nil} 空白エラーを強調表示(highlight)しません。"
 
 #. type: itemize
 #: sed-out/magit.texi:4368
 msgid "@code{t} Highlight whitespace errors everywhere."
-msgstr ""
+msgstr "@code{t} どこでも空白エラーを強調表示(highlight)します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4373
@@ -8735,7 +8735,7 @@ msgid ""
 "@code{uncommitted} Only highlight whitespace errors in diffs showing "
 "uncommitted changes.  For backward compatibility @code{status} is treated as "
 "a synonym."
-msgstr ""
+msgstr "@code{uncommitted} コミットされていない変更を示すdiff達の空白エラーのみを強調表示(highlight)します。下位互換性のために、@code{status}は同義語として扱われます。"
 
 #. type: defopt
 #: sed-out/magit.texi:4376
@@ -8746,22 +8746,22 @@ msgstr "magit-diff-paint-whitespace-lines"
 #. type: defopt
 #: sed-out/magit.texi:4379
 msgid "Specify in what kind of lines to highlight whitespace errors."
-msgstr ""
+msgstr "空白エラーを強調表示(highlight)する行の種類(kind of lines)を指定します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4383
 msgid "@code{t} Highlight only in added lines."
-msgstr ""
+msgstr "@code{t} 追加された行でのみ強調表示(highlight)します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4386
 msgid "@code{both} Highlight in added and removed lines."
-msgstr ""
+msgstr "@code{both} 追加および削除された行を強調表示(highlight)します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4389
 msgid "@code{all} Highlight in added, removed and context lines."
-msgstr ""
+msgstr "@code {all} 追加、削除、およびコンテキスト行で強調表示(highlight)します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4392
@@ -8774,7 +8774,7 @@ msgstr "magit-diff-highlight-trailing"
 msgid ""
 "Whether to highlight whitespace at the end of a line in diffs.  Used only "
 "when @code{magit-diff-paint-whitespace} is non-nil."
-msgstr ""
+msgstr "diff達の行末の空白を強調表示するかどうか。@code{magit-diff-paint-whitespace}がnil以外の場合にのみ使用されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:4398
@@ -8788,7 +8788,7 @@ msgid ""
 "This option controls whether to highlight the indentation in case it used "
 "the \"wrong\" indentation style.  Indentation is only highlighted if "
 "@code{magit-diff-paint-whitespace} is also non-nil."
-msgstr ""
+msgstr "このオプションは、「間違った」インデントスタイルを使用した場合にインデントを強調表示(highlight)するかどうかを制御します。インデントは、@code{magit-diff-paint-whitespace}もnil以外の場合にのみ強調表示されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:4408
@@ -8796,7 +8796,7 @@ msgid ""
 "The value is an alist of the form @code{((REGEXP . INDENT)...)}.  The path "
 "to the current repository is matched against each element in reverse order.  "
 "Therefore if a REGEXP matches, then earlier elements are not tried."
-msgstr ""
+msgstr "値は、@code{((REGEXP . INDENT)...)}の形式のalistです。現在のリポジトリへのパスは、逆の順序で各要素と照合されます。したがって、REGEXPが一致する場合、以前の要素は試行されません。"
 
 #. type: defopt
 #: sed-out/magit.texi:4412
@@ -8804,7 +8804,7 @@ msgid ""
 "If the used INDENT is @code{tabs}, highlight indentation with tabs.  If "
 "INDENT is an integer, highlight indentation with at least that many spaces.  "
 "Otherwise, highlight neither."
-msgstr ""
+msgstr "使用するインデントが@code{tabs}の場合は、タブでインデントを強調表示(highlight)します。INDENTが整数の場合は、少なくともその数のスペースでインデントを強調表示します。それ以外の場合は、どちらも強調表示しません。"
 
 #. type: defopt
 #: sed-out/magit.texi:4414
@@ -8815,7 +8815,7 @@ msgstr "magit-diff-hide-trailing-cr-characters"
 #. type: defopt
 #: sed-out/magit.texi:4417
 msgid "Whether to hide ^M characters at the end of a line in diffs."
-msgstr ""
+msgstr "diff達の行末の ^M 文字を非表示にするかどうか。"
 
 #. type: defopt
 #: sed-out/magit.texi:4419
@@ -8828,7 +8828,7 @@ msgstr "magit-diff-highlight-hunk-region-functions"
 msgid ""
 "This option specifies the functions used to highlight the hunk-internal "
 "region."
-msgstr ""
+msgstr "このオプションは、ハンク内部regionを強調表示(highlight)するために使用される関数を指定します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4428
@@ -8837,7 +8837,7 @@ msgid ""
 "the hunk internal selection with a face that causes the added and removed "
 "lines to have the same background color as context lines.  This function "
 "should not be removed from the value of this option."
-msgstr ""
+msgstr "@code{magit-diff-highlight-hunk-region-dim-outside}は、ハンクの内部選択範囲(hunk internal selection)の外側に、追加および削除された行の背景色をコンテキスト行と同じにするfaceをオーバーレイします。この関数は、このオプションの値から削除すべきではありません。"
 
 #. type: defopt
 #: sed-out/magit.texi:4435
@@ -8848,7 +8848,7 @@ msgid ""
 "functions have glitches which cannot be fixed due to limitations of Emacs' "
 "display engine.  For more information see "
 "@uref{https://github.com/magit/magit/issues/2758} ff."
-msgstr ""
+msgstr "@code{magit-diff-highlight-hunk-region-using-overlays}と@code{magit-diff-highlight-hunk-region-using-underline}は、前後に区切りの水平線を配置することで、regionを強調します。これらの機能には両方とも、Emacsのディスプレイエンジンの制限のために修正できない欠陥(glitches)があります。詳細については→@uref{https://github.com/magit/magit/issues/2758} ff"
 
 #. type: defopt
 #: sed-out/magit.texi:4439
@@ -8856,7 +8856,7 @@ msgid ""
 "Instead of, or in addition to, using delimiting horizontal lines, to "
 "emphasize the boundaries, you may which to emphasize the text itself, using "
 "@code{magit-diff-highlight-hunk-region-using-face}."
-msgstr ""
+msgstr "境界線を強調する代わりに、またはそれに加えて、境界を強調するために、@code{magit-diff-highlight-hunk-region-using-face}を使用して、テキスト自体を強調することができます。"
 
 #. type: defopt
 #: sed-out/magit.texi:4443
@@ -8864,7 +8864,7 @@ msgid ""
 "In terminal frames it's not possible to draw lines as the overlay and "
 "underline variants normally do, so there they fall back to calling the face "
 "function instead."
-msgstr ""
+msgstr "ターミナルフレームでは、オーバーレイとアンダーラインのバリエーションが通常行うように線を描画することはできないため、代わりにface関数の呼び出しにフォールバックします。"
 
 #. type: defopt
 #: sed-out/magit.texi:4445
@@ -8879,7 +8879,7 @@ msgid ""
 "hunk-internal region only lose their distinct background color or also the "
 "foreground color.  Whether the outside of the region is dimmed at all "
 "depends on @code{magit-diff-highlight-hunk-region-functions}."
-msgstr ""
+msgstr "このオプションは、ハンク内部(hunk-internal)regionの外側に追加および削除された線が、明確な背景色のみを失うか、前景色も失うかを制御します。 領域の外側が暗くなるかどうかは、@code{magit-diff-highlight-hunk-region-functions}によって異なります。"
 
 #. type: defopt
 #: sed-out/magit.texi:4453
@@ -8892,7 +8892,7 @@ msgstr "magit-diff-extra-stat-arguments"
 msgid ""
 "This option specifies additional arguments to be used alongside "
 "@code{--stat}."
-msgstr ""
+msgstr "このオプションは、@code{--stat}と一緒に使用される追加の引数を指定します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4462
@@ -8901,7 +8901,7 @@ msgid ""
 "argument and returns such a list.  These arguments are allowed here: "
 "@code{--stat-width}, @code{--stat-name-width}, @code{--stat-graph-width} and "
 "@code{--compact-summary}.  Also see"
-msgstr ""
+msgstr "値は、0個以上の引数のリスト、または引数をとらずにそのようなリストを返す関数です。一緒に使ってよい引数は@code{--stat-width}と@code{--stat-name-width}と@code{--stat-graph-width}と@code{--compact-summary}です。こちらもご覧ください"
 
 #. type: defopt
 #: sed-out/magit.texi:4478
@@ -8912,27 +8912,27 @@ msgstr "magit-revision-insert-related-refs"
 #. type: defopt
 #: sed-out/magit.texi:4481
 msgid "Whether to show related branches in revision buffers."
-msgstr ""
+msgstr "関連するブランチをリビジョンバッファに表示するかどうか。"
 
 #. type: itemize
 #: sed-out/magit.texi:4485
 msgid "@code{nil} Don't show any related branches."
-msgstr ""
+msgstr "@code{nil} 関連するブランチを表示しません。"
 
 #. type: itemize
 #: sed-out/magit.texi:4488
 msgid "@code{t} Show related local branches."
-msgstr ""
+msgstr "@code{t} 関連するローカルブランチを表示します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4491
 msgid "@code{all} Show related local and remote branches."
-msgstr ""
+msgstr "@code{all} 関連するローカルブランチとリモートブランチを表示します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4494
 msgid "@code{mixed} Show all containing branches and local merged branches."
-msgstr ""
+msgstr "@code{mixed} 含まれているすべてのブランチとローカルのマージされたブランチを表示します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4497
@@ -8940,10 +8940,11 @@ msgstr ""
 msgid "magit-revision-show-gravatars"
 msgstr "magit-revision-show-gravatars"
 
+# <Gravatar（グラバター）は、サイトを越えて利用できるアバターを作成できるサービス。トム・プレストン・ワーナーが開発した。2007年にAutomatticが買収し、ブログのプラットフォームであるWordPress.comに統合されている。 (wikipedia)
 #. type: defopt
 #: sed-out/magit.texi:4500
 msgid "Whether to show gravatar images in revision buffers."
-msgstr ""
+msgstr "リビジョンバッファにGravatar画像を表示するかどうか。"
 
 #. type: defopt
 #: sed-out/magit.texi:4504
@@ -8951,7 +8952,7 @@ msgid ""
 "If @code{nil}, then don't insert any gravatar images.  If @code{t}, then "
 "insert both images.  If @code{author} or @code{committer}, then insert only "
 "the respective image."
-msgstr ""
+msgstr "@code{nil}の場合はGravatar画像を挿入しません。@code{t}の場合は両方の画像を挿入します。@code{author}または@code{committer}の場合は、それぞれの画像のみを挿入します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4513
@@ -8963,7 +8964,7 @@ msgid ""
 "half of the image is inserted right after the matched text, the bottom half "
 "on the next line in the same column.  The cdr specifies where to insert the "
 "committer's image, accordingly.  Either the car or the cdr may be nil.\""
-msgstr ""
+msgstr "あなたがオプション@code{magit-revision-headers-format}をカスタマイズしていて、画像を挿入したい場合は、どこに挿入するかも指定する必要があります。その場合、値は2つの正規表現のコンスセルである必要があります。carは、作者の画像を挿入する場所を指定します。画像の上半分は一致したテキストの直後に挿入され、下半分は同じ列の次の行に挿入されます。cdrは、それに応じてコミッターのイメージを挿入する場所を指定します。carかcdrのどちらかがnilかもしれません。"
 
 #. type: defopt
 #: sed-out/magit.texi:4515
@@ -8974,7 +8975,7 @@ msgstr "magit-revision-use-hash-sections"
 #. type: defopt
 #: sed-out/magit.texi:4518
 msgid "Whether to turn hashes inside the commit message into sections."
-msgstr ""
+msgstr "コミットメッセージ内のハッシュをセクションに変換するかどうか。"
 
 #. type: defopt
 #: sed-out/magit.texi:4522
@@ -8982,36 +8983,36 @@ msgid ""
 "If non-nil, then hashes inside the commit message are turned into "
 "@code{commit} sections.  There is a trade off to be made between performance "
 "and reliability:"
-msgstr ""
+msgstr "nil以外の場合、コミットメッセージ内のハッシュは@code{commit}セクションに変換されます。パフォーマンスと信頼性の間にはトレードオフがあります。"
 
 #. type: itemize
 #: sed-out/magit.texi:4526
 msgid "@code{slow} calls git for every word to be absolutely sure."
-msgstr ""
+msgstr "@code{slow} 確実にすべての単語に対してgitを呼び出します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4529
 msgid "@code{quick} skips words less than seven characters long."
-msgstr ""
+msgstr "@code{quick} 7文字未満の単語をスキップします。"
 
 #. type: itemize
 #: sed-out/magit.texi:4532
 msgid "@code{quicker} additionally skips words that don't contain a number."
-msgstr ""
+msgstr "@code{quicker} さらに、数字を含まない単語をスキップします。"
 
 #. type: itemize
 #: sed-out/magit.texi:4537
 msgid ""
 "@code{quickest} uses all words that are at least seven characters long and "
 "which contain at least one number as well as at least one letter."
-msgstr ""
+msgstr "@code{quickest} 7文字以上の長さでかつ、1つ以上の数字かつ、1つ以上文字を含むすべての単語を使用します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4541
 msgid ""
 "If nil, then no hashes are turned into sections, but you can still visit the "
 "commit at point using \"RET\"."
-msgstr ""
+msgstr "nilの場合、ハッシュはセクションに変換されませんが、「RET」を使用してその時点でコミットにアクセスできます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:4548
@@ -9020,7 +9021,7 @@ msgid ""
 "subset of the changed files.  If the revision buffer is displayed from a log "
 "buffer, the revision buffer will share the same file restriction as that log "
 "buffer (also see the command @code{magit-diff-toggle-file-filter})."
-msgstr ""
+msgstr "リビジョンバッファに表示されるdiff達は、変更されたファイルのサブセットに自動的に制限される場合があります。リビジョンバッファがログバッファから表示される場合、リビジョンバッファは、そのログバッファと同じファイル制限を共有します(コマンド@code{magit-diff-toggle-file-filter}も参照してください)。"
 
 #. type: defopt
 #: sed-out/magit.texi:4549
@@ -9033,7 +9034,7 @@ msgstr "magit-revision-filter-files-on-follow"
 msgid ""
 "Whether showing a commit from a log buffer honors the log's file filter when "
 "the log arguments include @code{--follow}."
-msgstr ""
+msgstr "ログ引数に@code{--follow}が含まれている場合に、ログバッファからのコミットを表示するかどうかは、ログのファイルフィルターを尊重します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4559
@@ -9043,14 +9044,14 @@ msgid ""
 "showing an empty diff in revision buffers for commits before a rename "
 "event.  In such cases, the @code{--patch} argument of the log transient can "
 "be used to show the file-restricted diffs inline."
-msgstr ""
+msgstr "このオプションがnilの場合、ログ引数に@code{--follow}が含まれていると、ログからのコミットの表示はログのファイルフィルターを無視します。そうすることで、名前変更イベントの前にコミット用のリビジョンバッファに空のdiffが表示されないようにします。このような場合、ログ一時コマンド(transient)の@code{--patch}引数を使用して、ファイル制限されたdiff達をインラインで表示できます。"
 
 #. type: defopt
 #: sed-out/magit.texi:4562
 msgid ""
 "Set this option to non-nil to keep the log's file restriction even if "
 "@code{--follow} is present in the log arguments."
-msgstr ""
+msgstr "@code{--follow}がログ引数に存在する場合でもログのファイル制限を維持するには、このオプションを非nilに設定します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:4566
@@ -9064,14 +9065,14 @@ msgstr "リビジョンバッファがログバッファから表示されない
 #: sed-out/magit.texi:4567 sed-out/magit.texi:4568
 #, no-wrap
 msgid "Ediffing"
-msgstr ""
+msgstr "Ediffing"
 
 #. type: Plain text
 #: sed-out/magit.texi:4572
 msgid ""
 "This section describes how to enter Ediff from Magit buffers.  For "
 "information on how to use Ediff itself, see @ref{Top,,,ediff,}."
-msgstr ""
+msgstr "このセクションでは、MagitバッファからEdiffを入力する方法について説明します。 Ediff自体の使用方法については→@ref{Top,,,ediff,}"
 
 #. type: kindex
 #: sed-out/magit.texi:4574 sed-out/magit.texi:7571
@@ -9094,7 +9095,7 @@ msgstr "@kbd{e} @tie{}@tie{}@tie{}@tie{}(@code{magit-ediff-dwim})"
 #. type: table
 #: sed-out/magit.texi:4579
 msgid "Compare, stage, or resolve using Ediff."
-msgstr ""
+msgstr "Ediffを使用して比較(compare)またはステージ(stage)または解決(resolve)します。"
 
 #. type: table
 #: sed-out/magit.texi:4587
@@ -9106,7 +9107,7 @@ msgid ""
 "appropriate @code{magit-ediff-*} command has to be used explicitly.  If it "
 "cannot read the user's mind at all, then it asks the user for a command to "
 "run."
-msgstr ""
+msgstr "このコマンドは、Ediffを使用して、ユーザーが比較(compare)またはステージ(stage)または解決(resolve)したいファイルと、コミットまたは範囲(range)を推測しようとします。ファイルまたは範囲(range)/コミットのいずれかを推測することしかできない場合があります。その場合、ユーザーはもう一方について尋ねられます。常に正しく推測できるとは限りません。その場合、適切な@code{magit-ediff-*}コマンドを明示的に使用する必要があります。Magitがユーザーの心をまったく読み取れない場合は、実行するコマンドをユーザーに要求します。"
 
 #. type: kindex
 #: sed-out/magit.texi:4588
@@ -9147,7 +9148,7 @@ msgstr "@kbd{E r} @tie{}@tie{}@tie{}@tie{}(@code{magit-ediff-compare})"
 #. type: table
 #: sed-out/magit.texi:4600
 msgid "Compare two revisions of a file using Ediff."
-msgstr ""
+msgstr "Ediffを使用してファイルの2つのリビジョンを比較します。"
 
 #. type: kindex
 #: sed-out/magit.texi:4606
@@ -9172,7 +9173,7 @@ msgstr "@kbd{E m} @tie{}@tie{}@tie{}@tie{}(@code{magit-ediff-resolve})"
 msgid ""
 "Resolve outstanding conflicts in a file using Ediff, defaulting to the file "
 "at point."
-msgstr ""
+msgstr "Ediffを使用して、ファイル内の未解決の競合を解決します。デフォルトでは、ポイントの指すファイルになります。"
 
 #. type: table
 #: sed-out/magit.texi:4616
@@ -9180,7 +9181,7 @@ msgid ""
 "Provided that the value of @code{merge.conflictstyle} is @code{diff3}, you "
 "can view the file's merge-base revision using @code{/} in the Ediff control "
 "buffer."
-msgstr ""
+msgstr "@code {merge.conflictstyle}の値が@code{diff3}の場合、Ediff制御バッファで@code{/}を使用してファイルのマージベースリビジョン(merge-base revision)を表示できます。"
 
 #. type: table
 #: sed-out/magit.texi:4620
@@ -9188,7 +9189,7 @@ msgid ""
 "In the rare event that you want to manually resolve all conflicts, including "
 "those already resolved by Git, use "
 "@code{ediff-merge-revisions-with-ancestor}."
-msgstr ""
+msgstr "まれに、Gitによって既に解決されているものを含め、あなたが、すべての競合を手動で解決したい場合は、@code{ediff-merge-revisions-with-ancestor}を使用してください。"
 
 #. type: kindex
 #: sed-out/magit.texi:4621
@@ -9213,7 +9214,7 @@ msgstr "@kbd{E s} @tie{}@tie{}@tie{}@tie{}(@code{magit-ediff-stage})"
 msgid ""
 "Stage and unstage changes to a file using Ediff, defaulting to the file at "
 "point."
-msgstr ""
+msgstr "Ediffを使用してファイルへの変更をステージ(stage)およびステージ解除(unstage)します。デフォルトではそのポイントのファイルを対象にします。"
 
 #. type: kindex
 #: sed-out/magit.texi:4628
@@ -9236,7 +9237,7 @@ msgstr "@kbd{E u} @tie{}@tie{}@tie{}@tie{}(@code{magit-ediff-show-unstaged})"
 #. type: table
 #: sed-out/magit.texi:4633
 msgid "Show unstaged changes to a file using Ediff."
-msgstr ""
+msgstr "Ediffを使用して、ファイルへのステージされていない変更(unstaged changes)を表示します。"
 
 #. type: kindex
 #: sed-out/magit.texi:4634
@@ -9259,7 +9260,7 @@ msgstr "@kbd{E i} @tie{}@tie{}@tie{}@tie{}(@code{magit-ediff-show-staged})"
 #. type: table
 #: sed-out/magit.texi:4639
 msgid "Show staged changes to a file using Ediff."
-msgstr ""
+msgstr "Ediffを使用してファイルのステージされた変更(staged changes)を表示します。"
 
 #. type: kindex
 #: sed-out/magit.texi:4640
@@ -9282,7 +9283,7 @@ msgstr "@kbd{E w} @tie{}@tie{}@tie{}@tie{}(@code{magit-ediff-show-working-tree})
 #. type: table
 #: sed-out/magit.texi:4645
 msgid "Show changes in a file between @code{HEAD} and working tree using Ediff."
-msgstr ""
+msgstr "Ediffを使用して、@code{HEAD}と作業ツリーの間のファイルの変更を表示します。"
 
 #. type: kindex
 #: sed-out/magit.texi:4646
@@ -9305,7 +9306,7 @@ msgstr "@kbd{E c} @tie{}@tie{}@tie{}@tie{}(@code{magit-ediff-show-commit})"
 #. type: table
 #: sed-out/magit.texi:4651
 msgid "Show changes to a file introduced by a commit using Ediff."
-msgstr ""
+msgstr "Ediffを使用したコミットによって導入されたファイル(file introduced)への変更を表示します。"
 
 #. type: kindex
 #: sed-out/magit.texi:4652
@@ -9328,7 +9329,7 @@ msgstr "@kbd{E z} @tie{}@tie{}@tie{}@tie{}(@code{magit-ediff-show-stash})"
 #. type: table
 #: sed-out/magit.texi:4657
 msgid "Show changes to a file introduced by a stash using Ediff."
-msgstr ""
+msgstr "Ediffを使用してstashによって導入されたファイルへの変更を表示します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4660
@@ -9344,7 +9345,7 @@ msgid ""
 "Otherwise, use @code{magit-ediff-show-staged} and "
 "@code{magit-ediff-show-unstaged} to show staged and unstaged changes, "
 "respectively."
-msgstr ""
+msgstr "このオプションは、ポイントがコミットされていないハンク上にあるときに@code{magit-ediff-dwim}が呼び出すコマンドを制御します。nilの場合、常に@code{magit-ediff-stage}を実行します。それ以外の場合は、@code{magit-ediff-show-staged}と@code{magit-ediff-show-unstaged}を使用して、それぞれステージされた変更(staged changes)とステージされていない変更(unstaged changes)を表示します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4669
@@ -9358,7 +9359,7 @@ msgid ""
 "This option controls whether @code{magit-ediff-show-stash} includes a buffer "
 "containing the file's state in the index at the time the stash was created.  "
 "This makes it possible to tell which changes in the stash were staged."
-msgstr ""
+msgstr "このオプションは、@code{magit-ediff-show-stash}にスタッシュが作成されたときのインデックス内のファイルの状態を含むバッファを含めるかどうかを制御します。 これにより、スタッシュのどの変更がステージ(stage)されたかを知ることができます。"
 
 #. type: defopt
 #: sed-out/magit.texi:4677
@@ -9372,7 +9373,7 @@ msgid ""
 "This hook is run after quitting an Ediff session that was created using a "
 "Magit command.  The hook functions are run inside the Ediff control buffer, "
 "and should not change the current buffer."
-msgstr ""
+msgstr "このフックは、Magitコマンドを使用して作成されたEdiffセッションを終了した後に実行されます。フック関数はEdiff制御バッファ内で実行され、現在のバッファを変更すべきではありません。"
 
 #. type: defopt
 #: sed-out/magit.texi:4686
@@ -9380,7 +9381,7 @@ msgid ""
 "This is similar to @code{ediff-quit-hook} but takes the needs of Magit into "
 "account.  The regular @code{ediff-quit-hook} is ignored by Ediff sessions "
 "that were created using a Magit command."
-msgstr ""
+msgstr "これは@code{ediff-quit-hook}に似ていますが、Magitのニーズを考慮に入れています。通常の@code{ediff-quit-hook}は、Magitコマンドを使用して作成されたEdiffセッションでは無視されます。"
 
 #. type: kindex
 #: sed-out/magit.texi:4692 sed-out/magit.texi:7620
@@ -9403,7 +9404,7 @@ msgstr "@kbd{y} @tie{}@tie{}@tie{}@tie{}(@code{magit-show-refs})"
 #. type: table
 #: sed-out/magit.texi:4697
 msgid "This command lists branches and tags in a dedicated buffer."
-msgstr ""
+msgstr "このコマンドは、専用バッファ内のブランチとタグを一覧表示します。"
 
 #. type: table
 #: sed-out/magit.texi:4702
@@ -9411,7 +9412,7 @@ msgid ""
 "However if this command is invoked again from this buffer or if it is "
 "invoked with a prefix argument, then it acts as a transient prefix command, "
 "which binds the following suffix commands and some infix arguments."
-msgstr ""
+msgstr "けれども、このコマンドがこのバッファから再度呼び出された場合、または前置引数を指定して呼び出された場合は、一時的な前置コマンドとして機能し、次の後置コマンドといくつかの後置引数を結び付けます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:4709
@@ -9421,7 +9422,7 @@ msgid ""
 "changing the value of @code{magit-refs-show-commit-count} (see below).  "
 "These commands specify a different branch or commit against which all the "
 "other references are compared."
-msgstr ""
+msgstr "続くすべての後置コマンドは、まったく同じブランチとタグを一覧表示します。唯一の違いは、@code{magit-refs-show-commit-count}の値を変更することで有効にできるオプション機能です(以下を参照)。これらのコマンドは、他のすべてのreferencesが比較される別のブランチまたはコミットを指定します。"
 
 #. type: kindex
 #: sed-out/magit.texi:4711
@@ -9446,7 +9447,7 @@ msgstr "@kbd{y y} @tie{}@tie{}@tie{}@tie{}(@code{magit-show-refs-head})"
 msgid ""
 "This command lists branches and tags in a dedicated buffer.  Each reference "
 "is being compared with @code{HEAD}."
-msgstr ""
+msgstr "このコマンドは、専用バッファ内のブランチとタグを一覧表示します。各referenceは@code{HEAD}と比較されています。"
 
 #. type: kindex
 #: sed-out/magit.texi:4718
@@ -9471,7 +9472,7 @@ msgstr "@kbd{y c} @tie{}@tie{}@tie{}@tie{}(@code{magit-show-refs-current})"
 msgid ""
 "This command lists branches and tags in a dedicated buffer.  Each reference "
 "is being compared with the current branch or @code{HEAD} if it is detached."
-msgstr ""
+msgstr "このコマンドは、専用バッファ内のブランチとタグを一覧表示します。各referenceは、現在のブランチまたはdetachされている場合は@code{HEAD}と比較されます。"
 
 #. type: kindex
 #: sed-out/magit.texi:4726
@@ -9496,7 +9497,7 @@ msgstr "@kbd{y o} @tie{}@tie{}@tie{}@tie{}(@code{magit-show-refs-other})"
 msgid ""
 "This command lists branches and tags in a dedicated buffer.  Each reference "
 "is being compared with a branch read from the user."
-msgstr ""
+msgstr "このコマンドは、専用バッファ内のブランチとタグを一覧表示します。各referenceは、ユーザーから読み取られたブランチと比較されています。"
 
 #. type: defopt
 #: sed-out/magit.texi:4735
@@ -9507,27 +9508,27 @@ msgstr "magit-refs-show-commit-count"
 #. type: defopt
 #: sed-out/magit.texi:4738
 msgid "Whether to show commit counts in Magit-Refs mode buffers."
-msgstr ""
+msgstr "Magit-Refsモードのバッファでコミット数を表示するかどうか。"
 
 #. type: itemize
 #: sed-out/magit.texi:4742
 msgid "@code{all} Show counts for branches and tags."
-msgstr ""
+msgstr "@code{all} ブランチとタグのカウントを表示します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4745
 msgid "@code{branch} Show counts for branches only."
-msgstr ""
+msgstr "@code{branch} ブランチのカウントのみを表示します。"
 
 #. type: itemize
 #: sed-out/magit.texi:4748
 msgid "@code{nil} Never show counts."
-msgstr ""
+msgstr "@code{nil} カウントを表示しません。"
 
 #. type: defopt
 #: sed-out/magit.texi:4751
 msgid "The default is @code{nil} because anything else can be very expensive."
-msgstr ""
+msgstr "デフォルトは@code{nil}です。他のものは非常に重い処理になる可能性があるためです。"
 
 #. type: defopt
 #: sed-out/magit.texi:4753
@@ -9538,7 +9539,7 @@ msgstr "magit-refs-pad-commit-counts"
 #. type: defopt
 #: sed-out/magit.texi:4757
 msgid "Whether to pad all commit counts on all sides in Magit-Refs mode buffers."
-msgstr ""
+msgstr "Magit-Refsモードバッファのすべての脇(side)ですべてのコミットカウントをパディングするかどうか。"
 
 #. type: defopt
 #: sed-out/magit.texi:4762
@@ -9547,14 +9548,14 @@ msgid ""
 "the branches that appear next to the count, without any space in between.  "
 "This might look bad if the branch name faces look too similar to "
 "@code{magit-dimmed}."
-msgstr ""
+msgstr "これがnilの場合、一部のコミットカウントは、カウントの横に表示されるブランチの1つのすぐ隣に、間にスペースを入れずに表示されます。ブランチ名のfaceが@code{magit-dimmed}に似すぎている場合、これは見栄えが悪い可能性があります。"
 
 #. type: defopt
 #: sed-out/magit.texi:4765
 msgid ""
 "If this is non-nil, then spaces are placed on both sides of all commit "
 "counts."
-msgstr ""
+msgstr "これがnil以外の場合、スペースがすべてのコミットカウントの両側に配置されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:4767
@@ -9565,14 +9566,14 @@ msgstr "magit-refs-show-remote-prefix"
 #. type: defopt
 #: sed-out/magit.texi:4770
 msgid "Whether to show the remote prefix in lists of remote branches."
-msgstr ""
+msgstr "リモートブランチのリストにremote prefixを表示するかどうか。"
 
 #. type: defopt
 #: sed-out/magit.texi:4773
 msgid ""
 "Showing the prefix is redundant because the name of the remote is already "
 "shown in the heading preceding the list of its branches."
-msgstr ""
+msgstr "リモートの名前はそのブランチのリストの前の見出しにすでに表示されているため、prefixの表示は冗長です。"
 
 #. type: defopt
 #: sed-out/magit.texi:4775
@@ -9586,7 +9587,7 @@ msgid ""
 "Width of the primary column in `magit-refs-mode' buffers.  The primary "
 "column is the column that contains the name of the branch that the current "
 "row is about."
-msgstr ""
+msgstr "`magit-refs-mode'バッファのprimary列の幅。primary列は、現在の行が含まれているブランチの名前を含む列です。"
 
 #. type: defopt
 #: sed-out/magit.texi:4787
@@ -9597,7 +9598,7 @@ msgid ""
 "determined using the length of the names of the shown local branches.  "
 "(Remote branches and tags are not taken into account when calculating to "
 "optimal width.)"
-msgstr ""
+msgstr "これが整数の場合、列の幅がその整数になります。それ以外の場合は、2つの整数のコンスセルである必要があります。 1つ目は最小幅を指定し、2つ目は最大幅を指定します。その場合、実際の幅は、表示されているローカルブランチの名前の長さを使用して決定されます。(最適な幅に計算する場合、リモートブランチとタグは考慮されません。)"
 
 #. type: defopt
 #: sed-out/magit.texi:4789
@@ -9608,7 +9609,7 @@ msgstr "magit-refs-focus-column-width"
 #. type: defopt
 #: sed-out/magit.texi:4792
 msgid "Width of the focus column in `magit-refs-mode' buffers."
-msgstr ""
+msgstr "`magit-refs-mode'バッファのfocus列の幅。"
 
 #. type: defopt
 #: sed-out/magit.texi:4799
@@ -9618,7 +9619,7 @@ msgid ""
 "other reference, this column optionally shows how many commits it is ahead "
 "of the focused branch and @code{<}, or if it isn't ahead then the commits it "
 "is behind and @code{>}, or if it isn't behind either, then a @code{=}."
-msgstr ""
+msgstr "focus列は最初の列であり、@code{*}または@code{@@}を使用して、1つのブランチ(通常は現在のブランチ)をフォーカスされたブランチとしてマークします。他のreferenceごとに、このfocus列はオプションで、フォーカスされたブランチと@code{<}の前にあるコミットの数を示します。前にない場合は、後ろにあるコミットと@code{>}を示します。前にも後ろにも無い場合は@code{=}です。"
 
 #. type: defopt
 #: sed-out/magit.texi:4803
@@ -9626,7 +9627,7 @@ msgid ""
 "This column may also display only @code{*} or @code{@@} for the focused "
 "branch, in which case this option is ignored.  Use @code{L v} to change the "
 "verbosity of this column."
-msgstr ""
+msgstr "この列には、フォーカスされたブランチの@code{*}または@code{@@}のみが表示される場合もあります。その場合、このオプションは無視されます。@code{L v}を使用して、この列の詳細度を変更します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4805
@@ -9639,7 +9640,7 @@ msgstr "magit-refs-margin"
 msgid ""
 "This option specifies whether the margin is initially shown in Magit-Refs "
 "mode buffers and how it is formatted."
-msgstr ""
+msgstr "このオプションは、欄外(margin)が最初にMagit-Refsモードのバッファに表示されるかどうか、およびそのフォーマット方法を指定します。"
 
 #. type: defopt
 #: sed-out/magit.texi:4838
@@ -9652,7 +9653,7 @@ msgstr "magit-refs-margin-for-tags"
 msgid ""
 "This option specifies whether to show information about tags in the margin.  "
 "This is disabled by default because it is slow if there are many tags."
-msgstr ""
+msgstr "このオプションは、欄外(margin)にタグに関する情報を表示するかどうかを指定します。タグが多いと遅いため、デフォルトでは無効になっています。"
 
 #. type: Plain text
 #: sed-out/magit.texi:4849
@@ -9661,17 +9662,17 @@ msgid ""
 "change one of these variables (especially the \"%c\" part), then you should "
 "also change the others to keep things aligned.  The following %-sequences "
 "are supported:"
-msgstr ""
+msgstr "以下の変数は、個々のrefsの表示方法を制御します。これらの変数の1つ(特に\"%c\"の部分)を変更する場合は、他の変数も変更して、調整を維持する必要があります。以下の%シーケンスがサポートされています:"
 
 #. type: itemize
 #: sed-out/magit.texi:4853
 msgid "@code{%a} Number of commits this ref has over the one we compare to."
-msgstr ""
+msgstr "@code{%a} このrefが比較したコミットを超えるコミットの数。"
 
 #. type: itemize
 #: sed-out/magit.texi:4856
 msgid "@code{%b} Number of commits the ref we compare to has over this one."
-msgstr ""
+msgstr "@code{%b} 比較するrefのコミット数がこれを超えています。"
 
 #. type: itemize
 #: sed-out/magit.texi:4861
@@ -9679,41 +9680,41 @@ msgid ""
 "@code{%c} Number of commits this ref has over the one we compare to.  For "
 "the ref which all other refs are compared this is instead \"@@\", if it is "
 "the current branch, or \"#\" otherwise."
-msgstr ""
+msgstr "@code{%c} このrefが比較したコミットを超えるコミットの数。他のすべてのrefが比較されるrefの場合、これは、現在のブランチの場合は代わりに\"@@\"、それ以外の場合は\"#\"になります。"
 
 #. type: itemize
 #: sed-out/magit.texi:4865
 msgid ""
 "@code{%C} For the ref which all other refs are compared this is \"@@\", if "
 "it is the current branch, or \"#\" otherwise.  For all other refs \" \"."
-msgstr ""
+msgstr "@code{%C} 他のすべてのrefが比較されるrefの場合、これは現在のブランチの場合は\"@@\"、それ以外の場合は\"#\"です。 他のすべての参照は\" \"です。"
 
 #. type: itemize
 #: sed-out/magit.texi:4868
 msgid "@code{%h} Hash of this ref's tip."
-msgstr ""
+msgstr "@code{%h} このrefのtipのハッシュ。"
 
 #. type: itemize
 #: sed-out/magit.texi:4871
 msgid "@code{%m} Commit summary of the tip of this ref."
-msgstr ""
+msgstr "@code{%m} このrefのtipの要約をコミットします。"
 
 #. type: itemize
 #: sed-out/magit.texi:4874
 msgid "@code{%n} Name of this ref."
-msgstr ""
+msgstr "@code{%n} このrefの名前。"
 
 #. type: itemize
 #: sed-out/magit.texi:4877
 msgid "@code{%u} Upstream of this local branch."
-msgstr ""
+msgstr "@code{%u} このローカルブランチのupstream。"
 
 #. type: itemize
 #: sed-out/magit.texi:4881
 msgid ""
 "@code{%U} Upstream of this local branch and additional local vs. upstream "
 "information."
-msgstr ""
+msgstr "@code{%U} このローカルブランチのアップストリームおよび追加のローカル情報とアップストリーム情報。"
 
 #. type: defopt
 #: sed-out/magit.texi:4884
@@ -9728,7 +9729,7 @@ msgid ""
 "their name.  If you want to not display any refs of a certain type, then you "
 "should remove the appropriate function from @code{magit-refs-sections-hook} "
 "instead."
-msgstr ""
+msgstr "このオプションの目的は、名前に基づいて特定のrefを表示しないようにすることです。特定のタイプのrefを表示したくない場合は、代わりに@code{magit-refs-sections-hook}から適切な関数を削除する必要があります。"
 
 #. type: defopt
 #: sed-out/magit.texi:4894
@@ -9736,7 +9737,7 @@ msgid ""
 "This alist controls which tags and branches are omitted from being displayed "
 "in @code{magit-refs-mode} buffers.  If it is @code{nil}, then all refs are "
 "displayed (subject to @code{magit-refs-sections-hook})."
-msgstr ""
+msgstr "このalistは、@code{magit-refs-mode}バッファに表示されないようにするタグとブランチを制御します。@code{nil}の場合、すべてのrefが表示されます(@code{magit-refs-sections-hook}に従います)。"
 
 #. type: defopt
 #: sed-out/magit.texi:4899
@@ -9745,7 +9746,7 @@ msgid ""
 "subsequent elements are ignored.  If the value is non-nil, then the "
 "reference is displayed, otherwise it is not.  If no element matches, then "
 "the reference is displayed."
-msgstr ""
+msgstr "1つが一致するまで、すべてのキーが順番に試行されます。 次に、その値が使用され、後続の要素は無視されます。値がnil以外の場合はそのreferenceが表示され、そうでない場合は表示されません。 一致する要素がない場合は、そのreferenceが表示されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:4905
@@ -9754,7 +9755,7 @@ msgid ""
 "function that takes the refname as only argument and returns a boolean.  A "
 "remote branch such as \"origin/master\" is displayed as just \"master\", "
 "however for this comparison the former is used."
-msgstr ""
+msgstr "キーは、refnameが一致する必要のある正規表現、またはrefnameを引数としてのみ受け取り、ブール値を返す関数のいずれかです。\"origin/master\"などのリモートブランチは単に\"master\"として表示されますが、この比較では前者が使用されます。"
 
 #. type: kindex
 #: sed-out/magit.texi:4908 sed-out/magit.texi:5179 sed-out/magit.texi:5378 sed-out/magit.texi:7516
@@ -9780,7 +9781,7 @@ msgid ""
 "This command visits the reference or revision at point in another buffer.  "
 "If there is no revision at point or with a prefix argument then it prompts "
 "for a revision."
-msgstr ""
+msgstr "このコマンドは、別のバッファ内のポイントでreferenceまたはリビジョンにアクセスします。ポイントにリビジョンがない場合、または前置引数がある場合は、リビジョンの入力を求められます。"
 
 #. type: table
 #: sed-out/magit.texi:4920

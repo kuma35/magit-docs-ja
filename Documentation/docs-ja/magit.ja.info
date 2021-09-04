@@ -3511,8 +3511,8 @@ File: magit.ja.info,  Node: Reflog,  Next: Cherries,  Prev: Select from Log,  Up
 
 こちらもご覧下さい *note (gitman)git-reflog::
 
-These reflog commands are available from the log transient.  See *note
-Logging::.
+これらのreflogコマンドは、ログ一時コマンド(transient)ら使用できます
+→*note Logging::
 
 ‘l r’     (‘magit-reflog-current’)
 
@@ -3821,34 +3821,33 @@ Diff::
      す。ポイントが個々のハンク内ではなくdiffヘッダー上にある場合、これ
      は最初のハンクが存在するblobにアクセスします。
 
-     Then it invokes ‘magit-edit-line-commit’, which uses an interactive
-     rebase to make the commit editable, or if that is not possible
-     because the commit is not reachable from ‘HEAD’ by checking out
-     that commit directly.  This also causes the actual worktree file to
-     be visited.
+     次に‘magit-edit-line-commit’を呼び出し、‘HEAD’からそのコミットを直
+     接チェックチェックアウトすることで到達することは不可能な、インタラ
+     クティブなリベースを使用してコミットを編集可能にし、これにより実際
+     の作業ツリーのファイルにもアクセスできます。
 
-     Neither the blob nor the file buffer are killed when finishing the
-     rebase.  If that is undesirable, then it might be better to use
-     ‘magit-rebase-edit-command’ instead of this command.
+     リベースの終了時に、blobもファイルバッファも強制終了(kill)されませ
+     ん。それが望ましくない場合は、このコマンドの代わりに
+     ‘magit-rebase-edit-command’を使用する方がよい場合があります。
 
 ‘j’     (‘magit-jump-to-diffstat-or-diff’)
 
-     This command jumps to the diffstat or diff.  When point is on a
-     file inside the diffstat section, then jump to the respective diff
-     section.  Otherwise, jump to the diffstat section or a child
-     thereof.
+     このコマンドは、diffstatまたはdiffにジャンプします。ポイントが
+     diffstatセクション内のファイル上にある場合は、それぞれのdiffセクシ
+     ョンにジャンプします。 それ以外の場合は、diffstatセクションまたはそ
+     の子にジャンプします。
 
-The next two commands are not specific to Magit-Diff mode (or and Magit
-buffer for that matter), but it might be worth pointing out that they
-are available here too.
+次の2つのコマンドは、Magit-Diffモード(または、さらに言えばMagitバッファ
+)に固有のものではありませんが、ここでも使用できることを指摘しておく価値
+があります。
 
 ‘SPC’     (‘scroll-up’)
 
-     This command scrolls text upward.
+     このコマンドは、テキストを上にスクロールします。
 
 ‘DEL’     (‘scroll-down’)
 
-     This command scrolls text downward.
+     このコマンドは、テキストを下にスクロールします。
 
 
 File: magit.ja.info,  Node: Diff Options,  Next: Revision Buffer,  Prev: Commands Available in Diffs,  Up: Diffing
@@ -3858,136 +3857,139 @@ File: magit.ja.info,  Node: Diff Options,  Next: Revision Buffer,  Prev: Command
 
  -- User Option: magit-diff-refine-hunk
 
-     Whether to show word-granularity differences within diff hunks.
+     diffハンク内で単語の粒度(word-granularity)のdiffを表示するかどうか
+     。
 
-        • ‘nil’ Never show fine differences.
+        • ‘nil’ 細かい違いを表示しないでください。
 
-        • ‘t’ Show fine differences for the current diff hunk only.
+        • ‘t’ 現在のdiffハンクのみの細かい違いを表示します。
 
-        • ‘all’ Show fine differences for all displayed diff hunks.
+        • ‘all’ 表示されているすべてのdiffハンクの細かい違いを表示します
+          。
 
  -- User Option: magit-diff-refine-ignore-whitespace
 
-     Whether to ignore whitespace changes in word-granularity
-     differences.
+     単語の粒度(word-granularity)の違いにおける空白の変更を無視するかど
+     うか。
 
  -- User Option: magit-diff-adjust-tab-width
 
-     Whether to adjust the width of tabs in diffs.
+     diffでタブの幅を調整するかどうか。
 
-     Determining the correct width can be expensive if it requires
-     opening large and/or many files, so the widths are cached in the
-     variable ‘magit-diff--tab-width-cache’.  Set that to nil to
-     invalidate the cache.
+     大きなファイルや多数のファイルを開く必要がある場合、正しい幅を決定
+     するのはコストがかかる可能性があるため、幅は変数
+     ‘magit-diff--tab-width-cache’にキャッシュされます。キャッシュを無効
+     にするには、これをnilに設定します。
 
-        • ‘nil’ Never adjust tab width.  Use ‘tab-width’s value from the
-          Magit buffer itself instead.
+        • ‘nil’ タブ幅は調整しません。代わりに、Magitバッファ自体の
+          ‘tab-width’の値を使います。
 
-        • ‘t’ If the corresponding file-visiting buffer exits, then use
-          ‘tab-width’’s value from that buffer.  Doing this is cheap, so
-          this value is used even if a corresponding cache entry exists.
+        • ‘t’ 対応するfile-visitingバッファが存在する場合は、そのバッフ
+          ァの‘tab-width’の値を使用します。これを行うのは安価であるため
+          、対応するキャッシュエントリが存在する場合でも、この値が使用さ
+          れます。
 
-        • ‘always’ If there is no such buffer, then temporarily visit
-          the file to determine the value.
+        • ‘always’ そのようなバッファがない場合は、一時的(temporarily)に
+          ファイルにアクセスして値を決定します。
 
-        • NUMBER Like ‘always’, but don’t visit files larger than NUMBER
-          bytes.
+        • NUMBER ‘always’と同様ですが、NUMBERバイトより大きいファイルに
+          はアクセスしないでください。
 
  -- User Option: magit-diff-paint-whitespace
 
-     Specify where to highlight whitespace errors.
+     空白エラー達を強調表示(highlight)する場所を指定します。
 
-     See ‘magit-diff-highlight-trailing’,
-     ‘magit-diff-highlight-indentation’.  The symbol ‘t’ means in all
-     diffs, ‘status’ means only in the status buffer, and nil means
-     nowhere.
+     ‘magit-diff-highlight-trailing’、
+     ‘magit-diff-highlight-indentation’を参照してください。 シンボル
+     ‘t’はすべての差分を意味し、‘status’はステータスバッファ内のみを意味
+     し、nilはどこにも存在しないことを意味します。
 
-        • ‘nil’ Never highlight whitespace errors.
+        • ‘nil’ 空白エラーを強調表示(highlight)しません。
 
-        • ‘t’ Highlight whitespace errors everywhere.
+        • ‘t’ どこでも空白エラーを強調表示(highlight)します。
 
-        • ‘uncommitted’ Only highlight whitespace errors in diffs
-          showing uncommitted changes.  For backward compatibility
-          ‘status’ is treated as a synonym.
+        • ‘uncommitted’ コミットされていない変更を示すdiff達の空白エラー
+          のみを強調表示(highlight)します。下位互換性のために、
+          ‘status’は同義語として扱われます。
 
  -- User Option: magit-diff-paint-whitespace-lines
 
-     Specify in what kind of lines to highlight whitespace errors.
+     空白エラーを強調表示(highlight)する行の種類(kind of lines)を指定し
+     ます。
 
-        • ‘t’ Highlight only in added lines.
+        • ‘t’ 追加された行でのみ強調表示(highlight)します。
 
-        • ‘both’ Highlight in added and removed lines.
+        • ‘both’ 追加および削除された行を強調表示(highlight)します。
 
-        • ‘all’ Highlight in added, removed and context lines.
+        • ‘all’ 追加、削除、およびコンテキスト行で強調表示(highlight)し
+          ます。
 
  -- User Option: magit-diff-highlight-trailing
 
-     Whether to highlight whitespace at the end of a line in diffs.
-     Used only when ‘magit-diff-paint-whitespace’ is non-nil.
+     diff達の行末の空白を強調表示するかどうか。
+     ‘magit-diff-paint-whitespace’がnil以外の場合にのみ使用されます。
 
  -- User Option: magit-diff-highlight-indentation
 
-     This option controls whether to highlight the indentation in case
-     it used the "wrong" indentation style.  Indentation is only
-     highlighted if ‘magit-diff-paint-whitespace’ is also non-nil.
+     このオプションは、「間違った」インデントスタイルを使用した場合にイ
+     ンデントを強調表示(highlight)するかどうかを制御します。インデントは
+     、‘magit-diff-paint-whitespace’もnil以外の場合にのみ強調表示されま
+     す。
 
-     The value is an alist of the form ‘((REGEXP . INDENT)...)’.  The
-     path to the current repository is matched against each element in
-     reverse order.  Therefore if a REGEXP matches, then earlier
-     elements are not tried.
+     値は、‘((REGEXP . INDENT)...)’の形式のalistです。現在のリポジトリへ
+     のパスは、逆の順序で各要素と照合されます。したがって、REGEXPが一致
+     する場合、以前の要素は試行されません。
 
-     If the used INDENT is ‘tabs’, highlight indentation with tabs.  If
-     INDENT is an integer, highlight indentation with at least that many
-     spaces.  Otherwise, highlight neither.
+     使用するインデントが‘tabs’の場合は、タブでインデントを強調表示
+     (highlight)します。INDENTが整数の場合は、少なくともその数のスペース
+     でインデントを強調表示します。それ以外の場合は、どちらも強調表示し
+     ません。
 
  -- User Option: magit-diff-hide-trailing-cr-characters
 
-     Whether to hide ^M characters at the end of a line in diffs.
+     diff達の行末の ^M 文字を非表示にするかどうか。
 
  -- User Option: magit-diff-highlight-hunk-region-functions
 
-     This option specifies the functions used to highlight the
-     hunk-internal region.
+     このオプションは、ハンク内部regionを強調表示(highlight)するために使
+     用される関数を指定します。
 
-     ‘magit-diff-highlight-hunk-region-dim-outside’ overlays the outside
-     of the hunk internal selection with a face that causes the added
-     and removed lines to have the same background color as context
-     lines.  This function should not be removed from the value of this
-     option.
+     ‘magit-diff-highlight-hunk-region-dim-outside’は、ハンクの内部選択
+     範囲(hunk internal selection)の外側に、追加および削除された行の背景
+     色をコンテキスト行と同じにするfaceをオーバーレイします。この関数は
+     、このオプションの値から削除すべきではありません。
 
-     ‘magit-diff-highlight-hunk-region-using-overlays’ and
-     ‘magit-diff-highlight-hunk-region-using-underline’ emphasize the
-     region by placing delimiting horizontal lines before and after it.
-     Both of these functions have glitches which cannot be fixed due to
-     limitations of Emacs’ display engine.  For more information see
-     <https://github.com/magit/magit/issues/2758> ff.
+     ‘magit-diff-highlight-hunk-region-using-overlays’と
+     ‘magit-diff-highlight-hunk-region-using-underline’は、前後に区切り
+     の水平線を配置することで、regionを強調します。これらの機能には両方
+     とも、Emacsのディスプレイエンジンの制限のために修正できない欠陥
+     (glitches)があります。詳細については
+     →<https://github.com/magit/magit/issues/2758> ff
 
-     Instead of, or in addition to, using delimiting horizontal lines,
-     to emphasize the boundaries, you may which to emphasize the text
-     itself, using ‘magit-diff-highlight-hunk-region-using-face’.
+     境界線を強調する代わりに、またはそれに加えて、境界を強調するために
+     、‘magit-diff-highlight-hunk-region-using-face’を使用して、テキスト
+     自体を強調することができます。
 
-     In terminal frames it’s not possible to draw lines as the overlay
-     and underline variants normally do, so there they fall back to
-     calling the face function instead.
+     ターミナルフレームでは、オーバーレイとアンダーラインのバリエーショ
+     ンが通常行うように線を描画することはできないため、代わりにface関数
+     の呼び出しにフォールバックします。
 
  -- User Option: magit-diff-unmarked-lines-keep-foreground
 
-     This option controls whether added and removed lines outside the
-     hunk-internal region only lose their distinct background color or
-     also the foreground color.  Whether the outside of the region is
-     dimmed at all depends on
-     ‘magit-diff-highlight-hunk-region-functions’.
+     このオプションは、ハンク内部(hunk-internal)regionの外側に追加および
+     削除された線が、明確な背景色のみを失うか、前景色も失うかを制御しま
+     す。 領域の外側が暗くなるかどうかは、
+     ‘magit-diff-highlight-hunk-region-functions’によって異なります。
 
  -- User Option: magit-diff-extra-stat-arguments
 
-     This option specifies additional arguments to be used alongside
-     ‘--stat’.
+     このオプションは、‘--stat’と一緒に使用される追加の引数を指定します
+     。
 
-     The value is a list of zero or more arguments or a function that
-     takes no argument and returns such a list.  These arguments are
-     allowed here: ‘--stat-width’, ‘--stat-name-width’,
-     ‘--stat-graph-width’ and ‘--compact-summary’.  Also see (*note
-     (gitman)git-diff::)
+     値は、0個以上の引数のリスト、または引数をとらずにそのようなリストを
+     返す関数です。一緒に使ってよい引数は‘--stat-width’と
+     ‘--stat-name-width’と‘--stat-graph-width’と‘--compact-summary’です
+     。こちらもご覧ください (*note (gitman)git-diff::)
 
 
 File: magit.ja.info,  Node: Revision Buffer,  Prev: Diff Options,  Up: Diffing
@@ -3997,76 +3999,72 @@ File: magit.ja.info,  Node: Revision Buffer,  Prev: Diff Options,  Up: Diffing
 
  -- User Option: magit-revision-insert-related-refs
 
-     Whether to show related branches in revision buffers.
+     関連するブランチをリビジョンバッファに表示するかどうか。
 
-        • ‘nil’ Don’t show any related branches.
+        • ‘nil’ 関連するブランチを表示しません。
 
-        • ‘t’ Show related local branches.
+        • ‘t’ 関連するローカルブランチを表示します。
 
-        • ‘all’ Show related local and remote branches.
+        • ‘all’ 関連するローカルブランチとリモートブランチを表示します。
 
-        • ‘mixed’ Show all containing branches and local merged
-          branches.
+        • ‘mixed’ 含まれているすべてのブランチとローカルのマージされたブ
+          ランチを表示します。
 
  -- User Option: magit-revision-show-gravatars
 
-     Whether to show gravatar images in revision buffers.
+     リビジョンバッファにGravatar画像を表示するかどうか。
 
-     If ‘nil’, then don’t insert any gravatar images.  If ‘t’, then
-     insert both images.  If ‘author’ or ‘committer’, then insert only
-     the respective image.
+     ‘nil’の場合はGravatar画像を挿入しません。‘t’の場合は両方の画像を挿
+     入します。‘author’または‘committer’の場合は、それぞれの画像のみを挿
+     入します。
 
-     If you have customized the option ‘magit-revision-headers-format’
-     and want to insert the images then you might also have to specify
-     where to do so.  In that case the value has to be a cons-cell of
-     two regular expressions.  The car specifies where to insert the
-     author’s image.  The top half of the image is inserted right after
-     the matched text, the bottom half on the next line in the same
-     column.  The cdr specifies where to insert the committer’s image,
-     accordingly.  Either the car or the cdr may be nil."
+     あなたがオプション‘magit-revision-headers-format’をカスタマイズして
+     いて、画像を挿入したい場合は、どこに挿入するかも指定する必要があり
+     ます。その場合、値は2つの正規表現のコンスセルである必要があります。
+     carは、作者の画像を挿入する場所を指定します。画像の上半分は一致した
+     テキストの直後に挿入され、下半分は同じ列の次の行に挿入されます。
+     cdrは、それに応じてコミッターのイメージを挿入する場所を指定します。
+     carかcdrのどちらかがnilかもしれません。
 
  -- User Option: magit-revision-use-hash-sections
 
-     Whether to turn hashes inside the commit message into sections.
+     コミットメッセージ内のハッシュをセクションに変換するかどうか。
 
-     If non-nil, then hashes inside the commit message are turned into
-     ‘commit’ sections.  There is a trade off to be made between
-     performance and reliability:
+     nil以外の場合、コミットメッセージ内のハッシュは‘commit’セクションに
+     変換されます。パフォーマンスと信頼性の間にはトレードオフがあります
+     。
 
-        • ‘slow’ calls git for every word to be absolutely sure.
+        • ‘slow’ 確実にすべての単語に対してgitを呼び出します。
 
-        • ‘quick’ skips words less than seven characters long.
+        • ‘quick’ 7文字未満の単語をスキップします。
 
-        • ‘quicker’ additionally skips words that don’t contain a
-          number.
+        • ‘quicker’ さらに、数字を含まない単語をスキップします。
 
-        • ‘quickest’ uses all words that are at least seven characters
-          long and which contain at least one number as well as at least
-          one letter.
+        • ‘quickest’ 7文字以上の長さでかつ、1つ以上の数字かつ、1つ以上文
+          字を含むすべての単語を使用します。
 
-     If nil, then no hashes are turned into sections, but you can still
-     visit the commit at point using "RET".
+     nilの場合、ハッシュはセクションに変換されませんが、「RET」を使用し
+     てその時点でコミットにアクセスできます。
 
-The diffs shown in the revision buffer may be automatically restricted
-to a subset of the changed files.  If the revision buffer is displayed
-from a log buffer, the revision buffer will share the same file
-restriction as that log buffer (also see the command
-‘magit-diff-toggle-file-filter’).
+リビジョンバッファに表示されるdiff達は、変更されたファイルのサブセットに
+自動的に制限される場合があります。リビジョンバッファがログバッファから表
+示される場合、リビジョンバッファは、そのログバッファと同じファイル制限を
+共有します(コマンド‘magit-diff-toggle-file-filter’も参照してください)。
 
  -- User Option: magit-revision-filter-files-on-follow
 
-     Whether showing a commit from a log buffer honors the log’s file
-     filter when the log arguments include ‘--follow’.
+     ログ引数に‘--follow’が含まれている場合に、ログバッファからのコミッ
+     トを表示するかどうかは、ログのファイルフィルターを尊重します。
 
-     When this option is nil, displaying a commit from a log ignores the
-     log’s file filter if the log arguments include ‘--follow’.  Doing
-     so avoids showing an empty diff in revision buffers for commits
-     before a rename event.  In such cases, the ‘--patch’ argument of
-     the log transient can be used to show the file-restricted diffs
-     inline.
+     このオプションがnilの場合、ログ引数に‘--follow’が含まれていると、ロ
+     グからのコミットの表示はログのファイルフィルターを無視します。そう
+     することで、名前変更イベントの前にコミット用のリビジョンバッファに
+     空のdiffが表示されないようにします。このような場合、ログ一時コマン
+     ド(transient)の‘--patch’引数を使用して、ファイル制限されたdiff達を
+     インラインで表示できます。
 
-     Set this option to non-nil to keep the log’s file restriction even
-     if ‘--follow’ is present in the log arguments.
+     ‘--follow’がログ引数に存在する場合でもログのファイル制限を維持する
+     には、このオプションを非nilに設定します。
 
 リビジョンバッファがログバッファから表示されない場合、ファイル制限は通常
 どおりに決定されます(*note 一時的引数とバッファ変数::)。
@@ -4077,20 +4075,22 @@ File: magit.ja.info,  Node: Ediffing,  Next: References Buffer,  Prev: Diffing, 
 5.5 Ediffing
 ============
 
-This section describes how to enter Ediff from Magit buffers.  For
-information on how to use Ediff itself, see *note (ediff)Top::.
+このセクションでは、MagitバッファからEdiffを入力する方法について説明しま
+す。 Ediff自体の使用方法については→*note (ediff)Top::
 
 ‘e’     (‘magit-ediff-dwim’)
 
-     Compare, stage, or resolve using Ediff.
+     Ediffを使用して比較(compare)またはステージ(stage)または解決
+     (resolve)します。
 
-     This command tries to guess what file, and what commit or range the
-     user wants to compare, stage, or resolve using Ediff.  It might
-     only be able to guess either the file, or range/commit, in which
-     case the user is asked about the other.  It might not always guess
-     right, in which case the appropriate ‘magit-ediff-*’ command has to
-     be used explicitly.  If it cannot read the user’s mind at all, then
-     it asks the user for a command to run.
+     このコマンドは、Ediffを使用して、ユーザーが比較(compare)またはステ
+     ージ(stage)または解決(resolve)したいファイルと、コミットまたは範囲
+     (range)を推測しようとします。ファイルまたは範囲(range)/コミットのい
+     ずれかを推測することしかできない場合があります。その場合、ユーザー
+     はもう一方について尋ねられます。常に正しく推測できるとは限りません
+     。その場合、適切な‘magit-ediff-*’コマンドを明示的に使用する必要があ
+     ります。Magitがユーザーの心をまったく読み取れない場合は、実行するコ
+     マンドをユーザーに要求します。
 
 ‘E’     (‘magit-ediff’)
 
@@ -4100,7 +4100,7 @@ information on how to use Ediff itself, see *note (ediff)Top::.
 
 ‘E r’     (‘magit-ediff-compare’)
 
-     Compare two revisions of a file using Ediff.
+     Ediffを使用してファイルの2つのリビジョンを比較します。
 
      リージョンがアクティブな場合は、リージョンの最初と最後の行のリビジ
      ョンを使用します。前置引数を使用して、リビジョンを比較する代わりに
@@ -4109,66 +4109,73 @@ information on how to use Ediff itself, see *note (ediff)Top::.
 
 ‘E m’     (‘magit-ediff-resolve’)
 
-     Resolve outstanding conflicts in a file using Ediff, defaulting to
-     the file at point.
+     Ediffを使用して、ファイル内の未解決の競合を解決します。デフォルトで
+     は、ポイントの指すファイルになります。
 
-     Provided that the value of ‘merge.conflictstyle’ is ‘diff3’, you
-     can view the file’s merge-base revision using ‘/’ in the Ediff
-     control buffer.
+     ‘merge.conflictstyle’の値が‘diff3’の場合、Ediff制御バッファで‘/’を
+     使用してファイルのマージベースリビジョン(merge-base revision)を表示
+     できます。
 
-     In the rare event that you want to manually resolve all conflicts,
-     including those already resolved by Git, use
-     ‘ediff-merge-revisions-with-ancestor’.
+     まれに、Gitによって既に解決されているものを含め、あなたが、すべての
+     競合を手動で解決したい場合は、
+     ‘ediff-merge-revisions-with-ancestor’を使用してください。
 
 ‘E s’     (‘magit-ediff-stage’)
 
-     Stage and unstage changes to a file using Ediff, defaulting to the
-     file at point.
+     Ediffを使用してファイルへの変更をステージ(stage)およびステージ解除
+     (unstage)します。デフォルトではそのポイントのファイルを対象にします
+     。
 
 ‘E u’     (‘magit-ediff-show-unstaged’)
 
-     Show unstaged changes to a file using Ediff.
+     Ediffを使用して、ファイルへのステージされていない変更(unstaged
+     changes)を表示します。
 
 ‘E i’     (‘magit-ediff-show-staged’)
 
-     Show staged changes to a file using Ediff.
+     Ediffを使用してファイルのステージされた変更(staged changes)を表示し
+     ます。
 
 ‘E w’     (‘magit-ediff-show-working-tree’)
 
-     Show changes in a file between ‘HEAD’ and working tree using Ediff.
+     Ediffを使用して、‘HEAD’と作業ツリーの間のファイルの変更を表示します
+     。
 
 ‘E c’     (‘magit-ediff-show-commit’)
 
-     Show changes to a file introduced by a commit using Ediff.
+     Ediffを使用したコミットによって導入されたファイル(file introduced)へ
+     の変更を表示します。
 
 ‘E z’     (‘magit-ediff-show-stash’)
 
-     Show changes to a file introduced by a stash using Ediff.
+     Ediffを使用してstashによって導入されたファイルへの変更を表示します
+     。
 
  -- User Option: magit-ediff-dwim-show-on-hunks
 
-     This option controls what command ‘magit-ediff-dwim’ calls when
-     point is on uncommitted hunks.  When nil, always run
-     ‘magit-ediff-stage’.  Otherwise, use ‘magit-ediff-show-staged’ and
-     ‘magit-ediff-show-unstaged’ to show staged and unstaged changes,
-     respectively.
+     このオプションは、ポイントがコミットされていないハンク上にあるとき
+     に‘magit-ediff-dwim’が呼び出すコマンドを制御します。nilの場合、常に
+     ‘magit-ediff-stage’を実行します。それ以外の場合は、
+     ‘magit-ediff-show-staged’と‘magit-ediff-show-unstaged’を使用して、
+     それぞれステージされた変更(staged changes)とステージされていない変
+     更(unstaged changes)を表示します。
 
  -- User Option: magit-ediff-show-stash-with-index
 
-     This option controls whether ‘magit-ediff-show-stash’ includes a
-     buffer containing the file’s state in the index at the time the
-     stash was created.  This makes it possible to tell which changes in
-     the stash were staged.
+     このオプションは、‘magit-ediff-show-stash’にスタッシュが作成された
+     ときのインデックス内のファイルの状態を含むバッファを含めるかどうか
+     を制御します。 これにより、スタッシュのどの変更がステージ(stage)さ
+     れたかを知ることができます。
 
  -- User Option: magit-ediff-quit-hook
 
-     This hook is run after quitting an Ediff session that was created
-     using a Magit command.  The hook functions are run inside the Ediff
-     control buffer, and should not change the current buffer.
+     このフックは、Magitコマンドを使用して作成されたEdiffセッションを終
+     了した後に実行されます。フック関数はEdiff制御バッファ内で実行され、
+     現在のバッファを変更すべきではありません。
 
-     This is similar to ‘ediff-quit-hook’ but takes the needs of Magit
-     into account.  The regular ‘ediff-quit-hook’ is ignored by Ediff
-     sessions that were created using a Magit command.
+     これは‘ediff-quit-hook’に似ていますが、Magitのニーズを考慮に入れて
+     います。通常の‘ediff-quit-hook’は、Magitコマンドを使用して作成され
+     たEdiffセッションでは無視されます。
 
 
 File: magit.ja.info,  Node: References Buffer,  Next: Bisecting,  Prev: Ediffing,  Up: Inspecting
@@ -4178,99 +4185,95 @@ File: magit.ja.info,  Node: References Buffer,  Next: Bisecting,  Prev: Ediffing
 
 ‘y’     (‘magit-show-refs’)
 
-     This command lists branches and tags in a dedicated buffer.
+     このコマンドは、専用バッファ内のブランチとタグを一覧表示します。
 
-     However if this command is invoked again from this buffer or if it
-     is invoked with a prefix argument, then it acts as a transient
-     prefix command, which binds the following suffix commands and some
-     infix arguments.
+     けれども、このコマンドがこのバッファから再度呼び出された場合、また
+     は前置引数を指定して呼び出された場合は、一時的な前置コマンドとして
+     機能し、次の後置コマンドといくつかの後置引数を結び付けます。
 
-All of the following suffix commands list exactly the same branches and
-tags.  The only difference the optional feature that can be enabled by
-changing the value of ‘magit-refs-show-commit-count’ (see below).  These
-commands specify a different branch or commit against which all the
-other references are compared.
+続くすべての後置コマンドは、まったく同じブランチとタグを一覧表示します。
+唯一の違いは、‘magit-refs-show-commit-count’の値を変更することで有効にで
+きるオプション機能です(以下を参照)。これらのコマンドは、他のすべての
+referencesが比較される別のブランチまたはコミットを指定します。
 
 ‘y y’     (‘magit-show-refs-head’)
 
-     This command lists branches and tags in a dedicated buffer.  Each
-     reference is being compared with ‘HEAD’.
+     このコマンドは、専用バッファ内のブランチとタグを一覧表示します。各
+     referenceは‘HEAD’と比較されています。
 
 ‘y c’     (‘magit-show-refs-current’)
 
-     This command lists branches and tags in a dedicated buffer.  Each
-     reference is being compared with the current branch or ‘HEAD’ if it
-     is detached.
+     このコマンドは、専用バッファ内のブランチとタグを一覧表示します。各
+     referenceは、現在のブランチまたはdetachされている場合は‘HEAD’と比較
+     されます。
 
 ‘y o’     (‘magit-show-refs-other’)
 
-     This command lists branches and tags in a dedicated buffer.  Each
-     reference is being compared with a branch read from the user.
+     このコマンドは、専用バッファ内のブランチとタグを一覧表示します。各
+     referenceは、ユーザーから読み取られたブランチと比較されています。
 
  -- User Option: magit-refs-show-commit-count
 
-     Whether to show commit counts in Magit-Refs mode buffers.
+     Magit-Refsモードのバッファでコミット数を表示するかどうか。
 
-        • ‘all’ Show counts for branches and tags.
+        • ‘all’ ブランチとタグのカウントを表示します。
 
-        • ‘branch’ Show counts for branches only.
+        • ‘branch’ ブランチのカウントのみを表示します。
 
-        • ‘nil’ Never show counts.
+        • ‘nil’ カウントを表示しません。
 
-     The default is ‘nil’ because anything else can be very expensive.
+     デフォルトは‘nil’です。他のものは非常に重い処理になる可能性があるた
+     めです。
 
  -- User Option: magit-refs-pad-commit-counts
 
-     Whether to pad all commit counts on all sides in Magit-Refs mode
-     buffers.
+     Magit-Refsモードバッファのすべての脇(side)ですべてのコミットカウン
+     トをパディングするかどうか。
 
-     If this is nil, then some commit counts are displayed right next to
-     one of the branches that appear next to the count, without any
-     space in between.  This might look bad if the branch name faces
-     look too similar to ‘magit-dimmed’.
+     これがnilの場合、一部のコミットカウントは、カウントの横に表示される
+     ブランチの1つのすぐ隣に、間にスペースを入れずに表示されます。ブラン
+     チ名のfaceが‘magit-dimmed’に似すぎている場合、これは見栄えが悪い可
+     能性があります。
 
-     If this is non-nil, then spaces are placed on both sides of all
-     commit counts.
+     これがnil以外の場合、スペースがすべてのコミットカウントの両側に配置
+     されます。
 
  -- User Option: magit-refs-show-remote-prefix
 
-     Whether to show the remote prefix in lists of remote branches.
+     リモートブランチのリストにremote prefixを表示するかどうか。
 
-     Showing the prefix is redundant because the name of the remote is
-     already shown in the heading preceding the list of its branches.
+     リモートの名前はそのブランチのリストの前の見出しにすでに表示されて
+     いるため、prefixの表示は冗長です。
 
  -- User Option: magit-refs-primary-column-width
 
-     Width of the primary column in ‘magit-refs-mode’ buffers.  The
-     primary column is the column that contains the name of the branch
-     that the current row is about.
+     ‘magit-refs-mode’バッファのprimary列の幅。primary列は、現在の行が含
+     まれているブランチの名前を含む列です。
 
-     If this is an integer, then the column is that many columns wide.
-     Otherwise it has to be a cons-cell of two integers.  The first
-     specifies the minimal width, the second the maximal width.  In that
-     case the actual width is determined using the length of the names
-     of the shown local branches.  (Remote branches and tags are not
-     taken into account when calculating to optimal width.)
+     これが整数の場合、列の幅がその整数になります。それ以外の場合は、2つ
+     の整数のコンスセルである必要があります。 1つ目は最小幅を指定し、2つ
+     目は最大幅を指定します。その場合、実際の幅は、表示されているローカ
+     ルブランチの名前の長さを使用して決定されます。(最適な幅に計算する場
+     合、リモートブランチとタグは考慮されません。)
 
  -- User Option: magit-refs-focus-column-width
 
-     Width of the focus column in ‘magit-refs-mode’ buffers.
+     ‘magit-refs-mode’バッファのfocus列の幅。
 
-     The focus column is the first column, which marks one branch
-     (usually the current branch) as the focused branch using ‘*’ or
-     ‘@’.  For each other reference, this column optionally shows how
-     many commits it is ahead of the focused branch and ‘<’, or if it
-     isn’t ahead then the commits it is behind and ‘>’, or if it isn’t
-     behind either, then a ‘=’.
+     focus列は最初の列であり、‘*’または‘@’を使用して、1つのブランチ(通常
+     は現在のブランチ)をフォーカスされたブランチとしてマークします。他の
+     referenceごとに、このfocus列はオプションで、フォーカスされたブラン
+     チと‘<’の前にあるコミットの数を示します。前にない場合は、後ろにある
+     コミットと‘>’を示します。前にも後ろにも無い場合は‘=’です。
 
-     This column may also display only ‘*’ or ‘@’ for the focused
-     branch, in which case this option is ignored.  Use ‘L v’ to change
-     the verbosity of this column.
+     この列には、フォーカスされたブランチの‘*’または‘@’のみが表示される
+     場合もあります。その場合、このオプションは無視されます。‘L v’を使用
+     して、この列の詳細度を変更します。
 
  -- User Option: magit-refs-margin
 
-     This option specifies whether the margin is initially shown in
-     Magit-Refs mode buffers and how it is formatted.
+     このオプションは、欄外(margin)が最初にMagit-Refsモードのバッファに
+     表示されるかどうか、およびそのフォーマット方法を指定します。
 
      値の形式は‘(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)’です。
 
@@ -4295,65 +4298,61 @@ other references are compared.
 
  -- User Option: magit-refs-margin-for-tags
 
-     This option specifies whether to show information about tags in the
-     margin.  This is disabled by default because it is slow if there
-     are many tags.
+     このオプションは、欄外(margin)にタグに関する情報を表示するかどうか
+     を指定します。タグが多いと遅いため、デフォルトでは無効になっていま
+     す。
 
-The following variables control how individual refs are displayed.  If
-you change one of these variables (especially the "%c" part), then you
-should also change the others to keep things aligned.  The following
-%-sequences are supported:
+以下の変数は、個々のrefsの表示方法を制御します。これらの変数の1つ(特に
+"%c"の部分)を変更する場合は、他の変数も変更して、調整を維持する必要があ
+ります。以下の%シーケンスがサポートされています:
 
-   • ‘%a’ Number of commits this ref has over the one we compare to.
+   • ‘%a’ このrefが比較したコミットを超えるコミットの数。
 
-   • ‘%b’ Number of commits the ref we compare to has over this one.
+   • ‘%b’ 比較するrefのコミット数がこれを超えています。
 
-   • ‘%c’ Number of commits this ref has over the one we compare to.
-     For the ref which all other refs are compared this is instead "@",
-     if it is the current branch, or "#" otherwise.
+   • ‘%c’ このrefが比較したコミットを超えるコミットの数。他のすべての
+     refが比較されるrefの場合、これは、現在のブランチの場合は代わりに
+     "@"、それ以外の場合は"#"になります。
 
-   • ‘%C’ For the ref which all other refs are compared this is "@", if
-     it is the current branch, or "#" otherwise.  For all other refs "
-     ".
+   • ‘%C’ 他のすべてのrefが比較されるrefの場合、これは現在のブランチの場
+     合は"@"、それ以外の場合は"#"です。 他のすべての参照は" "です。
 
-   • ‘%h’ Hash of this ref’s tip.
+   • ‘%h’ このrefのtipのハッシュ。
 
-   • ‘%m’ Commit summary of the tip of this ref.
+   • ‘%m’ このrefのtipの要約をコミットします。
 
-   • ‘%n’ Name of this ref.
+   • ‘%n’ このrefの名前。
 
-   • ‘%u’ Upstream of this local branch.
+   • ‘%u’ このローカルブランチのupstream。
 
-   • ‘%U’ Upstream of this local branch and additional local vs.
-     upstream information.
+   • ‘%U’ このローカルブランチのアップストリームおよび追加のローカル情報
+     とアップストリーム情報。
 
  -- User Option: magit-refs-filter-alist
 
-     The purpose of this option is to forgo displaying certain refs
-     based on their name.  If you want to not display any refs of a
-     certain type, then you should remove the appropriate function from
-     ‘magit-refs-sections-hook’ instead.
+     このオプションの目的は、名前に基づいて特定のrefを表示しないようにす
+     ることです。特定のタイプのrefを表示したくない場合は、代わりに
+     ‘magit-refs-sections-hook’から適切な関数を削除する必要があります。
 
-     This alist controls which tags and branches are omitted from being
-     displayed in ‘magit-refs-mode’ buffers.  If it is ‘nil’, then all
-     refs are displayed (subject to ‘magit-refs-sections-hook’).
+     このalistは、‘magit-refs-mode’バッファに表示されないようにするタグ
+     とブランチを制御します。‘nil’の場合、すべてのrefが表示されます
+     (‘magit-refs-sections-hook’に従います)。
 
-     All keys are tried in order until one matches.  Then its value is
-     used and subsequent elements are ignored.  If the value is non-nil,
-     then the reference is displayed, otherwise it is not.  If no
-     element matches, then the reference is displayed.
+     1つが一致するまで、すべてのキーが順番に試行されます。 次に、その値
+     が使用され、後続の要素は無視されます。値がnil以外の場合はその
+     referenceが表示され、そうでない場合は表示されません。 一致する要素
+     がない場合は、そのreferenceが表示されます。
 
-     A key can either be a regular expression that the refname has to
-     match, or a function that takes the refname as only argument and
-     returns a boolean.  A remote branch such as "origin/master" is
-     displayed as just "master", however for this comparison the former
-     is used.
+     キーは、refnameが一致する必要のある正規表現、またはrefnameを引数と
+     してのみ受け取り、ブール値を返す関数のいずれかです。
+     "origin/master"などのリモートブランチは単に"master"として表示されま
+     すが、この比較では前者が使用されます。
 
 ‘RET’     (‘magit-visit-ref’)
 
-     This command visits the reference or revision at point in another
-     buffer.  If there is no revision at point or with a prefix argument
-     then it prompts for a revision.
+     このコマンドは、別のバッファ内のポイントで参照またはリビジョンにア
+     クセスします。ポイントにリビジョンがない場合、または前置引数がある
+     場合は、リビジョンの入力を求められます。
 
      This command behaves just like ‘magit-show-commit’ as described
      above, except if point is on a reference in a ‘magit-refs-mode’
@@ -10346,22 +10345,22 @@ Appendix C Keystroke Index
 * D w:                                   Refreshing Diffs.    (line  27)
 * DEL:                                   Log Buffer.          (line  56)
 * DEL <1>:                               Commands Available in Diffs.
-                                                              (line  62)
+                                                              (line  61)
 * DEL <2>:                               Blaming.             (line  90)
 * DEL <3>:                               Editing Rebase Sequences.
                                                               (line  28)
 * e:                                     Ediffing.            (line   9)
-* E:                                     Ediffing.            (line  21)
+* E:                                     Ediffing.            (line  23)
 * e <1>:                                 Editing Rebase Sequences.
                                                               (line  55)
-* E c:                                   Ediffing.            (line  66)
-* E i:                                   Ediffing.            (line  58)
-* E m:                                   Ediffing.            (line  36)
-* E r:                                   Ediffing.            (line  27)
-* E s:                                   Ediffing.            (line  49)
-* E u:                                   Ediffing.            (line  54)
-* E w:                                   Ediffing.            (line  62)
-* E z:                                   Ediffing.            (line  70)
+* E c:                                   Ediffing.            (line  72)
+* E i:                                   Ediffing.            (line  62)
+* E m:                                   Ediffing.            (line  38)
+* E r:                                   Ediffing.            (line  29)
+* E s:                                   Ediffing.            (line  51)
+* E u:                                   Ediffing.            (line  57)
+* E w:                                   Ediffing.            (line  67)
+* E z:                                   Ediffing.            (line  77)
 * f:                                     Editing Rebase Sequences.
                                                               (line  63)
 * f <1>:                                 Fetching.            (line   9)
@@ -10384,7 +10383,7 @@ Appendix C Keystroke Index
                                                               (line  32)
 * j:                                     Log Buffer.          (line  35)
 * j <1>:                                 Commands Available in Diffs.
-                                                              (line  47)
+                                                              (line  46)
 * k:                                     Viewing Git Output.  (line  23)
 * k <1>:                                 Applying.            (line  42)
 * k <2>:                                 Editing Rebase Sequences.
@@ -10544,7 +10543,7 @@ Appendix C Keystroke Index
 * r s <1>:                               Rebasing.            (line 114)
 * r u:                                   Rebasing.            (line  37)
 * r w:                                   Rebasing.            (line  95)
-* RET:                                   References Buffer.   (line 179)
+* RET:                                   References Buffer.   (line 171)
 * RET <1>:                               Visiting Files and Blobs from a Diff.
                                                               (line   8)
 * RET <2>:                               Blaming.             (line  76)
@@ -10559,7 +10558,7 @@ Appendix C Keystroke Index
 * S-<tab>:                               Section Visibility.  (line  21)
 * SPC:                                   Log Buffer.          (line  46)
 * SPC <1>:                               Commands Available in Diffs.
-                                                              (line  58)
+                                                              (line  57)
 * SPC <2>:                               Blaming.             (line  80)
 * SPC <3>:                               Editing Rebase Sequences.
                                                               (line  21)
@@ -10615,9 +10614,9 @@ Appendix C Keystroke Index
 * y:                                     References Buffer.   (line   6)
 * y <1>:                                 Editing Rebase Sequences.
                                                               (line  90)
-* y c:                                   References Buffer.   (line  26)
-* y o:                                   References Buffer.   (line  32)
-* y y:                                   References Buffer.   (line  21)
+* y c:                                   References Buffer.   (line  24)
+* y o:                                   References Buffer.   (line  30)
+* y y:                                   References Buffer.   (line  19)
 * z:                                     Stashing.            (line   8)
 * z a:                                   Stashing.            (line  60)
 * z b:                                   Stashing.            (line  82)
@@ -10853,16 +10852,16 @@ Appendix D Command Index
 * magit-dispatch:                        一時的(transient)コマンド.
                                                               (line  18)
 * magit-display-repository-buffer:       Common Commands.     (line   9)
-* magit-ediff:                           Ediffing.            (line  21)
-* magit-ediff-compare:                   Ediffing.            (line  27)
+* magit-ediff:                           Ediffing.            (line  23)
+* magit-ediff-compare:                   Ediffing.            (line  29)
 * magit-ediff-dwim:                      Ediffing.            (line   9)
-* magit-ediff-resolve:                   Ediffing.            (line  36)
-* magit-ediff-show-commit:               Ediffing.            (line  66)
-* magit-ediff-show-staged:               Ediffing.            (line  58)
-* magit-ediff-show-stash:                Ediffing.            (line  70)
-* magit-ediff-show-unstaged:             Ediffing.            (line  54)
-* magit-ediff-show-working-tree:         Ediffing.            (line  62)
-* magit-ediff-stage:                     Ediffing.            (line  49)
+* magit-ediff-resolve:                   Ediffing.            (line  38)
+* magit-ediff-show-commit:               Ediffing.            (line  72)
+* magit-ediff-show-staged:               Ediffing.            (line  62)
+* magit-ediff-show-stash:                Ediffing.            (line  77)
+* magit-ediff-show-unstaged:             Ediffing.            (line  57)
+* magit-ediff-show-working-tree:         Ediffing.            (line  67)
+* magit-ediff-stage:                     Ediffing.            (line  51)
 * magit-edit-line-commit:                Commands for Buffers Visiting Files.
                                                               (line 106)
 * magit-emacs-Q-command:                 Debugging Tools.     (line  16)
@@ -10900,7 +10899,7 @@ Appendix D Command Index
 * magit-go-forward <1>:                  Refreshing Diffs.    (line  92)
 * magit-init:                            Creating Repository. (line   6)
 * magit-jump-to-diffstat-or-diff:        Commands Available in Diffs.
-                                                              (line  47)
+                                                              (line  46)
 * magit-kill-this-buffer:                Minor Mode for Buffers Visiting Blobs.
                                                               (line  20)
 * magit-list-repositories:               Repository List.     (line   6)
@@ -11060,9 +11059,9 @@ Appendix D Command Index
 * magit-show-commit:                     Diffing.             (line  69)
 * magit-show-commit <1>:                 Blaming.             (line  76)
 * magit-show-refs:                       References Buffer.   (line   6)
-* magit-show-refs-current:               References Buffer.   (line  26)
-* magit-show-refs-head:                  References Buffer.   (line  21)
-* magit-show-refs-other:                 References Buffer.   (line  32)
+* magit-show-refs-current:               References Buffer.   (line  24)
+* magit-show-refs-head:                  References Buffer.   (line  19)
+* magit-show-refs-other:                 References Buffer.   (line  30)
 * magit-snapshot-both:                   Stashing.            (line  41)
 * magit-snapshot-index:                  Stashing.            (line  48)
 * magit-snapshot-worktree:               Stashing.            (line  53)
@@ -11140,7 +11139,7 @@ Appendix D Command Index
                                                               (line  34)
 * magit-version:                         Git実行ファイル.     (line  61)
 * magit-version <1>:                     Debugging Tools.     (line  10)
-* magit-visit-ref:                       References Buffer.   (line 179)
+* magit-visit-ref:                       References Buffer.   (line 171)
 * magit-wip-commit:                      Wip Modes.           (line  88)
 * magit-wip-log:                         Wip Modes.           (line  48)
 * magit-wip-log-current:                 Wip Modes.           (line  57)
@@ -11151,9 +11150,9 @@ Appendix D Command Index
 * magit-worktree-move:                   Worktree.            (line  22)
 * magit-worktree-status:                 Worktree.            (line  31)
 * scroll-down:                           Commands Available in Diffs.
-                                                              (line  62)
+                                                              (line  61)
 * scroll-up:                             Commands Available in Diffs.
-                                                              (line  58)
+                                                              (line  57)
 * with-editor-cancel:                    コミットメッセージ編集.
                                                               (line  23)
 * with-editor-cancel <1>:                Editing Rebase Sequences.
@@ -11501,19 +11500,19 @@ Appendix F Variable Index
 * magit-completing-read-function:        補完フレームワークのサポート.
                                                               (line  28)
 * magit-define-global-key-bindings:      Default Bindings.    (line   6)
-* magit-diff-adjust-tab-width:           Diff Options.        (line  21)
+* magit-diff-adjust-tab-width:           Diff Options.        (line  23)
 * magit-diff-buffer-file-locked:         Commands for Buffers Visiting Files.
                                                               (line  61)
-* magit-diff-extra-stat-arguments:       Diff Options.        (line 128)
-* magit-diff-hide-trailing-cr-characters: Diff Options.       (line  90)
-* magit-diff-highlight-hunk-region-functions: Diff Options.   (line  94)
-* magit-diff-highlight-indentation:      Diff Options.        (line  75)
-* magit-diff-highlight-trailing:         Diff Options.        (line  70)
-* magit-diff-paint-whitespace:           Diff Options.        (line  43)
-* magit-diff-paint-whitespace-lines:     Diff Options.        (line  60)
+* magit-diff-extra-stat-arguments:       Diff Options.        (line 132)
+* magit-diff-hide-trailing-cr-characters: Diff Options.       (line  96)
+* magit-diff-highlight-hunk-region-functions: Diff Options.   (line 100)
+* magit-diff-highlight-indentation:      Diff Options.        (line  80)
+* magit-diff-highlight-trailing:         Diff Options.        (line  75)
+* magit-diff-paint-whitespace:           Diff Options.        (line  46)
+* magit-diff-paint-whitespace-lines:     Diff Options.        (line  63)
 * magit-diff-refine-hunk:                Diff Options.        (line   6)
-* magit-diff-refine-ignore-whitespace:   Diff Options.        (line  16)
-* magit-diff-unmarked-lines-keep-foreground: Diff Options.    (line 120)
+* magit-diff-refine-ignore-whitespace:   Diff Options.        (line  18)
+* magit-diff-unmarked-lines-keep-foreground: Diff Options.    (line 125)
 * magit-diff-visit-previous-blob:        Visiting Files and Blobs from a Diff.
                                                               (line  39)
 * magit-direct-use-buffer-arguments:     一時的引数とバッファ変数.
@@ -11521,9 +11520,9 @@ Appendix F Variable Index
 * magit-display-buffer-function:         バッファの切り替え.  (line  27)
 * magit-display-buffer-noselect:         バッファの切り替え.  (line  18)
 * magit-dwim-selection:                  補完と確認.          (line  38)
-* magit-ediff-dwim-show-on-hunks:        Ediffing.            (line  74)
-* magit-ediff-quit-hook:                 Ediffing.            (line  89)
-* magit-ediff-show-stash-with-index:     Ediffing.            (line  82)
+* magit-ediff-dwim-show-on-hunks:        Ediffing.            (line  82)
+* magit-ediff-quit-hook:                 Ediffing.            (line  98)
+* magit-ediff-show-stash-with-index:     Ediffing.            (line  91)
 * magit-generate-buffer-name-function:   バッファの名付け.    (line   6)
 * magit-git-debug:                       Viewing Git Output.  (line  28)
 * magit-git-debug <1>:                   Getting a Value from Git.
@@ -11568,24 +11567,24 @@ Appendix F Variable Index
 * magit-refresh-function:                Refreshing Buffers.  (line  49)
 * magit-refresh-status-buffer:           Automatic Refreshing of Magit Buffers.
                                                               (line  46)
-* magit-refs-filter-alist:               References Buffer.   (line 157)
-* magit-refs-focus-column-width:         References Buffer.   (line  82)
-* magit-refs-margin:                     References Buffer.   (line  97)
-* magit-refs-margin-for-tags:            References Buffer.   (line 123)
-* magit-refs-pad-commit-counts:          References Buffer.   (line  49)
-* magit-refs-primary-column-width:       References Buffer.   (line  69)
+* magit-refs-filter-alist:               References Buffer.   (line 151)
+* magit-refs-focus-column-width:         References Buffer.   (line  79)
+* magit-refs-margin:                     References Buffer.   (line  93)
+* magit-refs-margin-for-tags:            References Buffer.   (line 119)
+* magit-refs-pad-commit-counts:          References Buffer.   (line  48)
+* magit-refs-primary-column-width:       References Buffer.   (line  68)
 * magit-refs-sections-hook:              References Sections. (line  13)
-* magit-refs-show-commit-count:          References Buffer.   (line  37)
-* magit-refs-show-remote-prefix:         References Buffer.   (line  62)
+* magit-refs-show-commit-count:          References Buffer.   (line  35)
+* magit-refs-show-remote-prefix:         References Buffer.   (line  61)
 * magit-remote-add-set-remote.pushDefault: Remote Commands.   (line  93)
 * magit-remote-direct-configure:         Remote Commands.     (line  22)
 * magit-remote-git-executable:           Git実行ファイル.     (line  33)
 * magit-repolist-columns:                Repository List.     (line  14)
 * magit-repository-directories:          Status Buffer.       (line  55)
-* magit-revision-filter-files-on-follow: Revision Buffer.     (line  64)
+* magit-revision-filter-files-on-follow: Revision Buffer.     (line  60)
 * magit-revision-insert-related-refs:    Revision Buffer.     (line   6)
 * magit-revision-show-gravatars:         Revision Buffer.     (line  19)
-* magit-revision-use-hash-sections:      Revision Buffer.     (line  36)
+* magit-revision-use-hash-sections:      Revision Buffer.     (line  35)
 * magit-root-section:                    Matching Sections.   (line  87)
 * magit-save-repository-buffers:         Automatic Saving of File-Visiting Buffers.
                                                               (line  12)
@@ -11609,7 +11608,7 @@ Appendix F Variable Index
 * magit-unstage-committed:               Staging and Unstaging.
                                                               (line  60)
 * magit-update-other-window-delay:       Section Movement.    (line 109)
-* magit-visit-ref-behavior:              References Buffer.   (line 190)
+* magit-visit-ref-behavior:              References Buffer.   (line 182)
 * magit-wip-after-apply-mode:            Legacy Wip Modes.    (line  19)
 * magit-wip-after-apply-mode-lighter:    Legacy Wip Modes.    (line  59)
 * magit-wip-after-save-local-mode-lighter: Legacy Wip Modes.  (line  55)
@@ -11691,124 +11690,124 @@ Node: Log Buffer162361
 Node: Log Margin168050
 Node: Select from Log172235
 Node: Reflog175111
-Node: Cherries177134
-Node: Diffing179592
-Node: Refreshing Diffs183568
-Node: Commands Available in Diffs188080
-Node: Diff Options191051
-Node: Revision Buffer196536
-Node: Ediffing199893
-Node: References Buffer203755
-Node: References Sections214518
-Node: Bisecting215382
-Node: Visiting Files and Blobs217849
-Node: General-Purpose Visit Commands218322
-Node: Visiting Files and Blobs from a Diff219281
-Node: Blaming222740
-Node: Manipulating229175
-Node: Creating Repository229520
-Node: Cloning Repository230078
-Node: Staging and Unstaging235483
-Node: Staging from File-Visiting Buffers241404
-Node: Applying243191
-Node: Committing245971
-Node: コミット開始246566
-Node: コミットメッセージ編集251406
-Node: Using the Revision Stack255041
-Node: Commit Pseudo Headers258105
-Node: Commit Mode and Hooks259454
-Node: Commit Message Conventions262433
-Node: Branching264574
-Node: The Two Remotes264803
-Node: Branch Commands267444
-Node: Branch Git Variables280343
-Node: Auxiliary Branch Commands285741
-Node: Merging286872
-Node: Resolving Conflicts292122
-Node: Rebasing298439
-Node: Editing Rebase Sequences303406
-Node: Information About In-Progress Rebase307734
-Ref: Information About In-Progress Rebase-Footnote-1316599
-Node: Cherry Picking317195
-Node: Reverting321633
-Node: Resetting323174
-Node: Stashing325061
-Node: Transferring330149
-Node: Remotes330374
-Node: Remote Commands330529
-Node: Remote Git Variables334727
-Node: Fetching336009
-Node: Pulling338611
-Node: Pushing339779
-Node: Plain Patches344226
-Node: Maildir Patches345812
-Node: Miscellaneous347437
-Node: Tagging347754
-Node: Notes350216
-Node: Submodules352905
-Node: Listing Submodules353155
-Node: 一時的サブモジュール354661
-Node: Subtree357301
-Node: Worktree359488
-Node: Common Commands360716
-Node: Wip Modes363374
-Node: Wip Graph368298
-Node: Legacy Wip Modes370600
-Node: Commands for Buffers Visiting Files373491
-Node: Minor Mode for Buffers Visiting Blobs379230
-Node: Customizing380044
-Node: Per-Repository Configuration381982
-Node: 基本設定384221
-Node: Safety384547
-Node: Performance386525
-Ref: Log Performance389527
-Ref: Diff Performance390824
-Ref: Refs Buffer Performance392159
-Ref: Committing Performance392728
-Node: Microsoft Windows Performance393638
-Node: MacOS Performance394823
-Ref: MacOS Performance-Footnote-1395528
-Node: Default Bindings395610
-Node: 配管コマンド(Plumbing)397849
-Node: Calling Git398894
-Node: Getting a Value from Git400432
-Node: Calling Git for Effect404173
-Node: Section Plumbing410070
-Node: Creating Sections410321
-Node: Section Selection414224
-Node: Matching Sections416026
-Node: Refreshing Buffers421999
-Node: 慣習425162
-Node: Theming Faces425371
-Node: FAQ433442
-Node: FAQ - How to ...?433967
-Node: Magitの発音は？434427
-Node: How to show git's output?435380
-Node: How to install the gitman info manual?436408
-Node: How to show diffs for gpg-encrypted files?437689
-Node: How does branching and pushing work?438288
-Node: Magitをediff-version-control-packageとして使用できますか？438673
-Node: VC@を無効にする必要がありますか？440760
-Node: FAQ - Issues and Errors441463
-Node: Magit is slow442728
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました442968
-Node: コミットに問題があります443743
-Node: MS WindowsではMagitでpushできません444304
-Node: I am using OS X and SOMETHING works in shell but not in Magit444955
-Node: ファイルを展開して差分を表示するとファイルが消えます445803
-Node: COMMIT_EDITMSGバッファのpointが間違っています446442
-Node: モード行の情報が常に最新ではない447538
-Node: 同じ名前を共有するブランチとタグは何かを壊します448710
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません449665
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません450658
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています453051
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません454078
-Node: 私はポップアップのデフォルトを保存できなくなりました455137
-Node: Debugging Tools456207
-Node: Keystroke Index459027
-Node: Command Index493560
-Node: Function Index531624
-Node: Variable Index548664
+Node: Cherries177164
+Node: Diffing179622
+Node: Refreshing Diffs183598
+Node: Commands Available in Diffs188110
+Node: Diff Options191469
+Node: Revision Buffer198510
+Node: Ediffing202796
+Node: References Buffer208099
+Node: References Sections220547
+Node: Bisecting221411
+Node: Visiting Files and Blobs223878
+Node: General-Purpose Visit Commands224351
+Node: Visiting Files and Blobs from a Diff225310
+Node: Blaming228769
+Node: Manipulating235204
+Node: Creating Repository235549
+Node: Cloning Repository236107
+Node: Staging and Unstaging241512
+Node: Staging from File-Visiting Buffers247433
+Node: Applying249220
+Node: Committing252000
+Node: コミット開始252595
+Node: コミットメッセージ編集257435
+Node: Using the Revision Stack261070
+Node: Commit Pseudo Headers264134
+Node: Commit Mode and Hooks265483
+Node: Commit Message Conventions268462
+Node: Branching270603
+Node: The Two Remotes270832
+Node: Branch Commands273473
+Node: Branch Git Variables286372
+Node: Auxiliary Branch Commands291770
+Node: Merging292901
+Node: Resolving Conflicts298151
+Node: Rebasing304468
+Node: Editing Rebase Sequences309435
+Node: Information About In-Progress Rebase313763
+Ref: Information About In-Progress Rebase-Footnote-1322628
+Node: Cherry Picking323224
+Node: Reverting327662
+Node: Resetting329203
+Node: Stashing331090
+Node: Transferring336178
+Node: Remotes336403
+Node: Remote Commands336558
+Node: Remote Git Variables340756
+Node: Fetching342038
+Node: Pulling344640
+Node: Pushing345808
+Node: Plain Patches350255
+Node: Maildir Patches351841
+Node: Miscellaneous353466
+Node: Tagging353783
+Node: Notes356245
+Node: Submodules358934
+Node: Listing Submodules359184
+Node: 一時的サブモジュール360690
+Node: Subtree363330
+Node: Worktree365517
+Node: Common Commands366745
+Node: Wip Modes369403
+Node: Wip Graph374327
+Node: Legacy Wip Modes376629
+Node: Commands for Buffers Visiting Files379520
+Node: Minor Mode for Buffers Visiting Blobs385259
+Node: Customizing386073
+Node: Per-Repository Configuration388011
+Node: 基本設定390250
+Node: Safety390576
+Node: Performance392554
+Ref: Log Performance395556
+Ref: Diff Performance396853
+Ref: Refs Buffer Performance398188
+Ref: Committing Performance398757
+Node: Microsoft Windows Performance399667
+Node: MacOS Performance400852
+Ref: MacOS Performance-Footnote-1401557
+Node: Default Bindings401639
+Node: 配管コマンド(Plumbing)403878
+Node: Calling Git404923
+Node: Getting a Value from Git406461
+Node: Calling Git for Effect410202
+Node: Section Plumbing416099
+Node: Creating Sections416350
+Node: Section Selection420253
+Node: Matching Sections422055
+Node: Refreshing Buffers428028
+Node: 慣習431191
+Node: Theming Faces431400
+Node: FAQ439471
+Node: FAQ - How to ...?439996
+Node: Magitの発音は？440456
+Node: How to show git's output?441409
+Node: How to install the gitman info manual?442437
+Node: How to show diffs for gpg-encrypted files?443718
+Node: How does branching and pushing work?444317
+Node: Magitをediff-version-control-packageとして使用できますか？444702
+Node: VC@を無効にする必要がありますか？446789
+Node: FAQ - Issues and Errors447492
+Node: Magit is slow448757
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました448997
+Node: コミットに問題があります449772
+Node: MS WindowsではMagitでpushできません450333
+Node: I am using OS X and SOMETHING works in shell but not in Magit450984
+Node: ファイルを展開して差分を表示するとファイルが消えます451832
+Node: COMMIT_EDITMSGバッファのpointが間違っています452471
+Node: モード行の情報が常に最新ではない453567
+Node: 同じ名前を共有するブランチとタグは何かを壊します454739
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません455694
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません456687
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています459080
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません460107
+Node: 私はポップアップのデフォルトを保存できなくなりました461166
+Node: Debugging Tools462236
+Node: Keystroke Index465056
+Node: Command Index499589
+Node: Function Index537653
+Node: Variable Index554693
 
 End Tag Table
 
