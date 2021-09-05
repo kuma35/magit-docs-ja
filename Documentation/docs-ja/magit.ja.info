@@ -4350,78 +4350,76 @@ referencesが比較される別のブランチまたはコミットを指定し�
 
 ‘RET’     (‘magit-visit-ref’)
 
-     このコマンドは、別のバッファ内のポイントで参照またはリビジョンにア
-     クセスします。ポイントにリビジョンがない場合、または前置引数がある
-     場合は、リビジョンの入力を求められます。
+     このコマンドは、別のバッファ内のポイントでreferenceまたはリビジョン
+     にアクセスします。ポイントにリビジョンがない場合、または前置引数が
+     ある場合は、リビジョンの入力を求められます。
 
-     This command behaves just like ‘magit-show-commit’ as described
-     above, except if point is on a reference in a ‘magit-refs-mode’
-     buffer, in which case the behavior may be different, but only if
-     you have customized the option ‘magit-visit-ref-behavior’.
+     このコマンドは、ポイントが‘magit-refs-mode’バッファ内のreference上
+     にある場合を除いて、上記の‘magit-show-commit’と同じように動作します
+     。あなたがオプション‘magit-visit-ref-behavior’をカスタマイズした場
+     合、動作は異なる可能性があります。
 
  -- User Option: magit-visit-ref-behavior
 
-     This option controls how ‘magit-visit-ref’ behaves in
-     ‘magit-refs-mode’ buffers.
+     このオプションは、‘magit-visit-ref’が‘magit-refs-mode’バッファでど
+     のように動作するかを制御します。
 
-     By default ‘magit-visit-ref’ behaves like ‘magit-show-commit’, in
-     all buffers, including ‘magit-refs-mode’ buffers.  When the type of
-     the section at point is ‘commit’ then "RET" is bound to
-     ‘magit-show-commit’, and when the type is either ‘branch’ or ‘tag’
-     then it is bound to ‘magit-visit-ref’.
+     デフォルトでは、‘magit-visit-ref’は‘magit-refs-mode’バッファを含む
+     すべてのバッファで、‘magit-show-commit’のように動作します。ポイント
+     あるセクションのタイプが‘commit’の場合、「RET」は
+     ‘magit-show-commit’に結び付けられ、タイプが‘branch’または‘tag’の場
+     合、‘magit-visit-ref’に結び付けられています。
 
-     "RET" is one of Magit’s most essential keys and at least by default
-     it should behave consistently across all of Magit, especially
-     because users quickly learn that it does something very harmless;
-     it shows more information about the thing at point in another
-     buffer.
+     「RET」はMagitの最も重要なキーの1つであり、少なくともデフォルトでは
+     、Magit全体で一貫して動作する必要があります。特に、ユーザーには非常
+     に無害なことをすぐに理解できるようにするためです。別のバッファ内の
+     ポイントにあるものに関する詳細情報が表示されます。
 
-     However "RET" used to behave differently in ‘magit-refs-mode’
-     buffers, doing surprising things, some of which cannot really be
-     described as "visit this thing".  If you’ve grown accustomed this
-     behavior, you can restore it by adding one or more of the below
-     symbols to the value of this option.  But keep in mind that by
-     doing so you don’t only introduce inconsistencies, you also lose
-     some functionality and might have to resort to ‘M-x
-     magit-show-commit’ to get it back.
+     けれども、「RET」は‘magit-refs-mode’バッファで異なる動作をし、驚く
+     べきことを実行していました。その中には、「これこれを訪問する」
+     (visit this thing)とは実際には説明できないものもあります。この動作
+     に慣れている場合は、このオプションの値に以下のシンボルを1つ以上追加
+     することで、この動作を復元できます。 ただし、そうすることで不整合が
+     発生するだけでなく、一部の機能が失われ、‘M-x magit-show-commit’を使
+     用して元に戻す必要がある場合があることに注意してください。
 
-     ‘magit-visit-ref’ looks for these symbols in the order in which
-     they are described here.  If the presence of a symbol applies to
-     the current situation, then the symbols that follow do not affect
-     the outcome.
+     ‘magit-visit-ref’は、ここで説明されている順序でこれらのシンボルを検
+     索します。シンボルの存在が現在の状況に当てはまる場合、後続のシンボ
+     ルは結果に影響を与えません。
 
         • ‘focus-on-ref’
 
-          With a prefix argument update the buffer to show commit counts
-          and lists of cherry commits relative to the reference at point
-          instead of relative to the current buffer or ‘HEAD’.
+          前置引数を使用してバッファを更新し、現在のバッファまたは
+          ‘HEAD’ではなく、そのポイントでのreferenceに関連するコミット数
+          とcherry commitのリストを表示します。
 
-          Instead of adding this symbol, consider pressing "C-u y o
-          RET".
+          このシンボルを追加する代わりに、"C-u y o RET"を押すことを検討
+          してください。
 
         • ‘create-branch’
 
-          If point is on a remote branch, then create a new local branch
-          with the same name, use the remote branch as its upstream, and
-          then check out the local branch.
+          ポイントがリモートブランチ上にある場合は、同じ名前で新しいロー
+          カルブランチを作成し、リモートブランチをアップストリームとして
+          使用してから、ローカルブランチをチェックアウトします。
 
-          Instead of adding this symbol, consider pressing "b c RET
-          RET", like you would do in other buffers.
+          このシンボルを追加する代わりに、他のバッファで行うように、"b c
+          RET RET"を押すことを検討してください。
 
         • ‘checkout-any’
 
-          Check out the reference at point.  If that reference is a tag
-          or a remote branch, then this results in a detached ‘HEAD’.
+          ポイントでリファレンスをチェックしてください。そのreferenceが
+          タグまたはリモートブランチである場合、これにより‘HEAD’が
+          detachされます。
 
-          Instead of adding this symbol, consider pressing "b b RET",
-          like you would do in other buffers.
+          このシンボルを追加する代わりに、他のバッファで行うように、"b b
+          RET"を押すことを検討してください。
 
         • ‘checkout-branch’
 
-          Check out the local branch at point.
+          ポイントでローカルブランチをcheck outしてください。
 
-          Instead of adding this symbol, consider pressing "b b RET",
-          like you would do in other buffers.
+          このシンボルを追加する代わりに、他のバッファで行うように、"b b
+          RET"を押すことを検討してください。
 
 * Menu:
 
@@ -4433,28 +4431,28 @@ File: magit.ja.info,  Node: References Sections,  Up: References Buffer
 5.6.1 References Sections
 -------------------------
 
-The contents of references buffers is controlled using the hook
-‘magit-refs-sections-hook’.  See *note Section Hooks:: to learn about
-such hooks and how to customize them.  All of the below functions are
-members of the default value.  Note that it makes much less sense to
-customize this hook than it does for the respective hook used for the
-status buffer.
+referenceバッファの内容は、フック‘magit-refs-sections-hook’を使用して制
+御されます。このようなフックとそれらをカスタマイズする方法については
+→*note Section Hooks:: 以下の関数はすべてデフォルト値のメンバーです。こ
+のフックをカスタマイズすることは、ステータスバッファに使用されるそれぞれ
+のフックよりもはるかに意味がないことに注意してください。
 
  -- User Option: magit-refs-sections-hook
 
-     Hook run to insert sections into a references buffer.
+     フックランを実行して、セクションをreferenceバッファに挿入します。
 
  -- Function: magit-insert-local-branches
 
-     Insert sections showing all local branches.
+     すべてのローカルブランチを表すセクションを挿入します。
 
  -- Function: magit-insert-remote-branches
 
-     Insert sections showing all remote-tracking branches.
+     すべてのリモート追跡(remote-tracking)ブランチを表すセクションを挿入
+     します。
 
  -- Function: magit-insert-tags
 
-     Insert sections showing all tags.
+     すべてのタグを表示するセクションを挿入します。
 
 
 File: magit.ja.info,  Node: Bisecting,  Next: Visiting Files and Blobs,  Prev: References Buffer,  Up: Inspecting
@@ -4462,7 +4460,7 @@ File: magit.ja.info,  Node: Bisecting,  Next: Visiting Files and Blobs,  Prev: R
 5.7 Bisecting
 =============
 
-こちらもご覧下さい *note (gitman)git-bisect::.
+こちらもご覧下さい *note (gitman)git-bisect::
 
 ‘B’     (‘magit-bisect’)
 
@@ -4470,62 +4468,62 @@ File: magit.ja.info,  Node: Bisecting,  Next: Visiting Files and Blobs,  Prev: R
      (suffix)コマンドを結びつけ、後置(suffix)コマンドが呼び出されるまで
      一時バッファ(temporary buffer)に表示します。
 
-When bisecting is not in progress, then the transient features the
-following suffix commands.
+bisectが進行中でない場合、一時コマンド(transient)には続く後置コマンドが
+あります。
 
 ‘B B’     (‘magit-bisect-start’)
 
-     Start a bisect session.
+     bisectセッションを開始します。
 
-     Bisecting a bug means to find the commit that introduced it.  This
-     command starts such a bisect session by asking for a known good
-     commit and a known bad commit.  If you’re bisecting a change that
-     isn’t a regression, you can select alternate terms that are
-     conceptually more fitting than "bad" and "good", but the infix
-     arguments to do so are disabled by default.
+     バグをbisectするということは、バグを引き起こしたコミットを見つける
+     ことを意味します。このコマンドは、既知の良好なコミットと既知の不良
+     コミットを要求することにより、このようなbisectセッションを開始しま
+     す。 あなたがデグレ(regression)ではない変更をbisectする場合は、
+     "bad"と"good"よりも概念的に適切な代替用語を選択できますが、そうする
+     ための中置引数はデフォルトでは無効になっています。
 
 ‘B s’     (‘magit-bisect-run’)
 
-     Bisect automatically by running commands after each step.
+     各ステップの後にコマンドを実行することにより、自動的にbisectします
+     。
 
-When bisecting in progress, then the transient instead features the
-following suffix commands.
+進行中のbisectの場合、一時コマンド(transient)は代わりに以下の後置コマン
+ドを備えています。
 
 ‘B b’     (‘magit-bisect-bad’)
 
-     Mark the current commit as bad.  Use this after you have asserted
-     that the commit does contain the bug in question.
+     現在のコミットをbadとしてマークします。コミットに問題のバグが含まれ
+     ていることを表明した後で、これを使用します。
 
 ‘B g’     (‘magit-bisect-good’)
 
-     Mark the current commit as good.  Use this after you have asserted
-     that the commit does not contain the bug in question.
+     現在のコミットをgoodとしてマークします。 コミットに問題のバグが含ま
+     れていないことを表明した後で、これを使用します。
 
 ‘B m’     (‘magit-bisect-mark’)
 
-     Mark the current commit with one of the bisect terms.  This command
-     provides an alternative to ‘magit-bisect-bad’ and
-     ‘magit-bisect-good’ and is useful when using terms other than "bad"
-     and "good".  This suffix is disabled by default.
+     現在のコミットをbisectの用語の1つでマークします。このコマンドは、
+     ‘magit-bisect-bad’および‘magit-bisect-good’の代替を提供し、「bad」
+     および「good」以外の用語を使用する場合に役立ちます。この後置はデフ
+     ォルトでは無効になっています。
 
 ‘B k’     (‘magit-bisect-skip’)
 
-     Skip the current commit.  Use this if for some reason the current
-     commit is not a good one to test.  This command lets Git choose a
-     different one.
+     現在のコミットをスキップします。何らかの理由で現在のコミットがテス
+     トに適していない場合は、これを使用します。このコマンドにより、Gitは
+     別のコマンドを選択できます。
 
 ‘B r’     (‘magit-bisect-reset’)
 
-     After bisecting, cleanup bisection state and return to original
-     ‘HEAD’.
+     bisect後、bisect状態をクリーンアップし、元の‘HEAD’に戻します。
 
-By default the status buffer shows information about the ongoing bisect
-session.
+デフォルトでは、ステータスバッファには、進行中のbisectセッションに関する
+情報が表示されます。
 
  -- User Option: magit-bisect-show-graph
 
-     This option controls whether a graph is displayed for the log of
-     commits that still have to be bisected.
+     このオプションは、まだbisectする必要があるコミットのログのグラフを
+     表示するかどうかを制御します。
 
 
 File: magit.ja.info,  Node: Visiting Files and Blobs,  Next: Blaming,  Prev: Bisecting,  Up: Inspecting
@@ -4533,10 +4531,10 @@ File: magit.ja.info,  Node: Visiting Files and Blobs,  Next: Blaming,  Prev: Bis
 5.8 Visiting Files and Blobs
 ============================
 
-Magit provides several commands that visit a file or blob (the version
-of a file that is stored in a certain commit).  Actually it provides
-several *groups* of such commands and the several *variants* within each
-group.
+Magitは、ファイルまたはblob(特定のコミットに保存されているファイルのバー
+ジョン)にアクセスするいくつかのコマンドを提供します。 実際には、そのよう
+なコマンドのいくつかの「グループ」と、各グループ内のいくつかの「バリエー
+ション」を提供します。
 
 * Menu:
 
@@ -4549,26 +4547,27 @@ File: magit.ja.info,  Node: General-Purpose Visit Commands,  Next: Visiting File
 5.8.1 General-Purpose Visit Commands
 ------------------------------------
 
-These commands can be used anywhere to open any blob.  Currently no keys
-are bound to these commands by default, but that is likely to change.
+これらのコマンドは、任意のblobを開くためにどこでも使用できます。現在、デ
+フォルトではこれらのコマンドに結び付けられているキーはありませんが、変更
+される可能性はあります。
 
- -- Command: magit-find-file
+ -- magit-find-file: コマンド
 
-     This command reads a filename and revision from the user and visits
-     the respective blob in a buffer.  The buffer is displayed in the
-     selected window.
+     このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッ
+     ファ内のそれぞれのBLOBにアクセスします。選択したウィンドウにバッフ
+     ァが表示されます。
 
- -- Command: magit-find-file-other-window
+ -- magit-find-file-other-window: コマンド
 
-     This command reads a filename and revision from the user and visits
-     the respective blob in a buffer.  The buffer is displayed in
-     another window.
+     このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッ
+     ファ内のそれぞれのBLOBにアクセスします。バッファは別のウィンドウに
+     表示されます。
 
- -- Command: magit-find-file-other-frame
+ -- magit-find-file-other-frame: コマンド
 
-     This command reads a filename and revision from the user and visits
-     the respective blob in a buffer.  The buffer is displayed in
-     another frame.
+     このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッ
+     ファ内のそれぞれのBLOBにアクセスします。バッファは別のフレームに表
+     示されます。
 
 
 File: magit.ja.info,  Node: Visiting Files and Blobs from a Diff,  Prev: General-Purpose Visit Commands,  Up: Visiting Files and Blobs
@@ -4576,76 +4575,78 @@ File: magit.ja.info,  Node: Visiting Files and Blobs from a Diff,  Prev: General
 5.8.2 Visiting Files and Blobs from a Diff
 ------------------------------------------
 
-These commands can only be used when point is inside a diff.
+これらのコマンドは、ポイントがdiff内にある場合にのみ使用できます。
 
 ‘RET’     (‘magit-diff-visit-file’)
 
-     This command visits the appropriate version of the file that the
-     diff at point is about.
+     このコマンドは、その時点でのdiffが含まれているファイルの適切なバー
+     ジョンにアクセスします。
 
-     This commands visits the worktree version of the appropriate file.
-     The location of point inside the diff determines which file is
-     being visited.  The visited version depends on what changes the
-     diff is about.
+     このコマンドは、適切なファイルの作業ツリーバージョンにアクセスしま
+     す。diff内のポイントの位置によって、アクセスされるファイルが決まり
+     ます。訪問したバージョンは、diffがどのような変更であるかによって異
+     なります。
 
-        • If the diff shows uncommitted changes (i.e.  staged or
-          unstaged changes), then visit the file in the working tree
-          (i.e.  the same "real" file that ‘find-file’ would visit.  In
-          all other cases visit a "blob" (i.e.  the version of a file as
-          stored in some commit).
+        • diffにコミットされていない変更(つまり、ステージされた変更
+          (staged changes)またはステージされていない変更(unstaged
+          changes)）が表示される場合は、作業ツリー内のファイル(つまり、
+          ‘find-file’がアクセスするのと同じ「実際の」ファイル)にアクセス
+          します。それ以外の場合は、「blob」にアクセスします。（つまり、
+          コミットに保存されているファイルのバージョン）。
 
-        • If point is on a removed line, then visit the blob for the
-          first parent of the commit that removed that line, i.e.  the
-          last commit where that line still exists.
+        • ポイントが削除された行にある場合は、その行を削除したコミットの
+          最初の親、つまりその行がまだ存在する最後のコミットのblobにアク
+          セスします。
 
-        • If point is on an added or context line, then visit the blob
-          that adds that line, or if the diff shows from more than a
-          single commit, then visit the blob from the last of these
-          commits.
+        • ポイントが追加された行またはコンテキスト行にある場合は、その行
+          を追加するblobにアクセスします。または、diffが複数のコミットか
+          ら表示される場合は、これらの最後のコミットからblobにアクセスし
+          ます。
 
-     In the file-visiting buffer this command goes to the line that
-     corresponds to the line that point is on in the diff.
+     file-visitingバッファでは、このコマンドは、diffでポイントがオンにな
+     っている行に対応する行に移動します。
 
-     The buffer is displayed in the selected window.  With a prefix
-     argument the buffer is displayed in another window instead.
+     選択したウィンドウにバッファが表示されます。前置引数を使用すると、
+     代わりにバッファが別のウィンドウに表示されます。
 
  -- User Option: magit-diff-visit-previous-blob
 
-     This option controls whether ‘magit-diff-visit-file’ may visit the
-     previous blob.  When this is ‘t’ (the default) and point is on a
-     removed line in a diff for a committed change, then
-     ‘magit-diff-visit-file’ visits the blob from the last revision
-     which still had that line.
+     このオプションは、‘magit-diff-visit-file’が前のblobにアクセスできる
+     かどうかを制御します。これが‘t’（デフォルト）であり、コミットされた
+     変更のdiff内の削除された行にポイントがある場合、
+     ‘magit-diff-visit-file’はその行がまだ残っている最後のリビジョンの
+     blobにアクセスします。
 
-     Currently this is only supported for committed changes, for staged
-     and unstaged changes ‘magit-diff-visit-file’ always visits the file
-     in the working tree.
+     現在、これはコミットされた変更に対してのみサポートされています。ス
+     テージされた変更(staged changes)とステージされていない変更(unstaged
+     changes)の場合、‘magit-diff-visit-file’は常に作業ツリー内のファイル
+     にアクセスします。
 
 ‘C-<return>’     (‘magit-diff-visit-file-worktree’)
 
-     This command visits the worktree version of the appropriate file.
-     The location of point inside the diff determines which file is
-     being visited.  Unlike ‘magit-diff-visit-file’ it always visits the
-     "real" file in the working tree, i.e the "current version" of the
-     file.
+     このコマンドは、適切なファイルの作業ツリーバージョンにアクセスしま
+     す。diff内のポイントの位置によって、アクセスされるファイルが決まり
+     ます。‘magit-diff-visit-file’とは異なり、常に作業ツリー内の「実際の
+     」ファイル、つまりファイルの「現在のバージョン」にアクセスします。
 
-     In the file-visiting buffer this command goes to the line that
-     corresponds to the line that point is on in the diff.  Lines that
-     were added or removed in the working tree, the index and other
-     commits in between are automatically accounted for.
+     file-visitingバッファでは、このコマンドは、diffでポイントがオンにな
+     っている行に対応する行に移動します。作業ツリーで追加または削除され
+     た行、インデックス、およびその間のその他のコミットは、自動的に考慮
+     されます。
 
-     The buffer is displayed in the selected window.  With a prefix
-     argument the buffer is displayed in another window instead.
+     選択したウィンドウにバッファが表示されます。前置引数を使用すると、
+     代わりにバッファが別のウィンドウに表示されます。
 
-Variants of the above two commands exist that instead visit the file in
-another window or in another frame.  If you prefer such behavior, then
-you may want to change the above key bindings, but note that the above
-commands also use another window when invoked with a prefix argument.
+上記の2つのコマンドのバリエーションが存在しています。それは代わりに別の
+ウィンドウまたは別のフレームでファイルにアクセスします。このような動作が
+必要な場合は、上記のキーバインディングを変更することをお勧めしますが、上
+記のコマンドは、前置引数を指定して呼び出されたときに別のウィンドウも使用
+することに注意してください。
 
- -- Command: magit-diff-visit-file-other-window
- -- Command: magit-diff-visit-file-other-frame
- -- Command: magit-diff-visit-worktree-file-other-window
- -- Command: magit-diff-visit-worktree-file-other-frame
+ -- magit-diff-visit-file-other-window: コマンド
+ -- magit-diff-visit-file-other-frame: コマンド
+ -- magit-diff-visit-worktree-file-other-window: コマンド
+ -- magit-diff-visit-worktree-file-other-frame: コマンド
 
 
 File: magit.ja.info,  Node: Blaming,  Prev: Visiting Files and Blobs,  Up: Inspecting
@@ -4653,17 +4654,17 @@ File: magit.ja.info,  Node: Blaming,  Prev: Visiting Files and Blobs,  Up: Inspe
 5.9 Blaming
 ===========
 
-こちらもご覧下さい *note (gitman)git-blame::.
+こちらもご覧下さい *note (gitman)git-blame::
 
-To start blaming invoke the ‘magit-file-dispatch’ transient prefix
-command by pressing ‘C-c M-g’.
+blameを開始するには、‘C-c M-g’を押して、‘magit-file-dispatch’一時
+(transient)前置コマンドを呼び出します。
 
-The blaming suffix commands can be invoked from the dispatch transient.
-However if you want to set an infix argument, then you have to enter the
-blaming sub-transient first.
+blame後置コマンドは、ディスパッチ一時コマンド(transient)から呼び出すこと
+ができます。 ただし、中置引数を設定する場合は、最初にblameサブ一時コマン
+ド(transient)を入力する必要があります。
 
-The key bindings shown below assume that you enter the dispatch
-transient using the default binding.
+以下に示すキーバインディングは、デフォルトのバインディングを使用してディ
+スパッチ一時コマンド(transient)を入力することを前提としています。
 
 ‘C-c M-g B’     (‘magit-blame’)
 
@@ -4672,116 +4673,117 @@ transient using the default binding.
      (suffix)が呼び出されるまで一時バッファ(temporary buffer)に表示しま
      す。
 
-Note that not all of the following suffixes are available at all times.
-For example if ‘magit-blame-mode’ is not enabled, then the command whose
-purpose is to turn off that mode would not be of any use and therefore
-isn’t available.
+注意: 以下の後置コマンドのすべてが常に使用できるわけではないことに注意し
+てください。たとえば、‘magit-blame-mode’が有効になっていない場合、そのモ
+ードをオフにすることを目的としたコマンドは役に立たないため、使用できませ
+ん。
 
 ‘C-c M-g b’     (‘magit-blame-addition’)
 ‘C-c M-g B b’     (‘magit-blame-addition’)
 
-     This command augments each line or chunk of lines in the current
-     file-visiting or blob-visiting buffer with information about what
-     commits last touched these lines.
+     このコマンドは、現在のfile-visitingまたはblob-visitingバッファ内の
+     各行または行のチャンクに、これらの行に最後にアクセスしたコミットに
+     関する情報を追加します。
 
-     If the buffer visits a revision of that file, then history up to
-     that revision is considered.  Otherwise, the file’s full history is
-     considered, including uncommitted changes.
+     バッファがそのファイルのリビジョンにアクセスすると、そのリビジョン
+     までの履歴が考慮されます。それ以外の場合は、コミットされていない変
+     更を含む、ファイルの完全な履歴が考慮されます。
 
-     If Magit-Blame mode is already turned on in the current buffer then
-     blaming is done recursively, by visiting REVISION:FILE (using
-     ‘magit-find-file’), where REVISION is a parent of the revision that
-     added the current line or chunk of lines.
+     現在のバッファでMagit-Blameモードがすでにオンになっている場合は、
+     REVISION:FILEにアクセスして(‘magit-find-file’を使用)、再帰的に
+     blameを行います。ここで、REVISIONは、現在の行または行のチャンクを追
+     加したリビジョンの親です。
 
 ‘C-c M-g r’     (‘magit-blame-removal’)
 ‘C-c M-g B r’     (‘magit-blame-removal’)
 
-     This command augments each line or chunk of lines in the current
-     blob-visiting buffer with information about the revision that
-     removes it.  It cannot be used in file-visiting buffers.
+     このコマンドは、現在のblob-visitingバッファ内の各行または行のチャン
+     クを、それを削除するリビジョンに関する情報で補強します。
+     file-visitingバッファでは使用できません。
 
-     Like ‘magit-blame-addition’, this command can be used recursively.
+     ‘magit-blame-addition’と同様に、このコマンドは再帰的に使用できます
+     。
 
 ‘C-c M-g f’     (‘magit-blame-reverse’)
 ‘C-c M-g B f’     (‘magit-blame-reverse’)
 
-     This command augments each line or chunk of lines in the current
-     file-visiting or blob-visiting buffer with information about the
-     last revision in which a line still existed.
+     このコマンドは、現在のfile-visitingまたはblob-visitingバッファ内の
+     各行または行のチャンクに、行がまだ存在していた最後のリビジョンに関
+     する情報を追加します。
 
-     Like ‘magit-blame-addition’, this command can be used recursively.
+     ‘magit-blame-addition’と同様に、このコマンドは再帰的に使用できます
+     。
 
 ‘C-c M-g e’     (‘magit-blame-echo’)
 ‘C-c M-g B e’     (‘magit-blame-echo’)
 
-     This command is like ‘magit-blame-addition’ except that it doesn’t
-     turn on ‘read-only-mode’ and that it initially uses the
-     visualization style specified by option ‘magit-blame-echo-style’.
+     このコマンドは‘magit-blame-addition’に似ていますが、
+     ‘read-only-mode’がオンにならず、最初はオプション
+     ‘magit-blame-echo-style’で指定された視覚化スタイルを使用する点が異
+     なります。
 
-The following key bindings are available when Magit-Blame mode is
-enabled and Read-Only mode is not enabled.  These commands are also
-available in other buffers; here only the behavior is described that is
-relevant in file-visiting buffers that are being blamed.
+Magit-Blameモードが有効で、読み取り専用モードが有効になっていない場合は
+、以下のキーバインディングを使用できます。これらのコマンドは、他のバッフ
+ァでも使用できます。ここでは、blameされているfile-visitingバッファに関連
+する動作のみが説明されています。
 
 ‘RET’     (‘magit-show-commit’)
 
-     This command shows the commit that last touched the line at point.
+     このコマンドは、ポイントで行に最後に触れたコミットを表示します。
 
 ‘SPC’     (‘magit-diff-show-or-scroll-up’)
 
-     This command updates the commit buffer.
+     このコマンドは、コミットバッファを更新します。
 
-     This either shows the commit that last touched the line at point in
-     the appropriate buffer, or if that buffer is already being
-     displayed in the current frame and if that buffer contains
-     information about that commit, then the buffer is scrolled up
-     instead.
+     これは、適切なバッファ内のポイントで最後に行に触れたコミットを示し
+     ます。または、そのバッファが現在のフレームに既に表示されていて、そ
+     のバッファにそのコミットに関する情報が含まれている場合は、代わりに
+     バッファが上にスクロールされます。
 
 ‘DEL’     (‘magit-diff-show-or-scroll-down’)
 
-     This command updates the commit buffer.
+     このコマンドは、コミットバッファを更新します。
 
-     This either shows the commit that last touched the line at point in
-     the appropriate buffer, or if that buffer is already being
-     displayed in the current frame and if that buffer contains
-     information about that commit, then the buffer is scrolled down
-     instead.
+     これは、適切なバッファ内のポイントで最後に行に触れたコミットを示し
+     ます。または、そのバッファが現在のフレームに既に表示されていて、そ
+     のバッファにそのコミットに関する情報が含まれている場合は、代わりに
+     バッファが下にスクロールされます。
 
-The following key bindings are available when both Magit-Blame mode and
-Read-Only mode are enabled.
+以下のキーバインディングは、Magit-Blameモードと読み取り専用モードの両方
+が有効になっている場合に使用できます。
 
 ‘b’     (‘magit-blame’)
 
-     See above.
+     上記参照。
 
 ‘n’     (‘magit-blame-next-chunk’)
 
-     This command moves to the next chunk.
+     このコマンドは次のチャンクに移動します。
 
 ‘N’     (‘magit-blame-next-chunk-same-commit’)
 
-     This command moves to the next chunk from the same commit.
+     このコマンドは、同じコミットから次のチャンクに移動します。
 
 ‘p’     (‘magit-blame-previous-chunk’)
 
-     This command moves to the previous chunk.
+     このコマンドは前のチャンクに移動します。
 
 ‘P’     (‘magit-blame-previous-chunk-same-commit’)
 
-     This command moves to the previous chunk from the same commit.
+     このコマンドは、同じコミットから前のチャンクに移動します。
 
 ‘q’     (‘magit-blame-quit’)
 
-     This command turns off Magit-Blame mode.  If the buffer was created
-     during a recursive blame, then it also kills the buffer.
+     このコマンドは、Magit-Blameモードをオフにします。 再帰的なblameの間
+     にバッファが作成された場合は、バッファも強制終了します。
 
 ‘M-w’     (‘magit-blame-copy-hash’)
 
-     This command saves the hash of the current chunk’s commit to the
-     kill ring.
+     このコマンドは、現在のチャンクのコミットのハッシュをキルリングに保
+     存します。
 
-     When the region is active, the command saves the region’s content
-     instead of the hash, like ‘kill-ring-save’ would.
+     リージョンがアクティブな場合、コマンドは‘kill-ring-save’のように、
+     ハッシュではなくリージョンのコンテンツを保存します。
 
 ‘c’     (‘magit-blame-cycle-style’)
 
@@ -4810,8 +4812,8 @@ Blaming is also controlled using the following options.
 
  -- User Option: magit-blame-read-only
 
-     This option controls whether blaming a buffer also makes
-     temporarily read-only.
+     このオプションは、バッファをblameすることで一時的に読み取り専用にす
+     るかどうかを制御します。
 
  -- User Option: magit-blame-disable-modes
 
@@ -4821,7 +4823,7 @@ Blaming is also controlled using the following options.
 
  -- User Option: magit-blame-goto-chunk-hook
 
-     This hook is run when moving between chunks.
+     このフックは、チャンク間を移動するときに実行されます。
 
 
 File: magit.ja.info,  Node: Manipulating,  Next: Transferring,  Prev: Inspecting,  Up: Top
@@ -4852,13 +4854,13 @@ File: magit.ja.info,  Node: Creating Repository,  Next: Cloning Repository,  Up:
 
 ‘M-x magit-init’     (‘magit-init’)
 
-     This command initializes a repository and then shows the status
-     buffer for the new repository.
+     このコマンドは、リポジトリを初期化してから、新しいリポジトリのステ
+     ータスバッファを表示します。
 
-     If the directory is below an existing repository, then the user has
-     to confirm that a new one should be created inside.  If the
-     directory is the root of the existing repository, then the user has
-     to confirm that it should be reinitialized.
+     ディレクトリが既存のリポジトリの下にある場合、ユーザーは新しいリポ
+     ジトリを内部に作成する必要があることを確認する必要があります。ディ
+     レクトリが既存のリポジトリのルートである場合、ユーザーはそれを再初
+     期化する必要があることを確認する必要があります。
 
 
 File: magit.ja.info,  Node: Cloning Repository,  Next: Staging and Unstaging,  Prev: Creating Repository,  Up: Manipulating
@@ -4866,11 +4868,12 @@ File: magit.ja.info,  Node: Cloning Repository,  Next: Staging and Unstaging,  P
 6.2 Cloning Repository
 ======================
 
-To clone a remote or local repository use ‘C’, which is bound to the
-command ‘magit-clone’.  This command either act as a transient prefix
-command, which binds several infix arguments and suffix commands, or it
-can invoke ‘git clone’ directly, depending on whether a prefix argument
-is used and on the value of ‘magit-clone-always-transient’.
+リモートまたはローカルリポジトリのクローンを作成するには、コマンド
+‘magit-clone’に結び付けられている‘C’を使用します。このコマンドは、いくつ
+かの中置引数と後置コマンドをバインドする一時(transient)前置コマンドとし
+て機能するか、前置数が使用されているかどうかと
+‘magit-clone-always-transient’の値に応じて、‘git clone’を直接呼び出すこ
+とができます。
 
  -- User Option: magit-clone-always-transient
 
@@ -4943,12 +4946,12 @@ The following suffixes are disabled by default.  See *note
      This option controls whether the value of the Git variable
      ‘remote.pushDefault’ is set after cloning.
 
-        • If ‘t’, then it is always set without asking.
+        • ‘t’の場合、常に問い合わせ無しで設定されます。
 
-        • If ‘ask’, then the users are asked every time they clone a
-          repository.
+        • ‘ask’の場合、ユーザーはリポジトリのクローンを作成するたびに問
+          い合わせされます。
 
-        • If ‘nil’, then it is never set.
+        • ‘nil’の場合、設定されません。
 
  -- User Option: magit-clone-default-directory
 
@@ -5170,13 +5173,13 @@ variants")と呼ばれます。
 
 ‘v’     (‘magit-reverse’)
 
-     Reverse the change at point in the working tree.
+     作業ツリーのポイントの変更を元に戻します。
 
      前置引数を使用して、3方向マージにフォールバックします。これを行うと
      、変更がインデックスにも適用されます。
 
-With a prefix argument all apply variants attempt a 3-way merge when
-appropriate (i.e.  when ‘git apply’ is used internally).
+前置引数を使用すると、すべてのapplyバリエーションは、適切な場合（つまり
+、‘git apply’が内部で使用される場合）に3方向マージを試行します。
 
 
 File: magit.ja.info,  Node: Committing,  Next: Branching,  Prev: Applying,  Up: Manipulating
@@ -5456,8 +5459,9 @@ File: magit.ja.info,  Node: Commit Pseudo Headers,  Next: Commit Mode and Hooks,
 Commit Pseudo Headers
 .....................
 
-Some projects use pseudo headers in commit messages.  Magit colorizes
-such headers and provides some commands to insert such headers.
+一部のプロジェクトでは、コミットメッセージで疑似ヘッダー(pseudo header)を
+使用します。Magitはそのようなヘッダーを色付けし、そのようなヘッダーを挿
+入するためのいくつかのコマンドを提供します。
 
  -- User Option: git-commit-known-pseudo-headers
 
@@ -10201,52 +10205,52 @@ Appendix C Keystroke Index
 * A s:                                   Cherry Picking.      (line  77)
 * A s <1>:                               Cherry Picking.      (line  95)
 * B:                                     Bisecting.           (line   8)
-* b:                                     Blaming.             (line 103)
+* b:                                     Blaming.             (line 104)
 * b <1>:                                 Branch Commands.     (line  12)
 * b <2>:                                 Editing Rebase Sequences.
                                                               (line  85)
 * B B:                                   Bisecting.           (line  17)
-* B b:                                   Bisecting.           (line  35)
+* B b:                                   Bisecting.           (line  36)
 * b b:                                   Branch Commands.     (line  50)
 * b C:                                   Branch Commands.     (line  30)
 * b c:                                   Branch Commands.     (line  68)
-* B g:                                   Bisecting.           (line  40)
-* B k:                                   Bisecting.           (line  52)
+* B g:                                   Bisecting.           (line  41)
+* B k:                                   Bisecting.           (line  53)
 * b k:                                   Branch Commands.     (line 148)
 * b l:                                   Branch Commands.     (line  75)
-* B m:                                   Bisecting.           (line  45)
+* B m:                                   Bisecting.           (line  46)
 * b n:                                   Branch Commands.     (line  58)
-* B r:                                   Bisecting.           (line  58)
+* B r:                                   Bisecting.           (line  59)
 * b r:                                   Branch Commands.     (line 154)
 * B s:                                   Bisecting.           (line  28)
 * b s:                                   Branch Commands.     (line  98)
 * b S:                                   Branch Commands.     (line 126)
 * b x:                                   Branch Commands.     (line 132)
-* c:                                     Blaming.             (line 136)
-* C:                                     Cloning Repository.  (line  20)
+* c:                                     Blaming.             (line 137)
+* C:                                     Cloning Repository.  (line  21)
 * c <1>:                                 コミット開始.        (line   8)
 * c <2>:                                 Editing Rebase Sequences.
                                                               (line  72)
 * c a:                                   コミット開始.        (line  20)
 * c A:                                   コミット開始.        (line  72)
-* C b:                                   Cloning Repository.  (line  41)
-* C C:                                   Cloning Repository.  (line  29)
+* C b:                                   Cloning Repository.  (line  42)
+* C C:                                   Cloning Repository.  (line  30)
 * c c:                                   コミット開始.        (line  15)
-* C d:                                   Cloning Repository.  (line  54)
-* C e:                                   Cloning Repository.  (line  61)
+* C d:                                   Cloning Repository.  (line  55)
+* C e:                                   Cloning Repository.  (line  62)
 * c e:                                   コミット開始.        (line  24)
 * c f:                                   コミット開始.        (line  46)
 * c F:                                   コミット開始.        (line  55)
-* C m:                                   Cloning Repository.  (line  46)
-* C s:                                   Cloning Repository.  (line  34)
+* C m:                                   Cloning Repository.  (line  47)
+* C s:                                   Cloning Repository.  (line  35)
 * c s:                                   コミット開始.        (line  59)
 * c S:                                   コミット開始.        (line  68)
 * c w:                                   コミット開始.        (line  35)
 * C-<return>:                            Visiting Files and Blobs from a Diff.
-                                                              (line  51)
+                                                              (line  53)
 * C-<tab>:                               Section Visibility.  (line  13)
 * C-c C-a:                               Commit Pseudo Headers.
-                                                              (line  17)
+                                                              (line  18)
 * C-c C-b:                               Log Buffer.          (line  22)
 * C-c C-b <1>:                           Refreshing Diffs.    (line  88)
 * C-c C-c:                               一時的(transient)コマンド.
@@ -10264,7 +10268,7 @@ Appendix C Keystroke Index
 * C-c C-f:                               Log Buffer.          (line  26)
 * C-c C-f <1>:                           Refreshing Diffs.    (line  92)
 * C-c C-i:                               Commit Pseudo Headers.
-                                                              (line  13)
+                                                              (line  14)
 * C-c C-k:                               Select from Log.     (line  23)
 * C-c C-k <1>:                           コミットメッセージ編集.
                                                               (line  23)
@@ -10272,17 +10276,17 @@ Appendix C Keystroke Index
                                                               (line  11)
 * C-c C-n:                               Log Buffer.          (line  30)
 * C-c C-o:                               Commit Pseudo Headers.
-                                                              (line  33)
+                                                              (line  34)
 * C-c C-p:                               Commit Pseudo Headers.
-                                                              (line  37)
+                                                              (line  38)
 * C-c C-r:                               Commit Pseudo Headers.
-                                                              (line  21)
+                                                              (line  22)
 * C-c C-s:                               Commit Pseudo Headers.
-                                                              (line  25)
+                                                              (line  26)
 * C-c C-t:                               Commands Available in Diffs.
                                                               (line  15)
 * C-c C-t <1>:                           Commit Pseudo Headers.
-                                                              (line  29)
+                                                              (line  30)
 * C-c C-w:                               Using the Revision Stack.
                                                               (line   6)
 * C-c M-g:                               Commands for Buffers Visiting Files.
@@ -10292,8 +10296,8 @@ Appendix C Keystroke Index
 * C-c M-g B <1>:                         Commands for Buffers Visiting Files.
                                                               (line  93)
 * C-c M-g B b:                           Blaming.             (line  31)
-* C-c M-g B e:                           Blaming.             (line  65)
-* C-c M-g B f:                           Blaming.             (line  56)
+* C-c M-g B e:                           Blaming.             (line  67)
+* C-c M-g B f:                           Blaming.             (line  57)
 * C-c M-g B r:                           Blaming.             (line  47)
 * C-c M-g c:                             Commands for Buffers Visiting Files.
                                                               (line  39)
@@ -10301,10 +10305,10 @@ Appendix C Keystroke Index
                                                               (line  45)
 * C-c M-g d:                             Commands for Buffers Visiting Files.
                                                               (line  56)
-* C-c M-g e:                             Blaming.             (line  64)
+* C-c M-g e:                             Blaming.             (line  66)
 * C-c M-g e <1>:                         Commands for Buffers Visiting Files.
                                                               (line 106)
-* C-c M-g f:                             Blaming.             (line  55)
+* C-c M-g f:                             Blaming.             (line  56)
 * C-c M-g L:                             Commands for Buffers Visiting Files.
                                                               (line  66)
 * C-c M-g l:                             Commands for Buffers Visiting Files.
@@ -10319,7 +10323,7 @@ Appendix C Keystroke Index
 * C-c M-g u:                             Commands for Buffers Visiting Files.
                                                               (line  34)
 * C-c M-i:                               Commit Pseudo Headers.
-                                                              (line  42)
+                                                              (line  43)
 * C-c M-s:                               コミットメッセージ編集.
                                                               (line  34)
 * C-w:                                   Common Commands.     (line  22)
@@ -10346,7 +10350,7 @@ Appendix C Keystroke Index
 * DEL:                                   Log Buffer.          (line  56)
 * DEL <1>:                               Commands Available in Diffs.
                                                               (line  61)
-* DEL <2>:                               Blaming.             (line  90)
+* DEL <2>:                               Blaming.             (line  92)
 * DEL <3>:                               Editing Rebase Sequences.
                                                               (line  28)
 * e:                                     Ediffing.            (line   9)
@@ -10444,7 +10448,7 @@ Appendix C Keystroke Index
                                                               (line  38)
 * M-p <2>:                               Editing Rebase Sequences.
                                                               (line  43)
-* M-w:                                   Blaming.             (line 128)
+* M-w:                                   Blaming.             (line 129)
 * M-w <1>:                               Common Commands.     (line  40)
 * M-x magit-debug-git-executable:        Git実行ファイル.     (line  55)
 * M-x magit-debug-git-executable <1>:    Debugging Tools.     (line  36)
@@ -10472,8 +10476,8 @@ Appendix C Keystroke Index
 * Mt:                                    Editing Rebase Sequences.
                                                               (line 132)
 * n:                                     Section Movement.    (line  15)
-* n <1>:                                 Blaming.             (line 107)
-* N:                                     Blaming.             (line 111)
+* n <1>:                                 Blaming.             (line 108)
+* N:                                     Blaming.             (line 112)
 * n <2>:                                 Editing Rebase Sequences.
                                                               (line  39)
 * n <3>:                                 Minor Mode for Buffers Visiting Blobs.
@@ -10506,8 +10510,8 @@ Appendix C Keystroke Index
 * o u:                                   一時的サブモジュール.
                                                               (line  40)
 * p:                                     Section Movement.    (line  10)
-* p <1>:                                 Blaming.             (line 115)
-* P:                                     Blaming.             (line 119)
+* p <1>:                                 Blaming.             (line 116)
+* P:                                     Blaming.             (line 120)
 * p <2>:                                 Editing Rebase Sequences.
                                                               (line  35)
 * P <1>:                                 Pushing.             (line   9)
@@ -10524,7 +10528,7 @@ Appendix C Keystroke Index
 * P u:                                   Pushing.             (line  24)
 * q:                                     Quitting Windows.    (line   6)
 * q <1>:                                 Log Buffer.          (line  15)
-* q <2>:                                 Blaming.             (line 123)
+* q <2>:                                 Blaming.             (line 124)
 * q <3>:                                 Minor Mode for Buffers Visiting Blobs.
                                                               (line  20)
 * r:                                     Rebasing.            (line   9)
@@ -10546,7 +10550,7 @@ Appendix C Keystroke Index
 * RET:                                   References Buffer.   (line 171)
 * RET <1>:                               Visiting Files and Blobs from a Diff.
                                                               (line   8)
-* RET <2>:                               Blaming.             (line  76)
+* RET <2>:                               Blaming.             (line  79)
 * RET <3>:                               Editing Rebase Sequences.
                                                               (line  16)
 * s:                                     Staging and Unstaging.
@@ -10559,7 +10563,7 @@ Appendix C Keystroke Index
 * SPC:                                   Log Buffer.          (line  46)
 * SPC <1>:                               Commands Available in Diffs.
                                                               (line  57)
-* SPC <2>:                               Blaming.             (line  80)
+* SPC <2>:                               Blaming.             (line  83)
 * SPC <3>:                               Editing Rebase Sequences.
                                                               (line  21)
 * t:                                     Editing Rebase Sequences.
@@ -10646,27 +10650,27 @@ Appendix D Command Index
 * forward-line:                          Editing Rebase Sequences.
                                                               (line  39)
 * git-commit-ack:                        Commit Pseudo Headers.
-                                                              (line  17)
+                                                              (line  18)
 * git-commit-cc:                         Commit Pseudo Headers.
-                                                              (line  33)
+                                                              (line  34)
 * git-commit-insert-pseudo-header:       Commit Pseudo Headers.
-                                                              (line  13)
+                                                              (line  14)
 * git-commit-next-message:               コミットメッセージ編集.
                                                               (line  44)
 * git-commit-prev-message:               コミットメッセージ編集.
                                                               (line  38)
 * git-commit-reported:                   Commit Pseudo Headers.
-                                                              (line  37)
+                                                              (line  38)
 * git-commit-review:                     Commit Pseudo Headers.
-                                                              (line  21)
+                                                              (line  22)
 * git-commit-save-message:               コミットメッセージ編集.
                                                               (line  34)
 * git-commit-signoff:                    Commit Pseudo Headers.
-                                                              (line  25)
+                                                              (line  26)
 * git-commit-suggested:                  Commit Pseudo Headers.
-                                                              (line  42)
+                                                              (line  43)
 * git-commit-test:                       Commit Pseudo Headers.
-                                                              (line  29)
+                                                              (line  30)
 * git-rebase-backward-line:              Editing Rebase Sequences.
                                                               (line  35)
 * git-rebase-break:                      Editing Rebase Sequences.
@@ -10716,32 +10720,32 @@ Appendix D Command Index
 * magit-am-skip:                         Maildir Patches.     (line  39)
 * magit-apply:                           Applying.            (line  35)
 * magit-bisect:                          Bisecting.           (line   8)
-* magit-bisect-bad:                      Bisecting.           (line  35)
-* magit-bisect-good:                     Bisecting.           (line  40)
-* magit-bisect-mark:                     Bisecting.           (line  45)
-* magit-bisect-reset:                    Bisecting.           (line  58)
+* magit-bisect-bad:                      Bisecting.           (line  36)
+* magit-bisect-good:                     Bisecting.           (line  41)
+* magit-bisect-mark:                     Bisecting.           (line  46)
+* magit-bisect-reset:                    Bisecting.           (line  59)
 * magit-bisect-run:                      Bisecting.           (line  28)
-* magit-bisect-skip:                     Bisecting.           (line  52)
+* magit-bisect-skip:                     Bisecting.           (line  53)
 * magit-bisect-start:                    Bisecting.           (line  17)
 * magit-blame:                           Blaming.             (line  18)
-* magit-blame <1>:                       Blaming.             (line 103)
+* magit-blame <1>:                       Blaming.             (line 104)
 * magit-blame <2>:                       Commands for Buffers Visiting Files.
                                                               (line  93)
 * magit-blame-addition:                  Blaming.             (line  30)
 * magit-blame-addition <1>:              Blaming.             (line  31)
-* magit-blame-copy-hash:                 Blaming.             (line 128)
-* magit-blame-cycle-style:               Blaming.             (line 136)
-* magit-blame-echo:                      Blaming.             (line  64)
-* magit-blame-echo <1>:                  Blaming.             (line  65)
-* magit-blame-next-chunk:                Blaming.             (line 107)
-* magit-blame-next-chunk-same-commit:    Blaming.             (line 111)
-* magit-blame-previous-chunk:            Blaming.             (line 115)
-* magit-blame-previous-chunk-same-commit: Blaming.            (line 119)
-* magit-blame-quit:                      Blaming.             (line 123)
+* magit-blame-copy-hash:                 Blaming.             (line 129)
+* magit-blame-cycle-style:               Blaming.             (line 137)
+* magit-blame-echo:                      Blaming.             (line  66)
+* magit-blame-echo <1>:                  Blaming.             (line  67)
+* magit-blame-next-chunk:                Blaming.             (line 108)
+* magit-blame-next-chunk-same-commit:    Blaming.             (line 112)
+* magit-blame-previous-chunk:            Blaming.             (line 116)
+* magit-blame-previous-chunk-same-commit: Blaming.            (line 120)
+* magit-blame-quit:                      Blaming.             (line 124)
 * magit-blame-removal:                   Blaming.             (line  46)
 * magit-blame-removal <1>:               Blaming.             (line  47)
-* magit-blame-reverse:                   Blaming.             (line  55)
-* magit-blame-reverse <1>:               Blaming.             (line  56)
+* magit-blame-reverse:                   Blaming.             (line  56)
+* magit-blame-reverse <1>:               Blaming.             (line  57)
 * magit-blob-next:                       Minor Mode for Buffers Visiting Blobs.
                                                               (line  16)
 * magit-blob-previous:                   Commands for Buffers Visiting Files.
@@ -10776,13 +10780,13 @@ Appendix D Command Index
 * magit-cherry-pick:                     Cherry Picking.      (line   8)
 * magit-cherry-spinoff:                  Cherry Picking.      (line  77)
 * magit-cherry-spinout:                  Cherry Picking.      (line  66)
-* magit-clone:                           Cloning Repository.  (line  20)
-* magit-clone-bare:                      Cloning Repository.  (line  41)
-* magit-clone-mirror:                    Cloning Repository.  (line  46)
-* magit-clone-regular:                   Cloning Repository.  (line  29)
-* magit-clone-shallow:                   Cloning Repository.  (line  34)
-* magit-clone-shallow-exclude:           Cloning Repository.  (line  61)
-* magit-clone-shallow-since:             Cloning Repository.  (line  54)
+* magit-clone:                           Cloning Repository.  (line  21)
+* magit-clone-bare:                      Cloning Repository.  (line  42)
+* magit-clone-mirror:                    Cloning Repository.  (line  47)
+* magit-clone-regular:                   Cloning Repository.  (line  30)
+* magit-clone-shallow:                   Cloning Repository.  (line  35)
+* magit-clone-shallow-exclude:           Cloning Repository.  (line  62)
+* magit-clone-shallow-since:             Cloning Repository.  (line  55)
 * magit-commit:                          コミット開始.        (line   8)
 * magit-commit <1>:                      Commands for Buffers Visiting Files.
                                                               (line  39)
@@ -10822,9 +10826,9 @@ Appendix D Command Index
 * magit-diff-save-default-arguments:     Refreshing Diffs.    (line  27)
 * magit-diff-set-default-arguments:      Refreshing Diffs.    (line  21)
 * magit-diff-show-or-scroll-down:        Log Buffer.          (line  56)
-* magit-diff-show-or-scroll-down <1>:    Blaming.             (line  90)
+* magit-diff-show-or-scroll-down <1>:    Blaming.             (line  92)
 * magit-diff-show-or-scroll-up:          Log Buffer.          (line  46)
-* magit-diff-show-or-scroll-up <1>:      Blaming.             (line  80)
+* magit-diff-show-or-scroll-up <1>:      Blaming.             (line  83)
 * magit-diff-staged:                     Diffing.             (line  51)
 * magit-diff-switch-range-type:          Refreshing Diffs.    (line  38)
 * magit-diff-toggle-file-filter:         Refreshing Diffs.    (line  48)
@@ -10835,15 +10839,15 @@ Appendix D Command Index
 * magit-diff-visit-file:                 Visiting Files and Blobs from a Diff.
                                                               (line   8)
 * magit-diff-visit-file-other-frame:     Visiting Files and Blobs from a Diff.
-                                                              (line  73)
-* magit-diff-visit-file-other-window:    Visiting Files and Blobs from a Diff.
-                                                              (line  72)
-* magit-diff-visit-file-worktree:        Visiting Files and Blobs from a Diff.
-                                                              (line  51)
-* magit-diff-visit-worktree-file-other-frame: Visiting Files and Blobs from a Diff.
                                                               (line  75)
-* magit-diff-visit-worktree-file-other-window: Visiting Files and Blobs from a Diff.
+* magit-diff-visit-file-other-window:    Visiting Files and Blobs from a Diff.
                                                               (line  74)
+* magit-diff-visit-file-worktree:        Visiting Files and Blobs from a Diff.
+                                                              (line  53)
+* magit-diff-visit-worktree-file-other-frame: Visiting Files and Blobs from a Diff.
+                                                              (line  77)
+* magit-diff-visit-worktree-file-other-window: Visiting Files and Blobs from a Diff.
+                                                              (line  76)
 * magit-diff-while-committing:           Refreshing Diffs.    (line  79)
 * magit-diff-while-committing <1>:       コミットメッセージ編集.
                                                               (line  58)
@@ -10886,11 +10890,11 @@ Appendix D Command Index
 * magit-file-untrack:                    Commands for Buffers Visiting Files.
                                                               (line 131)
 * magit-find-file:                       General-Purpose Visit Commands.
-                                                              (line   9)
+                                                              (line  10)
 * magit-find-file-other-frame:           General-Purpose Visit Commands.
-                                                              (line  21)
+                                                              (line  22)
 * magit-find-file-other-window:          General-Purpose Visit Commands.
-                                                              (line  15)
+                                                              (line  16)
 * magit-git-command:                     Gitを手動で実行.     (line  25)
 * magit-git-command-topdir:              Gitを手動で実行.     (line  17)
 * magit-go-backward:                     Log Buffer.          (line  22)
@@ -11057,7 +11061,7 @@ Appendix D Command Index
 * magit-shell-command:                   Gitを手動で実行.     (line  40)
 * magit-shell-command-topdir:            Gitを手動で実行.     (line  35)
 * magit-show-commit:                     Diffing.             (line  69)
-* magit-show-commit <1>:                 Blaming.             (line  76)
+* magit-show-commit <1>:                 Blaming.             (line  79)
 * magit-show-refs:                       References Buffer.   (line   6)
 * magit-show-refs-current:               References Buffer.   (line  24)
 * magit-show-refs-head:                  References Buffer.   (line  19)
@@ -11204,14 +11208,6 @@ Appendix E Function Index
 * magit-define-section-jumper:           Creating Sections.   (line  77)
 * magit-diff-scope:                      Matching Sections.   (line 118)
 * magit-diff-type:                       Matching Sections.   (line  95)
-* magit-diff-visit-file-other-frame:     Visiting Files and Blobs from a Diff.
-                                                              (line  73)
-* magit-diff-visit-file-other-window:    Visiting Files and Blobs from a Diff.
-                                                              (line  72)
-* magit-diff-visit-worktree-file-other-frame: Visiting Files and Blobs from a Diff.
-                                                              (line  75)
-* magit-diff-visit-worktree-file-other-window: Visiting Files and Blobs from a Diff.
-                                                              (line  74)
 * magit-disable-section-inserter:        Per-Repository Configuration.
                                                               (line  31)
 * magit-display-buffer:                  バッファの切り替え.  (line   6)
@@ -11224,12 +11220,6 @@ Appendix E Function Index
 * magit-display-buffer-same-window-except-diff-v1: バッファの切り替え.
                                                               (line  53)
 * magit-display-buffer-traditional:      バッファの切り替え.  (line  45)
-* magit-find-file:                       General-Purpose Visit Commands.
-                                                              (line   9)
-* magit-find-file-other-frame:           General-Purpose Visit Commands.
-                                                              (line  21)
-* magit-find-file-other-window:          General-Purpose Visit Commands.
-                                                              (line  15)
 * magit-generate-buffer-name-default-function: バッファの名付け.
                                                               (line  17)
 * magit-get-section:                     Matching Sections.   (line  16)
@@ -11273,7 +11263,7 @@ Appendix E Function Index
                                                               (line  42)
 * magit-insert-heading:                  Creating Sections.   (line  42)
 * magit-insert-ignored-files:            Status Sections.     (line 102)
-* magit-insert-local-branches:           References Sections. (line  17)
+* magit-insert-local-branches:           References Sections. (line  16)
 * magit-insert-merge-log:                Status Sections.     (line  18)
 * magit-insert-modules:                  Status Module Sections.
                                                               (line  12)
@@ -11291,7 +11281,7 @@ Appendix E Function Index
                                                               (line  52)
 * magit-insert-rebase-sequence:          Status Sections.     (line  23)
 * magit-insert-recent-commits:           Status Sections.     (line 135)
-* magit-insert-remote-branches:          References Sections. (line  21)
+* magit-insert-remote-branches:          References Sections. (line  20)
 * magit-insert-remote-header:            Status Header Sections.
                                                               (line  68)
 * magit-insert-repo-header:              Status Header Sections.
@@ -11387,23 +11377,37 @@ Appendix E Function Index
 * コマンド <6>:                          Status Buffer.       (line  68)
 * コマンド <7>:                          Status Buffer.       (line  93)
 * コマンド <8>:                          Repository List.     (line   6)
-* コマンド <9>:                          Auxiliary Branch Commands.
+* コマンド <9>:                          General-Purpose Visit Commands.
+                                                              (line  10)
+* コマンド <10>:                         General-Purpose Visit Commands.
+                                                              (line  16)
+* コマンド <11>:                         General-Purpose Visit Commands.
+                                                              (line  22)
+* コマンド <12>:                         Visiting Files and Blobs from a Diff.
+                                                              (line  74)
+* コマンド <13>:                         Visiting Files and Blobs from a Diff.
+                                                              (line  75)
+* コマンド <14>:                         Visiting Files and Blobs from a Diff.
+                                                              (line  76)
+* コマンド <15>:                         Visiting Files and Blobs from a Diff.
+                                                              (line  77)
+* コマンド <16>:                         Auxiliary Branch Commands.
                                                               (line   9)
-* コマンド <10>:                         Auxiliary Branch Commands.
+* コマンド <17>:                         Auxiliary Branch Commands.
                                                               (line  20)
-* コマンド <11>:                         Common Commands.     (line   6)
-* コマンド <12>:                         Common Commands.     (line   7)
-* コマンド <13>:                         Common Commands.     (line   8)
-* コマンド <14>:                         Common Commands.     (line   9)
-* コマンド <15>:                         Wip Modes.           (line  48)
-* コマンド <16>:                         Wip Modes.           (line  57)
-* コマンド <17>:                         Commands for Buffers Visiting Files.
+* コマンド <18>:                         Common Commands.     (line   6)
+* コマンド <19>:                         Common Commands.     (line   7)
+* コマンド <20>:                         Common Commands.     (line   8)
+* コマンド <21>:                         Common Commands.     (line   9)
+* コマンド <22>:                         Wip Modes.           (line  48)
+* コマンド <23>:                         Wip Modes.           (line  57)
+* コマンド <24>:                         Commands for Buffers Visiting Files.
                                                               (line 123)
-* コマンド <18>:                         Commands for Buffers Visiting Files.
+* コマンド <25>:                         Commands for Buffers Visiting Files.
                                                               (line 127)
-* コマンド <19>:                         Commands for Buffers Visiting Files.
+* コマンド <26>:                         Commands for Buffers Visiting Files.
                                                               (line 131)
-* コマンド <20>:                         Commands for Buffers Visiting Files.
+* コマンド <27>:                         Commands for Buffers Visiting Files.
                                                               (line 135)
 
 
@@ -11447,7 +11451,7 @@ Appendix F Variable Index
 * git-commit-finish-query-functions:     Commit Message Conventions.
                                                               (line  24)
 * git-commit-known-pseudo-headers:       Commit Pseudo Headers.
-                                                              (line   9)
+                                                              (line  10)
 * git-commit-major-mode:                 Commit Mode and Hooks.
                                                               (line  12)
 * git-commit-setup-hook:                 Commit Mode and Hooks.
@@ -11473,12 +11477,12 @@ Appendix F Variable Index
 * magit-auto-revert-tracked-only:        Automatic Reverting of File-Visiting Buffers.
                                                               (line  60)
 * magit-bisect-show-graph:               Bisecting.           (line  66)
-* magit-blame-disable-modes:             Blaming.             (line 166)
-* magit-blame-echo-style:                Blaming.             (line 149)
-* magit-blame-goto-chunk-hook:           Blaming.             (line 172)
-* magit-blame-read-only:                 Blaming.             (line 161)
-* magit-blame-styles:                    Blaming.             (line 144)
-* magit-blame-time-format:               Blaming.             (line 156)
+* magit-blame-disable-modes:             Blaming.             (line 167)
+* magit-blame-echo-style:                Blaming.             (line 150)
+* magit-blame-goto-chunk-hook:           Blaming.             (line 173)
+* magit-blame-read-only:                 Blaming.             (line 162)
+* magit-blame-styles:                    Blaming.             (line 145)
+* magit-blame-time-format:               Blaming.             (line 157)
 * magit-branch-adjust-remote-upstream-alist: Branch Commands. (line 211)
 * magit-branch-direct-configure:         Branch Commands.     (line  21)
 * magit-branch-prefer-remote-upstream:   Branch Commands.     (line 166)
@@ -11486,12 +11490,12 @@ Appendix F Variable Index
 * magit-buffer-name-format:              バッファの名付け.    (line  27)
 * magit-bury-buffer-function:            Quitting Windows.    (line  14)
 * magit-cherry-margin:                   Cherries.            (line  22)
-* magit-clone-always-transient:          Cloning Repository.  (line  12)
-* magit-clone-default-directory:         Cloning Repository.  (line  90)
-* magit-clone-name-alist:                Cloning Repository.  (line 103)
-* magit-clone-set-remote-head:           Cloning Repository.  (line  68)
-* magit-clone-set-remote.pushDefault:    Cloning Repository.  (line  78)
-* magit-clone-url-format:                Cloning Repository.  (line 124)
+* magit-clone-always-transient:          Cloning Repository.  (line  13)
+* magit-clone-default-directory:         Cloning Repository.  (line  91)
+* magit-clone-name-alist:                Cloning Repository.  (line 104)
+* magit-clone-set-remote-head:           Cloning Repository.  (line  69)
+* magit-clone-set-remote.pushDefault:    Cloning Repository.  (line  79)
+* magit-clone-url-format:                Cloning Repository.  (line 125)
 * magit-commit-ask-to-stage:             コミット開始.        (line  81)
 * magit-commit-extend-override-date:     コミット開始.        (line  90)
 * magit-commit-reword-override-date:     コミット開始.        (line  94)
@@ -11514,7 +11518,7 @@ Appendix F Variable Index
 * magit-diff-refine-ignore-whitespace:   Diff Options.        (line  18)
 * magit-diff-unmarked-lines-keep-foreground: Diff Options.    (line 125)
 * magit-diff-visit-previous-blob:        Visiting Files and Blobs from a Diff.
-                                                              (line  39)
+                                                              (line  40)
 * magit-direct-use-buffer-arguments:     一時的引数とバッファ変数.
                                                               (line  65)
 * magit-display-buffer-function:         バッファの切り替え.  (line  27)
@@ -11573,7 +11577,7 @@ Appendix F Variable Index
 * magit-refs-margin-for-tags:            References Buffer.   (line 119)
 * magit-refs-pad-commit-counts:          References Buffer.   (line  48)
 * magit-refs-primary-column-width:       References Buffer.   (line  68)
-* magit-refs-sections-hook:              References Sections. (line  13)
+* magit-refs-sections-hook:              References Sections. (line  12)
 * magit-refs-show-commit-count:          References Buffer.   (line  35)
 * magit-refs-show-remote-prefix:         References Buffer.   (line  61)
 * magit-remote-add-set-remote.pushDefault: Remote Commands.   (line  93)
@@ -11698,116 +11702,116 @@ Node: Diff Options191469
 Node: Revision Buffer198510
 Node: Ediffing202796
 Node: References Buffer208099
-Node: References Sections220547
-Node: Bisecting221411
-Node: Visiting Files and Blobs223878
-Node: General-Purpose Visit Commands224351
-Node: Visiting Files and Blobs from a Diff225310
-Node: Blaming228769
-Node: Manipulating235204
-Node: Creating Repository235549
-Node: Cloning Repository236107
-Node: Staging and Unstaging241512
-Node: Staging from File-Visiting Buffers247433
-Node: Applying249220
-Node: Committing252000
-Node: コミット開始252595
-Node: コミットメッセージ編集257435
-Node: Using the Revision Stack261070
-Node: Commit Pseudo Headers264134
-Node: Commit Mode and Hooks265483
-Node: Commit Message Conventions268462
-Node: Branching270603
-Node: The Two Remotes270832
-Node: Branch Commands273473
-Node: Branch Git Variables286372
-Node: Auxiliary Branch Commands291770
-Node: Merging292901
-Node: Resolving Conflicts298151
-Node: Rebasing304468
-Node: Editing Rebase Sequences309435
-Node: Information About In-Progress Rebase313763
-Ref: Information About In-Progress Rebase-Footnote-1322628
-Node: Cherry Picking323224
-Node: Reverting327662
-Node: Resetting329203
-Node: Stashing331090
-Node: Transferring336178
-Node: Remotes336403
-Node: Remote Commands336558
-Node: Remote Git Variables340756
-Node: Fetching342038
-Node: Pulling344640
-Node: Pushing345808
-Node: Plain Patches350255
-Node: Maildir Patches351841
-Node: Miscellaneous353466
-Node: Tagging353783
-Node: Notes356245
-Node: Submodules358934
-Node: Listing Submodules359184
-Node: 一時的サブモジュール360690
-Node: Subtree363330
-Node: Worktree365517
-Node: Common Commands366745
-Node: Wip Modes369403
-Node: Wip Graph374327
-Node: Legacy Wip Modes376629
-Node: Commands for Buffers Visiting Files379520
-Node: Minor Mode for Buffers Visiting Blobs385259
-Node: Customizing386073
-Node: Per-Repository Configuration388011
-Node: 基本設定390250
-Node: Safety390576
-Node: Performance392554
-Ref: Log Performance395556
-Ref: Diff Performance396853
-Ref: Refs Buffer Performance398188
-Ref: Committing Performance398757
-Node: Microsoft Windows Performance399667
-Node: MacOS Performance400852
-Ref: MacOS Performance-Footnote-1401557
-Node: Default Bindings401639
-Node: 配管コマンド(Plumbing)403878
-Node: Calling Git404923
-Node: Getting a Value from Git406461
-Node: Calling Git for Effect410202
-Node: Section Plumbing416099
-Node: Creating Sections416350
-Node: Section Selection420253
-Node: Matching Sections422055
-Node: Refreshing Buffers428028
-Node: 慣習431191
-Node: Theming Faces431400
-Node: FAQ439471
-Node: FAQ - How to ...?439996
-Node: Magitの発音は？440456
-Node: How to show git's output?441409
-Node: How to install the gitman info manual?442437
-Node: How to show diffs for gpg-encrypted files?443718
-Node: How does branching and pushing work?444317
-Node: Magitをediff-version-control-packageとして使用できますか？444702
-Node: VC@を無効にする必要がありますか？446789
-Node: FAQ - Issues and Errors447492
-Node: Magit is slow448757
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました448997
-Node: コミットに問題があります449772
-Node: MS WindowsではMagitでpushできません450333
-Node: I am using OS X and SOMETHING works in shell but not in Magit450984
-Node: ファイルを展開して差分を表示するとファイルが消えます451832
-Node: COMMIT_EDITMSGバッファのpointが間違っています452471
-Node: モード行の情報が常に最新ではない453567
-Node: 同じ名前を共有するブランチとタグは何かを壊します454739
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません455694
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません456687
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています459080
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません460107
-Node: 私はポップアップのデフォルトを保存できなくなりました461166
-Node: Debugging Tools462236
-Node: Keystroke Index465056
-Node: Command Index499589
-Node: Function Index537653
-Node: Variable Index554693
+Node: References Sections221505
+Node: Bisecting222667
+Node: Visiting Files and Blobs225821
+Node: General-Purpose Visit Commands226429
+Node: Visiting Files and Blobs from a Diff227737
+Node: Blaming232546
+Node: Manipulating240485
+Node: Creating Repository240830
+Node: Cloning Repository241569
+Node: Staging and Unstaging247191
+Node: Staging from File-Visiting Buffers253112
+Node: Applying254899
+Node: Committing257764
+Node: コミット開始258359
+Node: コミットメッセージ編集263199
+Node: Using the Revision Stack266834
+Node: Commit Pseudo Headers269898
+Node: Commit Mode and Hooks271388
+Node: Commit Message Conventions274367
+Node: Branching276508
+Node: The Two Remotes276737
+Node: Branch Commands279378
+Node: Branch Git Variables292277
+Node: Auxiliary Branch Commands297675
+Node: Merging298806
+Node: Resolving Conflicts304056
+Node: Rebasing310373
+Node: Editing Rebase Sequences315340
+Node: Information About In-Progress Rebase319668
+Ref: Information About In-Progress Rebase-Footnote-1328533
+Node: Cherry Picking329129
+Node: Reverting333567
+Node: Resetting335108
+Node: Stashing336995
+Node: Transferring342083
+Node: Remotes342308
+Node: Remote Commands342463
+Node: Remote Git Variables346661
+Node: Fetching347943
+Node: Pulling350545
+Node: Pushing351713
+Node: Plain Patches356160
+Node: Maildir Patches357746
+Node: Miscellaneous359371
+Node: Tagging359688
+Node: Notes362150
+Node: Submodules364839
+Node: Listing Submodules365089
+Node: 一時的サブモジュール366595
+Node: Subtree369235
+Node: Worktree371422
+Node: Common Commands372650
+Node: Wip Modes375308
+Node: Wip Graph380232
+Node: Legacy Wip Modes382534
+Node: Commands for Buffers Visiting Files385425
+Node: Minor Mode for Buffers Visiting Blobs391164
+Node: Customizing391978
+Node: Per-Repository Configuration393916
+Node: 基本設定396155
+Node: Safety396481
+Node: Performance398459
+Ref: Log Performance401461
+Ref: Diff Performance402758
+Ref: Refs Buffer Performance404093
+Ref: Committing Performance404662
+Node: Microsoft Windows Performance405572
+Node: MacOS Performance406757
+Ref: MacOS Performance-Footnote-1407462
+Node: Default Bindings407544
+Node: 配管コマンド(Plumbing)409783
+Node: Calling Git410828
+Node: Getting a Value from Git412366
+Node: Calling Git for Effect416107
+Node: Section Plumbing422004
+Node: Creating Sections422255
+Node: Section Selection426158
+Node: Matching Sections427960
+Node: Refreshing Buffers433933
+Node: 慣習437096
+Node: Theming Faces437305
+Node: FAQ445376
+Node: FAQ - How to ...?445901
+Node: Magitの発音は？446361
+Node: How to show git's output?447314
+Node: How to install the gitman info manual?448342
+Node: How to show diffs for gpg-encrypted files?449623
+Node: How does branching and pushing work?450222
+Node: Magitをediff-version-control-packageとして使用できますか？450607
+Node: VC@を無効にする必要がありますか？452694
+Node: FAQ - Issues and Errors453397
+Node: Magit is slow454662
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました454902
+Node: コミットに問題があります455677
+Node: MS WindowsではMagitでpushできません456238
+Node: I am using OS X and SOMETHING works in shell but not in Magit456889
+Node: ファイルを展開して差分を表示するとファイルが消えます457737
+Node: COMMIT_EDITMSGバッファのpointが間違っています458376
+Node: モード行の情報が常に最新ではない459472
+Node: 同じ名前を共有するブランチとタグは何かを壊します460644
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません461599
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません462592
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています464985
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません466012
+Node: 私はポップアップのデフォルトを保存できなくなりました467071
+Node: Debugging Tools468141
+Node: Keystroke Index470961
+Node: Command Index505494
+Node: Function Index543558
+Node: Variable Index560615
 
 End Tag Table
 
