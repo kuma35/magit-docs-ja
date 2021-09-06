@@ -24,16 +24,16 @@ File: magit-section.ja.info,  Node: Top,  Next: Introduction,  Up: (dir)
 Magit-Section Developer Manual
 ******************************
 
-This package implements the main user interface of Magit — the
-collapsible sections that make up its buffers.  This package used to be
-distributed as part of Magit but how it can also be used by other
-packages that have nothing to do with Magit or Git.
+このパッケージは、Magitのメインユーザーインターフェイス(バッファを構成す
+る折りたたみ可能なセクション)を実装します。このパッケージは、以前は
+Magitの一部として配布されていました。しかし今やMagitやGitとは関係のない
+他のパッケージでもどのようにすれば使用できるかを示しています。
 
-To learn more about the section abstraction and available commands and
-user options see *note (magit)Sections::.  This manual documents how you
-can use sections in your own packages.
+セクションの抽象化と使用可能なコマンドおよびユーザーオプションの詳細につ
+いては→*note (magit)Sections:: このマニュアルでは、あなた独自のパッケー
+ジでセクションを使用する方法について説明します。
 
-This manual is for Magit-Section version 3.2.1.
+このマニュアルは、Magit-Sectionバージョン3.2.1を対象としています。
 
      Copyright (C) 2015-2021 Jonas Bernoulli <jonas@bernoul.li>
 
@@ -60,18 +60,18 @@ File: magit-section.ja.info,  Node: Introduction,  Next: Creating Sections,  Pre
 1 Introduction
 **************
 
-This package implements the main user interface of Magit — the
-collapsible sections that make up its buffers.  This package used to be
-distributed as part of Magit but how it can also be used by other
-packages that have nothing to do with Magit or Git.
+このパッケージは、Magitのメインユーザーインターフェイス(バッファを構成す
+る折りたたみ可能なセクション)を実装します。このパッケージは、以前は
+Magitの一部として配布されていました。しかし今やMagitやGitとは関係のない
+他のパッケージでもどのようにすれば使用できるかを示しています。
 
-To learn more about the section abstraction and available commands and
-user options see *note (magit)Sections::.  This manual documents how you
-can use sections in your own packages.
+セクションの抽象化と使用可能なコマンドおよびユーザーオプションの詳細につ
+いては→*note (magit)Sections:: このマニュアルでは、あなた独自のパッケー
+ジでセクションを使用する方法について説明します。
 
-When the documentation leaves something unaddressed, then please
-consider that Magit uses this library extensively and search its source
-for suitable examples before asking me for help.  Thanks!
+ドキュメントに対処されていないものが残っている場合は、Magitがこのライブ
+ラリを広範囲に使用していることを鑑み、助けを求める前にまずはMagit関係の
+方で適切な例を検索してください。宜しくお願いします。
 
 
 File: magit-section.ja.info,  Node: Creating Sections,  Next: Core Functions,  Prev: Introduction,  Up: Top
@@ -82,90 +82,88 @@ File: magit-section.ja.info,  Node: Creating Sections,  Next: Core Functions,  P
  -- Function: magit-insert-section [name] (type &optional value hide)
           &rest body
 
-     Create a section object of type CLASS, storing VALUE in its ‘value’
-     slot, and insert the section at point.  CLASS is a subclass of
-     ‘magit-section’ or has the form ‘(eval FORM)’, in which case FORM
-     is evaluated at runtime and should return a subclass.  In other
-     places a sections class is oftern referred to as its "type".
+     タイプCLASSのセクションオブジェクトを作成し、その‘value’スロットに
+     VALUEを格納し、ポイントにセクションを挿入します。 CLASSは
+     ‘magit-section’のサブクラスであるか、‘(eval FORM)’の形式です。この
+     場合、FORMは実行時に評価され、サブクラスを返す必要があります。 他の
+     場所では、セクションクラスはしばしばその「タイプ」と呼ばれます。
 
-     Many commands behave differently depending on the class of the
-     current section and sections of a certain class can have their own
-     keymap, which is specified using the ‘keymap’ class slot.  The
-     value of that slot should be a variable whose value is a keymap.
+     多くのコマンドは、現在のセクションのクラスに応じて動作が異なり、特
+     定のクラスのセクションは、‘keymap’クラススロットを使用して指定され
+     る独自のキーマップを持つことができます。そのスロットの値は、値がキ
+     ーマップである変数である必要があります。
 
-     For historic reasons Magit and Forge in most cases use symbols as
-     CLASS that don’t actually identify a class and that lack the
-     appropriate package prefix.  This works due to some undocumented
-     kludges, which are not available to other packages.
+     歴史的な理由から、MagitとForgeはほとんどの場合、実際にはクラスを識
+     別せず、適切なパッケージプレフィックスがないシンボルをCLASSとして使
+     用します。これは、他のパッケージでは利用できない、文書化されていな
+     いその場しのぎ(kludge)が原因で機能します。
 
-     When optional HIDE is non-nil collapse the section body by default,
-     i.e.  when first creating the section, but not when refreshing the
-     buffer.  Else expand it by default.  This can be overwritten using
-     ‘magit-section-set-visibility-hook’.  When a section is recreated
-     during a refresh, then the visibility of predecessor is inherited
-     and HIDE is ignored (but the hook is still honored).
+     オプションのHIDEがnil以外の場合、デフォルトでセクション本体を折りた
+     たみます。つまり、最初にセクションを作成するときですが、バッファを
+     更新するときは折りたたみません。 それ以外の場合は、デフォルトで展開
+     します。 これは、‘magit-section-set-visibility-hook’を使用して上書
+     きできます。更新中にセクションが再作成されると、先行の可視性が継承
+     され、HIDEは無視されます（ただし、フックは引き続き尊重されます）。
 
-     BODY is any number of forms that actually insert the section’s
-     heading and body.  Optional NAME, if specified, has to be a symbol,
-     which is then bound to the object of the section being inserted.
+     BODYは、セクションの見出しと本文を実際に挿入する任意の数のフォーム
+     (form)です。オプションのNAMEを指定する場合は、シンボルにする必要が
+     あります。シンボルは、挿入されるセクションのオブジェクトに結び付け
+     られます。
 
-     Before BODY is evaluated the ‘start’ of the section object is set
-     to the value of ‘point’ and after BODY was evaluated its ‘end’ is
-     set to the new value of ‘point’; BODY is responsible for moving
-     ‘point’ forward.
+     BODYが評価される前に、セクションオブジェクトの‘start’が‘point’の値
+     に設定され、BODYが評価された後、その‘end’が‘point’の新しい値に設定
+     されます。BODYは、‘point’を前進させる責任があります。
 
-     If it turns out inside BODY that the section is empty, then
-     ‘magit-cancel-section’ can be used to abort and remove all traces
-     of the partially inserted section.  This can happen when creating a
-     section by washing Git’s output and Git didn’t actually output
-     anything this time around.
+     セクションが空であることがBODY内で判明した場合は、
+     ‘magit-cancel-section’を使用して、部分的に挿入されたセクションのす
+     べてのトレースを中止して削除できます。これは、Gitの出力を洗浄
+     (wash)してセクションを作成し、Gitが今回は実際には何も出力しなかった
+     場合に発生する可能性があります。
 
  -- Function: magit-insert-heading &rest args
 
-     Insert the heading for the section currently being inserted.
+     現在挿入されているセクションの見出しを挿入します。
 
-     This function should only be used inside ‘magit-insert-section’.
+     この関数は、‘magit-insert-section’内でのみ使用する必要があります。
 
-     When called without any arguments, then just set the ‘content’ slot
-     of the object representing the section being inserted to a marker
-     at ‘point’.  The section should only contain a single line when
-     this function is used like this.
+     引数なしで呼び出された場合は、挿入されるセクションを表すオブジェク
+     トの‘content’スロットを‘point’のマーカーに設定するだけです。この関
+     数をこのように使用する場合、セクションには1行のみを含める必要があり
+     ます。
 
-     When called with arguments ARGS, which have to be strings, or nil,
-     then insert those strings at point.  The section should not contain
-     any text before this happens and afterwards it should again only
-     contain a single line.  If the ‘face’ property is set anywhere
-     inside any of these strings, then insert all of them unchanged.
-     Otherwise use the ‘magit-section-heading’ face for all inserted
-     text.
+     文字列またはnilである必要がある引数ARGSを指定して呼び出された場合は
+     、それらの文字列をポイントに挿入します。これが発生する前はセクショ
+     ンにテキストを含めないでください。その後、セクションには1行だけを含
+     める必要があります。‘face’プロパティがこれらの文字列のいずれかの内
+     部のどこかに設定されている場合は、それらすべてを変更せずに挿入しま
+     す。それ以外の場合は、挿入されたすべてのテキストに
+     ‘magit-section-heading’ faceを使用します。
 
-     The ‘content’ property of the section object is the end of the
-     heading (which lasts from ‘start’ to ‘content’) and the beginning
-     of the the body (which lasts from ‘content’ to ‘end’).  If the
-     value of ‘content’ is nil, then the section has no heading and its
-     body cannot be collapsed.  If a section does have a heading, then
-     its height must be exactly one line, including a trailing newline
-     character.  This isn’t enforced, you are responsible for getting it
-     right.  The only exception is that this function does insert a
-     newline character if necessary.
+     セクションオブジェクトの‘content’プロパティは、見出しの終わり
+     (‘start’から‘content’まで続く)と本文の始まり(‘content’から‘end’まで
+     続く)です。‘content’の値がnilの場合、セクションには見出しがなく、本
+     文を折りたたむことはできません。セクションに見出しがある場合、その
+     高さは、末尾の改行文字を含めて、正確に1行である必要があります。これ
+     は強制されません、あなたはそれを正しくする責任があります。唯一の例
+     外は、この関数が必要に応じて改行文字を挿入することです。
 
  -- Macro: magit-insert-section-body &rest body
 
-     Use BODY to insert the section body, once the section is expanded.
-     If the section is expanded when it is created, then this is like
-     ‘progn’.  Otherwise BODY isn’t evaluated until the section is
-     explicitly expanded.
+     セクションが展開されたら、BODYを使用してセクション本体を挿入します
+     。セクションの作成時にセクションが展開されている場合、これは
+     ‘progn’のようになります。それ以外の場合、セクションが明示的に展開さ
+     れるまで、BODYは評価されません。
 
  -- Function: magit-cancel-section
 
-     Cancel inserting the section that is currently being inserted.
-     Remove all traces of that section.
+     現在挿入されているセクションの挿入をキャンセルします。そのセクショ
+     ンのすべての痕跡を削除します。
 
  -- Function: magit-wash-sequence function
 
-     Repeatedly call FUNCTION until it returns ‘nil’ or the end of the
-     buffer is reached.  FUNCTION has to move point forward or return
-     ‘nil’.
+     ‘nil’が返されるか、バッファの終わりに達するまで、FUNCTIONを繰り返し
+     呼び出します。FUNCTIONは、ポイントを前方に移動するか、‘nil’を返す必
+     要があります。
 
 
 File: magit-section.ja.info,  Node: Core Functions,  Next: Matching Functions,  Prev: Creating Sections,  Up: Top
@@ -175,35 +173,34 @@ File: magit-section.ja.info,  Node: Core Functions,  Next: Matching Functions,  
 
  -- Function: magit-current-section
 
-     Return the section at point.
+     ポイントのセクションを返します。
 
  -- Function: magit-section-ident section
 
-     Return an unique identifier for SECTION.  The return value has the
-     form ‘((TYPE . VALUE)...)’.
+     SECTION@の一意(unique)の識別子(identifier)を返します。戻り値の形式
+     は‘((TYPE . VALUE)...)’です。
 
  -- Function: magit-section-ident-value value
 
-     Return a constant representation of VALUE.
+     VALUE@の定数表現(constant representation)を返します。
 
-     VALUE is the value of a ‘magit-section’ object.  If that is an
-     object itself, then that is not suitable to be used to identify the
-     section because two objects may represent the same thing but not be
-     equal.  If possible a method should be added for such objects,
-     which returns a value that is equal.  Otherwise the catch-all
-     method is used, which just returns the argument itself.
+     VALUEは、‘magit-section’オブジェクトの値です。それ自体がオブジェク
+     トである場合、2つのオブジェクトが同じものを表していても等しくない可
+     能性があるため、セクションの識別(identify)に使用するのには適してい
+     ません。可能であれば、そのようなオブジェクトに等しい値を返すメソッ
+     ドを追加する必要があります。それ以外の場合は、引数自体を返すだけの
+     catch-allメソッドが使用されます。
 
  -- Function: magit-get-section ident &optional root
 
-     Return the section identified by IDENT.  IDENT has to be a list as
-     returned by ‘magit-section-ident’.  If optional ROOT is non-nil,
-     then search in that section tree instead of in the one whose root
-     ‘magit-root-section’ is.
+     IDENT@で識別されるセクションを返します。 IDENTは、
+     ‘magit-section-ident’によって返されるリストである必要があります。オ
+     プションのROOTがnil以外の場合は、rootが‘magit-root-section’であるセ
+     クションツリーではなく、そのセクションツリーを検索します。
 
  -- Function: magit-section-lineage section
 
-     Return the lineage of SECTION.  The return value has the form
-     ‘(TYPE...)’.
+     SECTION@の系統(lineage)を返します。戻り値の形式は‘(TYPE...)’です。
 
 
 File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  Up: Top
@@ -214,72 +211,71 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
  -- Function: magit-section-match condition &optional (section
           (magit-current-section))
 
-     Return t if SECTION matches CONDITION.
+     SECTIONがCONDITION@と一致する場合は、tを返します。
 
-     SECTION defaults to the section at point.  If SECTION is not
-     specified and there also is no section at point, then return nil.
+     SECTIONは、デフォルトでポイントのセクションになります。SECTIONが指
+     定されておらず、ポイントにもセクションがない場合は、nilを返します。
 
-     CONDITION can take the following forms:
+     CONDITIONは、以下の形式をとることができます:
 
-        • ‘(CONDITION...)’ matches if any of the CONDITIONs matches.
+        • ‘(CONDITION...)’ 条件(CONDITION)のいずれかが一致する場合に一致
+          します。
 
-        • ‘[CLASS...]’ matches if the section’s class is the same as the
-          first CLASS or a subclass of that; the section’s parent class
-          matches the second CLASS; and so on.
+        • ‘[CLASS...]’ セクションのクラスが最初のクラス(CLASS)またはその
+          サブクラスと同じである場合に一致します。 セクションの親クラス
+          は2番目のクラス(CLASS)と一致します。等々。
 
-        • ‘[* CLASS...]’ matches sections that match [CLASS...] and also
-          recursively all their child sections.
+        • ‘[* CLASS...]’ [CLASS...]に一致するセクションと、それらのすべ
+          ての子セクションを再帰的に一致させます。
 
-        • ‘CLASS’ matches if the section’s class is the same as CLASS or
-          a subclass of that; regardless of the classes of the parent
-          sections.
+        • ‘CLASS’ 親セクションのクラスには関係なく、セクションのクラスが
+          CLASSまたはそのサブクラスと同じである場合に一致します。
 
-     Each CLASS should be a class symbol, identifying a class that
-     derives from ‘magit-section’.  For backward compatibility CLASS can
-     also be a "type symbol".  A section matches such a symbol if the
-     value of its ‘type’ slot is ‘eq’.  If a type symbol has an entry in
-     ‘magit--section-type-alist’, then a section also matches that type
-     if its class is a subclass of the class that corresponds to the
-     type as per that alist.
+     各CLASSは、‘magit-section’から派生したクラスを識別するクラスシンボ
+     ルである必要があります。下位互換性のために、CLASSは"type symbol"に
+     することもできます。‘type’スロットの値が‘eq’の場合、セクションはそ
+     のようなシンボルに一致します。タイプシンボルの
+     ‘magit--section-type-alist’にエントリがある場合、そのクラスがその
+     alistのタイプに対応するクラスのサブクラスであれば、セクションもその
+     タイプに一致します。
 
-     Note that it is not necessary to specify the complete section
-     lineage as printed by ‘magit-describe-section-briefly’, unless of
-     course you want to be that precise.
+     注意: もちろん、正確にしたい場合を除いて、
+     ‘magit-describe-section-briefly’によって出力される完全なセクション
+     系統を指定する必要はないことに注意してください。
 
  -- Function: magit-section-value-if condition &optional section
 
-     If the section at point matches CONDITION, then return its value.
+     ポイントのセクションがCONDITIONと一致する場合は、その値を返します。
 
-     If optional SECTION is non-nil then test whether that matches
-     instead.  If there is no section at point and SECTION is nil, then
-     return nil.  If the section does not match, then return nil.
+     オプションのSECTIONがnil以外の場合は、代わりにそれが一致するかどう
+     かをテストします。ポイントにセクションがなく、SECTIONがnilの場合は
+     、nilを返します。 セクションが一致しない場合は、nilを返します。
 
-     See ‘magit-section-match’ for the forms CONDITION can take.
+     CONDITIONが取ることができる形式については→‘magit-section-match’
 
  -- Macro: magit-section-case &rest clauses
 
-     Choose among clauses on the type of the section at point.
+     ポイントのセクションのタイプに関する条項(clauses)から選択します。
 
-     Each clause looks like ‘(CONDITION BODY...)’.  The type of the
-     section is compared against each CONDITION; the BODY forms of the
-     first match are evaluated sequentially and the value of the last
-     form is returned.  Inside BODY the symbol ‘it’ is bound to the
-     section at point.  If no clause succeeds or if there is no section
-     at point, return nil.
+     各句は‘(CONDITION BODY...)’のようになります。セクションのタイプは、
+     各条件と比較されます。最初の一致のBODYフォームが順番に評価され、最
+     後のフォームの値が返されます。BODY内では、シンボル‘it’がポイントの
+     セクションに結び付けられています。句が成功しない場合、またはポイン
+     トにセクションがない場合は、nilを返します。
 
-     See ‘magit-section-match’ for the forms CONDITION can take.
-     Additionally a CONDITION of t is allowed in the final clause, and
-     matches if no other CONDITION match, even if there is no section at
-     point.
+     CONDITIONが取ることができる形式については→‘magit-section-match’を参
+     照してください。 さらに、tの条件(CONDITION)は最後の節で許可され、他
+     の条件(CONDITIO)Nが一致しない場合は、ポイントにセクションがない場合
+     でも一致します。
 
 
 
 Tag Table:
 Node: Top889
-Node: Introduction2170
-Node: Creating Sections2937
-Node: Core Functions7457
-Node: Matching Functions8786
+Node: Introduction2456
+Node: Creating Sections3560
+Node: Core Functions9545
+Node: Matching Functions11211
 
 End Tag Table
 
