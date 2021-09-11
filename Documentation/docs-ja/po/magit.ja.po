@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
 "POT-Creation-Date: 2021-08-20 03:37+0900\n"
-"PO-Revision-Date: 2021-09-11 09:44+0900\n"
+"PO-Revision-Date: 2021-09-11 10:51+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -3494,6 +3494,10 @@ msgid ""
 "section's default is still hardcoded."
 msgstr "このオプションを使用して、セクションの初期可視性をオーバーライドできます。将来的には、デフォルトの定義にも使用されますが、現在、セクションのデフォルトはハードコーディングされています。"
 
+# association リスト(略して alist)は、pair (訳注：対)(コンスセル) のリストで、
+# 各 サブリストの car がキーで cdr がそれに対する値であるものです。
+#
+#
 #. type: defopt
 #: sed-out/magit.texi:1589
 msgid ""
@@ -3501,7 +3505,7 @@ msgid ""
 "initial visibility state for such sections.  The state has to be one of "
 "@code{show} or @code{hide}, or a function that returns one of these "
 "symbols.  A function is called with the section as the only argument."
-msgstr "値は単一のリストです。各要素は、セクションタイプまたは系統(lineage)をそのようなセクションの初期可視状態にマップします。状態は、@code{show}または@code{hide}のいずれか、またはこれらのシンボルの1つを返す関数である必要があります。セクションを唯一の引数として関数が呼び出されます。"
+msgstr "値は単一のalistです。各要素は、セクションタイプまたは系統(lineage)をそのようなセクションの初期可視状態にマップします。状態は、@code{show}または@code{hide}のいずれか、またはこれらのシンボルの1つを返す関数である必要があります。セクションを唯一の引数として関数が呼び出されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:1594
@@ -6529,7 +6533,7 @@ msgid ""
 "@code{default-directory} bound to the toplevel of its working tree.  It has "
 "to return a string to be inserted or nil.  PROPS is an alist that supports "
 "the keys @code{:right-align} and @code{:pad-right}."
-msgstr "HEADERは、ヘッダーに表示される文字列です。WIDTHは、列の幅です。FORMATは、1つの引数とリポジトリID(通常はそのベース名)と作業ツリーの最上位に結び付けられたされた@code{default-directory}を使用して呼び出される関数です。挿入する文字列またはnilを返す必要があります。PROPSは、キー@code{:right-align}と@code{:pad-right}@code{：right-align}をサポートするリストです。"
+msgstr "HEADERは、ヘッダーに表示される文字列です。WIDTHは、列の幅です。FORMATは、1つの引数とリポジトリID(通常はそのベース名)と作業ツリーの最上位に結び付けられたされた@code{default-directory}を使用して呼び出される関数です。挿入する文字列またはnilを返す必要があります。PROPSは、キー@code{:right-align}と@code{:pad-right}をサポートするalistです。"
 
 #. type: defopt
 #: sed-out/magit.texi:3295
@@ -13426,7 +13430,7 @@ msgid ""
 "branch will be used as the starting point as usual, but the upstream of the "
 "starting-point may be used as the upstream of the new branch, instead of the "
 "starting-point itself."
-msgstr ""
+msgstr "現在のブランチがオプション@code{magit-branch-prefer-remote-upstream}の値のメンバーである場合、現在のブランチは通常どおり開始点(starting point)として使用されますが、starting-pointそれ自身の代わりに、starting-pointを新しいブランチのアップストリームとして使用できます。"
 
 #. type: table
 #: sed-out/magit.texi:6649
@@ -13436,7 +13440,7 @@ msgid ""
 "Interactively, FROM is only ever non-nil, if the region selects some "
 "commits, and among those commits, FROM is the commit that is the fewest "
 "commits ahead of the source branch."
-msgstr ""
+msgstr "オプションのFROMがnil以外の場合、ソースブランチは、アップストリームと共有する最後のコミットではなく、@code{FROM~}にリセットされます。対話的なFROMは、リージョンがいくつかのコミットを選択した場合にのみnil以外になり、それらのコミットの中で、FROMはソースブランチの前にあるコミットの数が最も少ないコミットです。"
 
 #. type: table
 #: sed-out/magit.texi:6654
@@ -13445,7 +13449,7 @@ msgid ""
 "commits between FROM and @code{HEAD} are moved to the new branch.  If FROM "
 "is not reachable from @code{HEAD} or is reachable from the source branch's "
 "upstream, then an error is raised."
-msgstr ""
+msgstr "選択範囲のもう一方の端でのコミットは実際には重要ではありません。FROMと@code{HEAD}の間のすべてのコミットは新しいブランチに移動されます FROMが@code{HEAD}から到達できない場合、またはソースブランチのアップストリームから到達可能である場合、エラーが発生します。"
 
 #. type: kindex
 #: sed-out/magit.texi:6655
@@ -13471,7 +13475,7 @@ msgid ""
 "This command behaves like @code{magit-branch-spinoff}, except that it does "
 "not change the current branch.  If there are any uncommitted changes, then "
 "it behaves exactly like @code{magit-branch-spinoff}."
-msgstr ""
+msgstr "このコマンドは、現在のブランチを変更しないことを除いて、@code{magit-branch-spinoff}のように動作します。コミットされていない変更がある場合は、@code{magit-branch-spinoff}とまったく同じように動作します。"
 
 #. type: kindex
 #: sed-out/magit.texi:6663
@@ -13504,7 +13508,7 @@ msgid ""
 "When the branch being reset is the current branch, then a hard reset is "
 "performed.  If there are any uncommitted changes, then the user has to "
 "confirm the reset because those changes would be lost."
-msgstr ""
+msgstr "リセットされるブランチが現在のブランチである場合、ハードリセットが実行されます。コミットされていない変更がある場合、それらの変更は失われるため、ユーザーはリセットを確認する必要があります。"
 
 #. type: table
 #: sed-out/magit.texi:6676
@@ -13544,7 +13548,7 @@ msgid ""
 "Delete one or multiple branches.  If the region marks multiple branches, "
 "then offer to delete those.  Otherwise, prompt for a single branch to be "
 "deleted, defaulting to the branch at point."
-msgstr ""
+msgstr "1つまたは複数のブランチを削除します。リージョンが複数のブランチをマークしている場合は、それらを削除することを提案します。それ以外の場合は、削除する単一のブランチの入力を求めます。デフォルトでは、そのポイントでのブランチになります。"
 
 #. type: kindex
 #: sed-out/magit.texi:6689
@@ -13570,7 +13574,7 @@ msgid ""
 "Rename a branch.  The branch and the new name are read in the minibuffer.  "
 "With prefix argument the branch is renamed even if that name conflicts with "
 "an existing branch."
-msgstr ""
+msgstr "ブランチの名前を変更します。ブランチと新しい名前がミニバッファで読み取られます。プレフィックス引数を使用すると、その名前が既存のブランチと競合する場合でも、ブランチの名前が変更されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:6699
@@ -13584,7 +13588,7 @@ msgid ""
 "When creating a branch, whether to read the upstream branch before the name "
 "of the branch that is to be created.  The default is @code{t}, and I "
 "recommend you leave it at that."
-msgstr ""
+msgstr "ブランチを作成するときに、作成するブランチの名前の前にアップストリームブランチをユーザーから読み取るかどうか。デフォルトは@code{t}で、そのままにしておくことをお勧めします。"
 
 #. type: defopt
 #: sed-out/magit.texi:6706
@@ -13606,7 +13610,7 @@ msgid ""
 "suggested as the starting point of the new branch, or if there is no such "
 "revision at point the current branch.  In either case the user may choose "
 "another starting point."
-msgstr ""
+msgstr "新しいブランチが作成されると、そのポイントでのブランチ、コミット、またはスタッシュが新しいブランチの開始点として提案されます。そのようなリビジョンがポイントにない場合は、現在のブランチが提案されます。 いずれの場合も、ユーザーは別の開始点を選択できます。"
 
 #. type: defopt
 #: sed-out/magit.texi:6720
@@ -13615,7 +13619,7 @@ msgid ""
 "upstream of the new branch, depending on the value of the Git variable "
 "`branch.autoSetupMerge'.  By default this is done for remote branches, but "
 "not for local branches."
-msgstr ""
+msgstr "選択した開始点がブランチの場合、Git変数`branch.autoSetupMerge'の値に応じて、新しいブランチのアップストリームとして設定することもできます。デフォルトでは、これはリモートブランチに対して実行され、ローカルブランチに対しては実行されません。"
 
 #. type: defopt
 #: sed-out/magit.texi:6728
@@ -13627,7 +13631,7 @@ msgid ""
 "fast-forwarded to the local branch, then the chosen branch is used as "
 "starting point, but its own upstream is used as the upstream of the new "
 "branch."
-msgstr ""
+msgstr "常にアップストリームとしてリモートブランチを使用することをお勧めします。選択した開始点が (1)ローカルブランチ、(2)名前がこのオプションの値のメンバーと一致する場合、(3)そのローカルブランチの上流が同じ名前のリモートブランチである場合、(4)そのリモートブランチをローカルブランチにfast-forwardedk可能、であるならば選択したブランチが開始点として使用され、それ自体のアップストリームが新しいブランチのアップストリームとして使用されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:6737
@@ -13639,7 +13643,7 @@ msgid ""
 "be invalid, actually are not, e.g. \".+$\" are all perfectly valid.  More "
 "precisely, if @code{git check-ref-format --branch STRING} exits with a "
 "non-zero status, then treat STRING as a regexp."
-msgstr ""
+msgstr "このオプションの値のメンバーは、ブランチ名として無効にする文字が含まれていない限り、完全に一致する必要があるブランチ名として扱われます。正規表現としての解釈をトリガーするために使用する推奨文字は、\"*\"と\"^\"です。 無効であると予想される他のいくつかの文字は、実際にはそうではありません。\".+$\"はすべて完全に有効です。 より正確には、@code{git check-ref-format --branch STRING}がゼロ以外のステータスで終了する場合、STRINGを正規表現として扱います。"
 
 #. type: defopt
 #: sed-out/magit.texi:6740
@@ -13657,7 +13661,7 @@ msgstr "feature --upstream--> origin/master\n"
 #. type: defopt
 #: sed-out/magit.texi:6746
 msgid "instead of"
-msgstr ""
+msgstr "は以下の代わりです"
 
 #. type: example
 #: sed-out/magit.texi:6749
@@ -13671,7 +13675,7 @@ msgid ""
 "Which you prefer is a matter of personal preference.  If you do prefer the "
 "former, then you should add branches such as @code{master}, @code{next}, and "
 "@code{maint} to the value of this options."
-msgstr ""
+msgstr "あなたがどちらを好むかは個人的な好みの問題です。前者を使用する場合は、@code{master}、@code{next}、@code{maint}などのブランチをこのオプションの値に追加する必要があります。"
 
 #. type: defopt
 #: sed-out/magit.texi:6756
@@ -13684,7 +13688,7 @@ msgstr "magit-branch-adjust-remote-upstream-alist"
 msgid ""
 "The value of this option is an alist of branches to be used as the upstream "
 "when branching a remote branch."
-msgstr "このオプションの値は、リモートブランチを分岐するときにアップストリームとして使用されるブランチのリストです。"
+msgstr "このオプションの値は、リモートブランチを分岐するときにアップストリームとして使用されるブランチのalistです。"
 
 #. type: defopt
 #: sed-out/magit.texi:6768
@@ -13695,7 +13699,7 @@ msgid ""
 "accessing it and having both the upstream and the push-remote reference the "
 "same related branch would be wasteful.  Instead a branch like \"maint\" or "
 "\"master\" should be used as the upstream."
-msgstr ""
+msgstr "リモートにあるつかの間のブランチ(ephemeral branch)からローカルブランチを作成する場合。機能(feature)ブランチまたはホットフィックスブランチの場合、プッシュリモートはすでにアクセスを許可しており、アップストリームとプッシュリモートの両方が同じ関連ブランチを参照するのは無駄になるため、通常、そのリモートブランチをアップストリームブランチとして使用しないでください。代わりに、\"maint\"や\"master\"などのブランチをアップストリームとして使用する必要があります。"
 
 #. type: defopt
 #: sed-out/magit.texi:6773
@@ -13704,7 +13708,7 @@ msgid ""
 "when branching certain remote branches.  The value is an alist of the form "
 "@code{((UPSTREAM . RULE)...)}.  The first matching element is used, the "
 "following elements are ignored."
-msgstr ""
+msgstr "このオプションを使用すると、特定のリモートブランチを分岐するときにアップストリームとして使用する必要があるブランチを指定できます。 値は、@code{((UPSTREAM . RULE)...)}の形式のalistです。最初に一致する要素が使用され、その後の要素は無視されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:6776

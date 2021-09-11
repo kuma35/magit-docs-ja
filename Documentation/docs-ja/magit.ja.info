@@ -1542,7 +1542,7 @@ Magitには、セクションの表示を変更するための多くのコマン
      きます。将来的には、デフォルトの定義にも使用されますが、現在、セク
      ションのデフォルトはハードコーディングされています。
 
-     値は単一のリストです。各要素は、セクションタイプまたは系統
+     値は単一のalistです。各要素は、セクションタイプまたは系統
      (lineage)をそのようなセクションの初期可視状態にマップします。状態は
      、‘show’または‘hide’のいずれか、またはこれらのシンボルの1つを返す関
      数である必要があります。セクションを唯一の引数として関数が呼び出さ
@@ -3072,8 +3072,7 @@ File: magit.ja.info,  Node: Repository List,  Next: Logging,  Prev: Status Buffe
      FORMATは、1つの引数とリポジトリID(通常はそのベース名)と作業ツリーの
      最上位に結び付けられたされた‘default-directory’を使用して呼び出され
      る関数です。挿入する文字列またはnilを返す必要があります。PROPSは、
-     キー‘:right-align’と‘:pad-right’‘：right-align’をサポートするリスト
-     です。
+     キー‘:right-align’と‘:pad-right’をサポートするalistです。
 
      あなたは列ごとに1文字だけを使用し、列間にパディングなしで数値列の範
      囲を表示したい場合があるかもしれません。その場合は、適切なHEADERを
@@ -5843,28 +5842,29 @@ File: magit.ja.info,  Node: Branch Commands,  Next: Branch Git Variables,  Prev:
      チを作成するのに役立ちます（おそらく「master」である必要はありませ
      ん）。
 
-     If the current branch is a member of the value of option
-     ‘magit-branch-prefer-remote-upstream’ (which see), then the current
-     branch will be used as the starting point as usual, but the
-     upstream of the starting-point may be used as the upstream of the
-     new branch, instead of the starting-point itself.
+     現在のブランチがオプション‘magit-branch-prefer-remote-upstream’の値
+     のメンバーである場合、現在のブランチは通常どおり開始点(starting
+     point)として使用されますが、starting-pointそれ自身の代わりに、
+     starting-pointを新しいブランチのアップストリームとして使用できます
+     。
 
-     If optional FROM is non-nil, then the source branch is reset to
-     ‘FROM~’, instead of to the last commit it shares with its upstream.
-     Interactively, FROM is only ever non-nil, if the region selects
-     some commits, and among those commits, FROM is the commit that is
-     the fewest commits ahead of the source branch.
+     オプションのFROMがnil以外の場合、ソースブランチは、アップストリーム
+     と共有する最後のコミットではなく、‘FROM~’にリセットされます。対話的
+     なFROMは、リージョンがいくつかのコミットを選択した場合にのみnil以外
+     になり、それらのコミットの中で、FROMはソースブランチの前にあるコミ
+     ットの数が最も少ないコミットです。
 
-     The commit at the other end of the selection actually does not
-     matter, all commits between FROM and ‘HEAD’ are moved to the new
-     branch.  If FROM is not reachable from ‘HEAD’ or is reachable from
-     the source branch’s upstream, then an error is raised.
+     選択範囲のもう一方の端でのコミットは実際には重要ではありません。
+     FROMと‘HEAD’の間のすべてのコミットは新しいブランチに移動されます
+     FROMが‘HEAD’から到達できない場合、またはソースブランチのアップスト
+     リームから到達可能である場合、エラーが発生します。
 
 ‘b S’     (‘magit-branch-spinout’)
 
-     This command behaves like ‘magit-branch-spinoff’, except that it
-     does not change the current branch.  If there are any uncommitted
-     changes, then it behaves exactly like ‘magit-branch-spinoff’.
+     このコマンドは、現在のブランチを変更しないことを除いて、
+     ‘magit-branch-spinoff’のように動作します。コミットされていない変更
+     がある場合は、‘magit-branch-spinoff’とまったく同じように動作します
+     。
 
 ‘b x’     (‘magit-branch-reset’)
 
@@ -5872,9 +5872,9 @@ File: magit.ja.info,  Node: Branch Commands,  Next: Branch Git Variables,  Prev:
      のブランチ、別のブランチの先端、またはその他のコミットにリセットさ
      れます。
 
-     When the branch being reset is the current branch, then a hard
-     reset is performed.  If there are any uncommitted changes, then the
-     user has to confirm the reset because those changes would be lost.
+     リセットされるブランチが現在のブランチである場合、ハードリセットが
+     実行されます。コミットされていない変更がある場合、それらの変更は失
+     われるため、ユーザーはリセットを確認する必要があります。
 
      これは、機能(feature)ブランチでの作業を開始したが、それがすべてがら
      くたであり、最初からやり直したい場合に役立ちます。
@@ -5885,21 +5885,22 @@ File: magit.ja.info,  Node: Branch Commands,  Next: Branch Git Variables,  Prev:
 
 ‘b k’     (‘magit-branch-delete’)
 
-     Delete one or multiple branches.  If the region marks multiple
-     branches, then offer to delete those.  Otherwise, prompt for a
-     single branch to be deleted, defaulting to the branch at point.
+     1つまたは複数のブランチを削除します。リージョンが複数のブランチをマ
+     ークしている場合は、それらを削除することを提案します。それ以外の場
+     合は、削除する単一のブランチの入力を求めます。デフォルトでは、その
+     ポイントでのブランチになります。
 
 ‘b r’     (‘magit-branch-rename’)
 
-     Rename a branch.  The branch and the new name are read in the
-     minibuffer.  With prefix argument the branch is renamed even if
-     that name conflicts with an existing branch.
+     ブランチの名前を変更します。ブランチと新しい名前がミニバッファで読
+     み取られます。プレフィックス引数を使用すると、その名前が既存のブラ
+     ンチと競合する場合でも、ブランチの名前が変更されます。
 
  -- User Option: magit-branch-read-upstream-first
 
-     When creating a branch, whether to read the upstream branch before
-     the name of the branch that is to be created.  The default is ‘t’,
-     and I recommend you leave it at that.
+     ブランチを作成するときに、作成するブランチの名前の前にアップストリ
+     ームブランチをユーザーから読み取るかどうか。デフォルトは‘t’で、その
+     ままにしておくことをお勧めします。
 
  -- User Option: magit-branch-prefer-remote-upstream
 
@@ -5907,63 +5908,62 @@ File: magit.ja.info,  Node: Branch Commands,  Next: Branch Git Variables,  Prev:
      トリームをローカルアップストリームよりも優先するかどうかを指定しま
      す。
 
-     When a new branch is created, then the branch, commit, or stash at
-     point is suggested as the starting point of the new branch, or if
-     there is no such revision at point the current branch.  In either
-     case the user may choose another starting point.
+     新しいブランチが作成されると、そのポイントでのブランチ、コミット、
+     またはスタッシュが新しいブランチの開始点として提案されます。そのよ
+     うなリビジョンがポイントにない場合は、現在のブランチが提案されます
+     。 いずれの場合も、ユーザーは別の開始点を選択できます。
 
-     If the chosen starting point is a branch, then it may also be set
-     as the upstream of the new branch, depending on the value of the
-     Git variable ‘branch.autoSetupMerge’.  By default this is done for
-     remote branches, but not for local branches.
+     選択した開始点がブランチの場合、Git変数‘branch.autoSetupMerge’の値
+     に応じて、新しいブランチのアップストリームとして設定することもでき
+     ます。デフォルトでは、これはリモートブランチに対して実行され、ロー
+     カルブランチに対しては実行されません。
 
-     You might prefer to always use some remote branch as upstream.  If
-     the chosen starting point is (1) a local branch, (2) whose name
-     matches a member of the value of this option, (3) the upstream of
-     that local branch is a remote branch with the same name, and (4)
-     that remote branch can be fast-forwarded to the local branch, then
-     the chosen branch is used as starting point, but its own upstream
-     is used as the upstream of the new branch.
+     常にアップストリームとしてリモートブランチを使用することをお勧めし
+     ます。選択した開始点が (1)ローカルブランチ、(2)名前がこのオプション
+     の値のメンバーと一致する場合、(3)そのローカルブランチの上流が同じ名
+     前のリモートブランチである場合、(4)そのリモートブランチをローカルブ
+     ランチにfast-forwardedk可能、であるならば選択したブランチが開始点と
+     して使用され、それ自体のアップストリームが新しいブランチのアップス
+     トリームとして使用されます。
 
-     Members of this option’s value are treated as branch names that
-     have to match exactly unless they contain a character that makes
-     them invalid as a branch name.  Recommended characters to use to
-     trigger interpretation as a regexp are "*" and "^".  Some other
-     characters which you might expect to be invalid, actually are not,
-     e.g.  ".+$" are all perfectly valid.  More precisely, if ‘git
-     check-ref-format --branch STRING’ exits with a non-zero status,
-     then treat STRING as a regexp.
+     このオプションの値のメンバーは、ブランチ名として無効にする文字が含
+     まれていない限り、完全に一致する必要があるブランチ名として扱われま
+     す。正規表現としての解釈をトリガーするために使用する推奨文字は、
+     "*"と"^"です。 無効であると予想される他のいくつかの文字は、実際には
+     そうではありません。".+$"はすべて完全に有効です。 より正確には、
+     ‘git check-ref-format --branch STRING’がゼロ以外のステータスで終了
+     する場合、STRINGを正規表現として扱います。
 
      選択したブランチがこれらの条件に一致すると仮定すると、以下のように
      なります:
 
           feature --upstream--> origin/master
 
-     instead of
+     は以下の代わりです
 
           feature --upstream--> master --upstream--> origin/master
 
-     Which you prefer is a matter of personal preference.  If you do
-     prefer the former, then you should add branches such as ‘master’,
-     ‘next’, and ‘maint’ to the value of this options.
+     あなたがどちらを好むかは個人的な好みの問題です。前者を使用する場合
+     は、‘master’、‘next’、‘maint’などのブランチをこのオプションの値に追
+     加する必要があります。
 
  -- User Option: magit-branch-adjust-remote-upstream-alist
 
      このオプションの値は、リモートブランチを分岐するときにアップストリ
-     ームとして使用されるブランチのリストです。
+     ームとして使用されるブランチのalistです。
 
-     When creating a local branch from an ephemeral branch located on a
-     remote, e.g.  a feature or hotfix branch, then that remote branch
-     should usually not be used as the upstream branch, since the
-     push-remote already allows accessing it and having both the
-     upstream and the push-remote reference the same related branch
-     would be wasteful.  Instead a branch like "maint" or "master"
-     should be used as the upstream.
+     リモートにあるつかの間のブランチ(ephemeral branch)からローカルブラ
+     ンチを作成する場合。機能(feature)ブランチまたはホットフィックスブラ
+     ンチの場合、プッシュリモートはすでにアクセスを許可しており、アップ
+     ストリームとプッシュリモートの両方が同じ関連ブランチを参照するのは
+     無駄になるため、通常、そのリモートブランチをアップストリームブラン
+     チとして使用しないでください。代わりに、"maint"や"master"などのブラ
+     ンチをアップストリームとして使用する必要があります。
 
-     This option allows specifying the branch that should be used as the
-     upstream when branching certain remote branches.  The value is an
-     alist of the form ‘((UPSTREAM . RULE)...)’.  The first matching
-     element is used, the following elements are ignored.
+     このオプションを使用すると、特定のリモートブランチを分岐するときに
+     アップストリームとして使用する必要があるブランチを指定できます。 値
+     は、‘((UPSTREAM . RULE)...)’の形式のalistです。最初に一致する要素が
+     使用され、その後の要素は無視されます。
 
      UPSTREAMは、RULE@で指定されたブランチのアップストリームとして使用さ
      れるブランチです。ローカルブランチでもリモートブランチでもかまいま
@@ -7877,8 +7877,7 @@ Sections::.
      FORMATは、1つの引数とリポジトリID(通常はそのベース名)と作業ツリーの
      最上位に結び付けられたされた‘default-directory’を使用して呼び出され
      る関数です。挿入する文字列またはnilを返す必要があります。PROPSは、
-     キー‘:right-align’と‘:pad-right’‘：right-align’をサポートするリスト
-     です。
+     キー‘:right-align’と‘:pad-right’をサポートするalistです。
 
 
 File: magit.ja.info,  Node: submodule用トランジェントコマンド,  Prev: Listing Submodules,  Up: Submodules
@@ -10288,16 +10287,16 @@ Appendix C Keystroke Index
 * b c:                                   Branch Commands.     (line  72)
 * B g:                                   Bisecting.           (line  42)
 * B k:                                   Bisecting.           (line  54)
-* b k:                                   Branch Commands.     (line 155)
+* b k:                                   Branch Commands.     (line 156)
 * b l:                                   Branch Commands.     (line  79)
 * B m:                                   Bisecting.           (line  47)
 * b n:                                   Branch Commands.     (line  62)
 * B r:                                   Bisecting.           (line  60)
-* b r:                                   Branch Commands.     (line 161)
+* b r:                                   Branch Commands.     (line 163)
 * B s:                                   Bisecting.           (line  29)
 * b s:                                   Branch Commands.     (line 103)
 * b S:                                   Branch Commands.     (line 132)
-* b x:                                   Branch Commands.     (line 138)
+* b x:                                   Branch Commands.     (line 139)
 * c:                                     Blaming.             (line 138)
 * C:                                     Cloning Repository.  (line  22)
 * c <1>:                                 コミット開始.        (line   8)
@@ -10832,11 +10831,11 @@ Appendix D Command Index
 * magit-branch-configure <2>:            Branch Commands.     (line  34)
 * magit-branch-configure <3>:            Branch Commands.     (line  35)
 * magit-branch-create:                   Branch Commands.     (line  62)
-* magit-branch-delete:                   Branch Commands.     (line 155)
-* magit-branch-or-checkout:              Branch Commands.     (line 278)
-* magit-branch-orphan:                   Branch Commands.     (line 273)
-* magit-branch-rename:                   Branch Commands.     (line 161)
-* magit-branch-reset:                    Branch Commands.     (line 138)
+* magit-branch-delete:                   Branch Commands.     (line 156)
+* magit-branch-or-checkout:              Branch Commands.     (line 279)
+* magit-branch-orphan:                   Branch Commands.     (line 274)
+* magit-branch-rename:                   Branch Commands.     (line 163)
+* magit-branch-reset:                    Branch Commands.     (line 139)
 * magit-branch-shelve:                   Auxiliary Branch Commands.
                                                               (line   9)
 * magit-branch-spinoff:                  Branch Commands.     (line 103)
@@ -11396,22 +11395,22 @@ Appendix E Function Index
 * magit-push-to-remote:                  Pushing.             (line 103)
 * magit-region-sections:                 Section Selection.   (line  10)
 * magit-region-values:                   Section Selection.   (line  37)
-* magit-repolist-column-branch:          Repository List.     (line  48)
-* magit-repolist-column-branches:        Repository List.     (line  57)
-* magit-repolist-column-flag:            Repository List.     (line  65)
-* magit-repolist-column-ident:           Repository List.     (line  35)
-* magit-repolist-column-path:            Repository List.     (line  40)
-* magit-repolist-column-stashes:         Repository List.     (line  61)
+* magit-repolist-column-branch:          Repository List.     (line  47)
+* magit-repolist-column-branches:        Repository List.     (line  56)
+* magit-repolist-column-flag:            Repository List.     (line  64)
+* magit-repolist-column-ident:           Repository List.     (line  34)
+* magit-repolist-column-path:            Repository List.     (line  39)
+* magit-repolist-column-stashes:         Repository List.     (line  60)
 * magit-repolist-column-unpulled-from-pushremote: Repository List.
-                                                              (line  89)
+                                                              (line  88)
 * magit-repolist-column-unpulled-from-upstream: Repository List.
-                                                              (line  84)
+                                                              (line  83)
 * magit-repolist-column-unpushed-to-pushremote: Repository List.
-                                                              (line  99)
+                                                              (line  98)
 * magit-repolist-column-unpushed-to-upstream: Repository List.
-                                                              (line  94)
-* magit-repolist-column-upstream:        Repository List.     (line  52)
-* magit-repolist-column-version:         Repository List.     (line  44)
+                                                              (line  93)
+* magit-repolist-column-upstream:        Repository List.     (line  51)
+* magit-repolist-column-version:         Repository List.     (line  43)
 * magit-restore-window-configuration:    Quitting Windows.    (line  24)
 * magit-run-git:                         Calling Git for Effect.
                                                               (line  36)
@@ -11461,8 +11460,8 @@ Appendix E Function Index
                                                               (line  76)
 * コマンド <15>:                         Visiting Files and Blobs from a Diff.
                                                               (line  77)
-* コマンド <16>:                         Branch Commands.     (line 273)
-* コマンド <17>:                         Branch Commands.     (line 278)
+* コマンド <16>:                         Branch Commands.     (line 274)
+* コマンド <17>:                         Branch Commands.     (line 279)
 * コマンド <18>:                         Auxiliary Branch Commands.
                                                               (line   9)
 * コマンド <19>:                         Auxiliary Branch Commands.
@@ -11555,10 +11554,10 @@ Appendix F Variable Index
 * magit-blame-read-only:                 Blaming.             (line 164)
 * magit-blame-styles:                    Blaming.             (line 146)
 * magit-blame-time-format:               Blaming.             (line 159)
-* magit-branch-adjust-remote-upstream-alist: Branch Commands. (line 219)
+* magit-branch-adjust-remote-upstream-alist: Branch Commands. (line 220)
 * magit-branch-direct-configure:         Branch Commands.     (line  23)
-* magit-branch-prefer-remote-upstream:   Branch Commands.     (line 173)
-* magit-branch-read-upstream-first:      Branch Commands.     (line 167)
+* magit-branch-prefer-remote-upstream:   Branch Commands.     (line 175)
+* magit-branch-read-upstream-first:      Branch Commands.     (line 169)
 * magit-buffer-name-format:              バッファの名付け.    (line  27)
 * magit-bury-buffer-function:            Quitting Windows.    (line  14)
 * magit-cherry-margin:                   Cherries.            (line  22)
@@ -11735,155 +11734,155 @@ Node: 自動的に元に戻るリスク56010
 Node: Sections59119
 Node: Section Movement60378
 Node: Section Visibility66494
-Node: Section Hooks74542
-Node: Section Types and Values77933
-Node: Section Options79685
-Node: トランジェントコマンド80271
-Node: トランジェントでの引数とバッファ変数82151
-Node: Completion Confirmation(確認補完)とSelection(選択範囲)91824
-Node: アクションの確認92355
-Node: 補完と確認102830
-Node: 選択範囲107064
-Node: ハンク内部リージョン110953
-Node: 補完フレームワークのサポート112416
-Node: 追加の補完オプション118445
-Node: Running Git119211
-Node: Viewing Git Output119517
-Node: Git Process Status120996
-Node: Gitを手動で実行122189
-Node: Git実行ファイル125594
-Node: Global Git Arguments129700
-Node: Inspecting130784
-Node: Status Buffer132035
-Node: Status Sections138504
-Node: Status Header Sections146084
-Node: Status Module Sections149391
-Node: Status Options152799
-Node: Repository List154677
-Node: Logging158854
-Node: Refreshing Logs162437
-Node: Log Buffer164471
-Node: Log Margin170356
-Node: Select from Log174569
-Node: Reflog177445
-Node: Cherries179516
-Node: Diffing181974
-Node: Refreshing Diffs186318
-Node: Commands Available in Diffs191085
-Node: Diff Options194444
-Node: Revision Buffer201485
-Node: Ediffing205793
-Node: References Buffer211228
-Node: References Sections224777
-Node: Bisecting225939
-Node: Visiting Files and Blobs229289
-Node: General-Purpose Visit Commands229897
-Node: Visiting Files and Blobs from a Diff231205
-Node: Blaming236059
-Node: Manipulating244648
-Node: Creating Repository244993
-Node: Cloning Repository245732
-Node: Staging and Unstaging253215
-Node: Staging from File-Visiting Buffers259166
-Node: Applying260983
-Node: Committing263911
-Node: コミット開始264681
-Node: コミットメッセージ編集270312
-Node: Using the Revision Stack273947
-Node: Commit Pseudo Headers277852
-Node: Commit Mode and Hooks279639
-Node: Commit Message Conventions283585
-Node: Branching286294
-Node: The Two Remotes286523
-Node: Branch Commands290297
-Node: Branch Git Variables306007
-Node: Auxiliary Branch Commands312334
-Node: Merging313559
-Node: Resolving Conflicts319072
-Node: Rebasing325389
-Node: Editing Rebase Sequences331449
-Node: Information About In-Progress Rebase336464
-Ref: Information About In-Progress Rebase-Footnote-1345645
-Node: Cherry Picking346241
-Node: Reverting351207
-Node: Resetting353170
-Node: Stashing355576
-Node: Transferring361346
-Node: Remotes361571
-Node: Remote Commands361726
-Node: Remote Git Variables366464
-Node: Fetching367746
-Node: Pulling370603
-Node: Pushing372075
-Node: Plain Patches376881
-Node: Maildir Patches378639
-Node: Miscellaneous380436
-Node: Tagging380753
-Node: Notes383387
-Node: Submodules386248
-Node: Listing Submodules386513
-Node: submodule用トランジェントコマンド388034
-Node: Subtree390889
-Node: Worktree393420
-Node: Common Commands394765
-Node: Wip Modes397423
-Node: Wip Graph402347
-Node: Legacy Wip Modes404649
-Node: Commands for Buffers Visiting Files407540
-Node: Minor Mode for Buffers Visiting Blobs413559
-Node: Customizing414373
-Node: Per-Repository Configuration416323
-Node: 基本設定418561
-Node: Safety418887
-Node: Performance420865
-Ref: Log Performance423867
-Ref: Diff Performance425164
-Ref: Refs Buffer Performance426499
-Ref: Committing Performance427068
-Node: Microsoft Windows Performance427978
-Node: MacOS Performance429163
-Ref: MacOS Performance-Footnote-1429868
-Node: Default Bindings429950
-Node: 配管コマンド(Plumbing)432189
-Node: Calling Git433234
-Node: Getting a Value from Git434772
-Node: Calling Git for Effect438513
-Node: Section Plumbing444410
-Node: Creating Sections444661
-Node: Section Selection448564
-Node: Matching Sections450366
-Node: Refreshing Buffers456339
-Node: 慣習459502
-Node: Theming Faces459711
-Node: FAQ467782
-Node: FAQ - How to ...?468307
-Node: Magitの発音は？468767
-Node: How to show git's output?469720
-Node: How to install the gitman info manual?470748
-Node: How to show diffs for gpg-encrypted files?472029
-Node: How does branching and pushing work?472628
-Node: Magitをediff-version-control-packageとして使用できますか？473013
-Node: VC@を無効にする必要がありますか？475100
-Node: FAQ - Issues and Errors475803
-Node: Magit is slow477068
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました477308
-Node: コミットに問題があります478083
-Node: MS WindowsではMagitでpushできません478644
-Node: I am using OS X and SOMETHING works in shell but not in Magit479295
-Node: ファイルを展開して差分を表示するとファイルが消えます480143
-Node: COMMIT_EDITMSGバッファのpointが間違っています480782
-Node: モード行の情報が常に最新ではない481878
-Node: 同じ名前を共有するブランチとタグは何かを壊します483050
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません484005
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません484998
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています487391
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません488418
-Node: 私はポップアップのデフォルトを保存できなくなりました489477
-Node: Debugging Tools490547
-Node: Keystroke Index493367
-Node: Command Index528036
-Node: Function Index566236
-Node: Variable Index583301
+Node: Section Hooks74538
+Node: Section Types and Values77929
+Node: Section Options79681
+Node: トランジェントコマンド80267
+Node: トランジェントでの引数とバッファ変数82147
+Node: Completion Confirmation(確認補完)とSelection(選択範囲)91820
+Node: アクションの確認92351
+Node: 補完と確認102826
+Node: 選択範囲107060
+Node: ハンク内部リージョン110949
+Node: 補完フレームワークのサポート112412
+Node: 追加の補完オプション118441
+Node: Running Git119207
+Node: Viewing Git Output119513
+Node: Git Process Status120992
+Node: Gitを手動で実行122185
+Node: Git実行ファイル125590
+Node: Global Git Arguments129696
+Node: Inspecting130780
+Node: Status Buffer132031
+Node: Status Sections138500
+Node: Status Header Sections146080
+Node: Status Module Sections149387
+Node: Status Options152795
+Node: Repository List154673
+Node: Logging158820
+Node: Refreshing Logs162403
+Node: Log Buffer164437
+Node: Log Margin170322
+Node: Select from Log174535
+Node: Reflog177411
+Node: Cherries179482
+Node: Diffing181940
+Node: Refreshing Diffs186284
+Node: Commands Available in Diffs191051
+Node: Diff Options194410
+Node: Revision Buffer201451
+Node: Ediffing205759
+Node: References Buffer211194
+Node: References Sections224743
+Node: Bisecting225905
+Node: Visiting Files and Blobs229255
+Node: General-Purpose Visit Commands229863
+Node: Visiting Files and Blobs from a Diff231171
+Node: Blaming236025
+Node: Manipulating244614
+Node: Creating Repository244959
+Node: Cloning Repository245698
+Node: Staging and Unstaging253181
+Node: Staging from File-Visiting Buffers259132
+Node: Applying260949
+Node: Committing263877
+Node: コミット開始264647
+Node: コミットメッセージ編集270278
+Node: Using the Revision Stack273913
+Node: Commit Pseudo Headers277818
+Node: Commit Mode and Hooks279605
+Node: Commit Message Conventions283551
+Node: Branching286260
+Node: The Two Remotes286489
+Node: Branch Commands290263
+Node: Branch Git Variables307771
+Node: Auxiliary Branch Commands314098
+Node: Merging315323
+Node: Resolving Conflicts320836
+Node: Rebasing327153
+Node: Editing Rebase Sequences333213
+Node: Information About In-Progress Rebase338228
+Ref: Information About In-Progress Rebase-Footnote-1347409
+Node: Cherry Picking348005
+Node: Reverting352971
+Node: Resetting354934
+Node: Stashing357340
+Node: Transferring363110
+Node: Remotes363335
+Node: Remote Commands363490
+Node: Remote Git Variables368228
+Node: Fetching369510
+Node: Pulling372367
+Node: Pushing373839
+Node: Plain Patches378645
+Node: Maildir Patches380403
+Node: Miscellaneous382200
+Node: Tagging382517
+Node: Notes385151
+Node: Submodules388012
+Node: Listing Submodules388277
+Node: submodule用トランジェントコマンド389768
+Node: Subtree392623
+Node: Worktree395154
+Node: Common Commands396499
+Node: Wip Modes399157
+Node: Wip Graph404081
+Node: Legacy Wip Modes406383
+Node: Commands for Buffers Visiting Files409274
+Node: Minor Mode for Buffers Visiting Blobs415293
+Node: Customizing416107
+Node: Per-Repository Configuration418057
+Node: 基本設定420295
+Node: Safety420621
+Node: Performance422599
+Ref: Log Performance425601
+Ref: Diff Performance426898
+Ref: Refs Buffer Performance428233
+Ref: Committing Performance428802
+Node: Microsoft Windows Performance429712
+Node: MacOS Performance430897
+Ref: MacOS Performance-Footnote-1431602
+Node: Default Bindings431684
+Node: 配管コマンド(Plumbing)433923
+Node: Calling Git434968
+Node: Getting a Value from Git436506
+Node: Calling Git for Effect440247
+Node: Section Plumbing446144
+Node: Creating Sections446395
+Node: Section Selection450298
+Node: Matching Sections452100
+Node: Refreshing Buffers458073
+Node: 慣習461236
+Node: Theming Faces461445
+Node: FAQ469516
+Node: FAQ - How to ...?470041
+Node: Magitの発音は？470501
+Node: How to show git's output?471454
+Node: How to install the gitman info manual?472482
+Node: How to show diffs for gpg-encrypted files?473763
+Node: How does branching and pushing work?474362
+Node: Magitをediff-version-control-packageとして使用できますか？474747
+Node: VC@を無効にする必要がありますか？476834
+Node: FAQ - Issues and Errors477537
+Node: Magit is slow478802
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました479042
+Node: コミットに問題があります479817
+Node: MS WindowsではMagitでpushできません480378
+Node: I am using OS X and SOMETHING works in shell but not in Magit481029
+Node: ファイルを展開して差分を表示するとファイルが消えます481877
+Node: COMMIT_EDITMSGバッファのpointが間違っています482516
+Node: モード行の情報が常に最新ではない483612
+Node: 同じ名前を共有するブランチとタグは何かを壊します484784
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません485739
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません486732
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています489125
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません490152
+Node: 私はポップアップのデフォルトを保存できなくなりました491211
+Node: Debugging Tools492281
+Node: Keystroke Index495101
+Node: Command Index529770
+Node: Function Index567970
+Node: Variable Index585035
 
 End Tag Table
 
