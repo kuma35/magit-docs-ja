@@ -7827,19 +7827,19 @@ not enabled in the file transient command by default:
 @cindex magit-file-rename
 @deffn コマンド magit-file-rename
 
-This command renames a file read from the user.
+このコマンドは、ユーザーから読み取ってファイルの名前を変更します。
 @end deffn
 
 @cindex magit-file-delete
 @deffn コマンド magit-file-delete
 
-This command deletes a file read from the user.
+このコマンドは、ユーザーから読み取ってファイルを削除します。
 @end deffn
 
 @cindex magit-file-untrack
 @deffn コマンド magit-file-untrack
 
-This command untracks a file read from the user.
+このコマンドは、ユーザーから読み取られたファイルの追跡を解除(untrack)します。
 @end deffn
 
 @cindex magit-file-checkout
@@ -7910,12 +7910,9 @@ GitとEmacsはどちらも高度にカスタマイズ可能です。MagitはGit�
 @node Per-Repository Configuration
 @section Per-Repository Configuration
 
-Magit can be configured on a per-repository level using both Git variables
-as well as Emacs options.
+Magitは、Git変数とEmacsオプションの両方を使用して、リポジトリごとの設定を行う事ができます。
 
-To set a Git variable for one repository only, simply set it in
-@code{/path/to/repo/.git/config} instead of @code{$HOME/.gitconfig} or
-@code{/etc/gitconfig}.  See 
+あるリポジトリのみのGit変数を設定するには、@code{$HOME/.gitconfig}や@code{/etc/gitconfig}の代わりに@code{/path/to/repo/.git/config}に設定するだけです。参照: 
 @ifinfo
 @ref{git-config,,,gitman,}
 @end ifinfo
@@ -7928,10 +7925,8 @@ the <a href="http://git-scm.com/docs/git-config">git-config(1)</a> manpage.
 the git-config(1) manpage.
 @end iftex
 
-Similarly, Emacs options can be set for one repository only by editing
-@code{/path/to/repo/.dir-locals.el}.  See @ref{Directory
-Variables,,,emacs,}.  For example to disable automatic refreshes of
-file-visiting buffers in just one huge repository use this:
+同様に、Emacsオプションは、@code{/path/to/repo/.dir-locals.el}を編集することによってあるリポジトリのみに設定できます。こちらを参照下さい(@ref{Directory
+Variables,,,emacs,})。たとえば、1つの巨大なリポジトリでファイルアクセスバッファの自動更新を無効にするには、以下を使用します:
 
 @itemize
 @item
@@ -7942,9 +7937,7 @@ file-visiting buffers in just one huge repository use this:
 @end lisp
 @end itemize
 
-It might only be costly to insert certain information into Magit buffers for
-repositories that are exceptionally large, in which case you can disable the
-respective section inserters just for that repository:
+非常に大きなリポジトリのMagitバッファに特定の情報を挿入するのはコストがかかるかもしれません。その場合、そのようなリポジトリに対してのみそれぞれのセクションインサーターを無効にすることができます:
 
 @itemize
 @item
@@ -8045,64 +8038,37 @@ change that.
 @node Performance
 @subsection Performance
 
-After Magit has run @code{git} for side-effects, it also refreshes the
-current Magit buffer and the respective status buffer.  This is necessary
-because otherwise outdated information might be displayed without the user
-noticing.  Magit buffers are updated by recreating their content from
-scratch, which makes updating simpler and less error-prone, but also more
-costly.  Keeping it simple and just re-creating everything from scratch is
-an old design decision and departing from that will require major
-refactoring.
+Magitは副作用のために@code{git}を実行した後、現在のMagitバッファとそれぞれのステータスバッファも更新します。これが必要なのは、そうしないと、ユーザーが気付かないうちに古い情報が表示される可能性があるためです。Magitバッファは、コンテンツを最初から再作成することで更新されます。これにより、更新が簡単になり、エラーが発生しにくくなりますが、コストも高くなります。シンプルに保ち、すべてを最初から再作成することは古い設計上の決定であり、それから逸脱するには大規模なリファクタリングが必要になります。
 
-I plan to do that in time for the next major release.  I also intend to
-create logs and diffs asynchronously, which should also help a lot but also
-requires major refactoring.
+次のメジャーリリースに間に合うようにそれを行う予定です。また、ログとdiffを非同期で作成する予定です。これも大いに役立つはずですが、大幅なリファクタリングも必要です。
 
-Meanwhile you can tell Magit to only automatically refresh the current Magit
-buffer, but not the status buffer.  If you do that, then the status buffer
-is only refreshed automatically if it is the current buffer.
+一方、Magitに、現在のMagitバッファのみを自動的に更新するように指示できますが、ステータスバッファは更新できません。
+これを行うと、ステータスバッファは、現在のバッファである場合にのみ自動的に更新されます。
 
 @lisp
 (setq magit-refresh-status-buffer nil)
 @end lisp
 
-You should also check whether any third-party packages have added anything
-to @code{magit-refresh-buffer-hook}, @code{magit-status-refresh-hook},
-@code{magit-pre-refresh-hook}, and @code{magit-post-refresh-hook}.  If so,
-then check whether those additions impact performance significantly.
+また、サードパーティのパッケージが@code{magit-refresh-buffer-hook}と@code{magit-status-refresh-hook}と@code{magit-pre-refresh-hook}と@code{magit-post-refresh-hook}に何かを追加していないかどうかを確認する必要があります。その場合は、それらの追加がパフォーマンスに大きな影響を与えるかどうかを確認してください。
 
-Magit can be told to refresh buffers verbosely using @code{M-x
-magit-toggle-verbose-refresh}.  Enabling this helps figuring out which
-sections are bottlenecks.  The additional output can be found in the
-@code{*Messages*} buffer.
+Magitは、@code{M-x
+magit-toggle-verbose-refresh}を使用して詳細にバッファを更新するように指示できます。これを有効にすると、どのセクションがボトルネックであるかを把握するのに役立ちます。追加の出力は、@code{*Messages*}バッファにあります。
 
-Magit also reverts buffers for visited files located inside the current
-repository when the visited file changes on disk.  That is implemented on
-top of @code{auto-revert-mode} from the built-in library @code{autorevert}.
-To figure out whether that impacts performance, check whether performance is
-significantly worse, when many buffers exist and/or when some buffers visit
-files using TRAMP@.  If so, then this should help.
+Magitは、アクセスしたファイル(visited
+files)がディスク上で変更されると、現在のリポジトリ内にあるアクセスしたファイルのバッファも元に戻します(revert)。これは、組み込みライブラリ@code{autorevert}の@code{auto-revert-mode}の上に実装されています。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および/または一部のバッファがTRAMP@@を使用してファイルにアクセスする場合を確認します。
+もしパフォーマンスに影響があるなら、この確認が役に立つはずです。
 
 @lisp
 (setq auto-revert-buffer-list-filter
       'magit-auto-revert-repository-buffer-p)
 @end lisp
 
-For alternative approaches see @ref{Automatic Reverting of File-Visiting
-Buffers}.
+別のアプローチについては、こちらを参照(@ref{Automatic Reverting of File-Visiting Buffers})
 
-If you have enabled any features that are disabled by default, then you
-should check whether they impact performance significantly.  It's likely
-that they were not enabled by default because it is known that they reduce
-performance at least in large repositories.
+あなたがデフォルトで無効になっている機能を有効にしている場合は、それらがパフォーマンスに大きな影響を与えるかどうかを確認する必要があります。少なくとも大規模なリポジトリではパフォーマンスが低下することがわかっているため、それらはデフォルトでは有効になっていない可能性があります。
 
-If performance is only slow inside certain unusually large repositories,
-then you might want to disable certain features on a per-repository or
-per-repository-class basis only.  See @ref{Per-Repository Configuration}.
-For example it takes a long time to determine the next and current tag in
-repository with exceptional numbers of tags.  It would therefore be a good
-idea to disable @code{magit-insert-tags-headers}, as explained at the
-mentioned node.
+特定の異常に大きなリポジトリ内でのみパフォーマンスが低下する場合は、リポジトリごとまたはリポジトリクラスごとにのみ特定の機能を無効にすることをお勧めします。こちらを参照下さい(@ref{Per-Repository
+Configuration})。たとえば、非常に多くのタグがあるリポジトリ内の次の現在のタグを判別するのに長い時間がかかります。したがって、前節で説明されているように、@code{magit-insert-tags-headers}を無効にすることをお勧めします。
 
 @menu
 * Microsoft Windows Performance::
@@ -8112,30 +8078,16 @@ mentioned node.
 @anchor{Log Performance}
 @subsubheading Log Performance
 
-When showing logs, Magit limits the number of commits initially shown in the
-hope that this avoids unnecessary work.  When using @code{--graph} is used,
-then this unfortunately does not have the desired effect for large
-histories.  Junio, Git's maintainer, said on the git mailing list
-(@uref{http://www.spinics.net/lists/git/msg232230.html}): "@code{--graph}
-wants to compute the whole history and the max-count only affects the output
-phase after @code{--graph} does its computation".
+ログを表示するとき、Magitは、不要な作業を回避することを期待して、最初に表示されるコミットの数を制限します。@code{--graph}を使用する場合は、残念ながら、これは大きな履歴に対して望ましい効果をもたらしません。GitのメンテナであるJunioは、gitメーリングリスト(@uref{http://www.spinics.net/lists/git/msg232230.html})で次のように述べています。「@code{--graph}は履歴全体を計算したいと考えているので、max-countは、@code{--graph}が計算を行った後の出力フェーズにのみ影響します。」
 
-In other words, it's not that Git is slow at outputting the differences, or
-that Magit is slow at parsing the output - the problem is that Git first
-goes outside and has a smoke.
+言い換えれば、Gitが差分を出力するのが遅いということでも、Magitが出力を解析するのが遅いということでもありません。問題は、Gitが如何に早く狼煙を上げるかです。
 
-We actually work around this issue by limiting the number of commits not
-only by using @code{-<N>} but by also using a range.  But unfortunately
-that's not always possible.
+実際には、@code{-<N>}を使用するだけでなく、範囲を使用してコミットの数を制限することで、この問題を回避しています。しかし残念ながら、それが常に可能であるとは限りません。
 
-When more than a few thousand commits are shown, then the use of
-@code{--graph} can slow things down.
+数千を超えるコミットが表示される場合、@code{--graph}を使用すると処理速度が低下する可能性があります。
 
-Using @code{--color --graph} is even slower.  Magit uses code that is part
-of Emacs to turn control characters into faces.  That code is pretty slow
-and this is quite noticeable when showing a log with many branches and
-merges.  For that reason @code{--color} is not enabled by default anymore.
-Consider leaving it at that.
+@code{--color --graph}の使用はさらに遅くなります。
+Magitは、Emacsの一部であるコードを使用して、制御文字をfaceに変換します。そのコードはかなり遅く、これは多くのブランチとマージを含むログを表示するときに非常に目立ちます。そのため、@code{--color}はデフォルトで有効ではなくなりました。そのままにしておくことを検討してください。
 
 @anchor{Diff Performance}
 @subsubheading Diff Performance
