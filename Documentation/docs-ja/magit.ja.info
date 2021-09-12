@@ -1503,30 +1503,30 @@ Magitには、セクションの表示を変更するための多くのコマン
 はありません。これらのコマンドは、一般的にあまり役に立たないと認識されて
 いるためです。しかし、あなたにとっては有益かもしれません。
 
- -- magit-section-show: コマンド
+ -- コマンド: magit-section-show
 
      現在のセクションのボディを表示します。
 
- -- magit-section-hide: コマンド
+ -- コマンド: magit-section-hide
 
      現在のセクションのボディを非表示にします。
 
- -- magit-section-show-headings: コマンド
+ -- コマンド: magit-section-show-headings
 
      現在のセクションの子の見出しを再帰的に表示します。見出しのみを表示
      します。以前に表示されたテキストのみのボディは非表示になります。
 
- -- magit-section-show-children: コマンド
+ -- コマンド: magit-section-show-children
 
      現在のセクションの子の体を再帰的に表示します。プレフィックス引数を
      使用すると、現在のセクションのレベルまで子を表示し、より深い子を非
      表示にします。
 
- -- magit-section-hide-children: コマンド
+ -- コマンド: magit-section-hide-children
 
      現在のセクションの子のボディを再帰的に非表示にします。
 
- -- magit-section-toggle-children: コマンド
+ -- コマンド: magit-section-toggle-children
 
      現在のセクションの子のボディの可視性を切り替えます(toggle)。
 
@@ -2639,7 +2639,7 @@ File: magit.ja.info,  Node: Status Buffer,  Next: Repository List,  Up: Inspecti
      ジトリを制御します。また、‘magit-status’(を参照)にも驚くべき方法で
      影響を及ぼします(上記を参照)。
 
- -- magit-status-quick: コマンド
+ -- コマンド: magit-status-quick
 
      このコマンドは、‘magit-status’の代替になり、通常はステータスバッフ
      ァの更新を回避します。
@@ -2664,7 +2664,7 @@ File: magit.ja.info,  Node: Status Buffer,  Next: Repository List,  Up: Inspecti
      ポジトリに属する既存のMagitバッファの表示をサポートします。それはス
      テータスバッファだけではありません。
 
- -- ido-enter-magit-status: コマンド
+ -- コマンド: ido-enter-magit-status
 
      ファイルを開くために使用されるIdoプロンプトから、代わりに
      ‘magit-status’にドロップ(drop)します。これは
@@ -3053,7 +3053,7 @@ File: magit.ja.info,  Node: Repository List,  Next: Logging,  Prev: Status Buffe
 5.2 Repository List
 ===================
 
- -- magit-list-repositories: コマンド
+ -- コマンド: magit-list-repositories
 
      このコマンドは、別のバッファにあるリポジトリのリストを表示します。
 
@@ -4574,19 +4574,19 @@ File: magit.ja.info,  Node: General-Purpose Visit Commands,  Next: Visiting File
 フォルトではこれらのコマンドに結び付けられているキーはありませんが、変更
 される可能性はあります。
 
- -- magit-find-file: コマンド
+ -- コマンド: magit-find-file
 
      このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッ
      ファ内のそれぞれのBLOBにアクセスします。選択したウィンドウにバッフ
      ァが表示されます。
 
- -- magit-find-file-other-window: コマンド
+ -- コマンド: magit-find-file-other-window
 
      このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッ
      ファ内のそれぞれのBLOBにアクセスします。バッファは別のウィンドウに
      表示されます。
 
- -- magit-find-file-other-frame: コマンド
+ -- コマンド: magit-find-file-other-frame
 
      このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッ
      ファ内のそれぞれのBLOBにアクセスします。バッファは別のフレームに表
@@ -4666,10 +4666,10 @@ File: magit.ja.info,  Node: Visiting Files and Blobs from a Diff,  Prev: General
 記のコマンドは、プレフィックス引数を指定して呼び出されたときに別のウィン
 ドウも使用することに注意してください。
 
- -- magit-diff-visit-file-other-window: コマンド
- -- magit-diff-visit-file-other-frame: コマンド
- -- magit-diff-visit-worktree-file-other-window: コマンド
- -- magit-diff-visit-worktree-file-other-frame: コマンド
+ -- コマンド: magit-diff-visit-file-other-window
+ -- コマンド: magit-diff-visit-file-other-frame
+ -- コマンド: magit-diff-visit-worktree-file-other-window
+ -- コマンド: magit-diff-visit-worktree-file-other-frame
 
 
 File: magit.ja.info,  Node: Blaming,  Prev: Visiting Files and Blobs,  Up: Inspecting
@@ -5969,14 +5969,14 @@ File: magit.ja.info,  Node: Branch Commands,  Next: Branch Git Variables,  Prev:
      れるブランチです。ローカルブランチでもリモートブランチでもかまいま
      せん。
 
-     RULE can either be a regular expression, matching branches whose
-     upstream should be the one specified by UPSTREAM.  Or it can be a
-     list of the only branches that should *not* use UPSTREAM; all other
-     branches will.  Matching is done after stripping the remote part of
-     the name of the branch that is being branched from.
+     RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAM@で指
+     定されたのでべきであるブランチに一致します。または、UPSTREAMを使用
+     してはならない単一のブランチのリストにすることもできます。他ブラン
+     チは全てそうします。マッチングは、分岐元のブランチ名のリモート部分
+     を削除した後に行われます。
 
-     If you use a finite set of non-ephemeral branches across all your
-     repositories, then you might use something like:
+     あなたのすべてのリポジトリで永続的なブランチの限定セットを使用する
+     場合、あなたは以下のようなものを使用できます:
 
           (("origin/master" . ("master" "next" "maint")))
 
@@ -6001,24 +6001,24 @@ File: magit.ja.info,  Node: Branch Commands,  Next: Branch Git Variables,  Prev:
      (("main"  . ("main" "master" "next" "maint"))
       ("master" . ("main" "master" "next" "maint")))
 
- -- magit-branch-orphan: コマンド
+ -- コマンド: magit-branch-orphan
 
      このコマンドは、指定されたリビジョンのコンテンツを含む新しい孤立し
      たブランチを作成してチェックアウトします。
 
- -- magit-branch-or-checkout: コマンド
+ -- コマンド: magit-branch-or-checkout
 
-     This command is a hybrid between ‘magit-checkout’ and
-     ‘magit-branch-and-checkout’ and is intended as a replacement for
-     the former in ‘magit-branch’.
+     このコマンドは、‘magit-checkout’と‘magit-branch-and-checkout’のハイ
+     ブリッドであり、‘magit-branch’の前者の代わりとして使用することを目
+     的としています。
 
-     It first asks the user for an existing branch or revision.  If the
-     user input actually can be resolved as a branch or revision, then
-     it checks that out, just like ‘magit-checkout’ would.
+     最初に、既存のブランチまたはリビジョンをユーザーに要求します。ユー
+     ザー入力が実際にブランチまたはリビジョンとして解決できる場合は、
+     ‘magit-checkout’と同じように、それをチェックアウトします。
 
-     Otherwise it creates and checks out a new branch using the input as
-     its name.  Before doing so it reads the starting-point for the new
-     branch.  This is similar to what ‘magit-branch-and-checkout’ does.
+     それ以外の場合は、入力を名前として使用して新しいブランチを作成して
+     チェックアウトします。そうする前に、新しいブランチの開始点を読み取
+     ります。これは、‘magit-branch-and-checkout’が行うことと似ています。
 
      ‘magit-checkout’の代わりにこのコマンドを使用するには、以下をあなた
      のinitファイルに追加します:
@@ -6066,13 +6066,13 @@ File: magit.ja.info,  Node: Branch Git Variables,  Next: Auxiliary Branch Comman
      この変数は、NAMEという名前のブランチが通常プッシュされるリモートを
      指定します。値は、既存のリモートの名前である必要があります。
 
-     It is not possible to specify the name of _branch_ to push the
-     local branch to.  The name of the remote branch is always the same
-     as the name of the local branch.
+     ローカルブランチをプッシュする「ブランチ」の名前を指定することはで
+     きません。リモートブランチの名前は、常にローカルブランチの名前と同
+     じです。
 
-     If this variable is undefined but ‘remote.pushDefault’ is defined,
-     then the value of the latter is used.  By default
-     ‘remote.pushDefault’ is undefined.
+     この変数が未定義であるが、‘remote.pushDefault’が定義されている場合
+     は、後者の値が使用されます。デフォルトでは、‘remote.pushDefault’は
+     未定義です。
 
  -- Variable: branch.NAME.description
 
@@ -6091,10 +6091,11 @@ File: magit.ja.info,  Node: Branch Git Variables,  Next: Auxiliary Branch Comman
 
         • ‘false’(デフォルト)の場合、プルはマージによって行われます。
 
-     Since it is never a good idea to merge the upstream branch into a
-     feature or hotfix branch and most branches are such branches, you
-     should consider setting this to ‘true’, and ‘branch.master.rebase’
-     to ‘false’.
+     アップストリームブランチを、ほとんどのブランチはそのようなブランチ
+     であるところの、機能(feature)ブランチまたはホットフィックスブランチ
+     やマージすることは決して良い考えではなく、これを‘true’に設定し、
+     ‘branch.master.rebase’を‘false’に設定することを検討する必要がありま
+     す。
 
  -- Variable: remote.pushDefault
 
@@ -6102,17 +6103,15 @@ File: magit.ja.info,  Node: Branch Git Variables,  Next: Auxiliary Branch Comman
      す。これは、‘branch.NAME.pushRemote’を使用してブランチごとに上書き
      できます。
 
-The following variables are used during the creation of a branch and
-control whether the various branch-specific variables are automatically
-set at this time.
+以下の変数達はブランチの作成中に使用され、さまざまなブランチ固有の変数達
+この時点で自動的に設定されるかどうかを制御します。
 
  -- Variable: branch.autoSetupMerge
 
-     This variable specifies under what circumstances creating a branch
-     NAME should result in the variables ‘branch.NAME.merge’ and
-     ‘branch.NAME.remote’ being set according to the starting point used
-     to create the branch.  If the starting point isn’t a branch, then
-     these variables are never set.
+     この変数は、ブランチNAMEを作成すると、ブランチの作成に使用された開
+     始点に従って変数‘branch.NAME.merge’と‘branch.NAME.remote’が設定され
+     る状況を指定します。開始点がブランチでない場合、これらの変数は設定
+     されません。
 
         • ‘always’の場合、開始点がローカルブランチであるかリモートブラン
           チであるかに関係なく、変数が設定されます。
@@ -6138,10 +6137,9 @@ set at this time.
 
         • ‘never’(デフォルト)の場合、変数は設定されません。
 
-Note that the respective commands always change the repository-local
-values.  If you want to change the global value, which is used when the
-local value is undefined, then you have to do so on the command line,
-e.g.:
+注意: それぞれのコマンドは常にリポジトリローカル値を変更することに注意し
+てください。ローカル値が定義されていないときに使用されるグローバル値を変
+更する場合は、コマンドラインで変更する必要があります。例:
 
      git config --global remote.autoSetupMerge always
 
@@ -6152,14 +6150,15 @@ e.g.:
 
  -- User Option: magit-prefer-remote-upstream
 
-     This option controls whether commands that read a branch from the
-     user and then set it as the upstream branch, offer a local or a
-     remote branch as default completion candidate, when they have the
-     choice.
+     このオプションは、ユーザーからブランチを読み取り、それをアップスト
+     リームブランチとして設定するコマンドが、選択可能な場合に、ローカル
+     ブランチまたはリモートブランチをデフォルトの完了候補として提供する
+     かどうかを制御します。
 
-     This affects all commands that use ‘magit-read-upstream-branch’ or
-     ‘magit-read-starting-point’, which includes all commands that
-     change the upstream and many which create new branches.
+     これは、‘magit-read-upstream-branch’または
+     ‘magit-read-starting-point’を使用するすべてのコマンドに影響します。
+     これには、アップストリームを変更するすべてのコマンドと、新しいブラ
+     ンチを作成する多くのコマンドが含まれます。
 
 
 File: magit.ja.info,  Node: Auxiliary Branch Commands,  Prev: Branch Git Variables,  Up: Branching
@@ -6170,25 +6169,25 @@ File: magit.ja.info,  Node: Auxiliary Branch Commands,  Prev: Branch Git Variabl
 これらのコマンドは、デフォルトではトランジェントコマンド‘magit-branch’か
 らは使用できません。
 
- -- magit-branch-shelve: コマンド
+ -- コマンド: magit-branch-shelve
 
-     This command shelves a branch.  This is done by deleting the
-     branch, and creating a new reference "refs/shelved/BRANCH-NAME"
-     pointing at the same commit as the branch pointed at.  If the
-     deleted branch had a reflog, then that is preserved as the reflog
-     of the new reference.
+     このコマンドはブランチを棚上げ(shelve)します。 これは、ブランチを削
+     除し、指定されたブランチと同じコミットを指す新しい参照
+     "refs/shelved/BRANCH-NAME"を作成することによって行われます。 削除さ
+     れたブランチにreflogがあった場合、それは新しいreferenceのreflogとし
+     て保持されます。
 
      これは、あなたがブランチを見えなくしたいが、まだ完全に破棄する準備
      ができていない場合に便利です。
 
- -- magit-branch-unshelve: コマンド
+ -- コマンド: magit-branch-unshelve
 
-     This command unshelves a branch that was previously shelved using
-     ‘magit-branch-shelve’.  This is done by deleting the reference
-     "refs/shelved/BRANCH-NAME" and creating a branch "BRANCH-NAME"
-     pointing at the same commit as the deleted reference pointed at.
-     If the deleted reference had a reflog, then that is restored as the
-     reflog of the branch.
+     このコマンドは、‘magit-branch-shelve’を使用して以前に棚上げ
+     (shelve)されたブランチの棚上げ(shelve)を解除します。これは、
+     reference "refs/shelved/BRANCH-NAME"を削除し、削除されたreferenceが
+     指すのと同じコミットを指すブランチ"BRANCH-NAME"を作成することによっ
+     て行われます。削除されたreferenceにreflogがあった場合、それはブラン
+     チのreflogとして復元されます。
 
 
 File: magit.ja.info,  Node: Merging,  Next: Resolving Conflicts,  Prev: Branching,  Up: Manipulating
@@ -6410,15 +6409,14 @@ File: magit.ja.info,  Node: Rebasing,  Next: Cherry Picking,  Prev: Resolving Co
 リベースが進行中でない場合、トランジェントコマンドにはそれ従うサフィック
 スコマンドがあります。
 
-Using one of these commands _starts_ a rebase sequence.  Git might then
-stop somewhere along the way, either because you told it to do so, or
-because applying a commit failed due to a conflict.  When that happens,
-then the status buffer shows information about the rebase sequence which
-is in progress in a section similar to a log section.  See *note
-Information About In-Progress Rebase::.
+これらのコマンドの1つを使用して、リベースシーケンスを_開始_します。 Gitは
+、途中で中断するように指示したか、競合が原因でコミットの適用が失敗したた
+めに中断する可能性があります。その場合、ステータスバッファには、ログセク
+ションと同様のセクションで進行中のリベースシーケンスに関する情報が表示さ
+れます→*note Information About In-Progress Rebase::
 
-For information about the upstream and the push-remote, see *note The
-Two Remotes::.
+アップストリームとプッシュリモートの詳細については→*note The Two
+Remotes::
 
 ‘r p’     (‘magit-rebase-onto-pushremote’)
 
@@ -6439,39 +6437,40 @@ Two Remotes::.
 
 ‘r e’     (‘magit-rebase-branch’)
 
-     This command rebases the current branch onto a branch read in the
-     minibuffer.  All commits that are reachable from head but not from
-     the selected branch TARGET are being rebased.
+     このコマンドは、現在のブランチをミニバッファでユーザーから読み取っ
+     たブランチにリベースします。ヘッドからは到達可能であるが、選択した
+     ブランチTARGETからは到達できないすべてのコミットがリベースされてい
+     ます。
 
 ‘r s’     (‘magit-rebase-subset’)
 
-     This command starts a non-interactive rebase sequence to transfer
-     commits from START to ‘HEAD’ onto NEWBASE.  START has to be
-     selected from a list of recent commits.
+     このコマンドは、非対話型のリベースシーケンスを開始して、コミットを
+     STARTから‘HEAD’からNEWBASE@に転送します。STARTは、最近のコミットの
+     リストから選択する必要があります。
 
-By default Magit uses the ‘--autostash’ argument, which causes
-uncommitted changes to be stored in a stash before the rebase begins.
-These changes are restored after the rebase completes and if possible
-the stash is removed.  If the stash does not apply cleanly, then the
-stash is not removed.  In case something goes wrong when resolving the
-conflicts, this allows you to start over.
+デフォルトでは、Magitは‘--autostash’引数を使用します。これにより、コミッ
+トされていない変更がリベースが開始される前にスタッシュに格納されます。こ
+れらの変更は、リベースが完了した後に復元され、可能であればスタッシュが削
+除されます。スタッシュがきれいに適用されない場合、スタッシュは削除されま
+せん。 競合を解決するときに問題が発生した場合は、最初からやり直すことが
+できます。
 
-Even though one of the actions is dedicated to interactive rebases, the
-transient also features the infix argument ‘--interactive’.  This can be
-used to turn one of the other, non-interactive rebase variants into an
-interactive rebase.
+アクションの1つは対話型リベース専用ですが、トランジェントコマンドにはイ
+ンフィックス引数‘--interactive’も含まれています。 これを使用して、他の非
+対話型リベースバリエーションの1つを対話型リベースに変えることができます
+。
 
-For example if you want to clean up a feature branch and at the same
-time rebase it onto ‘master’, then you could use ‘r-iu’.  But we
-recommend that you instead do that in two steps.  First use ‘ri’ to
-cleanup the feature branch, and then in a second step ‘ru’ to rebase it
-onto ‘master’.  That way if things turn out to be more complicated than
-you thought and/or you make a mistake and have to start over, then you
-only have to redo half the work.
+たとえば、機能(feature)ブランチをクリーンアップすると同時に、それを
+‘master’にリベースする場合は、‘r-iu’を使用できます。ただし、代わりに2つ
+のステップで行うことをお勧めします。最初に‘ri’を使用して機能ブランチをク
+リーンアップし、次に‘ru’を使用して‘master’にリベースします。 そうすれば
+、物事が思ったよりも複雑であることが判明した場合、および/または間違いを
+犯して最初からやり直さなければならない場合は、作業の半分をやり直すだけで
+済みます。
 
-Explicitly enabling ‘--interactive’ won’t have an effect on the
-following commands as they always use that argument anyway, even if it
-is not enabled in the transient.
+‘--interactive’を明示的に有効にしても、トランジェントコマンド内で有効で
+ない場合でも、それに従うコマンドは常にその引数を使用するため、影響はあり
+ません。
 
 ‘r i’     (‘magit-rebase-interactive’)
 
@@ -6550,17 +6549,15 @@ File: magit.ja.info,  Node: Editing Rebase Sequences,  Next: Information About I
 
 ‘SPC’     (‘git-rebase-show-or-scroll-up’)
 
-     Show the commit on the current line in another buffer without
-     selecting that buffer.  If the revision buffer is already visible
-     in another window of the current frame, then instead scroll that
-     window up.
+     別のバッファを選択せずに、現在の行のコミットを別のバッファに表示し
+     ます。 リビジョンバッファが現在のフレームの別のウィンドウにすでに表
+     示されている場合は、代わりにそのウィンドウを上にスクロールします。
 
 ‘DEL’     (‘git-rebase-show-or-scroll-down’)
 
-     Show the commit on the current line in another buffer without
-     selecting that buffer.  If the revision buffer is already visible
-     in another window of the current frame, then instead scroll that
-     window down.
+     別のバッファを選択せずに、現在の行のコミットを別のバッファに表示し
+     ます。 リビジョンバッファが現在のフレームの別のウィンドウにすでに表
+     示されている場合は、代わりにそのウィンドウを下にスクロールします。
 
 ‘p’     (‘git-rebase-backward-line’)
 
@@ -6584,7 +6581,7 @@ File: magit.ja.info,  Node: Editing Rebase Sequences,  Next: Information About I
 
 ‘e’     (‘git-rebase-edit’)
 
-     現在の行のコミットで停止(stop)します。
+     現在の行のコミットで中断します。
 
 ‘s’     (‘git-rebase-squash’)
 
@@ -6608,10 +6605,10 @@ File: magit.ja.info,  Node: Editing Rebase Sequences,  Next: Information About I
 
      続行するコミットの後に実行するシェルコマンドを挿入します。
 
-     If there already is such a command on the current line, then edit
-     that instead.  With a prefix argument insert a new command even
-     when there already is one on the current line.  With empty input
-     remove the command on the current line, if any.
+     現在の行にそのようなコマンドがすでにある場合は、代わりにそれを編集
+     します。プレフィックス引数を使用すると、現在の行にすでにコマンドが
+     ある場合でも、新しいコマンドを挿入します。入力が空の場合、現在の行
+     のコマンドを削除します(存在する場合)。
 
 ‘b’     (‘git-rebase-break’)
 
@@ -6639,9 +6636,9 @@ File: magit.ja.info,  Node: Editing Rebase Sequences,  Next: Information About I
 
      キャンセルするために確認が必要かどうか。
 
-When a rebase is performed with the ‘--rebase-merges’ option, the
-sequence will include a few other types of actions and the following
-commands become relevant.
+‘--rebase-merges’オプションを使用してリベースを実行すると、シーケンスに
+は他のいくつかのタイプのアクションが含まれ、以下のコマンドが関連するよう
+になります。
 
 ‘l’     (‘git-rebase-label’)
 
@@ -6656,18 +6653,19 @@ commands become relevant.
 
 ‘MM’     (‘git-rebase-merge’)
 
-     The command inserts a merge action or edits the one at point.  The
-     prompt will offer the labels that are currently present in the
-     buffer.  Specifying a message to reuse via ‘-c’ or ‘-C’ is not
-     supported; an editor will always be invoked for the merge.
+     このコマンドは、マージアクションを挿入するか、その時点でのアクショ
+     ンを編集します。プロンプトでは、現在バッファに存在するラベルを提供
+     します。‘-c’または‘-C’を介して再利用するメッセージを指定することは
+     サポートされていません。マージのために常にエディタが呼び出されます
+     。
 
 ‘Mt’     (‘git-rebase-merge-toggle-editmsg’)
 
-     This command toggles between the ‘-C’ and ‘-c’ options of the merge
-     action at point.  These options both specify a commit whose message
-     should be reused.  The lower-case variant instructs Git to invoke
-     the editor when creating the merge, allowing the user to edit the
-     message.
+     このコマンドは、ポイントでのマージアクションの‘-C’オプションと
+     ‘-c’オプションを切り替えます。これらのオプションは両方とも、メッセ
+     ージを再利用する必要があるコミットを指定します。小文字のバリエーシ
+     ョンは、マージの作成時にエディタを呼び出すようにGitに指示し、ユーザ
+     ーがメッセージを編集できるようにします。
 
 
 File: magit.ja.info,  Node: Information About In-Progress Rebase,  Prev: Editing Rebase Sequences,  Up: Rebasing
@@ -6675,18 +6673,17 @@ File: magit.ja.info,  Node: Information About In-Progress Rebase,  Prev: Editing
 6.9.2 Information About In-Progress Rebase
 ------------------------------------------
 
-While a rebase sequence is in progress, the status buffer features a
-section that lists the commits that have already been applied as well as
-the commits that still have to be applied.
+リベースシーケンスの進行中、ステータスバッファには、すでに適用されている
+コミットと、まだ適用する必要のあるコミットを一覧表示するセクションがあり
+ます。
 
-The commits are split in two halves.  When rebase stops at a commit,
-either because the user has to deal with a conflict or because s/he
-explicitly requested that rebase stops at that commit, then point is
-placed on the commit that separates the two groups, i.e.  on ‘HEAD’.
-The commits above it have not been applied yet, while the ‘HEAD’ and the
-commits below it have already been applied.  In between these two groups
-of applied and yet-to-be applied commits, there sometimes is a commit
-which has been dropped.
+コミットは2つに等分されます。ユーザーが競合に対処する必要があるため、ま
+たはリベースがそのコミットで中断するように明示的に要求したために、リベー
+スがコミットで中断すると、ポイントは2つのグループを分離するコミットに置
+かれます。つまり‘HEAD’です。その上のコミットはまだ適用されていませんが、
+‘HEAD’とその下のコミットにはすでに適用されています。適用されたコミットと
+まだ適用されていないコミットのこれら2つのグループの間に、ドロップされた
+コミットがある場合があります。
 
 各コミットには単語が前に付けられ、これらの単語はコミットのステータスを示
 すために異なる色で追加で表示されます。
@@ -6699,12 +6696,12 @@ which has been dropped.
 
    • 青色のコミットは‘HEAD’コミットです。
 
-   • The green commit is the commit the rebase sequence stopped at.  If
-     this is the same commit as ‘HEAD’ (e.g.  because you haven’t done
-     anything yet after rebase stopped at the commit, then this commit
-     is shown in blue, not green).  There can only be a green *and* a
-     blue commit at the same time, if you create one or more new commits
-     after rebase stops at a commit.
+   • 緑色のコミットは、リベースシーケンスが中断しているコミットです。こ
+     れが‘HEAD’と同じコミットである場合は、たとえば、コミットでリベース
+     が中断した後、まだ何もしていないなら、このコミットは緑色ではなく青
+     色で表示されています。リベースがコミットで中断した後に1つ以上の新し
+     いコミットを作成した場合、同時に存在できるのは*緑色と青色のコミット
+     のみ*です。
 
    • 赤色のコミットは削除されました。それらは参照用(reference)にのみ示さ
      れています。diffを取りやすくします。
@@ -6713,142 +6710,134 @@ which has been dropped.
 
 以下の単語が使用されます:
 
-   • Commits prefixed with ‘pick’, ‘reword’, ‘edit’, ‘squash’, and
-     ‘fixup’ have not been applied yet.  These words have the same
-     meaning here as they do in the buffer used to edit the rebase
-     sequence.  See *note Editing Rebase Sequences::.  When the
-     ‘--rebase-merges’ option was specified, ‘reset’, ‘label’, and
-     ‘merge’ lines may also be present.
+   • 接頭辞が‘pick’・‘reword’・‘edit’・‘squash’・‘fixup’であるコミットは
+     まだ適用されていません。これらの単語は、リベースシーケンスの編集に
+     使用されるバッファと同じ意味を持ちます。(*note Editing Rebase
+     Sequences::) ‘--rebase-merges’オプションが指定された場合、‘reset’・
+     ‘label’・‘merge’行も存在する可能性があります。
 
-   • Commits prefixed with ‘done’ and ‘onto’ have already been applied.
-     It is possible for such a commit to be the ‘HEAD’, in which case it
-     is blue.  Otherwise it is grey.
+   • 接頭辞が‘done’・‘onto’であるコミットはすでに適用されています。その
+     ようなコミットは‘HEAD’である可能性があり、‘HEAD’の場合は青色になり
+     ます。それ以外の場合は灰色です。
 
-        • The commit prefixed with ‘onto’ is the commit on top of which
-          all the other commits are being re-applied.  This commit
-          itself did not have to be re-applied, it is the commit rebase
-          did rewind to before starting to re-apply other commits.
+        • 接頭辞が‘onto’のコミットは、再適用された他のすべてのコミットの
+          先頭であるコミットです。このコミット自体を再適用する必要はあり
+          ませんでした。他のコミットの再適用を開始する前に、リベースが巻
+          き戻されたコミットです。
 
-        • Commits prefixed with ‘done’ have already been re-applied.
-          This includes commits that have been re-applied but also new
-          commits that you have created during the rebase.
+        • 接頭辞が‘done’のコミットはすでに再適用されています。これには、
+          再適用されたコミットだけでなく、リベース中に作成した新しいコミ
+          ットも含まれます。
 
    • 上記の単語のいずれの接頭辞も付いていない他のすべてのコミットは、リ
-     ベースが停止したコミットに何らかの形で関連しています。
+     ベースが中断したコミットに何らかの形で関連しています。
 
-     To determine whether a commit is related to the stopped-at commit
-     their hashes, trees and patch-ids (1) are being compared.  The
-     commit message is not used for this purpose.
+     コミットが中断中のコミット(stopped-at commit)に関連しているかどうか
+     を判断するために、ハッシュ達、ツリー達、およびパッチID達(patch-id)
+     (1) が比較されています。コミットメッセージはこの目的には使用されま
+     せん。
 
-     Generally speaking commits that are related to the stopped-at
-     commit can have any of the used colors, though not all color/word
-     combinations are possible.
+     一般的に、中断中のコミット(stopped-at commit)に関連するコミットは、
+     使用されている色のいずれかを持つことができますが、すべての色/単語の
+     組み合わせが可能であるとは限りません。
 
-     stopped-atコミットに使用される単語は以下のとおりです:
+     中断中のコミット(stopped-at commit)に使用される単語は以下のとおりで
+     す:
 
-        • When a commit is prefixed with ‘void’, then that indicates
-          that Magit knows for sure that all the changes in that commit
-          have been applied using several new commits.  This commit is
-          no longer reachable from ‘HEAD’, and it also isn’t one of the
-          commits that will be applied when resuming the session.
+        • 接頭辞が‘void’の場合、それは、そのコミットのすべての変更がいく
+          つかの新しいコミットを使用して適用されたことをMagitが確実に認
+          識していることを示します。このコミットは‘HEAD’から到達できなく
+          なり、セッションを再開するときに適用されるコミットの1つでもあ
+          りません。
 
-        • When a commit is prefixed with ‘join’, then that indicates
-          that the rebase sequence stopped at that commit due to a
-          conflict - you now have to join (merge) the changes with what
-          has already been applied.  In a sense this is the commit
-          rebase stopped at, but while its effect is already in the
-          index and in the worktree (with conflict markers), the commit
-          itself has not actually been applied yet (it isn’t the
-          ‘HEAD’).  So it is shown in yellow, like the other commits
-          that still have to be applied.
+        • 接頭辞が‘join’の場合、競合が原因でリベースシーケンスがそのコミ
+          ットで中断したことを示しています。ここで、変更を既に適用されて
+          いるものと結合（マージ）する必要があります。 ある意味で、これ
+          はで中断したコミットリベースで、その効果はすでにインデックスと
+          ワークツリー（競合マーカー付き）にありますが、コミット自体はま
+          だ実際には適用されていません(‘HEAD’ではありません)。したがって
+          、まだ適用する必要がある他のコミットと同様に、黄色で表示されま
+          す。
 
-        • When a commit is prefixed with ‘stop’ or a _blue_ or _green_
-          ‘same’, then that indicates that rebase stopped at this
-          commit, that it is still applied or has been applied again,
-          and that at least its patch-id is unchanged.
+        • 接頭辞が‘stop’または、_青色_または_緑色_の‘same’の場合、それは
+          、リベースがこのコミットで中断したこと、まだ適用されているか、
+          再度適用されたことを示します。そして少なくともそのパッチIDは変
+          更されていません。
 
-             • When a commit is prefixed with ‘stop’, then that
-               indicates that rebase stopped at that commit because you
-               requested that earlier, and its patch-id is unchanged.
-               It might even still be the exact same commit.
+             • 接頭辞が‘stop’のコミットの場合、それは、以前に要求したた
+               めにリベースがそのコミットで中断したことを示し、そのパッ
+               チIDは変更されていません。それでもまったく同じコミットで
+               ある可能性があります。
 
-             • When a commit is prefixed with a _blue_ or _green_
-               ‘same’, then that indicates that while its tree or hash
-               changed, its patch-id did not.  If it is blue, then it is
-               the ‘HEAD’ commit (as always for blue).  When it is
-               green, then it no longer is ‘HEAD’ because other commit
-               have been created since (but before continuing the
-               rebase).
+             • 接頭辞が_青色_または_緑色_の‘same’の場合、それは、ツリー
+               またはハッシュが変更されたが、パッチIDが変更されなかった
+               ことを示します。青色の場合は、‘HEAD’コミットです(青色の場
+               合は常にそうです)。緑色の場合、それ以降（ただし、リベース
+               を続行する前に）他のコミットが作成されているため、
+               ‘HEAD’ではなくなります。
 
-        • When a commit is prefixed with ‘goal’, a _yellow_ ‘same,’ or
-          ‘work’, then that indicates that rebase applied that commit
-          but that you then reset ‘HEAD’ to an earlier commit (likely to
-          split it up into multiple commits), and that there are some
-          uncommitted changes remaining which likely (but not
-          necessarily) originate from that commit.
+        • 接頭辞が‘goal’または_黄色_の‘same’または‘work’の場合、リベース
+          がそのコミットを適用したが、‘HEAD’にリセットしたことを示します
+          。 以前のコミット(複数のコミットに分割される可能性が高い)、そ
+          してそのコミットに起因する可能性が高い(必ずしもそうではない)コ
+          ミットされていない変更が残っています。
 
-             • When a commit is prefixed with ‘goal’, then that
-               indicates that it is still possible to create a new
-               commit with the exact same tree (the "goal") without
-               manually editing any files, by committing the index, or
-               by staging all changes and then committing that.  This is
-               the case when the original tree still exists in the index
-               or worktree in untainted form.
+             • 接頭辞‘goal’の場合、ファイルを手動で編集したり、インデッ
+               クスをコミットしたり、ステージしたりすることなく、まった
+               く同じツリー(つまり目標(the "goal"))で新しいコミットを作
+               成できることを示しています。すべての変更とそれをコミット
+               します。これは、元のツリーが汚染されていない形式でインデ
+               ックスまたはワークツリーにまだ存在する場合です。
 
-             • When a commit is prefixed with a yellow ‘same’, then that
-               indicates that it is no longer possible to create a
-               commit with the exact same tree, but that it is still
-               possible to create a commit with the same patch-id.  This
-               would be the case if you created a new commit with other
-               changes, but the changes from the original commit still
-               exist in the index or working tree in untainted form.
+             • 接頭辞が黄色の‘same’のコミットの場合、まったく同じツリー
+               でコミットを作成することはできなくなっていますが、同じパ
+               ッチIDでコミットを作成することは可能です。これは、他の変
+               更を加えて新しいコミットを作成したが、元のコミットからの
+               変更が汚染されていない形式でインデックスまたは作業ツリー
+               にまだ存在している場合に当てはまります。
 
-             • When a commit is prefixed with ‘work’, then that
-               indicates that you reset ‘HEAD’ to an earlier commit, and
-               that there are some staged and/or unstaged changes
-               (likely, but not necessarily) originating from that
-               commit.  However it is no longer possible to create a new
-               commit with the same tree or at least the same patch-id
-               because you have already made other changes.
+             • 接頭辞が‘work’の場合、‘HEAD’を以前のコミットにリセットし
+               、そのコミットに起因するステージされていない変更(unstaged
+               changes)および/またはステージされた変更(staged changes)(可
+               能性が高いが、必ずしもそうではない)があることを示します。
+               ただし、すでに他の変更を行っているため、同じツリーまたは
+               少なくとも同じパッチIDで新しいコミットを作成することはで
+               きなくなりました。
 
-        • When a commit is prefixed with ‘poof’ or ‘gone’, then that
-          indicates that rebase applied that commit but that you then
-          reset ‘HEAD’ to an earlier commit (likely to split it up into
-          multiple commits), and that there are no uncommitted changes.
+        • 接頭辞が‘poof’または‘gone’の場合、それは、リベースがそのコミッ
+          トを適用したが、‘HEAD’を以前のコミットにリセットしたことを示し
+          ます(複数のコミットに分割する可能性があります)、そしてコミット
+          されていない変更はありません。
 
-             • When a commit is prefixed with ‘poof’, then that
-               indicates that it is no longer reachable from ‘HEAD’, but
-               that it has been replaced with one or more commits, which
-               together have the exact same effect.
+             • 接頭辞が‘poof’の場合、それは‘HEAD’から到達できなくなった
+               ことを示しますが、1つ以上のコミットに置き換えられ、まった
+               く同じ効果があります。
 
-             • When a commit is prefixed with ‘gone’, then that
-               indicates that it is no longer reachable from ‘HEAD’ and
-               that we also cannot determine whether its changes are
-               still in effect in one or more new commits.  They might
-               be, but if so, then there must also be other changes
-               which makes it impossible to know for sure.
+             • 接頭辞が‘gone’の場合、それは‘HEAD’から到達できなくなった
+               こと、およびその変更が1つ以上の新しいコミットでまだ有効で
+               あるかどうかを判断できないことを示します。そうかもしれま
+               せんが、もしそうなら、確実に知ることを不可能にする他の変
+               更もあるに違いありません。
 
-上記を完全に理解していなくても心配しないでください。大丈夫です、あなたは
-練習を通して十分な理解を得ることが出来るでしょう。
+あなたが今、上記を完全に理解できなくても心配しないでください。大丈夫、あ
+なたは練習を通して十分な理解を得ることが出来るようになります。
 
-For other sequence operations such as cherry-picking, a similar section
-is displayed, but they lack some of the features described above, due to
-limitations in the git commands used to implement them.  Most
-importantly these sequences only support "picking" a commit but not
-other actions such as "rewording", and they do not keep track of the
-commits which have already been applied.
+チェリーピッキングなどの他のシーケンス操作についても、同様のセクションが
+表示されますが、それらの実装に使用されるgitコマンドの制限により、上記の
+機能の一部が欠けています。最も重要なことは、これらのシーケンスはコミット
+の"picking"のみをサポートし、"rewording"などの他のアクションはサポートせ
+ず、すでに適用されているコミットを追跡しません。
 
    ---------- Footnotes ----------
 
-   (1) The patch-id is a hash of the _changes_ introduced by a commit.
-It differs from the hash of the commit itself, which is a hash of the
-result of applying that change (i.e.  the resulting trees and blobs) as
-well as author and committer information, the commit message, and the
-hashes of the parents of the commit.  The patch-id hash on the other
-hand is created only from the added and removed lines, even line numbers
-and whitespace changes are ignored when calculating this hash.  The
-patch-ids of two commits can be used to answer the question "Do these
-commits make the same change?".
+   (1) patch-idは、コミットによって導入された_変更_のハッシュです。 これ
+は、コミット自体のハッシュとは異なります。これは、その変更を適用した結果
+のハッシュ(つまり、結果のツリーとblob)、作成者とコミッターの情報、コミッ
+トメッセージ、およびコミットの親のハッシュです。一方、パッチIDハッシュは
+、追加および削除された行からのみ作成されます。このハッシュを計算するとき
+は、行番号や空白の変更も無視されます。2つのコミットのパッチIDを使用して
+、「これらのコミットは同じ変更を行いますか？」という質問に答えることがで
+きます。
 
 
 File: magit.ja.info,  Node: Cherry Picking,  Next: Resetting,  Prev: Rebasing,  Up: Manipulating
@@ -6871,74 +6860,73 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 
 ‘A A’     (‘magit-cherry-copy’)
 
-     This command copies COMMITS from another branch onto the current
-     branch.  If the region selects multiple commits, then those are
-     copied, without prompting.  Otherwise the user is prompted for a
-     commit or range, defaulting to the commit at point.
+     このコマンドは、COMMITSを別のブランチから現在のブランチにコピーしま
+     す。リージョンが複数のコミットを選択した場合、プロンプトなしでそれ
+     らがコピーされます。それ以外の場合、ユーザーはコミットまたは範囲の
+     入力を求められ、デフォルトではそのポイントでのコミットになります。
 
 ‘A a’     (‘magit-cherry-apply’)
 
-     This command applies the changes in COMMITS from another branch
-     onto the current branch.  If the region selects multiple commits,
-     then those are used, without prompting.  Otherwise the user is
-     prompted for a commit or range, defaulting to the commit at point.
+     このコマンドは、COMMITSの変更を別のブランチから現在のブランチに適用
+     します。リージョンが複数のコミットを選択した場合、プロンプトなしで
+     それらが使用されます。それ以外の場合、ユーザーはコミットまたは範囲
+     の入力を求められ、デフォルトでそのポイントでのコミットになります。
 
      このコマンドにはトップレベルのバインディングもあり、トップレベルで
      ‘a’と入力することにより、トランジェントコマンドを使用せずに呼び出す
      ことができます。
 
-The following commands not only apply some commits to some branch, but
-also remove them from some other branch.  The removal is performed using
-either ‘git-update-ref’ or if necessary ‘git-rebase’.  Both applying
-commits as well as removing them using ‘git-rebase’ can lead to
-conflicts.  If that happens, then these commands abort and you not only
-have to resolve the conflicts but also finish the process the same way
-you would have to if these commands didn’t exist at all.
+以下のコマンド達は、いくつかのコミットをいくつかのブランチに適用するだけ
+でなく、それらを他のブランチから削除します。 削除は、‘git-update-ref’ま
+たは必要に応じて‘git-rebase’のいずれかを使用して実行されます。コミットを
+適用することと、‘git-rebase’を使用してコミットを削除することの両方で、競
+合が発生する可能性があります。 その場合、これらのコマンドは中止(abort)さ
+れ、競合を解決するだけでなく、これらのコマンドがまったく存在しなかった場
+合と同じ方法でプロセスを終了する必要があります。
 
 ‘A h’     (‘magit-cherry-harvest’)
 
-     This command moves the selected COMMITS that must be located on
-     another BRANCH onto the current branch instead, removing them from
-     the former.  When this command succeeds, then the same branch is
-     current as before.
+     このコマンドは、別のブランチに配置する必要がある選択されたCOMMITを
+     代わりに現在のブランチに移動し、前のブランチから削除します。このコ
+     マンドが成功すると、以前と同じ(same)ブランチがcurrentになります。
 
-     Applying the commits on the current branch or removing them from
-     the other branch can lead to conflicts.  When that happens, then
-     this command stops and you have to resolve the conflicts and then
-     finish the process manually.
+     現在のブランチにコミットを適用したり、他のブランチからコミットを削
+     除したりすると、競合が発生する可能性があります。その場合、このコマ
+     ンドは中断し、競合を解決してから手動でプロセスを終了する必要があり
+     ます。
 
 ‘A d’     (‘magit-cherry-donate’)
 
-     This command moves the selected COMMITS from the current branch
-     onto another existing BRANCH, removing them from the former.  When
-     this command succeeds, then the same branch is current as before.
+     このコマンドは、選択したCOMMITSを現在のブランチから別の既存のブラン
+     チに移動し、前のブランチから削除します。このコマンドが成功すると、
+     以前と同じ(same)ブランチがcurrentになります。
 
-     Applying the commits on the other branch or removing them from the
-     current branch can lead to conflicts.  When that happens, then this
-     command stops and you have to resolve the conflicts and then finish
-     the process manually.
+     他のブランチにコミットを適用したり、現在のブランチからコミットを削
+     除したりすると、競合が発生する可能性があります。その場合、このコマ
+     ンドは中断し、競合を解決してから手動でプロセスを終了する必要があり
+     ます。
 
 ‘A n’     (‘magit-cherry-spinout’)
 
-     This command moves the selected COMMITS from the current branch
-     onto a new branch BRANCH, removing them from the former.  When this
-     command succeeds, then the same branch is current as before.
+     このコマンドは、選択したCOMMITSを現在のブランチから新しいブランチ
+     BRANCHに移動し、前のブランチから削除します。 このコマンドが成功する
+     と、以前と同じ(same)ブランチがcurrentになります。
 
-     Applying the commits on the other branch or removing them from the
-     current branch can lead to conflicts.  When that happens, then this
-     command stops and you have to resolve the conflicts and then finish
-     the process manually.
+     他のブランチにコミットを適用したり、現在のブランチからコミットを削
+     除したりすると、競合が発生する可能性があります。その場合、このコマ
+     ンドは中断し、競合を解決してから手動でプロセスを終了する必要があり
+     ます。
 
 ‘A s’     (‘magit-cherry-spinoff’)
 
-     This command moves the selected COMMITS from the current branch
-     onto a new branch BRANCH, removing them from the former.  When this
-     command succeeds, then the new branch is checked out.
+     このコマンドは、選択したCOMMITSを現在のブランチから新しいブランチ
+     BRANCHに移動し、前のブランチから削除します。このコマンドが成功する
+     と、新しいブランチがチェックアウトされます。
 
-     Applying the commits on the other branch or removing them from the
-     current branch can lead to conflicts.  When that happens, then this
-     command stops and you have to resolve the conflicts and then finish
-     the process manually.
+     他のブランチにコミットを適用したり、現在のブランチからコミットを削
+     除したりすると、競合が発生する可能性があります。その場合、このコマ
+     ンドは中断し、競合を解決してから手動でプロセスを終了する必要があり
+     ます。
 
 cherry-pickまたはrevertが進行中の場合、トランジェントコマンドには代わり
 に従うサフィックスコマンドがあります。
@@ -6949,8 +6937,8 @@ cherry-pickまたはrevertが進行中の場合、トランジェントコマン
 
 ‘A s’     (‘magit-sequence-skip’)
 
-     cherry-pickまたはrevertシーケンス中にコミットで停止(stopped)したも
-     のをスキップします。
+     cherry-pickまたはrevertシーケンス中にコミットで中断したものをスキッ
+     プします。
 
 ‘A a’     (‘magit-sequence-abort’)
 
@@ -6980,16 +6968,17 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 
 ‘V V’     (‘magit-revert-and-commit’)
 
-     Revert a commit by creating a new commit.  Prompt for a commit,
-     defaulting to the commit at point.  If the region selects multiple
-     commits, then revert all of them, without prompting.
+     新しいコミットを作成して、コミットをrevertします。プロンプトを出し
+     てコミットの入力を求めます。デフォルトでは、そのポイントでのコミッ
+     トになります。 リージョンが複数のコミットを選択した場合は、プロンプ
+     トを表示せずにすべてをrevertします。
 
 ‘V v’     (‘magit-revert-no-commit’)
 
-     Revert a commit by applying it in reverse to the working tree.
-     Prompt for a commit, defaulting to the commit at point.  If the
-     region selects multiple commits, then revert all of them, without
-     prompting.
+     コミットを作業ツリーに逆に適用して、コミットをrevertします。 プロン
+     プトを出してコミットの入力を求めます。デフォルトでは、そのポイント
+     でのコミットになります。リージョンが複数のコミットを選択した場合は
+     、プロンプトを表示せずにすべてをrevertします。
 
 cherry-pickまたはrevertが進行中の場合、トランジェントコマンドには代わり
 に従うサフィックスコマンドがあります。
@@ -7000,8 +6989,8 @@ cherry-pickまたはrevertが進行中の場合、トランジェントコマン
 
 ‘V s’     (‘magit-sequence-skip’)
 
-     cherry-pickまたはrevertシーケンス中にコミットで停止(stopped)したも
-     のをスキップします。
+     cherry-pickまたはrevertシーケンス中にコミットで中断したものをスキッ
+     プします。
 
 ‘V a’     (‘magit-sequence-abort’)
 
@@ -7018,10 +7007,10 @@ File: magit.ja.info,  Node: Resetting,  Next: Stashing,  Prev: Cherry Picking,  
 
 ‘x’     (‘magit-reset-quickly’)
 
-     Reset the ‘HEAD’ and index to some commit read from the user and
-     defaulting to the commit at point, and possibly also reset the
-     working tree.  With a prefix argument reset the working tree
-     otherwise don’t.
+     ‘HEAD’とインデックスを、ユーザーから読み取られたコミットにリセット
+     し、デフォルトでその時点のコミットに設定します。場合によっては、作
+     業ツリーもリセットします。プレフィックス引数を使用して作業ツリーを
+     リセットします。それ以外の場合はリセットしません。
 
 ‘X m’     (‘magit-reset-mixed’)
 
@@ -7048,10 +7037,10 @@ File: magit.ja.info,  Node: Resetting,  Next: Stashing,  Prev: Cherry Picking,  
 
 ‘X i’     (‘magit-reset-index’)
 
-     Reset the index to some commit read from the user and defaulting to
-     the commit at point.  Keep the ‘HEAD’ and working tree as-is, so if
-     the commit refers to the ‘HEAD’, then this effectively unstages all
-     changes.
+     インデックスをユーザーから読み取ったコミットにリセットし、デフォル
+     トでそのポイントでコミットします。‘HEAD’と作業ツリーをそのままにし
+     ておくと、コミットが‘HEAD’を参照している場合、これによりすべての変
+     更が効果的にステージ解除(unstage)されます。
 
 ‘X w’     (‘magit-reset-worktree’)
 
@@ -7083,10 +7072,10 @@ File: magit.ja.info,  Node: Stashing,  Prev: Resetting,  Up: Manipulating
 
 ‘z z’     (‘magit-stash-both’)
 
-     Create a stash of the index and working tree.  Untracked files are
-     included according to infix arguments.  One prefix argument is
-     equivalent to ‘--include-untracked’ while two prefix arguments are
-     equivalent to ‘--all’.
+     インデックスと作業ツリーのスタッシュを作成します。追跡されていない
+     ファイル(untracked files)が含まれるかどうかはインフィックス引数の指
+     定に依ります。1つのプレフィックス引数は‘--include-untracked’と同等
+     ですが、2つのプレフィックス引数は‘--all’と同等です。
 
 ‘z i’     (‘magit-stash-index’)
 
@@ -7096,50 +7085,53 @@ File: magit.ja.info,  Node: Stashing,  Prev: Resetting,  Up: Manipulating
 
 ‘z w’     (‘magit-stash-worktree’)
 
-     Create a stash of unstaged changes in the working tree.  Untracked
-     files are included according to infix arguments.  One prefix
-     argument is equivalent to ‘--include-untracked’ while two prefix
-     arguments are equivalent to ‘--all’.
+     作業ツリーにステージされていない変更(unstaged changes)のスタッシュ
+     を作成します。追跡されていないファイル(untracked files)は、インフィ
+     ックス引数に依ります。1つのプレフィックス引数は
+     ‘--include-untracked’と同等ですが、2つのプレフィックス引数は
+     ‘--all’と同等です。
 
 ‘z x’     (‘magit-stash-keep-index’)
 
-     Create a stash of the index and working tree, keeping index intact.
-     Untracked files are included according to infix arguments.  One
-     prefix argument is equivalent to ‘--include-untracked’ while two
-     prefix arguments are equivalent to ‘--all’.
+     インデックスをそのままにして、インデックスと作業ツリーのスタッシュ
+     を作成します。追跡されていないファイル(untracked files)は、インフィ
+     ックス引数に依ります。1つのプレフィックス引数は
+     ‘--include-untracked’と同等ですが、2つのプレフィックス引数は
+     ‘--all’と同等です。
 
 ‘z Z’     (‘magit-snapshot-both’)
 
-     Create a snapshot of the index and working tree.  Untracked files
-     are included according to infix arguments.  One prefix argument is
-     equivalent to ‘--include-untracked’ while two prefix arguments are
-     equivalent to ‘--all’.
+     インデックスと作業ツリーのスナップショットを作成します。追跡されて
+     いないファイル(untracked files)は、インフィックス引数に依ります。
+     1つのプレフィックス引数は‘--include-untracked’と同等ですが、2つのプ
+     レフィックス引数は‘--all’と同等です。
 
 ‘z I’     (‘magit-snapshot-index’)
 
-     インデックスのみのスナップショットを作成します。ステージングされて
-     いない変更(unstaged changes)と追跡されていない変更(untracked
-     changes)はstashされません。
+     インデックスのみのスナップショットを作成します。ステージされていな
+     い変更(unstaged changes)と追跡されていない変更(untracked changes)は
+     スタッシュされません。
 
 ‘z W’     (‘magit-snapshot-worktree’)
 
-     Create a snapshot of unstaged changes in the working tree.
-     Untracked files are included according to infix arguments.  One
-     prefix argument is equivalent to ‘--include-untracked’ while two
-     prefix arguments are equivalent to ‘--all’-.
+     作業ツリーでステージされていない変更(unstaged changes)のスナップシ
+     ョットを作成します。追跡されていないファイル(untracked files)は、イ
+     ンフィックス引数に依ります。1つのプレフィックス引数は
+     ‘--include-untracked’と同等ですが、2つのプレフィックス引数は
+     ‘--all’と同等です。
 
 ‘z a’     (‘magit-stash-apply’)
 
-     Apply a stash to the working tree.  Try to preserve the stash
-     index.  If that fails because there are staged changes, apply
-     without preserving the stash index.
+     作業ツリーにスタッシュを適用します。 スタッシュインデックスを保持す
+     るよう試みます。ステージされた変更(staged changes)があるために失敗
+     した場合は、スタッシュインデックスを保持せずに適用します。
 
 ‘z p’     (‘magit-stash-pop’)
 
-     Apply a stash to the working tree and remove it from stash list.
-     Try to preserve the stash index.  If that fails because there are
-     staged changes, apply without preserving the stash index and forgo
-     removing the stash.
+     作業ツリーにスタッシュを適用し、スタッシュリストから削除します。ス
+     タッシュインデックスを保持するよう試みます。ステージされた変更
+     (staged changes)があるためにそれが失敗した場合は、スタッシュインデ
+     ックスを保持せずに適用し、スタッシュを削除しません。
 
 ‘z k’     (‘magit-stash-drop’)
 
@@ -7157,9 +7149,9 @@ File: magit.ja.info,  Node: Stashing,  Prev: Resetting,  Up: Manipulating
 
 ‘z B’     (‘magit-stash-branch-here’)
 
-     Create and checkout a new BRANCH using ‘magit-branch’ with the
-     current branch or ‘HEAD’ as the starting-point.  Then apply STASH,
-     dropping it if it applies cleanly.
+     現在のブランチまたは‘HEAD’を開始点(starting-point)として
+     ‘magit-branch’を使用して、新しいBRANCHを作成してチェックアウトしま
+     す。それからSTASHを適用し、きれいに適用される場合はドロップします。
 
 ‘z f’     (‘magit-stash-format-patch’)
 
@@ -7232,10 +7224,10 @@ File: magit.ja.info,  Node: Remote Commands,  Next: Remote Git Variables,  Up: R
 7.1.1 Remote Commands
 ---------------------
 
-The transient prefix command ‘magit-remote’ is used to add remotes and
-to make changes to existing remotes.  This command only deals with
-remotes themselves, not with branches or the transfer of commits.  Those
-features are available from separate transient commands.
+トランジェントプレフィックスコマンド‘magit-remote’は、リモートを追加し、
+既存のリモートに変更を加えるために使用されます。このコマンドは、リモート
+自体のみを処理し、ブランチやコミットの転送は処理しません。これらの機能は
+、個別のトランジェントコマンドから利用できます。
 
 こちらもご覧下さい *note (gitman)git-remote::
 
@@ -7254,28 +7246,28 @@ features are available from separate transient commands.
      このオプションは、リモート関連のGit変数に一時的な‘magit-remote’から
      直接アクセスできるかどうかを制御します。
 
-     If ‘t’ (the default) and a local branch is checked out, then
-     ‘magit-remote’ features the variables for the upstream remote of
-     that branch, or if ‘HEAD’ is detached, for ‘origin’, provided that
-     exists.
+     ‘t’(デフォルト)でローカルブランチがチェックアウトされている場合、
+     ‘magit-remote’はそのブランチのアップストリームリモートの変数、また
+     は‘HEAD’がデタッチされている場合で、存在する場合、‘origin’の変数を
+     備えています。
 
      ‘nil’の場合は、‘magit-remote-configure’を使用する必要があります。
 
 ‘M C’     (‘magit-remote-configure’)
 
-     This transient prefix command binds commands that set the value of
-     remote-related variables and displays them in a temporary buffer
-     until the transient is exited.
+     このトランジェントレフィックスコマンドは、リモート関連変数の値を設
+     定するコマンドを結び付け、一時バッファが終了するまでそれらを一時バ
+     ッファに表示します。
 
      プレフィックス引数を使用すると、このコマンドは常にリモートの入力を
      求めます。
 
-     Without a prefix argument this depends on whether it was invoked as
-     a suffix of ‘magit-remote’ and on the
-     ‘magit-remote-direct-configure’ option.  If ‘magit-remote’ already
-     displays the variables for the upstream, then it does not make
-     sense to invoke another transient that displays them for the same
-     remote.  In that case this command prompts for a remote.
+     プレフィックス引数がない場合、これは‘magit-remote’のサフィックスコ
+     マンドとして呼び出されたかどうかと‘magit-remote-direct-configure’オ
+     プションに依存します。‘magit-remote’がすでにアップストリームの変数
+     を表示している場合、同じリモートの変数を表示する別のトランジェント
+     コマンドを呼び出すことは意味がありません。その場合、このコマンドは
+     リモートの入力を求めます。
 
 変数についてはこちらの説明をご覧ください→*note Remote Git Variables::
 
@@ -7305,33 +7297,33 @@ features are available from separate transient commands.
 
 ‘M P’     (‘magit-remote-prune-refspecs’)
 
-     This command removes stale refspecs for a remote read in the
-     minibuffer.
+     このコマンドは、ミニバッファ内で読み取られたリモートの陳腐化した
+     (stale)refspecを削除します。
 
-     A refspec is stale if there no longer exists at least one branch on
-     the remote that would be fetched due to that refspec.  A stale
-     refspec is problematic because its existence causes Git to refuse
-     to fetch according to the remaining non-stale refspecs.
+     refspecが原因でフェッチされるブランチがリモートに1つも存在しない場
+     合、refspecは陳腐化しています。陳腐化したrefspecは、その存在によっ
+     てGitが残りの陳腐化してないrefspecに従ってフェッチを拒否するため、
+     問題があります。
 
-     If only stale refspecs remain, then this command offers to either
-     delete the remote or to replace the stale refspecs with the default
-     refspec ("+refs/heads/*:refs/remotes/REMOTE/*").
+     陳腐化したrefspecのみが残っている場合、このコマンドは、リモートを削
+     除するか、陳腐化したrefspecをデフォルトのrefspec
+     ("+refs/heads/*:refs/remotes/REMOTE/*") に置き換えることを提案しま
+     す。
 
-     This command also removes the remote-tracking branches that were
-     created due to the now stale refspecs.  Other stale branches are
-     not removed.
+     このコマンドは、今や陳腐化したrefspecsのために作成されたリモートト
+     ラッキングブランチも削除します。他の陳腐化したブランチは削除されま
+     せん。
 
  -- User Option: magit-remote-add-set-remote.pushDefault
 
-     This option controls whether the user is asked whether they want to
-     set ‘remote.pushDefault’ after adding a remote.
+     このオプションは、リモートを追加した後に‘remote.pushDefault’を設定
+     するかどうかをユーザーに尋ねるかどうかを制御します。
 
-     If ‘ask’, then users is always ask.  If ‘ask-if-unset’, then the
-     user is only if the variable isn’t set already.  If ‘nil’, then the
-     user isn’t asked and the variable isn’t set.  If the value is a
-     string, then the variable is set without the user being asked,
-     provided that the name of the added remote is equal to that string
-     and the variable isn’t already set.
+     ‘ask’の場合、ユーザーは常に質問されます。‘ask-if-unset’の場合、ユー
+     ザーは変数がまだ設定されていない場合にのみ使用できます。‘nil’の場合
+     、ユーザーは尋ねられず、変数は設定されません。値が文字列の場合、追
+     加されたリモートの名前がその文字列と等しく、変数がまだ設定されてい
+     なければ、ユーザーに尋ねられることなく変数が設定されます。
 
 
 File: magit.ja.info,  Node: Remote Git Variables,  Prev: Remote Commands,  Up: Remotes
@@ -7339,38 +7331,37 @@ File: magit.ja.info,  Node: Remote Git Variables,  Prev: Remote Commands,  Up: R
 7.1.2 Remote Git Variables
 --------------------------
 
-These variables can be set from the transient prefix command
-‘magit-remote-configure’.  By default they can also be set from
-‘magit-remote’.  See *note Remote Commands::.
+これらの変数達は、トランジェントプレフィックスコマンド
+‘magit-remote-configure’から設定できます。デフォルトでは、
+‘magit-remote’から設定することもできます→*note Remote Commands::
 
  -- Variable: remote.NAME.url
 
-     This variable specifies the url of the remote named NAME.  It can
-     have multiple values.
+     この変数は、NAME@という名前のリモートのURLを指定します。複数の値を
+     持つことができます。
 
  -- Variable: remote.NAME.fetch
 
-     The refspec used when fetching from the remote named NAME.  It can
-     have multiple values.
+     NAME@という名前のリモートからフェッチするときに使用されるrefspecで
+     す。複数の値を持つことができます。
 
  -- Variable: remote.NAME.pushurl
 
-     This variable specifies the url used for fetching from the remote
-     named NAME.  If it is not specified, then ‘remote.NAME.url’ is used
-     instead.  It can have multiple values.
+     この変数は、NAME@という名前のリモートからのフェッチに使用される
+     URLを指定します。指定されていない場合は、代わりに
+     ‘remote.NAME.url’が使用されます。複数の値を持つことができます。
 
  -- Variable: remote.NAME.push
 
-     The refspec used when pushing to the remote named NAME.  It can
-     have multiple values.
+     NAME@という名前のリモートにプッシュするときに使用されるrefspecです
+     。複数の値を持つことができます。
 
  -- Variable: remote.NAME.tagOpts
 
-     This variable specifies what tags are fetched by default.  If the
-     value is ‘--no-tags’ then no tags are fetched.  If the value is
-     ‘--tags’, then all tags are fetched.  If this variable has no
-     value, then only tags are fetched that are reachable from fetched
-     branches.
+     この変数は、デフォルトでフェッチされるタグを指定します。値が
+     ‘--no-tags’の場合、タグはフェッチされません。値が‘--tags’の場合、す
+     べてのタグがフェッチされます。この変数に値がない場合、フェッチされ
+     たブランチから到達可能なタグのみがフェッチされます。
 
 
 File: magit.ja.info,  Node: Fetching,  Next: Pulling,  Prev: Remotes,  Up: Transferring
@@ -7378,8 +7369,8 @@ File: magit.ja.info,  Node: Fetching,  Next: Pulling,  Prev: Remotes,  Up: Trans
 7.2 Fetching
 ============
 
-こちらもご覧下さい *note (gitman)git-fetch:: For information about the
-upstream and the push-remote, see *note The Two Remotes::.
+こちらもご覧下さい *note (gitman)git-fetch:: アップストリームとプッシュ
+リモートの詳細については→*note The Two Remotes::
 
 ‘f’     (‘magit-fetch’)
 
@@ -7391,7 +7382,7 @@ upstream and the push-remote, see *note The Two Remotes::.
 
 ‘f p’     (‘magit-fetch-from-pushremote’)
 
-     This command fetches from the current push-remote.
+     このコマンドは、currentのプッシュリモートからフェッチします。
 
      プレフィックス引数を使用する場合、またはプッシュリモートが構成され
      ていないか使用できない場合は、最初にユーザーにプッシュリモートを構
@@ -7399,48 +7390,53 @@ upstream and the push-remote, see *note The Two Remotes::.
 
 ‘f u’     (‘magit-fetch-from-upstream’)
 
-     This command fetch from the upstream of the current branch.
+     このコマンドは、currentのブランチのアップストリームからフェッチしま
+     す。
 
-     If the upstream is configured for the current branch and names an
-     existing remote, then use that.  Otherwise try to use another
-     remote: If only a single remote is configured, then use that.
-     Otherwise if a remote named "origin" exists, then use that.
+     アップストリームがcurrentのブランチ用に構成されていて、既存のリモー
+     トに名前を付けている場合は、それを使用します。それ以外の場合は、別
+     のリモートを使用しyようと試みます。リモートが1つだけ構成されている
+     場合は、それを使用します。それ以外の場合、"origin"という名前のリモ
+     ートが存在する場合は、それを使用します。
 
-     If no remote can be determined, then this command is not available
-     from the ‘magit-fetch’ transient prefix and invoking it directly
-     results in an error.
+     リモートを判別できない場合、このコマンドは‘magit-fetch’トランジェン
+     トプレフィックスコマンドから使用できず、直接呼び出すとエラーになり
+     ます。
 
 ‘f e’     (‘magit-fetch-other’)
 
-     This command fetch from a repository read from the minibuffer.
+     このコマンドは、ミニバッファから読み取られたリポジトリからフェッチ
+     します。
 
 ‘f o’     (‘magit-fetch-branch’)
 
-     This command fetches a branch from a remote, both of which are read
-     from the minibuffer.
+     このコマンドは、リモートからブランチをフェッチします。どちらもミニ
+     バッファから読み取られます。
 
 ‘f r’     (‘magit-fetch-refspec’)
 
-     This command fetches from a remote using an explicit refspec, both
-     of which are read from the minibuffer.
+     このコマンドは、明示的なrefspecを使用してリモートからフェッチします
+     。どちらも、ミニバッファから読み取られます。
 
 ‘f a’     (‘magit-fetch-all’)
 
-     This command fetches from all remotes.
+     このコマンドは、すべてのリモートからフェッチします。
 
 ‘f m’     (‘magit-submodule-fetch’)
 
-     This command fetches all submodules.  With a prefix argument it
-     fetches all remotes of all submodules.
+     このコマンドは、すべてのサブモジュールをフェッチします。プレフィッ
+     クス引数を使用して、すべてのサブモジュールのすべてのリモートをフェ
+     ッチします。
 
  -- User Option: magit-pull-or-fetch
 
-     By default fetch and pull commands are available from separate
-     transient prefix command.  Setting this to ‘t’ adds some (but not
-     all) of the above suffix commands to the ‘magit-pull’ transient.
+     デフォルトでは、フェッチコマンドとプルコマンドは、個別のトランジェ
+     ントプレフィックスコマンドから使用できます。これを‘t’に設定すると、
+     (すべてではありませんが)上記のサフィックスコマンドの一部が
+     ‘magit-pull’トランジェントコマンドに追加されます。
 
-     If you do that, then you might also want to change the key binding
-     for these prefix commands, e.g.:
+     あなたがそうしたい場合、これらのプレフィックスコマンドのキーバイン
+     ディングを変更することもできます。例:
 
           (setq magit-pull-or-fetch t)
           (define-key magit-mode-map "f" 'magit-pull) ; was magit-fetch
@@ -7452,8 +7448,8 @@ File: magit.ja.info,  Node: Pulling,  Next: Pushing,  Prev: Fetching,  Up: Trans
 7.3 Pulling
 ===========
 
-こちらもご覧下さい *note (gitman)git-pull:: For information about the
-upstream and the push-remote, see *note The Two Remotes::.
+こちらもご覧下さい *note (gitman)git-pull:: アップストリームとプッシュリ
+モートの詳細については→*note The Two Remotes::
 
 ‘F’     (‘magit-pull’)
 
@@ -7464,7 +7460,7 @@ upstream and the push-remote, see *note The Two Remotes::.
 
 ‘F p’     (‘magit-pull-from-pushremote’)
 
-     This command pulls from the push-remote of the current branch.
+     このコマンドは、currentのブランチのプッシュリモートからプルします。
 
      プレフィックス引数を使用する場合、またはプッシュリモートが構成され
      ていないか使用できない場合は、最初にユーザーにプッシュリモートを構
@@ -7472,7 +7468,7 @@ upstream and the push-remote, see *note The Two Remotes::.
 
 ‘F u’     (‘magit-pull-from-upstream’)
 
-     This command pulls from the upstream of the current branch.
+     このコマンドは、currentのブランチのアップストリームからプルします。
 
      プレフィックス引数を使用する場合、またはアップストリームが構成され
      ていないか使用できない場合は、ユーザーが最初にアップストリームを構
@@ -7480,7 +7476,7 @@ upstream and the push-remote, see *note The Two Remotes::.
 
 ‘F e’     (‘magit-pull-branch’)
 
-     This command pulls from a branch read in the minibuffer.
+     このコマンドは、ミニバッファで読み取られたブランチからプルします。
 
 
 File: magit.ja.info,  Node: Pushing,  Next: Plain Patches,  Prev: Pulling,  Up: Transferring
@@ -7488,8 +7484,8 @@ File: magit.ja.info,  Node: Pushing,  Next: Plain Patches,  Prev: Pulling,  Up: 
 7.4 Pushing
 ===========
 
-こちらもご覧下さい *note (gitman)git-push:: For information about the
-upstream and the push-remote, see *note The Two Remotes::.
+こちらもご覧下さい *note (gitman)git-push:: アップストリームとプッシュリ
+モートの詳細については→*note The Two Remotes::
 
 ‘P’     (‘magit-push’)
 
@@ -7501,7 +7497,8 @@ upstream and the push-remote, see *note The Two Remotes::.
 
 ‘P p’     (‘magit-push-current-to-pushremote’)
 
-     This command pushes the current branch to its push-remote.
+     このコマンドは、currentのブランチをそのプッシュリモートにプッシュし
+     ます。
 
      プレフィックス引数を使用する場合、またはプッシュリモートが構成され
      ていないか使用できない場合は、最初にユーザーにプッシュリモートを構
@@ -7509,7 +7506,8 @@ upstream and the push-remote, see *note The Two Remotes::.
 
 ‘P u’     (‘magit-push-current-to-upstream’)
 
-     This command pushes the current branch to its upstream branch.
+     このコマンドは、currentのブランチをそのアップストリームブランチにプ
+     ッシュします。
 
      プレフィックス引数を使用する場合、またはアップストリームが構成され
      ていないか使用できない場合は、ユーザーが最初にアップストリームを構
@@ -7517,57 +7515,59 @@ upstream and the push-remote, see *note The Two Remotes::.
 
 ‘P e’     (‘magit-push-current’)
 
-     This command pushes the current branch to a branch read in the
-     minibuffer.
+     このコマンドは、currentのブランチをミニバッファで読み取られたブラン
+     チにプッシュします。
 
 ‘P o’     (‘magit-push-other’)
 
-     This command pushes an arbitrary branch or commit somewhere.  Both
-     the source and the target are read in the minibuffer.
+     このコマンドは、任意のブランチをプッシュするか、どこかにコミットし
+     ます。ソースとターゲットの両方がミニバッファで読み取られます。
 
 ‘P r’     (‘magit-push-refspecs’)
 
-     This command pushes one or multiple refspecs to a remote, both of
-     which are read in the minibuffer.
+     このコマンドは、1つまたは複数のrefspecをリモートにプッシュします。
+     どちらもミニバッファで読み取られます。
 
-     To use multiple refspecs, separate them with commas.  Completion is
-     only available for the part before the colon, or when no colon is
-     used.
+     複数のrefspecを使用するには、それらをコンマで区切ります。補完は、コ
+     ロンの前の部分、またはコロンが使用されていない場合にのみ使用できま
+     す。
 
 ‘P m’     (‘magit-push-matching’)
 
-     This command pushes all matching branches to another repository.
+     このコマンドは、一致するすべてのブランチを別のリポジトリにプッシュ
+     します。
 
-     If only one remote exists, then push to that.  Otherwise prompt for
-     a remote, offering the remote configured for the current branch as
-     default.
+     リモートが1つしかない場合は、そこにプッシュします。それ以外の場合は
+     、リモートのプロンプトを表示し、現在のブランチ用に構成されたリモー
+     トをデフォルトとして提供します。
 
 ‘P t’     (‘magit-push-tags’)
 
-     This command pushes all tags to another repository.
+     このコマンドは、すべてのタグを別のリポジトリにプッシュします。
 
-     If only one remote exists, then push to that.  Otherwise prompt for
-     a remote, offering the remote configured for the current branch as
-     default.
+     リモートが1つしかない場合は、そこにプッシュします。それ以外の場合は
+     、リモートのプロンプトを表示し、現在のブランチ用に構成されたリモー
+     トをデフォルトとして提供します。
 
 ‘P T’     (‘magit-push-tag’)
 
-     This command pushes a tag to another repository.
+     このコマンドは、タグを別のリポジトリにプッシュします。
 
-One of the infix arguments, ‘--force-with-lease’, deserves a word of
-caution.  It is passed without a value, which means "permit a force push
-as long as the remote-tracking branches match their counterparts on the
-remote end".  If you’ve set up a tool to do automatic fetches (Magit
-itself does not provide such functionality), using ‘--force-with-lease’
-can be dangerous because you don’t actually control or know the state of
-the remote-tracking refs.  In that case, you should consider setting
-‘push.useForceIfIncludes’ to ‘true’ (available since Git 2.30).
+注意: インフィックス引数の1つである‘--force-with-lease’には、注意が必要
+です。値なしで渡されます。これは、「リモート追跡ブランチがリモートエンド
+の対応するブランチと一致する限り、強制プッシュを許可する」ことを意味しま
+す。(Magit自体はそのような機能を提供しませんが、)あなたが自動フェッチを
+実行するツールを設定した場合、‘--force-with-lease’を使用すると、実際には
+リモートトラッキングへの参照状態(the state of the remote-tracking refs)を
+制御または認識していないため、危険な場合があります。その場合は、
+‘push.useForceIfIncludes’を‘true’に設定することを検討する必要があります
+(Git 2.30以降で使用可能)。
 
-Two more push commands exist, which by default are not available from
-the push transient.  See their doc-strings for instructions on how to
-add them to the transient.
+さらに2つのプッシュコマンドが存在しますが、デフォルトではpushトランジェ
+ントコマンドからは使用できません。それらをトランジェントコマンドに追加す
+る方法については、doc-stringsを参照してください。
 
- -- Command: magit-push-implicitly args
+ -- コマンド: magit-push-implicitly args
 
      This command pushes somewhere without using an explicit refspec.
 
@@ -7585,7 +7585,7 @@ add them to the transient.
           (transient-insert-suffix 'magit-push \"p\"
             '(\"i\" magit-push-implicitly))"
 
- -- Command: magit-push-to-remote remote args
+ -- コマンド: magit-push-to-remote remote args
 
      This command pushes to the remote REMOTE without using an explicit
      refspec.  The remote is read in the minibuffer.
@@ -7858,7 +7858,7 @@ the super-repository by adding ‘magit-insert-modules’ to the hook
 ‘magit-status-sections-hook’ as described in *note Status Module
 Sections::.
 
- -- Command: magit-list-submodules
+ -- コマンド: magit-list-submodules
 
      This command displays a list of the current repository’s submodules
      in a separate buffer.
@@ -8061,10 +8061,10 @@ File: magit.ja.info,  Node: Common Commands,  Next: Wip Modes,  Prev: Worktree, 
 8.6 Common Commands
 ===================
 
- -- magit-switch-to-repository-buffer: コマンド
- -- magit-switch-to-repository-buffer-other-window: コマンド
- -- magit-switch-to-repository-buffer-other-frame: コマンド
- -- magit-display-repository-buffer: コマンド
+ -- コマンド: magit-switch-to-repository-buffer
+ -- コマンド: magit-switch-to-repository-buffer-other-window
+ -- コマンド: magit-switch-to-repository-buffer-other-frame
+ -- コマンド: magit-display-repository-buffer
 
      These commands read any existing Magit buffer that belongs to the
      current repository from the user and then switch to the selected
@@ -8161,7 +8161,7 @@ To view the log for a branch and its wip refs use the commands
 ‘magit-wip-log’ and ‘magit-wip-log-current’.  You should use ‘--graph’
 when using these commands.
 
- -- magit-wip-log: コマンド
+ -- コマンド: magit-wip-log
 
      This command shows the log for a branch and its wip refs.  With a
      negative prefix argument only the worktree wip ref is shown.
@@ -8170,7 +8170,7 @@ when using these commands.
      "branches" of each wip ref are shown.  This is only relevant if the
      value of ‘magit-wip-merge-branch’ is ‘nil’.
 
- -- magit-wip-log-current: コマンド
+ -- コマンド: magit-wip-log-current
 
      This command shows the log for the current branch and its wip refs.
      With a negative prefix argument only the worktree wip ref is shown.
@@ -8481,19 +8481,19 @@ Blaming:: for information about those commands and bindings.
 There are a few additional commands that operate on a single file but
 are not enabled in the file transient command by default:
 
- -- magit-file-rename: コマンド
+ -- コマンド: magit-file-rename
 
      This command renames a file read from the user.
 
- -- magit-file-delete: コマンド
+ -- コマンド: magit-file-delete
 
      This command deletes a file read from the user.
 
- -- magit-file-untrack: コマンド
+ -- コマンド: magit-file-untrack
 
      This command untracks a file read from the user.
 
- -- magit-file-checkout: コマンド
+ -- コマンド: magit-file-checkout
 
      This command updates a file in the working tree and index to the
      contents from a revision.  Both the revision and file are read from
@@ -10268,18 +10268,18 @@ Appendix C Keystroke Index
 * A:                                     Cherry Picking.      (line   8)
 * A A:                                   Cherry Picking.      (line  19)
 * A a:                                   Cherry Picking.      (line  26)
-* A A <1>:                               Cherry Picking.      (line  93)
-* A a <1>:                               Cherry Picking.      (line 102)
-* A d:                                   Cherry Picking.      (line  57)
+* A A <1>:                               Cherry Picking.      (line  92)
+* A a <1>:                               Cherry Picking.      (line 101)
+* A d:                                   Cherry Picking.      (line  56)
 * A h:                                   Cherry Picking.      (line  45)
-* A n:                                   Cherry Picking.      (line  68)
-* A s:                                   Cherry Picking.      (line  79)
-* A s <1>:                               Cherry Picking.      (line  97)
+* A n:                                   Cherry Picking.      (line  67)
+* A s:                                   Cherry Picking.      (line  78)
+* A s <1>:                               Cherry Picking.      (line  96)
 * B:                                     Bisecting.           (line   8)
 * b:                                     Blaming.             (line 105)
 * b <1>:                                 Branch Commands.     (line  13)
 * b <2>:                                 Editing Rebase Sequences.
-                                                              (line  86)
+                                                              (line  84)
 * B B:                                   Bisecting.           (line  18)
 * B b:                                   Bisecting.           (line  37)
 * b b:                                   Branch Commands.     (line  54)
@@ -10301,7 +10301,7 @@ Appendix C Keystroke Index
 * C:                                     Cloning Repository.  (line  22)
 * c <1>:                                 コミット開始.        (line   8)
 * c <2>:                                 Editing Rebase Sequences.
-                                                              (line  73)
+                                                              (line  71)
 * c a:                                   コミット開始.        (line  21)
 * c A:                                   コミット開始.        (line  73)
 * C b:                                   Cloning Repository.  (line  44)
@@ -10400,7 +10400,7 @@ Appendix C Keystroke Index
 * C-w:                                   Common Commands.     (line  22)
 * C-x g:                                 Status Buffer.       (line  21)
 * C-x u:                                 Editing Rebase Sequences.
-                                                              (line  95)
+                                                              (line  93)
 * d:                                     Diffing.             (line  20)
 * D:                                     Refreshing Diffs.    (line  11)
 * d c:                                   Diffing.             (line  70)
@@ -10423,11 +10423,11 @@ Appendix C Keystroke Index
                                                               (line  61)
 * DEL <2>:                               Blaming.             (line  93)
 * DEL <3>:                               Editing Rebase Sequences.
-                                                              (line  28)
+                                                              (line  27)
 * e:                                     Ediffing.            (line   9)
 * E:                                     Ediffing.            (line  23)
 * e <1>:                                 Editing Rebase Sequences.
-                                                              (line  55)
+                                                              (line  53)
 * E c:                                   Ediffing.            (line  73)
 * E i:                                   Ediffing.            (line  63)
 * E m:                                   Ediffing.            (line  39)
@@ -10437,19 +10437,19 @@ Appendix C Keystroke Index
 * E w:                                   Ediffing.            (line  68)
 * E z:                                   Ediffing.            (line  78)
 * f:                                     Editing Rebase Sequences.
-                                                              (line  64)
+                                                              (line  62)
 * f <1>:                                 Fetching.            (line   9)
 * F:                                     Pulling.             (line   9)
-* f a:                                   Fetching.            (line  52)
+* f a:                                   Fetching.            (line  55)
 * f C:                                   Branch Commands.     (line  33)
 * F C:                                   Branch Commands.     (line  34)
-* f e:                                   Fetching.            (line  38)
+* f e:                                   Fetching.            (line  40)
 * F e:                                   Pulling.             (line  32)
-* f m:                                   Fetching.            (line  56)
-* f o:                                   Fetching.            (line  42)
+* f m:                                   Fetching.            (line  59)
+* f o:                                   Fetching.            (line  45)
 * f p:                                   Fetching.            (line  17)
 * F p:                                   Pulling.             (line  16)
-* f r:                                   Fetching.            (line  47)
+* f r:                                   Fetching.            (line  50)
 * f u:                                   Fetching.            (line  25)
 * F u:                                   Pulling.             (line  24)
 * g:                                     Automatic Refreshing of Magit Buffers.
@@ -10462,14 +10462,14 @@ Appendix C Keystroke Index
 * k:                                     Viewing Git Output.  (line  23)
 * k <1>:                                 Applying.            (line  42)
 * k <2>:                                 Editing Rebase Sequences.
-                                                              (line  69)
-* k <3>:                                 Stashing.            (line 100)
+                                                              (line  67)
+* k <3>:                                 Stashing.            (line 103)
 * l:                                     Logging.             (line  27)
 * L:                                     Refreshing Logs.     (line  11)
 * L <1>:                                 Log Buffer.          (line   6)
 * L <2>:                                 Log Margin.          (line  54)
 * l <1>:                                 Editing Rebase Sequences.
-                                                              (line 116)
+                                                              (line 114)
 * l a:                                   Logging.             (line  61)
 * l b:                                   Logging.             (line  56)
 * L d:                                   Log Margin.          (line  72)
@@ -10513,12 +10513,12 @@ Appendix C Keystroke Index
 * M-n <1>:                               コミットメッセージ編集.
                                                               (line  44)
 * M-n <2>:                               Editing Rebase Sequences.
-                                                              (line  47)
+                                                              (line  45)
 * M-p:                                   Section Movement.    (line  19)
 * M-p <1>:                               コミットメッセージ編集.
                                                               (line  38)
 * M-p <2>:                               Editing Rebase Sequences.
-                                                              (line  43)
+                                                              (line  41)
 * M-w:                                   Blaming.             (line 130)
 * M-w <1>:                               Common Commands.     (line  40)
 * M-x magit-debug-git-executable:        Git実行ファイル.     (line  55)
@@ -10543,14 +10543,14 @@ Appendix C Keystroke Index
 * M-x magit-wip-commit:                  Wip Modes.           (line  88)
 * M-x with-editor-debug:                 Debugging Tools.     (line  44)
 * MM:                                    Editing Rebase Sequences.
-                                                              (line 127)
+                                                              (line 125)
 * Mt:                                    Editing Rebase Sequences.
-                                                              (line 134)
+                                                              (line 133)
 * n:                                     Section Movement.    (line  15)
 * n <1>:                                 Blaming.             (line 109)
 * N:                                     Blaming.             (line 113)
 * n <2>:                                 Editing Rebase Sequences.
-                                                              (line  39)
+                                                              (line  37)
 * n <3>:                                 Minor Mode for Buffers Visiting Blobs.
                                                               (line  16)
 * o:                                     submodule用トランジェントコマンド.
@@ -10584,19 +10584,19 @@ Appendix C Keystroke Index
 * p <1>:                                 Blaming.             (line 117)
 * P:                                     Blaming.             (line 121)
 * p <2>:                                 Editing Rebase Sequences.
-                                                              (line  35)
+                                                              (line  33)
 * P <1>:                                 Pushing.             (line   9)
 * p <3>:                                 Minor Mode for Buffers Visiting Blobs.
                                                               (line  12)
 * P C:                                   Branch Commands.     (line  35)
-* P e:                                   Pushing.             (line  33)
-* P m:                                   Pushing.             (line  52)
-* P o:                                   Pushing.             (line  38)
+* P e:                                   Pushing.             (line  35)
+* P m:                                   Pushing.             (line  54)
+* P o:                                   Pushing.             (line  40)
 * P p:                                   Pushing.             (line  17)
-* P r:                                   Pushing.             (line  43)
-* P t:                                   Pushing.             (line  60)
-* P T:                                   Pushing.             (line  68)
-* P u:                                   Pushing.             (line  25)
+* P r:                                   Pushing.             (line  45)
+* P t:                                   Pushing.             (line  63)
+* P T:                                   Pushing.             (line  71)
+* P u:                                   Pushing.             (line  26)
 * q:                                     Quitting Windows.    (line   6)
 * q <1>:                                 Log Buffer.          (line  16)
 * q <2>:                                 Blaming.             (line 125)
@@ -10604,19 +10604,19 @@ Appendix C Keystroke Index
                                                               (line  20)
 * r:                                     Rebasing.            (line   9)
 * r <1>:                                 Editing Rebase Sequences.
-                                                              (line  51)
+                                                              (line  49)
 * r a:                                   Rebasing.            (line 127)
-* r e:                                   Rebasing.            (line  47)
+* r e:                                   Rebasing.            (line  46)
 * r e <1>:                               Rebasing.            (line 122)
 * r f:                                   Rebasing.            (line  87)
 * r i:                                   Rebasing.            (line  83)
 * r k:                                   Rebasing.            (line 102)
 * r m:                                   Rebasing.            (line  92)
-* r p:                                   Rebasing.            (line  30)
+* r p:                                   Rebasing.            (line  29)
 * r r:                                   Rebasing.            (line 109)
 * r s:                                   Rebasing.            (line  53)
 * r s <1>:                               Rebasing.            (line 117)
-* r u:                                   Rebasing.            (line  38)
+* r u:                                   Rebasing.            (line  37)
 * r w:                                   Rebasing.            (line  97)
 * RET:                                   References Buffer.   (line 172)
 * RET <1>:                               Visiting Files and Blobs from a Diff.
@@ -10629,7 +10629,7 @@ Appendix C Keystroke Index
 * S:                                     Staging and Unstaging.
                                                               (line  39)
 * s <1>:                                 Editing Rebase Sequences.
-                                                              (line  59)
+                                                              (line  57)
 * S-<tab>:                               Section Visibility.  (line  21)
 * SPC:                                   Log Buffer.          (line  47)
 * SPC <1>:                               Commands Available in Diffs.
@@ -10638,7 +10638,7 @@ Appendix C Keystroke Index
 * SPC <3>:                               Editing Rebase Sequences.
                                                               (line  21)
 * t:                                     Editing Rebase Sequences.
-                                                              (line 121)
+                                                              (line 119)
 * t <1>:                                 Tagging.             (line   8)
 * T:                                     Notes.               (line   8)
 * T a:                                   Notes.               (line  54)
@@ -10658,11 +10658,11 @@ Appendix C Keystroke Index
                                                               (line  56)
 * v:                                     Applying.            (line  46)
 * V:                                     Reverting.           (line   6)
-* V A:                                   Reverting.           (line  33)
-* V a:                                   Reverting.           (line  42)
-* V s:                                   Reverting.           (line  37)
+* V A:                                   Reverting.           (line  34)
+* V a:                                   Reverting.           (line  43)
+* V s:                                   Reverting.           (line  38)
 * V V:                                   Reverting.           (line  17)
-* V v:                                   Reverting.           (line  23)
+* V v:                                   Reverting.           (line  24)
 * W:                                     Plain Patches.       (line   6)
 * w:                                     Maildir Patches.     (line   8)
 * w a:                                   Plain Patches.       (line  23)
@@ -10675,7 +10675,7 @@ Appendix C Keystroke Index
 * w w:                                   Maildir Patches.     (line  16)
 * w w <1>:                               Maildir Patches.     (line  36)
 * x:                                     Editing Rebase Sequences.
-                                                              (line  77)
+                                                              (line  75)
 * x <1>:                                 Resetting.           (line   8)
 * X f:                                   Resetting.           (line  51)
 * X h:                                   Resetting.           (line  27)
@@ -10688,26 +10688,26 @@ Appendix C Keystroke Index
 * Y:                                     Cherries.            (line  17)
 * y:                                     References Buffer.   (line   6)
 * y <1>:                                 Editing Rebase Sequences.
-                                                              (line  91)
+                                                              (line  89)
 * y c:                                   References Buffer.   (line  25)
 * y o:                                   References Buffer.   (line  31)
 * y y:                                   References Buffer.   (line  20)
 * z:                                     Stashing.            (line   8)
-* z a:                                   Stashing.            (line  63)
-* z b:                                   Stashing.            (line  85)
-* z B:                                   Stashing.            (line  90)
-* z f:                                   Stashing.            (line  96)
+* z a:                                   Stashing.            (line  66)
+* z b:                                   Stashing.            (line  88)
+* z B:                                   Stashing.            (line  93)
+* z f:                                   Stashing.            (line  99)
 * z i:                                   Stashing.            (line  23)
-* z I:                                   Stashing.            (line  50)
-* z k:                                   Stashing.            (line  76)
-* z l:                                   Stashing.            (line 105)
-* z p:                                   Stashing.            (line  69)
-* z v:                                   Stashing.            (line  81)
+* z I:                                   Stashing.            (line  52)
+* z k:                                   Stashing.            (line  79)
+* z l:                                   Stashing.            (line 108)
+* z p:                                   Stashing.            (line  72)
+* z v:                                   Stashing.            (line  84)
 * z w:                                   Stashing.            (line  29)
-* z W:                                   Stashing.            (line  56)
-* z x:                                   Stashing.            (line  36)
+* z W:                                   Stashing.            (line  58)
+* z x:                                   Stashing.            (line  37)
 * z z:                                   Stashing.            (line  16)
-* z Z:                                   Stashing.            (line  43)
+* z Z:                                   Stashing.            (line  45)
 
 
 File: magit.ja.info,  Node: Command Index,  Next: Function Index,  Prev: Keystroke Index,  Up: Top
@@ -10719,7 +10719,7 @@ Appendix D Command Index
 * Menu:
 
 * forward-line:                          Editing Rebase Sequences.
-                                                              (line  39)
+                                                              (line  37)
 * git-commit-ack:                        Commit Pseudo Headers.
                                                               (line  18)
 * git-commit-cc:                         Commit Pseudo Headers.
@@ -10743,45 +10743,45 @@ Appendix D Command Index
 * git-commit-test:                       Commit Pseudo Headers.
                                                               (line  32)
 * git-rebase-backward-line:              Editing Rebase Sequences.
-                                                              (line  35)
+                                                              (line  33)
 * git-rebase-break:                      Editing Rebase Sequences.
-                                                              (line  86)
+                                                              (line  84)
 * git-rebase-edit:                       Editing Rebase Sequences.
-                                                              (line  55)
+                                                              (line  53)
 * git-rebase-exec:                       Editing Rebase Sequences.
-                                                              (line  77)
+                                                              (line  75)
 * git-rebase-fixup:                      Editing Rebase Sequences.
-                                                              (line  64)
+                                                              (line  62)
 * git-rebase-insert:                     Editing Rebase Sequences.
-                                                              (line  91)
+                                                              (line  89)
 * git-rebase-kill-line:                  Editing Rebase Sequences.
-                                                              (line  69)
+                                                              (line  67)
 * git-rebase-label:                      Editing Rebase Sequences.
-                                                              (line 116)
+                                                              (line 114)
 * git-rebase-merge:                      Editing Rebase Sequences.
-                                                              (line 127)
+                                                              (line 125)
 * git-rebase-merge-toggle-editmsg:       Editing Rebase Sequences.
-                                                              (line 134)
+                                                              (line 133)
 * git-rebase-move-line-down:             Editing Rebase Sequences.
-                                                              (line  47)
+                                                              (line  45)
 * git-rebase-move-line-up:               Editing Rebase Sequences.
-                                                              (line  43)
+                                                              (line  41)
 * git-rebase-pick:                       Editing Rebase Sequences.
-                                                              (line  73)
+                                                              (line  71)
 * git-rebase-reset:                      Editing Rebase Sequences.
-                                                              (line 121)
+                                                              (line 119)
 * git-rebase-reword:                     Editing Rebase Sequences.
-                                                              (line  51)
+                                                              (line  49)
 * git-rebase-show-commit:                Editing Rebase Sequences.
                                                               (line  16)
 * git-rebase-show-or-scroll-down:        Editing Rebase Sequences.
-                                                              (line  28)
+                                                              (line  27)
 * git-rebase-show-or-scroll-up:          Editing Rebase Sequences.
                                                               (line  21)
 * git-rebase-squash:                     Editing Rebase Sequences.
-                                                              (line  59)
+                                                              (line  57)
 * git-rebase-undo:                       Editing Rebase Sequences.
-                                                              (line  95)
+                                                              (line  93)
 * ido-enter-magit-status:                Status Buffer.       (line  95)
 * magit-am:                              Maildir Patches.     (line   8)
 * magit-am-abort:                        Maildir Patches.     (line  45)
@@ -10846,11 +10846,11 @@ Appendix D Command Index
 * magit-cherry:                          Cherries.            (line  17)
 * magit-cherry-apply:                    Cherry Picking.      (line  26)
 * magit-cherry-copy:                     Cherry Picking.      (line  19)
-* magit-cherry-donate:                   Cherry Picking.      (line  57)
+* magit-cherry-donate:                   Cherry Picking.      (line  56)
 * magit-cherry-harvest:                  Cherry Picking.      (line  45)
 * magit-cherry-pick:                     Cherry Picking.      (line   8)
-* magit-cherry-spinoff:                  Cherry Picking.      (line  79)
-* magit-cherry-spinout:                  Cherry Picking.      (line  68)
+* magit-cherry-spinoff:                  Cherry Picking.      (line  78)
+* magit-cherry-spinout:                  Cherry Picking.      (line  67)
 * magit-clone:                           Cloning Repository.  (line  22)
 * magit-clone-bare:                      Cloning Repository.  (line  44)
 * magit-clone-mirror:                    Cloning Repository.  (line  49)
@@ -10941,14 +10941,14 @@ Appendix D Command Index
                                                               (line 108)
 * magit-emacs-Q-command:                 Debugging Tools.     (line  16)
 * magit-fetch:                           Fetching.            (line   9)
-* magit-fetch-all:                       Fetching.            (line  52)
-* magit-fetch-branch:                    Fetching.            (line  42)
+* magit-fetch-all:                       Fetching.            (line  55)
+* magit-fetch-branch:                    Fetching.            (line  45)
 * magit-fetch-from-pushremote:           Fetching.            (line  17)
 * magit-fetch-from-upstream:             Fetching.            (line  25)
 * magit-fetch-modules:                   submodule用トランジェントコマンド.
                                                               (line  60)
-* magit-fetch-other:                     Fetching.            (line  38)
-* magit-fetch-refspec:                   Fetching.            (line  47)
+* magit-fetch-other:                     Fetching.            (line  40)
+* magit-fetch-refspec:                   Fetching.            (line  50)
 * magit-file-checkout:                   Resetting.           (line  51)
 * magit-file-checkout <1>:               Commands for Buffers Visiting Files.
                                                               (line 137)
@@ -11040,26 +11040,26 @@ Appendix D Command Index
 * magit-pull-from-pushremote:            Pulling.             (line  16)
 * magit-pull-from-upstream:              Pulling.             (line  24)
 * magit-push:                            Pushing.             (line   9)
-* magit-push-current:                    Pushing.             (line  33)
+* magit-push-current:                    Pushing.             (line  35)
 * magit-push-current-to-pushremote:      Pushing.             (line  17)
-* magit-push-current-to-upstream:        Pushing.             (line  25)
-* magit-push-implicitly args:            Pushing.             (line  85)
-* magit-push-matching:                   Pushing.             (line  52)
-* magit-push-other:                      Pushing.             (line  38)
-* magit-push-refspecs:                   Pushing.             (line  43)
-* magit-push-tag:                        Pushing.             (line  68)
-* magit-push-tags:                       Pushing.             (line  60)
-* magit-push-to-remote remote args:      Pushing.             (line 103)
+* magit-push-current-to-upstream:        Pushing.             (line  26)
+* magit-push-implicitly args:            Pushing.             (line  89)
+* magit-push-matching:                   Pushing.             (line  54)
+* magit-push-other:                      Pushing.             (line  40)
+* magit-push-refspecs:                   Pushing.             (line  45)
+* magit-push-tag:                        Pushing.             (line  71)
+* magit-push-tags:                       Pushing.             (line  63)
+* magit-push-to-remote remote args:      Pushing.             (line 107)
 * magit-rebase:                          Rebasing.            (line   9)
 * magit-rebase-abort:                    Rebasing.            (line 127)
 * magit-rebase-autosquash:               Rebasing.            (line  87)
-* magit-rebase-branch:                   Rebasing.            (line  47)
+* magit-rebase-branch:                   Rebasing.            (line  46)
 * magit-rebase-continue:                 Rebasing.            (line 109)
 * magit-rebase-edit:                     Rebasing.            (line 122)
 * magit-rebase-edit-commit:              Rebasing.            (line  92)
 * magit-rebase-interactive:              Rebasing.            (line  83)
-* magit-rebase-onto-pushremote:          Rebasing.            (line  30)
-* magit-rebase-onto-upstream:            Rebasing.            (line  38)
+* magit-rebase-onto-pushremote:          Rebasing.            (line  29)
+* magit-rebase-onto-upstream:            Rebasing.            (line  37)
 * magit-rebase-remove-commit:            Rebasing.            (line 102)
 * magit-rebase-reword-commit:            Rebasing.            (line  97)
 * magit-rebase-skip:                     Rebasing.            (line 117)
@@ -11094,7 +11094,7 @@ Appendix D Command Index
                                                               (line  66)
 * magit-revert:                          Reverting.           (line   6)
 * magit-revert-and-commit:               Reverting.           (line  17)
-* magit-revert-no-commit:                Reverting.           (line  23)
+* magit-revert-no-commit:                Reverting.           (line  24)
 * magit-run:                             Gitを手動で実行.     (line  11)
 * magit-run-git-gui:                     Gitを手動で実行.     (line  67)
 * magit-run-gitk:                        Gitを手動で実行.     (line  55)
@@ -11123,12 +11123,12 @@ Appendix D Command Index
 * magit-section-toggle:                  Section Visibility.  (line   9)
 * magit-section-toggle-children:         Section Visibility.  (line  67)
 * magit-section-up:                      Section Movement.    (line  29)
-* magit-sequence-abort:                  Cherry Picking.      (line 102)
-* magit-sequence-abort <1>:              Reverting.           (line  42)
-* magit-sequence-continue:               Cherry Picking.      (line  93)
-* magit-sequence-continue <1>:           Reverting.           (line  33)
-* magit-sequence-skip:                   Cherry Picking.      (line  97)
-* magit-sequence-skip <1>:               Reverting.           (line  37)
+* magit-sequence-abort:                  Cherry Picking.      (line 101)
+* magit-sequence-abort <1>:              Reverting.           (line  43)
+* magit-sequence-continue:               Cherry Picking.      (line  92)
+* magit-sequence-continue <1>:           Reverting.           (line  34)
+* magit-sequence-skip:                   Cherry Picking.      (line  96)
+* magit-sequence-skip <1>:               Reverting.           (line  38)
 * magit-shell-command:                   Gitを手動で実行.     (line  41)
 * magit-shell-command-topdir:            Gitを手動で実行.     (line  36)
 * magit-show-commit:                     Diffing.             (line  70)
@@ -11137,9 +11137,9 @@ Appendix D Command Index
 * magit-show-refs-current:               References Buffer.   (line  25)
 * magit-show-refs-head:                  References Buffer.   (line  20)
 * magit-show-refs-other:                 References Buffer.   (line  31)
-* magit-snapshot-both:                   Stashing.            (line  43)
-* magit-snapshot-index:                  Stashing.            (line  50)
-* magit-snapshot-worktree:               Stashing.            (line  56)
+* magit-snapshot-both:                   Stashing.            (line  45)
+* magit-snapshot-index:                  Stashing.            (line  52)
+* magit-snapshot-worktree:               Stashing.            (line  58)
 * magit-stage:                           Staging and Unstaging.
                                                               (line  30)
 * magit-stage-file:                      Staging from File-Visiting Buffers.
@@ -11149,19 +11149,19 @@ Appendix D Command Index
 * magit-stage-modified:                  Staging and Unstaging.
                                                               (line  39)
 * magit-stash:                           Stashing.            (line   8)
-* magit-stash-apply:                     Stashing.            (line  63)
+* magit-stash-apply:                     Stashing.            (line  66)
 * magit-stash-both:                      Stashing.            (line  16)
-* magit-stash-branch:                    Stashing.            (line  85)
-* magit-stash-branch-here:               Stashing.            (line  90)
-* magit-stash-clear:                     Stashing.            (line 100)
-* magit-stash-drop:                      Stashing.            (line  76)
-* magit-stash-format-patch:              Stashing.            (line  96)
+* magit-stash-branch:                    Stashing.            (line  88)
+* magit-stash-branch-here:               Stashing.            (line  93)
+* magit-stash-clear:                     Stashing.            (line 103)
+* magit-stash-drop:                      Stashing.            (line  79)
+* magit-stash-format-patch:              Stashing.            (line  99)
 * magit-stash-index:                     Stashing.            (line  23)
-* magit-stash-keep-index:                Stashing.            (line  36)
-* magit-stash-list:                      Stashing.            (line 105)
-* magit-stash-pop:                       Stashing.            (line  69)
+* magit-stash-keep-index:                Stashing.            (line  37)
+* magit-stash-list:                      Stashing.            (line 108)
+* magit-stash-pop:                       Stashing.            (line  72)
 * magit-stash-show:                      Diffing.             (line  76)
-* magit-stash-show <1>:                  Stashing.            (line  81)
+* magit-stash-show <1>:                  Stashing.            (line  84)
 * magit-stash-worktree:                  Stashing.            (line  29)
 * magit-status:                          Status Buffer.       (line  21)
 * magit-status-quick:                    Status Buffer.       (line  70)
@@ -11169,7 +11169,7 @@ Appendix D Command Index
                                                               (line   6)
 * magit-submodule-add:                   submodule用トランジェントコマンド.
                                                               (line  22)
-* magit-submodule-fetch:                 Fetching.            (line  56)
+* magit-submodule-fetch:                 Fetching.            (line  59)
 * magit-submodule-populate:              submodule用トランジェントコマンド.
                                                               (line  36)
 * magit-submodule-register:              submodule用トランジェントコマンド.
@@ -11261,9 +11261,16 @@ Appendix E Function Index
                                                               (line  37)
 * git-commit-turn-on-flyspell:           Commit Mode and Hooks.
                                                               (line  42)
+* ido-enter-magit-status:                Status Buffer.       (line  95)
 * magit-add-section-hook:                Section Hooks.       (line  21)
 * magit-after-save-refresh-status:       Automatic Refreshing of Magit Buffers.
                                                               (line  55)
+* magit-branch-or-checkout:              Branch Commands.     (line 279)
+* magit-branch-orphan:                   Branch Commands.     (line 274)
+* magit-branch-shelve:                   Auxiliary Branch Commands.
+                                                              (line   9)
+* magit-branch-unshelve:                 Auxiliary Branch Commands.
+                                                              (line  20)
 * magit-builtin-completing-read:         補完フレームワークのサポート.
                                                               (line  42)
 * magit-call-git:                        Calling Git for Effect.
@@ -11277,6 +11284,14 @@ Appendix E Function Index
 * magit-define-section-jumper:           Creating Sections.   (line  77)
 * magit-diff-scope:                      Matching Sections.   (line 118)
 * magit-diff-type:                       Matching Sections.   (line  95)
+* magit-diff-visit-file-other-frame:     Visiting Files and Blobs from a Diff.
+                                                              (line  75)
+* magit-diff-visit-file-other-window:    Visiting Files and Blobs from a Diff.
+                                                              (line  74)
+* magit-diff-visit-worktree-file-other-frame: Visiting Files and Blobs from a Diff.
+                                                              (line  77)
+* magit-diff-visit-worktree-file-other-window: Visiting Files and Blobs from a Diff.
+                                                              (line  76)
 * magit-disable-section-inserter:        Per-Repository Configuration.
                                                               (line  31)
 * magit-display-buffer:                  バッファの切り替え.  (line   6)
@@ -11289,6 +11304,21 @@ Appendix E Function Index
 * magit-display-buffer-same-window-except-diff-v1: バッファの切り替え.
                                                               (line  53)
 * magit-display-buffer-traditional:      バッファの切り替え.  (line  45)
+* magit-display-repository-buffer:       Common Commands.     (line   9)
+* magit-file-checkout:                   Commands for Buffers Visiting Files.
+                                                              (line 137)
+* magit-file-delete:                     Commands for Buffers Visiting Files.
+                                                              (line 129)
+* magit-file-rename:                     Commands for Buffers Visiting Files.
+                                                              (line 125)
+* magit-file-untrack:                    Commands for Buffers Visiting Files.
+                                                              (line 133)
+* magit-find-file:                       General-Purpose Visit Commands.
+                                                              (line  10)
+* magit-find-file-other-frame:           General-Purpose Visit Commands.
+                                                              (line  22)
+* magit-find-file-other-window:          General-Purpose Visit Commands.
+                                                              (line  16)
 * magit-generate-buffer-name-default-function: バッファの名付け.
                                                               (line  17)
 * magit-get-section:                     Matching Sections.   (line  16)
@@ -11379,6 +11409,7 @@ Appendix E Function Index
                                                               (line  47)
 * magit-insert-user-header:              Status Header Sections.
                                                               (line  76)
+* magit-list-repositories:               Repository List.     (line   6)
 * magit-list-submodules:                 Listing Submodules.  (line  13)
 * magit-log-maybe-show-more-commits:     Section Movement.    (line  64)
 * magit-log-maybe-update-blob-buffer:    Section Movement.    (line  79)
@@ -11391,8 +11422,8 @@ Appendix E Function Index
                                                               (line  67)
 * magit-process-git:                     Getting a Value from Git.
                                                               (line  59)
-* magit-push-implicitly:                 Pushing.             (line  85)
-* magit-push-to-remote:                  Pushing.             (line 103)
+* magit-push-implicitly:                 Pushing.             (line  89)
+* magit-push-to-remote:                  Pushing.             (line 107)
 * magit-region-sections:                 Section Selection.   (line  10)
 * magit-region-values:                   Section Selection.   (line  37)
 * magit-repolist-column-branch:          Repository List.     (line  47)
@@ -11422,9 +11453,15 @@ Appendix E Function Index
                                                               (line  40)
 * magit-save-window-configuration:       バッファの切り替え.  (line  90)
 * magit-section-case:                    Matching Sections.   (line  71)
+* magit-section-hide:                    Section Visibility.  (line  48)
+* magit-section-hide-children:           Section Visibility.  (line  63)
 * magit-section-ident:                   Matching Sections.   (line  11)
 * magit-section-match:                   Matching Sections.   (line  21)
 * magit-section-set-window-start:        Section Movement.    (line  57)
+* magit-section-show:                    Section Visibility.  (line  44)
+* magit-section-show-children:           Section Visibility.  (line  57)
+* magit-section-show-headings:           Section Visibility.  (line  52)
+* magit-section-toggle-children:         Section Visibility.  (line  67)
 * magit-section-value-if:                Matching Sections.   (line  61)
 * magit-start-git:                       Calling Git for Effect.
                                                               (line  90)
@@ -11435,51 +11472,16 @@ Appendix E Function Index
 * magit-status-maybe-update-revision-buffer: Section Movement.
                                                               (line  85)
 * magit-status-maybe-update-stash-buffer: Section Movement.   (line  91)
+* magit-status-quick:                    Status Buffer.       (line  70)
+* magit-switch-to-repository-buffer:     Common Commands.     (line   6)
+* magit-switch-to-repository-buffer-other-frame: Common Commands.
+                                                              (line   8)
+* magit-switch-to-repository-buffer-other-window: Common Commands.
+                                                              (line   7)
+* magit-wip-log:                         Wip Modes.           (line  48)
+* magit-wip-log-current:                 Wip Modes.           (line  57)
 * with-editor-usage-message:             Commit Mode and Hooks.
                                                               (line  60)
-* コマンド:                              Section Visibility.  (line  44)
-* コマンド <1>:                          Section Visibility.  (line  48)
-* コマンド <2>:                          Section Visibility.  (line  52)
-* コマンド <3>:                          Section Visibility.  (line  57)
-* コマンド <4>:                          Section Visibility.  (line  63)
-* コマンド <5>:                          Section Visibility.  (line  67)
-* コマンド <6>:                          Status Buffer.       (line  70)
-* コマンド <7>:                          Status Buffer.       (line  95)
-* コマンド <8>:                          Repository List.     (line   6)
-* コマンド <9>:                          General-Purpose Visit Commands.
-                                                              (line  10)
-* コマンド <10>:                         General-Purpose Visit Commands.
-                                                              (line  16)
-* コマンド <11>:                         General-Purpose Visit Commands.
-                                                              (line  22)
-* コマンド <12>:                         Visiting Files and Blobs from a Diff.
-                                                              (line  74)
-* コマンド <13>:                         Visiting Files and Blobs from a Diff.
-                                                              (line  75)
-* コマンド <14>:                         Visiting Files and Blobs from a Diff.
-                                                              (line  76)
-* コマンド <15>:                         Visiting Files and Blobs from a Diff.
-                                                              (line  77)
-* コマンド <16>:                         Branch Commands.     (line 274)
-* コマンド <17>:                         Branch Commands.     (line 279)
-* コマンド <18>:                         Auxiliary Branch Commands.
-                                                              (line   9)
-* コマンド <19>:                         Auxiliary Branch Commands.
-                                                              (line  20)
-* コマンド <20>:                         Common Commands.     (line   6)
-* コマンド <21>:                         Common Commands.     (line   7)
-* コマンド <22>:                         Common Commands.     (line   8)
-* コマンド <23>:                         Common Commands.     (line   9)
-* コマンド <24>:                         Wip Modes.           (line  48)
-* コマンド <25>:                         Wip Modes.           (line  57)
-* コマンド <26>:                         Commands for Buffers Visiting Files.
-                                                              (line 125)
-* コマンド <27>:                         Commands for Buffers Visiting Files.
-                                                              (line 129)
-* コマンド <28>:                         Commands for Buffers Visiting Files.
-                                                              (line 133)
-* コマンド <29>:                         Commands for Buffers Visiting Files.
-                                                              (line 137)
 
 
 File: magit.ja.info,  Node: Variable Index,  Prev: Function Index,  Up: Top
@@ -11505,7 +11507,7 @@ Appendix F Variable Index
 * branch.autoSetupMerge:                 Branch Git Variables.
                                                               (line  80)
 * branch.autoSetupRebase:                Branch Git Variables.
-                                                              (line  96)
+                                                              (line  95)
 * branch.NAME.description:               Branch Git Variables.
                                                               (line  48)
 * branch.NAME.merge:                     Branch Git Variables.
@@ -11534,11 +11536,11 @@ Appendix F Variable Index
 * git-commit-summary-max-length:         Commit Message Conventions.
                                                               (line  13)
 * git-rebase-auto-advance:               Editing Rebase Sequences.
-                                                              (line 100)
+                                                              (line  98)
 * git-rebase-confirm-cancel:             Editing Rebase Sequences.
-                                                              (line 108)
+                                                              (line 106)
 * git-rebase-show-instructions:          Editing Rebase Sequences.
-                                                              (line 104)
+                                                              (line 102)
 * global-auto-revert-mode:               Automatic Reverting of File-Visiting Buffers.
                                                               (line  24)
 * magit-auto-revert-immediately:         Automatic Reverting of File-Visiting Buffers.
@@ -11629,12 +11631,12 @@ Appendix F Variable Index
 * magit-post-display-buffer-hook:        バッファの切り替え.  (line  96)
 * magit-pre-display-buffer-hook:         バッファの切り替え.  (line  85)
 * magit-prefer-remote-upstream:          Branch Git Variables.
-                                                              (line 124)
+                                                              (line 122)
 * magit-prefix-use-buffer-arguments:     トランジェントでの引数とバッファ変数.
                                                               (line  60)
 * magit-process-raise-error:             Calling Git for Effect.
                                                               (line 136)
-* magit-pull-or-fetch:                   Fetching.            (line  61)
+* magit-pull-or-fetch:                   Fetching.            (line  65)
 * magit-reflog-margin:                   Reflog.              (line  23)
 * magit-refresh-args:                    Refreshing Buffers.  (line  55)
 * magit-refresh-buffer-hook:             Automatic Refreshing of Magit Buffers.
@@ -11651,7 +11653,7 @@ Appendix F Variable Index
 * magit-refs-sections-hook:              References Sections. (line  12)
 * magit-refs-show-commit-count:          References Buffer.   (line  36)
 * magit-refs-show-remote-prefix:         References Buffer.   (line  62)
-* magit-remote-add-set-remote.pushDefault: Remote Commands.   (line  95)
+* magit-remote-add-set-remote.pushDefault: Remote Commands.   (line  96)
 * magit-remote-direct-configure:         Remote Commands.     (line  23)
 * magit-remote-git-executable:           Git実行ファイル.     (line  33)
 * magit-repolist-columns:                Repository List.     (line  14)
@@ -11670,7 +11672,7 @@ Appendix F Variable Index
 * magit-section-show-child-count:        Section Options.     (line   9)
 * magit-section-visibility-indicator:    Section Visibility.  (line 123)
 * magit-shell-command-verbose-prompt:    Gitを手動で実行.     (line  48)
-* magit-stashes-margin:                  Stashing.            (line 109)
+* magit-stashes-margin:                  Stashing.            (line 112)
 * magit-status-headers-hook:             Status Header Sections.
                                                               (line  18)
 * magit-status-margin:                   Status Options.      (line  10)
@@ -11710,7 +11712,7 @@ Appendix F Variable Index
 * remote.NAME.url:                       Remote Git Variables.
                                                               (line  10)
 * remote.pushDefault:                    Branch Git Variables.
-                                                              (line  70)
+                                                              (line  71)
 
 
 
@@ -11795,94 +11797,94 @@ Node: Commit Message Conventions283551
 Node: Branching286260
 Node: The Two Remotes286489
 Node: Branch Commands290263
-Node: Branch Git Variables307771
-Node: Auxiliary Branch Commands314098
-Node: Merging315323
-Node: Resolving Conflicts320836
-Node: Rebasing327153
-Node: Editing Rebase Sequences333213
-Node: Information About In-Progress Rebase338228
-Ref: Information About In-Progress Rebase-Footnote-1347409
-Node: Cherry Picking348005
-Node: Reverting352971
-Node: Resetting354934
-Node: Stashing357340
-Node: Transferring363110
-Node: Remotes363335
-Node: Remote Commands363490
-Node: Remote Git Variables368228
-Node: Fetching369510
-Node: Pulling372367
-Node: Pushing373839
-Node: Plain Patches378645
-Node: Maildir Patches380403
-Node: Miscellaneous382200
-Node: Tagging382517
-Node: Notes385151
-Node: Submodules388012
-Node: Listing Submodules388277
-Node: submodule用トランジェントコマンド389768
-Node: Subtree392623
-Node: Worktree395154
-Node: Common Commands396499
-Node: Wip Modes399157
-Node: Wip Graph404081
-Node: Legacy Wip Modes406383
-Node: Commands for Buffers Visiting Files409274
-Node: Minor Mode for Buffers Visiting Blobs415293
-Node: Customizing416107
-Node: Per-Repository Configuration418057
-Node: 基本設定420295
-Node: Safety420621
-Node: Performance422599
-Ref: Log Performance425601
-Ref: Diff Performance426898
-Ref: Refs Buffer Performance428233
-Ref: Committing Performance428802
-Node: Microsoft Windows Performance429712
-Node: MacOS Performance430897
-Ref: MacOS Performance-Footnote-1431602
-Node: Default Bindings431684
-Node: 配管コマンド(Plumbing)433923
-Node: Calling Git434968
-Node: Getting a Value from Git436506
-Node: Calling Git for Effect440247
-Node: Section Plumbing446144
-Node: Creating Sections446395
-Node: Section Selection450298
-Node: Matching Sections452100
-Node: Refreshing Buffers458073
-Node: 慣習461236
-Node: Theming Faces461445
-Node: FAQ469516
-Node: FAQ - How to ...?470041
-Node: Magitの発音は？470501
-Node: How to show git's output?471454
-Node: How to install the gitman info manual?472482
-Node: How to show diffs for gpg-encrypted files?473763
-Node: How does branching and pushing work?474362
-Node: Magitをediff-version-control-packageとして使用できますか？474747
-Node: VC@を無効にする必要がありますか？476834
-Node: FAQ - Issues and Errors477537
-Node: Magit is slow478802
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました479042
-Node: コミットに問題があります479817
-Node: MS WindowsではMagitでpushできません480378
-Node: I am using OS X and SOMETHING works in shell but not in Magit481029
-Node: ファイルを展開して差分を表示するとファイルが消えます481877
-Node: COMMIT_EDITMSGバッファのpointが間違っています482516
-Node: モード行の情報が常に最新ではない483612
-Node: 同じ名前を共有するブランチとタグは何かを壊します484784
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません485739
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません486732
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています489125
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません490152
-Node: 私はポップアップのデフォルトを保存できなくなりました491211
-Node: Debugging Tools492281
-Node: Keystroke Index495101
-Node: Command Index529770
-Node: Function Index567970
-Node: Variable Index585035
+Node: Branch Git Variables308161
+Node: Auxiliary Branch Commands315128
+Node: Merging316587
+Node: Resolving Conflicts322100
+Node: Rebasing328417
+Node: Editing Rebase Sequences335287
+Node: Information About In-Progress Rebase340985
+Ref: Information About In-Progress Rebase-Footnote-1352162
+Node: Cherry Picking352923
+Node: Reverting359005
+Node: Resetting361291
+Node: Stashing364004
+Node: Transferring370804
+Node: Remotes371029
+Node: Remote Commands371184
+Node: Remote Git Variables376779
+Node: Fetching378450
+Node: Pulling382227
+Node: Pushing383833
+Node: Plain Patches389752
+Node: Maildir Patches391510
+Node: Miscellaneous393307
+Node: Tagging393624
+Node: Notes396258
+Node: Submodules399119
+Node: Listing Submodules399384
+Node: submodule用トランジェントコマンド400880
+Node: Subtree403735
+Node: Worktree406266
+Node: Common Commands407611
+Node: Wip Modes410269
+Node: Wip Graph415193
+Node: Legacy Wip Modes417495
+Node: Commands for Buffers Visiting Files420386
+Node: Minor Mode for Buffers Visiting Blobs426405
+Node: Customizing427219
+Node: Per-Repository Configuration429169
+Node: 基本設定431407
+Node: Safety431733
+Node: Performance433711
+Ref: Log Performance436713
+Ref: Diff Performance438010
+Ref: Refs Buffer Performance439345
+Ref: Committing Performance439914
+Node: Microsoft Windows Performance440824
+Node: MacOS Performance442009
+Ref: MacOS Performance-Footnote-1442714
+Node: Default Bindings442796
+Node: 配管コマンド(Plumbing)445035
+Node: Calling Git446080
+Node: Getting a Value from Git447618
+Node: Calling Git for Effect451359
+Node: Section Plumbing457256
+Node: Creating Sections457507
+Node: Section Selection461410
+Node: Matching Sections463212
+Node: Refreshing Buffers469185
+Node: 慣習472348
+Node: Theming Faces472557
+Node: FAQ480628
+Node: FAQ - How to ...?481153
+Node: Magitの発音は？481613
+Node: How to show git's output?482566
+Node: How to install the gitman info manual?483594
+Node: How to show diffs for gpg-encrypted files?484875
+Node: How does branching and pushing work?485474
+Node: Magitをediff-version-control-packageとして使用できますか？485859
+Node: VC@を無効にする必要がありますか？487946
+Node: FAQ - Issues and Errors488649
+Node: Magit is slow489914
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました490154
+Node: コミットに問題があります490929
+Node: MS WindowsではMagitでpushできません491490
+Node: I am using OS X and SOMETHING works in shell but not in Magit492141
+Node: ファイルを展開して差分を表示するとファイルが消えます492989
+Node: COMMIT_EDITMSGバッファのpointが間違っています493628
+Node: モード行の情報が常に最新ではない494724
+Node: 同じ名前を共有するブランチとタグは何かを壊します495896
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません496851
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません497844
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています500237
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません501264
+Node: 私はポップアップのデフォルトを保存できなくなりました502323
+Node: Debugging Tools503393
+Node: Keystroke Index506213
+Node: Command Index540882
+Node: Function Index579082
+Node: Variable Index596171
 
 End Tag Table
 

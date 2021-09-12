@@ -1283,37 +1283,37 @@ Magitには、セクションの表示を変更するための多くのコマン
 上記のコマンドを実装するために使用される一部の関数は、コマンド自体としても公開されます。デフォルトでは、これらのコマンドに結び付けられているキーはありません。これらのコマンドは、一般的にあまり役に立たないと認識されているためです。しかし、あなたにとっては有益かもしれません。
 
 @cindex magit-section-show
-@deffn magit-section-show コマンド
+@deffn コマンド magit-section-show
 
 現在のセクションのボディを表示します。
 @end deffn
 
 @cindex magit-section-hide
-@deffn magit-section-hide コマンド
+@deffn コマンド magit-section-hide
 
 現在のセクションのボディを非表示にします。
 @end deffn
 
 @cindex magit-section-show-headings
-@deffn magit-section-show-headings コマンド
+@deffn コマンド magit-section-show-headings
 
 現在のセクションの子の見出しを再帰的に表示します。見出しのみを表示します。以前に表示されたテキストのみのボディは非表示になります。
 @end deffn
 
 @cindex magit-section-show-children
-@deffn magit-section-show-children コマンド
+@deffn コマンド magit-section-show-children
 
 現在のセクションの子の体を再帰的に表示します。プレフィックス引数を使用すると、現在のセクションのレベルまで子を表示し、より深い子を非表示にします。
 @end deffn
 
 @cindex magit-section-hide-children
-@deffn magit-section-hide-children コマンド
+@deffn コマンド magit-section-hide-children
 
 現在のセクションの子のボディを再帰的に非表示にします。
 @end deffn
 
 @cindex magit-section-toggle-children
-@deffn magit-section-toggle-children コマンド
+@deffn コマンド magit-section-toggle-children
 
 現在のセクションの子のボディの可視性を切り替えます(toggle)。
 @end deffn
@@ -2144,7 +2144,7 @@ DEPTH)}です。DIRECTORYは、ディレクトリまたはディレクトリフ�
 @end defopt
 
 @cindex magit-status-quick
-@deffn magit-status-quick コマンド
+@deffn コマンド magit-status-quick
 
 このコマンドは、@code{magit-status}の代替になり、通常はステータスバッファの更新を回避します。
 
@@ -2166,7 +2166,7 @@ DEPTH)}です。DIRECTORYは、ディレクトリまたはディレクトリフ�
 @end deffn
 
 @cindex ido-enter-magit-status
-@deffn ido-enter-magit-status コマンド
+@deffn コマンド ido-enter-magit-status
 
 ファイルを開くために使用されるIdoプロンプトから、代わりに@code{magit-status}にドロップ(drop)します。これは@code{ido-magic-delete-char}に似ており、その名前にもかかわらず、通常はDiredバッファが作成されます。
 
@@ -2508,7 +2508,7 @@ AUTHOR-WIDTHは整数である必要があります。作成者の名前が表�
 @section Repository List
 
 @cindex magit-list-repositories
-@deffn magit-list-repositories コマンド
+@deffn コマンド magit-list-repositories
 
 このコマンドは、別のバッファにあるリポジトリのリストを表示します。
 
@@ -4007,19 +4007,19 @@ Magitは、ファイルまたはblob(特定のコミットに保存されてい�
 これらのコマンドは、任意のblobを開くためにどこでも使用できます。現在、デフォルトではこれらのコマンドに結び付けられているキーはありませんが、変更される可能性はあります。
 
 @cindex magit-find-file
-@deffn magit-find-file コマンド
+@deffn コマンド magit-find-file
 
 このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBにアクセスします。選択したウィンドウにバッファが表示されます。
 @end deffn
 
 @cindex magit-find-file-other-window
-@deffn magit-find-file-other-window コマンド
+@deffn コマンド magit-find-file-other-window
 
 このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBにアクセスします。バッファは別のウィンドウに表示されます。
 @end deffn
 
 @cindex magit-find-file-other-frame
-@deffn magit-find-file-other-frame コマンド
+@deffn コマンド magit-find-file-other-frame
 
 このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBにアクセスします。バッファは別のフレームに表示されます。
 @end deffn
@@ -4082,16 +4082,16 @@ file-visitingバッファでは、このコマンドは、diffでポイントが
 上記の2つのコマンドのバリエーションが存在しています。それは代わりに別のウィンドウまたは別のフレームでファイルにアクセスします。このような動作が必要な場合は、上記のキーバインディングを変更することをお勧めしますが、上記のコマンドは、プレフィックス引数を指定して呼び出されたときに別のウィンドウも使用することに注意してください。
 
 @cindex magit-diff-visit-file-other-window
-@deffn magit-diff-visit-file-other-window コマンド
+@deffn コマンド magit-diff-visit-file-other-window
 @end deffn
 @cindex magit-diff-visit-file-other-frame
-@deffn magit-diff-visit-file-other-frame コマンド
+@deffn コマンド magit-diff-visit-file-other-frame
 @end deffn
 @cindex magit-diff-visit-worktree-file-other-window
-@deffn magit-diff-visit-worktree-file-other-window コマンド
+@deffn コマンド magit-diff-visit-worktree-file-other-window
 @end deffn
 @cindex magit-diff-visit-worktree-file-other-frame
-@deffn magit-diff-visit-worktree-file-other-frame コマンド
+@deffn コマンド magit-diff-visit-worktree-file-other-frame
 @end deffn
 
 @node Blaming
@@ -5244,14 +5244,9 @@ branch)からローカルブランチを作成する場合。機能(feature)ブ�
 
 UPSTREAMは、RULE@@で指定されたブランチのアップストリームとして使用されるブランチです。ローカルブランチでもリモートブランチでもかまいません。
 
-RULE can either be a regular expression, matching branches whose upstream
-should be the one specified by UPSTREAM@.  Or it can be a list of the only
-branches that should @strong{not} use UPSTREAM; all other branches will.
-Matching is done after stripping the remote part of the name of the branch
-that is being branched from.
+RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAM@@で指定されたのでべきであるブランチに一致します。または、UPSTREAMを使用してはならない単一のブランチのリストにすることもできます。他ブランチは全てそうします。マッチングは、分岐元のブランチ名のリモート部分を削除した後に行われます。
 
-If you use a finite set of non-ephemeral branches across all your
-repositories, then you might use something like:
+あなたのすべてのリポジトリで永続的なブランチの限定セットを使用する場合、あなたは以下のようなものを使用できます:
 
 @lisp
 (("origin/master" . ("master" "next" "maint")))
@@ -5285,25 +5280,19 @@ UPSTREAMはローカルブランチにすることができます:
 @end lisp
 
 @cindex magit-branch-orphan
-@deffn magit-branch-orphan コマンド
+@deffn コマンド magit-branch-orphan
 
 このコマンドは、指定されたリビジョンのコンテンツを含む新しい孤立したブランチを作成してチェックアウトします。
 @end deffn
 
 @cindex magit-branch-or-checkout
-@deffn magit-branch-or-checkout コマンド
+@deffn コマンド magit-branch-or-checkout
 
-This command is a hybrid between @code{magit-checkout} and
-@code{magit-branch-and-checkout} and is intended as a replacement for the
-former in @code{magit-branch}.
+このコマンドは、@code{magit-checkout}と@code{magit-branch-and-checkout}のハイブリッドであり、@code{magit-branch}の前者の代わりとして使用することを目的としています。
 
-It first asks the user for an existing branch or revision.  If the user
-input actually can be resolved as a branch or revision, then it checks that
-out, just like @code{magit-checkout} would.
+最初に、既存のブランチまたはリビジョンをユーザーに要求します。ユーザー入力が実際にブランチまたはリビジョンとして解決できる場合は、@code{magit-checkout}と同じように、それをチェックアウトします。
 
-Otherwise it creates and checks out a new branch using the input as its
-name.  Before doing so it reads the starting-point for the new branch.  This
-is similar to what @code{magit-branch-and-checkout} does.
+それ以外の場合は、入力を名前として使用して新しいブランチを作成してチェックアウトします。そうする前に、新しいブランチの開始点を読み取ります。これは、@code{magit-branch-and-checkout}が行うことと似ています。
 
 @code{magit-checkout}の代わりにこのコマンドを使用するには、以下をあなたのinitファイルに追加します:
 
@@ -5351,13 +5340,9 @@ Commands}
 
 この変数は、NAMEという名前のブランチが通常プッシュされるリモートを指定します。値は、既存のリモートの名前である必要があります。
 
-It is not possible to specify the name of @emph{branch} to push the local
-branch to.  The name of the remote branch is always the same as the name of
-the local branch.
+ローカルブランチをプッシュする「ブランチ」の名前を指定することはできません。リモートブランチの名前は、常にローカルブランチの名前と同じです。
 
-If this variable is undefined but @code{remote.pushDefault} is defined, then
-the value of the latter is used.  By default @code{remote.pushDefault} is
-undefined.
+この変数が未定義であるが、@code{remote.pushDefault}が定義されている場合は、後者の値が使用されます。デフォルトでは、@code{remote.pushDefault}は未定義です。
 @end defvar
 
 @defvar branch.NAME.description
@@ -5379,10 +5364,7 @@ undefined.
 @code{false}(デフォルト)の場合、プルはマージによって行われます。
 @end itemize
 
-Since it is never a good idea to merge the upstream branch into a feature or
-hotfix branch and most branches are such branches, you should consider
-setting this to @code{true}, and @code{branch.master.rebase} to
-@code{false}.
+アップストリームブランチを、ほとんどのブランチはそのようなブランチであるところの、機能(feature)ブランチまたはホットフィックスブランチやマージすることは決して良い考えではなく、これを@code{true}に設定し、@code{branch.master.rebase}を@code{false}に設定することを検討する必要があります。
 @end defvar
 
 @defvar remote.pushDefault
@@ -5390,17 +5372,11 @@ setting this to @code{true}, and @code{branch.master.rebase} to
 この変数は、ローカルブランチが通常プッシュされるリモートを指定します。これは、@code{branch.NAME.pushRemote}を使用してブランチごとに上書きできます。
 @end defvar
 
-The following variables are used during the creation of a branch and control
-whether the various branch-specific variables are automatically set at this
-time.
+以下の変数達はブランチの作成中に使用され、さまざまなブランチ固有の変数達この時点で自動的に設定されるかどうかを制御します。
 
 @defvar branch.autoSetupMerge
 
-This variable specifies under what circumstances creating a branch NAME
-should result in the variables @code{branch.NAME.merge} and
-@code{branch.NAME.remote} being set according to the starting point used to
-create the branch.  If the starting point isn't a branch, then these
-variables are never set.
+この変数は、ブランチNAMEを作成すると、ブランチの作成に使用された開始点に従って変数@code{branch.NAME.merge}と@code{branch.NAME.remote}が設定される状況を指定します。開始点がブランチでない場合、これらの変数は設定されません。
 
 @itemize
 @item
@@ -5433,9 +5409,8 @@ variables are never set.
 @end itemize
 @end defvar
 
-Note that the respective commands always change the repository-local
-values.  If you want to change the global value, which is used when the
-local value is undefined, then you have to do so on the command line, e.g.:
+注意:
+それぞれのコマンドは常にリポジトリローカル値を変更することに注意してください。ローカル値が定義されていないときに使用されるグローバル値を変更する場合は、コマンドラインで変更する必要があります。例:
 
 @example
 git config --global remote.autoSetupMerge always
@@ -5483,13 +5458,9 @@ the git-checkout(1) manpage.
 
 @defopt magit-prefer-remote-upstream
 
-This option controls whether commands that read a branch from the user and
-then set it as the upstream branch, offer a local or a remote branch as
-default completion candidate, when they have the choice.
+このオプションは、ユーザーからブランチを読み取り、それをアップストリームブランチとして設定するコマンドが、選択可能な場合に、ローカルブランチまたはリモートブランチをデフォルトの完了候補として提供するかどうかを制御します。
 
-This affects all commands that use @code{magit-read-upstream-branch} or
-@code{magit-read-starting-point}, which includes all commands that change
-the upstream and many which create new branches.
+これは、@code{magit-read-upstream-branch}または@code{magit-read-starting-point}を使用するすべてのコマンドに影響します。これには、アップストリームを変更するすべてのコマンドと、新しいブランチを作成する多くのコマンドが含まれます。
 @end defopt
 
 @node Auxiliary Branch Commands
@@ -5498,24 +5469,20 @@ the upstream and many which create new branches.
 これらのコマンドは、デフォルトではトランジェントコマンド@code{magit-branch}からは使用できません。
 
 @cindex magit-branch-shelve
-@deffn magit-branch-shelve コマンド
+@deffn コマンド magit-branch-shelve
 
-This command shelves a branch.  This is done by deleting the branch, and
-creating a new reference "refs/shelved/BRANCH-NAME" pointing at the same
-commit as the branch pointed at.  If the deleted branch had a reflog, then
-that is preserved as the reflog of the new reference.
+このコマンドはブランチを棚上げ(shelve)します。
+これは、ブランチを削除し、指定されたブランチと同じコミットを指す新しい参照"refs/shelved/BRANCH-NAME"を作成することによって行われます。
+削除されたブランチにreflogがあった場合、それは新しいreferenceのreflogとして保持されます。
 
 これは、あなたがブランチを見えなくしたいが、まだ完全に破棄する準備ができていない場合に便利です。
 @end deffn
 
 @cindex magit-branch-unshelve
-@deffn magit-branch-unshelve コマンド
+@deffn コマンド magit-branch-unshelve
 
-This command unshelves a branch that was previously shelved using
-@code{magit-branch-shelve}.  This is done by deleting the reference
-"refs/shelved/BRANCH-NAME" and creating a branch "BRANCH-NAME" pointing at
-the same commit as the deleted reference pointed at.  If the deleted
-reference had a reflog, then that is restored as the reflog of the branch.
+このコマンドは、@code{magit-branch-shelve}を使用して以前に棚上げ(shelve)されたブランチの棚上げ(shelve)を解除します。これは、reference
+"refs/shelved/BRANCH-NAME"を削除し、削除されたreferenceが指すのと同じコミットを指すブランチ"BRANCH-NAME"を作成することによって行われます。削除されたreferenceにreflogがあった場合、それはブランチのreflogとして復元されます。
 @end deffn
 
 @node Merging
@@ -5720,15 +5687,11 @@ buffer)に表示します。
 
 リベースが進行中でない場合、トランジェントコマンドにはそれ従うサフィックスコマンドがあります。
 
-Using one of these commands @emph{starts} a rebase sequence.  Git might then
-stop somewhere along the way, either because you told it to do so, or
-because applying a commit failed due to a conflict.  When that happens, then
-the status buffer shows information about the rebase sequence which is in
-progress in a section similar to a log section.  See @ref{Information About
-In-Progress Rebase}.
+これらのコマンドの1つを使用して、リベースシーケンスを@emph{開始}します。
+Gitは、途中で中断するように指示したか、競合が原因でコミットの適用が失敗したために中断する可能性があります。その場合、ステータスバッファには、ログセクションと同様のセクションで進行中のリベースシーケンスに関する情報が表示されます→@ref{Information
+About In-Progress Rebase}
 
-For information about the upstream and the push-remote, see @ref{The Two
-Remotes}.
+アップストリームとプッシュリモートの詳細については→@ref{The Two Remotes}
 
 @table @asis
 @kindex r p
@@ -5751,42 +5714,26 @@ Remotes}.
 @cindex magit-rebase-branch
 @item @kbd{r e} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-branch})
 
-This command rebases the current branch onto a branch read in the
-minibuffer.  All commits that are reachable from head but not from the
-selected branch TARGET are being rebased.
+このコマンドは、現在のブランチをミニバッファでユーザーから読み取ったブランチにリベースします。ヘッドからは到達可能であるが、選択したブランチTARGETからは到達できないすべてのコミットがリベースされています。
 
 @kindex r s
 @cindex magit-rebase-subset
 @item @kbd{r s} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-subset})
 
-This command starts a non-interactive rebase sequence to transfer commits
-from START to @code{HEAD} onto NEWBASE@.  START has to be selected from a
-list of recent commits.
+このコマンドは、非対話型のリベースシーケンスを開始して、コミットをSTARTから@code
+{HEAD}からNEWBASE@@に転送します。STARTは、最近のコミットのリストから選択する必要があります。
 @end table
 
-By default Magit uses the @code{--autostash} argument, which causes
-uncommitted changes to be stored in a stash before the rebase begins.  These
-changes are restored after the rebase completes and if possible the stash is
-removed.  If the stash does not apply cleanly, then the stash is not
-removed.  In case something goes wrong when resolving the conflicts, this
-allows you to start over.
+デフォルトでは、Magitは@code{--autostash}引数を使用します。これにより、コミットされていない変更がリベースが開始される前にスタッシュに格納されます。これらの変更は、リベースが完了した後に復元され、可能であればスタッシュが削除されます。スタッシュがきれいに適用されない場合、スタッシュは削除されません。
+競合を解決するときに問題が発生した場合は、最初からやり直すことができます。
 
-Even though one of the actions is dedicated to interactive rebases, the
-transient also features the infix argument @code{--interactive}.  This can
-be used to turn one of the other, non-interactive rebase variants into an
-interactive rebase.
+アクションの1つは対話型リベース専用ですが、トランジェントコマンドにはインフィックス引数@code{--interactive}も含まれています。
+これを使用して、他の非対話型リベースバリエーションの1つを対話型リベースに変えることができます。
 
-For example if you want to clean up a feature branch and at the same time
-rebase it onto @code{master}, then you could use @code{r-iu}.  But we
-recommend that you instead do that in two steps.  First use @code{ri} to
-cleanup the feature branch, and then in a second step @code{ru} to rebase it
-onto @code{master}.  That way if things turn out to be more complicated than
-you thought and/or you make a mistake and have to start over, then you only
-have to redo half the work.
+たとえば、機能(feature)ブランチをクリーンアップすると同時に、それを@code{master}にリベースする場合は、@code{r-iu}を使用できます。ただし、代わりに2つのステップで行うことをお勧めします。最初に@code{ri}を使用して機能ブランチをクリーンアップし、次に@code{ru}を使用して@code{master}にリベースします。
+そうすれば、物事が思ったよりも複雑であることが判明した場合、および/または間違いを犯して最初からやり直さなければならない場合は、作業の半分をやり直すだけで済みます。
 
-Explicitly enabling @code{--interactive} won't have an effect on the
-following commands as they always use that argument anyway, even if it is
-not enabled in the transient.
+@code{--interactive}を明示的に有効にしても、トランジェントコマンド内で有効でない場合でも、それに従うコマンドは常にその引数を使用するため、影響はありません。
 
 @table @asis
 @kindex r i
@@ -5881,17 +5828,15 @@ not enabled in the transient.
 @cindex git-rebase-show-or-scroll-up
 @item @kbd{SPC} @tie{}@tie{}@tie{}@tie{}(@code{git-rebase-show-or-scroll-up})
 
-Show the commit on the current line in another buffer without selecting that
-buffer.  If the revision buffer is already visible in another window of the
-current frame, then instead scroll that window up.
+別のバッファを選択せずに、現在の行のコミットを別のバッファに表示します。
+リビジョンバッファが現在のフレームの別のウィンドウにすでに表示されている場合は、代わりにそのウィンドウを上にスクロールします。
 
 @kindex DEL
 @cindex git-rebase-show-or-scroll-down
 @item @kbd{DEL} @tie{}@tie{}@tie{}@tie{}(@code{git-rebase-show-or-scroll-down})
 
-Show the commit on the current line in another buffer without selecting that
-buffer.  If the revision buffer is already visible in another window of the
-current frame, then instead scroll that window down.
+別のバッファを選択せずに、現在の行のコミットを別のバッファに表示します。
+リビジョンバッファが現在のフレームの別のウィンドウにすでに表示されている場合は、代わりにそのウィンドウを下にスクロールします。
 
 @kindex p
 @cindex git-rebase-backward-line
@@ -5927,7 +5872,7 @@ current frame, then instead scroll that window down.
 @cindex git-rebase-edit
 @item @kbd{e} @tie{}@tie{}@tie{}@tie{}(@code{git-rebase-edit})
 
-現在の行のコミットで停止(stop)します。
+現在の行のコミットで中断します。
 
 @kindex s
 @cindex git-rebase-squash
@@ -5959,10 +5904,7 @@ current frame, then instead scroll that window down.
 
 続行するコミットの後に実行するシェルコマンドを挿入します。
 
-If there already is such a command on the current line, then edit that
-instead.  With a prefix argument insert a new command even when there
-already is one on the current line.  With empty input remove the command on
-the current line, if any.
+現在の行にそのようなコマンドがすでにある場合は、代わりにそれを編集します。プレフィックス引数を使用すると、現在の行にすでにコマンドがある場合でも、新しいコマンドを挿入します。入力が空の場合、現在の行のコマンドを削除します(存在する場合)。
 
 @kindex b
 @cindex git-rebase-break
@@ -5999,9 +5941,7 @@ the current line, if any.
 キャンセルするために確認が必要かどうか。
 @end defopt
 
-When a rebase is performed with the @code{--rebase-merges} option, the
-sequence will include a few other types of actions and the following
-commands become relevant.
+@code{--rebase-merges}オプションを使用してリベースを実行すると、シーケンスには他のいくつかのタイプのアクションが含まれ、以下のコマンドが関連するようになります。
 
 @table @asis
 @kindex l
@@ -6020,36 +5960,21 @@ commands become relevant.
 @cindex git-rebase-merge
 @item @kbd{MM} @tie{}@tie{}@tie{}@tie{}(@code{git-rebase-merge})
 
-The command inserts a merge action or edits the one at point.  The prompt
-will offer the labels that are currently present in the buffer.  Specifying
-a message to reuse via @code{-c} or @code{-C} is not supported; an editor
-will always be invoked for the merge.
+このコマンドは、マージアクションを挿入するか、その時点でのアクションを編集します。プロンプトでは、現在バッファに存在するラベルを提供します。@code{-c}または@code{-C}を介して再利用するメッセージを指定することはサポートされていません。マージのために常にエディタが呼び出されます。
 
 @kindex Mt
 @cindex git-rebase-merge-toggle-editmsg
 @item @kbd{Mt} @tie{}@tie{}@tie{}@tie{}(@code{git-rebase-merge-toggle-editmsg})
 
-This command toggles between the @code{-C} and @code{-c} options of the
-merge action at point.  These options both specify a commit whose message
-should be reused.  The lower-case variant instructs Git to invoke the editor
-when creating the merge, allowing the user to edit the message.
+このコマンドは、ポイントでのマージアクションの@code{-C}オプションと@code{-c}オプションを切り替えます。これらのオプションは両方とも、メッセージを再利用する必要があるコミットを指定します。小文字のバリエーションは、マージの作成時にエディタを呼び出すようにGitに指示し、ユーザーがメッセージを編集できるようにします。
 @end table
 
 @node Information About In-Progress Rebase
 @subsection Information About In-Progress Rebase
 
-While a rebase sequence is in progress, the status buffer features a section
-that lists the commits that have already been applied as well as the commits
-that still have to be applied.
+リベースシーケンスの進行中、ステータスバッファには、すでに適用されているコミットと、まだ適用する必要のあるコミットを一覧表示するセクションがあります。
 
-The commits are split in two halves.  When rebase stops at a commit, either
-because the user has to deal with a conflict or because s/he explicitly
-requested that rebase stops at that commit, then point is placed on the
-commit that separates the two groups, i.e. on @code{HEAD}.  The commits
-above it have not been applied yet, while the @code{HEAD} and the commits
-below it have already been applied.  In between these two groups of applied
-and yet-to-be applied commits, there sometimes is a commit which has been
-dropped.
+コミットは2つに等分されます。ユーザーが競合に対処する必要があるため、またはリベースがそのコミットで中断するように明示的に要求したために、リベースがコミットで中断すると、ポイントは2つのグループを分離するコミットに置かれます。つまり@code{HEAD}です。その上のコミットはまだ適用されていませんが、@code{HEAD}とその下のコミットにはすでに適用されています。適用されたコミットとまだ適用されていないコミットのこれら2つのグループの間に、ドロップされたコミットがある場合があります。
 
 各コミットには単語が前に付けられ、これらの単語はコミットのステータスを示すために異なる色で追加で表示されます。
 
@@ -6069,11 +5994,7 @@ dropped.
 
 
 @item
-The green commit is the commit the rebase sequence stopped at.  If this is
-the same commit as @code{HEAD} (e.g. because you haven't done anything yet
-after rebase stopped at the commit, then this commit is shown in blue, not
-green).  There can only be a green @strong{and} a blue commit at the same
-time, if you create one or more new commits after rebase stops at a commit.
+緑色のコミットは、リベースシーケンスが中断しているコミットです。これが@code{HEAD}と同じコミットである場合は、たとえば、コミットでリベースが中断した後、まだ何もしていないなら、このコミットは緑色ではなく青色で表示されています。リベースがコミットで中断した後に1つ以上の新しいコミットを作成した場合、同時に存在できるのは@strong{緑色と青色のコミットのみ}です。
 
 
 @item
@@ -6086,162 +6007,99 @@ time, if you create one or more new commits after rebase stops at a commit.
 
 @itemize
 @item
-Commits prefixed with @code{pick}, @code{reword}, @code{edit},
-@code{squash}, and @code{fixup} have not been applied yet.  These words have
-the same meaning here as they do in the buffer used to edit the rebase
-sequence.  See @ref{Editing Rebase Sequences}.  When the
-@code{--rebase-merges} option was specified, @code{reset}, @code{label}, and
-@code{merge} lines may also be present.
+接頭辞が@code{pick}・@code{reword}・@code{edit}・@code{squash}・@code{fixup}であるコミットはまだ適用されていません。これらの単語は、リベースシーケンスの編集に使用されるバッファと同じ意味を持ちます。(@ref{Editing
+Rebase Sequences})
+@code{--rebase-merges}オプションが指定された場合、@code{reset}・@code{label}・@code{merge}行も存在する可能性があります。
 
 
 @item
-Commits prefixed with @code{done} and @code{onto} have already been
-applied.  It is possible for such a commit to be the @code{HEAD}, in which
-case it is blue.  Otherwise it is grey.
+接頭辞が@code{done}・@code{onto}であるコミットはすでに適用されています。そのようなコミットは@code{HEAD}である可能性があり、@code{HEAD}の場合は青色になります。それ以外の場合は灰色です。
 
 @itemize
 @item
-The commit prefixed with @code{onto} is the commit on top of which all the
-other commits are being re-applied.  This commit itself did not have to be
-re-applied, it is the commit rebase did rewind to before starting to
-re-apply other commits.
+接頭辞が@code{onto}のコミットは、再適用された他のすべてのコミットの先頭であるコミットです。このコミット自体を再適用する必要はありませんでした。他のコミットの再適用を開始する前に、リベースが巻き戻されたコミットです。
 
 
 @item
-Commits prefixed with @code{done} have already been re-applied.  This
-includes commits that have been re-applied but also new commits that you
-have created during the rebase.
+接頭辞が@code{done}のコミットはすでに再適用されています。これには、再適用されたコミットだけでなく、リベース中に作成した新しいコミットも含まれます。
 @end itemize
 
 
 @item
-上記の単語のいずれの接頭辞も付いていない他のすべてのコミットは、リベースが停止したコミットに何らかの形で関連しています。
+上記の単語のいずれの接頭辞も付いていない他のすべてのコミットは、リベースが中断したコミットに何らかの形で関連しています。
 
-To determine whether a commit is related to the stopped-at commit their
-hashes, trees and patch-ids @footnote{The patch-id is a hash of the
-@emph{changes} introduced by a commit.  It differs from the hash of the
-commit itself, which is a hash of the result of applying that change
-(i.e. the resulting trees and blobs) as well as author and committer
-information, the commit message, and the hashes of the parents of the
-commit.  The patch-id hash on the other hand is created only from the added
-and removed lines, even line numbers and whitespace changes are ignored when
-calculating this hash.  The patch-ids of two commits can be used to answer
-the question "Do these commits make the same change?".} are being compared.
-The commit message is not used for this purpose.
+コミットが中断中のコミット(stopped-at
+commit)に関連しているかどうかを判断するために、ハッシュ達、ツリー達、およびパッチID達(patch-id)
+@footnote{patch-idは、コミットによって導入された@emph{変更}のハッシュです。
+これは、コミット自体のハッシュとは異なります。これは、その変更を適用した結果のハッシュ(つまり、結果のツリーとblob)、作成者とコミッターの情報、コミットメッセージ、およびコミットの親のハッシュです。一方、パッチIDハッシュは、追加および削除された行からのみ作成されます。このハッシュを計算するときは、行番号や空白の変更も無視されます。2つのコミットのパッチIDを使用して、「これらのコミットは同じ変更を行いますか？」という質問に答えることができます。
+} が比較されています。コミットメッセージはこの目的には使用されません。
 
-Generally speaking commits that are related to the stopped-at commit can
-have any of the used colors, though not all color/word combinations are
-possible.
+一般的に、中断中のコミット(stopped-at
+commit)に関連するコミットは、使用されている色のいずれかを持つことができますが、すべての色/単語の組み合わせが可能であるとは限りません。
 
-stopped-atコミットに使用される単語は以下のとおりです:
+中断中のコミット(stopped-at commit)に使用される単語は以下のとおりです:
 
 @itemize
 @item
-When a commit is prefixed with @code{void}, then that indicates that Magit
-knows for sure that all the changes in that commit have been applied using
-several new commits.  This commit is no longer reachable from @code{HEAD},
-and it also isn't one of the commits that will be applied when resuming the
-session.
+接頭辞が@code{void}の場合、それは、そのコミットのすべての変更がいくつかの新しいコミットを使用して適用されたことをMagitが確実に認識していることを示します。このコミットは@code{HEAD}から到達できなくなり、セッションを再開するときに適用されるコミットの1つでもありません。
 
 
 @item
-When a commit is prefixed with @code{join}, then that indicates that the
-rebase sequence stopped at that commit due to a conflict - you now have to
-join (merge) the changes with what has already been applied.  In a sense
-this is the commit rebase stopped at, but while its effect is already in the
-index and in the worktree (with conflict markers), the commit itself has not
-actually been applied yet (it isn't the @code{HEAD}).  So it is shown in
-yellow, like the other commits that still have to be applied.
+接頭辞が@code{join}の場合、競合が原因でリベースシーケンスがそのコミットで中断したことを示しています。ここで、変更を既に適用されているものと結合（マージ）する必要があります。
+ある意味で、これはで中断したコミットリベースで、その効果はすでにインデックスとワークツリー（競合マーカー付き）にありますが、コミット自体はまだ実際には適用されていません(@code{HEAD}ではありません)。したがって、まだ適用する必要がある他のコミットと同様に、黄色で表示されます。
 
 
 @item
-When a commit is prefixed with @code{stop} or a @emph{blue} or @emph{green}
-@code{same}, then that indicates that rebase stopped at this commit, that it
-is still applied or has been applied again, and that at least its patch-id
-is unchanged.
+接頭辞が@code{stop}または、@emph{青色}または@emph{緑色}の@code{same}の場合、それは、リベースがこのコミットで中断したこと、まだ適用されているか、再度適用されたことを示します。そして少なくともそのパッチIDは変更されていません。
 
 @itemize
 @item
-When a commit is prefixed with @code{stop}, then that indicates that rebase
-stopped at that commit because you requested that earlier, and its patch-id
-is unchanged.  It might even still be the exact same commit.
+接頭辞が@code{stop}のコミットの場合、それは、以前に要求したためにリベースがそのコミットで中断したことを示し、そのパッチIDは変更されていません。それでもまったく同じコミットである可能性があります。
 
 
 @item
-When a commit is prefixed with a @emph{blue} or @emph{green} @code{same},
-then that indicates that while its tree or hash changed, its patch-id did
-not.  If it is blue, then it is the @code{HEAD} commit (as always for
-blue).  When it is green, then it no longer is @code{HEAD} because other
-commit have been created since (but before continuing the rebase).
+接頭辞が@emph{青色}または@emph{緑色}の@code{same}の場合、それは、ツリーまたはハッシュが変更されたが、パッチIDが変更されなかったことを示します。青色の場合は、@code{HEAD}コミットです(青色の場合は常にそうです)。緑色の場合、それ以降（ただし、リベースを続行する前に）他のコミットが作成されているため、@code{HEAD}ではなくなります。
 @end itemize
 
 
 @item
-When a commit is prefixed with @code{goal}, a @emph{yellow} @code{same,} or
-@code{work}, then that indicates that rebase applied that commit but that
-you then reset @code{HEAD} to an earlier commit (likely to split it up into
-multiple commits), and that there are some uncommitted changes remaining
-which likely (but not necessarily) originate from that commit.
+接頭辞が@code{goal}または@emph{黄色}の@code{same}または@code{work}の場合、リベースがそのコミットを適用したが、@code{HEAD}にリセットしたことを示します。
+以前のコミット(複数のコミットに分割される可能性が高い)、そしてそのコミットに起因する可能性が高い(必ずしもそうではない)コミットされていない変更が残っています。
 
 @itemize
 @item
-When a commit is prefixed with @code{goal}, then that indicates that it is
-still possible to create a new commit with the exact same tree (the "goal")
-without manually editing any files, by committing the index, or by staging
-all changes and then committing that.  This is the case when the original
-tree still exists in the index or worktree in untainted form.
+接頭辞@code{goal}の場合、ファイルを手動で編集したり、インデックスをコミットしたり、ステージしたりすることなく、まったく同じツリー(つまり目標(the
+"goal"))で新しいコミットを作成できることを示しています。すべての変更とそれをコミットします。これは、元のツリーが汚染されていない形式でインデックスまたはワークツリーにまだ存在する場合です。
 
 
 @item
-When a commit is prefixed with a yellow @code{same}, then that indicates
-that it is no longer possible to create a commit with the exact same tree,
-but that it is still possible to create a commit with the same patch-id.
-This would be the case if you created a new commit with other changes, but
-the changes from the original commit still exist in the index or working
-tree in untainted form.
+接頭辞が黄色の@code{same}のコミットの場合、まったく同じツリーでコミットを作成することはできなくなっていますが、同じパッチIDでコミットを作成することは可能です。これは、他の変更を加えて新しいコミットを作成したが、元のコミットからの変更が汚染されていない形式でインデックスまたは作業ツリーにまだ存在している場合に当てはまります。
 
 
 @item
-When a commit is prefixed with @code{work}, then that indicates that you
-reset @code{HEAD} to an earlier commit, and that there are some staged
-and/or unstaged changes (likely, but not necessarily)  originating from that
-commit.  However it is no longer possible to create a new commit with the
-same tree or at least the same patch-id because you have already made other
-changes.
+接頭辞が@code{work}の場合、@code{HEAD}を以前のコミットにリセットし、そのコミットに起因するステージされていない変更(unstaged
+changes)および/またはステージされた変更(staged
+changes)(可能性が高いが、必ずしもそうではない)があることを示します。ただし、すでに他の変更を行っているため、同じツリーまたは少なくとも同じパッチIDで新しいコミットを作成することはできなくなりました。
 @end itemize
 
 
 @item
-When a commit is prefixed with @code{poof} or @code{gone}, then that
-indicates that rebase applied that commit but that you then reset
-@code{HEAD} to an earlier commit (likely to split it up into multiple
-commits), and that there are no uncommitted changes.
+接頭辞が@code{poof}または@code{gone}の場合、それは、リベースがそのコミットを適用したが、@code{HEAD}を以前のコミットにリセットしたことを示します(複数のコミットに分割する可能性があります)、そしてコミットされていない変更はありません。
 
 @itemize
 @item
-When a commit is prefixed with @code{poof}, then that indicates that it is
-no longer reachable from @code{HEAD}, but that it has been replaced with one
-or more commits, which together have the exact same effect.
+接頭辞が@code{poof}の場合、それは@code{HEAD}から到達できなくなったことを示しますが、1つ以上のコミットに置き換えられ、まったく同じ効果があります。
 
 
 @item
-When a commit is prefixed with @code{gone}, then that indicates that it is
-no longer reachable from @code{HEAD} and that we also cannot determine
-whether its changes are still in effect in one or more new commits.  They
-might be, but if so, then there must also be other changes which makes it
-impossible to know for sure.
+接頭辞が@code{gone}の場合、それは@code{HEAD}から到達できなくなったこと、およびその変更が1つ以上の新しいコミットでまだ有効であるかどうかを判断できないことを示します。そうかもしれませんが、もしそうなら、確実に知ることを不可能にする他の変更もあるに違いありません。
 @end itemize
 @end itemize
 @end itemize
 
-上記を完全に理解していなくても心配しないでください。大丈夫です、あなたは練習を通して十分な理解を得ることが出来るでしょう。
+あなたが今、上記を完全に理解できなくても心配しないでください。大丈夫、あなたは練習を通して十分な理解を得ることが出来るようになります。
 
-For other sequence operations such as cherry-picking, a similar section is
-displayed, but they lack some of the features described above, due to
-limitations in the git commands used to implement them.  Most importantly
-these sequences only support "picking" a commit but not other actions such
-as "rewording", and they do not keep track of the commits which have already
-been applied.
+チェリーピッキングなどの他のシーケンス操作についても、同様のセクションが表示されますが、それらの実装に使用されるgitコマンドの制限により、上記の機能の一部が欠けています。最も重要なことは、これらのシーケンスはコミットの"picking"のみをサポートし、"rewording"などの他のアクションはサポートせず、すでに適用されているコミットを追跡しません。
 
 @node Cherry Picking
 @section Cherry Picking
@@ -6276,79 +6134,54 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 @cindex magit-cherry-copy
 @item @kbd{A A} @tie{}@tie{}@tie{}@tie{}(@code{magit-cherry-copy})
 
-This command copies COMMITS from another branch onto the current branch.  If
-the region selects multiple commits, then those are copied, without
-prompting.  Otherwise the user is prompted for a commit or range, defaulting
-to the commit at point.
+このコマンドは、COMMITSを別のブランチから現在のブランチにコピーします。リージョンが複数のコミットを選択した場合、プロンプトなしでそれらがコピーされます。それ以外の場合、ユーザーはコミットまたは範囲の入力を求められ、デフォルトではそのポイントでのコミットになります。
 
 @kindex A a
 @cindex magit-cherry-apply
 @item @kbd{A a} @tie{}@tie{}@tie{}@tie{}(@code{magit-cherry-apply})
 
-This command applies the changes in COMMITS from another branch onto the
-current branch.  If the region selects multiple commits, then those are
-used, without prompting.  Otherwise the user is prompted for a commit or
-range, defaulting to the commit at point.
+このコマンドは、COMMITSの変更を別のブランチから現在のブランチに適用します。リージョンが複数のコミットを選択した場合、プロンプトなしでそれらが使用されます。それ以外の場合、ユーザーはコミットまたは範囲の入力を求められ、デフォルトでそのポイントでのコミットになります。
 
 このコマンドにはトップレベルのバインディングもあり、トップレベルで@code{a}と入力することにより、トランジェントコマンドを使用せずに呼び出すことができます。
 @end table
 
-The following commands not only apply some commits to some branch, but also
-remove them from some other branch.  The removal is performed using either
-@code{git-update-ref} or if necessary @code{git-rebase}.  Both applying
-commits as well as removing them using @code{git-rebase} can lead to
-conflicts.  If that happens, then these commands abort and you not only have
-to resolve the conflicts but also finish the process the same way you would
-have to if these commands didn't exist at all.
+以下のコマンド達は、いくつかのコミットをいくつかのブランチに適用するだけでなく、それらを他のブランチから削除します。
+削除は、@code{git-update-ref}または必要に応じて@code{git-rebase}のいずれかを使用して実行されます。コミットを適用することと、@code{git-rebase}を使用してコミットを削除することの両方で、競合が発生する可能性があります。
+その場合、これらのコマンドは中止(abort)され、競合を解決するだけでなく、これらのコマンドがまったく存在しなかった場合と同じ方法でプロセスを終了する必要があります。
 
 @table @asis
 @kindex A h
 @cindex magit-cherry-harvest
 @item @kbd{A h} @tie{}@tie{}@tie{}@tie{}(@code{magit-cherry-harvest})
 
-This command moves the selected COMMITS that must be located on another
-BRANCH onto the current branch instead, removing them from the former.  When
-this command succeeds, then the same branch is current as before.
+このコマンドは、別のブランチに配置する必要がある選択されたCOMMITを代わりに現在のブランチに移動し、前のブランチから削除します。このコマンドが成功すると、以前と同じ(same)ブランチがcurrentになります。
 
-Applying the commits on the current branch or removing them from the other
-branch can lead to conflicts.  When that happens, then this command stops
-and you have to resolve the conflicts and then finish the process manually.
+現在のブランチにコミットを適用したり、他のブランチからコミットを削除したりすると、競合が発生する可能性があります。その場合、このコマンドは中断し、競合を解決してから手動でプロセスを終了する必要があります。
 
 @kindex A d
 @cindex magit-cherry-donate
 @item @kbd{A d} @tie{}@tie{}@tie{}@tie{}(@code{magit-cherry-donate})
 
-This command moves the selected COMMITS from the current branch onto another
-existing BRANCH, removing them from the former.  When this command succeeds,
-then the same branch is current as before.
+このコマンドは、選択したCOMMITSを現在のブランチから別の既存のブランチに移動し、前のブランチから削除します。このコマンドが成功すると、以前と同じ(same)ブランチがcurrentになります。
 
-Applying the commits on the other branch or removing them from the current
-branch can lead to conflicts.  When that happens, then this command stops
-and you have to resolve the conflicts and then finish the process manually.
+他のブランチにコミットを適用したり、現在のブランチからコミットを削除したりすると、競合が発生する可能性があります。その場合、このコマンドは中断し、競合を解決してから手動でプロセスを終了する必要があります。
 
 @kindex A n
 @cindex magit-cherry-spinout
 @item @kbd{A n} @tie{}@tie{}@tie{}@tie{}(@code{magit-cherry-spinout})
 
-This command moves the selected COMMITS from the current branch onto a new
-branch BRANCH, removing them from the former.  When this command succeeds,
-then the same branch is current as before.
+このコマンドは、選択したCOMMITSを現在のブランチから新しいブランチBRANCHに移動し、前のブランチから削除します。
+このコマンドが成功すると、以前と同じ(same)ブランチがcurrentになります。
 
-Applying the commits on the other branch or removing them from the current
-branch can lead to conflicts.  When that happens, then this command stops
-and you have to resolve the conflicts and then finish the process manually.
+他のブランチにコミットを適用したり、現在のブランチからコミットを削除したりすると、競合が発生する可能性があります。その場合、このコマンドは中断し、競合を解決してから手動でプロセスを終了する必要があります。
 
 @kindex A s
 @cindex magit-cherry-spinoff
 @item @kbd{A s} @tie{}@tie{}@tie{}@tie{}(@code{magit-cherry-spinoff})
 
-This command moves the selected COMMITS from the current branch onto a new
-branch BRANCH, removing them from the former.  When this command succeeds,
-then the new branch is checked out.
+このコマンドは、選択したCOMMITSを現在のブランチから新しいブランチBRANCHに移動し、前のブランチから削除します。このコマンドが成功すると、新しいブランチがチェックアウトされます。
 
-Applying the commits on the other branch or removing them from the current
-branch can lead to conflicts.  When that happens, then this command stops
-and you have to resolve the conflicts and then finish the process manually.
+他のブランチにコミットを適用したり、現在のブランチからコミットを削除したりすると、競合が発生する可能性があります。その場合、このコマンドは中断し、競合を解決してから手動でプロセスを終了する必要があります。
 @end table
 
 cherry-pickまたはrevertが進行中の場合、トランジェントコマンドには代わりに従うサフィックスコマンドがあります。
@@ -6364,7 +6197,7 @@ cherry-pickまたはrevertが進行中の場合、トランジェントコマン
 @cindex magit-sequence-skip
 @item @kbd{A s} @tie{}@tie{}@tie{}@tie{}(@code{magit-sequence-skip})
 
-cherry-pickまたはrevertシーケンス中にコミットで停止(stopped)したものをスキップします。
+cherry-pickまたはrevertシーケンス中にコミットで中断したものをスキップします。
 
 @kindex A a
 @cindex magit-sequence-abort
@@ -6396,17 +6229,15 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 @cindex magit-revert-and-commit
 @item @kbd{V V} @tie{}@tie{}@tie{}@tie{}(@code{magit-revert-and-commit})
 
-Revert a commit by creating a new commit.  Prompt for a commit, defaulting
-to the commit at point.  If the region selects multiple commits, then revert
-all of them, without prompting.
+新しいコミットを作成して、コミットをrevertします。プロンプトを出してコミットの入力を求めます。デフォルトでは、そのポイントでのコミットになります。
+リージョンが複数のコミットを選択した場合は、プロンプトを表示せずにすべてをrevertします。
 
 @kindex V v
 @cindex magit-revert-no-commit
 @item @kbd{V v} @tie{}@tie{}@tie{}@tie{}(@code{magit-revert-no-commit})
 
-Revert a commit by applying it in reverse to the working tree.  Prompt for a
-commit, defaulting to the commit at point.  If the region selects multiple
-commits, then revert all of them, without prompting.
+コミットを作業ツリーに逆に適用して、コミットをrevertします。
+プロンプトを出してコミットの入力を求めます。デフォルトでは、そのポイントでのコミットになります。リージョンが複数のコミットを選択した場合は、プロンプトを表示せずにすべてをrevertします。
 @end table
 
 cherry-pickまたはrevertが進行中の場合、トランジェントコマンドには代わりに従うサフィックスコマンドがあります。
@@ -6422,7 +6253,7 @@ cherry-pickまたはrevertが進行中の場合、トランジェントコマン
 @cindex magit-sequence-skip
 @item @kbd{V s} @tie{}@tie{}@tie{}@tie{}(@code{magit-sequence-skip})
 
-cherry-pickまたはrevertシーケンス中にコミットで停止(stopped)したものをスキップします。
+cherry-pickまたはrevertシーケンス中にコミットで中断したものをスキップします。
 
 @kindex V a
 @cindex magit-sequence-abort
@@ -6452,9 +6283,7 @@ the git-reset(1) manpage.
 @cindex magit-reset-quickly
 @item @kbd{x} @tie{}@tie{}@tie{}@tie{}(@code{magit-reset-quickly})
 
-Reset the @code{HEAD} and index to some commit read from the user and
-defaulting to the commit at point, and possibly also reset the working
-tree.  With a prefix argument reset the working tree otherwise don't.
+@code{HEAD}とインデックスを、ユーザーから読み取られたコミットにリセットし、デフォルトでその時点のコミットに設定します。場合によっては、作業ツリーもリセットします。プレフィックス引数を使用して作業ツリーをリセットします。それ以外の場合はリセットしません。
 
 @kindex X m
 @cindex magit-reset-mixed
@@ -6484,10 +6313,7 @@ tree.  With a prefix argument reset the working tree otherwise don't.
 @cindex magit-reset-index
 @item @kbd{X i} @tie{}@tie{}@tie{}@tie{}(@code{magit-reset-index})
 
-Reset the index to some commit read from the user and defaulting to the
-commit at point.  Keep the @code{HEAD} and working tree as-is, so if the
-commit refers to the @code{HEAD}, then this effectively unstages all
-changes.
+インデックスをユーザーから読み取ったコミットにリセットし、デフォルトでそのポイントでコミットします。@code{HEAD}と作業ツリーをそのままにしておくと、コミットが@code{HEAD}を参照している場合、これによりすべての変更が効果的にステージ解除(unstage)されます。
 
 @kindex X w
 @cindex magit-reset-worktree
@@ -6530,10 +6356,8 @@ buffer)に表示します。
 @cindex magit-stash-both
 @item @kbd{z z} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-both})
 
-Create a stash of the index and working tree.  Untracked files are included
-according to infix arguments.  One prefix argument is equivalent to
-@code{--include-untracked} while two prefix arguments are equivalent to
-@code{--all}.
+インデックスと作業ツリーのスタッシュを作成します。追跡されていないファイル(untracked
+files)が含まれるかどうかはインフィックス引数の指定に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等ですが、2つのプレフィックス引数は@code{--all}と同等です。
 
 @kindex z i
 @cindex magit-stash-index
@@ -6546,60 +6370,50 @@ changes)はstashされません。
 @cindex magit-stash-worktree
 @item @kbd{z w} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-worktree})
 
-Create a stash of unstaged changes in the working tree.  Untracked files are
-included according to infix arguments.  One prefix argument is equivalent to
-@code{--include-untracked} while two prefix arguments are equivalent to
-@code{--all}.
+作業ツリーにステージされていない変更(unstaged changes)のスタッシュを作成します。追跡されていないファイル(untracked
+files)は、インフィックス引数に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等ですが、2つのプレフィックス引数は@code{--all}と同等です。
 
 @kindex z x
 @cindex magit-stash-keep-index
 @item @kbd{z x} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-keep-index})
 
-Create a stash of the index and working tree, keeping index intact.
-Untracked files are included according to infix arguments.  One prefix
-argument is equivalent to @code{--include-untracked} while two prefix
-arguments are equivalent to @code{--all}.
+インデックスをそのままにして、インデックスと作業ツリーのスタッシュを作成します。追跡されていないファイル(untracked
+files)は、インフィックス引数に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等ですが、2つのプレフィックス引数は@code{--all}と同等です。
 
 @kindex z Z
 @cindex magit-snapshot-both
 @item @kbd{z Z} @tie{}@tie{}@tie{}@tie{}(@code{magit-snapshot-both})
 
-Create a snapshot of the index and working tree.  Untracked files are
-included according to infix arguments.  One prefix argument is equivalent to
-@code{--include-untracked} while two prefix arguments are equivalent to
-@code{--all}.
+インデックスと作業ツリーのスナップショットを作成します。追跡されていないファイル(untracked
+files)は、インフィックス引数に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等ですが、2つのプレフィックス引数は@code{--all}と同等です。
 
 @kindex z I
 @cindex magit-snapshot-index
 @item @kbd{z I} @tie{}@tie{}@tie{}@tie{}(@code{magit-snapshot-index})
 
-インデックスのみのスナップショットを作成します。ステージングされていない変更(unstaged
-changes)と追跡されていない変更(untracked changes)はstashされません。
+インデックスのみのスナップショットを作成します。ステージされていない変更(unstaged changes)と追跡されていない変更(untracked
+changes)はスタッシュされません。
 
 @kindex z W
 @cindex magit-snapshot-worktree
 @item @kbd{z W} @tie{}@tie{}@tie{}@tie{}(@code{magit-snapshot-worktree})
 
-Create a snapshot of unstaged changes in the working tree.  Untracked files
-are included according to infix arguments.  One prefix argument is
-equivalent to @code{--include-untracked} while two prefix arguments are
-equivalent to @code{--all}-.
+作業ツリーでステージされていない変更(unstaged changes)のスナップショットを作成します。追跡されていないファイル(untracked
+files)は、インフィックス引数に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等ですが、2つのプレフィックス引数は@code{--all}と同等です。
 
 @kindex z a
 @cindex magit-stash-apply
 @item @kbd{z a} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-apply})
 
-Apply a stash to the working tree.  Try to preserve the stash index.  If
-that fails because there are staged changes, apply without preserving the
-stash index.
+作業ツリーにスタッシュを適用します。 スタッシュインデックスを保持するよう試みます。ステージされた変更(staged
+changes)があるために失敗した場合は、スタッシュインデックスを保持せずに適用します。
 
 @kindex z p
 @cindex magit-stash-pop
 @item @kbd{z p} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-pop})
 
-Apply a stash to the working tree and remove it from stash list.  Try to
-preserve the stash index.  If that fails because there are staged changes,
-apply without preserving the stash index and forgo removing the stash.
+作業ツリーにスタッシュを適用し、スタッシュリストから削除します。スタッシュインデックスを保持するよう試みます。ステージされた変更(staged
+changes)があるためにそれが失敗した場合は、スタッシュインデックスを保持せずに適用し、スタッシュを削除しません。
 
 @kindex z k
 @cindex magit-stash-drop
@@ -6623,9 +6437,7 @@ STASH@@から新しいBRANCHを作成してチェックアウトします。ブ�
 @cindex magit-stash-branch-here
 @item @kbd{z B} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-branch-here})
 
-Create and checkout a new BRANCH using @code{magit-branch} with the current
-branch or @code{HEAD} as the starting-point.  Then apply STASH, dropping it
-if it applies cleanly.
+現在のブランチまたは@code{HEAD}を開始点(starting-point)として@code{magit-branch}を使用して、新しいBRANCHを作成してチェックアウトします。それからSTASHを適用し、きれいに適用される場合はドロップします。
 
 @kindex z f
 @cindex magit-stash-format-patch
@@ -6695,10 +6507,7 @@ AUTHOR-WIDTHは整数である必要があります。作成者の名前が表�
 @node Remote Commands
 @subsection Remote Commands
 
-The transient prefix command @code{magit-remote} is used to add remotes and
-to make changes to existing remotes.  This command only deals with remotes
-themselves, not with branches or the transfer of commits.  Those features
-are available from separate transient commands.
+トランジェントプレフィックスコマンド@code{magit-remote}は、リモートを追加し、既存のリモートに変更を加えるために使用されます。このコマンドは、リモート自体のみを処理し、ブランチやコミットの転送は処理しません。これらの機能は、個別のトランジェントコマンドから利用できます。
 
 こちらもご覧下さい 
 @ifinfo
@@ -6729,10 +6538,7 @@ buffer)に表示します。
 
 このオプションは、リモート関連のGit変数に一時的な@code{magit-remote}から直接アクセスできるかどうかを制御します。
 
-If @code{t} (the default) and a local branch is checked out, then
-@code{magit-remote} features the variables for the upstream remote of that
-branch, or if @code{HEAD} is detached, for @code{origin}, provided that
-exists.
+@code{t}(デフォルト)でローカルブランチがチェックアウトされている場合、@code{magit-remote}はそのブランチのアップストリームリモートの変数、または@code{HEAD}がデタッチされている場合で、存在する場合、@code{origin}の変数を備えています。
 
 @code{nil}の場合は、@code{magit-remote-configure}を使用する必要があります。
 @end defopt
@@ -6742,18 +6548,11 @@ exists.
 @cindex magit-remote-configure
 @item @kbd{M C} @tie{}@tie{}@tie{}@tie{}(@code{magit-remote-configure})
 
-This transient prefix command binds commands that set the value of
-remote-related variables and displays them in a temporary buffer until the
-transient is exited.
+このトランジェントレフィックスコマンドは、リモート関連変数の値を設定するコマンドを結び付け、一時バッファが終了するまでそれらを一時バッファに表示します。
 
 プレフィックス引数を使用すると、このコマンドは常にリモートの入力を求めます。
 
-Without a prefix argument this depends on whether it was invoked as a suffix
-of @code{magit-remote} and on the @code{magit-remote-direct-configure}
-option.  If @code{magit-remote} already displays the variables for the
-upstream, then it does not make sense to invoke another transient that
-displays them for the same remote.  In that case this command prompts for a
-remote.
+プレフィックス引数がない場合、これは@code{magit-remote}のサフィックスコマンドとして呼び出されたかどうかと@code{magit-remote-direct-configure}オプションに依存します。@code{magit-remote}がすでにアップストリームの変数を表示している場合、同じリモートの変数を表示する別のトランジェントコマンドを呼び出すことは意味がありません。その場合、このコマンドはリモートの入力を求めます。
 @end table
 
 変数についてはこちらの説明をご覧ください→@ref{Remote Git Variables}
@@ -6793,72 +6592,53 @@ remote.
 @cindex magit-remote-prune-refspecs
 @item @kbd{M P} @tie{}@tie{}@tie{}@tie{}(@code{magit-remote-prune-refspecs})
 
-This command removes stale refspecs for a remote read in the minibuffer.
+このコマンドは、ミニバッファ内で読み取られたリモートの陳腐化した(stale)refspecを削除します。
 
-A refspec is stale if there no longer exists at least one branch on the
-remote that would be fetched due to that refspec.  A stale refspec is
-problematic because its existence causes Git to refuse to fetch according to
-the remaining non-stale refspecs.
+refspecが原因でフェッチされるブランチがリモートに1つも存在しない場合、refspecは陳腐化しています。陳腐化したrefspecは、その存在によってGitが残りの陳腐化してないrefspecに従ってフェッチを拒否するため、問題があります。
 
-If only stale refspecs remain, then this command offers to either delete the
-remote or to replace the stale refspecs with the default refspec
-("+refs/heads/*:refs/remotes/REMOTE/*").
+陳腐化したrefspecのみが残っている場合、このコマンドは、リモートを削除するか、陳腐化したrefspecをデフォルトのrefspec
+("+refs/heads/*:refs/remotes/REMOTE/*") に置き換えることを提案します。
 
-This command also removes the remote-tracking branches that were created due
-to the now stale refspecs.  Other stale branches are not removed.
+このコマンドは、今や陳腐化したrefspecsのために作成されたリモートトラッキングブランチも削除します。他の陳腐化したブランチは削除されません。
 
 @end table
 
 @defopt magit-remote-add-set-remote.pushDefault
 
-This option controls whether the user is asked whether they want to set
-@code{remote.pushDefault} after adding a remote.
+このオプションは、リモートを追加した後に@code{remote.pushDefault}を設定するかどうかをユーザーに尋ねるかどうかを制御します。
 
-If @code{ask}, then users is always ask.  If @code{ask-if-unset}, then the
-user is only if the variable isn't set already.  If @code{nil}, then the
-user isn't asked and the variable isn't set.  If the value is a string, then
-the variable is set without the user being asked, provided that the name of
-the added remote is equal to that string and the variable isn't already set.
+@code{ask}の場合、ユーザーは常に質問されます。@code{ask-if-unset}の場合、ユーザーは変数がまだ設定されていない場合にのみ使用できます。@code{nil}の場合、ユーザーは尋ねられず、変数は設定されません。値が文字列の場合、追加されたリモートの名前がその文字列と等しく、変数がまだ設定されていなければ、ユーザーに尋ねられることなく変数が設定されます。
 @end defopt
 
 @node Remote Git Variables
 @subsection Remote Git Variables
 
-These variables can be set from the transient prefix command
-@code{magit-remote-configure}.  By default they can also be set from
-@code{magit-remote}.  See @ref{Remote Commands}.
+これらの変数達は、トランジェントプレフィックスコマンド@code{magit-remote-configure}から設定できます。デフォルトでは、@code{magit-remote}から設定することもできます→@ref{Remote
+Commands}
 
 @defvar remote.NAME.url
 
-This variable specifies the url of the remote named NAME@.  It can have
-multiple values.
+この変数は、NAME@@という名前のリモートのURLを指定します。複数の値を持つことができます。
 @end defvar
 
 @defvar remote.NAME.fetch
 
-The refspec used when fetching from the remote named NAME@.  It can have
-multiple values.
+NAME@@という名前のリモートからフェッチするときに使用されるrefspecです。複数の値を持つことができます。
 @end defvar
 
 @defvar remote.NAME.pushurl
 
-This variable specifies the url used for fetching from the remote named
-NAME@.  If it is not specified, then @code{remote.NAME.url} is used
-instead.  It can have multiple values.
+この変数は、NAME@@という名前のリモートからのフェッチに使用されるURLを指定します。指定されていない場合は、代わりに@code{remote.NAME.url}が使用されます。複数の値を持つことができます。
 @end defvar
 
 @defvar remote.NAME.push
 
-The refspec used when pushing to the remote named NAME@.  It can have
-multiple values.
+NAME@@という名前のリモートにプッシュするときに使用されるrefspecです。複数の値を持つことができます。
 @end defvar
 
 @defvar remote.NAME.tagOpts
 
-This variable specifies what tags are fetched by default.  If the value is
-@code{--no-tags} then no tags are fetched.  If the value is @code{--tags},
-then all tags are fetched.  If this variable has no value, then only tags
-are fetched that are reachable from fetched branches.
+この変数は、デフォルトでフェッチされるタグを指定します。値が@code{--no-tags}の場合、タグはフェッチされません。値が@code{--tags}の場合、すべてのタグがフェッチされます。この変数に値がない場合、フェッチされたブランチから到達可能なタグのみがフェッチされます。
 @end defvar
 
 @node Fetching
@@ -6876,8 +6656,7 @@ the <a href="http://git-scm.com/docs/git-fetch">git-fetch(1)</a> manpage.
 @iftex
 the git-fetch(1) manpage.
 @end iftex
- For information about the upstream and the push-remote, see @ref{The Two
-Remotes}.
+ アップストリームとプッシュリモートの詳細については→@ref{The Two Remotes}
 
 @table @asis
 @kindex f
@@ -6891,7 +6670,7 @@ buffer)に表示します。
 @cindex magit-fetch-from-pushremote
 @item @kbd{f p} @tie{}@tie{}@tie{}@tie{}(@code{magit-fetch-from-pushremote})
 
-This command fetches from the current push-remote.
+このコマンドは、currentのプッシュリモートからフェッチします。
 
 プレフィックス引数を使用する場合、またはプッシュリモートが構成されていないか使用できない場合は、最初にユーザーにプッシュリモートを構成させます。
 
@@ -6899,60 +6678,49 @@ This command fetches from the current push-remote.
 @cindex magit-fetch-from-upstream
 @item @kbd{f u} @tie{}@tie{}@tie{}@tie{}(@code{magit-fetch-from-upstream})
 
-This command fetch from the upstream of the current branch.
+このコマンドは、currentのブランチのアップストリームからフェッチします。
 
-If the upstream is configured for the current branch and names an existing
-remote, then use that.  Otherwise try to use another remote: If only a
-single remote is configured, then use that.  Otherwise if a remote named
-"origin" exists, then use that.
+アップストリームがcurrentのブランチ用に構成されていて、既存のリモートに名前を付けている場合は、それを使用します。それ以外の場合は、別のリモートを使用しyようと試みます。リモートが1つだけ構成されている場合は、それを使用します。それ以外の場合、"origin"という名前のリモートが存在する場合は、それを使用します。
 
-If no remote can be determined, then this command is not available from the
-@code{magit-fetch} transient prefix and invoking it directly results in an
-error.
+リモートを判別できない場合、このコマンドは@code{magit-fetch}トランジェントプレフィックスコマンドから使用できず、直接呼び出すとエラーになります。
 
 @kindex f e
 @cindex magit-fetch-other
 @item @kbd{f e} @tie{}@tie{}@tie{}@tie{}(@code{magit-fetch-other})
 
-This command fetch from a repository read from the minibuffer.
+このコマンドは、ミニバッファから読み取られたリポジトリからフェッチします。
 
 @kindex f o
 @cindex magit-fetch-branch
 @item @kbd{f o} @tie{}@tie{}@tie{}@tie{}(@code{magit-fetch-branch})
 
-This command fetches a branch from a remote, both of which are read from the
-minibuffer.
+このコマンドは、リモートからブランチをフェッチします。どちらもミニバッファから読み取られます。
 
 @kindex f r
 @cindex magit-fetch-refspec
 @item @kbd{f r} @tie{}@tie{}@tie{}@tie{}(@code{magit-fetch-refspec})
 
-This command fetches from a remote using an explicit refspec, both of which
-are read from the minibuffer.
+このコマンドは、明示的なrefspecを使用してリモートからフェッチします。どちらも、ミニバッファから読み取られます。
 
 @kindex f a
 @cindex magit-fetch-all
 @item @kbd{f a} @tie{}@tie{}@tie{}@tie{}(@code{magit-fetch-all})
 
-This command fetches from all remotes.
+このコマンドは、すべてのリモートからフェッチします。
 
 @kindex f m
 @cindex magit-submodule-fetch
 @item @kbd{f m} @tie{}@tie{}@tie{}@tie{}(@code{magit-submodule-fetch})
 
-This command fetches all submodules.  With a prefix argument it fetches all
-remotes of all submodules.
+このコマンドは、すべてのサブモジュールをフェッチします。プレフィックス引数を使用して、すべてのサブモジュールのすべてのリモートをフェッチします。
 
 @end table
 
 @defopt magit-pull-or-fetch
 
-By default fetch and pull commands are available from separate transient
-prefix command.  Setting this to @code{t} adds some (but not all)  of the
-above suffix commands to the @code{magit-pull} transient.
+デフォルトでは、フェッチコマンドとプルコマンドは、個別のトランジェントプレフィックスコマンドから使用できます。これを@code{t}に設定すると、(すべてではありませんが)上記のサフィックスコマンドの一部が@code{magit-pull}トランジェントコマンドに追加されます。
 
-If you do that, then you might also want to change the key binding for these
-prefix commands, e.g.:
+あなたがそうしたい場合、これらのプレフィックスコマンドのキーバインディングを変更することもできます。例:
 
 @lisp
 (setq magit-pull-or-fetch t)
@@ -6976,8 +6744,7 @@ the <a href="http://git-scm.com/docs/git-pull">git-pull(1)</a> manpage.
 @iftex
 the git-pull(1) manpage.
 @end iftex
- For information about the upstream and the push-remote, see @ref{The Two
-Remotes}.
+ アップストリームとプッシュリモートの詳細については→@ref{The Two Remotes}
 
 @table @asis
 @kindex F
@@ -6991,7 +6758,7 @@ buffer)に表示します。
 @cindex magit-pull-from-pushremote
 @item @kbd{F p} @tie{}@tie{}@tie{}@tie{}(@code{magit-pull-from-pushremote})
 
-This command pulls from the push-remote of the current branch.
+このコマンドは、currentのブランチのプッシュリモートからプルします。
 
 プレフィックス引数を使用する場合、またはプッシュリモートが構成されていないか使用できない場合は、最初にユーザーにプッシュリモートを構成させます。
 
@@ -6999,7 +6766,7 @@ This command pulls from the push-remote of the current branch.
 @cindex magit-pull-from-upstream
 @item @kbd{F u} @tie{}@tie{}@tie{}@tie{}(@code{magit-pull-from-upstream})
 
-This command pulls from the upstream of the current branch.
+このコマンドは、currentのブランチのアップストリームからプルします。
 
 プレフィックス引数を使用する場合、またはアップストリームが構成されていないか使用できない場合は、ユーザーが最初にアップストリームを構成できるようにします。
 
@@ -7007,7 +6774,7 @@ This command pulls from the upstream of the current branch.
 @cindex magit-pull-branch
 @item @kbd{F e} @tie{}@tie{}@tie{}@tie{}(@code{magit-pull-branch})
 
-This command pulls from a branch read in the minibuffer.
+このコマンドは、ミニバッファで読み取られたブランチからプルします。
 @end table
 
 @node Pushing
@@ -7025,8 +6792,7 @@ the <a href="http://git-scm.com/docs/git-push">git-push(1)</a> manpage.
 @iftex
 the git-push(1) manpage.
 @end iftex
- For information about the upstream and the push-remote, see @ref{The Two
-Remotes}.
+ アップストリームとプッシュリモートの詳細については→@ref{The Two Remotes}
 
 @table @asis
 @kindex P
@@ -7040,7 +6806,7 @@ buffer)に表示します。
 @cindex magit-push-current-to-pushremote
 @item @kbd{P p} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-current-to-pushremote})
 
-This command pushes the current branch to its push-remote.
+このコマンドは、currentのブランチをそのプッシュリモートにプッシュします。
 
 プレフィックス引数を使用する場合、またはプッシュリモートが構成されていないか使用できない場合は、最初にユーザーにプッシュリモートを構成させます。
 
@@ -7048,7 +6814,7 @@ This command pushes the current branch to its push-remote.
 @cindex magit-push-current-to-upstream
 @item @kbd{P u} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-current-to-upstream})
 
-This command pushes the current branch to its upstream branch.
+このコマンドは、currentのブランチをそのアップストリームブランチにプッシュします。
 
 プレフィックス引数を使用する場合、またはアップストリームが構成されていないか使用できない場合は、ユーザーが最初にアップストリームを構成できるようにします。
 
@@ -7056,65 +6822,55 @@ This command pushes the current branch to its upstream branch.
 @cindex magit-push-current
 @item @kbd{P e} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-current})
 
-This command pushes the current branch to a branch read in the minibuffer.
+このコマンドは、currentのブランチをミニバッファで読み取られたブランチにプッシュします。
 
 @kindex P o
 @cindex magit-push-other
 @item @kbd{P o} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-other})
 
-This command pushes an arbitrary branch or commit somewhere.  Both the
-source and the target are read in the minibuffer.
+このコマンドは、任意のブランチをプッシュするか、どこかにコミットします。ソースとターゲットの両方がミニバッファで読み取られます。
 
 @kindex P r
 @cindex magit-push-refspecs
 @item @kbd{P r} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-refspecs})
 
-This command pushes one or multiple refspecs to a remote, both of which are
-read in the minibuffer.
+このコマンドは、1つまたは複数のrefspecをリモートにプッシュします。どちらもミニバッファで読み取られます。
 
-To use multiple refspecs, separate them with commas.  Completion is only
-available for the part before the colon, or when no colon is used.
+複数のrefspecを使用するには、それらをコンマで区切ります。補完は、コロンの前の部分、またはコロンが使用されていない場合にのみ使用できます。
 
 @kindex P m
 @cindex magit-push-matching
 @item @kbd{P m} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-matching})
 
-This command pushes all matching branches to another repository.
+このコマンドは、一致するすべてのブランチを別のリポジトリにプッシュします。
 
-If only one remote exists, then push to that.  Otherwise prompt for a
-remote, offering the remote configured for the current branch as default.
+リモートが1つしかない場合は、そこにプッシュします。それ以外の場合は、リモートのプロンプトを表示し、現在のブランチ用に構成されたリモートをデフォルトとして提供します。
 
 @kindex P t
 @cindex magit-push-tags
 @item @kbd{P t} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-tags})
 
-This command pushes all tags to another repository.
+このコマンドは、すべてのタグを別のリポジトリにプッシュします。
 
-If only one remote exists, then push to that.  Otherwise prompt for a
-remote, offering the remote configured for the current branch as default.
+リモートが1つしかない場合は、そこにプッシュします。それ以外の場合は、リモートのプロンプトを表示し、現在のブランチ用に構成されたリモートをデフォルトとして提供します。
 
 @kindex P T
 @cindex magit-push-tag
 @item @kbd{P T} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-tag})
 
-This command pushes a tag to another repository.
+このコマンドは、タグを別のリポジトリにプッシュします。
 @end table
 
-One of the infix arguments, @code{--force-with-lease}, deserves a word of
-caution.  It is passed without a value, which means "permit a force push as
-long as the remote-tracking branches match their counterparts on the remote
-end".  If you've set up a tool to do automatic fetches (Magit itself does
-not provide such functionality), using @code{--force-with-lease} can be
-dangerous because you don't actually control or know the state of the
-remote-tracking refs.  In that case, you should consider setting
-@code{push.useForceIfIncludes} to @code{true} (available since Git 2.30).
+注意:
+インフィックス引数の1つである@code{--force-with-lease}には、注意が必要です。値なしで渡されます。これは、「リモート追跡ブランチがリモートエンドの対応するブランチと一致する限り、強制プッシュを許可する」ことを意味します。(Magit自体はそのような機能を提供しませんが、)あなたが自動フェッチを実行するツールを設定した場合、@code{--force-with-lease}を使用すると、実際にはリモートトラッキングへの参照状態(the
+state of the remote-tracking
+refs)を制御または認識していないため、危険な場合があります。その場合は、@code{push.useForceIfIncludes}を@code{true}に設定することを検討する必要があります(Git
+2.30以降で使用可能)。
 
-Two more push commands exist, which by default are not available from the
-push transient.  See their doc-strings for instructions on how to add them
-to the transient.
+さらに2つのプッシュコマンドが存在しますが、デフォルトではpushトランジェントコマンドからは使用できません。それらをトランジェントコマンドに追加する方法については、doc-stringsを参照してください。
 
 @cindex magit-push-implicitly args
-@deffn Command magit-push-implicitly args
+@deffn コマンド magit-push-implicitly args
 
 This command pushes somewhere without using an explicit refspec.
 
@@ -7136,7 +6892,7 @@ do.  For example:
 @end deffn
 
 @cindex magit-push-to-remote remote args
-@deffn Command magit-push-to-remote remote args
+@deffn コマンド magit-push-to-remote remote args
 
 This command pushes to the remote REMOTE without using an explicit refspec.
 The remote is read in the minibuffer.
@@ -7479,7 +7235,7 @@ super-repository by adding @code{magit-insert-modules} to the hook
 Sections}.
 
 @cindex magit-list-submodules
-@deffn Command magit-list-submodules
+@deffn コマンド magit-list-submodules
 
 This command displays a list of the current repository's submodules in a
 separate buffer.
@@ -7733,16 +7489,16 @@ current buffer, then show it in Dired instead.
 @section Common Commands
 
 @cindex magit-switch-to-repository-buffer
-@deffn magit-switch-to-repository-buffer コマンド
+@deffn コマンド magit-switch-to-repository-buffer
 @end deffn
 @cindex magit-switch-to-repository-buffer-other-window
-@deffn magit-switch-to-repository-buffer-other-window コマンド
+@deffn コマンド magit-switch-to-repository-buffer-other-window
 @end deffn
 @cindex magit-switch-to-repository-buffer-other-frame
-@deffn magit-switch-to-repository-buffer-other-frame コマンド
+@deffn コマンド magit-switch-to-repository-buffer-other-frame
 @end deffn
 @cindex magit-display-repository-buffer
-@deffn magit-display-repository-buffer コマンド
+@deffn コマンド magit-display-repository-buffer
 
 These commands read any existing Magit buffer that belongs to the current
 repository from the user and then switch to the selected buffer (without
@@ -7843,7 +7599,7 @@ To view the log for a branch and its wip refs use the commands
 @code{--graph} when using these commands.
 
 @cindex magit-wip-log
-@deffn magit-wip-log コマンド
+@deffn コマンド magit-wip-log
 
 This command shows the log for a branch and its wip refs.  With a negative
 prefix argument only the worktree wip ref is shown.
@@ -7854,7 +7610,7 @@ The absolute numeric value of the prefix argument controls how many
 @end deffn
 
 @cindex magit-wip-log-current
-@deffn magit-wip-log-current コマンド
+@deffn コマンド magit-wip-log-current
 
 This command shows the log for the current branch and its wip refs.  With a
 negative prefix argument only the worktree wip ref is shown.
@@ -8213,25 +7969,25 @@ There are a few additional commands that operate on a single file but are
 not enabled in the file transient command by default:
 
 @cindex magit-file-rename
-@deffn magit-file-rename コマンド
+@deffn コマンド magit-file-rename
 
 This command renames a file read from the user.
 @end deffn
 
 @cindex magit-file-delete
-@deffn magit-file-delete コマンド
+@deffn コマンド magit-file-delete
 
 This command deletes a file read from the user.
 @end deffn
 
 @cindex magit-file-untrack
-@deffn magit-file-untrack コマンド
+@deffn コマンド magit-file-untrack
 
 This command untracks a file read from the user.
 @end deffn
 
 @cindex magit-file-checkout
-@deffn magit-file-checkout コマンド
+@deffn コマンド magit-file-checkout
 
 This command updates a file in the working tree and index to the contents
 from a revision.  Both the revision and file are read from the user.
