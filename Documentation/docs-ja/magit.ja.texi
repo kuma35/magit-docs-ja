@@ -6872,18 +6872,13 @@ refs)を制御または認識していないため、危険な場合がありま
 @cindex magit-push-implicitly args
 @deffn コマンド magit-push-implicitly args
 
-This command pushes somewhere without using an explicit refspec.
+このコマンドは、明示的なrefspecを使用せずにどこかにプッシュします。
 
-This command simply runs @code{git push -v [ARGS]}.  ARGS are the infix
-arguments.  No explicit refspec arguments are used.  Instead the behavior
-depends on at least these Git variables: @code{push.default},
-@code{remote.pushDefault}, @code{branch.<branch>.pushRemote},
-@code{branch.<branch>.remote}, @code{branch.<branch>.merge}, and
-@code{remote.<remote>.push}.
+このコマンドは、単純に@code{git push -v
+[ARGS]}を実行するだけです。ARGSはインフィックス引数です。明示的なrefspec引数は使用されません。代わりに、動作は少なくとも次のGit変数に依存します:
+@code{push.default}、@code{remote.pushDefault}、@code{branch.<branch>.pushRemote}、@code{branch.<branch>.remote}、@code{branch.<branch>.merge}、@code{remote.<remote>.push}
 
-If you add this suffix to a transient prefix without explicitly specifying
-the description, then an attempt is made to predict what this command will
-do.  For example:
+あなたがdescriptionを明示的に指定せずにこのサフィックスコマンドをトランジェントプレフィックスコマンド追加すると、Magitはこのコマンドの動作を予測しようとします。例えば:
 
 @lisp
 (transient-insert-suffix 'magit-push \"p\"
@@ -6894,15 +6889,12 @@ do.  For example:
 @cindex magit-push-to-remote remote args
 @deffn コマンド magit-push-to-remote remote args
 
-This command pushes to the remote REMOTE without using an explicit refspec.
-The remote is read in the minibuffer.
+このコマンドは、明示的なrefspecを使用せずにリモートであるREMOTEにプッシュします。リモートはミニバッファに読み込まれます。
 
-This command simply runs @code{git push -v [ARGS] REMOTE}.  ARGS are the
-infix arguments.  No refspec arguments are used.  Instead the behavior
-depends on at least these Git variables: @code{push.default},
-@code{remote.pushDefault}, @code{branch.<branch>.pushRemote},
-@code{branch.<branch>.remote}, @code{branch.<branch>.merge}, and
-@code{remote.<remote>.push}.
+このコマンドは、単純に@code{git push -v [ARGS]
+REMOTE}を実行するだけです。ARGSはインフィックス引数です。refspec引数は使用されません。
+代わりに、動作は少なくとも次のGit変数に依存します:
+@code{push.default}、@code{remote.pushDefault}、@code{branch.<branch>.pushRemote}、@code{branch.<branch>.remote}、@code{branch.<branch>.merge}、@code{remote.<remote>.push}
 @end deffn
 
 @node Plain Patches
@@ -6920,33 +6912,27 @@ buffer)に表示します。
 @cindex magit-patch-create
 @item @kbd{W c} @tie{}@tie{}@tie{}@tie{}(@code{magit-patch-create})
 
-This command creates patches for a set commits.  If the region marks several
-commits, then it creates patches for all of them.  Otherwise it functions as
-a transient prefix command, which features several infix arguments and binds
-itself as a suffix command.  When this command is invoked as a suffix of
-itself, then it creates a patch using the specified infix arguments.
+このコマンドは、コミットの組み(a set
+commits)のパッチを作成します。リージョンが複数のコミットをマークする場合、それらすべてのパッチを作成します。それ以外の場合は、トランジェントプレフィックスコマンドとして機能します。このコマンドは、いくつかのインフィックス引数を備え、サフィックスコマンドとして自身を結び付けます。このコマンドがそれ自体のサフィックスコマンドとして呼び出されると、指定されたインフィックス引数を使用してパッチが作成されます。
 
 @kindex w a
 @cindex magit-patch-apply
 @item @kbd{w a} @tie{}@tie{}@tie{}@tie{}(@code{magit-patch-apply})
 
-This command applies a patch.  This is a transient prefix command, which
-features several infix arguments and binds itself as a suffix command.  When
-this command is invoked as a suffix of itself, then it applies a patch using
-the specified infix arguments.
+このコマンドはパッチを適用します。これはトランジェントプレフィックスコマンドであり、いくつかのインフィックス引数を備え、サフィックスコマンドとしてそれ自体を結び付けます。このコマンドがそれ自体のサフィックスコマンドとして呼び出されると、指定されたインフィックス引数を使用してパッチが適用されます。
 
 @kindex W s
 @cindex magit-patch-save
 @item @kbd{W s} @tie{}@tie{}@tie{}@tie{}(@code{magit-patch-save})
 
-This command creates a patch from the current diff.
+このコマンドは、currentの差分からパッチを作成します。
 
-Inside @code{magit-diff-mode} or @code{magit-revision-mode} buffers,
-@code{C-x C-w} is also bound to this command.
+@code{magit-diff-mode}または@code{magit-revision-mode}バッファ内では、@code{C-x
+C-w}もこのコマンドに結び付けられています。
 @end table
 
-It is also possible to save a plain patch file by using @code{C-x C-w}
-inside a @code{magit-diff-mode} or @code{magit-revision-mode} buffer.
+@code{magit-diff-mode}または@code{magit-revision-mode}バッファ内で@code{C-x
+C-w}を使用して、プレーンパッチファイルを保存することもできます。
 
 @node Maildir Patches
 @section Maildir Patches
@@ -6963,7 +6949,7 @@ the <a href="http://git-scm.com/docs/git-am">git-am(1)</a> manpage.
 @iftex
 the git-am(1) manpage.
 @end iftex
- and 
+ と 
 @ifinfo
 @ref{git-apply,,,gitman,}
 @end ifinfo
@@ -6988,47 +6974,42 @@ buffer)に表示します。
 @cindex magit-am-apply-patches
 @item @kbd{w w} @tie{}@tie{}@tie{}@tie{}(@code{magit-am-apply-patches})
 
-This command applies one or more patches.  If the region marks files, then
-those are applied as patches.  Otherwise this command reads a file-name in
-the minibuffer, defaulting to the file at point.
+このコマンドは、1つ以上のパッチを適用します。リージョンがファイルをマークしている場合、それらはパッチとして適用されます。それ以外の場合、このコマンドはミニバッファ内のファイル名を読み取り、デフォルトではそのポイントのファイルになります。
 
 @kindex w m
 @cindex magit-am-apply-maildir
 @item @kbd{w m} @tie{}@tie{}@tie{}@tie{}(@code{magit-am-apply-maildir})
 
-This command applies patches from a maildir.
+このコマンドは、maildirからパッチを適用します。
 
 @kindex w a
 @cindex magit-patch-apply
 @item @kbd{w a} @tie{}@tie{}@tie{}@tie{}(@code{magit-patch-apply})
 
-This command applies a plain patch.  For a longer description see @ref{Plain
-Patches}.  This command is only available from the @code{magit-am} transient
-for historic reasons.
+このコマンドは、プレーンパッチを適用します。詳細はこちら→@ref{Plain Patches}
+このコマンドは、歴史的な理由から、@code{magit-am}トランジェントコマンドからのみ使用できます。
 @end table
 
-When an "am" operation is in progress, then the transient instead features
-the following suffix commands.
+"am"操作が進行中の場合、トランジェントコマンドには代わりのサフィックスコマンドがあります。
 
 @table @asis
 @kindex w w
 @cindex magit-am-continue
 @item @kbd{w w} @tie{}@tie{}@tie{}@tie{}(@code{magit-am-continue})
 
-This command resumes the current patch applying sequence.
+このコマンドは、currentのパッチ適用シーケンスを再開します。
 
 @kindex w s
 @cindex magit-am-skip
 @item @kbd{w s} @tie{}@tie{}@tie{}@tie{}(@code{magit-am-skip})
 
-This command skips the stopped at patch during a patch applying sequence.
+このコマンドは、パッチ適用シーケンス中にパッチ当てが中断したものをスキップします。
 
 @kindex w a
 @cindex magit-am-abort
 @item @kbd{w a} @tie{}@tie{}@tie{}@tie{}(@code{magit-am-abort})
 
-This command aborts the current patch applying sequence.  This discards all
-changes made since the sequence started.
+このコマンドは、現在のパッチ適用シーケンスを中止(abort)します。 これにより、シーケンスの開始以降に行われたすべての変更が破棄されます。
 @end table
 
 @node Miscellaneous
@@ -7094,9 +7075,7 @@ tag)を作成します。
 @cindex magit-tag-delete
 @item @kbd{t k} @tie{}@tie{}@tie{}@tie{}(@code{magit-tag-delete})
 
-This command deletes one or more tags.  If the region marks multiple tags
-(and nothing else), then it offers to delete those.  Otherwise, it prompts
-for a single tag to be deleted, defaulting to the tag at point.
+このコマンドは、1つ以上のタグを削除します。リージョンが複数のタグをマークしている場合(そして他には何もマークしていない場合)、それらを削除することを提案します。それ以外の場合は、単一のタグを削除するように求められ、デフォルトでそのポイントのタグになります。
 
 @kindex t p
 @cindex magit-tag-prune
@@ -7142,7 +7121,7 @@ buffer)に表示します。
 @cindex magit-notes-remove
 @item @kbd{T r} @tie{}@tie{}@tie{}@tie{}(@code{magit-notes-remove})
 
-Remove the note attached to a commit, defaulting to the commit at point.
+コミットに添付されたnoteを削除します。デフォルトでは、そのポイントでのコミットになります。
 
 デフォルトでは、Git変数@code{core.notesRef}または
 "refs/notes/commits"の値が未定義の場合は、その値を使用します。
@@ -7151,7 +7130,7 @@ Remove the note attached to a commit, defaulting to the commit at point.
 @cindex magit-notes-prune
 @item @kbd{T p} @tie{}@tie{}@tie{}@tie{}(@code{magit-notes-prune})
 
-Remove notes about unreachable commits.
+到達不能なコミットに関するnoteを削除します。
 @end table
 
 1つのnote refを別のnote refにマージすることが可能です。 その結果、一時的なワークツリー
@@ -7162,44 +7141,38 @@ Remove notes about unreachable commits.
 @cindex magit-notes-merge
 @item @kbd{T m} @tie{}@tie{}@tie{}@tie{}(@code{magit-notes-merge})
 
-Merge the notes of a ref read from the user into the current notes ref.  The
-current notes ref is the value of Git variable @code{core.notesRef} or
-"refs/notes/commits" if that is undefined.
+ユーザーから読み取ったrefのnotesを現在のnotes refにマージします。現在のnotes
+refは、Git変数@code{core.notesRef}の値、または定義されていない場合は"refs/notes/commits"の値です。
 @end table
 
-When a notes merge is in progress then the transient features the following
-suffix commands, instead of those listed above.
+notesのマージが進行中の場合、トランジェントコマンドは上記のコマンドに代わるサフィックスコマンドがあります。
 
 @table @asis
 @kindex T c
 @cindex magit-notes-merge-commit
 @item @kbd{T c} @tie{}@tie{}@tie{}@tie{}(@code{magit-notes-merge-commit})
 
-Commit the current notes ref merge, after manually resolving conflicts.
+競合を手動で解決した後、現在のnotes refマージをコミットします。
 
 @kindex T a
 @cindex magit-notes-merge-abort
 @item @kbd{T a} @tie{}@tie{}@tie{}@tie{}(@code{magit-notes-merge-abort})
 
-Abort the current notes ref merge.
+現在のnotes ref マージを中止(abort)します。
 @end table
 
-The following variables control what notes reference @code{magit-notes-*},
-@code{git notes} and @code{git show} act on and display.  Both the local and
-global values are displayed and can be modified.
+以下の変数達は、notes referenceに@code{magit-notes-*}と@code{git notes}と@code{git
+show}がどのように作用して表示するかを制御します。ローカル値とグローバル値の両方が表示され、変更できます。
 
 @defvar core.notesRef
 
-This variable specifies the notes ref that is displayed by default and which
-commands act on by default.
+この変数は、デフォルトで表示されるnotes refと、デフォルトで動作するコマンドを指定します。
 @end defvar
 
 @defvar notes.displayRef
 
-This variable specifies additional notes ref to be displayed in addition to
-the ref specified by @code{core.notesRef}.  It can have multiple values and
-may end with @code{*} to display all refs in the @code{refs/notes/}
-namespace (or @code{**} if some names contain slashes).
+この変数は、@code{core.notesRef}で指定されたrefに加えて、表示される追加のnotes
+refを指定します。複数の値を持つことができ、@code{*}で終わる場合は、@code{refs/notes/}名前空間(または一部の名前にスラッシュが含まれている場合は@code{**})内のすべてのrefを表示します。
 @end defvar
 
 @node Submodules
@@ -7227,26 +7200,21 @@ the git-submodule(1) manpage.
 @node Listing Submodules
 @subsection Listing Submodules
 
-The command @code{magit-list-submodules} displays a list of the current
-repository's submodules in a separate buffer.  It's also possible to display
-information about submodules directly in the status buffer of the
-super-repository by adding @code{magit-insert-modules} to the hook
-@code{magit-status-sections-hook} as described in @ref{Status Module
-Sections}.
+コマンド@code{magit-list-submodules}は、現在のリポジトリのサブモジュールのリストを別のバッファに表示します。(@ref{Status
+Module
+Sections})で説明されているように、@code{magit-insert-modules}をフック@code{magit-status-sections-hook}に追加することで、スーパーリポジトリ(super-repository)のステータスバッファにサブモジュールに関する情報を直接表示することもできます。
 
 @cindex magit-list-submodules
 @deffn コマンド magit-list-submodules
 
-This command displays a list of the current repository's submodules in a
-separate buffer.
+このコマンドは、現在のリポジトリのサブモジュールのリストを別のバッファに表示します。
 
-It can be invoked by pressing @code{RET} on the section titled "Modules".
+"Modules"というタイトルのセクションで@code{RET}を押すと呼び出すことができます。
 @end deffn
 
 @defopt magit-submodule-list-columns
 
-This option controls what columns are displayed by the command
-@code{magit-list-submodules} and how they are displayed.
+このオプションは、コマンド@code{magit-list-submodules}によって表示される列とその表示方法を制御します。
 
 各要素の形式は@code{(HEADER WIDTH FORMAT PROPS)}です。
 
@@ -7265,74 +7233,59 @@ HEADERは、ヘッダーに表示される文字列です。WIDTHは、列の幅
 buffer)に表示します。
 @end table
 
-Some of the below commands default to act on the modules that are selected
-using the region.  For brevity their description talk about "the selected
-modules", but if no modules are selected, then they act on the current
-module instead, or if point isn't on a module, then the read a single module
-to act on.  With a prefix argument these commands ignore the selection and
-the current module and instead act on all suitable modules.
+以下のコマンドのいくつかは、デフォルトで、リージョンを使用して選択されたモジュールに作用します。簡潔にするために、それらの説明は「選択されたモジュール」について説明していますが、モジュールが選択されていない場合は、代わりにcurrentのモジュールに作用します。ポイントがモジュール上にない場合は、単一のモジュールを読み取って作用します。プレフィックス引数を使用すると、これらのコマンドは選択とcurrentのモジュールを無視し、代わりにすべての適切なモジュールに作用します。
 
 @table @asis
 @kindex o a
 @cindex magit-submodule-add
 @item @kbd{o a} @tie{}@tie{}@tie{}@tie{}(@code{magit-submodule-add})
 
-This commands adds the repository at URL as a module.  Optional PATH is the
-path to the module relative to the root of the super-project.  If it is nil
-then the path is determined based on URL@.
+このコマンドは、URLのリポジトリをモジュールとして追加します。オプションのPATHは、スーパープロジェクトのルートを基準にしたモジュールへのパスです。nilの場合、パスはURL@@に基づいて決定されます。
 
 @kindex o r
 @cindex magit-submodule-register
 @item @kbd{o r} @tie{}@tie{}@tie{}@tie{}(@code{magit-submodule-register})
 
-This command registers the selected modules by copying their urls from
-".gitmodules" to "$GIT@math{_DIR}/config".  These values can then be edited
-before running @code{magit-submodule-populate}.  If you don't need to edit
-any urls, then use the latter directly.
+このコマンドは、URLを".gitmodules"から"$GIT@math{_DIR}/config"にコピーすることにより、選択したモジュールを登録します。これらの値は、@code{magit-submodule-populate}を実行する前に編集できます。URLを編集する必要がない場合は、後者を直接使用してください。
 
 @kindex o p
 @cindex magit-submodule-populate
 @item @kbd{o p} @tie{}@tie{}@tie{}@tie{}(@code{magit-submodule-populate})
 
-This command creates the working directory or directories of the selected
-modules, checking out the recorded commits.
+このコマンドは、選択したモジュールの1つまたは複数の作業ディレクトリを作成し、記録されたコミットをチェックアウトします。
 
 @kindex o u
 @cindex magit-submodule-update
 @item @kbd{o u} @tie{}@tie{}@tie{}@tie{}(@code{magit-submodule-update})
 
-This command updates the selected modules checking out the recorded commits.
+このコマンドは、記録されたコミットをチェックアウトする選択されたモジュールを更新します。
 
 @kindex o s
 @cindex magit-submodule-synchronize
 @item @kbd{o s} @tie{}@tie{}@tie{}@tie{}(@code{magit-submodule-synchronize})
 
-This command synchronizes the urls of the selected modules, copying the
-values from ".gitmodules" to the ".git/config" of the super-project as well
-those of the modules.
+このコマンドは、選択したモジュールのURLを同期し、スーパープロジェクトの".gitmodules"から".git/config"に値をコピーし、モジュールの値もコピーします。
 
 @kindex o d
 @cindex magit-submodule-unpopulate
 @item @kbd{o d} @tie{}@tie{}@tie{}@tie{}(@code{magit-submodule-unpopulate})
 
-This command removes the working directory of the selected modules.
+このコマンドは、選択したモジュールの作業ディレクトリを削除します。
 
 @kindex o l
 @cindex magit-list-submodules
 @item @kbd{o l} @tie{}@tie{}@tie{}@tie{}(@code{magit-list-submodules})
 
-This command displays a list of the current repository's modules.
+このコマンドは、現在のリポジトリのモジュールのリストを表示します。
 
 @kindex o f
 @cindex magit-fetch-modules
 @item @kbd{o f} @tie{}@tie{}@tie{}@tie{}(@code{magit-fetch-modules})
 
-This command fetches all modules.
+このコマンドは、すべてのモジュールをフェッチします。
 
-Option @code{magit-fetch-modules-jobs} controls how many submodules are
-being fetched in parallel.  Also fetch the super-repository, because
-@code{git fetch} does not support not doing that.  With a prefix argument
-fetch all remotes.
+オプション@code{magit-fetch-modules-jobs}は、並列にフェッチされるサブモジュールの数を制御します。@code{git
+fetch}はそれを行わないことをサポートしていないため、スーパーリポジトリもフェッチします。プレフィックス引数を使用して、すべてのリモートをフェッチします。
 @end table
 
 @node Subtree
@@ -7357,8 +7310,7 @@ the git-subtree(1) manpage.
 @cindex magit-subtree
 @item @kbd{O} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree})
 
-This transient prefix command binds the two sub-transients; one for
-importing a subtree and one for exporting a subtree.
+このトランジェントプレフィックスコマンドは、2つのサブトランジェントコマンドを結び付けます。1つはサブツリーをインポートするためのもので、もう1つはサブツリーをエクスポートするためのものです。
 
 @kindex O i
 @cindex magit-subtree-import
@@ -7367,35 +7319,33 @@ importing a subtree and one for exporting a subtree.
 このトランジェント(一時的)なプレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンドを適切なインフィックス(中置)引数とともに結び付け、いずれかのサフィックスコマンドを選択するまでの間、そのインフィックス引数達とサフィックスコマンド達を一時バッファ(temporary
 buffer)に表示します。
 
-The suffixes of this command import subtrees.
+このコマンドのサフィックスコマンドはサブツリーをインポートします。
 
-If the @code{--prefix} argument is set, then the suffix commands use that
-prefix without prompting the user.  If it is unset, then they read the
-prefix in the minibuffer.
+@code{--prefix}引数が設定されている場合、サフィックスコマンドはユーザーにプロンプトを表示せずにそのプレフィックス引数を使用します。設定されていない場合は、ミニバッファでプレフィックス引数を読み取ります。
 
 @kindex O i a
 @cindex magit-subtree-add
 @item @kbd{O i a} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-add})
 
-This command adds COMMIT from REPOSITORY as a new subtree at PREFIX@.
+このコマンドは、REPOSITORYからのCOMMITをPREFIX@@の新しいサブツリーとして追加します。
 
 @kindex O i c
 @cindex magit-subtree-add-commit
 @item @kbd{O i c} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-add-commit})
 
-This command add COMMIT as a new subtree at PREFIX@.
+このコマンドは、COMMITをPREFIX@@の新しいサブツリーとして追加します。
 
 @kindex O i m
 @cindex magit-subtree-merge
 @item @kbd{O i m} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-merge})
 
-This command merges COMMIT into the PREFIX subtree.
+このコマンドは、COMMITをPREFIXサブツリーにマージします。
 
 @kindex O i f
 @cindex magit-subtree-pull
 @item @kbd{O i f} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-pull})
 
-This command pulls COMMIT from REPOSITORY into the PREFIX subtree.
+このコマンドは、COMMITをREPOSITORYからPREFIXサブツリーにプルします。
 
 @kindex O e
 @cindex magit-subtree-export
@@ -7404,24 +7354,21 @@ This command pulls COMMIT from REPOSITORY into the PREFIX subtree.
 このトランジェント(一時的)なプレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンドを適切なインフィックス(中置)引数とともに結び付け、いずれかのサフィックスコマンドを選択するまでの間、そのインフィックス引数達とサフィックスコマンド達を一時バッファ(temporary
 buffer)に表示します。
 
-The suffixes of this command export subtrees.
+このコマンドのサフィックスコマンドはサブツリーをエクスポートします。
 
-If the @code{--prefix} argument is set, then the suffix commands use that
-prefix without prompting the user.  If it is unset, then they read the
-prefix in the minibuffer.
+@code{--prefix}引数が設定されている場合、サフィックスコマンドはユーザーにプロンプトを表示せずにそのプレフィックス引数を使用します。設定されていない場合は、ミニバッファでプレフィックス引数を読み取ります。
 
 @kindex O e p
 @cindex magit-subtree-push
 @item @kbd{O e p} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-push})
 
-This command extract the history of the subtree PREFIX and pushes it to REF
-on REPOSITORY@.
+このコマンドは、サブツリーPREFIXの履歴を抽出し、それをREPOSITORY@@のREFにプッシュします。
 
 @kindex O e s
 @cindex magit-subtree-split
 @item @kbd{O e s} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-split})
 
-This command extracts the history of the subtree PREFIX@.
+このコマンドは、サブツリーPREFIX@@の履歴を抽出します。
 @end table
 
 @node Worktree
@@ -7453,36 +7400,33 @@ buffer)に表示します。
 @cindex magit-worktree-checkout
 @item @kbd{% b} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-checkout})
 
-Checkout BRANCH in a new worktree at PATH@.
+PATH@@の新しいワークツリーでBRANCHをチェックアウトします。
 
 @kindex % c
 @cindex magit-worktree-branch
 @item @kbd{% c} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-branch})
 
-Create a new BRANCH and check it out in a new worktree at PATH@.
+新しいBRANCHを作成し、PATH@@の新しいワークツリーでチェックアウトします。
 
 @kindex % m
 @cindex magit-worktree-move
 @item @kbd{% m} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-move})
 
-Move an existing worktree to a new PATH@.
+既存のワークツリーを新しいPATH@@に移動します。
 
 @kindex % k
 @cindex magit-worktree-delete
 @item @kbd{% k} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-delete})
 
-Delete a worktree, defaulting to the worktree at point.  The primary
-worktree cannot be deleted.
+ワークツリーを削除します。デフォルトでは、ポイントのワークツリーになります。プライマリワークツリーは削除できません。
 
 @kindex % g
 @cindex magit-worktree-status
 @item @kbd{% g} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-status})
 
-Show the status for the worktree at point.
+ポイントでのワークツリーのステータスを表示します。
 
-If there is no worktree at point, then read one in the minibuffer.  If the
-worktree at point is the one whose status is already being displayed in the
-current buffer, then show it in Dired instead.
+ポイントにワークツリーがない場合は、ミニバッファでワークツリーを読み取ります。ポイントのワークツリーが、現在のバッファにステータスがすでに表示されているワークツリーである場合は、代わりにDiredで表示します。
 @end table
 
 @node Common Commands
@@ -7500,124 +7444,81 @@ current buffer, then show it in Dired instead.
 @cindex magit-display-repository-buffer
 @deffn コマンド magit-display-repository-buffer
 
-These commands read any existing Magit buffer that belongs to the current
-repository from the user and then switch to the selected buffer (without
-refreshing it).
+これらのコマンドは、現在のリポジトリに属する既存のMagitバッファをユーザーから読み取り、(更新せずに)選択したバッファに切り替えます。
 
-The last variant uses @code{magit-display-buffer} to do so and thus respects
-@code{magit-display-buffer-function}.
+最後のバリエーションは@code{magit-display-buffer}を使用してこれを行うため、@code{magit-display-buffer-function}を尊重します。
 @end deffn
 
-These are some of the commands that can be used in all buffers whose
-major-modes derive from @code{magit-mode}.  There are other common commands
-beside the ones below, but these didn't fit well anywhere else.
+これらは、メジャーモードが@code{magit-mode}から派生するすべてのバッファで使用できるコマンドの一部です。以下のコマンドのほかに他の一般的なコマンドがありますが、これらは他のどこにもうまく適合しませんでした。
 
 @table @asis
 @kindex C-w
 @cindex magit-copy-section-value
 @item @kbd{C-w} @tie{}@tie{}@tie{}@tie{}(@code{magit-copy-section-value})
 
-This command saves the value of the current section to the @code{kill-ring},
-and, provided that the current section is a commit, branch, or tag section,
-it also pushes the (referenced) revision to the @code{magit-revision-stack}.
+このコマンドは、現在のセクションの値を@code{kill-ring}に保存し、現在のセクションがコミットまたはブランチまたはタグセクションである場合、(参照される)リビジョンを@code{magit-revision-stack}にプッシュします。
 
-When the current section is a branch or a tag, and a prefix argument is
-used, then it saves the revision at its tip to the @code{kill-ring} instead
-of the reference name.
+現在のセクションがブランチまたはタグであり、プレフィックス引数が使用されている場合、その先端(tip)のリビジョンは、参照名の代わりに@code{kill-ring}に保存されます。
 
-When the region is active, this command saves that to the @code{kill-ring},
-like @code{kill-ring-save} would, instead of behaving as described above. If
-a prefix argument is used and the region is within a hunk, then it strips
-the diff marker column and keeps only either the added or removed lines,
-depending on the sign of the prefix argument.
+リージョンがアクティブな場合、このコマンドは、上記のように動作する代わりに、@code{kill-ring-save}のように@code{kill-ring}にそれを保存します。プレフィックス引数が使用され、領域がハンク内にある場合、プレフィックス引数の符号に応じて、diffマーカー列が削除され、追加または削除された行のみが保持されます。
 
 @kindex M-w
 @cindex magit-copy-buffer-revision
 @item @kbd{M-w} @tie{}@tie{}@tie{}@tie{}(@code{magit-copy-buffer-revision})
 
-This command saves the revision being displayed in the current buffer to the
-@code{kill-ring} and also pushes it to the @code{magit-revision-stack}.  It
-is mainly intended for use in @code{magit-revision-mode} buffers, the only
-buffers where it is always unambiguous exactly which revision should be
-saved.
+このコマンドは、現在のバッファに表示されているリビジョンを@code{kill-ring}に保存し、@code{magit-revision-stack}にもプッシュします。これは主に@code{magit-revision-mode}バッファでの使用を目的としています。これは、どのリビジョンを保存する必要があるかが常に明確である唯一のバッファです。
 
-Most other Magit buffers usually show more than one revision, in some way or
-another, so this command has to select one of them, and that choice might
-not always be the one you think would have been the best pick.
+他のほとんどのMagitバッファは通常、何らかの方法で複数のリビジョンを表示するため、このコマンドはそれらの1つを選択する必要があり、その選択が常に最良の選択であるとは限りません。
 @end table
 
-Outside of Magit @code{M-w} and @code{C-w} are usually bound to
-@code{kill-ring-save} and @code{kill-region}, and these commands would also
-be useful in Magit buffers.  Therefore when the region is active, then both
-of these commands behave like @code{kill-ring-save} instead of as described
-above.
+Magitの外部では、@code{M-w}と@code{C-w}は通常@code{kill-ring-save}と@code{kill-region}にバインドされており、これらのコマンドはMagitバッファでも役立ちます。したがって、リージョンがアクティブな場合、これらのコマンドは両方とも、上記のようにではなく、@code{kill-ring-save}のように動作します。
 
 @node Wip Modes
 @section Wip Modes
 
-Git keeps @strong{committed} changes around long enough for users to recover
-changes they have accidentally deleted.  It does so by not garbage
-collecting any committed but no longer referenced objects for a certain
-period of time, by default 30 days.
+Gitは、ユーザーが誤って削除した変更を復元するのに十分な時間、@strong{コミットされた変更}を保持します。これは、コミットされたが参照されなくなったオブジェクトを一定期間(デフォルトでは30日間)ガベージコレクションしないことによって行われます。
 
-But Git does @strong{not} keep track of @strong{uncommitted} changes in the
-working tree and not even the index (the staging area).  Because Magit makes
-it so convenient to modify uncommitted changes, it also makes it easy to
-shoot yourself in the foot in the process.
+ただし、Gitは、作業ツリーのコミットされていない変更を追跡せず、インデックス(ステージ領域)も追跡しません。Magitを使用すると、コミットされていない変更を簡単に変更できるため、その過程で自分の足を簡単に撃つことができます(訳注:墓穴を掘るぐらいの意味)。
 
-For that reason Magit provides a global mode that saves @strong{tracked}
-files to work-in-progress references after or before certain actions.  (At
-present untracked files are never saved and for technical reasons nothing is
-saved before the first commit has been created).
+そのため、Magitは、特定のアクションの後または前に、追跡ファイル(tracked
+files)を進行中のreferenceに保存するグローバルモードを提供します。(現在のところ、追跡されていないファイルは保存されず、技術的な理由から、最初のコミットが作成されるまでは何も保存されません)。
 
-Two separate work-in-progress references are used to track the state of the
-index and of the working tree: @code{refs/wip/index/<branchref>} and
-@code{refs/wip/wtree/<branchref>}, where @code{<branchref>} is the full ref
-of the current branch, e.g. @code{refs/heads/master}.  When the @code{HEAD}
-is detached then @code{HEAD} is used in place of @code{<branchref>}.
+インデックスと作業ツリーの状態を追跡するために、2つの別々の進行中のrefernceが使用されます。それは@code{refs/wip/index/<branchref>}と@code{refs/wip/wtree/<branchref>}です。ここで@code{<branchref>}は現在のブランチの完全なrefで、例えば@code{refs/heads/master}です。@code{HEAD}がデタッチされると、@code{<branchref>}の替わりに@code{HEAD}が使用されます。
 
-Checking out another branch (or detaching @code{HEAD}) causes the use of
-different wip refs for subsequent changes.
+別のブランチをチェックアウトする(または@code{HEAD}をデタッチする)と、その後の変更に異なるwip refsが使用されます。
 
 @defopt magit-wip-mode
 
-When this mode is enabled, then uncommitted changes are committed to
-dedicated work-in-progress refs whenever appropriate (i.e. when dataloss
-would be a possibility otherwise).
+このモードが有効になっている場合、コミットされていない変更は、必要に応じて(つまり、データ損失が発生する可能性がある場合)、専用の進行中のrefsにコミットされます。
 
-Setting this variable directly does not take effect; either use the Custom
-interface to do so or call the respective mode function.
+この変数を直接設定しても効果はありません。カスタムインターフェイスを使用してこれを行うか、それぞれのモード関数を呼び出します。
 
-For historic reasons this mode is implemented on top of four other
-@code{magit-wip-*} modes, which can also be used individually, if you want
-finer control over when the wip refs are updated; but that is discouraged.
-See @ref{Legacy Wip Modes}.
+歴史的な理由から、このモードは他の4つの@code{magit-wip-*}モードの上に実装されています。これらのモードは、あなたが wip
+refsが更新されるタイミングをより細かく制御したい場合は、個別に使用することもできます。しかし、それはお勧めできません→@ref{Legacy Wip
+Modes}
 @end defopt
 
-To view the log for a branch and its wip refs use the commands
-@code{magit-wip-log} and @code{magit-wip-log-current}.  You should use
-@code{--graph} when using these commands.
+ブランチとそのwip
+refsのログを表示するには、コマンド@code{magit-wip-log}と@code{magit-wip-log-current}を使用します。これらのコマンドを使用するときは、@code{--graph}を使用する必要があります。
 
 @cindex magit-wip-log
 @deffn コマンド magit-wip-log
 
-This command shows the log for a branch and its wip refs.  With a negative
-prefix argument only the worktree wip ref is shown.
+このコマンドは、ブランチとそのwip refsのログを表示します。負のプレフィックス引数を使用すると、ワークツリー wip refs
+のみが表示されます。
 
-The absolute numeric value of the prefix argument controls how many
-"branches" of each wip ref are shown.  This is only relevant if the value of
-@code{magit-wip-merge-branch} is @code{nil}.
+プレフィックス引数の絶対値は、表示される各wip
+refsの「ブランチ」の数を制御します。これは、@code{magit-wip-merge-branch}の値が@code{nil}の場合にのみ関係します。
 @end deffn
 
 @cindex magit-wip-log-current
 @deffn コマンド magit-wip-log-current
 
-This command shows the log for the current branch and its wip refs.  With a
-negative prefix argument only the worktree wip ref is shown.
+このコマンドは、現在のブランチとそのwip refs のログを表示します。負のプレフィックス引数を使用すると、ワークツリー wip refs
+のみが表示されます。
 
-The absolute numeric value of the prefix argument controls how many
-"branches" of each wip ref are shown.  This is only relevant if the value of
-@code{magit-wip-merge-branch} is @code{nil}.
+プレフィックス引数の絶対値は、表示される各wip
+refsの「ブランチ」の数を制御します。これは、@code{magit-wip-merge-branch}の値が@code{nil}の場合にのみ関係します。
 @end deffn
 
 @table @asis
@@ -7625,52 +7526,37 @@ The absolute numeric value of the prefix argument controls how many
 @cindex magit-reset-worktree
 @item @kbd{X w} @tie{}@tie{}@tie{}@tie{}(@code{magit-reset-worktree})
 
-This command resets the working tree to some commit read from the user and
-defaulting to the commit at point, while keeping the @code{HEAD} and index
-as-is.
+このコマンドは、@code{HEAD}とインデックスをそのままにして、作業ツリーをユーザーから読み取られたコミットにリセットし、デフォルトでそのポイントのコミットにリセットします。
 
-This can be used to restore files to the state committed to a wip ref.  Note
-that this will discard any unstaged changes that might have existed before
-invoking this command (but of course only after committing that to the
-working tree wip ref).
+これを使用して、ファイルをwip ref
+にコミットされた状態に復元できます。これにより、このコマンドを呼び出す前に存在していた可能性のあるステージされていない変更(unstaged
+changes)がすべて破棄されることに注意してください(ただし、もちろん、作業ツリー wip refにコミットした後でのみ)。
 @end table
 
-Note that even if you enable @code{magit-wip-mode} this won't give you
-perfect protection.  The most likely scenario for losing changes despite the
-use of @code{magit-wip-mode} is making a change outside Emacs and then
-destroying it also outside Emacs.  In some such a scenario, Magit, being an
-Emacs package, didn't get the opportunity to keep you from shooting yourself
-in the foot.
+注意:
+@code{magit-wip-mode}を有効にしても、完全な保護にはならないことに注意してください。@code{magit-wip-mode}を使用しているにもかかわらず変更が失われる可能性が最も高いシナリオは、Emacsの外部で変更を加えてから、Emacsの外部でそれを破棄することです。そのようなシナリオのいくつかでは、EmacsパッケージであるMagitには、あなたが自分の足を撃つのを防ぐチャンスがありません。
 
-When you are unsure whether Magit did commit a change to the wip refs, then
-you can explicitly request that all changes to all tracked files are being
-committed.
+Magitがwip
+refsに変更をコミットしたかどうかわからない場合は、追跡されたすべてのファイルへのすべての変更がコミットされるように明示的に要求できます。
 
 @table @asis
 @kindex M-x magit-wip-commit
 @cindex magit-wip-commit
 @item @kbd{M-x magit-wip-commit} @tie{}@tie{}@tie{}@tie{}(@code{magit-wip-commit})
 
-This command commits all changes to all tracked files to the index and
-working tree work-in-progress refs.  Like the modes described above, it does
-not commit untracked files, but it does check all tracked files for
-changes.  Use this command when you suspect that the modes might have
-overlooked a change made outside Emacs/Magit.
+このコマンドは、追跡されたすべてのファイルに対するすべての変更を、インデックスおよび作業ツリーの進行中のrefsにコミットします。上記のモードと同様に、追跡されていないファイルはコミットされませんが、追跡されているすべてのファイルの変更がチェックされます。モードがEmacs/Magitの外部で行われた変更を見落としている可能性があると思われる場合は、このコマンドを使用します。
 
 @end table
 
 @defopt magit-wip-namespace
 
-The namespace used for work-in-progress refs.  It has to end with a slash.
-The wip refs are named @code{<namespace>index/<branchref>} and
-@code{<namespace>wtree/<branchref>}.  When snapshots are created while the
-@code{HEAD} is detached then @code{HEAD} is used in place of
-@code{<branchref>}.
+進行中の作業のrefsに使用される名前空間。スラッシュで終了する必要があります。wip
+refsの名前は@code{<namespace>index/<branchref>}や@code{<namespace>wtree/<branchref>}です。@code{HEAD}がデタッチされているときにスナップショットが作成されると、@code{<branchref>}の代わりに@code{HEAD}が使用されます。
 @end defopt
 
 @defopt magit-wip-mode-lighter
 
-Mode-line lighter for @code{magit-wip--mode}.
+@code{magit-wip--mode}のモードラインライター(lighter)。
 @end defopt
 
 @menu
@@ -7683,20 +7569,16 @@ Mode-line lighter for @code{magit-wip--mode}.
 
 @defopt magit-wip-merge-branch
 
-This option controls whether the current branch is merged into the wip refs
-after a new commit was created on the branch.
+このオプションは、ブランチで新しいコミットが作成された後に、現在のブランチを wip refs にマージするかどうかを制御します。
 
-If non-nil and the current branch has new commits, then it is merged into
-the wip ref before creating a new wip commit.  This makes it easier to
-inspect wip history and the wip commits are never garbage collected.
+nil以外で、現在のブランチに新しいコミットがある場合、新しいwipコミットを作成する前に、それがwip
+refにマージされます。これにより、wip履歴の検査が容易になり、wipコミットがガベージコレクションされることはありません。
 
-If nil and the current branch has new commits, then the wip ref is reset to
-the tip of the branch before creating a new wip commit.  With this setting
-wip commits are eventually garbage collected.
+nilで、現在のブランチに新しいコミットがある場合、新しいwipコミットを作成する前に、wip
+refがブランチの先端(tip)にリセットされます。この設定では、wipコミットは最終的にガベージコレクションされます。
 @end defopt
 
-When @code{magit-wip-merge-branch} is @code{t}, then the history looks like
-this:
+@code{magit-wip-merge-branch}が@code{t}の場合、履歴は以下のようになります:
 
 @example
   *--*--*--*--*--*       refs/wip/index/refs/heads/master
@@ -7704,15 +7586,13 @@ this:
 A-----B-----C            refs/heads/master
 @end example
 
-When @code{magit-wip-merge-branch} is @code{nil}, then creating a commit on
-the real branch and then making a change causes the wip refs to be recreated
-to fork from the new commit.  But the old commits on the wip refs are not
-lost.  They are still available from the reflog.  To make it easier to see
-when the fork point of a wip ref was changed, an additional commit with the
-message "restart autosaving" is created on it (@code{xxO} commits below are
-such boundary commits).
+@code{magit-wip-merge-branch}が@code{nil}の場合、実際のブランチでコミットを作成してから変更を加えると、wip
+refが再作成され、新しいコミットからフォークされます。ただし、wip refs
+の古いコミットは失われません。それらはまだreflogから入手できます。wip
+refsのフォーク点がいつ変更されたかを簡単に確認できるように、"restart
+autosaving"(自動保存の再開)というメッセージを含む追加のコミットが作成されます(以下の@code{xxO}コミットはそのような境界コミットです)。
 
-Starting with
+開始時は
 
 @example
       BI0---BI1    refs/wip/index/refs/heads/master
@@ -7722,8 +7602,7 @@ A---B              refs/heads/master
       BW0---BW1    refs/wip/wtree/refs/heads/master
 @end example
 
-and committing the staged changes and editing and saving a file would result
-in
+で、ステージされた変更(staged changes)をコミットし、ファイルを編集して保存すると、以下のようになります。
 
 @example
       BI0---BI1        refs/wip/index/refs/heads/master
@@ -7735,105 +7614,85 @@ A---B---C              refs/heads/master
         BW0---BW1      refs/wip/wtree/refs/heads/master@@@{2@}
 @end example
 
-The fork-point of the index wip ref is not changed until some change is
-being staged.  Likewise just checking out a branch or creating a commit does
-not change the fork-point of the working tree wip ref.  The fork-points are
-not adjusted until there actually is a change that should be committed to
-the respective wip ref.
+インデックスwip
+refのフォーク点は、何らかの変更が行われるまで変更されません。同様に、ブランチをチェックアウトしたり、コミットを作成したりしても、作業ツリーwip
+refのフォーク点は変更されません。フォーク点は、それぞれのwip refにコミットする必要のある変更が実際に行われるまで調整されません。
 
 @node Legacy Wip Modes
 @subsection Legacy Wip Modes
 
-It is recommended that you use the mode @code{magit-wip-mode} (which see)
-and ignore the existence of the following modes, which are preserved for
-historic reasons.
+モード@code{magit-wip-mode}(を参照)を使用してください。歴史的な理由で保持されている以下のモードの存在は無視することをお勧めします。
 
-Setting the following variables directly does not take effect; either use
-the Custom interface to do so or call the respective mode functions.
+以下の変数達を直接設定しても効果はありません。カスタムインターフェイスを使用してこれを行うか、それぞれのモード関数を呼び出します。
 
 @defopt magit-wip-after-save-mode
 
-When this mode is enabled, then saving a buffer that visits a file tracked
-in a Git repository causes its current state to be committed to the working
-tree wip ref for the current branch.
+このモードが有効になっている場合、Gitリポジトリで追跡されているファイルにアクセスするバッファを保存すると、現在の状態が現在のブランチの作業ツリー
+wip refにコミットされます。
 @end defopt
 
 @defopt magit-wip-after-apply-mode
 
-When this mode is enabled, then applying (i.e. staging, unstaging,
-discarding, reversing, and regularly applying) a change to a file tracked in
-a Git repository causes its current state to be committed to the index
-and/or working tree wip refs for the current branch.
+このモードを有効にすると、Gitリポジトリで追跡されているファイルに変更を適用(つまり、ステージ、ステージ解除、discard、revert、regulary
+apply)すると、現在の状態が現在のブランチのインデックスや作業ツリーのwip refsにコミットされます。
 @end defopt
 
-If you only ever edit files using Emacs and only ever interact with Git
-using Magit, then the above two modes should be enough to protect each and
-every change from accidental loss.  In practice nobody does that.  Two
-additional modes exists that do commit to the wip refs before making changes
-that could cause the loss of earlier changes.
+Emacsを使用してファイルを編集し、Magitを使用してGitと対話するだけの場合は、上記の2つのモードで、すべての変更を偶発的な損失から保護するのに十分なはずです。実際はそうではありません。以前の変更が失われる可能性のある変更を行う前に、wiprefsにコミットする2つの追加モードが存在します。
 
 @defopt magit-wip-before-change-mode
 
-When this mode is enabled, then certain commands commit the existing changes
-to the files they are about to make changes to.
+このモードを有効にすると、特定のコマンドで、あなたが変更しようとしているファイルに既に存在する変更をコミットします。
 @end defopt
 
 @defopt magit-wip-initial-backup-mode
 
-When this mode is enabled, then the current version of a file is committed
-to the worktree wip ref before the buffer visiting that file is saved for
-the first time since the buffer was created.
+このモードを有効にすると、ファイルにアクセスするバッファが作成されてから初めて保存される前に、ファイルの現在のバージョンがワークツリーwip
+refにコミットされます。
 
-This backs up the same version of the file that @code{backup-buffer} would
-save.  While @code{backup-buffer} uses a backup file, this mode uses the
-same worktree wip ref as used by the other Magit Wip modes.  Like
-@code{backup-buffer}, it only does this once; unless you kill the buffer and
-visit the file again only one backup will be created per Emacs session.
+これにより、@code{backup-buffer}が保存するのと同じバージョンのファイルがバックアップされます。@code{backup-buffer}はバックアップファイルを使用しますが、このモードは他のMagit
+Wipモードで使用されるものと同じワークツリーwip
+refを使用します。@code{backup-buffer}と同様に、これは1回だけ実行されます。バッファを強制終了してファイルに再度アクセスしない限り、Emacsセッションごとに1つのバックアップのみが作成されます。
 
-This mode ignores the variables that affect @code{backup-buffer} and can be
-used along-side that function, which is recommended because it only backs up
-files that are tracked in a Git repository.
+このモードは、@code{backup-buffer}に影響を与える変数を無視し、その関数と一緒に使用できます。これは、Gitリポジトリで追跡されるファイルのみをバックアップするため推奨されます。
 @end defopt
 
 @defopt magit-wip-after-save-local-mode-lighter
 
-Mode-line lighter for @code{magit-wip-after-save-local-mode}.
+@code{magit-wip-after-save-local-mode}のモードラインライター(lighter)。
 @end defopt
 
 @defopt magit-wip-after-apply-mode-lighter
 
-Mode-line lighter for @code{magit-wip-after-apply-mode}.
+@code{magit-wip-after-apply-mode}のモードラインライター(lighter)
 @end defopt
 
 @defopt magit-wip-before-change-mode-lighter
 
-Mode-line lighter for @code{magit-wip-before-change-mode}.
+@code{magit-wip-before-change-mode}のモードラインライター(lighter)
 @end defopt
 
 @defopt magit-wip-initial-backup-mode-lighter
 
-Mode-line lighter for @code{magit-wip-initial-backup-mode}.
+@code{magit-wip-initial-backup-mode}のモードラインライター(lighter)
 @end defopt
 
 @node Commands for Buffers Visiting Files
 @section Commands for Buffers Visiting Files
 
-Magit defines a few global key bindings unless the user sets
-@code{magit-define-global-key-bindings} to @code{nil}.  This includes
-binding @code{C-c M-g} to @code{magit-file-dispatch}.  @code{C-c g} would be
-a much better binding but the @code{C-c <letter>} namespace is reserved for
-users, meaning that packages are not allowed to use it.  If you want to use
-@code{C-c g}, then you have to add that binding yourself.  Also see
-@ref{Default Bindings} and @ref{Key Binding Conventions,,,elisp,}.
+ユーザーが@code{magit-define-global-key-bindings}を@code{nil}に設定しない限り、Magitはいくつかのグローバルキーバインディングを定義します。これには、@code{C-c
+M-g}の@code{magit-file-dispatch}への結び付けが含まれます。@code{C-c
+g}の方がはるかに優れたバインディングですが、@code{C-c
+<letter>}名前空間はユーザー用に予約されているため、パッケージでの使用は許可されていません。@code {C-c
+g}を使用する場合は、そのバインディングを自分で追加する必要があります。こちらも参照下さい(@ref{Default
+Bindings})と(@ref{Key Binding Conventions,,,elisp,})
 
-If you want a better binding, you have to add it yourself:
+あなたがより良いバインディングを欲する場合、あなた自身で追加する必要があります:
 
 @lisp
 (global-set-key (kbd "C-c g") 'magit-file-dispatch)
 @end lisp
 
-The key bindings shown below assume that you have not improved the binding
-for @code{magit-file-dispatch}.
+以下に示すキーバインディングは、@code{magit-file-dispatch}のバインディングを改善していないことを前提としています。
 
 @table @asis
 @kindex C-c M-g
@@ -7843,20 +7702,19 @@ for @code{magit-file-dispatch}.
 このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
 buffer)に表示します。
 
-When invoked in a buffer that does not visit a file, then it falls back to
-regular @code{magit-dispatch}.
+ファイルにアクセスしないバッファで呼び出されると、通常の@code {magit-dispatch}にフォールバックします。
 
 @kindex C-c M-g s
 @cindex magit-stage-file
 @item @kbd{C-c M-g s} @tie{}@tie{}@tie{}@tie{}(@code{magit-stage-file})
 
-Stage all changes to the file being visited in the current buffer.
+現在のバッファでアクセスされているファイルへのすべての変更をステージします。
 
 @kindex C-c M-g u
 @cindex magit-unstage-file
 @item @kbd{C-c M-g u} @tie{}@tie{}@tie{}@tie{}(@code{magit-unstage-file})
 
-Unstage all changes to the file being visited in the current buffer.
+現在のバッファでアクセスされているファイルへのすべての変更をステージ解除します。
 
 @kindex C-c M-g c
 @cindex magit-commit
@@ -7868,9 +7726,7 @@ Unstage all changes to the file being visited in the current buffer.
 @cindex magit-diff
 @item @kbd{C-c M-g D} @tie{}@tie{}@tie{}@tie{}(@code{magit-diff})
 
-This transient prefix command binds several diff suffix commands and infix
-arguments and displays them in a temporary buffer until a suffix is
-invoked.  See @ref{Diffing}.
+このトランジェントプレフィックスコマンドは、いくつかのdiffサフィックスコマンドとインフィックス引数を結び付けし、サフィックスコマンドが呼び出されるまでそれらを一時バッファに表示します。参照(@ref{Diffing})
 
 This is the same command that @code{d} is bound to in Magit buffers.  If
 this command is invoked from a file-visiting buffer, then the initial value
