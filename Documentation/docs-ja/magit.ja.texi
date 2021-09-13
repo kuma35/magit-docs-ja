@@ -7728,24 +7728,20 @@ buffer)に表示します。
 
 このトランジェントプレフィックスコマンドは、いくつかのdiffサフィックスコマンドとインフィックス引数を結び付けし、サフィックスコマンドが呼び出されるまでそれらを一時バッファに表示します。参照(@ref{Diffing})
 
-This is the same command that @code{d} is bound to in Magit buffers.  If
-this command is invoked from a file-visiting buffer, then the initial value
-of the option (@code{--}) that limits the diff to certain file(s) is set to
-the visited file.
+これは、@code{d}がMagitバッファで結び付けられているのと同じコマンドです。このコマンドがfile-visitingバッファから呼び出された場合、diffを特定のファイルに制限するオプション(@code{--})の初期値が訪問したファイルに設定されます。
 
 @kindex C-c M-g d
 @cindex magit-diff-buffer-file
 @item @kbd{C-c M-g d} @tie{}@tie{}@tie{}@tie{}(@code{magit-diff-buffer-file})
 
-This command shows the diff for the file of blob that the current buffer
-visits.
+このコマンドは、現在のバッファが訪れるblobのファイルのdiffを表示します。
 
 @end table
 
 @defopt magit-diff-buffer-file-locked
 
-This option controls whether @code{magit-diff-buffer-file} uses a dedicated
-buffer.  See @ref{Modes and Buffers}.
+このオプションは、@code{magit-diff-buffer-file}が専用のバッファを使用するかどうかを制御します。こちらを参照下さい(@ref{Modes
+and Buffers})。
 @end defopt
 
 @table @asis
@@ -7753,36 +7749,28 @@ buffer.  See @ref{Modes and Buffers}.
 @cindex magit-log
 @item @kbd{C-c M-g L} @tie{}@tie{}@tie{}@tie{}(@code{magit-log})
 
-This transient prefix command binds several log suffix commands and infix
-arguments and displays them in a temporary buffer until a suffix is
-invoked.  See @ref{Logging}.
+このトランジェントプレフィックスコマンドは、いくつかのログ用サフィックスコマンドとインフィックス引数を結び付け、サフィックスコマンドが呼び出されるまでそれらを一時バッファに表示します。参照(@ref{Logging})。
 
-This is the same command that @code{l} is bound to in Magit buffers.  If
-this command is invoked from a file-visiting buffer, then the initial value
-of the option (@code{--}) that limits the log to certain file(s) is set to
-the visited file.
+これは、@code{l}がMagitバッファで結び付けられているのと同じコマンドです。このコマンドがfile-visitingバッファから呼び出された場合、ログを特定のファイルに制限するオプション(@code{--})の初期値が訪問したファイルに設定されます。
 
 @kindex C-c M-g l
 @cindex magit-log-buffer-file
 @item @kbd{C-c M-g l} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-buffer-file})
 
-This command shows the log for the file of blob that the current buffer
-visits.  Renames are followed when a prefix argument is used or when
-@code{--follow} is an active log argument.  When the region is active, the
-log is restricted to the selected line range.
+このコマンドは、現在のバッファがアクセスするblobのファイルのログを表示します。プレフィックス引数が使用されている場合、または@code{--follow}がアクティブなログ引数である場合は、名前が変更されます。リージョンがアクティブな場合、ログは選択した行範囲に制限されます。
 
 @kindex C-c M-g t
 @cindex magit-log-trace-definition
 @item @kbd{C-c M-g t} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-trace-definition})
 
-This command shows the log for the definition at point.
+このコマンドは、ポイントでの定義のログを表示します。
 
 @end table
 
 @defopt magit-log-buffer-file-locked
 
-This option controls whether @code{magit-log-buffer-file} uses a dedicated
-buffer.  See @ref{Modes and Buffers}.
+このオプションは、@code{magit-log-buffer-file}が専用のバッファを使用するかどうかを制御します。参照(@ref{Modes
+and Buffers})。
 @end defopt
 
 @table @asis
@@ -7790,39 +7778,32 @@ buffer.  See @ref{Modes and Buffers}.
 @cindex magit-blame
 @item @kbd{C-c M-g B} @tie{}@tie{}@tie{}@tie{}(@code{magit-blame})
 
-This transient prefix command binds all blaming suffix commands along with
-the appropriate infix arguments and displays them in a temporary buffer
-until a suffix is invoked.
+このトランジェントプレフィックスコマンドは、すべてのblameサフィックスコマンドを適切なインフィックス引数とともに結び付け、サフィックスコマンドが呼び出されるまで一時バッファに表示します。
 
-For more information about this and the following commands also see
-@ref{Blaming}.
+このコマンドと以下のコマンドの詳細については、こちらを参照(@ref{Blaming})。
 @end table
 
-In addition to the @code{magit-blame} sub-transient, the dispatch transient
-also binds several blaming suffix commands directly.  See @ref{Blaming} for
-information about those commands and bindings.
+@code{magit-blame}サブトランジェントコマンドに加えて、ディスパッチトランジェントコマンドはいくつかのblameサフィックスコマンドを直接結び付けます。これらのコマンドとバインディングについては、こちらを参照下さい(@ref{Blaming})。
 
 @table @asis
 @kindex C-c M-g e
 @cindex magit-edit-line-commit
 @item @kbd{C-c M-g e} @tie{}@tie{}@tie{}@tie{}(@code{magit-edit-line-commit})
 
-This command makes the commit editable that added the current line.
+このコマンドは、現在の行を追加したコミットを編集可能にします。
 
-With a prefix argument it makes the commit editable that removes the line,
-if any.  The commit is determined using @code{git blame} and made editable
-using @code{git rebase --interactive} if it is reachable from @code{HEAD},
-or by checking out the commit (or a branch that points at it)  otherwise.
+プレフィックス引数を使用すると、コミットが編集可能になり、行がある場合は削除されます。コミットは@code{git
+blame}を使用して決定され、@code{HEAD}から到達可能である場合は、@code{git rebase
+--interactive}を使用して編集可能にするか、そうでない場合はコミット(またはそれを指すブランチ)をチェックアウトします。
 
 @kindex C-c M-g p
 @cindex magit-blob-previous
 @item @kbd{C-c M-g p} @tie{}@tie{}@tie{}@tie{}(@code{magit-blob-previous})
 
-Visit the previous blob which modified the current file.
+現在のファイルを変更する前のBLOBを訪問します。
 @end table
 
-There are a few additional commands that operate on a single file but are
-not enabled in the file transient command by default:
+単一のファイルで動作するが、デフォルトではfileトランジェントコマンドで有効になっていない追加のコマンドがいくつかあります:
 
 @cindex magit-file-rename
 @deffn コマンド magit-file-rename
@@ -7845,8 +7826,7 @@ not enabled in the file transient command by default:
 @cindex magit-file-checkout
 @deffn コマンド magit-file-checkout
 
-This command updates a file in the working tree and index to the contents
-from a revision.  Both the revision and file are read from the user.
+このコマンドは、作業ツリー内のファイルを更新し、リビジョンの内容にインデックスを付けます。リビジョンとファイルの両方がユーザーから読み取られます。
 @end deffn
 
 To enable them invoke the transient (@code{C-c M-g}), enter "edit mode"
@@ -7868,7 +7848,7 @@ this might be extended.
 @cindex magit-blob-previous
 @item @kbd{p} @tie{}@tie{}@tie{}@tie{}(@code{magit-blob-previous})
 
-Visit the previous blob which modified the current file.
+現在のファイルを変更する前のBLOBを訪問します。
 
 @kindex n
 @cindex magit-blob-next
@@ -7880,7 +7860,7 @@ Visit the next blob which modified the current file.
 @cindex magit-kill-this-buffer
 @item @kbd{q} @tie{}@tie{}@tie{}@tie{}(@code{magit-kill-this-buffer})
 
-Kill the current buffer.
+currentバッファを強制終了します。
 @end table
 
 @node Customizing
@@ -8245,55 +8225,50 @@ side-effects, but that should be avoided.
 
 @defun magit-git-exit-code &rest args
 
-Executes git with ARGS and returns its exit code.
+ARGSを伴ったgitを実行し、そのexit codeを返します。
 @end defun
 
 @defun magit-git-success &rest args
 
-Executes git with ARGS and returns @code{t} if the exit code is @code{0},
-@code{nil} otherwise.
+ARGSを伴ってgitを実行し、exit codeが@code{0}ならば@code{t}を返し、exit
+codeがそれ以外の場合は@code{nil}を返します。
 @end defun
 
 @defun magit-git-failure &rest args
 
-Executes git with ARGS and returns @code{t} if the exit code is @code{1},
-@code{nil} otherwise.
+ARGSを伴ってgitを実行し、exit codeが@code{1}ならば@code{t}を返し、exit
+codeがそれ以外の場合は@code{nil}を返します。
 @end defun
 
 @defun magit-git-true &rest args
 
-Executes git with ARGS and returns @code{t} if the first line printed by git
-is the string "true", @code{nil} otherwise.
+ARGSを伴ってgitを実行し、gitによって出力される最初の行が文字列"true"の場合は@code{t}を返し、それ以外の場合は@code{nil}を返します。
 @end defun
 
 @defun magit-git-false &rest args
 
-Executes git with ARGS and returns @code{t} if the first line printed by git
-is the string "false", @code{nil} otherwise.
+ARGSを伴ってgitを実行し、gitによって出力される最初の行が文字列"false"の場合は@code{t}を返し、それ以外の場合は@code{nil}を返します。
 @end defun
 
 @defun magit-git-insert &rest args
 
-Executes git with ARGS and inserts its output at point.
+ARGSを伴ってgitを実行し、その出力をポイントに挿入します。
 @end defun
 
 @defun magit-git-string &rest args
 
-Executes git with ARGS and returns the first line of its output.  If there
-is no output or if it begins with a newline character, then this returns
-@code{nil}.
+ARGSを伴ってgitを実行し、その出力の最初の行を返します。出力がない場合、または改行文字(newline
+character)で始まる場合は、@code{nil}が返されます。
 @end defun
 
 @defun magit-git-lines &rest args
 
-Executes git with ARGS and returns its output as a list of lines.  Empty
-lines anywhere in the output are omitted.
+ARGSを伴ってgitを実行し、その出力を行のリスト(list)として返します。出力の空行は省略されます。
 @end defun
 
 @defun magit-git-items &rest args
 
-Executes git with ARGS and returns its null-separated output as a list.
-Empty items anywhere in the output are omitted.
+ARGSを伴ってgitを実行し、nullで区切られた出力をリスト(list)として返します。空のアイテムは省略されます。
 
 If the value of option @code{magit-git-debug} is non-nil and git exits with
 a non-zero exit status, then warn about that in the echo area and add a
@@ -9247,43 +9222,27 @@ that succeeds, do nothing else.  Otherwise start @code{emacs &} (and
 @node file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています
 @appendixsubsec file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています
 
-This can happen when you type @code{RET} on a hunk to visit the respective
-file at the respective position.  One solution to this problem is to use
-@code{global-reveal-mode}.  It makes sure that text around point is always
-visible.  If that is too drastic for your taste, then you may instead use
-@code{magit-diff-visit-file-hook} to reveal the text, possibly using
-@code{reveal-post-command} or for Org buffers @code{org-reveal}.
+これは、ハンクで@code{RET}と入力して、それぞれの位置にあるそれぞれのファイルにアクセスしたときに発生する可能性があります。この問題の1つの解決策は、@code{global-reveal-mode}を使用することです。ポイント周辺のテキストが常に表示されるようにします。それがあなたの好みに対してあまりにも刺激的である場合は、代わりに@code{magit-diff-visit-file-hook}を使用してテキストを表示することができます。おそらく、@code{reveal-post-command}を使用するか、Orgバッファ@code{org-reveal}を使用します。
 
 @node MS-WindowsからEmacsのTrampモードを使用するとステージできません
 @appendixsubsec MS-WindowsからEmacsのTrampモードを使用するとステージできません
 
-Magit may be unable to stage (or otherwise apply) individual hunks when you
-are connected to remote machine using Tramp and the local machine uses MS
-Windows.
+Trampを使用してリモートマシンに接続し、ローカルマシンがMS
+Windowsを使用している場合、Magitは個々のハンクをステージ(または適用)できない場合があります。
 
-There appears to be a problem with @code{process-send-eof} in this scenario,
-as mentioned at the end of @code{tramp-tests.el}.  I have contacted the
-Tramp maintainer about this.  For now this unfortunately means that it just
-doesn't work and we cannot do anything about it.  If you have more
-information, then please comment on
-@uref{https://github.com/magit/magit/issues/3624}.
+@code{tramp-tests.el}の最後で説明したように、このシナリオでは@code{process-send-eof}に問題があるようです。これについてTrampのメンテナに連絡しました。
+今のところ、これは残念ながらそれが機能せず、私たちがそれについて何もできないことを意味します。詳細については、@uref{https://github.com/magit/magit/issues/3624}にコメントしてください。
 
 @node 私はポップアップのデフォルトを保存できなくなりました
 @appendixsubsec 私はポップアップのデフォルトを保存できなくなりました
 
-Magit used to use Magit-Popup to implement the transient popup menus.  Now
-it used Transient instead, which is Magit-Popup's successor.
+Magitは、トランジェントポップアップメニューを実装するためにMagit-Popupを使用していました。現在は、代わりにTransientを使用しています。これはMagit-Popupの後継です。
 
-In the older Magit-Popup menus, it was possible to save user settings
-(e.g. setting the gpg signing key for commits) by using @code{C-c C-c} in
-the popup buffer.  This would dismiss the popup, but save the settings as
-the defaults for future popups.
+以前のMagit-Popupメニューでは、ポップアップバッファで@code{C-c
+C-c}を使用して、ユーザー設定を保存することができました(たとえば、コミット用のgpg署名キーの設定)。これによりポップアップは閉じられますが、今後のポップアップのデフォルトとして設定が保存されるのです。
 
-When switching to Transient menus, this functionality is now available via
-@code{C-x C-s} instead; the @code{C-x} prefix has other options as well when
-using Transient, which will be displayed when it is typed.  See
-@uref{https://magit.vc/manual/transient/Saving-Values.html#Saving-Values}
-for more details.
+トランジェントメニューに切り替えると、この機能は代わりに@code{C-x
+C-s}を介して利用できるようになりました。@code{C-x}プレフィックスには、Transientを使用する場合にも他のオプションがあり、入力すると表示されます。詳細については@uref{https://magit.vc/manual/transient/Saving-Values.html#Saving-Values}を参照してください。
 
 @node Debugging Tools
 @chapter Debugging Tools

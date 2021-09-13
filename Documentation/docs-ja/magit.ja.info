@@ -8415,77 +8415,80 @@ Conventions::)
      が呼び出されるまでそれらを一時バッファに表示します。参照(*note
      Diffing::)
 
-     This is the same command that ‘d’ is bound to in Magit buffers.  If
-     this command is invoked from a file-visiting buffer, then the
-     initial value of the option (‘--’) that limits the diff to certain
-     file(s) is set to the visited file.
+     これは、‘d’がMagitバッファで結び付けられているのと同じコマンドです
+     。このコマンドがfile-visitingバッファから呼び出された場合、diffを特
+     定のファイルに制限するオプション(‘--’)の初期値が訪問したファイルに
+     設定されます。
 
 ‘C-c M-g d’     (‘magit-diff-buffer-file’)
 
-     This command shows the diff for the file of blob that the current
-     buffer visits.
+     このコマンドは、現在のバッファが訪れるblobのファイルのdiffを表示し
+     ます。
 
  -- User Option: magit-diff-buffer-file-locked
 
-     This option controls whether ‘magit-diff-buffer-file’ uses a
-     dedicated buffer.  See *note Modes and Buffers::.
+     このオプションは、‘magit-diff-buffer-file’が専用のバッファを使用す
+     るかどうかを制御します。こちらを参照下さい(*note Modes and
+     Buffers::)。
 
 ‘C-c M-g L’     (‘magit-log’)
 
-     This transient prefix command binds several log suffix commands and
-     infix arguments and displays them in a temporary buffer until a
-     suffix is invoked.  See *note Logging::.
+     このトランジェントプレフィックスコマンドは、いくつかのログ用サフィ
+     ックスコマンドとインフィックス引数を結び付け、サフィックスコマンド
+     が呼び出されるまでそれらを一時バッファに表示します。参照(*note
+     Logging::)。
 
-     This is the same command that ‘l’ is bound to in Magit buffers.  If
-     this command is invoked from a file-visiting buffer, then the
-     initial value of the option (‘--’) that limits the log to certain
-     file(s) is set to the visited file.
+     これは、‘l’がMagitバッファで結び付けられているのと同じコマンドです
+     。このコマンドがfile-visitingバッファから呼び出された場合、ログを特
+     定のファイルに制限するオプション(‘--’)の初期値が訪問したファイルに
+     設定されます。
 
 ‘C-c M-g l’     (‘magit-log-buffer-file’)
 
-     This command shows the log for the file of blob that the current
-     buffer visits.  Renames are followed when a prefix argument is used
-     or when ‘--follow’ is an active log argument.  When the region is
-     active, the log is restricted to the selected line range.
+     このコマンドは、現在のバッファがアクセスするblobのファイルのログを
+     表示します。プレフィックス引数が使用されている場合、または
+     ‘--follow’がアクティブなログ引数である場合は、名前が変更されます。
+     リージョンがアクティブな場合、ログは選択した行範囲に制限されます。
 
 ‘C-c M-g t’     (‘magit-log-trace-definition’)
 
-     This command shows the log for the definition at point.
+     このコマンドは、ポイントでの定義のログを表示します。
 
  -- User Option: magit-log-buffer-file-locked
 
-     This option controls whether ‘magit-log-buffer-file’ uses a
-     dedicated buffer.  See *note Modes and Buffers::.
+     このオプションは、‘magit-log-buffer-file’が専用のバッファを使用する
+     かどうかを制御します。参照(*note Modes and Buffers::)。
 
 ‘C-c M-g B’     (‘magit-blame’)
 
-     This transient prefix command binds all blaming suffix commands
-     along with the appropriate infix arguments and displays them in a
-     temporary buffer until a suffix is invoked.
+     このトランジェントプレフィックスコマンドは、すべてのblameサフィック
+     スコマンドを適切なインフィックス引数とともに結び付け、サフィックス
+     コマンドが呼び出されるまで一時バッファに表示します。
 
-     For more information about this and the following commands also see
-     *note Blaming::.
+     このコマンドと以下のコマンドの詳細については、こちらを参照(*note
+     Blaming::)。
 
-In addition to the ‘magit-blame’ sub-transient, the dispatch transient
-also binds several blaming suffix commands directly.  See *note
-Blaming:: for information about those commands and bindings.
+‘magit-blame’サブトランジェントコマンドに加えて、ディスパッチトランジェ
+ントコマンドはいくつかのblameサフィックスコマンドを直接結び付けます。こ
+れらのコマンドとバインディングについては、こちらを参照下さい(*note
+Blaming::)。
 
 ‘C-c M-g e’     (‘magit-edit-line-commit’)
 
-     This command makes the commit editable that added the current line.
+     このコマンドは、現在の行を追加したコミットを編集可能にします。
 
-     With a prefix argument it makes the commit editable that removes
-     the line, if any.  The commit is determined using ‘git blame’ and
-     made editable using ‘git rebase --interactive’ if it is reachable
-     from ‘HEAD’, or by checking out the commit (or a branch that points
-     at it) otherwise.
+     プレフィックス引数を使用すると、コミットが編集可能になり、行がある
+     場合は削除されます。コミットは‘git blame’を使用して決定され、
+     ‘HEAD’から到達可能である場合は、‘git rebase --interactive’を使用し
+     て編集可能にするか、そうでない場合はコミット(またはそれを指すブラン
+     チ)をチェックアウトします。
 
 ‘C-c M-g p’     (‘magit-blob-previous’)
 
-     Visit the previous blob which modified the current file.
+     現在のファイルを変更する前のBLOBを訪問します。
 
-There are a few additional commands that operate on a single file but
-are not enabled in the file transient command by default:
+単一のファイルで動作するが、デフォルトではfileトランジェントコマンドで有
+効になっていない追加のコマンドがいくつかあります:
 
  -- コマンド: magit-file-rename
 
@@ -8502,9 +8505,9 @@ are not enabled in the file transient command by default:
 
  -- コマンド: magit-file-checkout
 
-     This command updates a file in the working tree and index to the
-     contents from a revision.  Both the revision and file are read from
-     the user.
+     このコマンドは、作業ツリー内のファイルを更新し、リビジョンの内容に
+     インデックスを付けます。リビジョンとファイルの両方がユーザーから読
+     み取られます。
 
 To enable them invoke the transient (‘C-c M-g’), enter "edit mode" (‘C-x
 l’), set the "transient level" (‘C-x l’ again), enter ‘5’, and leave
@@ -8525,7 +8528,7 @@ but this might be extended.
 
 ‘p’     (‘magit-blob-previous’)
 
-     Visit the previous blob which modified the current file.
+     現在のファイルを変更する前のBLOBを訪問します。
 
 ‘n’     (‘magit-blob-next’)
 
@@ -8533,7 +8536,7 @@ but this might be extended.
 
 ‘q’     (‘magit-kill-this-buffer’)
 
-     Kill the current buffer.
+     currentバッファを強制終了します。
 
 
 File: magit.ja.info,  Node: Customizing,  Next: 配管コマンド(Plumbing),  Prev: Miscellaneous,  Up: Top
@@ -9007,47 +9010,47 @@ side-effects, but that should be avoided.
 
  -- Function: magit-git-exit-code &rest args
 
-     Executes git with ARGS and returns its exit code.
+     ARGSを伴ったgitを実行し、そのexit codeを返します。
 
  -- Function: magit-git-success &rest args
 
-     Executes git with ARGS and returns ‘t’ if the exit code is ‘0’,
-     ‘nil’ otherwise.
+     ARGSを伴ってgitを実行し、exit codeが‘0’ならば‘t’を返し、exit codeが
+     それ以外の場合は‘nil’を返します。
 
  -- Function: magit-git-failure &rest args
 
-     Executes git with ARGS and returns ‘t’ if the exit code is ‘1’,
-     ‘nil’ otherwise.
+     ARGSを伴ってgitを実行し、exit codeが‘1’ならば‘t’を返し、exit codeが
+     それ以外の場合は‘nil’を返します。
 
  -- Function: magit-git-true &rest args
 
-     Executes git with ARGS and returns ‘t’ if the first line printed by
-     git is the string "true", ‘nil’ otherwise.
+     ARGSを伴ってgitを実行し、gitによって出力される最初の行が文字列
+     "true"の場合は‘t’を返し、それ以外の場合は‘nil’を返します。
 
  -- Function: magit-git-false &rest args
 
-     Executes git with ARGS and returns ‘t’ if the first line printed by
-     git is the string "false", ‘nil’ otherwise.
+     ARGSを伴ってgitを実行し、gitによって出力される最初の行が文字列
+     "false"の場合は‘t’を返し、それ以外の場合は‘nil’を返します。
 
  -- Function: magit-git-insert &rest args
 
-     Executes git with ARGS and inserts its output at point.
+     ARGSを伴ってgitを実行し、その出力をポイントに挿入します。
 
  -- Function: magit-git-string &rest args
 
-     Executes git with ARGS and returns the first line of its output.
-     If there is no output or if it begins with a newline character,
-     then this returns ‘nil’.
+     ARGSを伴ってgitを実行し、その出力の最初の行を返します。出力がない場
+     合、または改行文字(newline character)で始まる場合は、‘nil’が返され
+     ます。
 
  -- Function: magit-git-lines &rest args
 
-     Executes git with ARGS and returns its output as a list of lines.
-     Empty lines anywhere in the output are omitted.
+     ARGSを伴ってgitを実行し、その出力を行のリスト(list)として返します。
+     出力の空行は省略されます。
 
  -- Function: magit-git-items &rest args
 
-     Executes git with ARGS and returns its null-separated output as a
-     list.  Empty items anywhere in the output are omitted.
+     ARGSを伴ってgitを実行し、nullで区切られた出力をリスト(list)として返
+     します。空のアイテムは省略されます。
 
      If the value of option ‘magit-git-debug’ is non-nil and git exits
      with a non-zero exit status, then warn about that in the echo area
@@ -10132,12 +10135,13 @@ File: magit.ja.info,  Node: file-visitingバッファにジャンプすると、
 A.2.12 file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています
 --------------------------------------------------------------------------------------------
 
-This can happen when you type ‘RET’ on a hunk to visit the respective
-file at the respective position.  One solution to this problem is to use
-‘global-reveal-mode’.  It makes sure that text around point is always
-visible.  If that is too drastic for your taste, then you may instead
-use ‘magit-diff-visit-file-hook’ to reveal the text, possibly using
-‘reveal-post-command’ or for Org buffers ‘org-reveal’.
+これは、ハンクで‘RET’と入力して、それぞれの位置にあるそれぞれのファイル
+にアクセスしたときに発生する可能性があります。この問題の1つの解決策は、
+‘global-reveal-mode’を使用することです。ポイント周辺のテキストが常に表示
+されるようにします。それがあなたの好みに対してあまりにも刺激的である場合
+は、代わりに‘magit-diff-visit-file-hook’を使用してテキストを表示すること
+ができます。おそらく、‘reveal-post-command’を使用するか、Orgバッファ
+‘org-reveal’を使用します。
 
 
 File: magit.ja.info,  Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません,  Next: 私はポップアップのデフォルトを保存できなくなりました,  Prev: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています,  Up: FAQ - Issues and Errors
@@ -10145,16 +10149,15 @@ File: magit.ja.info,  Node: MS-WindowsからEmacsのTrampモードを使用す�
 A.2.13 MS-WindowsからEmacsのTrampモードを使用するとステージできません
 ---------------------------------------------------------------------
 
-Magit may be unable to stage (or otherwise apply) individual hunks when
-you are connected to remote machine using Tramp and the local machine
-uses MS Windows.
+Trampを使用してリモートマシンに接続し、ローカルマシンがMS Windowsを使用
+している場合、Magitは個々のハンクをステージ(または適用)できない場合があ
+ります。
 
-There appears to be a problem with ‘process-send-eof’ in this scenario,
-as mentioned at the end of ‘tramp-tests.el’.  I have contacted the Tramp
-maintainer about this.  For now this unfortunately means that it just
-doesn’t work and we cannot do anything about it.  If you have more
-information, then please comment on
-<https://github.com/magit/magit/issues/3624>.
+‘tramp-tests.el’の最後で説明したように、このシナリオでは
+‘process-send-eof’に問題があるようです。これについてTrampのメンテナに連
+絡しました。 今のところ、これは残念ながらそれが機能せず、私たちがそれに
+ついて何もできないことを意味します。詳細については、
+<https://github.com/magit/magit/issues/3624>にコメントしてください。
 
 
 File: magit.ja.info,  Node: 私はポップアップのデフォルトを保存できなくなりました,  Prev: MS-WindowsからEmacsのTrampモードを使用するとステージできません,  Up: FAQ - Issues and Errors
@@ -10162,19 +10165,20 @@ File: magit.ja.info,  Node: 私はポップアップのデフォルトを保存�
 A.2.14 私はポップアップのデフォルトを保存できなくなりました
 -----------------------------------------------------------
 
-Magit used to use Magit-Popup to implement the transient popup menus.
-Now it used Transient instead, which is Magit-Popup’s successor.
+Magitは、トランジェントポップアップメニューを実装するためにMagit-Popupを
+使用していました。現在は、代わりにTransientを使用しています。これは
+Magit-Popupの後継です。
 
-In the older Magit-Popup menus, it was possible to save user settings
-(e.g.  setting the gpg signing key for commits) by using ‘C-c C-c’ in
-the popup buffer.  This would dismiss the popup, but save the settings
-as the defaults for future popups.
+以前のMagit-Popupメニューでは、ポップアップバッファで‘C-c C-c’を使用して
+、ユーザー設定を保存することができました(たとえば、コミット用のgpg署名キ
+ーの設定)。これによりポップアップは閉じられますが、今後のポップアップの
+デフォルトとして設定が保存されるのです。
 
-When switching to Transient menus, this functionality is now available
-via ‘C-x C-s’ instead; the ‘C-x’ prefix has other options as well when
-using Transient, which will be displayed when it is typed.  See
-<https://magit.vc/manual/transient/Saving-Values.html#Saving-Values> for
-more details.
+トランジェントメニューに切り替えると、この機能は代わりに‘C-x C-s’を介し
+て利用できるようになりました。‘C-x’プレフィックスには、Transientを使用す
+る場合にも他のオプションがあり、入力すると表示されます。詳細については
+<https://magit.vc/manual/transient/Saving-Values.html#Saving-Values>を参
+照してください。
 
 
 File: magit.ja.info,  Node: Debugging Tools,  Next: Keystroke Index,  Prev: FAQ,  Up: Top
@@ -10368,7 +10372,7 @@ Appendix C Keystroke Index
 * C-c M-g B:                             Blaming.             (line  18)
 * C-c M-g b:                             Blaming.             (line  31)
 * C-c M-g B <1>:                         Commands for Buffers Visiting Files.
-                                                              (line  99)
+                                                              (line 101)
 * C-c M-g B b:                           Blaming.             (line  32)
 * C-c M-g B e:                           Blaming.             (line  68)
 * C-c M-g B f:                           Blaming.             (line  58)
@@ -10381,19 +10385,19 @@ Appendix C Keystroke Index
                                                               (line  62)
 * C-c M-g e:                             Blaming.             (line  67)
 * C-c M-g e <1>:                         Commands for Buffers Visiting Files.
-                                                              (line 112)
+                                                              (line 115)
 * C-c M-g f:                             Blaming.             (line  57)
 * C-c M-g L:                             Commands for Buffers Visiting Files.
-                                                              (line  72)
+                                                              (line  73)
 * C-c M-g l:                             Commands for Buffers Visiting Files.
-                                                              (line  83)
+                                                              (line  85)
 * C-c M-g p:                             Commands for Buffers Visiting Files.
-                                                              (line 122)
+                                                              (line 125)
 * C-c M-g r:                             Blaming.             (line  47)
 * C-c M-g s:                             Commands for Buffers Visiting Files.
                                                               (line  33)
 * C-c M-g t:                             Commands for Buffers Visiting Files.
-                                                              (line  90)
+                                                              (line  92)
 * C-c M-g u:                             Commands for Buffers Visiting Files.
                                                               (line  38)
 * C-c M-i:                               Commit Pseudo Headers.
@@ -10804,7 +10808,7 @@ Appendix D Command Index
 * magit-blame:                           Blaming.             (line  18)
 * magit-blame <1>:                       Blaming.             (line 105)
 * magit-blame <2>:                       Commands for Buffers Visiting Files.
-                                                              (line  99)
+                                                              (line 101)
 * magit-blame-addition:                  Blaming.             (line  31)
 * magit-blame-addition <1>:              Blaming.             (line  32)
 * magit-blame-copy-hash:                 Blaming.             (line 130)
@@ -10823,7 +10827,7 @@ Appendix D Command Index
 * magit-blob-next:                       Minor Mode for Buffers Visiting Blobs.
                                                               (line  16)
 * magit-blob-previous:                   Commands for Buffers Visiting Files.
-                                                              (line 122)
+                                                              (line 125)
 * magit-blob-previous <1>:               Minor Mode for Buffers Visiting Blobs.
                                                               (line  12)
 * magit-branch:                          Branch Commands.     (line  13)
@@ -10941,7 +10945,7 @@ Appendix D Command Index
 * magit-ediff-show-working-tree:         Ediffing.            (line  68)
 * magit-ediff-stage:                     Ediffing.            (line  52)
 * magit-edit-line-commit:                Commands for Buffers Visiting Files.
-                                                              (line 112)
+                                                              (line 115)
 * magit-emacs-Q-command:                 Debugging Tools.     (line  16)
 * magit-fetch:                           Fetching.            (line   9)
 * magit-fetch-all:                       Fetching.            (line  55)
@@ -10954,15 +10958,15 @@ Appendix D Command Index
 * magit-fetch-refspec:                   Fetching.            (line  50)
 * magit-file-checkout:                   Resetting.           (line  51)
 * magit-file-checkout <1>:               Commands for Buffers Visiting Files.
-                                                              (line 142)
+                                                              (line 145)
 * magit-file-delete:                     Commands for Buffers Visiting Files.
-                                                              (line 133)
+                                                              (line 136)
 * magit-file-dispatch:                   Commands for Buffers Visiting Files.
                                                               (line  23)
 * magit-file-rename:                     Commands for Buffers Visiting Files.
-                                                              (line 129)
+                                                              (line 132)
 * magit-file-untrack:                    Commands for Buffers Visiting Files.
-                                                              (line 137)
+                                                              (line 140)
 * magit-find-file:                       General-Purpose Visit Commands.
                                                               (line  10)
 * magit-find-file-other-frame:           General-Purpose Visit Commands.
@@ -10986,12 +10990,12 @@ Appendix D Command Index
                                                               (line  55)
 * magit-log:                             Logging.             (line  27)
 * magit-log <1>:                         Commands for Buffers Visiting Files.
-                                                              (line  72)
+                                                              (line  73)
 * magit-log-all:                         Logging.             (line  61)
 * magit-log-all-branches:                Logging.             (line  56)
 * magit-log-branches:                    Logging.             (line  52)
 * magit-log-buffer-file:                 Commands for Buffers Visiting Files.
-                                                              (line  83)
+                                                              (line  85)
 * magit-log-bury-buffer:                 Log Buffer.          (line  16)
 * magit-log-current:                     Logging.             (line  35)
 * magit-log-double-commit-limit:         Log Buffer.          (line  73)
@@ -11009,7 +11013,7 @@ Appendix D Command Index
 * magit-log-set-default-arguments:       Refreshing Logs.     (line  24)
 * magit-log-toggle-commit-limit:         Log Buffer.          (line  67)
 * magit-log-trace-definition:            Commands for Buffers Visiting Files.
-                                                              (line  90)
+                                                              (line  92)
 * magit-margin-settings:                 Log Margin.          (line  54)
 * magit-merge:                           Merging.             (line   9)
 * magit-merge <1>:                       Merging.             (line  87)
@@ -11309,13 +11313,13 @@ Appendix E Function Index
 * magit-display-buffer-traditional:      バッファの切り替え.  (line  45)
 * magit-display-repository-buffer:       Common Commands.     (line   9)
 * magit-file-checkout:                   Commands for Buffers Visiting Files.
-                                                              (line 142)
+                                                              (line 145)
 * magit-file-delete:                     Commands for Buffers Visiting Files.
-                                                              (line 133)
+                                                              (line 136)
 * magit-file-rename:                     Commands for Buffers Visiting Files.
-                                                              (line 129)
+                                                              (line 132)
 * magit-file-untrack:                    Commands for Buffers Visiting Files.
-                                                              (line 137)
+                                                              (line 140)
 * magit-find-file:                       General-Purpose Visit Commands.
                                                               (line  10)
 * magit-find-file-other-frame:           General-Purpose Visit Commands.
@@ -11615,7 +11619,7 @@ Appendix F Variable Index
                                                               (line   6)
 * magit-log-auto-more:                   Log Buffer.          (line  81)
 * magit-log-buffer-file-locked:          Commands for Buffers Visiting Files.
-                                                              (line  94)
+                                                              (line  96)
 * magit-log-margin:                      Log Margin.          (line  12)
 * magit-log-margin-show-committer-date:  Log Margin.          (line  46)
 * magit-log-section-commit-count:        Status Sections.     (line 140)
@@ -11834,60 +11838,60 @@ Node: Wip Modes414945
 Node: Wip Graph421617
 Node: Legacy Wip Modes424496
 Node: Commands for Buffers Visiting Files428102
-Node: Minor Mode for Buffers Visiting Blobs434888
-Node: Customizing435702
-Node: Per-Repository Configuration437652
-Node: 基本設定440160
-Node: Safety440544
-Node: Performance442922
-Ref: Log Performance447153
-Ref: Diff Performance448912
-Ref: Refs Buffer Performance450609
-Ref: Committing Performance451383
-Node: Microsoft Windows Performance452527
-Node: MacOS Performance454030
-Ref: MacOS Performance-Footnote-1454903
-Node: Default Bindings455042
-Node: 配管コマンド(Plumbing)457983
-Node: Calling Git459037
-Node: Getting a Value from Git460575
-Node: Calling Git for Effect464316
-Node: Section Plumbing470213
-Node: Creating Sections470464
-Node: Section Selection474367
-Node: Matching Sections476169
-Node: Refreshing Buffers482142
-Node: 慣習485305
-Node: Theming Faces485514
-Node: FAQ493585
-Node: FAQ - How to ...?494110
-Node: Magitの発音は？494570
-Node: How to show git's output?495523
-Node: How to install the gitman info manual?496551
-Node: How to show diffs for gpg-encrypted files?497832
-Node: How does branching and pushing work?498535
-Node: Magitをediff-version-control-packageとして使用できますか？498942
-Node: VC@を無効にする必要がありますか？501528
-Node: FAQ - Issues and Errors502426
-Node: Magit is slow503790
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました504030
-Node: コミットに問題があります505062
-Node: MS WindowsではMagitでpushできません505623
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません506324
-Node: ファイルを展開して差分を表示するとファイルが消えます507526
-Node: COMMIT_EDITMSGバッファのpointが間違っています508314
-Node: モード行の情報が常に最新ではない509689
-Node: 同じ名前を共有するブランチとタグは何かを壊します510861
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません512015
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません513153
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています515922
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません516949
-Node: 私はポップアップのデフォルトを保存できなくなりました518008
-Node: Debugging Tools519078
-Node: Keystroke Index521898
-Node: Command Index556567
-Node: Function Index594767
-Node: Variable Index611856
+Node: Minor Mode for Buffers Visiting Blobs436023
+Node: Customizing436870
+Node: Per-Repository Configuration438820
+Node: 基本設定441328
+Node: Safety441712
+Node: Performance444090
+Ref: Log Performance448321
+Ref: Diff Performance450080
+Ref: Refs Buffer Performance451777
+Ref: Committing Performance452551
+Node: Microsoft Windows Performance453695
+Node: MacOS Performance455198
+Ref: MacOS Performance-Footnote-1456071
+Node: Default Bindings456210
+Node: 配管コマンド(Plumbing)459151
+Node: Calling Git460205
+Node: Getting a Value from Git461743
+Node: Calling Git for Effect465843
+Node: Section Plumbing471740
+Node: Creating Sections471991
+Node: Section Selection475894
+Node: Matching Sections477696
+Node: Refreshing Buffers483669
+Node: 慣習486832
+Node: Theming Faces487041
+Node: FAQ495112
+Node: FAQ - How to ...?495637
+Node: Magitの発音は？496097
+Node: How to show git's output?497050
+Node: How to install the gitman info manual?498078
+Node: How to show diffs for gpg-encrypted files?499359
+Node: How does branching and pushing work?500062
+Node: Magitをediff-version-control-packageとして使用できますか？500469
+Node: VC@を無効にする必要がありますか？503055
+Node: FAQ - Issues and Errors503953
+Node: Magit is slow505317
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました505557
+Node: コミットに問題があります506589
+Node: MS WindowsではMagitでpushできません507150
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません507851
+Node: ファイルを展開して差分を表示するとファイルが消えます509053
+Node: COMMIT_EDITMSGバッファのpointが間違っています509841
+Node: モード行の情報が常に最新ではない511216
+Node: 同じ名前を共有するブランチとタグは何かを壊します512388
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません513542
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません514680
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています517449
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません518710
+Node: 私はポップアップのデフォルトを保存できなくなりました519901
+Node: Debugging Tools521308
+Node: Keystroke Index524128
+Node: Command Index558797
+Node: Function Index596997
+Node: Variable Index614086
 
 End Tag Table
 
