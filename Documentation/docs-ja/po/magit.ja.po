@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
 "POT-Creation-Date: 2021-08-20 03:37+0900\n"
-"PO-Revision-Date: 2021-09-12 23:58+0900\n"
+"PO-Revision-Date: 2021-09-13 20:58+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -1038,7 +1038,7 @@ msgstr "MS WindowsではMagitでpushできません::"
 msgid ""
 "I am using OS X and SOMETHING works in shell, but not in Magit: I am using "
 "OS X and SOMETHING works in shell but not in Magit"
-msgstr "I am using OS X and SOMETHING works in shell, but not in Magit: I am using OS X and SOMETHING works in shell but not in Magit"
+msgstr "私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません"
 
 #. type: menuentry
 #: sed-out/magit.texi:350 sed-out/magit.texi:11448
@@ -20835,7 +20835,7 @@ msgstr ""
 msgid ""
 "The next two sections list and discuss several variables that many users "
 "might want to customize, for safety and/or performance reasons."
-msgstr ""
+msgstr "次の2つの節は、安全性やパフォーマンス上の理由から、多くのユーザーがカスタマイズする可能性のあるいくつかの変数について説明します。"
 
 #. type: subsection
 #: sed-out/magit.texi:10178 sed-out/magit.texi:10179
@@ -20848,7 +20848,7 @@ msgstr "Safety"
 msgid ""
 "This section discusses various variables that you might want to change (or "
 "@strong{not} change) for safety reasons."
-msgstr ""
+msgstr "この節では、安全上の理由から変更する(または変更しない)可能性のあるさまざまな変数について説明します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10192
@@ -20861,7 +20861,7 @@ msgid ""
 "process.  For that reason Magit provides three global modes that save "
 "@strong{tracked} files to work-in-progress references after or before "
 "certain actions.  See @ref{Wip Modes}."
-msgstr ""
+msgstr "Gitは、ユーザーが誤って削除した変更を復元するのに十分な時間、コミットした変更を保持します。作業ツリーのコミットされていない変更に対しては同じことを行わず、インデックス(ステージ領域)に対しても同じことを行いません。Magitを使用すると、コミットされていない変更を簡単に変更できるため、その過程で自分の足を簡単に撃つことができます。そのため、Magitは、特定のアクションの前後に追跡されているファイルを進行中のreferenceに保存する3つのグローバルモードを提供します。こちらを参照下さい(@ref{Wip Modes})。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10198
@@ -20883,7 +20883,7 @@ msgid ""
 "the system trash is used, which is the case by default.  Nevertheless, "
 "@code{trash} isn't a member of @code{magit-no-confirm} - you might want to "
 "change that."
-msgstr ""
+msgstr "同様に、ファイルをシステムのゴミ箱に移動する前に確認を要求する必要はありません。誤ってファイルをゴミ箱に移動した場合は、そこから回復できます。オプション@code{magit-delete-by-moving-to-trash}は、システムのゴミ箱を使用するかどうかを制御します。これはデフォルトの場合です。 それでも、@code{trash}は@code{magit-no-confirm}のメンバーではありません。あなたはこれを変更することをお勧めします。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10209
@@ -21078,7 +21078,7 @@ msgid ""
 "@code{magit-diff-highlight-indentation}, "
 "@code{magit-diff-highlight-trailing}, @code{magit-diff-paint-whitespace}, "
 "@code{magit-diff-highlight-hunk-body}, and @code{magit-diff-refine-hunk}."
-msgstr ""
+msgstr "diffが遅い場合は、次の変数のすべてまたは一部を@code{nil}に設定して、オプションのdiff機能をオフにすることを検討してください: @code{magit-diff-highlight-indentation}、@code{magit-diff-highlight-trailing}、@code{magit-diff-paint-whitespace}、@code{magit-diff-highlight-hunk-body}、@code{magit-diff-refine-hunk}."
 
 #. type: Plain text
 #: sed-out/magit.texi:10321
@@ -21089,7 +21089,7 @@ msgid ""
 "@code{magit-revision-mode} takes considerably more time than looking at the "
 "same commit in @code{magit-diff-mode}, then consider setting "
 "@code{magit-revision-insert-related-refs} to @code{nil}."
-msgstr ""
+msgstr "任意のdiffの代わりにコミットを表示すると、いくつかの追加情報が表示されます。この情報の計算は、特定の状況を考えると非常にコストがかかる可能性があります。@code{magit-revision-mode}を使用してコミットを確認する方が、@code{magit-diff-mode}で同じコミットを確認するよりもかなり時間がかかる場合は、@code{magit-revision-insert-related-refs}を@code{nil}に設定することを検討してください。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10329
@@ -21103,13 +21103,13 @@ msgid ""
 "save that setting, see @ref{Saving Values,,,transient,}.  You should do this "
 "in both the diff (@code{d}) and the diff refresh (@code{D}) transient "
 "popups."
-msgstr ""
+msgstr "あなたが削除されたファイルを含むdiffに頻繁に直面する場合は、@code{--irreversible-delete}引数を有効にすることをお勧めします。これを行うと、diffはファイルが削除されたことを示しはしますが、ファイルの完全に削除された内容の表示は行いません。この引数はデフォルトでは使用できません。こちらを参照下さい(@ref{Enabling and Disabling Suffixes,,,transient,}。それが完了したら、それを有効にしてその設定を保存する必要があります。こちらを参照下さい(@ref{Saving Values,,,transient,}。これは、diff(@code{d})とdiff refresh(@code{D})の両方のトランジェントポップアップで行う必要があります。"
 
 #. type: subsubheading
 #: sed-out/magit.texi:10331
 #, no-wrap
 msgid "Refs Buffer Performance"
-msgstr ""
+msgstr "Refs Buffer Performance"
 
 #. type: Plain text
 #: sed-out/magit.texi:10336
@@ -21117,14 +21117,14 @@ msgid ""
 "When refreshing the \"references buffer\" is slow, then that's usually "
 "because several hundred refs are being displayed.  The best way to address "
 "that is to display fewer refs, obviously."
-msgstr ""
+msgstr "\"references buffer\"の更新が遅い場合、それは通常、数百のrefsが表示されているためです。これに対処する最善の方法は、明らかに、表示するref数を減らすことです。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10339
 msgid ""
 "If you are not, or only mildly, interested in seeing the list of tags, then "
 "start by not displaying them:"
-msgstr ""
+msgstr "あなたがタグのリストを表示することに興味がない、または興味がほとんど無い場合は、タグを表示しないことから始めます。"
 
 #. type: lisp
 #: sed-out/magit.texi:10342
@@ -21138,13 +21138,13 @@ msgid ""
 "Then you should also make sure that the listed remote branches actually all "
 "exist.  You can do so by pruning branches which no longer exist using "
 "@code{f-pa}."
-msgstr ""
+msgstr "それから、あなたはリストされているリモートブランチが実際にすべて存在することも確認する必要があります。これを行うには、@code{f-pa}を使用して存在しなくなったブランチをpruningします。"
 
 #. type: subsubheading
 #: sed-out/magit.texi:10349
 #, no-wrap
 msgid "Committing Performance"
-msgstr ""
+msgstr "Committing Performance"
 
 #. type: Plain text
 #: sed-out/magit.texi:10357
@@ -21154,7 +21154,7 @@ msgid ""
 "long time, which is especially distracting when you are committing large "
 "amounts of generated data which you don't actually intend to inspect before "
 "committing.  This behavior can be turned off using:"
-msgstr ""
+msgstr "あなたがコミットを開始すると、Magitはデフォルトで、コミットしようとしている変更のdiffを自動的に表示します。大規模なコミットの場合、これには長い時間がかかる可能性があります。これは、コミットする前に実際に検査する予定のない大量の生成データをコミットする場合に特に気が散ります。この動作は、以下を使用してオフにできます:"
 
 #. type: lisp
 #: sed-out/magit.texi:10360
@@ -21171,13 +21171,13 @@ msgid ""
 "If you do that, then you will end up with a broken diff buffer, but doing it "
 "this way has the advantage that you usually get to see the diff, which is "
 "useful because it increases the odds that you spot potential issues."
-msgstr ""
+msgstr "それからあなたは、@code{C-c C-d}と入力して、実際に見たいときに差分を表示できますが、それはそのときだけです。または、フックをそのままにして、diffの生成に時間がかかりすぎる場合は、@code{C-g}と入力することもできます。これを行うと、diffバッファが壊れてしまいますが、この方法で行うと、通常はdiffを確認できるという利点があります。これは、潜在的な問題を見つける可能性が高くなるため便利です。"
 
 #. type: unnumberedsubsubsec
 #: sed-out/magit.texi:10370 sed-out/magit.texi:10371
 #, no-wrap
 msgid "Microsoft Windows Performance"
-msgstr ""
+msgstr "Microsoft Windows Performance"
 
 #. type: Plain text
 #: sed-out/magit.texi:10378
@@ -21187,7 +21187,7 @@ msgid ""
 "system is exceptionally slow at starting processes.  Sadly this is an issue "
 "that can only be fixed by Microsoft itself, and they don't appear to be "
 "particularly interested in doing so."
-msgstr ""
+msgstr "ステータスバッファを更新するには、@code{git}を数十回実行する必要があります。これはMicrosoftWindowsでは問題があります。なぜならそのオペレーティングシステムはプロセスの開始が非常に遅いためです。残念ながら、これはMicrosoft自身によってのみ修正できる問題であり、彼らはそうすることに特に関心を持っていないようです。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10385
@@ -21197,14 +21197,14 @@ msgid ""
 "\"Git for Windows\" try to improve performance on Windows.  Always use the "
 "latest release in order to benefit from the latest performance tweaks.  "
 "Magit too tries to work around some Windows-specific issues."
-msgstr ""
+msgstr "サブプロセスの問題の他に、Windows固有のパフォーマンスの問題もあります。これらのいくつかには回避策があります。\"Git for Windows\"のメンテナは、Windowsのパフォーマンスを向上させようとしています。最新のパフォーマンス調整を利用するには、常に最新のリリースを使用してください。 Magitも、Windows固有の問題を回避しようとします。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10388
 msgid ""
 "According to some sources, setting the following Git variables can also "
 "help."
-msgstr ""
+msgstr "一部の情報源によると、以下のGit変数を設定することも役立ちます。"
 
 #. type: example
 #: sed-out/magit.texi:10393
@@ -21223,7 +21223,7 @@ msgstr ""
 msgid ""
 "You should also check whether an anti-virus program is affecting "
 "performance."
-msgstr ""
+msgstr "また、あなたはアンチウイルスプログラムがパフォーマンスに影響を与えているかどうかを確認すべきです。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10406
@@ -21232,7 +21232,7 @@ msgid ""
 "That needlessly copied GUI resources, which is expensive.  The result was "
 "that forking took about 30 times as long on Darwin than on Linux, and "
 "because Magit starts many @code{git} processes that made quite a difference."
-msgstr ""
+msgstr "Emacs 26.1より前は、macOS@@では@code{fork}を使用して子プロセスが作成されていました。それは不必要にGUIリソースをコピーしましたが、これは高コストです。その結果、DarwinではLinuxよりもフォークに約30倍の時間がかかり、Magitは多くの@code{git}プロセスを開始するため、かなりの違いが生じました。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10411
@@ -21242,7 +21242,7 @@ msgid ""
 "takes about twice as long on Darwin compared to Linux.)  See "
 "@footnote{@uref{https://lists.gnu.org/archive/html/bug-gnu-emacs/2017-04/msg00201.html}} "
 "for more information."
-msgstr ""
+msgstr "したがって、あなたは少なくともEmacs 26.1を使用していることを確認してください。その場合、より高速な@code{vfork}が使用されます。(子プロセスの作成には、Linuxと比較してDarwinではまだ約2倍の時間がかかります。) @footnote{詳細についてはこちらを参照してください @uref{https://lists.gnu.org/archive/html/bug-gnu-emacs/2017-04/msg00201.html}}"
 
 #. type: defopt
 #: sed-out/magit.texi:10415
@@ -21256,14 +21256,14 @@ msgid ""
 "This option controls whether some Magit commands are automatically bound in "
 "the global keymap even before Magit is used for the first time in the "
 "current session."
-msgstr ""
+msgstr "このオプションは、Magitが現在のセッションで初めて使用される前であっても、一部のMagitコマンドがグローバルキーマップに自動的にバインドされるかどうかを制御します。"
 
 #. type: defopt
 #: sed-out/magit.texi:10423
 msgid ""
 "If this variable is non-nil, which it is by default, then the following "
 "bindings may be added to the global keymap."
-msgstr ""
+msgstr "この変数がデフォルト以外である、nilでない場合、以下のバインディングがグローバルキーマップに追加される可能性があります。"
 
 #. type: multitable
 #: sed-out/magit.texi:10427
@@ -21294,7 +21294,7 @@ msgid ""
 "same command and no other command is bound to the same key.  In other words "
 "we try to avoid adding bindings that are unnecessary, as well as bindings "
 "that conflict with other bindings."
-msgstr ""
+msgstr "これらのバインディングは、@code{after-init-hook}の実行時に追加される場合があります。各バインディングは、その時点で他のキーが同じコマンドにバインドされておらず、他のコマンドが同じキーにバインドされていない場合にのみ追加されます。つまり、不要なバインディングや、他のバインディングと競合するバインディングの追加は避けようとしています。"
 
 #. type: defopt
 #: sed-out/magit.texi:10446
@@ -21304,7 +21304,7 @@ msgid ""
 "having to make sure to do so before @code{magit} is loaded or autoloaded) "
 "and to increase the likelihood that all the potentially conflicting user "
 "bindings have already been added."
-msgstr ""
+msgstr "上記のバインディングの追加は、@code{after-init-hook}が呼び出されて、ユーザーがinitファイルの任意の場所に変数を設定できるようになるまで遅延されます(@code{magit}がロードまたは自動ロードされる前に必ず設定する必要はありません)。競合する可能性のあるすべてのユーザーバインディングがすでに追加されている可能性を高めるためです。"
 
 #. type: defopt
 #: sed-out/magit.texi:10452
@@ -21314,14 +21314,14 @@ msgid ""
 "cause Magit to be loaded immediately when that form is evaluated (this "
 "differs from @code{custom-set-variables}, which doesn't load the libraries "
 "that define the customized variables)."
-msgstr ""
+msgstr "この変数を設定するには、@code{setq}またはカスタムインターフェイスのいずれかを使用します。関数@code{customize-set-variable}を使用しないでください。使用すると、フォームが評価されるとすぐにMagitが読み込まれます(これは、カスタマイズされた変数を定義するライブラリを読み込まない@code{custom-set-variables}とは異なります)。"
 
 #. type: defopt
 #: sed-out/magit.texi:10455
 msgid ""
 "Setting this variable to nil has no effect if that is done after the key "
 "bindings have already been added."
-msgstr ""
+msgstr "この変数をnilに設定しても、キーバインディングがすでに追加された後に設定しては効果はありません。"
 
 #. type: defopt
 #: sed-out/magit.texi:10460
@@ -21330,21 +21330,21 @@ msgid ""
 "@code{magit-file-dispatch}.  The former is a much better binding but the "
 "@code{C-c <letter>} namespace is strictly reserved for users; preventing "
 "Magit from using it by default."
-msgstr ""
+msgstr "@code{C-c M-g}ではなく@code{C-c g}を@code{magit-file-dispatch}にバインドすることをお勧めします。前者の方がはるかに優れたバインディングですが、@code{C-c <letter>}名前空間はユーザー専用に厳密に予約されています。Magitがデフォルトでそれを使用するのを妨げます。"
 
 #. type: defopt
 #: sed-out/magit.texi:10466
 msgid ""
 "Also see @ref{Commands for Buffers Visiting Files} and @ref{Key Binding "
 "Conventions,,,elisp,}."
-msgstr ""
+msgstr "こちらも参照下さい(@ref{Commands for Buffers Visiting Files})と(@ref{Key Binding Conventions,,,elisp,})"
 
 #. type: Plain text
 #: sed-out/magit.texi:10473
 msgid ""
 "The following sections describe how to use several of Magit's core "
 "abstractions to extend Magit itself or implement a separate extension."
-msgstr "以下の節では、Magitのコア抽象化のいくつかを使用して、Magit自体を拡張する方法、または個別の拡張を実装する方法について説明します。"
+msgstr "以下の節では、Magitのコア部分の抽象化のいくつかを使用して、Magit自体を拡張する方法、または個別の拡張を実装する方法について説明します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10478
@@ -22840,7 +22840,7 @@ msgid ""
 "Git supports showing diffs for encrypted files, but has to be told to do "
 "so.  Since Magit just uses Git to get the diffs, configuring Git also "
 "affects the diffs displayed inside Magit."
-msgstr ""
+msgstr "Gitは暗号化されたファイルのdiffの表示をサポートしていますが、そうするように指示する必要があります。MagitはGitを使用してdiffを取得するだけなので、Gitを設定すると、Magit内に表示されるdiffにも影響します。"
 
 #. type: example
 #: sed-out/magit.texi:11376
@@ -22856,14 +22856,14 @@ msgstr ""
 #: sed-out/magit.texi:11378 sed-out/magit.texi:11379
 #, no-wrap
 msgid "How does branching and pushing work?"
-msgstr ""
+msgstr "How does branching and pushing work?"
 
 #. type: Plain text
 #: sed-out/magit.texi:11382
 msgid ""
 "Please see @ref{Branching} and "
 "@uref{http://emacsair.me/2016/01/18/magit-2.4}"
-msgstr ""
+msgstr "こちらをご覧ください(@ref{Branching})と(@uref{http://emacsair.me/2016/01/18/magit-2.4})"
 
 #. type: appendixsubsec
 #: sed-out/magit.texi:11383 sed-out/magit.texi:11384
@@ -22879,7 +22879,7 @@ msgid ""
 "are not.  These two functions are only used by the three commands "
 "@code{ediff-revision}, @code{ediff-merge-revisions-with-ancestor}, and "
 "@code{ediff-merge-revisions}."
-msgstr ""
+msgstr "いいえ、不可能です。そのためには、関数@code{ediff-magit-internal}と@code{ediff-magit-merge-internal}を実装する必要がありますが、実装されていません。これらの2つの関数は、@code{ediff-revision}と@code{ediff-merge-revisions-with-ancestor}と@code{ediff-merge-revisions}の3つのコマンドでのみ使用されます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11400
@@ -22891,7 +22891,7 @@ msgid ""
 "package/system - meaning that the user has to enter the revisions "
 "explicitly.  Instead of implementing @code{ediff-magit-internal} we provide "
 "@code{magit-ediff-compare}, which handles both tasks like it is 2005."
-msgstr ""
+msgstr "これらのコマンドは、「内部」関数に特定のリビジョンをバッファに設定するタスクのみを委任します。どのリビジョンを比較/マージするかを決定するという同様に重要なタスクは委任されません。代わりに、これはバージョン管理パッケージ/システムからのサポートなしで行われます。つまり、ユーザーはリビジョンを明示的に入力する必要があります。@code{ediff-magit-internal}を実装する代わりに、@code{magit-ediff-compare}を提供します。これは、2005のように両方のタスクを処理します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11415
@@ -22909,7 +22909,7 @@ msgid ""
 "actually have to implement @code{ediff-magit-merge-internal}.  Instead we "
 "provide the more useful command @code{magit-ediff-resolve} which only shows "
 "yet-to-be resolved conflicts."
-msgstr ""
+msgstr "他のコマンド@code{ediff-merge-revisions}と@code{ediff-merge-revisions-with-ancestor}は通常、Gitのような最新のバージョン管理システムを使用するときに必要なものではありません。Gitが単独で解決できなかった競合のみをユーザーに解決させるのではなく、Gitによって行われたすべての作業を破棄し、ユーザーがすでに解決されたものを含むすべての競合を手動でマージすることを期待します。これは、バージョン管理システムを統合できなかった(またはそう言われた)時代には意味がありましたが、現在はそうではありません。めったにないことですが、実際にはすべての競合を確認したい場合があります。その場合、これらのコマンドを使用でき、次に@code{ediff-vc-merge-internal}を使用します。したがって、実際に@code{ediff-magit-merge-internal}を実装する必要はありません。代わりに、まだ解決されていない競合のみを表示する、より便利なコマンド@code{magit-ediff-resolve}を提供します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11422
@@ -22917,7 +22917,7 @@ msgid ""
 "If you don't use VC (the built-in version control interface) then you might "
 "be tempted to disable it, not least because we used to recommend that you do "
 "that."
-msgstr ""
+msgstr "あなたはVC(組み込みのバージョン管理インターフェイス)を使用しない場合、あなたは特に、VCを使用することを推奨していたため、無効にしたくなるかもしれません。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11426
@@ -22925,14 +22925,14 @@ msgid ""
 "We no longer recommend that you disable VC@.  Doing so would break useful "
 "third-party packages (such as @code{diff-hl}), which depend on VC being "
 "enabled."
-msgstr ""
+msgstr "我々は、あなたがVC@@を無効にすることはお勧めしません。これを行うと、有効になっているVCに依存する便利なサードパーティパッケージ(@code{diff-hl}など)が破損します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11429
 msgid ""
 "If you choose to disable VC anyway, then you can do so by changing the value "
 "of @code{vc-handled-backends}."
-msgstr ""
+msgstr "あなたがとにかくVCを無効にすることを選択した場合は、@code{vc-handled-backends}の値を変更することで無効にできます。"
 
 #. type: appendixsubsec
 #: sed-out/magit.texi:11450 sed-out/magit.texi:11451
@@ -22958,14 +22958,14 @@ msgid ""
 "sure would be nice if it did, and v2.5 will hopefully be a big step into "
 "that direction.  But it might take until v3.1 to accomplish fully "
 "satisfactory performance, because that requires some heavy refactoring."
-msgstr ""
+msgstr "Magitは現在、このような条件下で機能することは期待されていません。もしそうならそれは確かに素晴らしいことであり、v2.5がその方向への大きな一歩になることを願っています。ただし、完全に満足のいくパフォーマンスを達成するには、v3.1までかかるかもしれません。これには、かなりのリファクタリングが必要になるためです。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11465
 msgid ""
 "But for now we recommend you use the command line to complete this one "
 "commit.  Also see @ref{Performance}."
-msgstr ""
+msgstr "ただし、今のところは、コマンドラインを使用してこのコミットを完了することをお勧めします。こちらも参照して下さい(@ref{Performance})。"
 
 #. type: appendixsubsec
 #: sed-out/magit.texi:11466 sed-out/magit.texi:11467
@@ -23006,13 +23006,13 @@ msgstr "詳細なセットアップ手順は、@uref{https://github.com/magit/ma
 #: sed-out/magit.texi:11483
 #, no-wrap
 msgid "I am using OS X and SOMETHING works in shell but not in Magit"
-msgstr ""
+msgstr "私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません"
 
 #. type: appendixsubsec
 #: sed-out/magit.texi:11484
 #, no-wrap
 msgid "I am using OS X and SOMETHING works in shell, but not in Magit"
-msgstr ""
+msgstr "私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません"
 
 #. type: Plain text
 #: sed-out/magit.texi:11491
@@ -23022,14 +23022,14 @@ msgid ""
 "@uref{https://github.com/purcell/exec-path-from-shell}.  By default it "
 "synchronizes @code{$PATH}, which helps Magit find the same @code{git} as the "
 "one you are using on the shell."
-msgstr ""
+msgstr "これは通常、Emacsがシェルと同じ環境変数を持っていないために発生します。@uref{https://github.com/purcell/exec-path-from-shell}をインストールして設定してみてください。デフォルトでは、@code{$PATH}を同期します。これにより、Magitはシェルで使用しているものと同じ@code{git}を見つけることができます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11494
 msgid ""
 "If SOMETHING is \"passphrase caching with gpg-agent for commit and/or tag "
 "signing\", then you'll also need to synchronize @code{$GPG_AGENT_INFO}."
-msgstr ""
+msgstr "SOMETHINGが「コミットおよび/またはタグ署名のためのgpg-agentを使用したパスフレーズキャッシング」(\"passphrase caching with gpg-agent for commit and/or tag signing\")である場合、あなたは@code{$GPG_AGENT_INFO}も同期する必要があります。"
 
 #. type: appendixsubsec
 #: sed-out/magit.texi:11495 sed-out/magit.texi:11496
@@ -23043,7 +23043,7 @@ msgid ""
 "This is probably caused by a change of a @code{diff.*} Git variable.  You "
 "probably set that variable for a reason, and should therefore only undo that "
 "setting in Magit by customizing @code{magit-git-global-arguments}."
-msgstr ""
+msgstr "これはおそらく、@code{diff.*} Git変数の変更が原因です。あなたはおそらくその変数を何らかの理由で設定しているので、@code{magit-git-global-arguments}をカスタマイズすることによってのみ、Magitでその設定を元に戻す(undo)必要があります。"
 
 #. type: appendixsubsec
 #: sed-out/magit.texi:11503 sed-out/magit.texi:11504
@@ -23056,7 +23056,7 @@ msgstr "@code{COMMIT_EDITMSG}バッファのpointが間違っています"
 msgid ""
 "Neither Magit nor `git-commit` fiddle with point in the buffer used to write "
 "commit messages, so something else must be doing it."
-msgstr ""
+msgstr "Magitも `git-commit` も、コミットメッセージの書き込みに使用されるバッファ内のポイントをいじらないので、他のわるさをしているに違いありません。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11512
@@ -23064,7 +23064,7 @@ msgid ""
 "You have probably globally enabled a mode which does restore point in "
 "file-visiting buffers.  It might be a bit surprising, but when you write a "
 "commit message, then you are actually editing a file."
-msgstr ""
+msgstr "あなたはfile-visitingバッファのポイントを復元するモードをグローバルに有効にしている可能性があります。少し意外かもしれませんが、コミットメッセージを書くと、実際にはファイルを編集していることになります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11516
@@ -23072,7 +23072,7 @@ msgid ""
 "So you have to figure out which package is doing.  @code{saveplace}, "
 "@code{pointback}, and @code{session} are likely candidates.  These snippets "
 "might help:"
-msgstr ""
+msgstr "したがって、どのパッケージが実行されているかを把握する必要があります。@code{saveplace}と@code{pointback}と@code{session}が候補になる可能性があります。以下のスニペットが役立つかもしれません:"
 
 #. type: lisp
 #: sed-out/magit.texi:11519
@@ -23152,7 +23152,7 @@ msgstr "同じ名前を共有するブランチとタグは何かを壊します
 #. type: Plain text
 #: sed-out/magit.texi:11554
 msgid "Or more generally, ambiguous refnames break SOMETHING@."
-msgstr ""
+msgstr "または、より一般的には、あいまいなrefnameはSOMETHING@@を壊します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11562
@@ -23164,7 +23164,7 @@ msgid ""
 "naming scheme.  However, if you do work with a repository that has ambiguous "
 "refnames, please report any issues you encounter so that we can investigate "
 "whether there is a simple fix."
-msgstr ""
+msgstr "Magitは、refが\"refs/heads/\"と\"refs/tags/\"と\"refs/remotes/\"名前空間全体で明確に名前が付けられていることを前提としています(つまり、これらのプレフィックスが削除されても、すべての名前は一意のままです)。あいまいなrefnameはサポートされていないと見なし、あいまいでない命名スキームを使用することをお勧めします。ただし、refnameがあいまいなリポジトリを使用している場合は、発生した問題を報告してください。簡単な修正があるかどうかを調査できます。"
 
 #. type: appendixsubsec
 #: sed-out/magit.texi:11563 sed-out/magit.texi:11564
@@ -23182,7 +23182,7 @@ msgid ""
 "not by calling subprocesses with the @code{--literal-pathspecs} argument.  "
 "You can therefore override this setting in hook scripts using @code{unset "
 "GIT_LITERAL_PATHSPECS}."
-msgstr ""
+msgstr "Magitが@code{git}を呼び出すと、@code{--literal-pathspecs}を含むいくつかのグローバル引数が追加されます。Magitによって開始された@code{git}プロセスは、その設定を他の@code{git}プロセスに渡します。これは、@code{--literal-pathspecs}引数を使用してサブプロセスを呼び出すのではなく、環境変数@code{GIT_LITERAL_PATHSPECS}を設定することによって行われます。したがって、@code{unset GIT_LITERAL_PATHSPECS}を使用して、フックスクリプトでこの設定をオーバーライドできます。"
 
 #. type: appendixsubsec
 #: sed-out/magit.texi:11574 sed-out/magit.texi:11575
@@ -23198,14 +23198,14 @@ msgid ""
 "already been taken care of when you commit from Magit because in order to do "
 "so, Magit has to be loaded and doing that involves loading @code{git-commit} "
 "and starting the server."
-msgstr ""
+msgstr "これは、@code{git-commit.el}がまだロードされていないか、サーバーがまだ起動されていないためです。これらの事は、Magitからコミットするときは常にこれらの処理が為されています。これを行うにはMagitをロードする必要があり、そのためには@code{git-commit}をロードしてサーバーを起動する必要があります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11585
 msgid ""
 "If you want to commit from the command-line, then you have to take care of "
 "these things yourself. Your @code{init.el} file should contain:"
-msgstr ""
+msgstr "あなたがコマンドラインからコミットする場合は、これらのことを自分で処理する必要があります。@code{init.el}ファイルには以下のものが含まれている必要があります:"
 
 #. type: lisp
 #: sed-out/magit.texi:11589
@@ -23220,7 +23220,7 @@ msgstr ""
 #. type: Plain text
 #: sed-out/magit.texi:11592
 msgid "Instead of `(require 'git-commit)` you may also use:"
-msgstr ""
+msgstr "あなたは`(require 'git-commit)`の代わりに以下を使用することもできます:"
 
 #. type: lisp
 #: sed-out/magit.texi:11595
@@ -23233,14 +23233,14 @@ msgstr "(load \"/path/to/magit-autoloads.el\")\n"
 msgid ""
 "You might want to do that because loading @code{git-commit} causes large "
 "parts of Magit to be loaded."
-msgstr ""
+msgstr "@code{git-commit}をロードすると、Magitの大部分がロードされるため、これを実行することをお勧めします。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11602
 msgid ""
 "There are also some variations of @code{(server-mode)} that you might want "
 "to try. Personally I use:"
-msgstr ""
+msgstr "@code{(server-mode)}には、あなたが試してみたいバリエーションもいくつかありると思います。作者の私が個人的に使用するものは:"
 
 #. type: lisp
 #: sed-out/magit.texi:11606
@@ -23255,7 +23255,7 @@ msgstr ""
 #. type: Plain text
 #: sed-out/magit.texi:11609
 msgid "Now you can use:"
-msgstr ""
+msgstr "今やあなたは以下を使用できます:"
 
 #. type: example
 #: sed-out/magit.texi:11613
@@ -23270,7 +23270,7 @@ msgstr ""
 #. type: Plain text
 #: sed-out/magit.texi:11616
 msgid "However you cannot use:"
-msgstr ""
+msgstr "けれども以下は使用できません:"
 
 #. type: example
 #: sed-out/magit.texi:11620
