@@ -9537,53 +9537,51 @@ File: magit.ja.info,  Node: Refreshing Buffers,  Next: 慣習,  Prev: Section Pl
      この機能は、BUFFERを表示および選択し、MODEをオンにして、最初にリフ
      レッシュします。
 
-     This function displays and optionally selects BUFFER by calling
-     ‘magit-mode-display-buffer’ with BUFFER, MODE and SWITCH-FUNC as
-     arguments.  Then it sets the local value of
-     ‘magit-refresh-function’ to REFRESH-FUNC and that of
-     ‘magit-refresh-args’ to REFRESH-ARGS.  Finally it creates the
-     buffer content by calling REFRESH-FUNC with REFRESH-ARGS as
-     arguments.
+     この関数は、引数としてBUFFERとMODEとSWITCH-FUNCを指定して
+     ‘magit-mode-display-buffer’を呼び出すことにより、BUFFERを表示し、オ
+     プションで選択します。次に、‘magit-refresh-function’のローカル値を
+     REFRESH-FUNCに設定し、‘magit-refresh-args’のローカル値を
+     REFRESH-ARGS@に設定します。最後に、引数としてREFRESH-ARGSを指定して
+     REFRESH-FUNCを呼び出すことにより、バッファー内容を作成します。
 
-     All arguments are evaluated before switching to BUFFER.
+     BUFFER@に切り替える前に、すべての引数が評価されます。
 
  -- Function: magit-mode-display-buffer buffer mode &optional
           switch-function
 
-     This function display BUFFER in some window and select it.  BUFFER
-     may be a buffer or a string, the name of a buffer.  The buffer is
-     returned.
+     この機能は、あるウィンドウにBUFFERを表示してそのウインドウを選択し
+     ます。BUFFERは、バッファまたは文字列、つまりバッファの名前の場合が
+     あります。バッファを返します。
 
-     Unless BUFFER is already displayed in the selected frame, store the
-     previous window configuration as a buffer local value, so that it
-     can later be restored by ‘magit-mode-bury-buffer’.
+     選択したフレームにBUFFERがすでに表示されていない限り、前のウィンド
+     ウ構成をバッファローカル値として保存し、後で
+     ‘magit-mode-bury-buffer’で復元できるようにします。
 
-     The buffer is displayed and selected using SWITCH-FUNCTION.  If
-     that is ‘nil’ then ‘pop-to-buffer’ is used if the current buffer’s
-     major mode derives from ‘magit-mode’.  Otherwise ‘switch-to-buffer’
-     is used.
+     バッファが表示され、SWITCH-FUNCTION@を使用してそのバッファが選択さ
+     れます。それが‘nil’の場合、現在のバッファのメジャーモードが
+     ‘magit-mode’から派生していれば、‘pop-to-buffer’が使用されます。それ
+     以外の場合は、‘switch-to-buffer’が使用されます。
 
  -- Variable: magit-refresh-function
 
-     The value of this buffer-local variable is the function used to
-     refresh the current buffer.  It is called with ‘magit-refresh-args’
-     as arguments.
+     このバッファローカル変数の値は、現在のバッファをリフレッシュするた
+     めに使用される関数です。‘magit-refresh-args’を引数として呼び出され
+     ます。
 
  -- Variable: magit-refresh-args
 
-     The list of arguments used by ‘magit-refresh-function’ to refresh
-     the current buffer.  ‘magit-refresh-function’ is called with these
-     arguments.
+     ‘magit-refresh-function’が現在のバッファを更新するために使用する引
+     数のリスト(list)。‘magit-refresh-function’は、これらの引数を使用し
+     て呼び出されます。
 
-     The value is usually set using ‘magit-mode-setup’, but in some
-     cases it’s also useful to provide commands that can change the
-     value.  For example, the ‘magit-diff-refresh’ transient can be used
-     to change any of the arguments used to display the diff, without
-     having to specify again which differences should be shown, but
-     ‘magit-diff-more-context’, ‘magit-diff-less-context’ and
-     ‘magit-diff-default-context’ change just the ‘-U<N>’ argument.  In
-     both case this is done by changing the value of this variable and
-     then calling this ‘magit-refresh-function’.
+     通常、値は‘magit-mode-setup’を使用して設定されますが、値を変更でき
+     るコマンドを提供すると便利な場合もあります。たとえば、
+     ‘magit-diff-refresh’トランジェントコマンドを使用すると、どのdiffを
+     表示するかを再度指定しなくても、diffの表示に使用される引数を変更で
+     きますが、‘magit-diff-more-context’と‘magit-diff-less-context’と
+     ‘magit-diff-default-context’は、‘-U<N>’引数のみを変更します。どちら
+     の場合も、これはこの変数の値を変更してから、この
+     ‘magit-refresh-function’を呼び出すことによって行われます。
 
 
 File: magit.ja.info,  Node: 慣習,  Prev: Refreshing Buffers,  Up: 配管コマンド(Plumbing)
@@ -9603,141 +9601,130 @@ File: magit.ja.info,  Node: Theming Faces,  Up: 慣習
 10.4.1 Theming Faces
 --------------------
 
-The default theme uses blue for local branches, green for remote
-branches, and goldenrod (brownish yellow) for tags.  When creating a new
-theme, you should probably follow that example.  If your theme already
-uses other colors, then stick to that.
+デフォルトのテーマでは、ローカルブランチに青色、リモートブランチに緑色、
+タグにgoldenrod色(茶色がかった黄色;訳注:#daa520)を使用します。新しいテー
+マを作成するときは、おそらくその例に従う必要があります。テーマがすでに他
+の色を使用している場合は、それに依ります。
 
-In older releases these reference faces used to have a background color
-and a box around them.  The basic default faces no longer do so, to make
-Magit buffers much less noisy, and you should follow that example at
-least with regards to boxes.  (Boxes were used in the past to work
-around a conflict between the highlighting overlay and text property
-backgrounds.  That’s no longer necessary because highlighting no longer
-causes other background colors to disappear.)  Alternatively you can
-keep the background color and/or box, but then have to take special care
-to adjust ‘magit-branch-current’ accordingly.  By default it looks
-mostly like ‘magit-branch-local’, but with a box (by default the former
-is the only face that uses a box, exactly so that it sticks out).  If
-the former also uses a box, then you have to make sure that it differs
-in some other way from the latter.
+以前のリリースでは、これらの参照faceには背景色とその周囲のボックスがあり
+ました。基本的なデフォルトのfaceは、Magitバッファのノイズを大幅に減らす
+ために、もはやそうしていません。少なくともボックスに関しては、その例に従
+う必要があります。(ボックスは、ハイライトオーバーレイとテキストプロパテ
+ィの背景の間の競合を回避するために過去に使用されていました。ハイライトに
+よって他の背景色が消えることがなくなったため、これは不要になりました)。
+または、背景色やボックスを保持することもできますが、次に、それに応じて
+‘magit-branch-current’を調整するために特別な注意を払う必要があります。デ
+フォルトでは、ほとんど‘magit-branch-local’のように見えますが、ボックスが
+あります(デフォルトでは、前者がボックスを使用する唯一のfaceであり、正確
+に突き出ています(stick out))。前者もボックスを使用する場合は、後者とは別
+の方法で異なることを確認する必要があります。
 
-The most difficult faces to theme are those related to diffs, headings,
-highlighting, and the region.  There are faces that fall into all four
-groups - expect to spend some time getting this right.
+テーマにするのが最も難しいfaceは、diff、見出し、ハイライト、およびリージ
+ョンに関連するfaceです。4つのグループすべてに分類されるfaceがあります。
+これを正すためにはまだしばらくのお時間を頂きたいと思います。
 
-The ‘region’ face in the default theme, in both the light and dark
-variants, as well as in many other themes, distributed with Emacs or by
-third-parties, is very ugly.  It is common to use a background color
-that really sticks out, which is ugly but if that were the only problem
-then it would be acceptable.  Unfortunately many themes also set the
-foreground color, which ensures that all text within the region is
-readable.  Without doing that there might be cases where some foreground
-color is too close to the region background color to still be readable.
-But it also means that text within the region loses all syntax
-highlighting.
+デフォルトのテーマの‘region’のfaceは、明るいバリエーションと暗いバリエー
+ションの両方、およびEmacsやサードパーティによって配布されている他の多く
+のテーマでは非常に醜いです。本当に目立つ背景色を使用するのが一般的です。
+これは醜いですが、それが唯一の問題である場合は許容されます。残念ながら、
+多くのテーマは前景色も設定しているため、領域内のすべてのテキストが読みや
+すくなっています。そうしないと、前景色が領域の背景色に近すぎて読めない場
+合があります。ただし、リージョン内のテキストでは構文の強調表示がすべて失
+われることも意味します。
 
-I consider the work that went into getting the ‘region’ face right to be
-a good indicator for the general quality of a theme.  My recommendation
-for the ‘region’ face is this: use a background color slightly different
-from the background color of the ‘default’ face, and do not set the
-foreground color at all.  So for a light theme you might use a light
-(possibly tinted) gray as the background color of ‘default’ and a
-somewhat darker gray for the background of ‘region’.  That should
-usually be enough to not collide with the foreground color of any other
-face.  But if some other faces also set a light gray as background
-color, then you should also make sure it doesn’t collide with those (in
-some cases it might be acceptable though).
+‘region’のfaceを正しくするために行われた作業は、テーマの一般的な品質の良
+い指標であると思います。‘region’のfaceの推奨事項は、次のとおりです。
+‘default’のfaceの背景色とは少し異なる背景色を使用し、前景色をまったく設
+定しないでください。したがって、明るいテーマの場合、‘default’の背景色と
+して明るい(おそらく色付きの)灰色を使用し、‘region’の背景としてやや暗い灰
+色を使用する場合があります。これは通常、他の顔の前景色と衝突しないように
+十分なはずです。ただし、他のfaceでも背景色としてライトグレーが設定されて
+いる場合は、それらのfaceと衝突しないようにする必要があります(ただし、許
+容できる場合もあります)。
 
-Magit only uses the ‘region’ face when the region is "invalid" by its
-own definition.  In a Magit buffer the region is used to either select
-multiple sibling sections, so that commands which support it act on all
-of these sections instead of just the current section, or to select
-lines within a single hunk section.  In all other cases, the section is
-considered invalid and Magit won’t act on it.  But such invalid sections
-happen, either because the user has not moved point enough yet to make
-it valid or because she wants to use a non-magit command to act on the
-region, e.g.  ‘kill-region’.
+Magitは、リージョンが独自の定義で「無効」である場合にのみ‘region’の
+faceを使用します。Magitバッファでは、領域を使用して複数の兄弟セクション
+を選択し、それをサポートするコマンドが現在のセクションだけでなくこれらす
+べてのセクションに作用するようにするか、単一のハンクセクション内の行を選
+択します。 他のすべての場合、セクションは無効と見なされ、Magitはそれに基
+づいて行動しません。 しかし、そのような無効なセクションは、ユーザーがポ
+イントを有効にするのに十分な位置に移動していないか、非magitコマンドを使
+用して領域を操作したいために発生します。例: ‘kill-region’
 
-So using the regular ‘region’ face for invalid sections is a feature.
-It tells the user that Magit won’t be able to act on it.  It’s
-acceptable if that face looks a bit odd and even (but less so) if it
-collides with the background colors of section headings and other things
-that have a background color.
+したがって、無効なセクションに通常の‘region’のfaceを使用するのは仕様
+(feature)です。これは、Magitがそれに基づいて行動することができないことを
+ユーザーに伝えます。そのfaceが少し奇妙に見えても(ただしそれほどではあり
+ませんが)、セクション見出しの背景色や背景色を持つ他のものと衝突する場合
+は許容されます。
 
-Magit highlights the current section.  If a section has subsections,
-then all of them are highlighted.  This is done using faces that have
-"highlight" in their names.  For most sections,
-‘magit-section-highlight’ is used for both the body and the heading.
-Like the ‘region’ face, it should only set the background color to
-something similar to that of ‘default’.  The highlight background color
-must be different from both the ‘region’ background color and the
-‘default’ background color.
+Magitは現在のセクションを強調表示します。セクションにサブセクションがあ
+る場合、それらすべてが強調表示されます。これは、名前に"highlight"が含ま
+れているfaceを使用して行われます。ほとんどのセクションでは、
+‘magit-section-highlight’が本文と見出しの両方に使用されます。‘region’の
+faceと同様に、背景色を‘default’と同様に設定する必要があります。ハイライ
+トの背景色は、‘region’の背景色と‘default’の背景色の両方とは異なる必要が
+あります。
 
-For diff related sections Magit uses various faces to highlight
-different parts of the selected section(s).  Note that hunk headings,
-unlike all other section headings, by default have a background color,
-because it is useful to have very visible separators between hunks.
-That face ‘magit-diff-hunk-heading’, should be different from both
-‘magit-diff-hunk-heading-highlight’ and ‘magit-section-highlight’, as
-well as from ‘magit-diff-context’ and ‘magit-diff-context-highlight’.
-By default we do that by changing the foreground color.  Changing the
-background color would lead to complications, and there are already
-enough we cannot get around.  (Also note that it is generally a good
-idea for section headings to always be bold, but only for sections that
-have subsections).
+diff関連セクションの場合、Magitはさまざまなfaceを使用して、選択したセク
+ションのさまざまな部分を強調表示します。ハンクの見出しは、他のすべてのセ
+クションの見出しとは異なり、デフォルトで背景色になっていることに注意して
+ください。ハンクの間に非常に目立つ区切り記号があると便利だからです。その
+faceの‘magit-diff-hunk-heading’は、‘magit-diff-hunk-heading-highlight’と
+‘magit-section-highlight’の両方、および‘magit-diff-context’と
+‘magit-diff-context-highlight’とは異なる必要があります。デフォルトでは、
+前景色を変更することでこれを行います。 背景色を変更すると複雑になり、回
+避できないものはすでに十分にあります。(また、セクションの見出しは常に太
+字にすることをお勧めしますが、サブセクションがあるセクションの場合のみで
+す)。
 
-When there is a valid region selecting diff-related sibling sections,
-i.e.  multiple files or hunks, then the bodies of all these sections use
-the respective highlight faces, but additionally the headings instead
-use one of the faces ‘magit-diff-file-heading-selection’ or
-‘magit-diff-hunk-heading-selection’.  These faces have to be different
-from the regular highlight variants to provide explicit visual
-indication that the region is active.
+diff関連の兄弟セクション、つまり複数のファイルまたはハンクを選択する有効
+な領域がある場合、これらすべてのセクションの本文はそれぞれのハイライト
+faceを使用しますが、見出しは代わりにface面の1つを使用します。それは
+‘magit-diff-file -heading-selection’または
+‘magit-diff-hunk-heading-selection’です。これらのfaceは、領域がアクティ
+ブであることを明確に視覚的に示すために、通常のハイライトバリエーションと
+は異なる必要があります。
 
-When theming diff related faces, start by setting the option
-‘magit-diff-refine-hunk’ to ‘all’.  You might personally prefer to only
-refine the current hunk or not use hunk refinement at all, but some of
-the users of your theme want all hunks to be refined, so you have to
-cater to that.
+diff関連のfaceにテーマを設定するときは、オプション
+‘magit-diff-refine-hunk’を‘all’に設定することから始めます。個人的には、
+現在のハンクのみを改良するか、ハンクの改良をまったく使用しないことを好む
+かもしれませんが、テーマのユーザーの中には、すべてのハンクを改良すること
+を望んでいるため、それに対応する必要があります。
 
-(Also turn on ‘magit-diff-highlight-indentation’,
-‘magit-diff-highlight-trailing’, and ‘magit-diff-paint-whitespace’; and
-insert some whitespace errors into the code you use for testing.)
+(また、‘magit-diff-highlight-indentation’と
+‘magit-diff-highlight-trailing’と‘magit-diff-paint-whitespace’をオンにし
+て、コードに空白エラー(some whitespace errors)を挿入します。テストに使用
+します。)
 
-For e.g.  "added lines" you have to adjust three faces:
-‘magit-diff-added’, ‘magit-diff-added-highlight’, and
-‘smerge-refined-added’.  Make sure that the latter works well with both
-of the former, as well as ‘smerge-other’ and ‘diff-added’.  Then do the
-same for the removed lines, context lines, lines added by us, and lines
-added by them.  Also make sure the respective added, removed, and
-context faces use approximately the same saturation for both the
-highlighted and unhighlighted variants.  Also make sure the file and
-diff headings work nicely with context lines (e.g.  make them look
-different).  Line faces should set both the foreground and the
-background color.  For example, for added lines use two different
-greens.
+たとえば 「追加された行」では、‘magit-diff-added’と
+‘magit-diff-added-highlight’と‘smerge-refined-added’の3つのfaceを調整す
+る必要があります。後者が前者の両方、および‘smerge-other’と‘diff-added’で
+うまく機能することを確認してください。次に、削除された行、コンテキスト行
+、追加された行、およびそれらによって追加された行についても同じようにしま
+す。また、追加、削除、およびコンテキストのそれぞれのfaceが、強調表示され
+たバリエーションと強調表示されていないバリエーションの両方でほぼ同じ彩度
+を使用していることを確認してください。また、ファイルとdiffの見出しがコン
+テキスト行とうまく機能することを確認します(たとえば、見た目を変えます)。
+線のfaceは、前景色と背景色の両方を設定する必要があります。たとえば、追加
+された行には、2つの異なる緑を使用します。
 
-It’s best if the foreground color of both the highlighted and the
-unhighlighted variants are the same, so you will need to have to find a
-color that works well on the highlight and unhighlighted background, the
-refine background, and the highlight context background.  When there is
-an hunk internal region, then the added- and removed-lines background
-color is used only within that region.  Outside the region the
-highlighted context background color is used.  This makes it easier to
-see what is being staged.  With an hunk internal region the hunk heading
-is shown using ‘magit-diff-hunk-heading-selection’, and so are the thin
-lines that are added around the lines that fall within the region.  The
-background color of that has to be distinct enough from the various
-other involved background colors.
+それはハイライトされたバリエーションとハイライトされていないバリエーショ
+ンの両方の前景色が同じである場合に最適です。したがって、ハイライトとハイ
+ライトされていない背景、リファインされた背景、およびハイライトコンテキス
+トの背景で適切に機能する色を見つける必要があります。ハンクの内部領域があ
+る場合、追加行と削除行の背景色はその領域内でのみ使用されます。領域外では
+、強調表示されたコンテキストの背景色が使用されます。これにより、何がステ
+ージされているかを簡単に確認できます。ハンクの内部領域では、ハンクの見出
+しは‘magit-diff-hunk-heading-selection’を使用して表示され、領域内にある
+線の周りに追加される細い線も同様です。その背景色は、他のさまざまな関連す
+る背景色と十分に区別する必要があります。
 
-Nobody said this would be easy.  If your theme restricts itself to a
-certain set of colors, then you should make an exception here.
-Otherwise it would be impossible to make the diffs look good in each and
-every variation.  Actually you might want to just stick to the default
-definitions for these faces.  You have been warned.  Also please note
-that if you do not get this right, this will in some cases look to users
-like bugs in Magit - so please do it right or not at all.
+これを行うのは簡単ではありません。テーマが特定の色のセットに制限されてい
+る場合は、ここで例外を作成する必要があります。そうでなければ、すべてのバ
+リエーションでdiffの見栄えを良くすることは不可能です。実際には、これらの
+faceのデフォルトの定義に固執したい場合があります。既に警告は行いました。
+また、これを正しく行わないと、ユーザーがMagitのバグのように見える場合が
+あることに注意してください。正しく行うか、まったく行わないでください。
 
 
 File: magit.ja.info,  Node: FAQ,  Next: Debugging Tools,  Prev: 配管コマンド(Plumbing),  Up: Top
@@ -10117,19 +10104,20 @@ A.2.11 コマンドラインからコミットする場合、‘git-commit-mode�
      $ killall emacs
      $ EDITOR="emacsclient --alternate-editor emacs" git commit
 
-This will actually end up using ‘emacs’, not ‘emacsclient’.  If you do
-this, then you can still edit the commit message but ‘git-commit-mode’
-won’t be used and you have to exit ‘emacs’ to finish the process.
+これは実際には‘emacsclient’ではなく‘emacs’を使用することになります。これ
+を行う場合でも、コミットメッセージを編集できますが、‘git-commit-mode’は
+使用されず、プロセスを終了するには‘emacs’を終了する必要があります。
 
-Tautology ahead.  If you want to be able to use ‘emacsclient’ to connect
-to a running ‘emacs’ instance, even though no ‘emacs’ instance is
-running, then you cannot use ‘emacsclient’ directly.
+先のトートロジー。 ‘emacs’インスタンスが実行されていなくても、
+‘emacsclient’を使用して実行中の‘emacs’インスタンスに接続できるようにする
+場合は、‘emacsclient’を直接使用することはできません。
 
-Instead you have to create a script that does something like this:
+代わりに、以下のようなことを行うスクリプトを作成する必要があります:
 
-Try to use ‘emacsclient’ (without using ‘--alternate-editor’).  If that
-succeeds, do nothing else.  Otherwise start ‘emacs &’ (and ‘init.el’
-must call ‘server-start’) and try to use ‘emacsclient’ again.
+(‘--alternate-editor’を使用せずに)‘emacsclient’を使用することを試みてく
+ださい。それが成功した場合は、他に何もしません。それ以外の場合は、‘emacs
+&’を開始(‘init.el’は‘server-start’を呼び出す必要があります)し、
+‘emacsclient’の使用を再試行します。
 
 
 File: magit.ja.info,  Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています,  Next: MS-WindowsからEmacsのTrampモードを使用するとステージできません,  Prev: コマンドラインからコミットする場合、git-commit-modeは使用されません,  Up: FAQ - Issues and Errors
@@ -11425,7 +11413,7 @@ Appendix E Function Index
 * magit-log-maybe-update-blob-buffer:    Section Movement.    (line  79)
 * magit-log-maybe-update-revision-buffer: Section Movement.   (line  72)
 * magit-maybe-set-dedicated:             バッファの切り替え.  (line 101)
-* magit-mode-display-buffer:             Refreshing Buffers.  (line  33)
+* magit-mode-display-buffer:             Refreshing Buffers.  (line  32)
 * magit-mode-quit-window:                Quitting Windows.    (line  35)
 * magit-mode-setup:                      Refreshing Buffers.  (line  17)
 * magit-process-file:                    Getting a Value from Git.
@@ -11648,10 +11636,10 @@ Appendix F Variable Index
                                                               (line 138)
 * magit-pull-or-fetch:                   Fetching.            (line  65)
 * magit-reflog-margin:                   Reflog.              (line  23)
-* magit-refresh-args:                    Refreshing Buffers.  (line  55)
+* magit-refresh-args:                    Refreshing Buffers.  (line  54)
 * magit-refresh-buffer-hook:             Automatic Refreshing of Magit Buffers.
                                                               (line  43)
-* magit-refresh-function:                Refreshing Buffers.  (line  49)
+* magit-refresh-function:                Refreshing Buffers.  (line  48)
 * magit-refresh-status-buffer:           Automatic Refreshing of Magit Buffers.
                                                               (line  48)
 * magit-refs-filter-alist:               References Buffer.   (line 152)
@@ -11864,37 +11852,37 @@ Node: Creating Sections476197
 Node: Section Selection481519
 Node: Matching Sections483717
 Node: Refreshing Buffers491540
-Node: 慣習494882
-Node: Theming Faces495091
-Node: FAQ503162
-Node: FAQ - How to ...?503687
-Node: Magitの発音は？504147
-Node: How to show git's output?505100
-Node: How to install the gitman info manual?506128
-Node: How to show diffs for gpg-encrypted files?507409
-Node: How does branching and pushing work?508112
-Node: Magitをediff-version-control-packageとして使用できますか？508519
-Node: VC@を無効にする必要がありますか？511105
-Node: FAQ - Issues and Errors512003
-Node: Magit is slow513367
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました513607
-Node: コミットに問題があります514639
-Node: MS WindowsではMagitでpushできません515200
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません515901
-Node: ファイルを展開して差分を表示するとファイルが消えます517103
-Node: COMMIT_EDITMSGバッファのpointが間違っています517891
-Node: モード行の情報が常に最新ではない519266
-Node: 同じ名前を共有するブランチとタグは何かを壊します520438
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません521592
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません522730
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています525499
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません526760
-Node: 私はポップアップのデフォルトを保存できなくなりました527951
-Node: Debugging Tools529358
-Node: Keystroke Index532196
-Node: Command Index566865
-Node: Function Index605065
-Node: Variable Index622154
+Node: 慣習495507
+Node: Theming Faces495716
+Node: FAQ506389
+Node: FAQ - How to ...?506914
+Node: Magitの発音は？507374
+Node: How to show git's output?508327
+Node: How to install the gitman info manual?509355
+Node: How to show diffs for gpg-encrypted files?510636
+Node: How does branching and pushing work?511339
+Node: Magitをediff-version-control-packageとして使用できますか？511746
+Node: VC@を無効にする必要がありますか？514332
+Node: FAQ - Issues and Errors515230
+Node: Magit is slow516594
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました516834
+Node: コミットに問題があります517866
+Node: MS WindowsではMagitでpushできません518427
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません519128
+Node: ファイルを展開して差分を表示するとファイルが消えます520330
+Node: COMMIT_EDITMSGバッファのpointが間違っています521118
+Node: モード行の情報が常に最新ではない522493
+Node: 同じ名前を共有するブランチとタグは何かを壊します523665
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません524819
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません525957
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています529039
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません530300
+Node: 私はポップアップのデフォルトを保存できなくなりました531491
+Node: Debugging Tools532898
+Node: Keystroke Index535736
+Node: Command Index570405
+Node: Function Index608605
+Node: Variable Index625694
 
 End Tag Table
 

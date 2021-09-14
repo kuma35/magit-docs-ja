@@ -8574,51 +8574,30 @@ diffの「スコープ」は、diffのどの部分が選択されているかを
 
 この機能は、BUFFERを表示および選択し、MODEをオンにして、最初にリフレッシュします。
 
-This function displays and optionally selects BUFFER by calling
-@code{magit-mode-display-buffer} with BUFFER, MODE and SWITCH-FUNC as
-arguments.  Then it sets the local value of @code{magit-refresh-function} to
-REFRESH-FUNC and that of @code{magit-refresh-args} to REFRESH-ARGS@.
-Finally it creates the buffer content by calling REFRESH-FUNC with
-REFRESH-ARGS as arguments.
+この関数は、引数としてBUFFERとMODEとSWITCH-FUNCを指定して@code{magit-mode-display-buffer}を呼び出すことにより、BUFFERを表示し、オプションで選択します。次に、@code{magit-refresh-function}のローカル値をREFRESH-FUNCに設定し、@code{magit-refresh-args}のローカル値をREFRESH-ARGS@@に設定します。最後に、引数としてREFRESH-ARGSを指定してREFRESH-FUNCを呼び出すことにより、バッファー内容を作成します。
 
-All arguments are evaluated before switching to BUFFER@.
+BUFFER@@に切り替える前に、すべての引数が評価されます。
 @end defmac
 
 @defun magit-mode-display-buffer buffer mode &optional switch-function
 
-This function display BUFFER in some window and select it.  BUFFER may be a
-buffer or a string, the name of a buffer.  The buffer is returned.
+この機能は、あるウィンドウにBUFFERを表示してそのウインドウを選択します。BUFFERは、バッファまたは文字列、つまりバッファの名前の場合があります。バッファを返します。
 
-Unless BUFFER is already displayed in the selected frame, store the previous
-window configuration as a buffer local value, so that it can later be
-restored by @code{magit-mode-bury-buffer}.
+選択したフレームにBUFFERがすでに表示されていない限り、前のウィンドウ構成をバッファローカル値として保存し、後で@code{magit-mode-bury-buffer}で復元できるようにします。
 
-The buffer is displayed and selected using SWITCH-FUNCTION@.  If that is
-@code{nil} then @code{pop-to-buffer} is used if the current buffer's major
-mode derives from @code{magit-mode}.  Otherwise @code{switch-to-buffer} is
-used.
+バッファが表示され、SWITCH-FUNCTION@@を使用してそのバッファが選択されます。それが@code{nil}の場合、現在のバッファのメジャーモードが@code{magit-mode}から派生していれば、@code{pop-to-buffer}が使用されます。それ以外の場合は、@code{switch-to-buffer}が使用されます。
 @end defun
 
 @defvar magit-refresh-function
 
-The value of this buffer-local variable is the function used to refresh the
-current buffer.  It is called with @code{magit-refresh-args} as arguments.
+このバッファローカル変数の値は、現在のバッファをリフレッシュするために使用される関数です。@code{magit-refresh-args}を引数として呼び出されます。
 @end defvar
 
 @defvar magit-refresh-args
 
-The list of arguments used by @code{magit-refresh-function} to refresh the
-current buffer.  @code{magit-refresh-function} is called with these
-arguments.
+@code{magit-refresh-function}が現在のバッファを更新するために使用する引数のリスト(list)。@code{magit-refresh-function}は、これらの引数を使用して呼び出されます。
 
-The value is usually set using @code{magit-mode-setup}, but in some cases
-it's also useful to provide commands that can change the value.  For
-example, the @code{magit-diff-refresh} transient can be used to change any
-of the arguments used to display the diff, without having to specify again
-which differences should be shown, but @code{magit-diff-more-context},
-@code{magit-diff-less-context} and @code{magit-diff-default-context} change
-just the @code{-U<N>} argument.  In both case this is done by changing the
-value of this variable and then calling this @code{magit-refresh-function}.
+通常、値は@code{magit-mode-setup}を使用して設定されますが、値を変更できるコマンドを提供すると便利な場合もあります。たとえば、@code{magit-diff-refresh}トランジェントコマンドを使用すると、どのdiffを表示するかを再度指定しなくても、diffの表示に使用される引数を変更できますが、@code{magit-diff-more-context}と@code{magit-diff-less-context}と@code{magit-diff-default-context}は、@code{-U<N>}引数のみを変更します。どちらの場合も、これはこの変数の値を変更してから、この@code{magit-refresh-function}を呼び出すことによって行われます。
 @end defvar
 
 @node 慣習
@@ -8633,139 +8612,43 @@ value of this variable and then calling this @code{magit-refresh-function}.
 @node Theming Faces
 @subsection Theming Faces
 
-The default theme uses blue for local branches, green for remote branches,
-and goldenrod (brownish yellow) for tags.  When creating a new theme, you
-should probably follow that example.  If your theme already uses other
-colors, then stick to that.
+デフォルトのテーマでは、ローカルブランチに青色、リモートブランチに緑色、タグにgoldenrod色(茶色がかった黄色;訳注:#daa520)を使用します。新しいテーマを作成するときは、おそらくその例に従う必要があります。テーマがすでに他の色を使用している場合は、それに依ります。
 
-In older releases these reference faces used to have a background color and
-a box around them.  The basic default faces no longer do so, to make Magit
-buffers much less noisy, and you should follow that example at least with
-regards to boxes.  (Boxes were used in the past to work around a conflict
-between the highlighting overlay and text property backgrounds.  That's no
-longer necessary because highlighting no longer causes other background
-colors to disappear.)  Alternatively you can keep the background color
-and/or box, but then have to take special care to adjust
-@code{magit-branch-current} accordingly.  By default it looks mostly like
-@code{magit-branch-local}, but with a box (by default the former is the only
-face that uses a box, exactly so that it sticks out).  If the former also
-uses a box, then you have to make sure that it differs in some other way
-from the latter.
+以前のリリースでは、これらの参照faceには背景色とその周囲のボックスがありました。基本的なデフォルトのfaceは、Magitバッファのノイズを大幅に減らすために、もはやそうしていません。少なくともボックスに関しては、その例に従う必要があります。(ボックスは、ハイライトオーバーレイとテキストプロパティの背景の間の競合を回避するために過去に使用されていました。ハイライトによって他の背景色が消えることがなくなったため、これは不要になりました)。または、背景色やボックスを保持することもできますが、次に、それに応じて@code{magit-branch-current}を調整するために特別な注意を払う必要があります。デフォルトでは、ほとんど@code{magit-branch-local}のように見えますが、ボックスがあります(デフォルトでは、前者がボックスを使用する唯一のfaceであり、正確に突き出ています(stick
+out))。前者もボックスを使用する場合は、後者とは別の方法で異なることを確認する必要があります。
 
-The most difficult faces to theme are those related to diffs, headings,
-highlighting, and the region.  There are faces that fall into all four
-groups - expect to spend some time getting this right.
+テーマにするのが最も難しいfaceは、diff、見出し、ハイライト、およびリージョンに関連するfaceです。4つのグループすべてに分類されるfaceがあります。これを正すためにはまだしばらくのお時間を頂きたいと思います。
 
-The @code{region} face in the default theme, in both the light and dark
-variants, as well as in many other themes, distributed with Emacs or by
-third-parties, is very ugly.  It is common to use a background color that
-really sticks out, which is ugly but if that were the only problem then it
-would be acceptable.  Unfortunately many themes also set the foreground
-color, which ensures that all text within the region is readable.  Without
-doing that there might be cases where some foreground color is too close to
-the region background color to still be readable.  But it also means that
-text within the region loses all syntax highlighting.
+デフォルトのテーマの@code{region}のfaceは、明るいバリエーションと暗いバリエーションの両方、およびEmacsやサードパーティによって配布されている他の多くのテーマでは非常に醜いです。本当に目立つ背景色を使用するのが一般的です。これは醜いですが、それが唯一の問題である場合は許容されます。残念ながら、多くのテーマは前景色も設定しているため、領域内のすべてのテキストが読みやすくなっています。そうしないと、前景色が領域の背景色に近すぎて読めない場合があります。ただし、リージョン内のテキストでは構文の強調表示がすべて失われることも意味します。
 
-I consider the work that went into getting the @code{region} face right to
-be a good indicator for the general quality of a theme.  My recommendation
-for the @code{region} face is this: use a background color slightly
-different from the background color of the @code{default} face, and do not
-set the foreground color at all.  So for a light theme you might use a light
-(possibly tinted) gray as the background color of @code{default} and a
-somewhat darker gray for the background of @code{region}.  That should
-usually be enough to not collide with the foreground color of any other
-face.  But if some other faces also set a light gray as background color,
-then you should also make sure it doesn't collide with those (in some cases
-it might be acceptable though).
+@code{region}のfaceを正しくするために行われた作業は、テーマの一般的な品質の良い指標であると思います。@code{region}のfaceの推奨事項は、次のとおりです。@code{default}のfaceの背景色とは少し異なる背景色を使用し、前景色をまったく設定しないでください。したがって、明るいテーマの場合、@code{default}の背景色として明るい(おそらく色付きの)灰色を使用し、@code{region}の背景としてやや暗い灰色を使用する場合があります。これは通常、他の顔の前景色と衝突しないように十分なはずです。ただし、他のfaceでも背景色としてライトグレーが設定されている場合は、それらのfaceと衝突しないようにする必要があります(ただし、許容できる場合もあります)。
 
-Magit only uses the @code{region} face when the region is "invalid" by its
-own definition.  In a Magit buffer the region is used to either select
-multiple sibling sections, so that commands which support it act on all of
-these sections instead of just the current section, or to select lines
-within a single hunk section.  In all other cases, the section is considered
-invalid and Magit won't act on it.  But such invalid sections happen, either
-because the user has not moved point enough yet to make it valid or because
-she wants to use a non-magit command to act on the region,
-e.g. @code{kill-region}.
+Magitは、リージョンが独自の定義で「無効」である場合にのみ@code{region}のfaceを使用します。Magitバッファでは、領域を使用して複数の兄弟セクションを選択し、それをサポートするコマンドが現在のセクションだけでなくこれらすべてのセクションに作用するようにするか、単一のハンクセクション内の行を選択します。
+他のすべての場合、セクションは無効と見なされ、Magitはそれに基づいて行動しません。
+しかし、そのような無効なセクションは、ユーザーがポイントを有効にするのに十分な位置に移動していないか、非magitコマンドを使用して領域を操作したいために発生します。例:
+@code{kill-region}
 
-So using the regular @code{region} face for invalid sections is a feature.
-It tells the user that Magit won't be able to act on it.  It's acceptable if
-that face looks a bit odd and even (but less so) if it collides with the
-background colors of section headings and other things that have a
-background color.
+したがって、無効なセクションに通常の@code{region}のfaceを使用するのは仕様(feature)です。これは、Magitがそれに基づいて行動することができないことをユーザーに伝えます。そのfaceが少し奇妙に見えても(ただしそれほどではありませんが)、セクション見出しの背景色や背景色を持つ他のものと衝突する場合は許容されます。
 
-Magit highlights the current section.  If a section has subsections, then
-all of them are highlighted.  This is done using faces that have "highlight"
-in their names.  For most sections, @code{magit-section-highlight} is used
-for both the body and the heading.  Like the @code{region} face, it should
-only set the background color to something similar to that of
-@code{default}.  The highlight background color must be different from both
-the @code{region} background color and the @code{default} background color.
+Magitは現在のセクションを強調表示します。セクションにサブセクションがある場合、それらすべてが強調表示されます。これは、名前に"highlight"が含まれているfaceを使用して行われます。ほとんどのセクションでは、@code{magit-section-highlight}が本文と見出しの両方に使用されます。@code{region}のfaceと同様に、背景色を@code{default}と同様に設定する必要があります。ハイライトの背景色は、@code{region}の背景色と@code{default}の背景色の両方とは異なる必要があります。
 
-For diff related sections Magit uses various faces to highlight different
-parts of the selected section(s).  Note that hunk headings, unlike all other
-section headings, by default have a background color, because it is useful
-to have very visible separators between hunks.  That face
-@code{magit-diff-hunk-heading}, should be different from both
-@code{magit-diff-hunk-heading-highlight} and @code{magit-section-highlight},
-as well as from @code{magit-diff-context} and
-@code{magit-diff-context-highlight}.  By default we do that by changing the
-foreground color.  Changing the background color would lead to
-complications, and there are already enough we cannot get around.  (Also
-note that it is generally a good idea for section headings to always be
-bold, but only for sections that have subsections).
+diff関連セクションの場合、Magitはさまざまなfaceを使用して、選択したセクションのさまざまな部分を強調表示します。ハンクの見出しは、他のすべてのセクションの見出しとは異なり、デフォルトで背景色になっていることに注意してください。ハンクの間に非常に目立つ区切り記号があると便利だからです。そのfaceの@code{magit-diff-hunk-heading}は、@code{magit-diff-hunk-heading-highlight}と@code{magit-section-highlight}の両方、および@code{magit-diff-context}と@code{magit-diff-context-highlight}とは異なる必要があります。デフォルトでは、前景色を変更することでこれを行います。
+背景色を変更すると複雑になり、回避できないものはすでに十分にあります。(また、セクションの見出しは常に太字にすることをお勧めしますが、サブセクションがあるセクションの場合のみです)。
 
-When there is a valid region selecting diff-related sibling sections,
-i.e. multiple files or hunks, then the bodies of all these sections use the
-respective highlight faces, but additionally the headings instead use one of
-the faces @code{magit-diff-file-heading-selection} or
-@code{magit-diff-hunk-heading-selection}.  These faces have to be different
-from the regular highlight variants to provide explicit visual indication
-that the region is active.
+diff関連の兄弟セクション、つまり複数のファイルまたはハンクを選択する有効な領域がある場合、これらすべてのセクションの本文はそれぞれのハイライトfaceを使用しますが、見出しは代わりにface面の1つを使用します。それは@code{magit-diff-file
+-heading-selection}または@code{magit-diff-hunk-heading-selection}です。これらのfaceは、領域がアクティブであることを明確に視覚的に示すために、通常のハイライトバリエーションとは異なる必要があります。
 
-When theming diff related faces, start by setting the option
-@code{magit-diff-refine-hunk} to @code{all}.  You might personally prefer to
-only refine the current hunk or not use hunk refinement at all, but some of
-the users of your theme want all hunks to be refined, so you have to cater
-to that.
+diff関連のfaceにテーマを設定するときは、オプション@code{magit-diff-refine-hunk}を@code{all}に設定することから始めます。個人的には、現在のハンクのみを改良するか、ハンクの改良をまったく使用しないことを好むかもしれませんが、テーマのユーザーの中には、すべてのハンクを改良することを望んでいるため、それに対応する必要があります。
 
-(Also turn on @code{magit-diff-highlight-indentation},
-@code{magit-diff-highlight-trailing}, and
-@code{magit-diff-paint-whitespace}; and insert some whitespace errors into
-the code you use for testing.)
+(また、@code{magit-diff-highlight-indentation}と@code{magit-diff-highlight-trailing}と@code{magit-diff-paint-whitespace}をオンにして、コードに空白エラー(some
+whitespace errors)を挿入します。テストに使用します。)
 
-For e.g. "added lines" you have to adjust three faces:
-@code{magit-diff-added}, @code{magit-diff-added-highlight}, and
-@code{smerge-refined-added}.  Make sure that the latter works well with both
-of the former, as well as @code{smerge-other} and @code{diff-added}.  Then
-do the same for the removed lines, context lines, lines added by us, and
-lines added by them.  Also make sure the respective added, removed, and
-context faces use approximately the same saturation for both the highlighted
-and unhighlighted variants.  Also make sure the file and diff headings work
-nicely with context lines (e.g. make them look different).  Line faces
-should set both the foreground and the background color.  For example, for
-added lines use two different greens.
+たとえば
+「追加された行」では、@code{magit-diff-added}と@code{magit-diff-added-highlight}と@code{smerge-refined-added}の3つのfaceを調整する必要があります。後者が前者の両方、および@code{smerge-other}と@code{diff-added}でうまく機能することを確認してください。次に、削除された行、コンテキスト行、追加された行、およびそれらによって追加された行についても同じようにします。また、追加、削除、およびコンテキストのそれぞれのfaceが、強調表示されたバリエーションと強調表示されていないバリエーションの両方でほぼ同じ彩度を使用していることを確認してください。また、ファイルとdiffの見出しがコンテキスト行とうまく機能することを確認します(たとえば、見た目を変えます)。線のfaceは、前景色と背景色の両方を設定する必要があります。たとえば、追加された行には、2つの異なる緑を使用します。
 
-It's best if the foreground color of both the highlighted and the
-unhighlighted variants are the same, so you will need to have to find a
-color that works well on the highlight and unhighlighted background, the
-refine background, and the highlight context background.  When there is an
-hunk internal region, then the added- and removed-lines background color is
-used only within that region.  Outside the region the highlighted context
-background color is used.  This makes it easier to see what is being
-staged.  With an hunk internal region the hunk heading is shown using
-@code{magit-diff-hunk-heading-selection}, and so are the thin lines that are
-added around the lines that fall within the region.  The background color of
-that has to be distinct enough from the various other involved background
-colors.
+それはハイライトされたバリエーションとハイライトされていないバリエーションの両方の前景色が同じである場合に最適です。したがって、ハイライトとハイライトされていない背景、リファインされた背景、およびハイライトコンテキストの背景で適切に機能する色を見つける必要があります。ハンクの内部領域がある場合、追加行と削除行の背景色はその領域内でのみ使用されます。領域外では、強調表示されたコンテキストの背景色が使用されます。これにより、何がステージされているかを簡単に確認できます。ハンクの内部領域では、ハンクの見出しは@code{magit-diff-hunk-heading-selection}を使用して表示され、領域内にある線の周りに追加される細い線も同様です。その背景色は、他のさまざまな関連する背景色と十分に区別する必要があります。
 
-Nobody said this would be easy.  If your theme restricts itself to a certain
-set of colors, then you should make an exception here.  Otherwise it would
-be impossible to make the diffs look good in each and every variation.
-Actually you might want to just stick to the default definitions for these
-faces.  You have been warned.  Also please note that if you do not get this
-right, this will in some cases look to users like bugs in Magit - so please
-do it right or not at all.
+これを行うのは簡単ではありません。テーマが特定の色のセットに制限されている場合は、ここで例外を作成する必要があります。そうでなければ、すべてのバリエーションでdiffの見栄えを良くすることは不可能です。実際には、これらのfaceのデフォルトの定義に固執したい場合があります。既に警告は行いました。また、これを正しく行わないと、ユーザーがMagitのバグのように見える場合があることに注意してください。正しく行うか、まったく行わないでください。
 
 @node FAQ
 @appendix FAQ
@@ -9013,21 +8896,15 @@ $ killall emacs
 $ EDITOR="emacsclient --alternate-editor emacs" git commit
 @end example
 
-This will actually end up using @code{emacs}, not @code{emacsclient}.  If
-you do this, then you can still edit the commit message but
-@code{git-commit-mode} won't be used and you have to exit @code{emacs} to
-finish the process.
+これは実際には@code{emacsclient}ではなく@code{emacs}を使用することになります。これを行う場合でも、コミットメッセージを編集できますが、@code{git-commit-mode}は使用されず、プロセスを終了するには@code{emacs}を終了する必要があります。
 
-Tautology ahead.  If you want to be able to use @code{emacsclient} to
-connect to a running @code{emacs} instance, even though no @code{emacs}
-instance is running, then you cannot use @code{emacsclient} directly.
+先のトートロジー。
+@code{emacs}インスタンスが実行されていなくても、@code{emacsclient}を使用して実行中の@code{emacs}インスタンスに接続できるようにする場合は、@code{emacsclient}を直接使用することはできません。
 
-Instead you have to create a script that does something like this:
+代わりに、以下のようなことを行うスクリプトを作成する必要があります:
 
-Try to use @code{emacsclient} (without using @code{--alternate-editor}).  If
-that succeeds, do nothing else.  Otherwise start @code{emacs &} (and
-@code{init.el} must call @code{server-start}) and try to use
-@code{emacsclient} again.
+(@code{--alternate-editor}を使用せずに)@code{emacsclient}を使用することを試みてください。それが成功した場合は、他に何もしません。それ以外の場合は、@code{emacs
+&}を開始(@code{init.el}は@code{server-start}を呼び出す必要があります)し、@code{emacsclient}の使用を再試行します。
 
 @node file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています
 @appendixsubsec file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています
