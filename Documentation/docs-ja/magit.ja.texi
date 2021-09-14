@@ -657,7 +657,7 @@ origin/master"、"Unpushed to origin/master"、その他のタイトルのセク
 PRE-MAGIT-STATE}を実行することで)簡単に戻ることができる安全な状態から開始しているため、現在、ステージされた変更(staged
 changes)またはステージされてない変更(unstaged
 changes)はありません。いくつかのファイルを編集し、変更を保存します。それから@code{C-x
-g}と入力して、ステータスバッファに戻り、同時に更新します(ステータスバッファ、またはそのためのMagitバッファが現在のバッファである場合は、@code{g}だけを使用して更新することもできます)。
+g}と入力して、ステータスバッファに戻り、同時にリフレッシュします(ステータスバッファ、またはそのためのMagitバッファが現在のバッファである場合は、@code{g}だけを使用してリフレッシュすることもできます)。
 
 @code{p}と@code{n}を使用してセクション間を移動します。一部のセクションの本文は非表示になっていることに注意してください。@code{TAB}と入力して、ポイントでセクションを展開または折りたたみます。@code{C-tab}を使用して、現在のセクションとその子の表示を循環させることもできます。"Unstaged
 changes"という名前のセクション内のファイルセクションに移動し、@code{s}と入力して、そのファイルに加えた変更をステージします。
@@ -926,23 +926,23 @@ Magitバッファに名前を付けるために使用されるフォーマット
 @node Automatic Refreshing of Magit Buffers
 @subsection Automatic Refreshing of Magit Buffers
 
-現在のリポジトリの状態を変更する可能性のあるコマンドを実行した後で、現在のMagitバッファと対応するステータスバッファが更新されます。ステータスバッファは、以下のようにフックを追加することで、バッファがそれぞれのリポジトリ内のファイルに保存されるたびに自動的に更新できます:
+現在のリポジトリの状態を変更する可能性のあるコマンドを実行した後で、現在のMagitバッファと対応するステータスバッファがリフレッシュされます。ステータスバッファは、以下のようにフックを追加することで、バッファがそれぞれのリポジトリ内のファイルに保存されるたびに自動的にリフレッシュできます:
 
 @lisp
 (with-eval-after-load 'magit-mode
   (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
 @end lisp
 
-Magitバッファ達を自動的に更新すると、表示される情報はほとんどの場合最新であることが保証されますが、大きなリポジトリで顕著な遅延が発生する可能性があります。他のMagitバッファ達は、遅延を最小限に抑えるために更新されません。また、更新することが望ましくない場合があるためです。
+Magitバッファ達を自動的にリフレッシュすると、表示される情報はほとんどの場合最新であることが保証されますが、大きなリポジトリで顕著な遅延が発生する可能性があります。他のMagitバッファ達は、遅延を最小限に抑えるためにリフレッシュされません。また、リフレッシュすることが望ましくない場合があるためです。
 
-バッファは明示的に更新することもできます。これは、最後の更新時およびMagitの外部のリポジトリに変更が加えられた後、最新ではなかったバッファで役立ちます。
+バッファは明示的にリフレッシュすることもできます。これは、最後のリフレッシュ時およびMagitの外部のリポジトリに変更が加えられた後、最新ではなかったバッファで役立ちます。
 
 @table @asis
 @kindex g
 @cindex magit-refresh
 @item @kbd{g} @tie{}@tie{}@tie{}@tie{}(@code{magit-refresh})
 
-このコマンドは、メジャーモードが@code{magit-mode}および対応するステータスバッファから派生している場合、現在のバッファを更新します。
+このコマンドは、メジャーモードが@code{magit-mode}および対応するステータスバッファから派生している場合、現在のバッファをリフレッシュします。
 
 オプション@code{magit-revert-buffers}がそれを要求する場合、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファも元に戻します。
 
@@ -950,7 +950,7 @@ Magitバッファ達を自動的に更新すると、表示される情報はほ
 @cindex magit-refresh-all
 @item @kbd{G} @tie{}@tie{}@tie{}@tie{}(@code{magit-refresh-all})
 
-このコマンドは、現在のリポジトリに属するすべてのMagitバッファを更新し、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファを元に戻します。
+このコマンドは、現在のリポジトリに属するすべてのMagitバッファをリフレッシュし、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファを元に戻します。
 
 @code{magit-revert-buffers}がnilの場合でも、file-visitingバッファは常に元に戻されます。
 
@@ -958,34 +958,34 @@ Magitバッファ達を自動的に更新すると、表示される情報はほ
 
 @defopt magit-refresh-buffer-hook
 
-このフックは、現在更新中に更新された各Magitバッファ(通常は現在のバッファとステータスバッファ)で実行されます。
+このフックは、現在リフレッシュ中にリフレッシュされた各Magitバッファ(通常は現在のバッファとステータスバッファ)で実行されます。
 @end defopt
 
 @defopt magit-refresh-status-buffer
 
-このオプションがnil以外の場合、現在のMagitバッファに加えて、副作用としてgitを実行した後、ステータスバッファが自動的に更新されます。これは、常に自動的に更新されます。
+このオプションがnil以外の場合、現在のMagitバッファに加えて、副作用としてgitを実行した後、ステータスバッファが自動的にリフレッシュされます。これは、常に自動的にリフレッシュされます。
 
 パフォーマンスを向上させるために他のすべてのオプションを使い果たした後でのみ、これをnilに設定してください。
 @end defopt
 
 @defun magit-after-save-refresh-status
 
-この関数は、@code{after-save-hook}に追加することを目的としています。その後、リポジトリ内のファイルにバッファが保存されるたびに、対応するステータスバッファが更新されます。
+この関数は、@code{after-save-hook}に追加することを目的としています。その後、リポジトリ内のファイルにバッファが保存されるたびに、対応するステータスバッファがリフレッシュされます。
 
-Magitバッファの更新は、その内容を最初から再作成することによって行われることに注意してください。これは、大規模なリポジトリでは遅くなる可能性があります。Magitのパフォーマンスに満足できない場合は、明らかにこの関数をそのフックに追加しないでください。
+Magitバッファのリフレッシュは、その内容を最初から再作成することによって行われることに注意してください。これは、大規模なリポジトリでは遅くなる可能性があります。Magitのパフォーマンスに満足できない場合は、明らかにこの関数をそのフックに追加しないでください。
 @end defun
 
 @node Automatic Saving of File-Visiting Buffers
 @subsection Automatic Saving of File-Visiting Buffers
 
 file-visitingバッファは、デフォルトで特定の時点で保存されます。これは、Magitバッファが常に最新であることを保証するものではありませんが、Emacsでファイルを編集するだけでファイルを編集し、Magitのみを使用してGitと対話する場合には、かなり自信があります。疑わしい場合やまたは外部の変更後は、@code{g}
-(@code{magit-refresh})と入力して、明示的に保存および更新します。
+(@code{magit-refresh})と入力して、明示的に保存およびリフレッシュします。
 
 @defopt magit-save-repository-buffers
 
 このオプションは、特定のイベントの前にfile-visitingバッファを保存するかどうかを制御します。
 
-これがnil以外の場合、現在のリポジトリに属するすべての変更されたfile-visitingバッファは、コマンドを実行する前、新しいMagitバッファを作成する前、およびそのようなバッファを明示的に更新する前に保存できます。これが@code{dontask}の場合、これはユーザーの介入なしに実行されます。@code{t}の場合、ユーザーは各保存を確認する必要があります。
+これがnil以外の場合、現在のリポジトリに属するすべての変更されたfile-visitingバッファは、コマンドを実行する前、新しいMagitバッファを作成する前、およびそのようなバッファを明示的にリフレッシュする前に保存できます。これが@code{dontask}の場合、これはユーザーの介入なしに実行されます。@code{t}の場合、ユーザーは各保存を確認する必要があります。
 @end defopt
 
 @node Automatic Reverting of File-Visiting Buffers
@@ -1216,7 +1216,7 @@ more"(もっと見る)セクションにあります。その場合は、表示�
 
 特定のバッファ内を移動する場合、別のウィンドウに表示されている特定の他のバッファをオプションで更新して、その時点のセクションに関する情報を表示することができます。
 
-キーを押したままにして複数のセクションを移動すると、途中でセクションごとにそのバッファーが更新されます。これを防ぐために、リビジョンバッファの更新は遅延され、このオプションはそれがどのくらいの長さかを制御します。最適なエクスペリエンスを得るには、この遅延やキーボードの繰り返し速度、およびグラフィカル環境やオペレーティングシステムの遅延を調整する必要がある場合があります。
+キーを押したままにして複数のセクションを移動すると、途中でセクションごとにそのバッファが更新されます。これを防ぐために、リビジョンバッファの更新は遅延され、このオプションはそれがどのくらいの長さかを制御します。最適なエクスペリエンスを得るには、この遅延やキーボードの繰り返し速度、およびグラフィカル環境やオペレーティングシステムの遅延を調整する必要がある場合があります。
 @end defopt
 
 @node Section Visibility
@@ -1318,7 +1318,7 @@ Magitには、セクションの表示を変更するための多くのコマン
 現在のセクションの子のボディの可視性を切り替えます(toggle)。
 @end deffn
 
-バッファが最初に作成されると、一部のセクションは展開されて表示されますが、他のセクションは展開されません。これはハードコーディングされています。バッファが更新されると、以前の可視性が保持されます。特定のセクションの初期可視性は、フック@code{magit-section-set-visibility-hook}を使用して上書きすることもできます。
+バッファが最初に作成されると、一部のセクションは展開されて表示されますが、他のセクションは展開されません。これはハードコーディングされています。バッファがリフレッシュされると、以前の可視性が保持されます。特定のセクションの初期可視性は、フック@code{magit-section-set-visibility-hook}を使用して上書きすることもできます。
 
 @defopt magit-section-initial-visibility-alist
 
@@ -1340,12 +1340,12 @@ lineage)であり、タイプはそのベクター(vector)の最初の要素で�
 
 @defvar magit-section-set-visibility-hook
 
-このフックは、最初にバッファを作成するとき、および既存のバッファを更新するときに実行され、現在挿入されているセクションの可視性を判別するために使用されます。
+このフックは、最初にバッファを作成するとき、および既存のバッファをリフレッシュするときに実行され、現在挿入されているセクションの可視性を判別するために使用されます。
 
-各関数は1つの引数で呼び出され、セクションが挿入されます。@code{hide}または@code{show}を返すか、可視性を未定義の@code{nil}のままにする必要があります。可視性を決定する関数がなく、バッファが更新されている場合、可視性は保持されます。
+各関数は1つの引数で呼び出され、セクションが挿入されます。@code{hide}または@code{show}を返すか、可視性を未定義の@code{nil}のままにする必要があります。可視性を決定する関数がなく、バッファがリフレッシュされている場合、可視性は保持されます。
 または、バッファが作成されている場合は、ハードコードされたデフォルトが使用されます。
 
-通常、これは初期の可視性を設定するためにのみ使用する必要があり、更新中は使用しないでください。@code{magit-insert-section--oldroot}がnil以外の場合、バッファは更新済で、これらの関数はすぐに@code{nil}を返す必要があります。
+通常、これは初期の可視性を設定するためにのみ使用する必要があり、リフレッシュ中は使用しないでください。@code{magit-insert-section--oldroot}がnil以外の場合、バッファはリフレッシュ済で、これらの関数はすぐに@code{nil}を返す必要があります。
 @end defvar
 
 @defopt magit-section-visibility-indicator
@@ -1915,7 +1915,7 @@ Magitは、副作用(プッシュ時など)または何らかの値(現在のブ
 
 Gitプロセスが正常に終了すると、プロセスインジケーターはモードラインから直ちに削除されます。
 
-Gitエラーの場合、プロセスインジケーターは削除されませんが、代わりに@code{magit-mode-line-process-error}faceで強調表示され、プロセスバッファーからのエラーの詳細がマウスユーザーのためにツールチップとして提供されます。このエラーインジケータは、次のmagitバッファ更新までモード行に表示されます。
+Gitエラーの場合、プロセスインジケーターは削除されませんが、代わりに@code{magit-mode-line-process-error}faceで強調表示され、プロセスバッファーからのエラーの詳細がマウスユーザーのためにツールチップとして提供されます。このエラーインジケータは、次のmagitバッファリフレッシュまでモード行に表示されます。
 
 モード行にプロセスエラーを表示したくない場合は、@code{magit-process-display-mode-line-error}ユーザーオプションをカスタマイズします。
 
@@ -2146,13 +2146,13 @@ DEPTH)}です。DIRECTORYは、ディレクトリまたはディレクトリフ�
 @cindex magit-status-quick
 @deffn コマンド magit-status-quick
 
-このコマンドは、@code{magit-status}の代替になり、通常はステータスバッファの更新を回避します。
+このコマンドは、@code{magit-status}の代替になり、通常はステータスバッファのリフレッシュを回避します。
 
-現在のGitリポジトリのステータスバッファが存在するが、選択したフレームに表示されていない場合は、更新されずに表示されます。
+現在のGitリポジトリのステータスバッファが存在するが、選択したフレームに表示されていない場合は、リフレッシュされずに表示されます。
 
-選択したフレームにステータスバッファが表示されている場合、このコマンドはステータスバッファを更新します。
+選択したフレームにステータスバッファが表示されている場合、このコマンドはステータスバッファをリフレッシュします。
 
-プレフィックス引数は@code{magit-status}の場合と同じ意味を持ち、さらにバッファを更新します。
+プレフィックス引数は@code{magit-status}の場合と同じ意味を持ち、さらにバッファをリフレッシュします。
 
 このコマンドを使用するには、以下をinitファイルに追加します:
 
@@ -2160,7 +2160,7 @@ DEPTH)}です。DIRECTORYは、ディレクトリまたはディレクトリフ�
 (global-set-key (kbd "C-x g") 'magit-status-quick).
 @end lisp
 
-これを行った後、バッファを再表示してすぐに更新する場合は、@code{C-x g}に続けて@code{g}と入力します。
+これを行った後、バッファを再表示してすぐにリフレッシュする場合は、@code{C-x g}に続けて@code{g}と入力します。
 
 可能な代替コマンドは@code{magit-display-repository-buffer}です。現在のリポジトリに属する既存のMagitバッファの表示をサポートします。それはステータスバッファだけではありません。
 @end deffn
@@ -2367,7 +2367,7 @@ files)のツリーを挿入します。@code{magit-buffer-diff-files}の最初�
 
 ちょうど今発生したGitエラーに関するメッセージを示すヘッダー行を挿入します。
 
-この関数は、副作用のためにGitが実行されたときに発生した最後のエラーのみを認識します。たとえば、diffの生成中にエラーが発生した場合、そのエラーは挿入されません。ステータスバッファを更新すると、このセクションは再び表示されなくなります。
+この関数は、副作用のためにGitが実行されたときに発生した最後のエラーのみを認識します。たとえば、diffの生成中にエラーが発生した場合、そのエラーは挿入されません。ステータスバッファをリフレッシュすると、このセクションは再び表示されなくなります。
 @end defun
 
 @defun magit-insert-diff-filter-header
@@ -2474,7 +2474,7 @@ files)のツリーを挿入します。@code{magit-buffer-diff-files}の最初�
 
 @defopt magit-status-refresh-hook
 
-ステータスバッファが更新された後、フックが実行されます。
+ステータスバッファがリフレッシュされた後、フックが実行されます。
 @end defopt
 
 @defopt magit-status-margin
@@ -2776,7 +2776,7 @@ buffer)に表示します。
 @cindex magit-diff-show-or-scroll-up
 @item @kbd{SPC} @tie{}@tie{}@tie{}@tie{}(@code{magit-diff-show-or-scroll-up})
 
-ポイントしているモノのcommitまたはdiffバッファーを更新します。
+ポイントしているモノのcommitまたはdiffバッファを更新します。
 
 適切なバッファ内のポイントでコミットまたはスタッシュを表示するか、そのバッファが現在のフレームにすでに表示されていて、そのコミットまたはスタッシュに関する情報が含まれている場合は、代わりにバッファを上にスクロールします。ポイントにコミットまたはスタッシュがない場合は、コミットのプロンプトを表示します。
 
@@ -2784,7 +2784,7 @@ buffer)に表示します。
 @cindex magit-diff-show-or-scroll-down
 @item @kbd{DEL} @tie{}@tie{}@tie{}@tie{}(@code{magit-diff-show-or-scroll-down})
 
-ポイントしているモノのcommitまたはdiffバッファーを更新します。
+ポイントしているモノのcommitまたはdiffバッファを更新します。
 
 適切なバッファ内のポイントでコミットまたはスタッシュを表示するか、そのバッファが現在のフレームにすでに表示されていて、そのコミットまたはスタッシュに関する情報が含まれている場合は、代わりにバッファを下にスクロールします。ポイントにコミットまたはスタッシュがない場合は、コミットのプロンプトを表示します。
 
@@ -7444,7 +7444,7 @@ PATH@@の新しいワークツリーでBRANCHをチェックアウトします�
 @cindex magit-display-repository-buffer
 @deffn コマンド magit-display-repository-buffer
 
-これらのコマンドは、現在のリポジトリに属する既存のMagitバッファをユーザーから読み取り、(更新せずに)選択したバッファに切り替えます。
+これらのコマンドは、現在のリポジトリに属する既存のMagitバッファをユーザーから読み取り、(リフレッシュせずに)選択したバッファに切り替えます。
 
 最後のバリエーションは@code{magit-display-buffer}を使用してこれを行うため、@code{magit-display-buffer-function}を尊重します。
 @end deffn
@@ -7829,19 +7829,15 @@ blame}を使用して決定され、@code{HEAD}から到達可能である場合
 このコマンドは、作業ツリー内のファイルを更新し、リビジョンの内容にインデックスを付けます。リビジョンとファイルの両方がユーザーから読み取られます。
 @end deffn
 
-To enable them invoke the transient (@code{C-c M-g}), enter "edit mode"
-(@code{C-x l}), set the "transient level" (@code{C-x l} again), enter
-@code{5}, and leave edit mode (@code{C-g}).  Also see @ref{Enabling and
-Disabling Suffixes,,,transient,}.
+それらを有効にするには、トランジェントコマンド(@code{C-c M-g})を呼び出し、「編集モード」(@code{C-x
+l})に入り、「トランジェントレベル」(再び@code{C-x
+l})を設定し、@code{5}を入力し、編集モードを終了します(@code{C-g})。こちらも参照下さい(@ref{Enabling and
+Disabling Suffixes,,,transient,})。
 
 @node Minor Mode for Buffers Visiting Blobs
 @section Minor Mode for Buffers Visiting Blobs
 
-The @code{magit-blob-mode} enables certain Magit features in blob-visiting
-buffers.  Such buffers can be created using @code{magit-find-file} and some
-of the commands mentioned below, which also take care of turning on this
-minor mode.  Currently this mode only establishes a few key bindings, but
-this might be extended.
+@code{magit-blob-mode}は、blob訪問バッファで特定のMagit機能を有効にします。このようなバッファは、@code{magit-find-file}と以下で説明するいくつかのコマンドを使用して作成できます。これらのコマンドは、このマイナーモードの開始も処理します。現在、このモードはいくつかのキーバインディングのみを確立しますが、これは拡張される可能性があります。
 
 @table @asis
 @kindex p
@@ -7854,7 +7850,7 @@ this might be extended.
 @cindex magit-blob-next
 @item @kbd{n} @tie{}@tie{}@tie{}@tie{}(@code{magit-blob-next})
 
-Visit the next blob which modified the current file.
+変更した現在のファイルの次のBLOBを訪問します。
 
 @kindex q
 @cindex magit-kill-this-buffer
@@ -7906,7 +7902,7 @@ the git-config(1) manpage.
 @end iftex
 
 同様に、Emacsオプションは、@code{/path/to/repo/.dir-locals.el}を編集することによってあるリポジトリのみに設定できます。こちらを参照下さい(@ref{Directory
-Variables,,,emacs,})。たとえば、1つの巨大なリポジトリでファイルアクセスバッファの自動更新を無効にするには、以下を使用します:
+Variables,,,emacs,})。たとえば、1つの巨大なリポジトリでファイルアクセスバッファの自動リフレッシュを無効にするには、以下を使用します:
 
 @itemize
 @item
@@ -7932,16 +7928,11 @@ Variables,,,emacs,})。たとえば、1つの巨大なリポジトリでファ�
 
 @defun magit-disable-section-inserter fn
 
-This function disables the section inserter FN in the current repository.
-It is only intended for use in @code{.dir-locals.el} and
-@code{.dir-locals-2.el}.
+この関数は、現在のリポジトリのセクションインサーターFNを無効にします。@code{.dir-locals.el}と@code{.dir-locals-2.el}のみでの使用を目的としています。
 @end defun
 
-If you want to apply the same settings to several, but not all, repositories
-then keeping the repository-local config files in sync would quickly become
-annoying.  To avoid that you can create config files for certain classes of
-repositories (e.g. "huge repositories")  and then include those files in the
-per-repository config files.  For example:
+すべてではありませんが複数のリポジトリに同じ設定を適用したい場合は、リポジトリローカル構成ファイルの同期を維持するのはすぐに面倒になります。これを回避するには、特定のクラスのリポジトリ(「巨大なリポジトリ」など)の構成ファイルを作成してから、それらのファイルをリポジトリごとの構成ファイルに含めることができます。
+例えば:
 
 @itemize
 @item
@@ -8006,12 +7997,12 @@ Modes})。
 @node Performance
 @subsection Performance
 
-Magitは副作用のために@code{git}を実行した後、現在のMagitバッファとそれぞれのステータスバッファも更新します。これが必要なのは、そうしないと、ユーザーが気付かないうちに古い情報が表示される可能性があるためです。Magitバッファは、コンテンツを最初から再作成することで更新されます。これにより、更新が簡単になり、エラーが発生しにくくなりますが、コストも高くなります。シンプルに保ち、すべてを最初から再作成することは古い設計上の決定であり、それから逸脱するには大規模なリファクタリングが必要になります。
+Magitは副作用のために@code{git}を実行した後、現在のMagitバッファとそれぞれのステータスバッファもリフレッシュします。これが必要なのは、そうしないと、ユーザーが気付かないうちに古い情報が表示される可能性があるためです。Magitバッファは、コンテンツを最初から再作成することで更新されます。これにより、更新が簡単になり、エラーが発生しにくくなりますが、コストも高くなります。シンプルに保ち、すべてを最初から再作成することは古い設計上の決定であり、それから逸脱するには大規模なリファクタリングが必要になります。
 
 次のメジャーリリースに間に合うようにそれを行う予定です。また、ログとdiffを非同期で作成する予定です。これも大いに役立つはずですが、大幅なリファクタリングも必要です。
 
-一方、Magitに、現在のMagitバッファのみを自動的に更新するように指示できますが、ステータスバッファは更新できません。
-これを行うと、ステータスバッファは、現在のバッファである場合にのみ自動的に更新されます。
+一方、Magitに、現在のMagitバッファのみを自動的にリフレッシュするように指示できますが、ステータスバッファはリフレッシュできません。
+これを行うと、ステータスバッファは、現在のバッファである場合にのみ自動的にリフレッシュされます。
 
 @lisp
 (setq magit-refresh-status-buffer nil)
@@ -8020,7 +8011,7 @@ Magitは副作用のために@code{git}を実行した後、現在のMagitバッ
 また、サードパーティのパッケージが@code{magit-refresh-buffer-hook}と@code{magit-status-refresh-hook}と@code{magit-pre-refresh-hook}と@code{magit-post-refresh-hook}に何かを追加していないかどうかを確認する必要があります。その場合は、それらの追加がパフォーマンスに大きな影響を与えるかどうかを確認してください。
 
 Magitは、@code{M-x
-magit-toggle-verbose-refresh}を使用して詳細にバッファを更新するように指示できます。これを有効にすると、どのセクションがボトルネックであるかを把握するのに役立ちます。追加の出力は、@code{*Messages*}バッファにあります。
+magit-toggle-verbose-refresh}を使用して詳細にバッファをリフレッシュするように指示できます。これを有効にすると、どのセクションがボトルネックであるかを把握するのに役立ちます。追加の出力は、@code{*Messages*}バッファにあります。
 
 Magitは、アクセスしたファイル(visited
 files)がディスク上で変更されると、現在のリポジトリ内にあるアクセスしたファイルのバッファも元に戻します(revert)。これは、組み込みライブラリ@code{autorevert}の@code{auto-revert-mode}の上に実装されています。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および/または一部のバッファがTRAMP@@を使用してファイルにアクセスする場合を確認します。
@@ -8075,7 +8066,7 @@ refresh(@code{D})の両方のトランジェントポップアップで行う必
 @subsubheading Refs Buffer Performance
 
 "references
-buffer"の更新が遅い場合、それは通常、数百のrefsが表示されているためです。これに対処する最善の方法は、明らかに、表示するref数を減らすことです。
+buffer"のリフレッシュが遅い場合、それは通常、数百のrefsが表示されているためです。これに対処する最善の方法は、明らかに、表示するref数を減らすことです。
 
 あなたがタグのリストを表示することに興味がない、または興味がほとんど無い場合は、タグを表示しないことから始めます。
 
@@ -8186,30 +8177,13 @@ Magitで使用される低レベルの機能のいくつかは、個別の ラ�
 @node Calling Git
 @section Calling Git
 
-Magit provides many specialized functions for calling Git.  All of these
-functions are defined in either @code{magit-git.el} or
-@code{magit-process.el} and have one of the prefixes @code{magit-run-},
-@code{magit-call-}, @code{magit-start-}, or @code{magit-git-} (which is also
-used for other things).
+Magitは、Gitを呼び出すための多くの特殊な関数を提供します。これらの関数はすべて、@code{magit-git.el}または@code{magit-process.el}のいずれかで定義され、接頭辞@code{magit-run-}または@code{magit-call-}または@code{magit-start-}または@code{magit-git-}のいずれかが付いています(@code{magit-git-}は他の目的にも使用されます)。
 
-All of these functions accept an indefinite number of arguments, which are
-strings that specify command line arguments for Git (or in some cases an
-arbitrary executable).  These arguments are flattened before being passed on
-to the executable; so instead of strings they can also be lists of strings
-and arguments that are @code{nil} are silently dropped.  Some of these
-functions also require a single mandatory argument before these command line
-arguments.
+これらの関数はすべて、Git(または場合によっては任意の実行可能ファイル)のコマンドライン引数を指定する文字列である、無制限の数の引数を受け入れます。これらの引数は、実行可能ファイルに渡される前にフラット化(flattened)されます。したがって、文字列の代わりに、@code{nil}である文字列と引数のリストを黙って削除することもできます。これらの関数の一部は、これらのコマンドライン引数の前に単一の必須引数も必要とします。
 
-Roughly speaking, these functions run Git either to get some value or for
-side-effects.  The functions that return a value are useful to collect the
-information necessary to populate a Magit buffer, while the others are used
-to implement Magit commands.
+大まかに言えば、これらの関数はGitを実行して、何らかの値を取得するか、副作用を検出します。値を返す関数は、Magitバッファにデータを取り込むために必要な情報を収集するのに役立ちますが、他の関数はMagitコマンドを実装するために使用されます。
 
-The functions in the value-only group always run synchronously, and they
-never trigger a refresh.  The function in the side-effect group can be
-further divided into subgroups depending on whether they run Git
-synchronously or asynchronously, and depending on whether they trigger a
-refresh when the executable has finished.
+値のみのグループの関数は常に同期的に実行され、リフレッシュをトリガーすることはありません。副作用グループの関数は、Gitを同期的に実行するか非同期的に実行するか、および実行可能ファイルの終了時にリフレッシュをトリガーするかどうかに応じて、さらにサブグループに分割できます。
 
 @menu
 * Getting a Value from Git::
@@ -8270,193 +8244,132 @@ ARGSを伴ってgitを実行し、その出力を行のリスト(list)として�
 
 ARGSを伴ってgitを実行し、nullで区切られた出力をリスト(list)として返します。空のアイテムは省略されます。
 
-If the value of option @code{magit-git-debug} is non-nil and git exits with
-a non-zero exit status, then warn about that in the echo area and add a
-section containing git's standard error in the current repository's process
-buffer.
+オプション@code{magit-git-debug}の値がnil以外で、gitがゼロ以外の終了ステータスで終了する場合は、エコー領域でそのことを警告し、現在のリポジトリのプロセスバッファにgitの標準エラーを含むセクションを追加します。
 @end defun
 
 @defun magit-process-git destination &rest args
 
-Calls Git synchronously in a separate process, returning its exit code.
-DESTINATION specifies how to handle the output, like for
-@code{call-process}, except that file handlers are supported.  Enables
-Cygwin's "noglob" option during the call and ensures unix eol conversion.
+別のプロセスでGitを同期的に呼び出し、終了コードを返します。DESTINATIONは、ファイルハンドラーがサポートされていることを除いて、@code{call-process}のように出力を処理する方法を指定します。呼び出し中はCygwinの「noglob」オプションを有効にし、unix
+eol変換を保証します。
 @end defun
 
 @defun magit-process-file process &optional infile buffer display &rest args
 
-Processes files synchronously in a separate process.  Identical to
-@code{process-file} but temporarily enables Cygwin's "noglob" option during
-the call and ensures unix eol conversion.
+別のプロセスでファイルを同期的に処理します。@code{process-file}と同じですが、呼び出し中はCygwinの「noglob」オプションを一時的に有効にし、unix
+eol変換を保証します。
 @end defun
 
-If an error occurs when using one of the above functions, then that is
-usually due to a bug, i.e. using an argument which is not actually
-supported.  Such errors are usually not reported, but when they occur we
-need to be able to debug them.
+上記の関数のいずれかを使用しているときにエラーが発生した場合、それは通常、バグが原因です。つまり、実際にはサポートされていない引数を使用しています。
+このようなエラーは通常報告されませんが、発生した場合はデバッグできる必要があります。
 
 @defopt magit-git-debug
 
-Whether to report errors that occur when using @code{magit-git-insert},
-@code{magit-git-string}, @code{magit-git-lines}, or @code{magit-git-items}.
-This does not actually raise an error.  Instead a message is shown in the
-echo area, and git's standard error is insert into a new section in the
-current repository's process buffer.
+@code{magit-git-insert}または@code{magit-git-string}または@code{magit-git-lines}または@code{magit-git-items}の使用時に発生するエラーを報告するかどうか。これは実際にはエラーを発生させません。代わりに、エコー領域にメッセージが表示され、gitの標準エラーが現在のリポジトリのプロセスバッファの新しいセクションに挿入されます。
 @end defopt
 
 @defun magit-git-str &rest args
 
-This is a variant of @code{magit-git-string} that ignores the option
-@code{magit-git-debug}.  It is mainly intended to be used while handling
-errors in functions that do respect that option.  Using such a function
-while handing an error could cause yet another error and therefore lead to
-an infinite recursion.  You probably won't ever need to use this function.
+これは、オプション@code{magit-git-debug}を無視する@code{magit-git-string}のバリエーションです。これは主に、そのオプションを尊重する関数のエラーを処理するときに使用することを目的としています。エラーの処理中にこのような関数を使用すると、さらに別のエラーが発生する可能性があるため、無限再帰が発生する可能性があります。あなたは、おそらく、この関数を使用する必要はありません。
 @end defun
 
 @node Calling Git for Effect
 @subsection Calling Git for Effect
 
-These functions are used to run git to produce some effect.  Most Magit
-commands that actually run git do so by using such a function.
+これらの関数は、gitを実行して何らかの効果を生み出すために使用されます。実際にgitを実行するほとんどのMagitコマンドは、そのような関数を使用して実行します。
 
-Because we do not need to consume git's output when using these functions,
-their output is instead logged into a per-repository buffer, which can be
-shown using @code{$} from a Magit buffer or @code{M-x magit-process}
-elsewhere.
+これらの関数を使用するときにgitの出力を消費する必要がないため、それらの出力は代わりにリポジトリごとのバッファに記録されます。これは、Magitバッファの@code{$}または、他の場所では@code{M-x
+magit-process}を使用して表示できます。
 
-These functions can have an effect in two distinct ways.  Firstly, running
-git may change something, i.e. create or push a new commit.  Secondly, that
-change may require that Magit buffers are refreshed to reflect the changed
-state of the repository.  But refreshing isn't always desirable, so only
-some of these functions do perform such a refresh after git has returned.
+これらの機能は、2つの異なる方法で効果を発揮する可能性があります。まず、gitを実行すると何かが変わる可能性があります。つまり、新しいコミットを作成またはプッシュします。
+次に、その変更では、リポジトリの変更された状態を反映するためにMagitバッファをリフレッシュする必要がある場合があります。
+ただし、リフレッシュが常に望ましいとは限らないため、gitが戻った後、これらの関数の一部のみがそのようなリフレッシュを実行します。
 
-Sometimes it is useful to run git asynchronously.  For example, when the
-user has just initiated a push, then there is no reason to make her wait
-until that has completed.  In other cases it makes sense to wait for git to
-complete before letting the user do something else.  For example after
-staging a change it is useful to wait until after the refresh because that
-also automatically moves to the next change.
+gitを非同期で実行すると便利な場合があります。たとえば、ユーザーがプッシュを開始したばかりの場合、それが完了するまでユーザーを待たせる理由はありません。それ以外の場合は、ユーザーに他のことをさせる前にgitが完了するのを待つのが理にかなっています。
+たとえば、変更をステージした後は、リフレッシュが完了するまで待つと便利です。これも自動的に次の変更に移動するためです。
 
 @defun magit-call-git &rest args
 
-Calls git synchronously with ARGS@.
+ARGS@@を伴ってgitを同期的に呼び出します。
 @end defun
 
 @defun magit-call-process program &rest args
 
-Calls PROGRAM synchronously with ARGS@.
+ARGS@@を伴って同期的にPROGRAMを呼び出します。
 @end defun
 
 @defun magit-run-git &rest args
 
-Calls git synchronously with ARGS and then refreshes.
+ARGSを伴ってgitを同期的に呼び出し、それからリフレッシュします。
 @end defun
 
 @defun magit-run-git-with-input &rest args
 
-Calls git synchronously with ARGS and sends it the content of the current
-buffer on standard input.
+ARGSを伴って同期的にgitを呼び出し、標準入力(standard input)で現在のバッファの内容を送信します。
 
-If the current buffer's @code{default-directory} is on a remote filesystem,
-this function actually runs git asynchronously.  But then it waits for the
-process to return, so the function itself is synchronous.
+現在のバッファの@code{default-directory}がリモートファイルシステム上にある場合、この関数は実際にはgitを非同期で実行します。ただし、プロセスが戻るのを待つため、関数自体は同期しています。
 @end defun
 
 @defun magit-git &rest args
 
-Calls git synchronously with ARGS for side-effects only.  This function does
-not refresh the buffer.
+副作用についてのみ、ARGSを伴って同期的にgitを呼び出します。この関数はバッファをリフレッシュしません。
 @end defun
 
 @defun magit-git-wash washer &rest args
 
-Execute Git with ARGS, inserting washed output at point.  Actually first
-insert the raw output at point.  If there is no output call
-@code{magit-cancel-section}.  Otherwise temporarily narrow the buffer to the
-inserted text, move to its beginning, and then call function WASHER with
-ARGS as its sole argument.
+ARGSを伴ってGitを実行して、洗浄された出力をポイントに挿入します。実際には、最初に生の出力をポイントに挿入します。出力がない場合は、@code{magit-cancel-section}を呼び出します。それ以外の場合は、挿入されたテキストのみ一時的にバッファをnarrowし、最初に移動してから、ARGSを唯一の引数として関数WASHERを呼び出します。
 @end defun
 
-And now for the asynchronous variants.
+そしてここからが非同期バリエーションについてです。
 
 @defun magit-run-git-async &rest args
 
-Start Git, prepare for refresh, and return the process object.  ARGS is
-flattened and then used as arguments to Git.
+Gitを開始(start)し、リフレッシュの準備をして、プロセスオブジェクトを返します。ARGSはフラット化され、Gitへの引数として使用されます。
 
-Display the command line arguments in the echo area.
+エコー領域にコマンドライン引数を表示します。
 
-After Git returns some buffers are refreshed: the buffer that was current
-when this function was called (if it is a Magit buffer and still alive), as
-well as the respective Magit status buffer.  Unmodified buffers visiting
-files that are tracked in the current repository are reverted if
-@code{magit-revert-buffers} is non-nil.
+Gitから戻った後、いくつかのバッファがリフレッシュされます。それは、この関数が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファです。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルにアクセスしている変更されていないバッファは元に戻されます。
 @end defun
 
 @defun magit-run-git-with-editor &rest args
 
-Export GIT@math{_EDITOR} and start Git.  Also prepare for refresh and return
-the process object.  ARGS is flattened and then used as arguments to Git.
+GIT@math{_EDITOR}をエクスポートし、Gitを開始します。また、リフレッシュの準備をして、プロセスオブジェクトを返します。ARGSはフラット化され、Gitへの引数として使用されます。
 
-Display the command line arguments in the echo area.
+エコー領域にコマンドライン引数を表示します。
 
-After Git returns some buffers are refreshed: the buffer that was current
-when this function was called (if it is a Magit buffer and still alive), as
-well as the respective Magit status buffer.
+Gitから戻った後、いくつかのバッファがリフレッシュされます。それは、この関数が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファです。
 @end defun
 
 @defun magit-start-git input &rest args
 
-Start Git, prepare for refresh, and return the process object.
+Gitを開始し、リフレッシュの準備をして、プロセスオブジェクトを返します。
 
-If INPUT is non-nil, it has to be a buffer or the name of an existing
-buffer.  The buffer content becomes the processes standard input.
+INPUTがnilでない場合、それはバッファまたは既存のバッファの名前である必要があります。バッファの内容がプロセスの標準入力になります。
 
-Option @code{magit-git-executable} specifies the Git executable and option
-@code{magit-git-global-arguments} specifies constant arguments.  The
-remaining arguments ARGS specify arguments to Git.  They are flattened
-before use.
+オプション@code{magit-git-executable}はGit実行可能ファイルを指定し、オプション@code{magit-git-global-arguments}は定数引数を指定します。残りの引数ARGSは、Gitへの引数を指定します。それらは使用前にフラット化されます。
 
-After Git returns, some buffers are refreshed: the buffer that was current
-when this function was called (if it is a Magit buffer and still alive), as
-well as the respective Magit status buffer.  Unmodified buffers visiting
-files that are tracked in the current repository are reverted if
-@code{magit-revert-buffers} is non-nil.
+Gitから戻った後、いくつかのバッファがリフレッシュされます。それは、この関数が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファです。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルにアクセスしている変更されていないバッファは元に戻されます。
 @end defun
 
 @defun magit-start-process &rest args
 
-Start PROGRAM, prepare for refresh, and return the process object.
+PROGRAMを開始し、リフレッシュの準備をして、プロセスオブジェクトを返します。
 
-If optional argument INPUT is non-nil, it has to be a buffer or the name of
-an existing buffer.  The buffer content becomes the processes standard
-input.
+オプションの引数INPUTがnil以外の場合、それはバッファまたは既存のバッファの名前である必要があります。バッファの内容がプロセスの標準入力になります。
 
-The process is started using @code{start-file-process} and then setup to use
-the sentinel @code{magit-process-sentinel} and the filter
-@code{magit-process-filter}.  Information required by these functions is
-stored in the process object.  When this function returns the process has
-not started to run yet so it is possible to override the sentinel and
-filter.
+プロセスは@code{start-file-process}を使用して開始され、センチネル(番兵)
+@code{magit-process-sentinel}とフィルター@code{magit-process-filter}を使用するようにセットアップされます。これらの関数に必要な情報は、プロセスオブジェクトに格納されます。この関数から戻ったとき、プロセスはまだ実行を開始していないため、監視者(sentinel)とフィルターをオーバーライドすることができます。
 
-After the process returns, @code{magit-process-sentinel} refreshes the
-buffer that was current when @code{magit-start-process} was called (if it is
-a Magit buffer and still alive), as well as the respective Magit status
-buffer.  Unmodified buffers visiting files that are tracked in the current
-repository are reverted if @code{magit-revert-buffers} is non-nil.
+プロセスから戻った後、@code{magit-process-sentinel}は、@code{magit-start-process}が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファをリフレッシュします。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルにアクセスしている変更されていないバッファは元に戻されます。
 @end defun
 
 @defvar magit-this-process
 
-The child process which is about to start.  This can be used to change the
-filter and sentinel.
+開始しようとしている子プロセス。これは、フィルターとセンチネル(番兵)を変更するために使用できます。
 @end defvar
 
 @defvar magit-process-raise-error
 
-When this is non-nil, then @code{magit-process-sentinel} raises an error if
-git exits with a non-zero exit status.  For debugging purposes.
+これがnil以外の場合、gitがゼロ以外の終了ステータスで終了すると、@code{magit-process-sentinel}はエラーを発生させます。デバッグ目的のために。
 @end defvar
 
 @node Section Plumbing
@@ -8473,80 +8386,45 @@ git exits with a non-zero exit status.  For debugging purposes.
 
 @defmac magit-insert-section &rest args
 
-Insert a section at point.
+ポイントにセクションを挿入します。
 
-TYPE is the section type, a symbol.  Many commands that act on the current
-section behave differently depending on that type.  Also if a variable
-@code{magit-TYPE-section-map} exists, then use that as the text-property
-@code{keymap} of all text belonging to the section (but this may be
-overwritten in subsections).  TYPE can also have the form @code{(eval FORM)}
-in which case FORM is evaluated at runtime.
+TYPEはセクションタイプで、シンボルです。現在のセクションに作用する多くのコマンドは、そのタイプに応じて異なる動作をします。また、変数@code{magit-TYPE-section-map}が存在する場合は、それをセクションに属するすべてのテキストのテキストプロパティ@code{keymap}として使用します(ただし、これはサブセクションで上書きされる場合があります)。
+TYPEは、@code{(eval FORM)}の形式にすることもできます。この場合、FORMは実行時に評価されます。
 
-Optional VALUE is the value of the section, usually a string that is
-required when acting on the section.
+オプションのVALUEはセクションの値であり、通常はセクションを操作するときに必要な文字列です。
 
-When optional HIDE is non-nil collapse the section body by default,
-i.e. when first creating the section, but not when refreshing the buffer.
-Otherwise, expand it by default.  This can be overwritten using
-@code{magit-section-set-visibility-hook}.  When a section is recreated
-during a refresh, then the visibility of predecessor is inherited and HIDE
-is ignored (but the hook is still honored).
+オプションのHIDEがnil以外の場合、デフォルトでセクション本体を折りたたみます。つまり、それは最初にセクションを作成するときです。しかし、バッファをリフレッシュするときは折りたたみません。それ以外の場合は、デフォルトで展開します。これは、@code{magit-section-set-visibility-hook}を使用して上書きできます。リフレッシュ中にセクションが再作成されると、先行の可視性が継承され、HIDEは無視されます(ただし、フックは引き続き尊重されます)。
 
-BODY is any number of forms that actually insert the section's heading and
-body.  Optional NAME, if specified, has to be a symbol, which is then bound
-to the struct of the section being inserted.
+BODYは、セクションの見出しと本文を実際に挿入する任意の数のフォームです。オプションのNAMEを指定する場合は、シンボルにする必要があります。シンボルは、挿入されるセクションの構造体(struct)に結び付けられます。
 
-Before BODY is evaluated the @code{start} of the section object is set to
-the value of @code{point} and after BODY was evaluated its @code{end} is set
-to the new value of @code{point}; BODY is responsible for moving
-@code{point} forward.
+BODYが評価される前に、セクションオブジェクトの@code{start}が@code{point}の値に設定され、BODYが評価された後、その@code{end}が@code{point}の新しい値に設定されます。
+BODYは、@code{point}を前進させる責任があります。
 
-If it turns out inside BODY that the section is empty, then
-@code{magit-cancel-section} can be used to abort and remove all traces of
-the partially inserted section.  This can happen when creating a section by
-washing Git's output and Git didn't actually output anything this time
-around.
+セクションが空であることがBODY内で判明した場合は、@code{magit-cancel-section}を使用して、部分的に挿入されたセクションのすべてのトレースを中止および削除できます。これは、Gitの出力を洗浄してセクションを作成し、Gitが今回は実際には何も出力しなかった場合に発生する可能性があります。
 @end defmac
 
 @defun magit-insert-heading &rest args
 
-Insert the heading for the section currently being inserted.
+現在挿入されているセクションの見出しを挿入します。
 
-This function should only be used inside @code{magit-insert-section}.
+この関数は、@code{magit-insert-section}内でのみ使用する必要があります。
 
-When called without any arguments, then just set the @code{content} slot of
-the object representing the section being inserted to a marker at
-@code{point}.  The section should only contain a single line when this
-function is used like this.
+引数なしで呼び出された場合は、挿入されるセクションを表すオブジェクトの@code{content}スロットを@code{point}のマーカーに設定するだけです。この関数をこのように使用する場合、セクションには1行のみを含める必要があります。
 
-When called with arguments ARGS, which have to be strings, then insert those
-strings at point.  The section should not contain any text before this
-happens and afterwards it should again only contain a single line.  If the
-@code{face} property is set anywhere inside any of these strings, then
-insert all of them unchanged.  Otherwise use the
-@code{magit-section-heading} face for all inserted text.
+文字列でなければならない引数ARGSを指定して呼び出された場合は、それらの文字列をポイントに挿入します。これが発生する前はセクションにテキストを含めないでください。その後、セクションには1行だけを含める必要があります。@code{face}プロパティがこれらの文字列のいずれかの内部のどこかに設定されている場合は、それらすべてを変更せずに挿入します。それ以外の場合は、挿入されたすべてのテキストに@code{magit-section-heading}faceを使用します。
 
-The @code{content} property of the section struct is the end of the heading
-(which lasts from @code{start} to @code{content}) and the beginning of the
-body (which lasts from @code{content} to @code{end}).  If the value of
-@code{content} is nil, then the section has no heading and its body cannot
-be collapsed.  If a section does have a heading then its height must be
-exactly one line, including a trailing newline character.  This isn't
-enforced; you are responsible for getting it right.  The only exception is
-that this function does insert a newline character if necessary.
+セクション構造体の@code{content}プロパティは、見出しの終わり(@code{start}から@code{content}まで続く)と本文の始まり(@code{content}から@code{end}まで続く)です。@code{content}の値がnilの場合、セクションには見出しがなく、本文を折りたたむことはできません。セクションに見出しがある場合、その高さは、末尾の改行文字を含めて、正確に1行である必要があります。これは強制されません。あなたはそれを正しくする責任があります。唯一の例外は、この関数が必要に応じて改行文字を挿入することです。
 @end defun
 
 @defun magit-cancel-section
 
-Cancel the section currently being inserted.  This exits the innermost call
-to @code{magit-insert-section} and removes all traces of what has already
-happened inside that call.
+現在挿入されているセクションをキャンセルします。これにより、@code{magit-insert-section}への最も内側の呼び出しが終了し、その呼び出し内ですでに発生したことのすべての痕跡が削除されます。
 @end defun
 
 @defun magit-define-section-jumper sym title &optional value
 
-Define an interactive function to go to section SYM@.  TITLE is the
-displayed title of the section.
+現在挿入されているセクションSYM@@をキャンセルします。
+これにより、@code{magit-insert-section}への最も内側の呼び出しが終了し、その呼び出し内ですでに発生したことのすべての痕跡が削除されます。
 @end defun
 
 @node Section Selection
@@ -8554,41 +8432,27 @@ displayed title of the section.
 
 @defun magit-current-section
 
-Return the section at point.
+ポイントのセクションを返します。
 @end defun
 
 @defun magit-region-sections &optional condition multiple
 
-Return a list of the selected sections.
+選択したセクションのリストを返します。
 
-When the region is active and constitutes a valid section selection, then
-return a list of all selected sections.  This is the case when the region
-begins in the heading of a section and ends in the heading of the same
-section or in that of a sibling section.  If optional MULTIPLE is non-nil,
-then the region cannot begin and end in the same section.
+リージョンがアクティブで、有効なセクション選択を構成している場合は、選択されたすべてのセクションのリストを返します。これは、領域がセクションの見出しで始まり、同じセクションまたは兄弟セクションの見出しで終わる場合です。オプションのMULTIPLEがnil以外の場合、領域は同じセクションで開始および終了できません。
 
-When the selection is not valid, then return nil.  In this case, most
-commands that can act on the selected sections will instead act on the
-section at point.
+選択が無効な場合は、nilを返します。この場合、選択したセクションに作用する可能性のあるほとんどのコマンドは、代わりにそのポイントのセクションに作用します。
 
-When the region looks like it would in any other buffer then the selection
-is invalid.  When the selection is valid then the region uses the
-@code{magit-section-highlight} face.  This does not apply to diffs where
-things get a bit more complicated, but even here if the region looks like it
-usually does, then that's not a valid selection as far as this function is
-concerned.
+領域が他のバッファにあるように見える場合、選択は無効です。選択が有効な場合、領域は@code{magit-section-highlight}faceを使用します。これは、物事が少し複雑になるdiffには適用されませんが、ここでも、領域が通常のように見える場合でも、この関数に関する限り、これは有効な選択ではありません。
 
-If optional CONDITION is non-nil, then the selection not only has to be
-valid; all selected sections additionally have to match CONDITION, or nil is
-returned.  See @code{magit-section-match} for the forms CONDITION can take.
+オプションのCONDITIONがnil以外の場合、選択は有効である必要があるだけではありません。選択したすべてのセクションは、さらにCONDITIONと一致する必要があります。一致しない場合、nilが返されます。CONDITIONが取ることができる形式については、@code{magit-section-match}を参照してください。
 @end defun
 
 @defun magit-region-values &optional condition multiple
 
-Return a list of the values of the selected sections.
+選択したセクションの値のリストを返します。
 
-Return the values that themselves would be returned by
-@code{magit-region-sections} (which see).
+@code{magit-region-sections}(を参照)によって返される値を返します。
 @end defun
 
 @node Matching Sections
@@ -8599,170 +8463,116 @@ Return the values that themselves would be returned by
 @cindex magit-describe-section-briefly
 @item @kbd{M-x magit-describe-section-briefly} @tie{}@tie{}@tie{}@tie{}(@code{magit-describe-section-briefly})
 
-Show information about the section at point.  This command is intended for
-debugging purposes.
+ポイントのセクションに関する情報を表示します。このコマンドは、デバッグを目的としています。
 
 @end table
 
 @defun magit-section-ident section
 
-Return an unique identifier for SECTION@.  The return value has the form
-@code{((TYPE . VALUE)...)}.
+SECTION@@の一意のIDを返します。戻り値の形式は@code{((TYPE . VALUE)...)}です。
 @end defun
 
 @defun magit-get-section ident &optional root
 
-Return the section identified by IDENT@.  IDENT has to be a list as returned
-by @code{magit-section-ident}.
+IDENT@@で識別されるセクションを返します。IDENTは、@code{magit-section-ident}によって返されるリストである必要があります。
 @end defun
 
 @defun magit-section-match condition &optional section
 
-Return @code{t} if SECTION matches CONDITION@.  SECTION defaults to the
-section at point.  If SECTION is not specified and there also is no section
-at point, then return @code{nil}.
+SECTIONがCONDITION@@と一致する場合は、@code{t}を返します。SECTIONは、デフォルトでポイントのセクションになります。SECTIONが指定されておらず、ポイントにもセクションがない場合は、@code{nil}を返します。
 
-CONDITION can take the following forms:
+CONDITIONは、以下の形式をとることができます:
 @itemize
 @item
 @code{(CONDITION...)}
 
-matches if any of the CONDITIONs matches.
+上記のCONDITIONのいずれかが一致する場合に一致します。
 
 
 @item
 @code{[CLASS...]}
 
-matches if the section's class is the same as the first CLASS or a subclass
-of that; the section's parent class matches the second CLASS; and so on.
+セクションのクラスが最初のCLASSまたはそのサブクラスと同じである場合に一致します。セクションの親クラスは2番目のCLASSと一致します。以下同様。
 
 
 @item
 @code{[* CLASS...]}
 
-matches sections that match @code{[CLASS...]} and also recursively all their
-child sections.
+@code{[CLASS...]}に一致するセクションと、それらのすべての子セクションを再帰的に一致させます。
 
 
 @item
 @code{CLASS}
 
-matches if the section's class is the same as CLASS or a subclass of that;
-regardless of the classes of the parent sections.
+セクションのクラスがCLASSまたはそのサブクラスと同じである場合に一致します。親セクションのクラスに関係なくです。
 @end itemize
 
-Each CLASS should be a class symbol, identifying a class that derives from
-@code{magit-section}.  For backward compatibility CLASS can also be a "type
-symbol".  A section matches such a symbol if the value of its @code{type}
-slot is @code{eq}.  If a type symbol has an entry in
-@code{magit--section-type-alist}, then a section also matches that type if
-its class is a subclass of the class that corresponds to the type as per
-that alist.
+各CLASSは、@code{magit-section}から派生したクラスを識別するクラスシンボルである必要があります。下位互換性のために、CLASSは「タイプシンボル」にすることもできます。@code{type}スロットの値が@code{eq}の場合、セクションはそのようなシンボルに一致します。タイプシンボルの@code{magit--section-type-alist}にエントリがある場合、そのクラスがそのalistのタイプに対応するクラスのサブクラスであれば、セクションもそのタイプに一致します。
 
-Note that it is not necessary to specify the complete section lineage as
-printed by @code{magit-describe-section-briefly}, unless of course you want
-to be that precise.
+注意:
+もちろん正確にしたい場合を除いて、あなたは@code{magit-describe-section-briefly}によって出力される完全なセクション系統を指定する必要はないことに注意してください。
 @end defun
 
 @defun magit-section-value-if condition &optional section
 
-If the section at point matches CONDITION, then return its value.
+ポイントのセクションがCONDITIONと一致する場合は、その値を返します。
 
-If optional SECTION is non-nil then test whether that matches instead.  If
-there is no section at point and SECTION is nil, then return nil.  If the
-section does not match, then return nil.
+オプションのSECTIONがnil以外の場合は、代わりにそれが一致するかどうかをテストします。ポイントにセクションがなく、SECTIONがnilの場合は、nilを返します。
+セクションが一致しない場合は、nilを返します。
 
-See @code{magit-section-match} for the forms CONDITION can take.
+CONDITIONが取ることができる形式については、@code{magit-section-match}を参照してください。
 @end defun
 
 @defun magit-section-case &rest clauses
 
-Choose among clauses on the type of the section at point.
+ポイントのセクションのタイプに関する条項(clauses)から選択します。
 
-Each clause looks like (CONDITION BODY@dots{}).  The type of the section is
-compared against each CONDITION; the BODY forms of the first match are
-evaluated sequentially and the value of the last form is returned.  Inside
-BODY the symbol @code{it} is bound to the section at point.  If no clause
-succeeds or if there is no section at point return nil.
+各句は(CONDITION
+BODY@dots{})のようになります。セクションのタイプは、各条件と比較されます。最初の一致のBODYフォームが順番に評価され、最後のフォームの値が返されます。BODY内では、シンボル@code{it}がポイントのセクションに結び付けられています。句が成功しない場合、またはポイントにセクションがない場合は、nilを返します。
 
-See @code{magit-section-match} for the forms CONDITION can take.
-Additionally a CONDITION of t is allowed in the final clause and matches if
-no other CONDITION match, even if there is no section at point.
+CONDITIONが取ることができる形式については、@code{magit-section-match}を参照してください。さらに、@code{t}のCONDITIONは最後の節で許可され、他のCONDITIONが一致しない場合は、ポイントにセクションがない場合でも一致します。
 @end defun
 
 @defvar magit-root-section
 
-The root section in the current buffer.  All other sections are descendants
-of this section.  The value of this variable is set by
-@code{magit-insert-section} and you should never modify it.
+現在のバッファのルートセクション。他のすべてのセクションは、このセクションの子孫です。この変数の値は@code{magit-insert-section}によって設定されるため、変更しないでください。
 @end defvar
 
-For diff related sections a few additional tools exist.
+diff関連のセクションには、いくつかの追加ツールがあります。
 
 @defun magit-diff-type &optional section
 
-Return the diff type of SECTION@.
+別のタイプのSECTION@@を返します。
 
-The returned type is one of the symbols @code{staged}, @code{unstaged},
-@code{committed}, or @code{undefined}.  This type serves a similar purpose
-as the general type common to all sections (which is stored in the
-@code{type} slot of the corresponding @code{magit-section} struct) but takes
-additional information into account.  When the SECTION isn't related to
-diffs and the buffer containing it also isn't a diff-only buffer, then
-return nil.
+返されるタイプは、@code{staged}または@code{unstaged}または@code{committed}または@code{undefined}のいずれかのシンボルです。このタイプは、すべてのセクションに共通の一般的なタイプ(対応する@code{magit-section}構造体の@code{type}スロットに格納されます)と同様の目的を果たしますが、追加情報を考慮に入れます。SECTIONがdiffに関連しておらず、それを含むバッファもdiffのみのバッファではない場合は、nilを返します。
 
-Currently the type can also be one of @code{tracked} and @code{untracked},
-but these values are not handled explicitly in every place they should be.
-A possible fix could be to just return nil here.
+現在、タイプは@code{tracked}と@code{untracked}のいずれかになりますが、これらの値は、本来あるべきすべての場所で明示的に処理されるわけではありません。考えられる修正は、ここでnilを返すことです。
 
-The section has to be a @code{diff} or @code{hunk} section, or a section
-whose children are of type @code{diff}.  If optional SECTION is nil, return
-the diff type for the current section.  In buffers whose major mode is
-@code{magit-diff-mode} SECTION is ignored and the type is determined using
-other means.  In @code{magit-revision-mode} buffers the type is always
-@code{committed}.
+セクションは、@code{diff}または@code{hunk}セクション、または子のタイプが@code{diff}であるセクションである必要があります。オプションのSECTIONがnilの場合、現在のセクションのdiffタイプを返します。メジャーモードが@code{magit-diff-mode}であるバッファでは、SECTIONは無視され、タイプは他の手段を使用して決定されます。@code{magit-revision-mode}バッファでは、タイプは常に@code{committed}です。
 @end defun
 
 @defun magit-diff-scope &optional section strict
 
-Return the diff scope of SECTION or the selected section(s).
+SECTIONの別のスコープまたは選択したセクション達を返します。
 
-A diff's "scope" describes what part of a diff is selected, it is a symbol,
-one of @code{region}, @code{hunk}, @code{hunks}, @code{file}, @code{files},
-or @code{list}.  Do not confuse this with the diff "type", as returned by
-@code{magit-diff-type}.
+diffの「スコープ」は、diffのどの部分が選択されているかを示します。これは、@code{region}または@code{hunk}または@code{hunks}または@code{file}または@code{files}または@code{list}のいずれかのシンボルです。@code{magit-diff-type}によって返されるdiffの"type"とこれを混同しないでください。
 
-If optional SECTION is non-nil, then return the scope of that, ignoring the
-sections selected by the region.  Otherwise return the scope of the current
-section, or if the region is active and selects a valid group of diff
-related sections, the type of these sections, i.e. @code{hunks} or
-@code{files}.  If SECTION (or if the current section that is nil) is a
-@code{hunk} section and the region starts and ends inside the body of a that
-section, then the type is @code{region}.
+オプションのSECTIONがnil以外の場合は、リージョンによって選択されたセクションを無視して、そのスコープを返します。それ以外の場合は、現在のセクションのスコープを返します。または、リージョンがアクティブで、diff関連セクションの有効なグループを選択した場合は、これらのセクションのタイプ、つまり@code{hunks}または@code{files}を返します。SECTION(または現在のセクションがnil)が@code{hunk}セクションであり、リージョンがそのセクションの本体内で開始および終了する場合、タイプは@code{region}です。
 
-If optional STRICT is non-nil then return nil if the diff type of the
-section at point is @code{untracked} or the section at point is not actually
-a @code{diff} but a @code{diffstat} section.
+オプションのSTRICTがnil以外の場合、ポイントのセクションのdiffタイプが@code{untracked}であるか、ポイントのセクションが実際には@code{diff}ではなく@code{diffstat}セクションである場合は、nilを返します。
 @end defun
 
 @node Refreshing Buffers
 @section Refreshing Buffers
 
-All commands that create a new Magit buffer or change what is being
-displayed in an existing buffer do so by calling @code{magit-mode-setup}.
-Among other things, that function sets the buffer local values of
-@code{default-directory} (to the top-level of the repository),
-@code{magit-refresh-function}, and @code{magit-refresh-args}.
+新しいMagitバッファを作成したり、既存のバッファに表示されているものを変更したりするすべてのコマンドは、@code{magit-mode-setup}を呼び出すことによって行います。
+特に、この関数は、@code{default-directory}(リポジトリの最上位)と@code{magit-refresh-function}と@code{magit-refresh-args}のバッファローカル値を設定します。
 
-Buffers are refreshed by calling the function that is the local value of
-@code{magit-refresh-function} (a function named
-@code{magit-*-refresh-buffer}, where @code{*} may be something like
-@code{diff}) with the value of @code{magit-refresh-args} as arguments.
+バッファは、@code{magit-refresh-args}の値を引数として@code{magit-refresh-function}(@code{magit-*-refresh-buffer}という名前の関数。@code{*}の部分は@code{diff}のようなのが入ります)のローカル値である関数を呼び出すことによってリフレッシュされます。
 
 @defmac magit-mode-setup buffer switch-func mode refresh-func &optional refresh-args
 
-This function displays and selects BUFFER, turns on MODE, and refreshes a
-first time.
+この機能は、BUFFERを表示および選択し、MODEをオンにして、最初にリフレッシュします。
 
 This function displays and optionally selects BUFFER by calling
 @code{magit-mode-display-buffer} with BUFFER, MODE and SWITCH-FUNC as
@@ -9270,7 +9080,7 @@ Magitとその依存関係には、いくつかのデバッグツールが用意
 @cindex magit-toggle-verbose-refresh
 @item @kbd{M-x magit-toggle-verbose-refresh} @tie{}@tie{}@tie{}@tie{}(@code{magit-toggle-verbose-refresh})
 
-このコマンドは、Magitがバッファを詳細に更新するかどうかを切り替えます。これを有効にすると、どのセクションがボトルネックであるかを把握するのに役立ちます。追加の出力は、@code{*Messages*}バッファにあります。
+このコマンドは、Magitがバッファを詳細にリフレッシュするかどうかを切り替えます。これを有効にすると、どのセクションがボトルネックであるかを把握するのに役立ちます。追加の出力は、@code{*Messages*}バッファにあります。
 
 @kindex M-x magit-debug-git-executable
 @cindex magit-debug-git-executable
