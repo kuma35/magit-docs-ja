@@ -85,7 +85,7 @@ Interface Concepts
 * Modes and Buffers::
 * Sections::
 * トランジェントコマンド::
-* トランジェントでの引数とバッファ変数::
+* Transient Arguments and Buffer Variables::
 * Completion(補完)とConfirmation(確認)とSelection(選択範囲): Completion Confirmation(確認補完)とSelection(選択範囲).
 * Running Git::
 
@@ -770,7 +770,7 @@ File: magit.ja.info,  Node: Interface Concepts,  Next: Inspecting,  Prev: Gettin
 * Modes and Buffers::
 * Sections::
 * トランジェントコマンド::
-* トランジェントでの引数とバッファ変数::
+* Transient Arguments and Buffer Variables::
 * Completion(補完)とConfirmation(確認)とSelection(選択範囲): Completion Confirmation(確認補完)とSelection(選択範囲).
 * Running Git::
 
@@ -1506,30 +1506,30 @@ Magitには、セクションの表示を変更するための多くのコマン
 はありません。これらのコマンドは、一般的にあまり役に立たないと認識されて
 いるためです。しかし、あなたにとっては有益かもしれません。
 
- -- コマンド: magit-section-show
+ -- Command: magit-section-show
 
      現在のセクションのボディを表示します。
 
- -- コマンド: magit-section-hide
+ -- Command: magit-section-hide
 
      現在のセクションのボディを非表示にします。
 
- -- コマンド: magit-section-show-headings
+ -- Command: magit-section-show-headings
 
      現在のセクションの子の見出しを再帰的に表示します。見出しのみを表示
      します。以前に表示されたテキストのみのボディは非表示になります。
 
- -- コマンド: magit-section-show-children
+ -- Command: magit-section-show-children
 
      現在のセクションの子の体を再帰的に表示します。プレフィックス引数を
      使用すると、現在のセクションのレベルまで子を表示し、より深い子を非
      表示にします。
 
- -- コマンド: magit-section-hide-children
+ -- Command: magit-section-hide-children
 
      現在のセクションの子のボディを再帰的に非表示にします。
 
- -- コマンド: magit-section-toggle-children
+ -- Command: magit-section-toggle-children
 
      現在のセクションの子のボディの可視性を切り替えます(toggle)。
 
@@ -1633,8 +1633,7 @@ File: magit.ja.info,  Node: Section Hooks,  Next: Section Types and Values,  Pre
 たはカスタムインターフェイス(Custom interface)の使用は避けてください。
 
 使用可能なさまざまなセクションフック変数については、このマニュアルの後半
-で、適切な"section inserter functions"(セクションインサーター関数)ととも
-に説明します。
+で、適切なセクションインサーター関数とともに説明します。
 
  -- Function: magit-add-section-hook hook function &optional at append
           local
@@ -1661,9 +1660,9 @@ File: magit.ja.info,  Node: Section Hooks,  Next: Section Types and Values,  Pre
      HOOKはシンボルであるべきです。HOOKが無効の場合、最初にnilに設定され
      ます。HOOKの値は単一のフック関数であってはなりません。FUNCTIONは、
      引数をとらず、ポイントに1つまたは複数のセクションを挿入して、ポイン
-     トを前方に移動する関数である必要があります。FUNCTIONは、意味がない
-     場合に、セクションを挿入しないことを選択する場合があります。他の副
-     作用のために乱用されるべきではありません。
+     トを前方に移動する関数である必要があります。FUNCTIONは、そうする意
+     味がない場合に、セクションを挿入しないことを選択する場合があります
+     。それは他の副作用のために乱用されるべきではありません。
 
 セクションフックから関数を削除するには、‘remove-hook’を使用します。
 
@@ -1673,7 +1672,7 @@ File: magit.ja.info,  Node: Section Types and Values,  Next: Section Options,  P
 4.2.4 Section Types and Values
 ------------------------------
 
-各セクションには、例えば‘hunk’, ‘file’,‘commit’などのタイプがあります。
+各セクションには、例えば‘hunk’、‘file’、‘commit’などのタイプがあります。
 特定のセクションタイプのインスタンスにも値があります。たとえば、タイプ
 ‘file’のセクションの値は、ファイル名です。
 
@@ -1682,7 +1681,7 @@ File: magit.ja.info,  Node: Section Types and Values,  Next: Section Options,  P
 
 ‘M-x magit-describe-section-briefly’     (‘magit-describe-section-briefly’)
 
-     エコー領域内にポイントのあるセクションに関する情報を
+     エコー領域内に、ポイントのあるセクションに関する情報を
      "#<magit-section VALUE [TYPE PARENT-TYPE...] BEGINNING-END>"として
      表示します。
 
@@ -1692,10 +1691,10 @@ File: magit.ja.info,  Node: Section Types and Values,  Next: Section Options,  P
 理由の1つにすぎません。
 
 さらに、セクションタイプごとに、‘magit-TYPE-section-map’という名前のキー
-マップ「might」を定義します。そのキーマップは、それぞれのタイプの任意の
-セクションに属するすべてのテキストのテキストプロパティキーマップとして使
-用されます。そのようなマップが特定のタイプに存在しない場合は、自分で定義
-することができ、自動的に使用されます。
+マップを定義できます。そのキーマップは、それぞれのタイプの任意のセクショ
+ンに属するすべてのテキストのテキストプロパティキーマップとして使用されま
+す。そのようなマップが特定のタイプに存在しない場合、あなたが自分で定義す
+ることができ、そしてそれが自動的に使用されます。
 
 
 File: magit.ja.info,  Node: Section Options,  Prev: Section Types and Values,  Up: Sections
@@ -1712,7 +1711,7 @@ File: magit.ja.info,  Node: Section Options,  Prev: Section Types and Values,  U
      恵を受ける可能性のあるセクションにのみ影響します。
 
 
-File: magit.ja.info,  Node: トランジェントコマンド,  Next: トランジェントでの引数とバッファ変数,  Prev: Sections,  Up: Interface Concepts
+File: magit.ja.info,  Node: トランジェントコマンド,  Next: Transient Arguments and Buffer Variables,  Prev: Sections,  Up: Interface Concepts
 
 4.3 トランジェントコマンド
 ==========================
@@ -1725,7 +1724,7 @@ File: magit.ja.info,  Node: トランジェントコマンド,  Next: トラン�
 出します。
 
 これは、ライブラリ‘transient’で実装されています。 以前のMagitリリースで
-は、パッケージ‘magit-popup’と、さらに以前のバージョンのライブラリ
+は、パッケージ‘magit-popup’、さらに以前のバージョンではライブラリ
 ‘magit-key-mode’を使用していました。
 
 transientの文書は→*note (transient)Top::
@@ -1735,9 +1734,9 @@ transientの文書は→*note (transient)Top::
      このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、Magitの
      他のプレフィックスコマンドのほとんどをサフィックス(後置)コマンドと
      して結び付け、そのうちの1つが呼び出されるまで一時バッファ(temporary
-     buffer)に表示します。このようなサブ・プレフィックスを呼び出すと、
-     ‘magit-dispatch’のサフィックスではなく、そのコマンドのサフィックス
-     が結び付けられて表示されます。
+     buffer)に表示します。このようなサブプレフィックスを呼び出すと、
+     ‘magit-dispatch’のではなく、そのコマンドのサフィックスコマンドが結
+     び付けられて表示されます。
 
 このコマンドは、Magitバッファの外部でも特に便利なので、グローバル・バイ
 ンディングを設定すべきです:
@@ -1745,10 +1744,10 @@ transientの文書は→*note (transient)Top::
      (global-set-key (kbd "C-x M-g") 'magit-dispatch)
 
 
-File: magit.ja.info,  Node: トランジェントでの引数とバッファ変数,  Next: Completion Confirmation(確認補完)とSelection(選択範囲),  Prev: トランジェントコマンド,  Up: Interface Concepts
+File: magit.ja.info,  Node: Transient Arguments and Buffer Variables,  Next: Completion Confirmation(確認補完)とSelection(選択範囲),  Prev: トランジェントコマンド,  Up: Interface Concepts
 
-4.4 トランジェントでの引数とバッファ変数
-========================================
+4.4 Transient Arguments and Buffer Variables
+============================================
 
 Magitのトランジェント(一時的)プレフィックス(接頭辞)コマンドコマンドの多
 くのインフィックス(中置)引数は、それらのインフィックス引数で呼び出した
@@ -1769,9 +1768,8 @@ History::)。
 それらの引数は明らかに効果を持ち続けます。さらに、使用された引数は、将来
 の参照のためにバッファローカル変数に格納されます。
 
-2番目のグループのコマンドの場合、トランジェントコマンドが再度呼び出され
-たときに、それらの引数をグローバル値にリセットすることが常に望ましいとは
-限りません。
+後者の場合、トランジェントコマンドが再度呼び出されたときに、それらの引数
+をグローバル値にリセットすることが常に望ましいとは限りません。
 
 上記のように、トランジェントなポップアップが表示されている間に、以前に使
 用された引数のセットを循環させることができます。つまり、既存のバッファで
@@ -1780,19 +1778,19 @@ History::)。
 うに動作するように構成できますが、ほとんどのユーザーにとってはそれほど便
 利ではないと思うので、デフォルトではありません。
 
-また、‘D’と‘L’でそれぞれの「refresh」トランジェントプレフィックスコマン
-ドを使用して、現在のバッファ(diffセクションとlogセクションの両方を含むス
-テータスバッファを含む)で使用されるdiff引数とlog引数を変更できることにも
-注意してください。(一方、‘d’と‘l’は、diffまたはログの表示方法を変更する
-ことを*目的*としています。diffまたはログの*表示方法*を同時に変更すること
-もできますが、後者のみを実行する場合は、refreshのバリエーションを使用す
-る必要があります。）これらのセカンダリdiffおよびlogトランジットプレフィ
-ックスコマンドは、現在のバッファで使用される引数の*変更*に関するものであ
-るため、常に、そのバッファで現在有効な引数のセットから開始します。
+また、‘D’と‘L’でそれぞれの"refresh"トランジェントプレフィックスコマンド
+を使用して、現在のバッファ(diffセクションとlogセクションの両方を含むステ
+ータスバッファを含む)で使用されるdiff引数とlog引数を変更できることにも注
+意してください。(一方、‘d’と‘l’は、diffまたはログの表示方法を変更するこ
+とを*目的*としています。diffまたはログの*表示方法*を同時に変更することも
+できますが、後者のみを実行する場合は、refreshのバリエーションを使用する
+必要があります。）これらのセカンダリdiffおよびlogトランジットプレフィッ
+クスコマンドは、現在のバッファで使用される引数の*変更*に関するものである
+ため、常に、そのバッファで現在有効な引数のセットから開始します。
 
 一部のコマンドは、トランジェントプレフィックスコマンドのサフィックスコマ
 ンドとして呼び出すこともできますが、通常は直接呼び出されます。その典型は
-、‘magit-show-commit’は通常、ポイントがログのコミット中に‘RET’と入力する
+‘magit-show-commit’で、通常、ポイントがログのコミット中に‘RET’と入力する
 ことで呼び出されますが、‘magit-diff’トランジェントプレフィックスコマンド
 から呼び出すこともできます。
 
@@ -1860,8 +1858,8 @@ History::)。
      せんが、多くの場合、ユーザーはdiffバッファを使用するコマンドのいず
      れかを呼び出すため、最初のインフィックス引数はそのバッファで使用さ
      れるものです。ただし、これらのコマンドの1つを直接呼び出すと、
-     Magitはリビジョンまたはリビジョンごとの引数を使用する必要があること
-     を認識します。 スタッシュバッファ。
+     Magitはリビジョンのそれぞれのスタッシュバッファからの引数を使用する
+     必要があることを認識します。
 
    • ログ用トランジェントプレフィックスコマンドにはreflogコマンドもあり
      ますが、これらのコマンドはログ引数を使用しません。
@@ -1875,7 +1873,7 @@ History::)。
      て機能するため、‘magit-direct-use-buffer-arguments’を尊重します。
 
 
-File: magit.ja.info,  Node: Completion Confirmation(確認補完)とSelection(選択範囲),  Next: Running Git,  Prev: トランジェントでの引数とバッファ変数,  Up: Interface Concepts
+File: magit.ja.info,  Node: Completion Confirmation(確認補完)とSelection(選択範囲),  Next: Running Git,  Prev: Transient Arguments and Buffer Variables,  Up: Interface Concepts
 
 4.5 Completion(補完)とConfirmation(確認)とSelection(選択範囲)
 =============================================================
@@ -1912,32 +1910,33 @@ Magitに質問を少なくするように指示する別の方法について説
      確認する必要のないアクションを表します。
 
      デフォルトでは、多くの潜在的に危険なコマンドがユーザーに確認を求め
-     ます。以下の各シンボル、意図せずに、または結果を完全に認識せずに呼
-     び出された場合に、涙を流す可能性のあるアクションを表しています。多
-     くの場合、特定のアクションのバリエーションを実行するコマンドがいく
-     つかあるため、コマンド名ではなく、より一般的なシンボルを使用します
-     。
+     ます。以下の各シンボルは、意図せずに、または結果を完全に認識せずに
+     呼び出された場合に、涙を流す可能性のあるアクションを表しています。
+     多くの場合、特定のアクションのバリエーションを実行するコマンドがい
+     くつかあるため、コマンド名ではなく、より一般的なシンボルを使用しま
+     す。
 
-        • 変更の適用:
+        • 変更の適用(applying changes):
 
              • ‘discard’ 1つ以上の変更(つまり、ファイルのハンクまたは完
                全な差分)を破棄すると、明らかにその変更が失われます。
 
              • ‘reverse’ 1つ以上の変更をrevertするには、通常、
-               reversionの復元によって元通りにすることができます。
+               reversionのrevertによって元通り(undo)にすることができます
+               。
 
              • ‘stage-all-changes’, ‘unstage-all-changes’ ステージされた
                変更とステージされていない変更の両方がある場合、すべての
                ステージを解除/ステージすると、その区別が失われます。もち
-               ろん、これは単一の変更をアンステージ/ステージする場合にも
+               ろん、これは単一の変更をステージ解除/ステージする場合にも
                当てはまりますが、失われるものは少なく、頻繁に行うため、
                毎回確認する必要はありません。
 
-        • Files:
+        • ファイル(files):
 
              • ‘delete’ Gitによってまだ追跡されていないファイルが削除さ
-               れると、最後の変更だけでなく、完全に失われます。大変危険
-               です。
+               れると、最後の変更だけでなく、全てが完全に失われます。大
+               変危険です。
 
              • ‘trash’ ファイルを削除する代わりに、システムのゴミ箱に移
                動することもできます。明らかに、それを削除するよりもはる
@@ -1957,7 +1956,7 @@ Magitに質問を少なくするように指示する別の方法について説
              • ‘rename’ ファイルの名前変更は簡単に元に戻す(undo)ことがで
                きます。
 
-        • 一連の処理:
+        • 一連の処理(sequences):
 
              • ‘reset-bisect’ bisect操作を中止(abort)すると(Gitでは「リ
                セット」と呼ばれます)、これまでに収集されたすべての情報が
@@ -1975,7 +1974,7 @@ Magitに質問を少なくするように指示する別の方法について説
                ジが開始される前の状態に戻るのが難しくなる可能性がありま
                す。
 
-        • 参照:
+        • 参照(refernces):
 
              • ‘delete-unmerged-branch’ ブランチが削除されると、Gitが提
                供する低レベルのリカバリツールを使用してのみ復元できます
@@ -2001,7 +2000,7 @@ Magitに質問を少なくするように指示する別の方法について説
                ンは、一度に複数のスタッシュを削除する場合のみ関係します
                。
 
-        • Publishing:
+        • 公開(publishing):
 
              • ‘set-and-push’ アップストリームまたはプッシュリモートにプ
                ッシュし、それが実際にはまだ構成されていない場合、ユーザ
@@ -2011,7 +2010,7 @@ Magitに質問を少なくするように指示する別の方法について説
                いように構成されている場合、それは非常にどぎまぎして胸糞
                悪いことになる可能性があります。
 
-        • Edit published history:
+        • 公開の歴史を編集(edit published history):
 
           ここにこれらのシンボルを追加しないと、
           ‘magit-published-branches’にリストされているブランチの1つにす
@@ -2037,12 +2036,12 @@ Magitに質問を少なくするように指示する別の方法について説
           確認を完全に無効にするには、ここに3つのシンボルすべてを追加す
           るか、‘magit-published-branches’を‘nil’に設定します。
 
-        • その他:
+        • その他(various):
 
              • ‘kill-process’ プロセスを強制終了する理由はめったにありま
                せん。
 
-        • Global settings:
+        • グローバル設定(global settings):
 
           このオプションの値に上記のすべてのシンボルを追加する代わりに、
           アトム‘t’に設定することもできます。これは、上記のすべてのシン
@@ -2094,14 +2093,14 @@ selectionが存在する場合、そのコマンドは他の何かに作用す�
 ことはなく、確認を求めるかどうかはこのオプションによって制御されません。
 
 また、Magitは、補完(completion)(または選択状態(selection))と結び付けられ
-ていない特定のアクションの確認を要求することにも注意してください。このよ
-うなダイアログもこのオプションの影響を受けず、前の節で説明済です。
+ていない特定のアクションの確認を要求することにも注意してください。前節で
+説明したように、このようなダイアログもこのオプションの影響を受けません。
 
  -- User Option: magit-dwim-selection
 
 このオプションを使用すると、確認の有無にかかわらず、アクションを実行する
-候補をユーザーに選択する代わりに、特定のコマンドにそのpointでそれを使用
-するように指示できます。
+候補をユーザーに選択する代わりに、特定のコマンドにそのポイントでそれを使
+用するように指示できます。
 
 値の形式は‘((COMMAND nil|PROMPT DEFAULT)...)’です。
 
@@ -2127,26 +2126,26 @@ File: magit.ja.info,  Node: 選択範囲,  Next: ハンク内部リージョン,
 
 リージョンがアクティブな場合、多くのMagitコマンドは、単一のものではなく
 、リージョンに基づくメカニズムを使用して選択されたもの達に作用します。リ
-ージョンがアクティブでない場合、これらのコマンドはそのpointでモノに作用
-するか、作用する単一のモノを読み取ります。これについては前節で説明しまし
-た。この節では、複数のものを選択する方法、それを視覚化する方法、およびそ
-の場合の特定のコマンドの動作についてのみ説明します。
+ージョンがアクティブでない場合、これらのコマンドはそのポイントでモノに作
+用するか、作用する単一のモノを読み取ります。これについては前節で説明しま
+した。この節では、複数のものを選択する方法、それを視覚化する方法、および
+その場合の特定のコマンドの動作についてのみ説明します。
 
 複数のもの、またはこれらを表すセクションを選択するためのMagitのメカニズ
-ムは、Emacsリージョンに基づいていますが、Magitが選択すると見なすリージョ
-ンは通常、リージョンよりも大きく、追加の制限が適用されます。
+ムは、Emacsリージョンに基づいていますが、Magitが選択したと見なす領域は通
+常、リージョンよりも大きく、追加の制限が適用されます。
 
 Magitは、有効なMagit選択範囲(selection)を形成する資格があるリージョンと
 そうでないリージョンを区別します。リージョンが適格でない場合は、他の
-Emacsバッファと同じように表示されます。リージョンがMagit選択範囲として適
-格である場合、選択範囲は常に視覚化されますが、リージョン自体は、同じ行で
-開始および終了する場合にのみ視覚化されます。
+Emacsバッファと同じように表示されます。リージョンがMagitの選択範囲として
+適格である場合、その選択範囲は常に視覚化されますが、リージョン自体は、同
+じ行で開始および終了する場合にのみ視覚化されます。
 
-リージョンがMagit選択範囲(selection)として適格であるためには、そのリージ
-ョンは1つのセクションの見出しで始まり、兄弟セクションの見出しで終わる必
-要があります。リージョンの終わりがセクション見出しの最初(つまり、行の最
-初)にある場合、そのセクションは選択範囲の「内側」と見なされることに注意
-してください。
+リージョンがMagitの選択範囲(selection)として適格であるためには、そのリー
+ジョンは1つのセクションの見出しで始まり、兄弟セクションの見出しで終わる
+必要があります。リージョンの終わりがセクション見出しの最初(つまり、行の
+最初の桁位置)にある場合、そのセクションは選択範囲の「内側」と見なされる
+ことに注意してください。
 
 これは、リージョンがEmacsで通常どのように扱われるかと一致していません。
 Emacsリージョンが行の先頭で終了する場合、その行はEmacsリージョンの外側に
@@ -2220,16 +2219,16 @@ Magitで他のEmacsとは異なる補完メカニズムを使用することも�
 すると、Magitはそれを尊重し、‘helm-mode’を有効にすると、それも補完します
 。
 
-ただし、Idoを使用する場合は、‘ido-mode’ではうまくいきません。 また、
-‘ido-completing-read+’パッケージをインストールし、
-‘magit-ido-completing-read’を‘magit-completing-read-function’として使用
-する必要があります。
+ただし、Idoを使用する場合は、‘ido-mode’ではうまくいきません。
+‘ido-completing-read+’パッケージもインストールしなければなりません。そし
+て‘magit-ido-completing-read’を‘magit-completing-read-function’として使
+用する必要があります。
 
  -- User Option: magit-completing-read-function
 
-     この変数の値は、(組み込みの‘completing-read’ではなく
-     )‘magit-completing-read’を使用するコードによる補完を実行するために
-     使用される低レベル関数です。
+     この変数の値は、(組み込みの‘completing-read’ではなく)
+     ‘magit-completing-read’を使用するコードによる補完を実行するために使
+     用される低レベル関数です。
 
      デフォルト値の‘magit-builtin-completing-read’は、少なくとも標準の補
      完メカニズムである‘ivy-mode’と‘helm-mode’に適しています。
@@ -2255,7 +2254,7 @@ Magitで他のEmacsとは異なる補完メカニズムを使用することも�
      Ido自体に付属している‘ido-completing-read’の代わりに
      ‘ido-completing-read+’を使用する必要があります。後者は、drop-in代替
      として意図されていますが、その目的を果たすことができないためです。
-     暗黙の規則の多くに違反しています。
+     それは暗黙の規則の多くに違反しています。
 
  -- Function: magit-completing-read prompt choices &optional predicate
           require-match initial-input hist def fallback
@@ -2307,9 +2306,9 @@ File: magit.ja.info,  Node: 追加の補完オプション,  Prev: 補完フレ�
 
      ユーザーから1つまたは複数の参照(ref)を読み取る多くのコマンドでは、
      このオプションの値を使用して、参照(refs)の順序を制御できます。有効
-     な値には、‘gitfor-each-ref’の‘--sort’フラグで受け入れられるすべての
-     キーが含まれます。デフォルトでは、参照はフルネームのアルファベット
-     順に並べ替えられます(例: "refs/heads/master")。
+     な値には、‘git for-each-ref’の‘--sort’フラグで受け入れられるすべて
+     のキーが含まれます。デフォルトでは、参照(ref)はフルネームのアルファ
+     ベット順に並べ替えられます(例: "refs/heads/master")。
 
 
 File: magit.ja.info,  Node: Running Git,  Prev: Completion Confirmation(確認補完)とSelection(選択範囲),  Up: Interface Concepts
@@ -2366,14 +2365,14 @@ File: magit.ja.info,  Node: Git Process Status,  Next: Gitを手動で実行,  P
 ------------------------
 
 副作用のためにGitプロセスが実行されている場合、Magitは
-‘magit-mode-line-process’faceを使用して、モード行にインジケーターを表示
+‘magit-mode-line-process’ faceを使用して、モード行にインジケーターを表示
 します。
 
 Gitプロセスが正常に終了すると、プロセスインジケーターはモードラインから
 直ちに削除されます。
 
 Gitエラーの場合、プロセスインジケーターは削除されませんが、代わりに
-‘magit-mode-line-process-error’faceで強調表示され、プロセスバッファーか
+‘magit-mode-line-process-error’ faceで強調表示され、プロセスバッファーか
 らのエラーの詳細がマウスユーザーのためにツールチップとして提供されます。
 このエラーインジケータは、次のmagitバッファリフレッシュまでモード行に表
 示されます。
@@ -2641,7 +2640,7 @@ File: magit.ja.info,  Node: Status Buffer,  Next: Repository List,  Up: Inspecti
      ジトリを制御します。また、‘magit-status’(を参照)にも驚くべき方法で
      影響を及ぼします(上記を参照)。
 
- -- コマンド: magit-status-quick
+ -- Command: magit-status-quick
 
      このコマンドは、‘magit-status’の代替になり、通常はステータスバッフ
      ァのリフレッシュを回避します。
@@ -2666,7 +2665,7 @@ File: magit.ja.info,  Node: Status Buffer,  Next: Repository List,  Up: Inspecti
      ポジトリに属する既存のMagitバッファの表示をサポートします。それはス
      テータスバッファだけではありません。
 
- -- コマンド: ido-enter-magit-status
+ -- Command: ido-enter-magit-status
 
      ファイルを開くために使用されるIdoプロンプトから、代わりに
      ‘magit-status’にドロップ(drop)します。これは
@@ -3055,7 +3054,7 @@ File: magit.ja.info,  Node: Repository List,  Next: Logging,  Prev: Status Buffe
 5.2 Repository List
 ===================
 
- -- コマンド: magit-list-repositories
+ -- Command: magit-list-repositories
 
      このコマンドは、別のバッファにあるリポジトリのリストを表示します。
 
@@ -3168,7 +3167,7 @@ File: magit.ja.info,  Node: Logging,  Next: Diffing,  Prev: Repository List,  Up
 数達があります。ただし、ログ用トランジェントコマンドの場合、これらの引数
 は、‘magit-prefix-use-buffer-arguments’の値に応じて、現在のリポジトリの
 ログバッファで現在使用されている引数から取得される場合があります(*note
-トランジェントでの引数とバッファ変数::)。
+Transient Arguments and Buffer Variables::)。
 
 さまざまな引数の情報ついては→ *note (gitman)git-log::
 
@@ -3634,7 +3633,7 @@ File: magit.ja.info,  Node: Diffing,  Next: Ediffing,  Prev: Logging,  Up: Inspe
 達があります。ただし、diff用トランジェントコマンドの場合、これらの引数は
 、‘magit-prefix-use-buffer-arguments’の値に応じて、現在のリポジトリの
 diffバッファで現在使用されている引数から取得される場合があります(*note
-トランジェントでの引数とバッファ変数::)。
+Transient Arguments and Buffer Variables::)。
 
 こちらもご覧下さい (*note (gitman)git-diff::)
 
@@ -4089,7 +4088,7 @@ File: magit.ja.info,  Node: Revision Buffer,  Prev: Diff Options,  Up: Diffing
      には、このオプションを非nilに設定します。
 
 リビジョンバッファがログバッファから表示されない場合、ファイル制限は通常
-どおりに決定されます(*note トランジェントでの引数とバッファ変数::)。
+どおりに決定されます(*note Transient Arguments and Buffer Variables::)。
 
 
 File: magit.ja.info,  Node: Ediffing,  Next: References Buffer,  Prev: Diffing,  Up: Inspecting
@@ -4576,19 +4575,19 @@ File: magit.ja.info,  Node: General-Purpose Visit Commands,  Next: Visiting File
 フォルトではこれらのコマンドに結び付けられているキーはありませんが、変更
 される可能性はあります。
 
- -- コマンド: magit-find-file
+ -- Command: magit-find-file
 
      このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッ
      ファ内のそれぞれのBLOBにアクセスします。選択したウィンドウにバッフ
      ァが表示されます。
 
- -- コマンド: magit-find-file-other-window
+ -- Command: magit-find-file-other-window
 
      このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッ
      ファ内のそれぞれのBLOBにアクセスします。バッファは別のウィンドウに
      表示されます。
 
- -- コマンド: magit-find-file-other-frame
+ -- Command: magit-find-file-other-frame
 
      このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッ
      ファ内のそれぞれのBLOBにアクセスします。バッファは別のフレームに表
@@ -4668,10 +4667,10 @@ File: magit.ja.info,  Node: Visiting Files and Blobs from a Diff,  Prev: General
 記のコマンドは、プレフィックス引数を指定して呼び出されたときに別のウィン
 ドウも使用することに注意してください。
 
- -- コマンド: magit-diff-visit-file-other-window
- -- コマンド: magit-diff-visit-file-other-frame
- -- コマンド: magit-diff-visit-worktree-file-other-window
- -- コマンド: magit-diff-visit-worktree-file-other-frame
+ -- Command: magit-diff-visit-file-other-window
+ -- Command: magit-diff-visit-file-other-frame
+ -- Command: magit-diff-visit-worktree-file-other-window
+ -- Command: magit-diff-visit-worktree-file-other-frame
 
 
 File: magit.ja.info,  Node: Blaming,  Prev: Visiting Files and Blobs,  Up: Inspecting
@@ -6003,12 +6002,12 @@ File: magit.ja.info,  Node: Branch Commands,  Next: Branch Git Variables,  Prev:
      (("main"  . ("main" "master" "next" "maint"))
       ("master" . ("main" "master" "next" "maint")))
 
- -- コマンド: magit-branch-orphan
+ -- Command: magit-branch-orphan
 
      このコマンドは、指定されたリビジョンのコンテンツを含む新しい孤立し
      たブランチを作成してチェックアウトします。
 
- -- コマンド: magit-branch-or-checkout
+ -- Command: magit-branch-or-checkout
 
      このコマンドは、‘magit-checkout’と‘magit-branch-and-checkout’のハイ
      ブリッドであり、‘magit-branch’の前者の代わりとして使用することを目
@@ -6171,7 +6170,7 @@ File: magit.ja.info,  Node: Auxiliary Branch Commands,  Prev: Branch Git Variabl
 これらのコマンドは、デフォルトではトランジェントコマンド‘magit-branch’か
 らは使用できません。
 
- -- コマンド: magit-branch-shelve
+ -- Command: magit-branch-shelve
 
      このコマンドはブランチを棚上げ(shelve)します。 これは、ブランチを削
      除し、指定されたブランチと同じコミットを指す新しい参照
@@ -6182,7 +6181,7 @@ File: magit.ja.info,  Node: Auxiliary Branch Commands,  Prev: Branch Git Variabl
      これは、あなたがブランチを見えなくしたいが、まだ完全に破棄する準備
      ができていない場合に便利です。
 
- -- コマンド: magit-branch-unshelve
+ -- Command: magit-branch-unshelve
 
      このコマンドは、‘magit-branch-shelve’を使用して以前に棚上げ
      (shelve)されたブランチの棚上げ(shelve)を解除します。これは、
@@ -7569,7 +7568,7 @@ File: magit.ja.info,  Node: Pushing,  Next: Plain Patches,  Prev: Pulling,  Up: 
 ントコマンドからは使用できません。それらをトランジェントコマンドに追加す
 る方法については、doc-stringsを参照してください。
 
- -- コマンド: magit-push-implicitly args
+ -- Command: magit-push-implicitly args
 
      このコマンドは、明示的なrefspecを使用せずにどこかにプッシュします。
 
@@ -7587,7 +7586,7 @@ File: magit.ja.info,  Node: Pushing,  Next: Plain Patches,  Prev: Pulling,  Up: 
           (transient-insert-suffix 'magit-push \"p\"
             '(\"i\" magit-push-implicitly))"
 
- -- コマンド: magit-push-to-remote remote args
+ -- Command: magit-push-to-remote remote args
 
      このコマンドは、明示的なrefspecを使用せずにリモートであるREMOTEにプ
      ッシュします。リモートはミニバッファに読み込まれます。
@@ -7862,7 +7861,7 @@ File: magit.ja.info,  Node: Listing Submodules,  Next: submodule用トランジ�
 (super-repository)のステータスバッファにサブモジュールに関する情報を直接
 表示することもできます。
 
- -- コマンド: magit-list-submodules
+ -- Command: magit-list-submodules
 
      このコマンドは、現在のリポジトリのサブモジュールのリストを別のバッ
      ファに表示します。
@@ -8069,10 +8068,10 @@ File: magit.ja.info,  Node: Common Commands,  Next: Wip Modes,  Prev: Worktree, 
 8.6 Common Commands
 ===================
 
- -- コマンド: magit-switch-to-repository-buffer
- -- コマンド: magit-switch-to-repository-buffer-other-window
- -- コマンド: magit-switch-to-repository-buffer-other-frame
- -- コマンド: magit-display-repository-buffer
+ -- Command: magit-switch-to-repository-buffer
+ -- Command: magit-switch-to-repository-buffer-other-window
+ -- Command: magit-switch-to-repository-buffer-other-frame
+ -- Command: magit-display-repository-buffer
 
      これらのコマンドは、現在のリポジトリに属する既存のMagitバッファをユ
      ーザーから読み取り、(リフレッシュせずに)選択したバッファに切り替え
@@ -8166,7 +8165,7 @@ refernceが使用されます。それは‘refs/wip/index/<branchref>’と
 ‘magit-wip-log-current’を使用します。これらのコマンドを使用するときは、
 ‘--graph’を使用する必要があります。
 
- -- コマンド: magit-wip-log
+ -- Command: magit-wip-log
 
      このコマンドは、ブランチとそのwip refsのログを表示します。負のプレ
      フィックス引数を使用すると、ワークツリー wip refs のみが表示されま
@@ -8176,7 +8175,7 @@ refernceが使用されます。それは‘refs/wip/index/<branchref>’と
      数を制御します。これは、‘magit-wip-merge-branch’の値が‘nil’の場合に
      のみ関係します。
 
- -- コマンド: magit-wip-log-current
+ -- Command: magit-wip-log-current
 
      このコマンドは、現在のブランチとそのwip refs のログを表示します。負
      のプレフィックス引数を使用すると、ワークツリー wip refs のみが表示
@@ -8493,20 +8492,20 @@ Blaming::)。
 単一のファイルで動作するが、デフォルトではfileトランジェントコマンドで有
 効になっていない追加のコマンドがいくつかあります:
 
- -- コマンド: magit-file-rename
+ -- Command: magit-file-rename
 
      このコマンドは、ユーザーから読み取ってファイルの名前を変更します。
 
- -- コマンド: magit-file-delete
+ -- Command: magit-file-delete
 
      このコマンドは、ユーザーから読み取ってファイルを削除します。
 
- -- コマンド: magit-file-untrack
+ -- Command: magit-file-untrack
 
      このコマンドは、ユーザーから読み取られたファイルの追跡を解除
      (untrack)します。
 
- -- コマンド: magit-file-checkout
+ -- Command: magit-file-checkout
 
      このコマンドは、作業ツリー内のファイルを更新し、リビジョンの内容に
      インデックスを付けます。リビジョンとファイルの両方がユーザーから読
@@ -9310,8 +9309,8 @@ File: magit.ja.info,  Node: Creating Sections,  Next: Section Selection,  Up: Se
      キストを含めないでください。その後、セクションには1行だけを含める必
      要があります。‘face’プロパティがこれらの文字列のいずれかの内部のど
      こかに設定されている場合は、それらすべてを変更せずに挿入します。そ
-     れ以外の場合は、挿入されたすべてのテキストに
-     ‘magit-section-heading’faceを使用します。
+     れ以外の場合は、挿入されたすべてのテキストに‘magit-section-heading’
+     faceを使用します。
 
      セクション構造体の‘content’プロパティは、見出しの終わり(‘start’から
      ‘content’まで続く)と本文の始まり(‘content’から‘end’まで続く)です。
@@ -9358,10 +9357,10 @@ File: magit.ja.info,  Node: Section Selection,  Next: Matching Sections,  Prev: 
      ションに作用します。
 
      領域が他のバッファにあるように見える場合、選択は無効です。選択が有
-     効な場合、領域は‘magit-section-highlight’faceを使用します。これは、
-     物事が少し複雑になるdiffには適用されませんが、ここでも、領域が通常
-     のように見える場合でも、この関数に関する限り、これは有効な選択では
-     ありません。
+     効な場合、領域は‘magit-section-highlight’ faceを使用します。これは
+     、物事が少し複雑になるdiffには適用されませんが、ここでも、領域が通
+     常のように見える場合でも、この関数に関する限り、これは有効な選択で
+     はありません。
 
      オプションのCONDITIONがnil以外の場合、選択は有効である必要があるだ
      けではありません。選択したすべてのセクションは、さらにCONDITIONと一
@@ -11260,7 +11259,7 @@ Appendix E Function Index
 * git-commit-turn-on-flyspell:           Commit Mode and Hooks.
                                                               (line  42)
 * ido-enter-magit-status:                Status Buffer.       (line  95)
-* magit-add-section-hook:                Section Hooks.       (line  21)
+* magit-add-section-hook:                Section Hooks.       (line  20)
 * magit-after-save-refresh-status:       Automatic Refreshing of Magit Buffers.
                                                               (line  57)
 * magit-branch-or-checkout:              Branch Commands.     (line 279)
@@ -11590,8 +11589,8 @@ Appendix F Variable Index
 * magit-diff-unmarked-lines-keep-foreground: Diff Options.    (line 125)
 * magit-diff-visit-previous-blob:        Visiting Files and Blobs from a Diff.
                                                               (line  40)
-* magit-direct-use-buffer-arguments:     トランジェントでの引数とバッファ変数.
-                                                              (line  69)
+* magit-direct-use-buffer-arguments:     Transient Arguments and Buffer Variables.
+                                                              (line  68)
 * magit-display-buffer-function:         バッファの切り替え.  (line  27)
 * magit-display-buffer-noselect:         バッファの切り替え.  (line  18)
 * magit-dwim-selection:                  補完と確認.          (line  38)
@@ -11630,8 +11629,8 @@ Appendix F Variable Index
 * magit-pre-display-buffer-hook:         バッファの切り替え.  (line  85)
 * magit-prefer-remote-upstream:          Branch Git Variables.
                                                               (line 122)
-* magit-prefix-use-buffer-arguments:     トランジェントでの引数とバッファ変数.
-                                                              (line  60)
+* magit-prefix-use-buffer-arguments:     Transient Arguments and Buffer Variables.
+                                                              (line  59)
 * magit-process-raise-error:             Calling Git for Effect.
                                                               (line 138)
 * magit-pull-or-fetch:                   Fetching.            (line  65)
@@ -11716,173 +11715,173 @@ Appendix F Variable Index
 
 Tag Table:
 Node: Top782
-Node: Introduction7593
-Node: Installation14162
-Node: Installing from Melpa14585
-Node: Installing from the Git Repository15938
-Node: Post-Installation Tasks19389
-Node: Getting Started21068
-Node: Interface Concepts28759
-Node: Modes and Buffers29199
-Node: バッファの切り替え31687
-Node: バッファの名付け37880
-Node: Quitting Windows42019
-Node: Automatic Refreshing of Magit Buffers44430
-Node: Automatic Saving of File-Visiting Buffers48347
-Node: Automatic Reverting of File-Visiting Buffers49847
-Node: Risk of Reverting Automatically56494
-Node: Sections59630
-Node: Section Movement60896
-Node: Section Visibility67009
-Node: Section Hooks75111
-Node: Section Types and Values78491
-Node: Section Options80243
-Node: トランジェントコマンド80829
-Node: トランジェントでの引数とバッファ変数82709
-Node: Completion Confirmation(確認補完)とSelection(選択範囲)92382
-Node: アクションの確認92913
-Node: 補完と確認103406
-Node: 選択範囲107640
-Node: ハンク内部リージョン111529
-Node: 補完フレームワークのサポート112992
-Node: 追加の補完オプション119020
-Node: Running Git119786
-Node: Viewing Git Output120092
-Node: Git Process Status121571
-Node: Gitを手動で実行122776
-Node: Git実行ファイル126181
-Node: Global Git Arguments130287
-Node: Inspecting131371
-Node: Status Buffer132622
-Node: Status Sections139151
-Node: Status Header Sections146731
-Node: Status Module Sections150050
-Node: Status Options153458
-Node: Repository List155348
-Node: Logging159495
-Node: Refreshing Logs163078
-Node: Log Buffer165112
-Node: Log Margin170979
-Node: Select from Log175192
-Node: Reflog178068
-Node: Cherries180139
-Node: Diffing182597
-Node: Refreshing Diffs186941
-Node: Commands Available in Diffs191708
-Node: Diff Options195067
-Node: Revision Buffer202108
-Node: Ediffing206416
-Node: References Buffer211851
-Node: References Sections225400
-Node: Bisecting226562
-Node: Visiting Files and Blobs229912
-Node: General-Purpose Visit Commands230520
-Node: Visiting Files and Blobs from a Diff231828
-Node: Blaming236682
-Node: Manipulating245271
-Node: Creating Repository245616
-Node: Cloning Repository246355
-Node: Staging and Unstaging253838
-Node: Staging from File-Visiting Buffers259789
-Node: Applying261606
-Node: Committing264534
-Node: コミット開始265304
-Node: コミットメッセージ編集270935
-Node: Using the Revision Stack274570
-Node: Commit Pseudo Headers278473
-Node: Commit Mode and Hooks280260
-Node: Commit Message Conventions284206
-Node: Branching286915
-Node: The Two Remotes287144
-Node: Branch Commands290918
-Node: Branch Git Variables308814
-Node: Auxiliary Branch Commands315778
-Node: Merging317237
-Node: Resolving Conflicts322750
-Node: Rebasing329067
-Node: Editing Rebase Sequences335936
-Node: Information About In-Progress Rebase341634
-Ref: Information About In-Progress Rebase-Footnote-1352811
-Node: Cherry Picking353572
-Node: Reverting359651
-Node: Resetting361934
-Node: Stashing364647
-Node: Transferring371444
-Node: Remotes371669
-Node: Remote Commands371824
-Node: Remote Git Variables377419
-Node: Fetching379086
-Node: Pulling382863
-Node: Pushing384469
-Node: Plain Patches390708
-Node: Maildir Patches393059
-Node: Miscellaneous395300
-Node: Tagging395617
-Node: Notes398423
-Node: Submodules401641
-Node: Listing Submodules401906
-Node: submodule用トランジェントコマンド403611
-Node: Subtree407286
-Node: Worktree410557
-Node: Common Commands412235
-Node: Wip Modes415491
-Node: Wip Graph422163
-Node: Legacy Wip Modes425042
-Node: Commands for Buffers Visiting Files428648
-Node: Minor Mode for Buffers Visiting Blobs436698
-Node: Customizing437719
-Node: Per-Repository Configuration439669
-Node: 基本設定442365
-Node: Safety442749
-Node: Performance445148
-Ref: Log Performance449427
-Ref: Diff Performance451186
-Ref: Refs Buffer Performance452883
-Ref: Committing Performance453669
-Node: Microsoft Windows Performance454813
-Node: MacOS Performance456316
-Ref: MacOS Performance-Footnote-1457188
-Node: Default Bindings457327
-Node: 配管コマンド(Plumbing)460268
-Node: Calling Git461322
-Node: Getting a Value from Git463283
-Node: Calling Git for Effect467962
-Node: Section Plumbing476088
-Node: Creating Sections476339
-Node: Section Selection481660
-Node: Matching Sections483858
-Node: Refreshing Buffers491677
-Node: 慣習495641
-Node: Theming Faces495850
-Node: FAQ506523
-Node: FAQ - How to ...?507048
-Node: Magitの発音は？507507
-Node: How to show git's output?508540
-Node: How to install the gitman info manual?509568
-Node: How to show diffs for gpg-encrypted files?510849
-Node: How does branching and pushing work?511552
-Node: Magitをediff-version-control-packageとして使用できますか？511959
-Node: VCを無効にする必要がありますか？514544
-Node: FAQ - Issues and Errors515438
-Node: Magit is slow516790
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517030
-Node: コミットに問題があります518062
-Node: MS WindowsではMagitでpushできません518623
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません519324
-Node: ファイルを展開して差分を表示するとファイルが消えます520526
-Node: COMMIT_EDITMSGバッファのpointが間違っています521313
-Node: モード行の情報が常に最新ではない522688
-Node: 同じ名前を共有するブランチとタグは何かを壊します523860
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525013
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません526151
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります529208
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません530437
-Node: 私はポップアップのデフォルトを保存できなくなりました531616
-Node: Debugging Tools533023
-Node: Keystroke Index535861
-Node: Command Index570530
-Node: Function Index608730
-Node: Variable Index625819
+Node: Introduction7579
+Node: Installation14148
+Node: Installing from Melpa14571
+Node: Installing from the Git Repository15924
+Node: Post-Installation Tasks19375
+Node: Getting Started21054
+Node: Interface Concepts28745
+Node: Modes and Buffers29171
+Node: バッファの切り替え31659
+Node: バッファの名付け37852
+Node: Quitting Windows41991
+Node: Automatic Refreshing of Magit Buffers44402
+Node: Automatic Saving of File-Visiting Buffers48319
+Node: Automatic Reverting of File-Visiting Buffers49819
+Node: Risk of Reverting Automatically56466
+Node: Sections59602
+Node: Section Movement60868
+Node: Section Visibility66981
+Node: Section Hooks75053
+Node: Section Types and Values78423
+Node: Section Options80200
+Node: トランジェントコマンド80786
+Node: Transient Arguments and Buffer Variables82643
+Node: Completion Confirmation(確認補完)とSelection(選択範囲)92246
+Node: アクションの確認92763
+Node: 補完と確認103410
+Node: 選択範囲107660
+Node: ハンク内部リージョン111571
+Node: 補完フレームワークのサポート113034
+Node: 追加の補完オプション119097
+Node: Running Git119869
+Node: Viewing Git Output120175
+Node: Git Process Status121654
+Node: Gitを手動で実行122861
+Node: Git実行ファイル126266
+Node: Global Git Arguments130372
+Node: Inspecting131456
+Node: Status Buffer132707
+Node: Status Sections139226
+Node: Status Header Sections146806
+Node: Status Module Sections150125
+Node: Status Options153533
+Node: Repository List155423
+Node: Logging159565
+Node: Refreshing Logs163134
+Node: Log Buffer165168
+Node: Log Margin171035
+Node: Select from Log175248
+Node: Reflog178124
+Node: Cherries180195
+Node: Diffing182653
+Node: Refreshing Diffs186983
+Node: Commands Available in Diffs191750
+Node: Diff Options195109
+Node: Revision Buffer202150
+Node: Ediffing206444
+Node: References Buffer211879
+Node: References Sections225428
+Node: Bisecting226590
+Node: Visiting Files and Blobs229940
+Node: General-Purpose Visit Commands230548
+Node: Visiting Files and Blobs from a Diff231841
+Node: Blaming236675
+Node: Manipulating245264
+Node: Creating Repository245609
+Node: Cloning Repository246348
+Node: Staging and Unstaging253831
+Node: Staging from File-Visiting Buffers259782
+Node: Applying261599
+Node: Committing264527
+Node: コミット開始265297
+Node: コミットメッセージ編集270928
+Node: Using the Revision Stack274563
+Node: Commit Pseudo Headers278466
+Node: Commit Mode and Hooks280253
+Node: Commit Message Conventions284199
+Node: Branching286908
+Node: The Two Remotes287137
+Node: Branch Commands290911
+Node: Branch Git Variables308797
+Node: Auxiliary Branch Commands315761
+Node: Merging317210
+Node: Resolving Conflicts322723
+Node: Rebasing329040
+Node: Editing Rebase Sequences335909
+Node: Information About In-Progress Rebase341607
+Ref: Information About In-Progress Rebase-Footnote-1352784
+Node: Cherry Picking353545
+Node: Reverting359624
+Node: Resetting361907
+Node: Stashing364620
+Node: Transferring371417
+Node: Remotes371642
+Node: Remote Commands371797
+Node: Remote Git Variables377392
+Node: Fetching379059
+Node: Pulling382836
+Node: Pushing384442
+Node: Plain Patches390671
+Node: Maildir Patches393022
+Node: Miscellaneous395263
+Node: Tagging395580
+Node: Notes398386
+Node: Submodules401604
+Node: Listing Submodules401869
+Node: submodule用トランジェントコマンド403569
+Node: Subtree407244
+Node: Worktree410515
+Node: Common Commands412193
+Node: Wip Modes415429
+Node: Wip Graph422091
+Node: Legacy Wip Modes424970
+Node: Commands for Buffers Visiting Files428576
+Node: Minor Mode for Buffers Visiting Blobs436606
+Node: Customizing437627
+Node: Per-Repository Configuration439577
+Node: 基本設定442273
+Node: Safety442657
+Node: Performance445056
+Ref: Log Performance449335
+Ref: Diff Performance451094
+Ref: Refs Buffer Performance452791
+Ref: Committing Performance453577
+Node: Microsoft Windows Performance454721
+Node: MacOS Performance456224
+Ref: MacOS Performance-Footnote-1457096
+Node: Default Bindings457235
+Node: 配管コマンド(Plumbing)460176
+Node: Calling Git461230
+Node: Getting a Value from Git463191
+Node: Calling Git for Effect467870
+Node: Section Plumbing475996
+Node: Creating Sections476247
+Node: Section Selection481568
+Node: Matching Sections483767
+Node: Refreshing Buffers491586
+Node: 慣習495550
+Node: Theming Faces495759
+Node: FAQ506432
+Node: FAQ - How to ...?506957
+Node: Magitの発音は？507416
+Node: How to show git's output?508449
+Node: How to install the gitman info manual?509477
+Node: How to show diffs for gpg-encrypted files?510758
+Node: How does branching and pushing work?511461
+Node: Magitをediff-version-control-packageとして使用できますか？511868
+Node: VCを無効にする必要がありますか？514453
+Node: FAQ - Issues and Errors515347
+Node: Magit is slow516699
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました516939
+Node: コミットに問題があります517971
+Node: MS WindowsではMagitでpushできません518532
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません519233
+Node: ファイルを展開して差分を表示するとファイルが消えます520435
+Node: COMMIT_EDITMSGバッファのpointが間違っています521222
+Node: モード行の情報が常に最新ではない522597
+Node: 同じ名前を共有するブランチとタグは何かを壊します523769
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません524922
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません526060
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります529117
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません530346
+Node: 私はポップアップのデフォルトを保存できなくなりました531525
+Node: Debugging Tools532932
+Node: Keystroke Index535770
+Node: Command Index570439
+Node: Function Index608639
+Node: Variable Index625728
 
 End Tag Table
 

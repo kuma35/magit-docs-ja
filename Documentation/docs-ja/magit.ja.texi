@@ -106,7 +106,7 @@ Interface Concepts
 * Modes and Buffers::
 * Sections::
 * トランジェントコマンド::
-* トランジェントでの引数とバッファ変数::
+* Transient Arguments and Buffer Variables::
 * Completion(補完)とConfirmation(確認)とSelection(選択範囲): Completion Confirmation(確認補完)とSelection(選択範囲).  
 * Running Git::              
 
@@ -695,7 +695,7 @@ Visiting Files})。
 * Modes and Buffers::
 * Sections::
 * トランジェントコマンド::
-* トランジェントでの引数とバッファ変数::
+* Transient Arguments and Buffer Variables::
 * Completion(補完)とConfirmation(確認)とSelection(選択範囲): Completion Confirmation(確認補完)とSelection(選択範囲).  
 * Running Git::              
 @end menu
@@ -1281,37 +1281,37 @@ Magitには、セクションの表示を変更するための多くのコマン
 上記のコマンドを実装するために使用される一部の関数は、コマンド自体としても公開されます。デフォルトでは、これらのコマンドに結び付けられているキーはありません。これらのコマンドは、一般的にあまり役に立たないと認識されているためです。しかし、あなたにとっては有益かもしれません。
 
 @cindex magit-section-show
-@deffn コマンド magit-section-show
+@deffn Command magit-section-show
 
 現在のセクションのボディを表示します。
 @end deffn
 
 @cindex magit-section-hide
-@deffn コマンド magit-section-hide
+@deffn Command magit-section-hide
 
 現在のセクションのボディを非表示にします。
 @end deffn
 
 @cindex magit-section-show-headings
-@deffn コマンド magit-section-show-headings
+@deffn Command magit-section-show-headings
 
 現在のセクションの子の見出しを再帰的に表示します。見出しのみを表示します。以前に表示されたテキストのみのボディは非表示になります。
 @end deffn
 
 @cindex magit-section-show-children
-@deffn コマンド magit-section-show-children
+@deffn Command magit-section-show-children
 
 現在のセクションの子の体を再帰的に表示します。プレフィックス引数を使用すると、現在のセクションのレベルまで子を表示し、より深い子を非表示にします。
 @end deffn
 
 @cindex magit-section-hide-children
-@deffn コマンド magit-section-hide-children
+@deffn Command magit-section-hide-children
 
 現在のセクションの子のボディを再帰的に非表示にします。
 @end deffn
 
 @cindex magit-section-toggle-children
-@deffn コマンド magit-section-toggle-children
+@deffn Command magit-section-toggle-children
 
 現在のセクションの子のボディの可視性を切り替えます(toggle)。
 @end deffn
@@ -1385,8 +1385,7 @@ logおよびdiffバッファ、これは不可能です。コマンド@code
 ユーザーがセクションをカスタマイズできるバッファの場合、@code{magit-TYPE-sections-hook}というフック変数が存在します。このフックは、@code{magit-add-section-hook}を使用して変更する必要があります。@code{add-hooks}またはカスタムインターフェイス(Custom
 interface)の使用は避けてください。
 
-使用可能なさまざまなセクションフック変数については、このマニュアルの後半で、適切な"section inserter
-functions"(セクションインサーター関数)とともに説明します。
+使用可能なさまざまなセクションフック変数については、このマニュアルの後半で、適切なセクションインサーター関数とともに説明します。
 
 @defun magit-add-section-hook hook function &optional at append local
 
@@ -1401,7 +1400,7 @@ APPENDに応じて、ATの前または後に追加するか、ATをFUNCTIONに�
 オプションのLOCALがnil以外の場合は、フックのグローバル値ではなく、バッファローカル値を変更します。
 これにより、デフォルト値をコピーしてフックがローカルになります。次に、そのコピーが変更されます。
 
-HOOKはシンボルであるべきです。HOOKが無効の場合、最初にnilに設定されます。HOOKの値は単一のフック関数であってはなりません。FUNCTIONは、引数をとらず、ポイントに1つまたは複数のセクションを挿入して、ポイントを前方に移動する関数である必要があります。FUNCTIONは、意味がない場合に、セクションを挿入しないことを選択する場合があります。他の副作用のために乱用されるべきではありません。
+HOOKはシンボルであるべきです。HOOKが無効の場合、最初にnilに設定されます。HOOKの値は単一のフック関数であってはなりません。FUNCTIONは、引数をとらず、ポイントに1つまたは複数のセクションを挿入して、ポイントを前方に移動する関数である必要があります。FUNCTIONは、そうする意味がない場合に、セクションを挿入しないことを選択する場合があります。それは他の副作用のために乱用されるべきではありません。
 @end defun
 
 セクションフックから関数を削除するには、@code{remove-hook}を使用します。
@@ -1409,8 +1408,7 @@ HOOKはシンボルであるべきです。HOOKが無効の場合、最初にnil
 @node Section Types and Values
 @subsection Section Types and Values
 
-各セクションには、例えば@code{hunk},
-@code{file},@code{commit}などのタイプがあります。特定のセクションタイプのインスタンスにも値があります。たとえば、タイプ@code{file}のセクションの値は、ファイル名です。
+各セクションには、例えば@code{hunk}、@code{file}、@code{commit}などのタイプがあります。特定のセクションタイプのインスタンスにも値があります。たとえば、タイプ@code{file}のセクションの値は、ファイル名です。
 
 ユーザーは通常、セクションのタイプと値について心配する必要はありませんが、それらを知っていると便利な場合があります。
 
@@ -1419,13 +1417,13 @@ HOOKはシンボルであるべきです。HOOKが無効の場合、最初にnil
 @cindex magit-describe-section-briefly
 @item @kbd{M-x magit-describe-section-briefly} @tie{}@tie{}@tie{}@tie{}(@code{magit-describe-section-briefly})
 
-エコー領域内にポイントのあるセクションに関する情報を"#<magit-section VALUE [TYPE PARENT-TYPE@dots{}]
+エコー領域内に、ポイントのあるセクションに関する情報を"#<magit-section VALUE [TYPE PARENT-TYPE@dots{}]
 BEGINNING-END>"として表示します。
 @end table
 
 多くのコマンドは、ポイントのある場所でのセクションのタイプに応じて異なる動作をしたり、何らかの形でそのセクションの値を消費したりします。しかし、それは、現在のセクションに応じて、同じキーが異なることを行う可能性がある理由の1つにすぎません。
 
-さらに、セクションタイプごとに、@code{magit-TYPE-section-map}という名前のキーマップ「might」を定義します。そのキーマップは、それぞれのタイプの任意のセクションに属するすべてのテキストのテキストプロパティキーマップとして使用されます。そのようなマップが特定のタイプに存在しない場合は、自分で定義することができ、自動的に使用されます。
+さらに、セクションタイプごとに、@code{magit-TYPE-section-map}という名前のキーマップを定義できます。そのキーマップは、それぞれのタイプの任意のセクションに属するすべてのテキストのテキストプロパティキーマップとして使用されます。そのようなマップが特定のタイプに存在しない場合、あなたが自分で定義することができ、そしてそれが自動的に使用されます。
 
 @node Section Options
 @subsection Section Options
@@ -1444,7 +1442,7 @@ BEGINNING-END>"として表示します。
 最初に、ユーザーが@strong{プレフィックス}(接頭辞)コマンドを呼び出すと、@strong{インフィックス}(中置)引数達と@strong{サフィックス}(後置)コマンド達がエコー領域に表示されます。次に、ユーザーはオプションでいくつかのインフィックス(中置)引数を設定し、最後にサフィックス(接尾辞)コマンドのどれか1つを呼び出します。
 
 これは、ライブラリ@code{transient}で実装されています。
-以前のMagitリリースでは、パッケージ@code{magit-popup}と、さらに以前のバージョンのライブラリ@code{magit-key-mode}を使用していました。
+以前のMagitリリースでは、パッケージ@code{magit-popup}、さらに以前のバージョンではライブラリ@code{magit-key-mode}を使用していました。
 
 transientの文書は→@ref{Top,,,transient,}
 
@@ -1454,7 +1452,7 @@ transientの文書は→@ref{Top,,,transient,}
 @item @kbd{C-c C-c} @tie{}@tie{}@tie{}@tie{}(@code{magit-dispatch})
 
 このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、Magitの他のプレフィックスコマンドのほとんどをサフィックス(後置)コマンドとして結び付け、そのうちの1つが呼び出されるまで一時バッファ(temporary
-buffer)に表示します。このようなサブ・プレフィックスを呼び出すと、@code{magit-dispatch}のサフィックスではなく、そのコマンドのサフィックスが結び付けられて表示されます。
+buffer)に表示します。このようなサブプレフィックスを呼び出すと、@code{magit-dispatch}のではなく、そのコマンドのサフィックスコマンドが結び付けられて表示されます。
 @end table
 
 このコマンドは、Magitバッファの外部でも特に便利なので、グローバル・バインディングを設定すべきです:
@@ -1463,8 +1461,8 @@ buffer)に表示します。このようなサブ・プレフィックスを呼�
 (global-set-key (kbd "C-x M-g") 'magit-dispatch)
 @end lisp
 
-@node トランジェントでの引数とバッファ変数
-@section トランジェントでの引数とバッファ変数
+@node Transient Arguments and Buffer Variables
+@section Transient Arguments and Buffer Variables
 
 Magitのトランジェント(一時的)プレフィックス(接頭辞)コマンドコマンドの多くのインフィックス(中置)引数は、それらのインフィックス引数で呼び出した@code{git}コマンドから帰って来ると、効果がなくなります。コミットを作成するコマンドは、この良い例です。ユーザーがインフィックス引数を変更した場合、それはそれに続くサフィックス(接尾辞)コマンドの呼び出しにのみ影響します。同じトランジットプレフィックスコマンドが後で再度呼び出された場合、インフィックス引数は最初にデフォルト値にリセットされます。このデフォルト値は、現在のEmacsセッションに設定することも、永続的に保存することもできます(@ref{Saving
 Values,,,transient,})。
@@ -1473,13 +1471,13 @@ History,,,transient,})。
 
 ただし、他の多くのトランジェントコマンドのインフィックス引数は、それらのインフィックス引数で呼び出した@code{git}コマンドから帰った後でも引き続き有効です。このようなコマンドで最も重要なのは、専用のバッファにdiffやログを表示したりするコマンドです。それぞれのdiffまたはログが表示されている限り、それらの引数は明らかに効果を持ち続けます。さらに、使用された引数は、将来の参照のためにバッファローカル変数に格納されます。
 
-2番目のグループのコマンドの場合、トランジェントコマンドが再度呼び出されたときに、それらの引数をグローバル値にリセットすることが常に望ましいとは限りません。
+後者の場合、トランジェントコマンドが再度呼び出されたときに、それらの引数をグローバル値にリセットすることが常に望ましいとは限りません。
 
 上記のように、トランジェントなポップアップが表示されている間に、以前に使用された引数のセットを循環させることができます。つまり、既存のバッファでアクティブになっている引数のセットは@code{M-p}の数個しか離れていないため、インフィックス(中置)引数を常にデフォルトにリセットできます。Magitはそのように動作するように構成できますが、ほとんどのユーザーにとってはそれほど便利ではないと思うので、デフォルトではありません。
 
-また、@code{D}と@code{L}でそれぞれの「refresh」トランジェントプレフィックスコマンドを使用して、現在のバッファ(diffセクションとlogセクションの両方を含むステータスバッファを含む)で使用されるdiff引数とlog引数を変更できることにも注意してください。(一方、@code{d}と@code{l}は、diffまたはログの表示方法を変更することを@strong{目的}としています。diffまたはログの@strong{表示方法}を同時に変更することもできますが、後者のみを実行する場合は、refreshのバリエーションを使用する必要があります。）これらのセカンダリdiffおよびlogトランジットプレフィックスコマンドは、現在のバッファで使用される引数の@strong{変更}に関するものであるため、常に、そのバッファで現在有効な引数のセットから開始します。
+また、@code{D}と@code{L}でそれぞれの"refresh"トランジェントプレフィックスコマンドを使用して、現在のバッファ(diffセクションとlogセクションの両方を含むステータスバッファを含む)で使用されるdiff引数とlog引数を変更できることにも注意してください。(一方、@code{d}と@code{l}は、diffまたはログの表示方法を変更することを@strong{目的}としています。diffまたはログの@strong{表示方法}を同時に変更することもできますが、後者のみを実行する場合は、refreshのバリエーションを使用する必要があります。）これらのセカンダリdiffおよびlogトランジットプレフィックスコマンドは、現在のバッファで使用される引数の@strong{変更}に関するものであるため、常に、そのバッファで現在有効な引数のセットから開始します。
 
-一部のコマンドは、トランジェントプレフィックスコマンドのサフィックスコマンドとして呼び出すこともできますが、通常は直接呼び出されます。その典型は、@code{magit-show-commit}は通常、ポイントがログのコミット中に@code{RET}と入力することで呼び出されますが、@code{magit-diff}トランジェントプレフィックスコマンドから呼び出すこともできます。
+一部のコマンドは、トランジェントプレフィックスコマンドのサフィックスコマンドとして呼び出すこともできますが、通常は直接呼び出されます。その典型は@code{magit-show-commit}で、通常、ポイントがログのコミット中に@code{RET}と入力することで呼び出されますが、@code{magit-diff}トランジェントプレフィックスコマンドから呼び出すこともできます。
 
 このようなコマンドを直接呼び出す場合は、デフォルトの引数を使用するのではなく、それぞれのバッファローカル値で指定された引数を再利用することが重要です。
 logで@code{RET}を押して別のバッファ内のポイントでcommitを表示し、次に@code{D}を使用してそのバッファでの差分の表示方法を変更するとします。次に、別のcommitで@code{RET}を押して、代わりにdiff引数がデフォルトにリセットされることを示します。クールじゃありません。したがって、Magitはデフォルトではそれを行いません。
@@ -1530,8 +1528,7 @@ buffer)である場合に限ります。
 @item
 これらはdiff用トランジェントプレフィックスコマンドに従うサフィックスコマンドですが、@code{magit-show-commit}と@code{magit-stash-show}は、diffコマンドで使用されるdiffバッファを使用せず、代わりに専用のリビジョンバッファとstashバッファを使用します。
 
-diff用トランジェントプレフィックスコマンドを呼び出すとき、どのサフィックスコマンドを呼び出すかはMagitにはわかりません。確かではありませんが、多くの場合、ユーザーはdiffバッファを使用するコマンドのいずれかを呼び出すため、最初のインフィックス引数はそのバッファで使用されるものです。ただし、これらのコマンドの1つを直接呼び出すと、Magitはリビジョンまたはリビジョンごとの引数を使用する必要があることを認識します。
-スタッシュバッファ。
+diff用トランジェントプレフィックスコマンドを呼び出すとき、どのサフィックスコマンドを呼び出すかはMagitにはわかりません。確かではありませんが、多くの場合、ユーザーはdiffバッファを使用するコマンドのいずれかを呼び出すため、最初のインフィックス引数はそのバッファで使用されるものです。ただし、これらのコマンドの1つを直接呼び出すと、Magitはリビジョンのそれぞれのスタッシュバッファからの引数を使用する必要があることを認識します。
 
 
 @item
@@ -1565,11 +1562,11 @@ diff用トランジェントプレフィックスコマンドを呼び出すと�
 
 このオプションの値はシンボルのリストであり、実行する前にユーザーが確認する必要のないアクションを表します。
 
-デフォルトでは、多くの潜在的に危険なコマンドがユーザーに確認を求めます。以下の各シンボル、意図せずに、または結果を完全に認識せずに呼び出された場合に、涙を流す可能性のあるアクションを表しています。多くの場合、特定のアクションのバリエーションを実行するコマンドがいくつかあるため、コマンド名ではなく、より一般的なシンボルを使用します。
+デフォルトでは、多くの潜在的に危険なコマンドがユーザーに確認を求めます。以下の各シンボルは、意図せずに、または結果を完全に認識せずに呼び出された場合に、涙を流す可能性のあるアクションを表しています。多くの場合、特定のアクションのバリエーションを実行するコマンドがいくつかあるため、コマンド名ではなく、より一般的なシンボルを使用します。
 
 @itemize
 @item
-変更の適用:
+変更の適用(applying changes):
 
 @itemize
 @item
@@ -1577,21 +1574,22 @@ diff用トランジェントプレフィックスコマンドを呼び出すと�
 
 
 @item
-@code{reverse} 1つ以上の変更をrevertするには、通常、reversionの復元によって元通りにすることができます。
+@code{reverse}
+1つ以上の変更をrevertするには、通常、reversionのrevertによって元通り(undo)にすることができます。
 
 
 @item
 @code{stage-all-changes}, @code {unstage-all-changes}
-ステージされた変更とステージされていない変更の両方がある場合、すべてのステージを解除/ステージすると、その区別が失われます。もちろん、これは単一の変更をアンステージ/ステージする場合にも当てはまりますが、失われるものは少なく、頻繁に行うため、毎回確認する必要はありません。
+ステージされた変更とステージされていない変更の両方がある場合、すべてのステージを解除/ステージすると、その区別が失われます。もちろん、これは単一の変更をステージ解除/ステージする場合にも当てはまりますが、失われるものは少なく、頻繁に行うため、毎回確認する必要はありません。
 @end itemize
 
 
 @item
-Files:
+ファイル(files):
 
 @itemize
 @item
-@code{delete} Gitによってまだ追跡されていないファイルが削除されると、最後の変更だけでなく、完全に失われます。大変危険です。
+@code{delete} Gitによってまだ追跡されていないファイルが削除されると、最後の変更だけでなく、全てが完全に失われます。大変危険です。
 
 
 @item
@@ -1616,7 +1614,7 @@ Files:
 
 
 @item
-一連の処理:
+一連の処理(sequences):
 
 @itemize
 @item
@@ -1640,7 +1638,7 @@ resolution)が破棄されます。
 
 
 @item
-参照:
+参照(refernces):
 
 @itemize
 @item
@@ -1661,7 +1659,7 @@ Gitはスタッシュをreflogに保存するため、スタッシュを削除�
 
 
 @item
-Publishing:
+公開(publishing):
 
 @itemize
 @item
@@ -1671,7 +1669,7 @@ Publishing:
 
 
 @item
-Edit published history:
+公開の歴史を編集(edit published history):
 
 ここにこれらのシンボルを追加しないと、@code{magit-published-branches}にリストされているブランチの1つにすでにプッシュされているコミットを編集する前に警告が表示されます。
 
@@ -1696,7 +1694,7 @@ commit)を誤って編集することが非常に簡単になるため、確認�
 
 
 @item
-その他:
+その他(various):
 
 @itemize
 @item
@@ -1705,7 +1703,7 @@ commit)を誤って編集することが非常に簡単になるため、確認�
 
 
 @item
-Global settings:
+グローバル設定(global settings):
 
 このオプションの値に上記のすべてのシンボルを追加する代わりに、アトム`t'に設定することもできます。これは、上記のすべてのシンボルを追加するのと同じ効果があります。特に他のシンボルが将来追加される可能性があるため、これを行うことは間違いなく悪い考えです。したがって、これらのアクションのいずれについても確認を求められたくない場合でも、それぞれのシンボルをすべて個別に追加することをお勧めします。
 
@@ -1726,12 +1724,12 @@ Global settings:
 
 リージョンがアクティブな場合、多くの場合、確認を求めた後、リージョンに基づくメカニズムを使用して選択されたものに多くのコマンド達が作用することに注意してください。このリージョンベースのメカニズムは「selection」(選択状態)と呼ばれ、次節で詳しく説明します。呼び出されたコマンドに有効なselectionが存在する場合、そのコマンドは他の何かに作用することを提案することはなく、確認を求めるかどうかはこのオプションによって制御されません。
 
-また、Magitは、補完(completion)(または選択状態(selection))と結び付けられていない特定のアクションの確認を要求することにも注意してください。このようなダイアログもこのオプションの影響を受けず、前の節で説明済です。
+また、Magitは、補完(completion)(または選択状態(selection))と結び付けられていない特定のアクションの確認を要求することにも注意してください。前節で説明したように、このようなダイアログもこのオプションの影響を受けません。
 
 @defopt magit-dwim-selection
 @end defopt
 
-このオプションを使用すると、確認の有無にかかわらず、アクションを実行する候補をユーザーに選択する代わりに、特定のコマンドにそのpointでそれを使用するように指示できます。
+このオプションを使用すると、確認の有無にかかわらず、アクションを実行する候補をユーザーに選択する代わりに、特定のコマンドにそのポイントでそれを使用するように指示できます。
 
 値の形式は@code{((COMMAND nil|PROMPT DEFAULT)...)}です。
 
@@ -1751,13 +1749,13 @@ DEFAULTは、デフォルトの使用方法を指定します。@code{t}の場�
 @node 選択範囲
 @subsection 選択範囲
 
-リージョンがアクティブな場合、多くのMagitコマンドは、単一のものではなく、リージョンに基づくメカニズムを使用して選択されたもの達に作用します。リージョンがアクティブでない場合、これらのコマンドはそのpointでモノに作用するか、作用する単一のモノを読み取ります。これについては前節で説明しました。この節では、複数のものを選択する方法、それを視覚化する方法、およびその場合の特定のコマンドの動作についてのみ説明します。
+リージョンがアクティブな場合、多くのMagitコマンドは、単一のものではなく、リージョンに基づくメカニズムを使用して選択されたもの達に作用します。リージョンがアクティブでない場合、これらのコマンドはそのポイントでモノに作用するか、作用する単一のモノを読み取ります。これについては前節で説明しました。この節では、複数のものを選択する方法、それを視覚化する方法、およびその場合の特定のコマンドの動作についてのみ説明します。
 
-複数のもの、またはこれらを表すセクションを選択するためのMagitのメカニズムは、Emacsリージョンに基づいていますが、Magitが選択すると見なすリージョンは通常、リージョンよりも大きく、追加の制限が適用されます。
+複数のもの、またはこれらを表すセクションを選択するためのMagitのメカニズムは、Emacsリージョンに基づいていますが、Magitが選択したと見なす領域は通常、リージョンよりも大きく、追加の制限が適用されます。
 
-Magitは、有効なMagit選択範囲(selection)を形成する資格があるリージョンとそうでないリージョンを区別します。リージョンが適格でない場合は、他のEmacsバッファと同じように表示されます。リージョンがMagit選択範囲として適格である場合、選択範囲は常に視覚化されますが、リージョン自体は、同じ行で開始および終了する場合にのみ視覚化されます。
+Magitは、有効なMagit選択範囲(selection)を形成する資格があるリージョンとそうでないリージョンを区別します。リージョンが適格でない場合は、他のEmacsバッファと同じように表示されます。リージョンがMagitの選択範囲として適格である場合、その選択範囲は常に視覚化されますが、リージョン自体は、同じ行で開始および終了する場合にのみ視覚化されます。
 
-リージョンがMagit選択範囲(selection)として適格であるためには、そのリージョンは1つのセクションの見出しで始まり、兄弟セクションの見出しで終わる必要があります。リージョンの終わりがセクション見出しの最初(つまり、行の最初)にある場合、そのセクションは選択範囲の「内側」と見なされることに注意してください。
+リージョンがMagitの選択範囲(selection)として適格であるためには、そのリージョンは1つのセクションの見出しで始まり、兄弟セクションの見出しで終わる必要があります。リージョンの終わりがセクション見出しの最初(つまり、行の最初の桁位置)にある場合、そのセクションは選択範囲の「内側」と見なされることに注意してください。
 
 これは、リージョンがEmacsで通常どのように扱われるかと一致していません。Emacsリージョンが行の先頭で終了する場合、その行はEmacsリージョンの外側にあります。Magitが選択範囲を視覚化する方法により、この違いが存在することは明らかです。
 
@@ -1793,11 +1791,12 @@ Magitは、有効なMagit選択範囲(selection)を形成する資格がある�
 たとえば、@code{ivy-mode}を有効にすると、Magitはそれを尊重し、@code{helm-mode}を有効にすると、それも補完します。
 
 ただし、Idoを使用する場合は、@code{ido-mode}ではうまくいきません。
-また、@code{ido-completing-read+}パッケージをインストールし、@code{magit-ido-completing-read}を@code{magit-completing-read-function}として使用する必要があります。
+@code{ido-completing-read+}パッケージもインストールしなければなりません。そして@code{magit-ido-completing-read}を@code{magit-completing-read-function}として使用する必要があります。
 
 @defopt magit-completing-read-function
 
-この変数の値は、(組み込みの@code{completing-read}ではなく)@code{magit-completing-read}を使用するコードによる補完を実行するために使用される低レベル関数です。
+この変数の値は、(組み込みの@code{completing-read}ではなく)
+@code{magit-completing-read}を使用するコードによる補完を実行するために使用される低レベル関数です。
 
 デフォルト値の@code{magit-builtin-completing-read}は、少なくとも標準の補完メカニズムである@code{ivy-mode}と@code{helm-mode}に適しています。
 
@@ -1813,8 +1812,7 @@ Magitは、有効なMagit選択範囲(selection)を形成する資格がある�
 
 この関数は、(明示的にインストールする必要がある)同じ名前のパッケージから@code{ido-completing-read+}を使用して補完を実行し、さらにいくつかのmagit固有の作業を実行します。
 
-Ido自体に付属している@code{ido-completing-read}の代わりに@code{ido-completing-read+}を使用する必要があります。後者は、drop-in代替として意図されていますが、その目的を果たすことができないためです。
-暗黙の規則の多くに違反しています。
+Ido自体に付属している@code{ido-completing-read}の代わりに@code{ido-completing-read+}を使用する必要があります。後者は、drop-in代替として意図されていますが、その目的を果たすことができないためです。それは暗黙の規則の多くに違反しています。
 @end defun
 
 @defun magit-completing-read prompt choices &optional predicate require-match initial-input hist def fallback
@@ -1859,7 +1857,8 @@ PROMPTは、\" (default DEF|FALLBACK):
 
 @defopt magit-list-refs-sortby
 
-ユーザーから1つまたは複数の参照(ref)を読み取る多くのコマンドでは、このオプションの値を使用して、参照(refs)の順序を制御できます。有効な値には、@code{gitfor-each-ref}の@code{--sort}フラグで受け入れられるすべてのキーが含まれます。デフォルトでは、参照はフルネームのアルファベット順に並べ替えられます(例:
+ユーザーから1つまたは複数の参照(ref)を読み取る多くのコマンドでは、このオプションの値を使用して、参照(refs)の順序を制御できます。有効な値には、@code{git
+for-each-ref}の@code{--sort}フラグで受け入れられるすべてのキーが含まれます。デフォルトでは、参照(ref)はフルネームのアルファベット順に並べ替えられます(例:
 "refs/heads/master")。
 @end defopt
 
@@ -1910,11 +1909,13 @@ Magitは、副作用(プッシュ時など)または何らかの値(現在のブ
 @node Git Process Status
 @subsection Git Process Status
 
-副作用のためにGitプロセスが実行されている場合、Magitは@code{magit-mode-line-process}faceを使用して、モード行にインジケーターを表示します。
+副作用のためにGitプロセスが実行されている場合、Magitは@code{magit-mode-line-process}
+faceを使用して、モード行にインジケーターを表示します。
 
 Gitプロセスが正常に終了すると、プロセスインジケーターはモードラインから直ちに削除されます。
 
-Gitエラーの場合、プロセスインジケーターは削除されませんが、代わりに@code{magit-mode-line-process-error}faceで強調表示され、プロセスバッファーからのエラーの詳細がマウスユーザーのためにツールチップとして提供されます。このエラーインジケータは、次のmagitバッファリフレッシュまでモード行に表示されます。
+Gitエラーの場合、プロセスインジケーターは削除されませんが、代わりに@code{magit-mode-line-process-error}
+faceで強調表示され、プロセスバッファーからのエラーの詳細がマウスユーザーのためにツールチップとして提供されます。このエラーインジケータは、次のmagitバッファリフレッシュまでモード行に表示されます。
 
 モード行にプロセスエラーを表示したくない場合は、@code{magit-process-display-mode-line-error}ユーザーオプションをカスタマイズします。
 
@@ -2143,7 +2144,7 @@ DEPTH)}です。DIRECTORYは、ディレクトリまたはディレクトリフ�
 @end defopt
 
 @cindex magit-status-quick
-@deffn コマンド magit-status-quick
+@deffn Command magit-status-quick
 
 このコマンドは、@code{magit-status}の代替になり、通常はステータスバッファのリフレッシュを回避します。
 
@@ -2165,7 +2166,7 @@ DEPTH)}です。DIRECTORYは、ディレクトリまたはディレクトリフ�
 @end deffn
 
 @cindex ido-enter-magit-status
-@deffn コマンド ido-enter-magit-status
+@deffn Command ido-enter-magit-status
 
 ファイルを開くために使用されるIdoプロンプトから、代わりに@code{magit-status}にドロップ(drop)します。これは@code{ido-magic-delete-char}に似ており、その名前にもかかわらず、通常はDiredバッファが作成されます。
 
@@ -2507,7 +2508,7 @@ AUTHOR-WIDTHは整数である必要があります。作成者の名前が表�
 @section Repository List
 
 @cindex magit-list-repositories
-@deffn コマンド magit-list-repositories
+@deffn Command magit-list-repositories
 
 このコマンドは、別のバッファにあるリポジトリのリストを表示します。
 
@@ -2607,7 +2608,8 @@ HEADERは、ヘッダーに表示される文字列です。WIDTHは、列の幅
 
 ステータスバッファには、プッシュされていないコミットとプルされていないコミットのログが含まれていますが、それだけでは明らかに不十分です。@code{l}上のトランジェントプレフィックスコマンド@code{magit-log}は、個別のログバッファに特定のログを表示するいくつかのサフィックスコマンドがあります。
 
-他のトランジェントプレフィックスコマンドと同様に、@code{magit-log}にも、サフィックスコマンドの1つを呼び出す前に変更できるいくつかのインフィックス引数達があります。ただし、ログ用トランジェントコマンドの場合、これらの引数は、@code{magit-prefix-use-buffer-arguments}の値に応じて、現在のリポジトリのログバッファで現在使用されている引数から取得される場合があります(@ref{トランジェントでの引数とバッファ変数})。
+他のトランジェントプレフィックスコマンドと同様に、@code{magit-log}にも、サフィックスコマンドの1つを呼び出す前に変更できるいくつかのインフィックス引数達があります。ただし、ログ用トランジェントコマンドの場合、これらの引数は、@code{magit-prefix-use-buffer-arguments}の値に応じて、現在のリポジトリのログバッファで現在使用されている引数から取得される場合があります(@ref{Transient
+Arguments and Buffer Variables})。
 
 さまざまな引数の情報ついては→ 
 @ifinfo
@@ -3081,7 +3083,8 @@ AUTHOR-WIDTHは整数である必要があります。作成者の名前が表�
 
 ステータスバッファには、ステージされたコミットとステージされていないコミットのdiffが含まれていますが、それだけでは明らかに不十分です。@code{d}上のトランジェントプレフィックスコマンド@code{magit-diff}は、個別のdiffバッファに特定のdiffを表示するいくつかのサフィックスコマンドがあります。
 
-他のトランジェントプレフィックスコマンドと同様に、@code{magit-diff}も、サフィックスコマンドの1つを呼び出す前に変更できるいくつかのインフィックス引数達があります。ただし、diff用トランジェントコマンドの場合、これらの引数は、@code{magit-prefix-use-buffer-arguments}の値に応じて、現在のリポジトリのdiffバッファで現在使用されている引数から取得される場合があります(@ref{トランジェントでの引数とバッファ変数})。
+他のトランジェントプレフィックスコマンドと同様に、@code{magit-diff}も、サフィックスコマンドの1つを呼び出す前に変更できるいくつかのインフィックス引数達があります。ただし、diff用トランジェントコマンドの場合、これらの引数は、@code{magit-prefix-use-buffer-arguments}の値に応じて、現在のリポジトリのdiffバッファで現在使用されている引数から取得される場合があります(@ref{Transient
+Arguments and Buffer Variables})。
 
 こちらもご覧下さい 
 @ifinfo
@@ -3545,7 +3548,8 @@ nilの場合、ハッシュはセクションに変換されませんが、「RE
 @code{--follow}がログ引数に存在する場合でもログのファイル制限を維持するには、このオプションを非nilに設定します。
 @end defopt
 
-リビジョンバッファがログバッファから表示されない場合、ファイル制限は通常どおりに決定されます(@ref{トランジェントでの引数とバッファ変数})。
+リビジョンバッファがログバッファから表示されない場合、ファイル制限は通常どおりに決定されます(@ref{Transient Arguments and
+Buffer Variables})。
 
 @node Ediffing
 @section Ediffing
@@ -4006,19 +4010,19 @@ Magitは、ファイルまたはblob(特定のコミットに保存されてい�
 これらのコマンドは、任意のblobを開くためにどこでも使用できます。現在、デフォルトではこれらのコマンドに結び付けられているキーはありませんが、変更される可能性はあります。
 
 @cindex magit-find-file
-@deffn コマンド magit-find-file
+@deffn Command magit-find-file
 
 このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBにアクセスします。選択したウィンドウにバッファが表示されます。
 @end deffn
 
 @cindex magit-find-file-other-window
-@deffn コマンド magit-find-file-other-window
+@deffn Command magit-find-file-other-window
 
 このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBにアクセスします。バッファは別のウィンドウに表示されます。
 @end deffn
 
 @cindex magit-find-file-other-frame
-@deffn コマンド magit-find-file-other-frame
+@deffn Command magit-find-file-other-frame
 
 このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBにアクセスします。バッファは別のフレームに表示されます。
 @end deffn
@@ -4081,16 +4085,16 @@ file-visitingバッファでは、このコマンドは、diffでポイントが
 上記の2つのコマンドのバリエーションが存在しています。それは代わりに別のウィンドウまたは別のフレームでファイルにアクセスします。このような動作が必要な場合は、上記のキーバインディングを変更することをお勧めしますが、上記のコマンドは、プレフィックス引数を指定して呼び出されたときに別のウィンドウも使用することに注意してください。
 
 @cindex magit-diff-visit-file-other-window
-@deffn コマンド magit-diff-visit-file-other-window
+@deffn Command magit-diff-visit-file-other-window
 @end deffn
 @cindex magit-diff-visit-file-other-frame
-@deffn コマンド magit-diff-visit-file-other-frame
+@deffn Command magit-diff-visit-file-other-frame
 @end deffn
 @cindex magit-diff-visit-worktree-file-other-window
-@deffn コマンド magit-diff-visit-worktree-file-other-window
+@deffn Command magit-diff-visit-worktree-file-other-window
 @end deffn
 @cindex magit-diff-visit-worktree-file-other-frame
-@deffn コマンド magit-diff-visit-worktree-file-other-frame
+@deffn Command magit-diff-visit-worktree-file-other-frame
 @end deffn
 
 @node Blaming
@@ -5279,13 +5283,13 @@ UPSTREAMはローカルブランチにすることができます:
 @end lisp
 
 @cindex magit-branch-orphan
-@deffn コマンド magit-branch-orphan
+@deffn Command magit-branch-orphan
 
 このコマンドは、指定されたリビジョンのコンテンツを含む新しい孤立したブランチを作成してチェックアウトします。
 @end deffn
 
 @cindex magit-branch-or-checkout
-@deffn コマンド magit-branch-or-checkout
+@deffn Command magit-branch-or-checkout
 
 このコマンドは、@code{magit-checkout}と@code{magit-branch-and-checkout}のハイブリッドであり、@code{magit-branch}の前者の代わりとして使用することを目的としています。
 
@@ -5468,7 +5472,7 @@ the git-checkout(1) manpage.
 これらのコマンドは、デフォルトではトランジェントコマンド@code{magit-branch}からは使用できません。
 
 @cindex magit-branch-shelve
-@deffn コマンド magit-branch-shelve
+@deffn Command magit-branch-shelve
 
 このコマンドはブランチを棚上げ(shelve)します。
 これは、ブランチを削除し、指定されたブランチと同じコミットを指す新しい参照"refs/shelved/BRANCH-NAME"を作成することによって行われます。
@@ -5478,7 +5482,7 @@ the git-checkout(1) manpage.
 @end deffn
 
 @cindex magit-branch-unshelve
-@deffn コマンド magit-branch-unshelve
+@deffn Command magit-branch-unshelve
 
 このコマンドは、@code{magit-branch-shelve}を使用して以前に棚上げ(shelve)されたブランチの棚上げ(shelve)を解除します。これは、reference
 "refs/shelved/BRANCH-NAME"を削除し、削除されたreferenceが指すのと同じコミットを指すブランチ"BRANCH-NAME"を作成することによって行われます。削除されたreferenceにreflogがあった場合、それはブランチのreflogとして復元されます。
@@ -6869,7 +6873,7 @@ refs)を制御または認識していないため、危険な場合がありま
 さらに2つのプッシュコマンドが存在しますが、デフォルトではpushトランジェントコマンドからは使用できません。それらをトランジェントコマンドに追加する方法については、doc-stringsを参照してください。
 
 @cindex magit-push-implicitly args
-@deffn コマンド magit-push-implicitly args
+@deffn Command magit-push-implicitly args
 
 このコマンドは、明示的なrefspecを使用せずにどこかにプッシュします。
 
@@ -6886,7 +6890,7 @@ refs)を制御または認識していないため、危険な場合がありま
 @end deffn
 
 @cindex magit-push-to-remote remote args
-@deffn コマンド magit-push-to-remote remote args
+@deffn Command magit-push-to-remote remote args
 
 このコマンドは、明示的なrefspecを使用せずにリモートであるREMOTEにプッシュします。リモートはミニバッファに読み込まれます。
 
@@ -7204,7 +7208,7 @@ Module
 Sections})で説明されているように、@code{magit-insert-modules}をフック@code{magit-status-sections-hook}に追加することで、スーパーリポジトリ(super-repository)のステータスバッファにサブモジュールに関する情報を直接表示することもできます。
 
 @cindex magit-list-submodules
-@deffn コマンド magit-list-submodules
+@deffn Command magit-list-submodules
 
 このコマンドは、現在のリポジトリのサブモジュールのリストを別のバッファに表示します。
 
@@ -7432,16 +7436,16 @@ PATHの新しいワークツリーでBRANCHをチェックアウトします。
 @section Common Commands
 
 @cindex magit-switch-to-repository-buffer
-@deffn コマンド magit-switch-to-repository-buffer
+@deffn Command magit-switch-to-repository-buffer
 @end deffn
 @cindex magit-switch-to-repository-buffer-other-window
-@deffn コマンド magit-switch-to-repository-buffer-other-window
+@deffn Command magit-switch-to-repository-buffer-other-window
 @end deffn
 @cindex magit-switch-to-repository-buffer-other-frame
-@deffn コマンド magit-switch-to-repository-buffer-other-frame
+@deffn Command magit-switch-to-repository-buffer-other-frame
 @end deffn
 @cindex magit-display-repository-buffer
-@deffn コマンド magit-display-repository-buffer
+@deffn Command magit-display-repository-buffer
 
 これらのコマンドは、現在のリポジトリに属する既存のMagitバッファをユーザーから読み取り、(リフレッシュせずに)選択したバッファに切り替えます。
 
@@ -7501,7 +7505,7 @@ Modes}
 refsのログを表示するには、コマンド@code{magit-wip-log}と@code{magit-wip-log-current}を使用します。これらのコマンドを使用するときは、@code{--graph}を使用する必要があります。
 
 @cindex magit-wip-log
-@deffn コマンド magit-wip-log
+@deffn Command magit-wip-log
 
 このコマンドは、ブランチとそのwip refsのログを表示します。負のプレフィックス引数を使用すると、ワークツリー wip refs
 のみが表示されます。
@@ -7511,7 +7515,7 @@ refsの「ブランチ」の数を制御します。これは、@code{magit-wip-
 @end deffn
 
 @cindex magit-wip-log-current
-@deffn コマンド magit-wip-log-current
+@deffn Command magit-wip-log-current
 
 このコマンドは、現在のブランチとそのwip refs のログを表示します。負のプレフィックス引数を使用すると、ワークツリー wip refs
 のみが表示されます。
@@ -7805,25 +7809,25 @@ blame}を使用して決定され、@code{HEAD}から到達可能である場合
 単一のファイルで動作するが、デフォルトではfileトランジェントコマンドで有効になっていない追加のコマンドがいくつかあります:
 
 @cindex magit-file-rename
-@deffn コマンド magit-file-rename
+@deffn Command magit-file-rename
 
 このコマンドは、ユーザーから読み取ってファイルの名前を変更します。
 @end deffn
 
 @cindex magit-file-delete
-@deffn コマンド magit-file-delete
+@deffn Command magit-file-delete
 
 このコマンドは、ユーザーから読み取ってファイルを削除します。
 @end deffn
 
 @cindex magit-file-untrack
-@deffn コマンド magit-file-untrack
+@deffn Command magit-file-untrack
 
 このコマンドは、ユーザーから読み取られたファイルの追跡を解除(untrack)します。
 @end deffn
 
 @cindex magit-file-checkout
-@deffn コマンド magit-file-checkout
+@deffn Command magit-file-checkout
 
 このコマンドは、作業ツリー内のファイルを更新し、リビジョンの内容にインデックスを付けます。リビジョンとファイルの両方がユーザーから読み取られます。
 @end deffn
@@ -8411,7 +8415,8 @@ BODYは、@code{point}を前進させる責任があります。
 
 引数なしで呼び出された場合は、挿入されるセクションを表すオブジェクトの@code{content}スロットを@code{point}のマーカーに設定するだけです。この関数をこのように使用する場合、セクションには1行のみを含める必要があります。
 
-文字列でなければならない引数ARGSを指定して呼び出された場合は、それらの文字列をポイントに挿入します。これが発生する前はセクションにテキストを含めないでください。その後、セクションには1行だけを含める必要があります。@code{face}プロパティがこれらの文字列のいずれかの内部のどこかに設定されている場合は、それらすべてを変更せずに挿入します。それ以外の場合は、挿入されたすべてのテキストに@code{magit-section-heading}faceを使用します。
+文字列でなければならない引数ARGSを指定して呼び出された場合は、それらの文字列をポイントに挿入します。これが発生する前はセクションにテキストを含めないでください。その後、セクションには1行だけを含める必要があります。@code{face}プロパティがこれらの文字列のいずれかの内部のどこかに設定されている場合は、それらすべてを変更せずに挿入します。それ以外の場合は、挿入されたすべてのテキストに@code{magit-section-heading}
+faceを使用します。
 
 セクション構造体の@code{content}プロパティは、見出しの終わり(@code{start}から@code{content}まで続く)と本文の始まり(@code{content}から@code{end}まで続く)です。@code{content}の値がnilの場合、セクションには見出しがなく、本文を折りたたむことはできません。セクションに見出しがある場合、その高さは、末尾の改行文字を含めて、正確に1行である必要があります。これは強制されません。あなたはそれを正しくする責任があります。唯一の例外は、この関数が必要に応じて改行文字を挿入することです。
 @end defun
@@ -8443,7 +8448,8 @@ BODYは、@code{point}を前進させる責任があります。
 
 選択が無効な場合は、nilを返します。この場合、選択したセクションに作用する可能性のあるほとんどのコマンドは、代わりにそのポイントのセクションに作用します。
 
-領域が他のバッファにあるように見える場合、選択は無効です。選択が有効な場合、領域は@code{magit-section-highlight}faceを使用します。これは、物事が少し複雑になるdiffには適用されませんが、ここでも、領域が通常のように見える場合でも、この関数に関する限り、これは有効な選択ではありません。
+領域が他のバッファにあるように見える場合、選択は無効です。選択が有効な場合、領域は@code{magit-section-highlight}
+faceを使用します。これは、物事が少し複雑になるdiffには適用されませんが、ここでも、領域が通常のように見える場合でも、この関数に関する限り、これは有効な選択ではありません。
 
 オプションのCONDITIONがnil以外の場合、選択は有効である必要があるだけではありません。選択したすべてのセクションは、さらにCONDITIONと一致する必要があります。一致しない場合、nilが返されます。CONDITIONが取ることができる形式については、@code{magit-section-match}を参照してください。
 @end defun
