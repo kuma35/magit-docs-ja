@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
 "POT-Creation-Date: 2021-08-20 03:37+0900\n"
-"PO-Revision-Date: 2021-09-14 19:27+0900\n"
+"PO-Revision-Date: 2021-09-16 09:41+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -1073,7 +1073,7 @@ msgstr "コマンドラインからコミットする場合、@code{git-commit-m
 #. type: menuentry
 #: sed-out/magit.texi:350 sed-out/magit.texi:11448
 msgid "Point ends up inside invisible text when jumping to a file-visiting buffer::"
-msgstr "file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています::"
+msgstr "file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります::"
 
 #. type: menuentry
 #: sed-out/magit.texi:350 sed-out/magit.texi:11448
@@ -1113,7 +1113,7 @@ msgid ""
 "unpulled and unpushed changes and contains sections displaying the staged "
 "and unstaged changes.  That might sound noisy, but, since sections are "
 "collapsible, it's not."
-msgstr "Magitのインターフェースの最も目に見える部分は、現在のリポジトリに関する情報を表示するステータスバッファです。そのコンテンツは、いくつかのGitコマンドを実行し、それらの出力に対して操作可能にしたもので作成されます。 特に、現在のブランチに関する情報を表示し、プルされていない変更(unpulled changes)とプッシュされていない変更(unpushed changes)を一覧表示し、ステージされた変更(staged changes)とステージされていない変更(unstaged changes)を表示するセクションを含みます。煩雑な表示に思えるえるかもしれませんが、セクションは折りたたみ可能であるため、そんなことははありません。"
+msgstr "Magitのインターフェースの最も目に見える部分は、現在のリポジトリに関する情報を表示するステータスバッファです。そのコンテンツは、いくつかのGitコマンドを実行し、それらの出力に対して操作可能にしたもので作成されます。 特に、現在のブランチに関する情報を表示し、プルされていない変更(unpulled changes)とプッシュされていない変更(unpushed changes)を一覧表示し、ステージされた変更(staged changes)とステージされていない変更(unstaged changes)を表示するセクションを含みます。煩雑な表示に思えるえるかもしれませんが、セクションは折りたたみ可能であるため、そんなことはありません。"
 
 #. type: Plain text
 #: sed-out/magit.texi:386
@@ -1123,7 +1123,7 @@ msgid ""
 "region is active (i.e. when there is a selection) several files or hunks, or "
 "even just part of a hunk.  The change or changes that these commands - and "
 "many others - would act on are highlighted."
-msgstr "変更をステージ(stage)またはステージ解除(unstage)するには、変更にカーソルを置き、@code{s}または@code{u}と入力します。 変更は、ファイルまたはハンク、または領域がアクティブな場合(つまり、選択がある場合)は、複数のファイルまたはハンク、あるいはハンクの一部である可能性があります。これらのコマンド(および他の多くのコマンド)が作用する1つまたは複数の変更が強調表示されます。"
+msgstr "変更をステージ(stage)またはステージ解除(unstage)するには、変更にカーソルを置き、@code{s}または@code{u}と入力します。変更対象はファイルやハンクで、領域がアクティブな場合(つまり選択がある場合)、それは複数ファイルやハンク、あるいはハンクの一部分かもしれません。これらのコマンド(および他の多くのコマンド)が作用する1つまたは複数の変更が強調表示されます。"
 
 # variant バリエーション と意訳
 #. type: Plain text
@@ -1136,7 +1136,7 @@ msgid ""
 "git apply ...} to discard, revert, or apply a single hunk on the command "
 "line.  In fact that's exactly what Magit does internally (which is what lead "
 "to the term \"apply variants\")."
-msgstr "Magitは、ステージとステージ解除に加えて、他のいくつかの適用バリエーション(\"apply variants\")も実装しています。 変更を破棄または元に戻すか、作業ツリーに適用できます。Git自身の磁器は、ステージとステージ解除でのみこれをサポートしており、@code{git diff ... | ??? | git apply ...}を使用して、コマンドラインで単一のハンクを破棄、元に戻す、または適用します。 実際、これはまさにMagitが内部で行っていることです(これが適用バリエーション(\"apply variants\")という用語につながるものです)。"
+msgstr "Magitは、ステージとステージ解除に加えて、他のいくつかの適用バリエーション(\"apply variants\")も実装しています。 変更を破棄または元に戻すか、作業ツリーに適用できます。Git自身の磁器は、ステージとステージ解除でのみこれをサポートしており、@code{git diff ... | ??? | git apply ...}を使用して、コマンドラインで単一のハンクを破棄、revert、または適用します。 実際、これはまさにMagitが内部で行っていることです(これが適用バリエーション(\"apply variants\")という用語につながるものです)。"
 
 #. type: Plain text
 #: sed-out/magit.texi:401
@@ -1284,7 +1284,7 @@ msgstr "M-x package-install RET magit RET\n"
 #. type: Plain text
 #: sed-out/magit.texi:492 sed-out/magit.texi:574
 msgid "Now see @ref{Post-Installation Tasks}."
-msgstr "インストール後にしなければならない作業があります→(@ref{Post-Installation Tasks})。"
+msgstr "なお、インストール後にしなければならない作業があります。こちらを参照下さい(@ref{Post-Installation Tasks})。"
 
 #. type: section
 #: sed-out/magit.texi:493 sed-out/magit.texi:494
@@ -1335,7 +1335,7 @@ msgid ""
 "you have to tell @code{make} where to find them.  To do so create the file "
 "@code{/path/to/magit/config.mk} with the following content before running "
 "@code{make}:"
-msgstr "Melpaや@code{/path/to/magit/../<package>}から@code{dash}と@code{transient}と@code{with-editor}をインストールしたので場合は、以下のようにして@code{make}にそれらの場所を指示します。これを行うには、@code{make}を実行する前に、以下の内容のファイル@code{/path/to/magit/config.mk}を作成します:"
+msgstr "Melpaや@code{/path/to/magit/../<package>}から@code{dash}と@code{transient}と@code{with-editor}をインストールした場合は、以下のようにして@code{make}にそれらの場所を指示します。これを行うには、@code{make}を実行する前に、以下の内容のファイル@code{/path/to/magit/config.mk}を作成します:"
 
 #. type: example
 #: sed-out/magit.texi:524
@@ -1415,7 +1415,7 @@ msgstr "注意: @code{lisp}サブディレクトリをリポジトリのトッ�
 msgid ""
 "Instead of requiring the feature @code{magit}, you could load just the "
 "autoload definitions, by loading the file @code{magit-autoloads.el}."
-msgstr "@code{magit}機能をrerquireする代わりに、ファイル@code{magit-autoloads.el}をロードすることにより、autoload定義のみをロードできます。"
+msgstr "@code{magit}機能をrequireする代わりに、ファイル@code{magit-autoloads.el}をロードすることにより、autoload定義のみをロードできます。"
 
 #. type: lisp
 #: sed-out/magit.texi:556
@@ -1450,7 +1450,7 @@ msgstr ""
 #. type: Plain text
 #: sed-out/magit.texi:570
 msgid "At times it might be necessary to run @code{make clean all} instead."
-msgstr "代わりに@code{make cleanall}を実行する必要がある場合があります。"
+msgstr "代わりに@code{make clean all}を実行する必要がある場合があります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:572
@@ -1464,7 +1464,7 @@ msgid ""
 "Magit, Git, and Emacs releases you think you are using.  It's best to "
 "restart Emacs before doing so, to make sure you are not using an outdated "
 "value for @code{load-path}."
-msgstr "Magitをインストールした後、あなたが使用していると考えている、MagitとGitとEmacsのリリースを実際に使用していることを確認する必要があります。@code{load-path}に古い値を使用していないことを確実するために、Magitを再起動する前にEmacsを再起動することをお勧めします。"
+msgstr "Magitインストール後、あなたが使用していると思っている、MagitとGitとEmacsのリリースを、実際に使用していることを確認する必要があります。なお、@code{load-path}に編集前の古い値を使用していないことを確実するために、Magitを再起動する前にEmacsを再起動することをお勧めします。"
 
 #. type: example
 #: sed-out/magit.texi:585
@@ -1488,7 +1488,7 @@ msgstr "Magit 2.8.0, Git 2.10.2, Emacs 25.1.1, gnu/linux\n"
 msgid ""
 "Then you might also want to read about options that many users likely want "
 "to customize.  See @ref{Essential Settings}."
-msgstr "多くのユーザーがカスタマイズしたいと思うプションについても読みたいと思ったら→@ref{基本設定}"
+msgstr "取り急ぎ、多くのユーザーがカスタマイズを検討するオプションついて知りたいなら、こちらを参照するといいでしょう(@ref{基本設定})"
 
 #. type: Plain text
 #: sed-out/magit.texi:600
@@ -1883,7 +1883,7 @@ msgstr "magit-display-buffer-fullframe-status-v1"
 msgid ""
 "This function fills the entire frame when displaying a status buffer.  "
 "Otherwise, it behaves like @code{magit-display-buffer-traditional}."
-msgstr "この関数は、ステータスバッファを表示するときにフレーム全体を埋めます。それ以外の場合は、@code{magit-display-buffer-traditional}のように動作します。"
+msgstr "この関数は、ステータスバッファを表示するときにフレーム全体を埋めます(fill)。それ以外の場合は、@code{magit-display-buffer-traditional}のように動作します。"
 
 #. type: defun
 #: sed-out/magit.texi:833
@@ -1901,7 +1901,7 @@ msgid ""
 "than to the bottom or right.  As a result, Magit buffers tend to pop up on "
 "the same side as they would if @code{magit-display-buffer-traditional} were "
 "in use."
-msgstr "この関数は、ステータスバッファを表示するときにフレーム全体を埋めます。@code{magit-display-buffer-fullframe-status-v1}と同じように動作しますが、@code{magit-diff-mode}または@code{magit-process-mode}から派生したバッファが、現在のバッファの下部または右側ではなく、上部または左側に表示される点が異なります。その結果、Magitバッファは、@code{magit-display-buffer-traditional}が使用されている場合と同じ側にポップアップする傾向があります。"
+msgstr "この関数は、ステータスバッファを表示するときにフレーム全体を埋めます(fill)。@code{magit-display-buffer-fullframe-status-v1}と同じように動作しますが、@code{magit-diff-mode}または@code{magit-process-mode}から派生したバッファが、現在のバッファの下部または右側ではなく、上部または左側に表示される点が異なります。その結果、Magitバッファは、@code{magit-display-buffer-traditional}が使用されている場合と同じ側にポップアップする傾向があります。"
 
 #. type: defun
 #: sed-out/magit.texi:844
@@ -1918,7 +1918,7 @@ msgid ""
 "mode derives from @code{magit-diff-mode}, provided that the mode of the "
 "current buffer derives from @code{magit-log-mode} or "
 "@code{magit-cherry-mode}."
-msgstr "この関数は、ほとんどのバッファを表示して、フレームの高さ全体を埋めるようにします。 ただし、(1)バッファのモードが@code{magit-process-mode}から派生している場合、または(2)バッファのモードが@code{magit-diff-mode}から派生している場合、現在のバッファのモードが@code{magit-log-mode}または@code{magit-cherry-mode}から派生している場合、バッファは別のウィンドウに表示されます。"
+msgstr "この関数は、ほとんどのバッファを表示して、フレームの高さ全体を埋める(fill)ようにします。 ただし、(1)バッファのモードが@code{magit-process-mode}から派生している場合、または(2)バッファのモードが@code{magit-diff-mode}から派生している場合、現在のバッファのモードが@code{magit-log-mode}または@code{magit-cherry-mode}から派生している場合、バッファは別のウィンドウに表示されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:854
@@ -1944,7 +1944,7 @@ msgstr "magit-save-window-configuration"
 msgid ""
 "This function saves the current window configuration.  Later when the buffer "
 "is buried, it may be restored by @code{magit-restore-window-configuration}."
-msgstr "この関数は、現在のウィンドウ構成を保存します。後でバッファが葬られると、@code{magit-restore-window-configuration}によって復元される可能性があります。"
+msgstr "この関数は、現在のウィンドウ構成を保存します。後でバッファが隠される(bury)と、@code{magit-restore-window-configuration}によって復元される可能性があります。"
 
 #. type: defopt
 #: sed-out/magit.texi:867
@@ -1970,7 +1970,7 @@ msgid ""
 "buffer, or whether an existing window was reused.  This information is later "
 "used by @code{magit-mode-quit-window}, to determine whether the window "
 "should be deleted when its last Magit buffer is buried."
-msgstr "この関数は、バッファを表示するために新しいウィンドウを作成する必要があるかどうか、または既存のウィンドウが再利用されたかどうかを記憶しています。 この情報は、後で@code{magit-mode-quit-window}によって使用され、最後のMagitバッファが葬られたときにウィンドウを削除する必要があるかどうかを判断します。"
+msgstr "この関数は、バッファを表示するために新しいウィンドウを作成する必要があるかどうか、または既存のウィンドウが再利用されたかどうかを記憶しています。 この情報は、後で@code{magit-mode-quit-window}によって使用され、最後のMagitバッファが隠された(bury)ときにウィンドウを削除する必要があるかどうかを判断します。"
 
 #. type: subsection
 #: sed-out/magit.texi:882 sed-out/magit.texi:883
@@ -2117,7 +2117,7 @@ msgstr "%T"
 msgid ""
 "Obsolete, use \"%t%x\" instead.  Like @code{%t}, but append an asterisk if "
 "and only if @code{magit-uniquify-buffer-names} is nil."
-msgstr "廃止されました。代わりに\"%t%x\"を使用してください。@code{%t}と同様ですが、@code{magit-uniquify-buffer-names}がnilの場合にのみ、アスタリスクを追加します。<"
+msgstr "廃止されました。代わりに\"%t%x\"を使用してください。@code{%t}と同様ですが、@code{magit-uniquify-buffer-names}がnilの場合にのみ、アスタリスクを追加します。"
 
 #. type: defopt
 #: sed-out/magit.texi:967
@@ -2126,7 +2126,7 @@ msgid ""
 "@code{%V}, and @code{%t} (or the obsolete @code{%T}).  If "
 "@code{magit-uniquify-buffer-names} is non-nil, then the value must end with "
 "@code{%t} or @code{%t%x} (or the obsolete @code{%T}).  See issue #2841."
-msgstr "値には、常に、@code{%m}または@code{%M}と@code{%v}または@code{%V}と@code{%t}(または廃止された@code{%T})が含まれているべきです。@code{magit-uniquify-buffer-names}がnil以外の場合、値は @code{%t}または@code{%t%x}(または廃止された@code{%T})で終わる必要があります。issue #2841 を参照してください。"
+msgstr "値には、常に、@code{%m}または@code{%M}と、@code{%v}または@code{%V}と、@code{%t}(または廃止された@code{%T})が含まれているべきです。@code{magit-uniquify-buffer-names}がnil以外の場合、値は @code{%t}または@code{%t%x}(または廃止された@code{%T})で終わる必要があります。issue #2841 を参照してください。"
 
 #. type: defopt
 #: sed-out/magit.texi:969
@@ -2150,7 +2150,7 @@ msgstr "このオプションは、Magitバッファ達の名前を一意化(uni
 msgid ""
 "This is done using the @code{uniquify} package; customize its options to "
 "control how buffer names are uniquified."
-msgstr "これは、@code{uniquify}パッケージを使用して行われます。オプションをカスタマイズして、バッファ名の一意化(uniquify)方法を制御します。"
+msgstr "これは、@code{uniquify}パッケージを使用して行われます。そのオプションをカスタマイズして、バッファ名の一意化(uniquify)方法を制御します。"
 
 #. type: subsection
 #: sed-out/magit.texi:983 sed-out/magit.texi:984
@@ -2243,7 +2243,7 @@ msgid ""
 "Then, if the window was originally created to display a Magit buffer and the "
 "buried buffer was the last remaining Magit buffer that was ever displayed in "
 "the window, then that is deleted."
-msgstr "それから、ウィンドウが元々Magitバッファを表示するために作成され、埋め込み(buried)バッファがウィンドウに表示された最後の残りのMagitバッファであった場合、それは削除されます。"
+msgstr "それから、ウィンドウが元々Magitバッファを表示するために作成され、隠されていた(buried)バッファがウィンドウに表示された最後の残りのMagitバッファであった場合、それは削除されます。"
 
 #. type: subsection
 #: sed-out/magit.texi:1032 sed-out/magit.texi:1033
@@ -2287,7 +2287,7 @@ msgid ""
 "Buffers can also be refreshed explicitly, which is useful in buffers that "
 "weren't current during the last refresh and after changes were made to the "
 "repository outside of Magit."
-msgstr "バッファは明示的にリフレッシュすることもできます。これは、最後のリフレッシュ時およびMagitの外部のリポジトリに変更が加えられた後、最新ではなかったバッファで役立ちます。"
+msgstr "バッファは明示的にリフレッシュすることもできます。これは、Magitの外部でリポジトリに変更が加えられた後、まだリフレッシュされてない、最新ではなかったバッファで役立ちます。"
 
 #. type: kindex
 #: sed-out/magit.texi:1057
@@ -2320,7 +2320,7 @@ msgid ""
 "If the option @code{magit-revert-buffers} calls for it, then it also reverts "
 "all unmodified buffers that visit files being tracked in the current "
 "repository."
-msgstr "オプション@code{magit-revert-buffers}がそれを要求する場合、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファも元に戻します。"
+msgstr "オプション@code{magit-revert-buffers}がそれを要求する場合、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファもrvertします。"
 
 #. type: kindex
 #: sed-out/magit.texi:1068
@@ -2346,14 +2346,14 @@ msgid ""
 "This command refreshes all Magit buffers belonging to the current repository "
 "and also reverts all unmodified buffers that visit files being tracked in "
 "the current repository."
-msgstr "このコマンドは、現在のリポジトリに属するすべてのMagitバッファをリフレッシュし、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファを元に戻します。"
+msgstr "このコマンドは、現在のリポジトリに属するすべてのMagitバッファをリフレッシュし、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファをrevertします。"
 
 #. type: table
 #: sed-out/magit.texi:1078
 msgid ""
 "The file-visiting buffers are always reverted, even if "
 "@code{magit-revert-buffers} is nil."
-msgstr "@code{magit-revert-buffers}がnilの場合でも、file-visitingバッファは常に元に戻されます。"
+msgstr "@code{magit-revert-buffers}がnilの場合でも、file-visitingバッファは常にrevertされます。"
 
 #. type: defopt
 #: sed-out/magit.texi:1081
@@ -2410,7 +2410,7 @@ msgid ""
 "scratch, which can be slow in large repositories.  If you are not satisfied "
 "with Magit's performance, then you should obviously not add this function to "
 "that hook."
-msgstr "Magitバッファのリフレッシュは、その内容を最初から再作成することによって行われることに注意してください。これは、大規模なリポジトリでは遅くなる可能性があります。Magitのパフォーマンスに満足できない場合は、明らかにこの関数をそのフックに追加しないでください。"
+msgstr "Magitバッファのリフレッシュは、その内容を最初から再作成することによって行われることに注意してください。これは、大規模なリポジトリでは遅くなる可能性があります。あなたがMagitのパフォーマンスに満足できない場合、明らかにこの関数をそのフックに追加すべきではありません。"
 
 #. type: subsection
 #: sed-out/magit.texi:1109 sed-out/magit.texi:1110
@@ -2427,7 +2427,7 @@ msgid ""
 "interact with Git, one can be fairly confident.  When in doubt or after "
 "outside changes, type @code{g} (@code{magit-refresh}) to save and refresh "
 "explicitly."
-msgstr "file-visitingバッファは、デフォルトで特定の時点で保存されます。これは、Magitバッファが常に最新であることを保証するものではありませんが、Emacsでファイルを編集するだけでファイルを編集し、Magitのみを使用してGitと対話する場合には、かなり自信があります。疑わしい場合やまたは外部の変更後は、@code{g} (@code{magit-refresh})と入力して、明示的に保存およびリフレッシュします。"
+msgstr "file-visitingバッファは、デフォルトで特定の時点で保存されます。これは、Magitバッファが常に最新であることを保証するものではありませんが、Emacsでのみファイルを編集し、かつ、Magitのみを使用してGitと対話する場合には、かなり自信があります。それが疑わしい場合や外部での変更後は、@code{g}(@code{magit-refresh})と入力して、明示的に保存およびリフレッシュします。"
 
 #. type: defopt
 #: sed-out/magit.texi:1119
@@ -2459,7 +2459,7 @@ msgid ""
 "are being tracked in a Git repository, after they have changed on disk.  "
 "When using Magit one often changes files on disk by running Git, "
 "i.e. \"outside Emacs\", making this a rather important feature."
-msgstr "デフォルトでは、Magitは、ディスク上で変更された後、Gitリポジトリで追跡されているファイルにアクセスしているバッファを自動的に元に戻します。Magitを使用する場合、Gitを実行してディスク上のファイルを変更することがよくあります。つまり、「Emacsの外部」(outside Emacs)であるため、これはかなり重要な機能です。"
+msgstr "デフォルトでは、Magitは、Gitリポジトリで追跡されているファイルがディスク上で変更された後、それらを訪問しているバッファを自動的にrevertします。Magitを使用する場合、Gitを実行してディスク上のファイルを変更することがよくあります。つまり、それは「Emacsの外部」であるため、バッファを自動的にrevertするのはかなり重要な機能です。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1144
@@ -2469,7 +2469,7 @@ msgid ""
 "have \"changed on disk\".  If Magit did not automatically revert the buffer, "
 "then you would have to type @code{M-x revert-buffer RET RET} in the visiting "
 "buffer before you could continue making changes."
-msgstr "たとえば、ステータスバッファの変更を破棄する場合、@code{git apply --reverse ...}を実行することでそれが行われ、Emacsはファイルが「ディスク上で変更された」と見なします。 Magitがバッファを自動的に元に戻さなかった場合は、変更を続行する前に、訪問中のバッファに@code{M-x revert-buffer RET RET}と入力する必要があります。"
+msgstr "たとえば、ステータスバッファの変更を破棄する場合、@code{git apply --reverse ...}を実行することでそれが行われ、Emacsはファイルが「ディスク上で変更された」と見なします。 Magitがバッファを自動的にrevertしなかった場合は、変更を続行する前に、訪問中のバッファに@code{M-x revert-buffer RET RET}と入力する必要があります。"
 
 #. type: defopt
 #: sed-out/magit.texi:1145
@@ -2482,7 +2482,7 @@ msgstr "magit-auto-revert-mode"
 msgid ""
 "When this mode is enabled, then buffers that visit tracked files are "
 "automatically reverted after the visited files change on disk."
-msgstr "このモードを有効にすると、追跡中のファイル(tracked files)にアクセスしたバッファは、アクセスしたファイルがディスク上で変更された後、自動的に元に戻されます。"
+msgstr "このモードを有効にすると、追跡中のファイル(tracked files)にアクセスしたバッファは、アクセスしたファイルがディスク上で変更された後、自動的にrevertされます。"
 
 #. type: defopt
 #: sed-out/magit.texi:1151
@@ -2495,7 +2495,7 @@ msgstr "global-auto-revert-mode"
 msgid ""
 "When this mode is enabled, then any file-visiting buffer is automatically "
 "reverted after the visited file changes on disk."
-msgstr "このモードを有効にすると、訪問したファイル(visited file)がディスク上で変更された後、file-visitingバッファが自動的に元に戻されます。"
+msgstr "このモードを有効にすると、訪問したファイル(visited file)がディスク上で変更された後、file-visitingバッファが自動的にrevertされます。"
 
 #. type: defopt
 #: sed-out/magit.texi:1160
@@ -2504,7 +2504,7 @@ msgid ""
 "then you might also like any buffer to be reverted, not just those visiting "
 "tracked files.  If that is the case, then enable this mode @emph{instead of} "
 "@code{magit-auto-revert-mode}."
-msgstr "追跡中のファイル(tracked files)にアクセスするバッファを自動的に元に戻す場合は、追跡中のファイルにアクセスするバッファだけでなく、任意のバッファを元に戻すこともできます。その場合は、@code{magit-auto-revert-mode}の「代わりに」このモードを有効にしてください。"
+msgstr "追跡中のファイル(tracked files)にアクセスするバッファを自動的にrevertする場合は、追跡中のファイルにアクセスするバッファだけでなく、任意のバッファをrevertすることもできます。その場合は、@code{magit-auto-revert-mode}の@emph{代わり}にこのモードを有効にしてください。"
 
 #. type: defopt
 #: sed-out/magit.texi:1162
@@ -2515,7 +2515,7 @@ msgstr "magit-auto-revert-immediately"
 #. type: defopt
 #: sed-out/magit.texi:1165
 msgid "This option controls whether Magit reverts buffers immediately."
-msgstr "このオプションは、Magitがバッファをすぐに元に戻すかどうかを制御します。"
+msgstr "このオプションは、Magitがバッファをすぐにrevertするかどうかを制御します。"
 
 #. type: defopt
 #: sed-out/magit.texi:1170
@@ -2524,7 +2524,7 @@ msgid ""
 "@code{magit-auto-revert-mode} is enabled, then Magit immediately reverts "
 "buffers by explicitly calling @code{auto-revert-buffers} after running Git "
 "for side-effects."
-msgstr "これがnil以外で、@code{global-auto-revert-mode}または@code{magit-auto-revert-mode}のいずれかが有効になっている場合、Magitは、副作用のためにGitを実行した後、@code{auto-revert-buffers}を明示的に呼び出すことにより、すぐにバッファを戻します。"
+msgstr "これがnil以外で、@code{global-auto-revert-mode}または@code{magit-auto-revert-mode}のいずれかが有効になっている場合、Magitは、副作用のためにGitを実行した後、@code{auto-revert-buffers}を明示的に呼び出すことにより、すぐにバッファをrevertします。"
 
 #. type: defopt
 #: sed-out/magit.texi:1174
@@ -2540,7 +2540,7 @@ msgid ""
 "If @code{magit-auto-revert-immediately} and @code{auto-revert-use-notify} "
 "are both @code{nil}, then reverts happen after @code{auto-revert-interval} "
 "seconds of user inactivity.  That is not desirable."
-msgstr "@code{magit-auto-revert-immediately}と@code{auto-revert-use-notify}が両方とも@code{nil}の場合、ユーザーが非アクティブになってから@code{auto-revert-interval}秒後に復帰が発生します。それは望ましくありません。"
+msgstr "@code{magit-auto-revert-immediately}と@code{auto-revert-use-notify}が両方とも@code{nil}の場合、ユーザーが非アクティブになってから@code{auto-revert-interval}秒後にrevertが発生します。それは望ましくありません。"
 
 #. type: defopt
 #: sed-out/magit.texi:1180
@@ -2568,7 +2568,7 @@ msgid ""
 "This option controls whether @code{magit-auto-revert-mode} only reverts "
 "tracked files or all files that are located inside Git repositories, "
 "including untracked files and files located inside Git's control directory."
-msgstr "このオプションは、@code{magit-auto-revert-mode}が追跡されたファイル(tracked files)のみを元に戻すか、追跡されていないファイル(untracked files)やGitの制御ディレクトリ内にあるファイルを含むGitリポジトリ内にあるすべてのファイルを元に戻すかを制御します。"
+msgstr "このオプションは、@code{magit-auto-revert-mode}が追跡されているファイル(tracked files)のみをrevertするか、追跡されていないファイル(untracked files)やGitの制御ディレクトリ内にあるファイルを含むGitリポジトリ内にあるすべてのファイルをrevertするかを制御します。"
 
 #. type: defopt
 #: sed-out/magit.texi:1195
@@ -2597,7 +2597,7 @@ msgstr "auto-revert-stop-on-user-input"
 msgid ""
 "This option controls whether the arrival of user input suspends the "
 "automatic reverts for @code{auto-revert-interval} seconds."
-msgstr "このオプションは、ユーザーが入力するまで@code{auto-revert-interval}秒間、自動復帰を一時停止(suspend)するかどうかを制御します。"
+msgstr "このオプションは、ユーザーが入力するまで@code{auto-revert-interval}秒間、自動revertを一時停止(suspend)するかどうかを制御します。"
 
 #. type: defopt
 #: sed-out/magit.texi:1210
@@ -2610,7 +2610,7 @@ msgstr "auto-revert-interval"
 msgid ""
 "This option controls how many seconds Emacs waits for before resuming "
 "suspended reverts."
-msgstr "このオプションは、一時停止された復帰を再開する前にEmacsが待機する秒数を制御します。"
+msgstr "このオプションは、一時停止された自動revertを再開する前にEmacsが待機する秒数を制御します。"
 
 #. type: defopt
 #: sed-out/magit.texi:1216
@@ -2624,7 +2624,7 @@ msgid ""
 "This option specifies an additional filter used by "
 "@code{auto-revert-buffers} to determine whether a buffer should be reverted "
 "or not."
-msgstr "このオプションは、@code{auto-revert-buffers}がバッファを元に戻すかどうかを決定するために使用する追加のフィルターを指定します。"
+msgstr "このオプションは、@code{auto-revert-buffers}がバッファをrevertするかどうかを決定するために使用する追加のフィルターを指定します。"
 
 #. type: defopt
 #: sed-out/magit.texi:1226
@@ -2662,7 +2662,7 @@ msgstr "auto-revert-verbose"
 #. type: defopt
 #: sed-out/magit.texi:1242
 msgid "This option controls whether Emacs reports when a buffer has been reverted."
-msgstr "このオプションは、バッファが元に戻されたときにEmacsがレポートするかどうかを制御します。"
+msgstr "このオプションは、バッファがrevertされたときにEmacsがレポートするかどうかを制御します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1247
@@ -2676,14 +2676,14 @@ msgstr "@code{auto-revert-}接頭辞が付いたオプションは、@code{auto-
 #: sed-out/magit.texi:1250 sed-out/magit.texi:1252 sed-out/magit.texi:1253
 #, no-wrap
 msgid "Risk of Reverting Automatically"
-msgstr "自動的に元に戻るリスク"
+msgstr "Risk of Reverting Automatically"
 
 #. type: Plain text
 #: sed-out/magit.texi:1257
 msgid ""
 "For the vast majority of users, automatically reverting file-visiting "
 "buffers after they have changed on disk is harmless."
-msgstr "大多数のユーザーにとって、ディスク上で変更された後にfile-visitingバッファを自動的に元に戻すことは無害です。"
+msgstr "大多数のユーザーにとって、ディスク上で変更された後にfile-visitingバッファを自動的revertすることは無害です。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1265
@@ -2695,7 +2695,7 @@ msgid ""
 "would cause these changes to be lost.  In other words, if there is anything "
 "that could be lost, then either Git or Emacs will refuse to discard the "
 "changes."
-msgstr "バッファが変更された場合(つまり、まだ保存されていない変更が含まれている場合)、Emacsは自動的にバッファを元に戻すことを拒否します。以前に変更されたバッファを保存すると、Gitはコミットされていない変更と見なします。その後、Gitは、これらの変更が失われる原因となるコマンドの実行を拒否します。言い換えれば、失われる可能性のあるものがある場合、GitまたはEmacsのいずれかが変更の破棄を拒否します。"
+msgstr "バッファが変更された場合(つまり、まだ保存されていない変更が含まれている場合)、Emacsは自動的にバッファをrevertすることを拒否します。以前に変更されたバッファを保存すると、Gitはコミットされていない変更と見なします。その後、Gitは、これらの変更が失われる原因となるコマンドの実行を拒否します。言い換えれば、失われる可能性のあるものがある場合、GitまたはEmacsのいずれかが変更の破棄を拒否します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1270
@@ -2703,7 +2703,7 @@ msgid ""
 "However, if you use file-visiting buffers as a sort of ad hoc \"staging "
 "area\", then the automatic reverts could potentially cause data loss.  So "
 "far I have heard from only one user who uses such a workflow."
-msgstr "ただし、あなたがfile-visitingバッファを一種その場しのぎ(ad hoc)の「ステージ領域」として使用する場合、自動復帰によってデータが失われる可能性があります。 これまでのところ、このようなワークフローを使用しているユーザーは私が知っている限りでは1人だけです。"
+msgstr "ただし、あなたがfile-visitingバッファを一種その場しのぎ(ad hoc)の「ステージ領域」として使用する場合、自動revertによってデータが失われる可能性があります。 これまでのところ、このようなワークフローを使用しているユーザーは私が知っている限りでは1人だけです。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1283
@@ -2719,7 +2719,7 @@ msgid ""
 "mode would kick in.  It would check whether the buffer is modified and since "
 "that is not the case it would revert it.  The intermediate version would be "
 "lost.  (Actually you could still get it back using the @code{undo} command.)"
-msgstr "例：あなたはバッファ内のファイルにアクセスして編集し、変更を保存します。それから、Emacsの外部で(または少なくともMagitを使用しないか、バッファを保存することにより)、ディスク上のファイルを再度変更します。この時点で、バッファは中間バージョンがまだ存在する唯一の場所です。変更をディスクに保存しましたが、それ以降は上書きされています。一方、Emacsはバッファが変更されていないと見なし(最後にアクセスしたファイルに保存してから変更を加えていないため)、自動的に元に戻されることに異議を唱えません。この時点で、自動復帰モードが開始されます。バッファが変更されているかどうかがチェックされ、変更されていないため、バッファが復帰します。中間バージョンは失われます。(実際には、@code{undo}コマンドを使用して元に戻すことができます。)"
+msgstr "例：あなたはバッファ内のファイルにアクセスして編集し、変更を保存します。それから、Emacsの外部で(または少なくともMagitを使用しないか、バッファを保存することにより)、ディスク上のファイルを再度変更します。この時点で、バッファは中間バージョンがまだ存在する唯一の場所です。変更をディスクに保存しましたが、それ以降は上書きされています。一方、Emacsはバッファが変更されていないと見なし(最後にアクセスしたファイルに保存してから変更を加えていないため)、自動的にrevertされることに異議を唱えません。この時点で、自動revertモードが開始されます。バッファが変更されているかどうかがチェックされ、変更されていないため、バッファがrevertされます。中間バージョンは失われます。(実際には、いまだ、@code{undo}コマンドを使用して元に戻る(get it back)ことができます。)"
 
 #. type: Plain text
 #: sed-out/magit.texi:1293
@@ -2732,7 +2732,7 @@ msgid ""
 "be no autosave file still containing the intermediate version (because that "
 "was deleted when you saved the buffer) and you would not be asked whether "
 "you want to save the buffer (because it isn't modified)."
-msgstr "あなたのワークフローがバッファに中間バージョンを保持するEmacsに依存している場合は、すべての自動復帰モードを無効にする必要があります。ただし、このようなワークフローは、自動復帰モードを使用しなくても危険であるため、回避する必要があることを考慮してください。Emacsがクラッシュしたり、誤ってEmacsを終了したりすると、バッファの内容も失われます。中間バージョンがまだ含まれている自動保存ファイルはなく(バッファを保存したときに削除されたため)、バッファを保存するかどうかを尋ねられることはありません(変更されていないため)。"
+msgstr "あなたのワークフローがバッファに中間バージョンを保持するEmacsに依存している場合は、すべての自動revertモードを無効にする必要があります。ただし、このようなワークフローは、自動revertモードを使用しなくても危険であるため、回避する必要があることを考慮してください。Emacsがクラッシュしたり、誤ってEmacsを終了したりすると、バッファの内容も失われます。中間バージョンがまだ含まれている自動保存ファイルはなく(バッファを保存したときに削除されたため)、バッファを保存するかどうかを尋ねられることはありません(変更されていないため)。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1302
@@ -4128,7 +4128,7 @@ msgid ""
 "become annoying.  Many of these actions can be undone and if you have "
 "thought about how to undo certain mistakes, then it should be safe to "
 "disable confirmation for the respective actions."
-msgstr "デフォルトでは、データ損失につながる可能性のある多くのアクションを確認する必要があります。これには多くの非常に一般的なアクションが含まれるため、これはすぐに煩わしくなります。これらのアクションの多くは元に戻すことができるので、あなたが特定の間違いを元に戻す方法を考えている場合は、それぞれのアクションの確認を無効にしても安全です。"
+msgstr "デフォルトでは、データ損失につながる可能性のある多くのアクションを確認する必要があります。これには多くの非常に一般的なアクションが含まれるため、これはすぐに煩わしくなります。これらのアクションの多くは元に戻す(undo)ことができるので、あなたが特定の間違いを元に戻す方法を考えている場合は、それぞれのアクションの確認を無効にしても安全です。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1963
@@ -4181,7 +4181,7 @@ msgstr "@code{discard} 1つ以上の変更(つまり、ファイルのハンク�
 msgid ""
 "@code{reverse} Reverting one or more changes can usually be undone by "
 "reverting the reversion."
-msgstr "@code{reverse} 1つ以上の変更を元に戻すには、通常、reversionの復元によって元通りにすることができます。"
+msgstr "@code{reverse} 1つ以上の変更をrevertするには、通常、reversionの復元によって元通りにすることができます。"
 
 #. type: itemize
 #: sed-out/magit.texi:1999
@@ -4229,12 +4229,12 @@ msgstr "@code{resurrect} 削除されたファイルは、最初に同じファ�
 #. type: itemize
 #: sed-out/magit.texi:2027
 msgid "@code{untrack} Untracking a file can be undone by tracking it again."
-msgstr "@code{untrack} ファイルの追跡解除(untracking)は、ファイルを再度追跡(tracking)することで元に戻すことができます。"
+msgstr "@code{untrack} ファイルの追跡解除(untracking)は、ファイルを再度追跡(tracking)することで元に戻す(undo)ことができます。"
 
 #. type: itemize
 #: sed-out/magit.texi:2031
 msgid "@code{rename} Renaming a file can easily be undone."
-msgstr "@code{rename} ファイルの名前変更は簡単に元に戻すことができます。"
+msgstr "@code{rename} ファイルの名前変更は簡単に元に戻す(undo)ことができます。"
 
 # 一連の作業(?)
 #. type: itemize
@@ -7108,7 +7108,7 @@ msgid ""
 "@code{magit-mode-bury-buffer} (which see) but with a negative prefix "
 "argument instead bury the revision buffer, provided it is displayed in the "
 "current frame."
-msgstr "現在のバッファまたはリビジョンバッファを同じフレームに埋め込み(bury)ます。@code{magit-mode-bury-buffer}(を参照)と同様ですが、現在のフレームに表示されている場合は、代わりにマイナスのプレフィックス引数を使用してリビジョンバッファを埋め込みます。"
+msgstr "現在のバッファまたはリビジョンバッファを同じフレームに隠し(bury)ます。@code{magit-mode-bury-buffer}(を参照)と同様ですが、現在のフレームに表示されている場合は、代わりにマイナスのプレフィックス引数を使用してリビジョンバッファを隠します。"
 
 #. type: kindex
 #: sed-out/magit.texi:3550 sed-out/magit.texi:4205
@@ -16228,7 +16228,7 @@ msgstr "@kbd{A A} @tie{}@tie{}@tie{}@tie{}(@code{magit-sequence-continue})"
 #. type: table
 #: sed-out/magit.texi:8031 sed-out/magit.texi:8094
 msgid "Resume the current cherry-pick or revert sequence."
-msgstr "現在のcherry-pickを再開するか、シーケンスを元に戻します。"
+msgstr "現在のcherry-pickを再開するか、シーケンスをrevertします。"
 
 #. type: cindex
 #: sed-out/magit.texi:8033 sed-out/magit.texi:8096
@@ -20892,7 +20892,7 @@ msgid ""
 "visited file changes on disk.  This isn't as risky as it might seem, but to "
 "make an informed decision you should see @ref{Risk of Reverting "
 "Automatically}."
-msgstr "デフォルトでは、訪問したファイルがディスク上で変更されると、訪問したファイルは自動的に元に戻されます。 これは見た目ほど危険ではありませんが、十分な情報に基づいて決定を下すには確認が必要です→@ref{自動的に元に戻るリスク}"
+msgstr "デフォルトでは、訪問したファイルがディスク上で変更されると、訪問したファイルは自動的revertされます。 これは見た目ほど危険ではありませんが、十分な情報に基づいて決定を下すには確認が必要です。こちらを参照下さい(@ref{Risk of Reverting Automatically})"
 
 #. type: subsection
 #: sed-out/magit.texi:10210 sed-out/magit.texi:10211
@@ -20962,7 +20962,7 @@ msgid ""
 "To figure out whether that impacts performance, check whether performance is "
 "significantly worse, when many buffers exist and/or when some buffers visit "
 "files using TRAMP@.  If so, then this should help."
-msgstr "Magitは、アクセスしたファイル(visited files)がディスク上で変更されると、現在のリポジトリ内にあるアクセスしたファイルのバッファも元に戻します(revert)。これは、組み込みライブラリ@code{autorevert}の@code{auto-revert-mode}の上に実装されています。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および/または一部のバッファがTRAMP@@を使用してファイルにアクセスする場合を確認します。 もしパフォーマンスに影響があるなら、この確認が役に立つはずです。"
+msgstr "Magitは、アクセスしたファイル(visited files)がディスク上で変更されると、現在のリポジトリ内にあるアクセスしたファイルのバッファもrevertします。これは、組み込みライブラリ@code{autorevert}の@code{auto-revert-mode}の上に実装されています。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および/または一部のバッファがTRAMP@@を使用してファイルにアクセスする場合を確認します。 もしパフォーマンスに影響があるなら、この確認が役に立つはずです。"
 
 #. type: lisp
 #: sed-out/magit.texi:10256
@@ -21757,7 +21757,7 @@ msgid ""
 "well as the respective Magit status buffer.  Unmodified buffers visiting "
 "files that are tracked in the current repository are reverted if "
 "@code{magit-revert-buffers} is non-nil."
-msgstr "Gitから戻った後、いくつかのバッファがリフレッシュされます。それは、この関数が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファです。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルにアクセスしている変更されていないバッファは元に戻されます。"
+msgstr "Gitから戻った後、いくつかのバッファがリフレッシュされます。それは、この関数が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファです。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルにアクセスしている変更されていないバッファはrevertされます。"
 
 #. type: defun
 #: sed-out/magit.texi:10709
@@ -21815,7 +21815,7 @@ msgid ""
 "well as the respective Magit status buffer.  Unmodified buffers visiting "
 "files that are tracked in the current repository are reverted if "
 "@code{magit-revert-buffers} is non-nil."
-msgstr "Gitから戻った後、いくつかのバッファがリフレッシュされます。それは、この関数が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファです。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルにアクセスしている変更されていないバッファは元に戻されます。"
+msgstr "Gitから戻った後、いくつかのバッファがリフレッシュされます。それは、この関数が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファです。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルにアクセスしている変更されていないバッファはrevertされます。"
 
 #. type: defun
 #: sed-out/magit.texi:10742
@@ -21858,7 +21858,7 @@ msgid ""
 "a Magit buffer and still alive), as well as the respective Magit status "
 "buffer.  Unmodified buffers visiting files that are tracked in the current "
 "repository are reverted if @code{magit-revert-buffers} is non-nil."
-msgstr "プロセスから戻った後、@code{magit-process-sentinel}は、@code{magit-start-process}が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファをリフレッシュします。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルにアクセスしている変更されていないバッファは元に戻されます。"
+msgstr "プロセスから戻った後、@code{magit-process-sentinel}は、@code{magit-start-process}が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファをリフレッシュします。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルにアクセスしている変更されていないバッファはrevertされます。"
 
 #. type: defvar
 #: sed-out/magit.texi:10765
@@ -22737,7 +22737,7 @@ msgstr "Magitの発音は？"
 #. type: Plain text
 #: sed-out/magit.texi:11317
 msgid "Either @code{mu[m's] git} or @code{magi@{c => t@}} is fine."
-msgstr "@code{mu[m's] git}または@code{magi@{c => t@}}のいずれかで問題ありません。"
+msgstr "発音は@code{mu[m's] git}または@code{magi@{c => t@}}のいずれかで問題ありません。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11321
@@ -22753,21 +22753,21 @@ msgid ""
 "The German \"Magie\" is not pronounced the same as the English \"magic\", so "
 "if you speak German then you can use the above rational to justify using the "
 "former pronunciation; @code{Mag@{ie => it@}}."
-msgstr "ドイツ語の「Magie」は英語の「magic」と同じ発音ではないため、ドイツ語を話す場合は、上記の合理性を使用して前者の発音を使用することを正当化できます。@code{Mag@{ie => it@}}"
+msgstr "ドイツ語の\"Magie\"は英語の\"magic\"と同じ発音ではないため、ドイツ語を話す場合は、上記の合理性を使用して前者の発音を使用することを正当化できます。@code{Mag@{ie => it@}}"
 
 #. type: Plain text
 #: sed-out/magit.texi:11328
 msgid ""
 "You can also choose to use the former pronunciation just because you like it "
 "better."
-msgstr "以前の発音が好きだからといって、前者の発音を使用することもできます。"
+msgstr "以前の発音が好きだからと、前者の発音を使用してもかまいません。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11331
 msgid ""
 "Also see @uref{https://magit.vc/assets/videos/magic.mp4}.  Also see "
 "@uref{https://emacs.stackexchange.com/questions/13696}."
-msgstr "@uref{https://magit.vc/assets/videos/magic.mp4}(訳注:2021年現在ファイルが存在しない模様)。"
+msgstr "参照 @uref{https://magit.vc/assets/videos/magic.mp4}(訳注:2021年現在ファイルが存在しない模様)。 こちらもご覧ください@uref{https://emacs.stackexchange.com/questions/13696}"
 
 #. type: appendixsubsec
 #: sed-out/magit.texi:11332 sed-out/magit.texi:11333
@@ -23046,7 +23046,7 @@ msgid ""
 "This is probably caused by a change of a @code{diff.*} Git variable.  You "
 "probably set that variable for a reason, and should therefore only undo that "
 "setting in Magit by customizing @code{magit-git-global-arguments}."
-msgstr "これはおそらく、@code{diff.*} Git変数の変更が原因です。あなたはおそらくその変数を何らかの理由で設定しているので、@code{magit-git-global-arguments}をカスタマイズすることによってのみ、Magitでその設定を元に戻す(undo)必要があります。"
+msgstr "これはおそらく、@code{diff.*} Git変数の変更が原因です。あなたはおそらく@code{magit-git-global-arguments}を何らかの理由で設定しています。よって、あなたはMagit内で@code{magit-git-global-arguments}をカスタマイズしたのを元に戻す(undo)だけです。"
 
 #. type: appendixsubsec
 #: sed-out/magit.texi:11503 sed-out/magit.texi:11504
@@ -23201,7 +23201,7 @@ msgid ""
 "already been taken care of when you commit from Magit because in order to do "
 "so, Magit has to be loaded and doing that involves loading @code{git-commit} "
 "and starting the server."
-msgstr "これは、@code{git-commit.el}がまだロードされていないか、サーバーがまだ起動されていないためです。これらの事は、Magitからコミットするときは常にこれらの処理が為されています。これを行うにはMagitをロードする必要があり、そのためには@code{git-commit}をロードしてサーバーを起動する必要があります。"
+msgstr "これは、@code{git-commit.el}がまだロードされていないか、サーバーがまだ起動されていないためです。Magitからコミットするときは常にこれらの処理が為されています。これを行うにはMagitをロードする必要があり、そのためには@code{git-commit}をロードしてサーバーを開始する必要があります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11585
@@ -23243,7 +23243,7 @@ msgstr "@code{git-commit}をロードすると、Magitの大部分がロード�
 msgid ""
 "There are also some variations of @code{(server-mode)} that you might want "
 "to try. Personally I use:"
-msgstr "@code{(server-mode)}には、あなたが試してみたいバリエーションもいくつかありると思います。作者の私が個人的に使用するものは:"
+msgstr "@code{(server-mode)}には、あなたが試してみたいバリエーションもいくつかあると思います。作者の私が個人的に使用するものは:"
 
 #. type: lisp
 #: sed-out/magit.texi:11606
@@ -23292,7 +23292,7 @@ msgid ""
 "you do this, then you can still edit the commit message but "
 "@code{git-commit-mode} won't be used and you have to exit @code{emacs} to "
 "finish the process."
-msgstr "これは実際には@code{emacsclient}ではなく@code{emacs}を使用することになります。これを行う場合でも、コミットメッセージを編集できますが、@code{git-commit-mode}は使用されず、プロセスを終了するには@code{emacs}を終了する必要があります。"
+msgstr "これは実際には@code{emacsclient}ではなく@code{emacs}を使用することになります。この場合でも、コミットメッセージは編集できますが、@code{git-commit-mode}は使用されず、プロセスを終了するには@code{emacs}を終了する必要があります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11629
@@ -23300,7 +23300,7 @@ msgid ""
 "Tautology ahead.  If you want to be able to use @code{emacsclient} to "
 "connect to a running @code{emacs} instance, even though no @code{emacs} "
 "instance is running, then you cannot use @code{emacsclient} directly."
-msgstr "先のトートロジー。 @code{emacs}インスタンスが実行されていなくても、@code{emacsclient}を使用して実行中の@code{emacs}インスタンスに接続できるようにする場合は、@code{emacsclient}を直接使用することはできません。"
+msgstr "これのトートロジーになりますが、@code{emacs}インスタンスが実行されていなくても、@code{emacsclient}を使用して実行中の@code{emacs}インスタンスに接続できるようにする場合は、@code{emacsclient}を直接使用することはできません。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11631
@@ -23320,7 +23320,7 @@ msgstr "(@code{--alternate-editor}を使用せずに)@code{emacsclient}を使用
 #: sed-out/magit.texi:11636 sed-out/magit.texi:11637
 #, no-wrap
 msgid "Point ends up inside invisible text when jumping to a file-visiting buffer"
-msgstr "file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています"
+msgstr "file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります"
 
 #. type: Plain text
 #: sed-out/magit.texi:11645

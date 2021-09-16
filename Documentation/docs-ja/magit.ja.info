@@ -408,7 +408,7 @@ FAQ - Issues and Errors
 * 同じ名前を共有するブランチとタグは何かを壊します::
 * 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません::
 * コマンドラインからコミットする場合、git-commit-modeは使用されません::
-* file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています::
+* file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります::
 * MS-WindowsからEmacsのTrampモードを使用するとステージできません::
 * 私はポップアップのデフォルトを保存できなくなりました::
 
@@ -445,20 +445,20 @@ Magitのインターフェースの最も目に見える部分は、現在のリ
 changes)とプッシュされていない変更(unpushed changes)を一覧表示し、ステー
 ジされた変更(staged changes)とステージされていない変更(unstaged
 changes)を表示するセクションを含みます。煩雑な表示に思えるえるかもしれま
-せんが、セクションは折りたたみ可能であるため、そんなことははありません。
+せんが、セクションは折りたたみ可能であるため、そんなことはありません。
 
 変更をステージ(stage)またはステージ解除(unstage)するには、変更にカーソル
-を置き、‘s’または‘u’と入力します。 変更は、ファイルまたはハンク、または
-領域がアクティブな場合(つまり、選択がある場合)は、複数のファイルまたはハ
-ンク、あるいはハンクの一部である可能性があります。これらのコマンド(およ
-び他の多くのコマンド)が作用する1つまたは複数の変更が強調表示されます。
+を置き、‘s’または‘u’と入力します。変更対象はファイルやハンクで、領域がア
+クティブな場合(つまり選択がある場合)、それは複数ファイルやハンク、あるい
+はハンクの一部分かもしれません。これらのコマンド(および他の多くのコマン
+ド)が作用する1つまたは複数の変更が強調表示されます。
 
 Magitは、ステージとステージ解除に加えて、他のいくつかの適用バリエーショ
 ン("apply variants")も実装しています。 変更を破棄または元に戻すか、作業
 ツリーに適用できます。Git自身の磁器は、ステージとステージ解除でのみこれ
 をサポートしており、‘git diff ... | ??? | git apply ...’を使用して、コマ
-ンドラインで単一のハンクを破棄、元に戻す、または適用します。 実際、これ
-はまさにMagitが内部で行っていることです(これが適用バリエーション("apply
+ンドラインで単一のハンクを破棄、revert、または適用します。 実際、これは
+まさにMagitが内部で行っていることです(これが適用バリエーション("apply
 variants")という用語につながるものです)。
 
 MagitはGitの専門家だけのものではありませんが、GitやEmacsでの経験があるこ
@@ -546,8 +546,8 @@ MagitはMelpaおよびMelpa-Stableから入手できます。まだEmacsのパ�
 
      M-x package-install RET magit RET
 
-インストール後にしなければならない作業があります→(*note
-Post-Installation Tasks::)。
+なお、インストール後にしなければならない作業があります。こちらを参照下さ
+い(*note Post-Installation Tasks::)。
 
 
 File: magit.ja.info,  Node: Installing from the Git Repository,  Next: Post-Installation Tasks,  Prev: Installing from Melpa,  Up: Installation
@@ -570,9 +570,9 @@ Magitは、MelpaおよびMelpa-Stableから入手できる、‘dash’と‘tra
      $ make
 
 Melpaや‘/path/to/magit/../<package>’から‘dash’と‘transient’と
-‘with-editor’をインストールしたので場合は、以下のようにして‘make’にそれ
-らの場所を指示します。これを行うには、‘make’を実行する前に、以下の内容の
-ファイル‘/path/to/magit/config.mk’を作成します:
+‘with-editor’をインストールした場合は、以下のようにして‘make’にそれらの
+場所を指示します。これを行うには、‘make’を実行する前に、以下の内容のファ
+イル‘/path/to/magit/config.mk’を作成します:
 
      LOAD_PATH  = -L ~/.emacs.d/site-lisp/magit/lisp
      LOAD_PATH += -L ~/.emacs.d/site-lisp/dash
@@ -602,8 +602,8 @@ Melpaや‘/path/to/magit/../<package>’から‘dash’と‘transient’と
 いるべきではありません。逆に‘Info-directory-list’の要素はスラッシュで終
 わっているべきです。
 
-‘magit’機能をrerquireする代わりに、ファイル‘magit-autoloads.el’をロード
-することにより、autoload定義のみをロードできます。
+‘magit’機能をrequireする代わりに、ファイル‘magit-autoloads.el’をロードす
+ることにより、autoload定義のみをロードできます。
 
      (load "/path/to/magit/lisp/magit-autoloads")
 
@@ -616,12 +616,12 @@ Magitを更新するには、以下を使用します:
      $ git pull
      $ make
 
-代わりに‘make cleanall’を実行する必要がある場合があります。
+代わりに‘make clean all’を実行する必要がある場合があります。
 
 使用可能なすべてのターゲットを表示するには、‘make help’を使用します。
 
-インストール後にしなければならない作業があります→(*note
-Post-Installation Tasks::)。
+なお、インストール後にしなければならない作業があります。こちらを参照下さ
+い(*note Post-Installation Tasks::)。
 
 
 File: magit.ja.info,  Node: Post-Installation Tasks,  Prev: Installing from the Git Repository,  Up: Installation
@@ -629,10 +629,10 @@ File: magit.ja.info,  Node: Post-Installation Tasks,  Prev: Installing from the 
 2.3 Post-Installation Tasks
 ===========================
 
-Magitをインストールした後、あなたが使用していると考えている、Magitと
-GitとEmacsのリリースを実際に使用していることを確認する必要があります。
-‘load-path’に古い値を使用していないことを確実するために、Magitを再起動す
-る前にEmacsを再起動することをお勧めします。
+Magitインストール後、あなたが使用していると思っている、MagitとGitと
+Emacsのリリースを、実際に使用していることを確認する必要があります。なお
+、‘load-path’に編集前の古い値を使用していないことを確実するために、
+Magitを再起動する前にEmacsを再起動することをお勧めします。
 
      M-x magit-version RET
 
@@ -640,8 +640,8 @@ GitとEmacsのリリースを実際に使用していることを確認する必
 
      Magit 2.8.0, Git 2.10.2, Emacs 25.1.1, gnu/linux
 
-多くのユーザーがカスタマイズしたいと思うプションについても読みたいと思っ
-たら→*note 基本設定::
+取り急ぎ、多くのユーザーがカスタマイズを検討するオプションついて知りたい
+なら、こちらを参照するといいでしょう(*note 基本設定::)
 
 このマニュアルにあるGit manpageへの相互参照をたどることができるようにす
 るには、‘gitman’ infoマニュアルを手動でインストールするか、
@@ -883,23 +883,23 @@ File: magit.ja.info,  Node: バッファの切り替え,  Next: バッファの�
  -- Function: magit-display-buffer-fullframe-status-v1
 
      この関数は、ステータスバッファを表示するときにフレーム全体を埋めま
-     す。それ以外の場合は、‘magit-display-buffer-traditional’のように動
-     作します。
+     す(fill)。それ以外の場合は、‘magit-display-buffer-traditional’のよ
+     うに動作します。
 
  -- Function: magit-display-buffer-fullframe-status-topleft-v1
 
      この関数は、ステータスバッファを表示するときにフレーム全体を埋めま
-     す。‘magit-display-buffer-fullframe-status-v1’と同じように動作しま
-     すが、‘magit-diff-mode’または‘magit-process-mode’から派生したバッフ
-     ァが、現在のバッファの下部または右側ではなく、上部または左側に表示
-     される点が異なります。その結果、Magitバッファは、
+     す(fill)。‘magit-display-buffer-fullframe-status-v1’と同じように動
+     作しますが、‘magit-diff-mode’または‘magit-process-mode’から派生した
+     バッファが、現在のバッファの下部または右側ではなく、上部または左側
+     に表示される点が異なります。その結果、Magitバッファは、
      ‘magit-display-buffer-traditional’が使用されている場合と同じ側にポ
      ップアップする傾向があります。
 
  -- Function: magit-display-buffer-fullcolumn-most-v1
 
      この関数は、ほとんどのバッファを表示して、フレームの高さ全体を埋め
-     るようにします。 ただし、(1)バッファのモードが
+     る(fill)ようにします。 ただし、(1)バッファのモードが
      ‘magit-process-mode’から派生している場合、または(2)バッファのモード
      が‘magit-diff-mode’から派生している場合、現在のバッファのモードが
      ‘magit-log-mode’または‘magit-cherry-mode’から派生している場合、バッ
@@ -912,9 +912,9 @@ File: magit.ja.info,  Node: バッファの切り替え,  Next: バッファの�
 
  -- Function: magit-save-window-configuration
 
-     この関数は、現在のウィンドウ構成を保存します。後でバッファが葬られ
-     ると、‘magit-restore-window-configuration’によって復元される可能性
-     があります。
+     この関数は、現在のウィンドウ構成を保存します。後でバッファが隠され
+     る(bury)と、‘magit-restore-window-configuration’によって復元される
+     可能性があります。
 
  -- User Option: magit-post-display-buffer-hook
 
@@ -926,8 +926,8 @@ File: magit.ja.info,  Node: バッファの切り替え,  Next: バッファの�
      この関数は、バッファを表示するために新しいウィンドウを作成する必要
      があるかどうか、または既存のウィンドウが再利用されたかどうかを記憶
      しています。 この情報は、後で‘magit-mode-quit-window’によって使用さ
-     れ、最後のMagitバッファが葬られたときにウィンドウを削除する必要があ
-     るかどうかを判断します。
+     れ、最後のMagitバッファが隠された(bury)ときにウィンドウを削除する必
+     要があるかどうかを判断します。
 
 
 File: magit.ja.info,  Node: バッファの名付け,  Next: Quitting Windows,  Prev: バッファの切り替え,  Up: Modes and Buffers
@@ -996,12 +996,12 @@ File: magit.ja.info,  Node: バッファの名付け,  Next: Quitting Windows,  
 
           廃止されました。代わりに"%t%x"を使用してください。‘%t’と同様で
           すが、‘magit-uniquify-buffer-names’がnilの場合にのみ、アスタリ
-          スクを追加します。<
+          スクを追加します。
 
-     値には、常に、‘%m’または‘%M’と‘%v’または‘%V’と‘%t’(または廃止された
-     ‘%T’)が含まれているべきです。‘magit-uniquify-buffer-names’がnil以外
-     の場合、値は ‘%t’または‘%t%x’(または廃止された‘%T’)で終わる必要があ
-     ります。issue #2841 を参照してください。
+     値には、常に、‘%m’または‘%M’と、‘%v’または‘%V’と、‘%t’(または廃止さ
+     れた‘%T’)が含まれているべきです。‘magit-uniquify-buffer-names’が
+     nil以外の場合、値は ‘%t’または‘%t%x’(または廃止された‘%T’)で終わる
+     必要があります。issue #2841 を参照してください。
 
  -- User Option: magit-uniquify-buffer-names
 
@@ -1012,8 +1012,8 @@ File: magit.ja.info,  Node: バッファの名付け,  Next: Quitting Windows,  
      名前と競合する場合は、競合しなくなるまで、これらすべてのバッファの
      名前が調整されます。
 
-     これは、‘uniquify’パッケージを使用して行われます。オプションをカス
-     タマイズして、バッファ名の一意化(uniquify)方法を制御します。
+     これは、‘uniquify’パッケージを使用して行われます。そのオプションを
+     カスタマイズして、バッファ名の一意化(uniquify)方法を制御します。
 
 
 File: magit.ja.info,  Node: Quitting Windows,  Next: Automatic Refreshing of Magit Buffers,  Prev: バッファの名付け,  Up: Modes and Buffers
@@ -1056,9 +1056,9 @@ File: magit.ja.info,  Node: Quitting Windows,  Next: Automatic Refreshing of Mag
      (kill)します。これは、最初にKILL-BUFFERを使用し、2番目の引数として
      選択したウィンドウを使用して呼び出されます。
 
-     それから、ウィンドウが元々Magitバッファを表示するために作成され、埋
-     め込み(buried)バッファがウィンドウに表示された最後の残りのMagitバッ
-     ファであった場合、それは削除されます。
+     それから、ウィンドウが元々Magitバッファを表示するために作成され、隠
+     されていた(buried)バッファがウィンドウに表示された最後の残りの
+     Magitバッファであった場合、それは削除されます。
 
 
 File: magit.ja.info,  Node: Automatic Refreshing of Magit Buffers,  Next: Automatic Saving of File-Visiting Buffers,  Prev: Quitting Windows,  Up: Modes and Buffers
@@ -1080,9 +1080,9 @@ Magitバッファ達を自動的にリフレッシュすると、表示される
 フレッシュされません。また、リフレッシュすることが望ましくない場合がある
 ためです。
 
-バッファは明示的にリフレッシュすることもできます。これは、最後のリフレッ
-シュ時およびMagitの外部のリポジトリに変更が加えられた後、最新ではなかっ
-たバッファで役立ちます。
+バッファは明示的にリフレッシュすることもできます。これは、Magitの外部で
+リポジトリに変更が加えられた後、まだリフレッシュされてない、最新ではなか
+ったバッファで役立ちます。
 
 ‘g’     (‘magit-refresh’)
 
@@ -1092,16 +1092,16 @@ Magitバッファ達を自動的にリフレッシュすると、表示される
 
      オプション‘magit-revert-buffers’がそれを要求する場合、現在のリポジ
      トリで追跡されているファイルにアクセスするすべての変更されていない
-     バッファも元に戻します。
+     バッファもrvertします。
 
 ‘G’     (‘magit-refresh-all’)
 
      このコマンドは、現在のリポジトリに属するすべてのMagitバッファをリフ
      レッシュし、現在のリポジトリで追跡されているファイルにアクセスする
-     すべての変更されていないバッファを元に戻します。
+     すべての変更されていないバッファをrevertします。
 
      ‘magit-revert-buffers’がnilの場合でも、file-visitingバッファは常に
-     元に戻されます。
+     revertされます。
 
  -- User Option: magit-refresh-buffer-hook
 
@@ -1125,8 +1125,8 @@ Magitバッファ達を自動的にリフレッシュすると、表示される
 
      Magitバッファのリフレッシュは、その内容を最初から再作成することによ
      って行われることに注意してください。これは、大規模なリポジトリでは
-     遅くなる可能性があります。Magitのパフォーマンスに満足できない場合は
-     、明らかにこの関数をそのフックに追加しないでください。
+     遅くなる可能性があります。あなたがMagitのパフォーマンスに満足できな
+     い場合、明らかにこの関数をそのフックに追加すべきではありません。
 
 
 File: magit.ja.info,  Node: Automatic Saving of File-Visiting Buffers,  Next: Automatic Reverting of File-Visiting Buffers,  Prev: Automatic Refreshing of Magit Buffers,  Up: Modes and Buffers
@@ -1136,9 +1136,9 @@ File: magit.ja.info,  Node: Automatic Saving of File-Visiting Buffers,  Next: Au
 
 file-visitingバッファは、デフォルトで特定の時点で保存されます。これは、
 Magitバッファが常に最新であることを保証するものではありませんが、Emacsで
-ファイルを編集するだけでファイルを編集し、Magitのみを使用してGitと対話す
-る場合には、かなり自信があります。疑わしい場合やまたは外部の変更後は、
-‘g’ (‘magit-refresh’)と入力して、明示的に保存およびリフレッシュします。
+のみファイルを編集し、かつ、Magitのみを使用してGitと対話する場合には、か
+なり自信があります。それが疑わしい場合や外部での変更後は、
+‘g’(‘magit-refresh’)と入力して、明示的に保存およびリフレッシュします。
 
  -- User Option: magit-save-repository-buffers
 
@@ -1157,15 +1157,15 @@ File: magit.ja.info,  Node: Automatic Reverting of File-Visiting Buffers,  Prev:
 4.1.6 Automatic Reverting of File-Visiting Buffers
 --------------------------------------------------
 
-デフォルトでは、Magitは、ディスク上で変更された後、Gitリポジトリで追跡さ
-れているファイルにアクセスしているバッファを自動的に元に戻します。
+デフォルトでは、Magitは、Gitリポジトリで追跡されているファイルがディスク
+上で変更された後、それらを訪問しているバッファを自動的にrevertします。
 Magitを使用する場合、Gitを実行してディスク上のファイルを変更することがよ
-くあります。つまり、「Emacsの外部」(outside Emacs)であるため、これはかな
-り重要な機能です。
+くあります。つまり、それは「Emacsの外部」であるため、バッファを自動的に
+revertするのはかなり重要な機能です。
 
 たとえば、ステータスバッファの変更を破棄する場合、‘git apply --reverse
 ...’を実行することでそれが行われ、Emacsはファイルが「ディスク上で変更さ
-れた」と見なします。 Magitがバッファを自動的に元に戻さなかった場合は、変
+れた」と見なします。 Magitがバッファを自動的にrevertしなかった場合は、変
 更を続行する前に、訪問中のバッファに‘M-x revert-buffer RET RET’と入力す
 る必要があります。
 
@@ -1173,28 +1173,28 @@ Magitを使用する場合、Gitを実行してディスク上のファイルを
 
      このモードを有効にすると、追跡中のファイル(tracked files)にアクセス
      したバッファは、アクセスしたファイルがディスク上で変更された後、自
-     動的に元に戻されます。
+     動的にrevertされます。
 
  -- User Option: global-auto-revert-mode
 
      このモードを有効にすると、訪問したファイル(visited file)がディスク
-     上で変更された後、file-visitingバッファが自動的に元に戻されます。
+     上で変更された後、file-visitingバッファが自動的にrevertされます。
 
-     追跡中のファイル(tracked files)にアクセスするバッファを自動的に元に
-     戻す場合は、追跡中のファイルにアクセスするバッファだけでなく、任意
-     のバッファを元に戻すこともできます。その場合は、
-     ‘magit-auto-revert-mode’の「代わりに」このモードを有効にしてくださ
-     い。
+     追跡中のファイル(tracked files)にアクセスするバッファを自動的に
+     revertする場合は、追跡中のファイルにアクセスするバッファだけでなく
+     、任意のバッファをrevertすることもできます。その場合は、
+     ‘magit-auto-revert-mode’の_代わり_にこのモードを有効にしてください
+     。
 
  -- User Option: magit-auto-revert-immediately
 
-     このオプションは、Magitがバッファをすぐに元に戻すかどうかを制御しま
-     す。
+     このオプションは、Magitがバッファをすぐにrevertするかどうかを制御し
+     ます。
 
      これがnil以外で、‘global-auto-revert-mode’または
      ‘magit-auto-revert-mode’のいずれかが有効になっている場合、Magitは、
      副作用のためにGitを実行した後、‘auto-revert-buffers’を明示的に呼び
-     出すことにより、すぐにバッファを戻します。
+     出すことにより、すぐにバッファをrevertします。
 
      ‘auto-revert-use-notify’がnil以外の場合(およびファイル通知が実際に
      サポートされている場合)、復帰はとにかくすぐに行われるため、
@@ -1202,8 +1202,8 @@ Magitを使用する場合、Gitを実行してディスク上のファイルを
 
      ‘magit-auto-revert-immediately’と‘auto-revert-use-notify’が両方とも
      ‘nil’の場合、ユーザーが非アクティブになってから
-     ‘auto-revert-interval’秒後に復帰が発生します。それは望ましくありま
-     せん。
+     ‘auto-revert-interval’秒後にrevertが発生します。それは望ましくあり
+     ません。
 
  -- User Option: auto-revert-use-notify
 
@@ -1213,10 +1213,10 @@ Magitを使用する場合、Gitを実行してディスク上のファイルを
 
  -- User Option: magit-auto-revert-tracked-only
 
-     このオプションは、‘magit-auto-revert-mode’が追跡されたファイル
-     (tracked files)のみを元に戻すか、追跡されていないファイル(untracked
-     files)やGitの制御ディレクトリ内にあるファイルを含むGitリポジトリ内
-     にあるすべてのファイルを元に戻すかを制御します。
+     このオプションは、‘magit-auto-revert-mode’が追跡されているファイル
+     (tracked files)のみをrevertするか、追跡されていないファイル
+     (untracked files)やGitの制御ディレクトリ内にあるファイルを含むGitリ
+     ポジトリ内にあるすべてのファイルをrevertするかを制御します。
 
  -- User Option: auto-revert-mode
 
@@ -1230,17 +1230,17 @@ Magitを使用する場合、Gitを実行してディスク上のファイルを
  -- User Option: auto-revert-stop-on-user-input
 
      このオプションは、ユーザーが入力するまで‘auto-revert-interval’秒間
-     、自動復帰を一時停止(suspend)するかどうかを制御します。
+     、自動revertを一時停止(suspend)するかどうかを制御します。
 
  -- User Option: auto-revert-interval
 
-     このオプションは、一時停止された復帰を再開する前にEmacsが待機する秒
-     数を制御します。
+     このオプションは、一時停止された自動revertを再開する前にEmacsが待機
+     する秒数を制御します。
 
  -- User Option: auto-revert-buffer-list-filter
 
-     このオプションは、‘auto-revert-buffers’がバッファを元に戻すかどうか
-     を決定するために使用する追加のフィルターを指定します。
+     このオプションは、‘auto-revert-buffers’がバッファをrevertするかどう
+     かを決定するために使用する追加のフィルターを指定します。
 
      このオプションはMagitによって提供され、‘auto-revert-buffers’にもそ
      れを尊重するようにアドバイスします。ローカルモード
@@ -1259,7 +1259,7 @@ Magitを使用する場合、Gitを実行してディスク上のファイルを
 
  -- User Option: auto-revert-verbose
 
-     このオプションは、バッファが元に戻されたときにEmacsがレポートするか
+     このオプションは、バッファがrevertされたときにEmacsがレポートするか
      どうかを制御します。
 
 ‘auto-revert-’接頭辞が付いたオプションは、‘auto-revert’という名前のカス
@@ -1268,28 +1268,28 @@ Magitを使用する場合、Gitを実行してディスク上のファイルを
 
 * Menu:
 
-* 自動的に元に戻るリスク::
+* Risk of Reverting Automatically::
 
 
-File: magit.ja.info,  Node: 自動的に元に戻るリスク,  Up: Automatic Reverting of File-Visiting Buffers
+File: magit.ja.info,  Node: Risk of Reverting Automatically,  Up: Automatic Reverting of File-Visiting Buffers
 
-自動的に元に戻るリスク
-......................
+Risk of Reverting Automatically
+...............................
 
 大多数のユーザーにとって、ディスク上で変更された後にfile-visitingバッフ
-ァを自動的に元に戻すことは無害です。
+ァを自動的revertすることは無害です。
 
 バッファが変更された場合(つまり、まだ保存されていない変更が含まれている
-場合)、Emacsは自動的にバッファを元に戻すことを拒否します。以前に変更され
-たバッファを保存すると、Gitはコミットされていない変更と見なします。その
-後、Gitは、これらの変更が失われる原因となるコマンドの実行を拒否します。
-言い換えれば、失われる可能性のあるものがある場合、GitまたはEmacsのいずれ
-かが変更の破棄を拒否します。
+場合)、Emacsは自動的にバッファをrevertすることを拒否します。以前に変更さ
+れたバッファを保存すると、Gitはコミットされていない変更と見なします。そ
+の後、Gitは、これらの変更が失われる原因となるコマンドの実行を拒否します
+。言い換えれば、失われる可能性のあるものがある場合、GitまたはEmacsのいず
+れかが変更の破棄を拒否します。
 
 ただし、あなたがfile-visitingバッファを一種その場しのぎ(ad hoc)の「ステ
-ージ領域」として使用する場合、自動復帰によってデータが失われる可能性があ
-ります。 これまでのところ、このようなワークフローを使用しているユーザー
-は私が知っている限りでは1人だけです。
+ージ領域」として使用する場合、自動revertによってデータが失われる可能性が
+あります。 これまでのところ、このようなワークフローを使用しているユーザ
+ーは私が知っている限りでは1人だけです。
 
 例：あなたはバッファ内のファイルにアクセスして編集し、変更を保存します。
 それから、Emacsの外部で(または少なくともMagitを使用しないか、バッファを
@@ -1297,19 +1297,20 @@ File: magit.ja.info,  Node: 自動的に元に戻るリスク,  Up: Automatic Re
 バッファは中間バージョンがまだ存在する唯一の場所です。変更をディスクに保
 存しましたが、それ以降は上書きされています。一方、Emacsはバッファが変更
 されていないと見なし(最後にアクセスしたファイルに保存してから変更を加え
-ていないため)、自動的に元に戻されることに異議を唱えません。この時点で、
-自動復帰モードが開始されます。バッファが変更されているかどうかがチェック
-され、変更されていないため、バッファが復帰します。中間バージョンは失われ
-ます。(実際には、‘undo’コマンドを使用して元に戻すことができます。)
+ていないため)、自動的にrevertされることに異議を唱えません。この時点で、
+自動revertモードが開始されます。バッファが変更されているかどうかがチェッ
+クされ、変更されていないため、バッファがrevertされます。中間バージョンは
+失われます。(実際には、いまだ、‘undo’コマンドを使用して元に戻る(get it
+back)ことができます。)
 
 あなたのワークフローがバッファに中間バージョンを保持するEmacsに依存して
-いる場合は、すべての自動復帰モードを無効にする必要があります。ただし、こ
-のようなワークフローは、自動復帰モードを使用しなくても危険であるため、回
-避する必要があることを考慮してください。Emacsがクラッシュしたり、誤って
-Emacsを終了したりすると、バッファの内容も失われます。中間バージョンがま
-だ含まれている自動保存ファイルはなく(バッファを保存したときに削除された
-ため)、バッファを保存するかどうかを尋ねられることはありません(変更されて
-いないため)。
+いる場合は、すべての自動revertモードを無効にする必要があります。ただし、
+このようなワークフローは、自動revertモードを使用しなくても危険であるため
+、回避する必要があることを考慮してください。Emacsがクラッシュしたり、誤
+ってEmacsを終了したりすると、バッファの内容も失われます。中間バージョン
+がまだ含まれている自動保存ファイルはなく(バッファを保存したときに削除さ
+れたため)、バッファを保存するかどうかを尋ねられることはありません(変更さ
+れていないため)。
 
 
 File: magit.ja.info,  Node: Sections,  Next: トランジェントコマンド,  Prev: Modes and Buffers,  Up: Interface Concepts
@@ -1897,9 +1898,9 @@ File: magit.ja.info,  Node: アクションの確認,  Next: 補完と確認,  U
 
 デフォルトでは、データ損失につながる可能性のある多くのアクションを確認す
 る必要があります。これには多くの非常に一般的なアクションが含まれるため、
-これはすぐに煩わしくなります。これらのアクションの多くは元に戻すことがで
-きるので、あなたが特定の間違いを元に戻す方法を考えている場合は、それぞれ
-のアクションの確認を無効にしても安全です。
+これはすぐに煩わしくなります。これらのアクションの多くは元に戻す(undo)こ
+とができるので、あなたが特定の間違いを元に戻す方法を考えている場合は、そ
+れぞれのアクションの確認を無効にしても安全です。
 
 オプション‘magit-no-confirm’を使用すると、ユーザーが確認しなくても特定の
 アクションを実行するようにMagitに指示できます。このオプションは特定のア
@@ -1923,8 +1924,8 @@ Magitに質問を少なくするように指示する別の方法について説
              • ‘discard’ 1つ以上の変更(つまり、ファイルのハンクまたは完
                全な差分)を破棄すると、明らかにその変更が失われます。
 
-             • ‘reverse’ 1つ以上の変更を元に戻すには、通常、reversionの
-               復元によって元通りにすることができます。
+             • ‘reverse’ 1つ以上の変更をrevertするには、通常、
+               reversionの復元によって元通りにすることができます。
 
              • ‘stage-all-changes’, ‘unstage-all-changes’ ステージされた
                変更とステージされていない変更の両方がある場合、すべての
@@ -1952,10 +1953,10 @@ Magitに質問を少なくするように指示する別の方法について説
                きます。
 
              • ‘untrack’ ファイルの追跡解除(untracking)は、ファイルを再
-               度追跡(tracking)することで元に戻すことができます。
+               度追跡(tracking)することで元に戻す(undo)ことができます。
 
-             • ‘rename’ ファイルの名前変更は簡単に元に戻すことができます
-               。
+             • ‘rename’ ファイルの名前変更は簡単に元に戻す(undo)ことがで
+               きます。
 
         • 一連の処理:
 
@@ -3289,10 +3290,10 @@ File: magit.ja.info,  Node: Log Buffer,  Next: Log Margin,  Prev: Refreshing Log
 
 ‘q’     (‘magit-log-bury-buffer’)
 
-     現在のバッファまたはリビジョンバッファを同じフレームに埋め込み
-     (bury)ます。‘magit-mode-bury-buffer’(を参照)と同様ですが、現在のフ
-     レームに表示されている場合は、代わりにマイナスのプレフィックス引数
-     を使用してリビジョンバッファを埋め込みます。
+     現在のバッファまたはリビジョンバッファを同じフレームに隠し(bury)ま
+     す。‘magit-mode-bury-buffer’(を参照)と同様ですが、現在のフレームに
+     表示されている場合は、代わりにマイナスのプレフィックス引数を使用し
+     てリビジョンバッファを隠します。
 
 ‘C-c C-b’     (‘magit-go-backward’)
 
@@ -6935,7 +6936,7 @@ cherry-pickまたはrevertが進行中の場合、トランジェントコマン
 
 ‘A A’     (‘magit-sequence-continue’)
 
-     現在のcherry-pickを再開するか、シーケンスを元に戻します。
+     現在のcherry-pickを再開するか、シーケンスをrevertします。
 
 ‘A s’     (‘magit-sequence-skip’)
 
@@ -6987,7 +6988,7 @@ cherry-pickまたはrevertが進行中の場合、トランジェントコマン
 
 ‘V A’     (‘magit-sequence-continue’)
 
-     現在のcherry-pickを再開するか、シーケンスを元に戻します。
+     現在のcherry-pickを再開するか、シーケンスをrevertします。
 
 ‘V s’     (‘magit-sequence-skip’)
 
@@ -8684,9 +8685,9 @@ Magitを使用すると、コミットされていない変更を簡単に変更
 お勧めします。
 
 デフォルトでは、訪問したファイルがディスク上で変更されると、訪問したファ
-イルは自動的に元に戻されます。 これは見た目ほど危険ではありませんが、十
-分な情報に基づいて決定を下すには確認が必要です→*note
-自動的に元に戻るリスク::
+イルは自動的revertされます。 これは見た目ほど危険ではありませんが、十分
+な情報に基づいて決定を下すには確認が必要です。こちらを参照下さい(*note
+Risk of Reverting Automatically::)
 
 
 File: magit.ja.info,  Node: Performance,  Next: Default Bindings,  Prev: Safety,  Up: 基本設定
@@ -8725,13 +8726,13 @@ Magitは、‘M-x magit-toggle-verbose-refresh’を使用して詳細にバッ�
 ッファにあります。
 
 Magitは、アクセスしたファイル(visited files)がディスク上で変更されると、
-現在のリポジトリ内にあるアクセスしたファイルのバッファも元に戻します
-(revert)。これは、組み込みライブラリ‘autorevert’の‘auto-revert-mode’の上
-に実装されています。それがパフォーマンスに影響を与えるかどうかを判断する
-には、パフォーマンスが大幅に低下するかどうか、多数のバッファが存在する場
-合、および/または一部のバッファがTRAMP@を使用してファイルにアクセスする
-場合を確認します。 もしパフォーマンスに影響があるなら、この確認が役に立
-つはずです。
+現在のリポジトリ内にあるアクセスしたファイルのバッファもrevertします。こ
+れは、組み込みライブラリ‘autorevert’の‘auto-revert-mode’の上に実装されて
+います。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォ
+ーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および
+/または一部のバッファがTRAMP@を使用してファイルにアクセスする場合を確認
+します。 もしパフォーマンスに影響があるなら、この確認が役に立つはずです
+。
 
      (setq auto-revert-buffer-list-filter
            'magit-auto-revert-repository-buffer-p)
@@ -9170,7 +9171,7 @@ gitを非同期で実行すると便利な場合があります。たとえば�
      この関数が呼び出されたときに現在のバッファ(Magitバッファであり、ま
      だ生きている場合)と、それぞれのMagitステータスバッファです。
      ‘magit-revert-buffers’がnil以外の場合、現在のリポジトリで追跡されて
-     いるファイルにアクセスしている変更されていないバッファは元に戻され
+     いるファイルにアクセスしている変更されていないバッファはrevertされ
      ます。
 
  -- Function: magit-run-git-with-editor &rest args
@@ -9202,7 +9203,7 @@ gitを非同期で実行すると便利な場合があります。たとえば�
      この関数が呼び出されたときに現在のバッファ(Magitバッファであり、ま
      だ生きている場合)と、それぞれのMagitステータスバッファです。
      ‘magit-revert-buffers’がnil以外の場合、現在のリポジトリで追跡されて
-     いるファイルにアクセスしている変更されていないバッファは元に戻され
+     いるファイルにアクセスしている変更されていないバッファはrevertされ
      ます。
 
  -- Function: magit-start-process &rest args
@@ -9226,7 +9227,7 @@ gitを非同期で実行すると便利な場合があります。たとえば�
      ァであり、まだ生きている場合)と、それぞれのMagitステータスバッファ
      をリフレッシュします。‘magit-revert-buffers’がnil以外の場合、現在の
      リポジトリで追跡されているファイルにアクセスしている変更されていな
-     いバッファは元に戻されます。
+     いバッファはrevertされます。
 
  -- Variable: magit-this-process
 
@@ -9765,20 +9766,21 @@ File: magit.ja.info,  Node: Magitの発音は？,  Next: How to show git's outpu
 A.1.1 Magitの発音は？
 ---------------------
 
-‘mu[m's] git’または‘magi{c => t}’のいずれかで問題ありません。
+発音は‘mu[m's] git’または‘magi{c => t}’のいずれかで問題ありません。
 
 スローガンは "It’s Magit!  The magical Git client" なので、magiCと
 magiTが同じように聞こえないことを考慮しながら、Magitをmagic(魔法)のよう
 に発音するのは理にかなっています。(訳注「マジット」)
 
-ドイツ語の「Magie」は英語の「magic」と同じ発音ではないため、ドイツ語を話
-す場合は、上記の合理性を使用して前者の発音を使用することを正当化できます
-。‘Mag{ie => it}’
+ドイツ語の"Magie"は英語の"magic"と同じ発音ではないため、ドイツ語を話す場
+合は、上記の合理性を使用して前者の発音を使用することを正当化できます。
+‘Mag{ie => it}’
 
-以前の発音が好きだからといって、前者の発音を使用することもできます。
+以前の発音が好きだからと、前者の発音を使用してもかまいません。
 
-<https://magit.vc/assets/videos/magic.mp4>(訳注:2021年現在ファイルが存在
-しない模様)。
+参照 <https://magit.vc/assets/videos/magic.mp4>(訳注:2021年現在ファイル
+が存在しない模様)。 こちらもご覧ください
+<https://emacs.stackexchange.com/questions/13696>
 
 
 File: magit.ja.info,  Node: How to show git's output?,  Next: How to install the gitman info manual?,  Prev: Magitの発音は？,  Up: FAQ - How to ...?
@@ -9910,7 +9912,7 @@ A.2 FAQ - Issues and Errors
 * 同じ名前を共有するブランチとタグは何かを壊します::
 * 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません::
 * コマンドラインからコミットする場合、git-commit-modeは使用されません::
-* file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています::
+* file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります::
 * MS-WindowsからEmacsのTrampモードを使用するとステージできません::
 * 私はポップアップのデフォルトを保存できなくなりました::
 
@@ -9983,10 +9985,10 @@ File: magit.ja.info,  Node: ファイルを展開して差分を表示すると�
 A.2.6 ファイルを展開して差分を表示するとファイルが消えます
 ----------------------------------------------------------
 
-これはおそらく、‘diff.*’ Git変数の変更が原因です。あなたはおそらくその変
-数を何らかの理由で設定しているので、‘magit-git-global-arguments’をカスタ
-マイズすることによってのみ、Magitでその設定を元に戻す(undo)必要がありま
-す。
+これはおそらく、‘diff.*’ Git変数の変更が原因です。あなたはおそらく
+‘magit-git-global-arguments’を何らかの理由で設定しています。よって、あな
+たはMagit内で‘magit-git-global-arguments’をカスタマイズしたのを元に戻す
+(undo)だけです。
 
 
 File: magit.ja.info,  Node: COMMIT_EDITMSGバッファのpointが間違っています,  Next: モード行の情報が常に最新ではない,  Prev: ファイルを展開して差分を表示するとファイルが消えます,  Up: FAQ - Issues and Errors
@@ -10064,15 +10066,15 @@ Magitが‘git’を呼び出すと、‘--literal-pathspecs’を含むいく�
 使用して、フックスクリプトでこの設定をオーバーライドできます。
 
 
-File: magit.ja.info,  Node: コマンドラインからコミットする場合、git-commit-modeは使用されません,  Next: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています,  Prev: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません,  Up: FAQ - Issues and Errors
+File: magit.ja.info,  Node: コマンドラインからコミットする場合、git-commit-modeは使用されません,  Next: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります,  Prev: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません,  Up: FAQ - Issues and Errors
 
 A.2.11 コマンドラインからコミットする場合、‘git-commit-mode’は使用されません
 ----------------------------------------------------------------------------
 
 これは、‘git-commit.el’がまだロードされていないか、サーバーがまだ起動さ
-れていないためです。これらの事は、Magitからコミットするときは常にこれら
-の処理が為されています。これを行うにはMagitをロードする必要があり、その
-ためには‘git-commit’をロードしてサーバーを起動する必要があります。
+れていないためです。Magitからコミットするときは常にこれらの処理が為され
+ています。これを行うにはMagitをロードする必要があり、そのためには
+‘git-commit’をロードしてサーバーを開始する必要があります。
 
 あなたがコマンドラインからコミットする場合は、これらのことを自分で処理す
 る必要があります。‘init.el’ファイルには以下のものが含まれている必要があ
@@ -10088,8 +10090,8 @@ A.2.11 コマンドラインからコミットする場合、‘git-commit-mode�
 ‘git-commit’をロードすると、Magitの大部分がロードされるため、これを実行
 することをお勧めします。
 
-‘(server-mode)’には、あなたが試してみたいバリエーションもいくつかありる
-と思います。作者の私が個人的に使用するものは:
+‘(server-mode)’には、あなたが試してみたいバリエーションもいくつかあると
+思います。作者の私が個人的に使用するものは:
 
      (use-package server
        :config (or (server-running-p) (server-mode)))
@@ -10104,13 +10106,13 @@ A.2.11 コマンドラインからコミットする場合、‘git-commit-mode�
      $ killall emacs
      $ EDITOR="emacsclient --alternate-editor emacs" git commit
 
-これは実際には‘emacsclient’ではなく‘emacs’を使用することになります。これ
-を行う場合でも、コミットメッセージを編集できますが、‘git-commit-mode’は
-使用されず、プロセスを終了するには‘emacs’を終了する必要があります。
+これは実際には‘emacsclient’ではなく‘emacs’を使用することになります。この
+場合でも、コミットメッセージは編集できますが、‘git-commit-mode’は使用さ
+れず、プロセスを終了するには‘emacs’を終了する必要があります。
 
-先のトートロジー。 ‘emacs’インスタンスが実行されていなくても、
-‘emacsclient’を使用して実行中の‘emacs’インスタンスに接続できるようにする
-場合は、‘emacsclient’を直接使用することはできません。
+これのトートロジーになりますが、‘emacs’インスタンスが実行されていなくて
+も、‘emacsclient’を使用して実行中の‘emacs’インスタンスに接続できるように
+する場合は、‘emacsclient’を直接使用することはできません。
 
 代わりに、以下のようなことを行うスクリプトを作成する必要があります:
 
@@ -10120,10 +10122,10 @@ A.2.11 コマンドラインからコミットする場合、‘git-commit-mode�
 ‘emacsclient’の使用を再試行します。
 
 
-File: magit.ja.info,  Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています,  Next: MS-WindowsからEmacsのTrampモードを使用するとステージできません,  Prev: コマンドラインからコミットする場合、git-commit-modeは使用されません,  Up: FAQ - Issues and Errors
+File: magit.ja.info,  Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります,  Next: MS-WindowsからEmacsのTrampモードを使用するとステージできません,  Prev: コマンドラインからコミットする場合、git-commit-modeは使用されません,  Up: FAQ - Issues and Errors
 
-A.2.12 file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています
---------------------------------------------------------------------------------------------
+A.2.12 file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります
+------------------------------------------------------------------------------------
 
 これは、ハンクで‘RET’と入力して、それぞれの位置にあるそれぞれのファイル
 にアクセスしたときに発生する可能性があります。この問題の1つの解決策は、
@@ -10134,7 +10136,7 @@ A.2.12 file-visitingバッファにジャンプすると、ポイントは非表
 ‘org-reveal’を使用します。
 
 
-File: magit.ja.info,  Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません,  Next: 私はポップアップのデフォルトを保存できなくなりました,  Prev: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています,  Up: FAQ - Issues and Errors
+File: magit.ja.info,  Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません,  Next: 私はポップアップのデフォルトを保存できなくなりました,  Prev: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります,  Up: FAQ - Issues and Errors
 
 A.2.13 MS-WindowsからEmacsのTrampモードを使用するとステージできません
 ---------------------------------------------------------------------
@@ -11716,173 +11718,173 @@ Appendix F Variable Index
 
 Tag Table:
 Node: Top782
-Node: Introduction7606
-Node: Installation14209
-Node: Installing from Melpa14632
-Node: Installing from the Git Repository15948
-Node: Post-Installation Tasks19368
-Node: Getting Started20985
-Node: Interface Concepts28676
-Node: Modes and Buffers29116
-Node: バッファの切り替え31604
-Node: バッファの名付け37767
-Node: Quitting Windows41895
-Node: Automatic Refreshing of Magit Buffers44300
-Node: Automatic Saving of File-Visiting Buffers48209
-Node: Automatic Reverting of File-Visiting Buffers49728
-Node: 自動的に元に戻るリスク56344
-Node: Sections59453
-Node: Section Movement60712
-Node: Section Visibility66825
-Node: Section Hooks74929
-Node: Section Types and Values78320
-Node: Section Options80072
-Node: トランジェントコマンド80658
-Node: トランジェントでの引数とバッファ変数82538
-Node: Completion Confirmation(確認補完)とSelection(選択範囲)92211
-Node: アクションの確認92742
-Node: 補完と確認103217
-Node: 選択範囲107451
-Node: ハンク内部リージョン111340
-Node: 補完フレームワークのサポート112803
-Node: 追加の補完オプション118832
-Node: Running Git119598
-Node: Viewing Git Output119904
-Node: Git Process Status121383
-Node: Gitを手動で実行122588
-Node: Git実行ファイル125993
-Node: Global Git Arguments130099
-Node: Inspecting131183
-Node: Status Buffer132434
-Node: Status Sections138963
-Node: Status Header Sections146543
-Node: Status Module Sections149862
-Node: Status Options153270
-Node: Repository List155160
-Node: Logging159307
-Node: Refreshing Logs162890
-Node: Log Buffer164924
-Node: Log Margin170803
-Node: Select from Log175016
-Node: Reflog177892
-Node: Cherries179963
-Node: Diffing182421
-Node: Refreshing Diffs186765
-Node: Commands Available in Diffs191532
-Node: Diff Options194891
-Node: Revision Buffer201932
-Node: Ediffing206240
-Node: References Buffer211675
-Node: References Sections225224
-Node: Bisecting226386
-Node: Visiting Files and Blobs229736
-Node: General-Purpose Visit Commands230344
-Node: Visiting Files and Blobs from a Diff231652
-Node: Blaming236506
-Node: Manipulating245095
-Node: Creating Repository245440
-Node: Cloning Repository246179
-Node: Staging and Unstaging253662
-Node: Staging from File-Visiting Buffers259613
-Node: Applying261430
-Node: Committing264358
-Node: コミット開始265128
-Node: コミットメッセージ編集270759
-Node: Using the Revision Stack274394
-Node: Commit Pseudo Headers278299
-Node: Commit Mode and Hooks280086
-Node: Commit Message Conventions284032
-Node: Branching286741
-Node: The Two Remotes286970
-Node: Branch Commands290744
-Node: Branch Git Variables308642
-Node: Auxiliary Branch Commands315609
-Node: Merging317068
-Node: Resolving Conflicts322581
-Node: Rebasing328898
-Node: Editing Rebase Sequences335768
-Node: Information About In-Progress Rebase341466
-Ref: Information About In-Progress Rebase-Footnote-1352643
-Node: Cherry Picking353404
-Node: Reverting359486
-Node: Resetting361772
-Node: Stashing364485
-Node: Transferring371285
-Node: Remotes371510
-Node: Remote Commands371665
-Node: Remote Git Variables377260
-Node: Fetching378931
-Node: Pulling382708
-Node: Pushing384314
-Node: Plain Patches390553
-Node: Maildir Patches392904
-Node: Miscellaneous395145
-Node: Tagging395462
-Node: Notes398269
-Node: Submodules401487
-Node: Listing Submodules401752
-Node: submodule用トランジェントコマンド403457
-Node: Subtree407133
-Node: Worktree410408
-Node: Common Commands412089
-Node: Wip Modes415345
-Node: Wip Graph422017
-Node: Legacy Wip Modes424896
-Node: Commands for Buffers Visiting Files428502
-Node: Minor Mode for Buffers Visiting Blobs436552
-Node: Customizing437573
-Node: Per-Repository Configuration439523
-Node: 基本設定442219
-Node: Safety442603
-Node: Performance444981
-Ref: Log Performance449273
-Ref: Diff Performance451032
-Ref: Refs Buffer Performance452729
-Ref: Committing Performance453515
-Node: Microsoft Windows Performance454659
-Node: MacOS Performance456162
-Ref: MacOS Performance-Footnote-1457035
-Node: Default Bindings457174
-Node: 配管コマンド(Plumbing)460115
-Node: Calling Git461169
-Node: Getting a Value from Git463130
-Node: Calling Git for Effect467809
-Node: Section Plumbing475946
-Node: Creating Sections476197
-Node: Section Selection481519
-Node: Matching Sections483717
-Node: Refreshing Buffers491540
-Node: 慣習495507
-Node: Theming Faces495716
-Node: FAQ506389
-Node: FAQ - How to ...?506914
-Node: Magitの発音は？507374
-Node: How to show git's output?508327
-Node: How to install the gitman info manual?509355
-Node: How to show diffs for gpg-encrypted files?510636
-Node: How does branching and pushing work?511339
-Node: Magitをediff-version-control-packageとして使用できますか？511746
-Node: VC@を無効にする必要がありますか？514332
-Node: FAQ - Issues and Errors515230
-Node: Magit is slow516594
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました516834
-Node: コミットに問題があります517866
-Node: MS WindowsではMagitでpushできません518427
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません519128
-Node: ファイルを展開して差分を表示するとファイルが消えます520330
-Node: COMMIT_EDITMSGバッファのpointが間違っています521118
-Node: モード行の情報が常に最新ではない522493
-Node: 同じ名前を共有するブランチとタグは何かを壊します523665
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません524819
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません525957
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内に表示されています529039
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません530300
-Node: 私はポップアップのデフォルトを保存できなくなりました531491
-Node: Debugging Tools532898
-Node: Keystroke Index535736
-Node: Command Index570405
-Node: Function Index608605
-Node: Variable Index625694
+Node: Introduction7594
+Node: Installation14163
+Node: Installing from Melpa14586
+Node: Installing from the Git Repository15939
+Node: Post-Installation Tasks19390
+Node: Getting Started21069
+Node: Interface Concepts28760
+Node: Modes and Buffers29200
+Node: バッファの切り替え31688
+Node: バッファの名付け37881
+Node: Quitting Windows42020
+Node: Automatic Refreshing of Magit Buffers44431
+Node: Automatic Saving of File-Visiting Buffers48348
+Node: Automatic Reverting of File-Visiting Buffers49848
+Node: Risk of Reverting Automatically56495
+Node: Sections59631
+Node: Section Movement60890
+Node: Section Visibility67003
+Node: Section Hooks75107
+Node: Section Types and Values78498
+Node: Section Options80250
+Node: トランジェントコマンド80836
+Node: トランジェントでの引数とバッファ変数82716
+Node: Completion Confirmation(確認補完)とSelection(選択範囲)92389
+Node: アクションの確認92920
+Node: 補完と確認103413
+Node: 選択範囲107647
+Node: ハンク内部リージョン111536
+Node: 補完フレームワークのサポート112999
+Node: 追加の補完オプション119028
+Node: Running Git119794
+Node: Viewing Git Output120100
+Node: Git Process Status121579
+Node: Gitを手動で実行122784
+Node: Git実行ファイル126189
+Node: Global Git Arguments130295
+Node: Inspecting131379
+Node: Status Buffer132630
+Node: Status Sections139159
+Node: Status Header Sections146739
+Node: Status Module Sections150058
+Node: Status Options153466
+Node: Repository List155356
+Node: Logging159503
+Node: Refreshing Logs163086
+Node: Log Buffer165120
+Node: Log Margin170987
+Node: Select from Log175200
+Node: Reflog178076
+Node: Cherries180147
+Node: Diffing182605
+Node: Refreshing Diffs186949
+Node: Commands Available in Diffs191716
+Node: Diff Options195075
+Node: Revision Buffer202116
+Node: Ediffing206424
+Node: References Buffer211859
+Node: References Sections225408
+Node: Bisecting226570
+Node: Visiting Files and Blobs229920
+Node: General-Purpose Visit Commands230528
+Node: Visiting Files and Blobs from a Diff231836
+Node: Blaming236690
+Node: Manipulating245279
+Node: Creating Repository245624
+Node: Cloning Repository246363
+Node: Staging and Unstaging253846
+Node: Staging from File-Visiting Buffers259797
+Node: Applying261614
+Node: Committing264542
+Node: コミット開始265312
+Node: コミットメッセージ編集270943
+Node: Using the Revision Stack274578
+Node: Commit Pseudo Headers278483
+Node: Commit Mode and Hooks280270
+Node: Commit Message Conventions284216
+Node: Branching286925
+Node: The Two Remotes287154
+Node: Branch Commands290928
+Node: Branch Git Variables308826
+Node: Auxiliary Branch Commands315793
+Node: Merging317252
+Node: Resolving Conflicts322765
+Node: Rebasing329082
+Node: Editing Rebase Sequences335952
+Node: Information About In-Progress Rebase341650
+Ref: Information About In-Progress Rebase-Footnote-1352827
+Node: Cherry Picking353588
+Node: Reverting359667
+Node: Resetting361950
+Node: Stashing364663
+Node: Transferring371463
+Node: Remotes371688
+Node: Remote Commands371843
+Node: Remote Git Variables377438
+Node: Fetching379109
+Node: Pulling382886
+Node: Pushing384492
+Node: Plain Patches390731
+Node: Maildir Patches393082
+Node: Miscellaneous395323
+Node: Tagging395640
+Node: Notes398447
+Node: Submodules401665
+Node: Listing Submodules401930
+Node: submodule用トランジェントコマンド403635
+Node: Subtree407311
+Node: Worktree410586
+Node: Common Commands412267
+Node: Wip Modes415523
+Node: Wip Graph422195
+Node: Legacy Wip Modes425074
+Node: Commands for Buffers Visiting Files428680
+Node: Minor Mode for Buffers Visiting Blobs436730
+Node: Customizing437751
+Node: Per-Repository Configuration439701
+Node: 基本設定442397
+Node: Safety442781
+Node: Performance445180
+Ref: Log Performance449461
+Ref: Diff Performance451220
+Ref: Refs Buffer Performance452917
+Ref: Committing Performance453703
+Node: Microsoft Windows Performance454847
+Node: MacOS Performance456350
+Ref: MacOS Performance-Footnote-1457223
+Node: Default Bindings457362
+Node: 配管コマンド(Plumbing)460303
+Node: Calling Git461357
+Node: Getting a Value from Git463318
+Node: Calling Git for Effect467997
+Node: Section Plumbing476125
+Node: Creating Sections476376
+Node: Section Selection481698
+Node: Matching Sections483896
+Node: Refreshing Buffers491719
+Node: 慣習495686
+Node: Theming Faces495895
+Node: FAQ506568
+Node: FAQ - How to ...?507093
+Node: Magitの発音は？507553
+Node: How to show git's output?508586
+Node: How to install the gitman info manual?509614
+Node: How to show diffs for gpg-encrypted files?510895
+Node: How does branching and pushing work?511598
+Node: Magitをediff-version-control-packageとして使用できますか？512005
+Node: VC@を無効にする必要がありますか？514591
+Node: FAQ - Issues and Errors515489
+Node: Magit is slow516841
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517081
+Node: コミットに問題があります518113
+Node: MS WindowsではMagitでpushできません518674
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません519375
+Node: ファイルを展開して差分を表示するとファイルが消えます520577
+Node: COMMIT_EDITMSGバッファのpointが間違っています521364
+Node: モード行の情報が常に最新ではない522739
+Node: 同じ名前を共有するブランチとタグは何かを壊します523911
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525065
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません526203
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります529260
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません530489
+Node: 私はポップアップのデフォルトを保存できなくなりました531668
+Node: Debugging Tools533075
+Node: Keystroke Index535913
+Node: Command Index570582
+Node: Function Index608782
+Node: Variable Index625871
 
 End Tag Table
 
