@@ -410,7 +410,7 @@ FAQ - How to @dots{}?
 * How to show diffs for gpg-encrypted files?::
 * How does branching and pushing work?::
 * Magitを@code{ediff-version-control-package}として使用できますか？::
-* VC@@を無効にする必要がありますか？::  
+* VCを無効にする必要がありますか？::  
 
 
 
@@ -1092,7 +1092,7 @@ it back)ことができます。)
 
 Magitバッファはネストされたセクションに編成され、Orgモードでセクションが処理されるのと同様に、折りたたんだり展開したりできます。各セクションにもタイプがあり、一部のセクションにも値があります。セクションタイプごとに、そのタイプのすべてのセクションで共有されるローカルキーマップを作成することもできます。
 
-セクションの値とタイプを利用して、多くのコマンドが現在のセクションで動作します。または、リージョンがアクティブで同じタイプのセクションを選択すると、選択されたすべてのセクションが操作されます。特定のセクションタイプに対してのみ意味のあるコマンド(（タイプによって動作が異なるだけではなく）は、通常、セクションタイプのキーマップにバインドされます。
+セクションの値とタイプを利用して、多くのコマンドが現在のセクションで動作します。または、リージョンがアクティブで同じタイプのセクションを選択すると、選択されたすべてのセクションが操作されます。(タイプの違いのみよって動作が異なるだけではなく)特定のセクションタイプに対してのみ意味のあるコマンドは、通常、セクションタイプのキーマップにバインドされます。
 
 @menu
 * Section Movement::
@@ -1260,7 +1260,7 @@ Magitには、セクションの表示を変更するための多くのコマン
 @cindex magit-section-show-level-4
 @item @kbd{4} @tie{}@tie{}@tie{}@tie{}(@code{magit-section-show-level-4})
 
-レベルN@@までの現在のセクションを囲むセクションを表示します。
+レベルNまでの現在のセクションを囲むセクションを表示します。
 
 @kindex M-1
 @cindex magit-section-show-level-1-all
@@ -1275,7 +1275,7 @@ Magitには、セクションの表示を変更するための多くのコマン
 @cindex magit-section-show-level-4-all
 @item @kbd{M-4} @tie{}@tie{}@tie{}@tie{}(@code{magit-section-show-level-4-all})
 
-レベルN@@までのすべてのセクションを表示します。
+レベルNまでのすべてのセクションを表示します。
 @end table
 
 上記のコマンドを実装するために使用される一部の関数は、コマンド自体としても公開されます。デフォルトでは、これらのコマンドに結び付けられているキーはありません。これらのコマンドは、一般的にあまり役に立たないと認識されているためです。しかし、あなたにとっては有益かもしれません。
@@ -1390,13 +1390,13 @@ functions"(セクションインサーター関数)とともに説明します�
 
 @defun magit-add-section-hook hook function &optional at append local
 
-セクションフックFOOK@@の値に関数FUNCTIONを追加します。
+セクションフックFOOKの値に関数FUNCTIONを追加します。
 
 オプションのAPPENDがnil以外の場合を除き、フックリストの最初にFUNCTIONを追加します。APPENDがnil以外の場合、最後にFUNCTIONを追加します。
 FUNCTIONがすでにメンバーである場合は、それを新しい場所に移動します。
 
 オプションのATがnil以外で、フックリストのメンバーである場合は、代わりにその脇にFUNCTIONを追加します。
-APPEND@@に応じて、ATの前または後に追加するか、ATをFUNCTIONに置き換えます。APPENDがシンボル@code{replace}の場合、ATをFUNCTION@@に置き換えます。APPENDがその他のゼロ以外の値の場合は、AT@@の直後にFUNCTIONを配置します。nilの場合は、AT@@の直前にFUNCTIONを配置します。FUNCTIONがすでにリストのメンバーであるが、ATがメンバーでない場合は、FUNCTIONを既に存在する場所に残します。
+APPENDに応じて、ATの前または後に追加するか、ATをFUNCTIONに置き換えます。APPENDがシンボル@code{replace}の場合、ATをFUNCTIONに置き換えます。APPENDがその他のゼロ以外の値の場合は、ATの直後にFUNCTIONを配置します。nilの場合は、ATの直前にFUNCTIONを配置します。FUNCTIONがすでにリストのメンバーであるが、ATがメンバーでない場合は、FUNCTIONを既に存在する場所に残します。
 
 オプションのLOCALがnil以外の場合は、フックのグローバル値ではなく、バッファローカル値を変更します。
 これにより、デフォルト値をコピーしてフックがローカルになります。次に、そのコピーが変更されます。
@@ -1845,7 +1845,7 @@ FALLBACKは、一次デフォルトDEFが@code{nil}の場合にのみ使用さ�
 
 
 @item
-": " がPROMPT@@に追加されます。
+": " がPROMPTに追加されます。
 
 
 @item
@@ -4846,12 +4846,12 @@ commit}によって使用されることに加えて、メッセージはEmacs�
 EOB-FORMAT INDEX-REGEXP)}で、すべてnilまたは文字列です(ただし、
 EOB-FORMATまたはPOINT-FORMATのいずれかを文字列にする必要があります。INDEX-REGEXPがnil以外の場合は、2つの書式も文字列にする必要があります)。
 
-最初のINDEX-REGEXPは、ポイントから逆方向に検索することにより、以前に挿入されたエントリを見つけるために使用されます。最初の部分一致はインデックス番号と一致する必要があります。その番号が1ずつ増え、挿入されるエントリのインデックス番号になります。挿入されたリビジョンに番号を付けたくない場合は、INDEX-REGEXP@@にnilを使用します。
+最初のINDEX-REGEXPは、ポイントから逆方向に検索することにより、以前に挿入されたエントリを見つけるために使用されます。最初の部分一致はインデックス番号と一致する必要があります。その番号が1ずつ増え、挿入されるエントリのインデックス番号になります。挿入されたリビジョンに番号を付けたくない場合は、INDEX-REGEXPにnilを使用します。
 
 INDEX-REGEXPがnil以外の場合、POINT-FORMATとEOB-FORMATの両方に \"%N\"
 が含まれている必要があります。これは、前の手順で決定された番号に置き換えられます。
 
-両方の書式は、nil以外の場合、%Nを削除した後、TOPLEVEL@@内で@code{git show --format=FORMAT
+両方の書式は、nil以外の場合、%Nを削除した後、TOPLEVEL内で@code{git show --format=FORMAT
 ...}を使用して展開されます。
 
 POINT-FORMATの展開はポイントに挿入され、EOB-FORMATの展開はバッファの最後に挿入されます(バッファがコメントで終了する場合は、その直前に挿入されます)。
@@ -5241,9 +5241,9 @@ branch)からローカルブランチを作成する場合。機能(feature)ブ�
 このオプションを使用すると、特定のリモートブランチを分岐するときにアップストリームとして使用する必要があるブランチを指定できます。
 値は、@code{((UPSTREAM . RULE)...)}の形式のalistです。最初に一致する要素が使用され、その後の要素は無視されます。
 
-UPSTREAMは、RULE@@で指定されたブランチのアップストリームとして使用されるブランチです。ローカルブランチでもリモートブランチでもかまいません。
+UPSTREAMは、RULEで指定されたブランチのアップストリームとして使用されるブランチです。ローカルブランチでもリモートブランチでもかまいません。
 
-RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAM@@で指定されたのでべきであるブランチに一致します。または、UPSTREAMを使用してはならない単一のブランチのリストにすることもできます。他ブランチは全てそうします。マッチングは、分岐元のブランチ名のリモート部分を削除した後に行われます。
+RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAMで指定されたのでべきであるブランチに一致します。または、UPSTREAMを使用してはならない単一のブランチのリストにすることもできます。他ブランチは全てそうします。マッチングは、分岐元のブランチ名のリモート部分を削除した後に行われます。
 
 あなたのすべてのリポジトリで永続的なブランチの限定セットを使用する場合、あなたは以下のようなものを使用できます:
 
@@ -5309,13 +5309,13 @@ Commands}
 
 @defvar branch.NAME.merge
 
-この変数は、@code{branch.NAME.remote}とともに、NAME@@という名前のローカルブランチのアップストリームブランチを定義します。
+この変数は、@code{branch.NAME.remote}とともに、NAMEという名前のローカルブランチのアップストリームブランチを定義します。
 この変数の値は、アップストリーム「ブランチ」の完全なreferenceです。
 @end defvar
 
 @defvar branch.NAME.remote
 
-この変数は、@code{branch.NAME.merge}とともに、NAME@@という名前のローカルブランチのアップストリームブランチを定義します。
+この変数は、@code{branch.NAME.merge}とともに、NAMEという名前のローカルブランチのアップストリームブランチを定義します。
 この変数の値は、アップストリーム「リモート」の名前です。
 @end defvar
 
@@ -5346,7 +5346,7 @@ Commands}
 
 @defvar branch.NAME.description
 
-この変数は、NAME@@という名前のブランチを記述するために使用できます。例えばブランチを一連のパッチに変えるとき、その説明が使用されます。
+この変数は、NAMEという名前のブランチを記述するために使用できます。例えばブランチを一連のパッチに変えるとき、その説明が使用されます。
 @end defvar
 
 以下の変数は、上記のブランチ固有の変数が設定されていない場合に使用されるデフォルトを指定します。
@@ -5720,7 +5720,7 @@ About In-Progress Rebase}
 @item @kbd{r s} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-subset})
 
 このコマンドは、非対話型のリベースシーケンスを開始して、コミットをSTARTから@code
-{HEAD}からNEWBASE@@に転送します。STARTは、最近のコミットのリストから選択する必要があります。
+{HEAD}からNEWBASEに転送します。STARTは、最近のコミットのリストから選択する必要があります。
 @end table
 
 デフォルトでは、Magitは@code{--autostash}引数を使用します。これにより、コミットされていない変更がリベースが開始される前にスタッシュに格納されます。これらの変更は、リベースが完了した後に復元され、可能であればスタッシュが削除されます。スタッシュがきれいに適用されない場合、スタッシュは削除されません。
@@ -6430,7 +6430,7 @@ stashリストからstashを削除します。リージョンがアクティブ�
 @cindex magit-stash-branch
 @item @kbd{z b} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-branch})
 
-STASH@@から新しいBRANCHを作成してチェックアウトします。ブランチは、stashが作成されたときに現在のコミットで開始されます。
+STASHから新しいBRANCHを作成してチェックアウトします。ブランチは、stashが作成されたときに現在のコミットで開始されます。
 
 @kindex z B
 @cindex magit-stash-branch-here
@@ -6442,13 +6442,13 @@ STASH@@から新しいBRANCHを作成してチェックアウトします。ブ�
 @cindex magit-stash-format-patch
 @item @kbd{z f} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-format-patch})
 
-STASH@@からパッチを作成します。
+STASHからパッチを作成します。
 
 @kindex k
 @cindex magit-stash-clear
 @item @kbd{k} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-clear})
 
-REF@@を削除して、REFのreflogに保存されているすべてのstashを削除します。
+REFを削除して、REFのreflogに保存されているすべてのstashを削除します。
 
 @kindex z l
 @cindex magit-stash-list
@@ -6617,22 +6617,22 @@ Commands}
 
 @defvar remote.NAME.url
 
-この変数は、NAME@@という名前のリモートのURLを指定します。複数の値を持つことができます。
+この変数は、NAMEという名前のリモートのURLを指定します。複数の値を持つことができます。
 @end defvar
 
 @defvar remote.NAME.fetch
 
-NAME@@という名前のリモートからフェッチするときに使用されるrefspecです。複数の値を持つことができます。
+NAMEという名前のリモートからフェッチするときに使用されるrefspecです。複数の値を持つことができます。
 @end defvar
 
 @defvar remote.NAME.pushurl
 
-この変数は、NAME@@という名前のリモートからのフェッチに使用されるURLを指定します。指定されていない場合は、代わりに@code{remote.NAME.url}が使用されます。複数の値を持つことができます。
+この変数は、NAMEという名前のリモートからのフェッチに使用されるURLを指定します。指定されていない場合は、代わりに@code{remote.NAME.url}が使用されます。複数の値を持つことができます。
 @end defvar
 
 @defvar remote.NAME.push
 
-NAME@@という名前のリモートにプッシュするときに使用されるrefspecです。複数の値を持つことができます。
+NAMEという名前のリモートにプッシュするときに使用されるrefspecです。複数の値を持つことができます。
 @end defvar
 
 @defvar remote.NAME.tagOpts
@@ -7054,7 +7054,7 @@ buffer)に表示します。
 @cindex magit-tag-create
 @item @kbd{t t} @tie{}@tie{}@tie{}@tie{}(@code{magit-tag-create})
 
-このコマンドは、REV@@で指定されたNAMEを使用して新しいタグを作成します。プレフィックス引数を使用して、注釈付きタグ(annotated
+このコマンドは、REVで指定されたNAMEを使用して新しいタグを作成します。プレフィックス引数を使用して、注釈付きタグ(annotated
 tag)を作成します。
 
 @kindex t r
@@ -7239,7 +7239,7 @@ buffer)に表示します。
 @cindex magit-submodule-add
 @item @kbd{o a} @tie{}@tie{}@tie{}@tie{}(@code{magit-submodule-add})
 
-このコマンドは、URLのリポジトリをモジュールとして追加します。オプションのPATHは、スーパープロジェクトのルートを基準にしたモジュールへのパスです。nilの場合、パスはURL@@に基づいて決定されます。
+このコマンドは、URLのリポジトリをモジュールとして追加します。オプションのPATHは、スーパープロジェクトのルートを基準にしたモジュールへのパスです。nilの場合、パスはURLに基づいて決定されます。
 
 @kindex o r
 @cindex magit-submodule-register
@@ -7326,13 +7326,13 @@ buffer)に表示します。
 @cindex magit-subtree-add
 @item @kbd{O i a} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-add})
 
-このコマンドは、REPOSITORYからのCOMMITをPREFIX@@の新しいサブツリーとして追加します。
+このコマンドは、REPOSITORYからのCOMMITをPREFIXの新しいサブツリーとして追加します。
 
 @kindex O i c
 @cindex magit-subtree-add-commit
 @item @kbd{O i c} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-add-commit})
 
-このコマンドは、COMMITをPREFIX@@の新しいサブツリーとして追加します。
+このコマンドは、COMMITをPREFIXの新しいサブツリーとして追加します。
 
 @kindex O i m
 @cindex magit-subtree-merge
@@ -7361,13 +7361,13 @@ buffer)に表示します。
 @cindex magit-subtree-push
 @item @kbd{O e p} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-push})
 
-このコマンドは、サブツリーPREFIXの履歴を抽出し、それをREPOSITORY@@のREFにプッシュします。
+このコマンドは、サブツリーPREFIXの履歴を抽出し、それをREPOSITORYのREFにプッシュします。
 
 @kindex O e s
 @cindex magit-subtree-split
 @item @kbd{O e s} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-split})
 
-このコマンドは、サブツリーPREFIX@@の履歴を抽出します。
+このコマンドは、サブツリーPREFIXの履歴を抽出します。
 @end table
 
 @node Worktree
@@ -7399,19 +7399,19 @@ buffer)に表示します。
 @cindex magit-worktree-checkout
 @item @kbd{% b} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-checkout})
 
-PATH@@の新しいワークツリーでBRANCHをチェックアウトします。
+PATHの新しいワークツリーでBRANCHをチェックアウトします。
 
 @kindex % c
 @cindex magit-worktree-branch
 @item @kbd{% c} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-branch})
 
-新しいBRANCHを作成し、PATH@@の新しいワークツリーでチェックアウトします。
+新しいBRANCHを作成し、PATHの新しいワークツリーでチェックアウトします。
 
 @kindex % m
 @cindex magit-worktree-move
 @item @kbd{% m} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-move})
 
-既存のワークツリーを新しいPATH@@に移動します。
+既存のワークツリーを新しいPATHに移動します。
 
 @kindex % k
 @cindex magit-worktree-delete
@@ -8014,7 +8014,7 @@ Magitは、@code{M-x
 magit-toggle-verbose-refresh}を使用して詳細にバッファをリフレッシュするように指示できます。これを有効にすると、どのセクションがボトルネックであるかを把握するのに役立ちます。追加の出力は、@code{*Messages*}バッファにあります。
 
 Magitは、アクセスしたファイル(visited
-files)がディスク上で変更されると、現在のリポジトリ内にあるアクセスしたファイルのバッファもrevertします。これは、組み込みライブラリ@code{autorevert}の@code{auto-revert-mode}の上に実装されています。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および/または一部のバッファがTRAMP@@を使用してファイルにアクセスする場合を確認します。
+files)がディスク上で変更されると、現在のリポジトリ内にあるアクセスしたファイルのバッファもrevertします。これは、組み込みライブラリ@code{autorevert}の@code{auto-revert-mode}の上に実装されています。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および/または一部のバッファがTRAMPを使用してファイルにアクセスする場合を確認します。
 もしパフォーマンスに影響があるなら、この確認が役に立つはずです。
 
 @lisp
@@ -8111,7 +8111,7 @@ git config --global gc.auto 256
 @unnumberedsubsubsec MacOS Performance
 
 Emacs
-26.1より前は、macOS@@では@code{fork}を使用して子プロセスが作成されていました。それは不必要にGUIリソースをコピーしましたが、これは高コストです。その結果、DarwinではLinuxよりもフォークに約30倍の時間がかかり、Magitは多くの@code{git}プロセスを開始するため、かなりの違いが生じました。
+26.1より前は、macOSでは@code{fork}を使用して子プロセスが作成されていました。それは不必要にGUIリソースをコピーしましたが、これは高コストです。その結果、DarwinではLinuxよりもフォークに約30倍の時間がかかり、Magitは多くの@code{git}プロセスを開始するため、かなりの違いが生じました。
 
 したがって、あなたは少なくともEmacs
 26.1を使用していることを確認してください。その場合、より高速な@code{vfork}が使用されます。(子プロセスの作成には、Linuxと比較してDarwinではまだ約2倍の時間がかかります。)
@@ -8289,12 +8289,12 @@ gitを非同期で実行すると便利な場合があります。たとえば�
 
 @defun magit-call-git &rest args
 
-ARGS@@を伴ってgitを同期的に呼び出します。
+ARGSを伴ってgitを同期的に呼び出します。
 @end defun
 
 @defun magit-call-process program &rest args
 
-ARGS@@を伴って同期的にPROGRAMを呼び出します。
+ARGSを伴って同期的にPROGRAMを呼び出します。
 @end defun
 
 @defun magit-run-git &rest args
@@ -8423,7 +8423,7 @@ BODYは、@code{point}を前進させる責任があります。
 
 @defun magit-define-section-jumper sym title &optional value
 
-現在挿入されているセクションSYM@@をキャンセルします。
+現在挿入されているセクションSYMをキャンセルします。
 これにより、@code{magit-insert-section}への最も内側の呼び出しが終了し、その呼び出し内ですでに発生したことのすべての痕跡が削除されます。
 @end defun
 
@@ -8469,17 +8469,17 @@ BODYは、@code{point}を前進させる責任があります。
 
 @defun magit-section-ident section
 
-SECTION@@の一意のIDを返します。戻り値の形式は@code{((TYPE . VALUE)...)}です。
+SECTIONの一意のIDを返します。戻り値の形式は@code{((TYPE . VALUE)...)}です。
 @end defun
 
 @defun magit-get-section ident &optional root
 
-IDENT@@で識別されるセクションを返します。IDENTは、@code{magit-section-ident}によって返されるリストである必要があります。
+IDENTで識別されるセクションを返します。IDENTは、@code{magit-section-ident}によって返されるリストである必要があります。
 @end defun
 
 @defun magit-section-match condition &optional section
 
-SECTIONがCONDITION@@と一致する場合は、@code{t}を返します。SECTIONは、デフォルトでポイントのセクションになります。SECTIONが指定されておらず、ポイントにもセクションがない場合は、@code{nil}を返します。
+SECTIONがCONDITIONと一致する場合は、@code{t}を返します。SECTIONは、デフォルトでポイントのセクションになります。SECTIONが指定されておらず、ポイントにもセクションがない場合は、@code{nil}を返します。
 
 CONDITIONは、以下の形式をとることができます:
 @itemize
@@ -8542,7 +8542,7 @@ diff関連のセクションには、いくつかの追加ツールがありま�
 
 @defun magit-diff-type &optional section
 
-別のタイプのSECTION@@を返します。
+別のタイプのSECTIONを返します。
 
 返されるタイプは、@code{staged}または@code{unstaged}または@code{committed}または@code{undefined}のいずれかのシンボルです。このタイプは、すべてのセクションに共通の一般的なタイプ(対応する@code{magit-section}構造体の@code{type}スロットに格納されます)と同様の目的を果たしますが、追加情報を考慮に入れます。SECTIONがdiffに関連しておらず、それを含むバッファもdiffのみのバッファではない場合は、nilを返します。
 
@@ -8574,9 +8574,9 @@ diffの「スコープ」は、diffのどの部分が選択されているかを
 
 この機能は、BUFFERを表示および選択し、MODEをオンにして、最初にリフレッシュします。
 
-この関数は、引数としてBUFFERとMODEとSWITCH-FUNCを指定して@code{magit-mode-display-buffer}を呼び出すことにより、BUFFERを表示し、オプションで選択します。次に、@code{magit-refresh-function}のローカル値をREFRESH-FUNCに設定し、@code{magit-refresh-args}のローカル値をREFRESH-ARGS@@に設定します。最後に、引数としてREFRESH-ARGSを指定してREFRESH-FUNCを呼び出すことにより、バッファー内容を作成します。
+この関数は、引数としてBUFFERとMODEとSWITCH-FUNCを指定して@code{magit-mode-display-buffer}を呼び出すことにより、BUFFERを表示し、オプションで選択します。次に、@code{magit-refresh-function}のローカル値をREFRESH-FUNCに設定し、@code{magit-refresh-args}のローカル値をREFRESH-ARGSに設定します。最後に、引数としてREFRESH-ARGSを指定してREFRESH-FUNCを呼び出すことにより、バッファー内容を作成します。
 
-BUFFER@@に切り替える前に、すべての引数が評価されます。
+BUFFERに切り替える前に、すべての引数が評価されます。
 @end defmac
 
 @defun magit-mode-display-buffer buffer mode &optional switch-function
@@ -8585,7 +8585,7 @@ BUFFER@@に切り替える前に、すべての引数が評価されます。
 
 選択したフレームにBUFFERがすでに表示されていない限り、前のウィンドウ構成をバッファローカル値として保存し、後で@code{magit-mode-bury-buffer}で復元できるようにします。
 
-バッファが表示され、SWITCH-FUNCTION@@を使用してそのバッファが選択されます。それが@code{nil}の場合、現在のバッファのメジャーモードが@code{magit-mode}から派生していれば、@code{pop-to-buffer}が使用されます。それ以外の場合は、@code{switch-to-buffer}が使用されます。
+バッファが表示され、SWITCH-FUNCTIONを使用してそのバッファが選択されます。それが@code{nil}の場合、現在のバッファのメジャーモードが@code{magit-mode}から派生していれば、@code{pop-to-buffer}が使用されます。それ以外の場合は、@code{switch-to-buffer}が使用されます。
 @end defun
 
 @defvar magit-refresh-function
@@ -8672,7 +8672,7 @@ whitespace errors)を挿入します。テストに使用します。)
 * How to show diffs for gpg-encrypted files?::
 * How does branching and pushing work?::
 * Magitを@code{ediff-version-control-package}として使用できますか？::
-* VC@@を無効にする必要がありますか？::  
+* VCを無効にする必要がありますか？::  
 @end menu
 
 @node Magitの発音は？
@@ -8737,12 +8737,12 @@ echo "*.gpg filter=gpg diff=gpg" > .gitattributes
 
 他のコマンド@code{ediff-merge-revisions}と@code{ediff-merge-revisions-with-ancestor}は通常、Gitのような最新のバージョン管理システムを使用するときに必要なものではありません。Gitが単独で解決できなかった競合のみをユーザーに解決させるのではなく、Gitによって行われたすべての作業を破棄し、ユーザーがすでに解決されたものを含むすべての競合を手動でマージすることを期待します。これは、バージョン管理システムを統合できなかった(またはそう言われた)時代には意味がありましたが、現在はそうではありません。めったにないことですが、実際にはすべての競合を確認したい場合があります。その場合、これらのコマンドを使用でき、次に@code{ediff-vc-merge-internal}を使用します。したがって、実際に@code{ediff-magit-merge-internal}を実装する必要はありません。代わりに、まだ解決されていない競合のみを表示する、より便利なコマンド@code{magit-ediff-resolve}を提供します。
 
-@node VC@@を無効にする必要がありますか？
-@appendixsubsec VC@@を無効にする必要がありますか？
+@node VCを無効にする必要がありますか？
+@appendixsubsec VCを無効にする必要がありますか？
 
 あなたはVC(組み込みのバージョン管理インターフェイス)を使用しない場合、あなたは特に、VCを使用することを推奨していたため、無効にしたくなるかもしれません。
 
-我々は、あなたがVC@@を無効にすることはお勧めしません。これを行うと、有効になっているVCに依存する便利なサードパーティパッケージ(@code{diff-hl}など)が破損します。
+我々は、あなたがVCを無効にすることはお勧めしません。これを行うと、有効になっているVCに依存する便利なサードパーティパッケージ(@code{diff-hl}など)が破損します。
 
 あなたがとにかくVCを無効にすることを選択した場合は、@code{vc-handled-backends}の値を変更することで無効にできます。
 
@@ -8846,7 +8846,7 @@ Magitは、モードラインに表示されている@code{Git-master}のよう�
 @node 同じ名前を共有するブランチとタグは何かを壊します
 @appendixsubsec 同じ名前を共有するブランチとタグは何かを壊します
 
-または、より一般的には、あいまいなrefnameはSOMETHING@@を壊します。
+または、より一般的には、あいまいなrefnameはSOMETHINGを壊します。
 
 Magitは、refが"refs/heads/"と"refs/tags/"と"refs/remotes/"名前空間全体で明確に名前が付けられていることを前提としています(つまり、これらのプレフィックスが削除されても、すべての名前は一意のままです)。あいまいなrefnameはサポートされていないと見なし、あいまいでない命名スキームを使用することをお勧めします。ただし、refnameがあいまいなリポジトリを使用している場合は、発生した問題を報告してください。簡単な修正があるかどうかを調査できます。
 

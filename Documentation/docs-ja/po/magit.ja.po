@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
 "POT-Creation-Date: 2021-08-20 03:37+0900\n"
-"PO-Revision-Date: 2021-09-16 09:41+0900\n"
+"PO-Revision-Date: 2021-09-16 10:18+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -1011,7 +1011,7 @@ msgstr "Magitを@code{ediff-version-control-package}として使用できます�
 #: sed-out/magit.texi:332 sed-out/magit.texi:11311 sed-out/magit.texi:11416 sed-out/magit.texi:11417
 #, no-wrap
 msgid "Should I disable VC@?"
-msgstr "VC@@を無効にする必要がありますか？"
+msgstr "VCを無効にする必要がありますか？"
 
 #. type: menuentry
 #: sed-out/magit.texi:350 sed-out/magit.texi:11448
@@ -2751,7 +2751,7 @@ msgid ""
 "same type, all of the selected sections.  Commands that only make sense for "
 "a particular section type (as opposed to just behaving differently depending "
 "on the type) are usually bound in section type keymaps."
-msgstr "セクションの値とタイプを利用して、多くのコマンドが現在のセクションで動作します。または、リージョンがアクティブで同じタイプのセクションを選択すると、選択されたすべてのセクションが操作されます。特定のセクションタイプに対してのみ意味のあるコマンド(（タイプによって動作が異なるだけではなく）は、通常、セクションタイプのキーマップにバインドされます。"
+msgstr "セクションの値とタイプを利用して、多くのコマンドが現在のセクションで動作します。または、リージョンがアクティブで同じタイプのセクションを選択すると、選択されたすべてのセクションが操作されます。(タイプの違いのみよって動作が異なるだけではなく)特定のセクションタイプに対してのみ意味のあるコマンドは、通常、セクションタイプのキーマップにバインドされます。"
 
 #. type: subsection
 #: sed-out/magit.texi:1318 sed-out/magit.texi:1319
@@ -3275,7 +3275,7 @@ msgstr "@kbd{4} @tie{}@tie{}@tie{}@tie{}(@code{magit-section-show-level-4})"
 #. type: table
 #: sed-out/magit.texi:1512
 msgid "Show sections surrounding the current section up to level N@."
-msgstr "レベルN@@までの現在のセクションを囲むセクションを表示します。"
+msgstr "レベルNまでの現在のセクションを囲むセクションを表示します。"
 
 #. type: kindex
 #: sed-out/magit.texi:1513
@@ -3352,7 +3352,7 @@ msgstr "@kbd{M-4} @tie{}@tie{}@tie{}@tie{}(@code{magit-section-show-level-4-all}
 #. type: table
 #: sed-out/magit.texi:1527
 msgid "Show all sections up to level N@."
-msgstr "レベルN@@までのすべてのセクションを表示します。"
+msgstr "レベルNまでのすべてのセクションを表示します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:1533
@@ -3681,7 +3681,7 @@ msgstr "magit-add-section-hook hook function &optional at append local"
 #. type: defun
 #: sed-out/magit.texi:1683
 msgid "Add the function FUNCTION to the value of section hook HOOK@."
-msgstr "セクションフックFOOK@@の値に関数FUNCTIONを追加します。"
+msgstr "セクションフックFOOKの値に関数FUNCTIONを追加します。"
 
 #. type: defun
 #: sed-out/magit.texi:1687
@@ -3701,7 +3701,7 @@ msgid ""
 "AT@.  If nil, then place FUNCTION right before AT@.  If FUNCTION already is "
 "a member of the list but AT is not, then leave FUNCTION where ever it "
 "already is."
-msgstr "オプションのATがnil以外で、フックリストのメンバーである場合は、代わりにその脇にFUNCTIONを追加します。 APPEND@@に応じて、ATの前または後に追加するか、ATをFUNCTIONに置き換えます。APPENDがシンボル@code{replace}の場合、ATをFUNCTION@@に置き換えます。APPENDがその他のゼロ以外の値の場合は、AT@@の直後にFUNCTIONを配置します。nilの場合は、AT@@の直前にFUNCTIONを配置します。FUNCTIONがすでにリストのメンバーであるが、ATがメンバーでない場合は、FUNCTIONを既に存在する場所に残します。"
+msgstr "オプションのATがnil以外で、フックリストのメンバーである場合は、代わりにその脇にFUNCTIONを追加します。 APPENDに応じて、ATの前または後に追加するか、ATをFUNCTIONに置き換えます。APPENDがシンボル@code{replace}の場合、ATをFUNCTIONに置き換えます。APPENDがその他のゼロ以外の値の場合は、ATの直後にFUNCTIONを配置します。nilの場合は、ATの直前にFUNCTIONを配置します。FUNCTIONがすでにリストのメンバーであるが、ATがメンバーでない場合は、FUNCTIONを既に存在する場所に残します。"
 
 #. type: defun
 #: sed-out/magit.texi:1699
@@ -4831,7 +4831,7 @@ msgstr "FALLBACKは、一次デフォルトDEFが@code{nil}の場合にのみ使
 #. type: itemize
 #: sed-out/magit.texi:2410
 msgid "\": \" is appended to PROMPT@."
-msgstr "\": \" がPROMPT@@に追加されます。"
+msgstr "\": \" がPROMPTに追加されます。"
 
 #. type: itemize
 #: sed-out/magit.texi:2418
@@ -12544,7 +12544,7 @@ msgid ""
 "number.  That number is incremented by one, and becomes the index number of "
 "the entry to be inserted.  If you don't want to number the inserted "
 "revisions, then use nil for INDEX-REGEXP@."
-msgstr "最初のINDEX-REGEXPは、ポイントから逆方向に検索することにより、以前に挿入されたエントリを見つけるために使用されます。最初の部分一致はインデックス番号と一致する必要があります。その番号が1ずつ増え、挿入されるエントリのインデックス番号になります。挿入されたリビジョンに番号を付けたくない場合は、INDEX-REGEXP@@にnilを使用します。"
+msgstr "最初のINDEX-REGEXPは、ポイントから逆方向に検索することにより、以前に挿入されたエントリを見つけるために使用されます。最初の部分一致はインデックス番号と一致する必要があります。その番号が1ずつ増え、挿入されるエントリのインデックス番号になります。挿入されたリビジョンに番号を付けたくない場合は、INDEX-REGEXPにnilを使用します。"
 
 #. type: defopt
 #: sed-out/magit.texi:6225
@@ -12559,7 +12559,7 @@ msgstr "INDEX-REGEXPがnil以外の場合、POINT-FORMATとEOB-FORMATの両方�
 msgid ""
 "Both formats, if non-nil and after removing %N, are then expanded using "
 "@code{git show --format=FORMAT ...} inside TOPLEVEL@."
-msgstr "両方の書式は、nil以外の場合、%Nを削除した後、TOPLEVEL@@内で@code{git show --format=FORMAT ...}を使用して展開されます。"
+msgstr "両方の書式は、nil以外の場合、%Nを削除した後、TOPLEVEL内で@code{git show --format=FORMAT ...}を使用して展開されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:6232
@@ -13715,7 +13715,7 @@ msgstr "このオプションを使用すると、特定のリモートブラン
 msgid ""
 "UPSTREAM is the branch to be used as the upstream for branches specified by "
 "RULE@.  It can be a local or a remote branch."
-msgstr "UPSTREAMは、RULE@@で指定されたブランチのアップストリームとして使用されるブランチです。ローカルブランチでもリモートブランチでもかまいません。"
+msgstr "UPSTREAMは、RULEで指定されたブランチのアップストリームとして使用されるブランチです。ローカルブランチでもリモートブランチでもかまいません。"
 
 #. type: defopt
 #: sed-out/magit.texi:6782
@@ -13725,7 +13725,7 @@ msgid ""
 "branches that should @strong{not} use UPSTREAM; all other branches will.  "
 "Matching is done after stripping the remote part of the name of the branch "
 "that is being branched from."
-msgstr "RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAM@@で指定されたのでべきであるブランチに一致します。または、UPSTREAMを使用してはならない単一のブランチのリストにすることもできます。他ブランチは全てそうします。マッチングは、分岐元のブランチ名のリモート部分を削除した後に行われます。"
+msgstr "RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAMで指定されたのでべきであるブランチに一致します。または、UPSTREAMを使用してはならない単一のブランチのリストにすることもできます。他ブランチは全てそうします。マッチングは、分岐元のブランチ名のリモート部分を削除した後に行われます。"
 
 #. type: defopt
 #: sed-out/magit.texi:6785
@@ -13894,7 +13894,7 @@ msgid ""
 "Together with @code{branch.NAME.remote} this variable defines the upstream "
 "branch of the local branch named NAME@.  The value of this variable is the "
 "full reference of the upstream @emph{branch}."
-msgstr "この変数は、@code{branch.NAME.remote}とともに、NAME@@という名前のローカルブランチのアップストリームブランチを定義します。 この変数の値は、アップストリーム「ブランチ」の完全なreferenceです。"
+msgstr "この変数は、@code{branch.NAME.remote}とともに、NAMEという名前のローカルブランチのアップストリームブランチを定義します。 この変数の値は、アップストリーム「ブランチ」の完全なreferenceです。"
 
 #. type: defvar
 #: sed-out/magit.texi:6864
@@ -13908,7 +13908,7 @@ msgid ""
 "Together with @code{branch.NAME.merge} this variable defines the upstream "
 "branch of the local branch named NAME@.  The value of this variable is the "
 "name of the upstream @emph{remote}."
-msgstr "この変数は、@code{branch.NAME.merge}とともに、NAME@@という名前のローカルブランチのアップストリームブランチを定義します。 この変数の値は、アップストリーム「リモート」の名前です。"
+msgstr "この変数は、@code{branch.NAME.merge}とともに、NAMEという名前のローカルブランチのアップストリームブランチを定義します。 この変数の値は、アップストリーム「リモート」の名前です。"
 
 #. type: defvar
 #: sed-out/magit.texi:6871
@@ -13980,7 +13980,7 @@ msgstr "branch.NAME.description"
 msgid ""
 "This variable can be used to describe the branch named NAME@.  That "
 "description is used e.g. when turning the branch into a series of patches."
-msgstr "この変数は、NAME@@という名前のブランチを記述するために使用できます。例えばブランチを一連のパッチに変えるとき、その説明が使用されます。"
+msgstr "この変数は、NAMEという名前のブランチを記述するために使用できます。例えばブランチを一連のパッチに変えるとき、その説明が使用されます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:6913
@@ -14939,7 +14939,7 @@ msgid ""
 "This command starts a non-interactive rebase sequence to transfer commits "
 "from START to @code{HEAD} onto NEWBASE@.  START has to be selected from a "
 "list of recent commits."
-msgstr "このコマンドは、非対話型のリベースシーケンスを開始して、コミットをSTARTから@code {HEAD}からNEWBASE@@に転送します。STARTは、最近のコミットのリストから選択する必要があります。"
+msgstr "このコマンドは、非対話型のリベースシーケンスを開始して、コミットをSTARTから@code {HEAD}からNEWBASEに転送します。STARTは、最近のコミットのリストから選択する必要があります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:7405
@@ -16915,7 +16915,7 @@ msgstr "@kbd{z b} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-branch})"
 msgid ""
 "Create and checkout a new BRANCH from STASH@.  The branch starts at the "
 "commit that was current when the stash was created."
-msgstr "STASH@@から新しいBRANCHを作成してチェックアウトします。ブランチは、stashが作成されたときに現在のコミットで開始されます。"
+msgstr "STASHから新しいBRANCHを作成してチェックアウトします。ブランチは、stashが作成されたときに現在のコミットで開始されます。"
 
 #. type: kindex
 #: sed-out/magit.texi:8310
@@ -16964,7 +16964,7 @@ msgstr "@kbd{z f} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-format-patch})"
 #. type: table
 #: sed-out/magit.texi:8323
 msgid "Create a patch from STASH@."
-msgstr "STASH@@からパッチを作成します。"
+msgstr "STASHからパッチを作成します。"
 
 #. type: cindex
 #: sed-out/magit.texi:8325
@@ -16981,7 +16981,7 @@ msgstr "@kbd{k} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-clear})"
 #. type: table
 #: sed-out/magit.texi:8329
 msgid "Remove all stashes saved in REF's reflog by deleting REF@."
-msgstr "REF@@を削除して、REFのreflogに保存されているすべてのstashを削除します。"
+msgstr "REFを削除して、REFのreflogに保存されているすべてのstashを削除します。"
 
 #. type: kindex
 #: sed-out/magit.texi:8330
@@ -17362,7 +17362,7 @@ msgstr "remote.NAME.url"
 msgid ""
 "This variable specifies the url of the remote named NAME@.  It can have "
 "multiple values."
-msgstr "この変数は、NAME@@という名前のリモートのURLを指定します。複数の値を持つことができます。"
+msgstr "この変数は、NAMEという名前のリモートのURLを指定します。複数の値を持つことができます。"
 
 #. type: defvar
 #: sed-out/magit.texi:8541
@@ -17375,7 +17375,7 @@ msgstr "remote.NAME.fetch"
 msgid ""
 "The refspec used when fetching from the remote named NAME@.  It can have "
 "multiple values."
-msgstr "NAME@@という名前のリモートからフェッチするときに使用されるrefspecです。複数の値を持つことができます。"
+msgstr "NAMEという名前のリモートからフェッチするときに使用されるrefspecです。複数の値を持つことができます。"
 
 #. type: defvar
 #: sed-out/magit.texi:8547
@@ -17389,7 +17389,7 @@ msgid ""
 "This variable specifies the url used for fetching from the remote named "
 "NAME@.  If it is not specified, then @code{remote.NAME.url} is used "
 "instead.  It can have multiple values."
-msgstr "この変数は、NAME@@という名前のリモートからのフェッチに使用されるURLを指定します。指定されていない場合は、代わりに@code{remote.NAME.url}が使用されます。複数の値を持つことができます。"
+msgstr "この変数は、NAMEという名前のリモートからのフェッチに使用されるURLを指定します。指定されていない場合は、代わりに@code{remote.NAME.url}が使用されます。複数の値を持つことができます。"
 
 #. type: defvar
 #: sed-out/magit.texi:8554
@@ -17402,7 +17402,7 @@ msgstr "remote.NAME.push"
 msgid ""
 "The refspec used when pushing to the remote named NAME@.  It can have "
 "multiple values."
-msgstr "NAME@@という名前のリモートにプッシュするときに使用されるrefspecです。複数の値を持つことができます。"
+msgstr "NAMEという名前のリモートにプッシュするときに使用されるrefspecです。複数の値を持つことができます。"
 
 #. type: defvar
 #: sed-out/magit.texi:8560
@@ -18457,7 +18457,7 @@ msgstr "@kbd{t t} @tie{}@tie{}@tie{}@tie{}(@code{magit-tag-create})"
 msgid ""
 "This command creates a new tag with the given NAME at REV@.  With a prefix "
 "argument it creates an annotated tag."
-msgstr "このコマンドは、REV@@で指定されたNAMEを使用して新しいタグを作成します。プレフィックス引数を使用して、注釈付きタグ(annotated tag)を作成します。"
+msgstr "このコマンドは、REVで指定されたNAMEを使用して新しいタグを作成します。プレフィックス引数を使用して、注釈付きタグ(annotated tag)を作成します。"
 
 #. type: kindex
 #: sed-out/magit.texi:9051
@@ -18934,7 +18934,7 @@ msgid ""
 "This commands adds the repository at URL as a module.  Optional PATH is the "
 "path to the module relative to the root of the super-project.  If it is nil "
 "then the path is determined based on URL@."
-msgstr "このコマンドは、URLのリポジトリをモジュールとして追加します。オプションのPATHは、スーパープロジェクトのルートを基準にしたモジュールへのパスです。nilの場合、パスはURL@@に基づいて決定されます。"
+msgstr "このコマンドは、URLのリポジトリをモジュールとして追加します。オプションのPATHは、スーパープロジェクトのルートを基準にしたモジュールへのパスです。nilの場合、パスはURLに基づいて決定されます。"
 
 #. type: kindex
 #: sed-out/magit.texi:9276
@@ -19209,7 +19209,7 @@ msgstr "@kbd{O i a} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-add})"
 #. type: table
 #: sed-out/magit.texi:9374
 msgid "This command adds COMMIT from REPOSITORY as a new subtree at PREFIX@."
-msgstr "このコマンドは、REPOSITORYからのCOMMITをPREFIX@@の新しいサブツリーとして追加します。"
+msgstr "このコマンドは、REPOSITORYからのCOMMITをPREFIXの新しいサブツリーとして追加します。"
 
 #. type: kindex
 #: sed-out/magit.texi:9375
@@ -19232,7 +19232,7 @@ msgstr "@kbd{O i c} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-add-commit})"
 #. type: table
 #: sed-out/magit.texi:9380
 msgid "This command add COMMIT as a new subtree at PREFIX@."
-msgstr "このコマンドは、COMMITをPREFIX@@の新しいサブツリーとして追加します。"
+msgstr "このコマンドは、COMMITをPREFIXの新しいサブツリーとして追加します。"
 
 #. type: kindex
 #: sed-out/magit.texi:9381
@@ -19326,7 +19326,7 @@ msgstr "@kbd{O e p} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-push})"
 msgid ""
 "This command extract the history of the subtree PREFIX and pushes it to REF "
 "on REPOSITORY@."
-msgstr "このコマンドは、サブツリーPREFIXの履歴を抽出し、それをREPOSITORY@@のREFにプッシュします。"
+msgstr "このコマンドは、サブツリーPREFIXの履歴を抽出し、それをREPOSITORYのREFにプッシュします。"
 
 #. type: kindex
 #: sed-out/magit.texi:9414
@@ -19349,7 +19349,7 @@ msgstr "@kbd{O e s} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-split})"
 #. type: table
 #: sed-out/magit.texi:9419
 msgid "This command extracts the history of the subtree PREFIX@."
-msgstr "このコマンドは、サブツリーPREFIX@@の履歴を抽出します。"
+msgstr "このコマンドは、サブツリーPREFIXの履歴を抽出します。"
 
 #. type: section
 #: sed-out/magit.texi:9421 sed-out/magit.texi:9422
@@ -19413,7 +19413,7 @@ msgstr "@kbd{% b} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-checkout})"
 #. type: table
 #: sed-out/magit.texi:9450
 msgid "Checkout BRANCH in a new worktree at PATH@."
-msgstr "PATH@@の新しいワークツリーでBRANCHをチェックアウトします。"
+msgstr "PATHの新しいワークツリーでBRANCHをチェックアウトします。"
 
 #. type: kindex
 #: sed-out/magit.texi:9451
@@ -19436,7 +19436,7 @@ msgstr "@kbd{% c} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-branch})"
 #. type: table
 #: sed-out/magit.texi:9456
 msgid "Create a new BRANCH and check it out in a new worktree at PATH@."
-msgstr "新しいBRANCHを作成し、PATH@@の新しいワークツリーでチェックアウトします。"
+msgstr "新しいBRANCHを作成し、PATHの新しいワークツリーでチェックアウトします。"
 
 #. type: kindex
 #: sed-out/magit.texi:9457
@@ -19459,7 +19459,7 @@ msgstr "@kbd{% m} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-move})"
 #. type: table
 #: sed-out/magit.texi:9462
 msgid "Move an existing worktree to a new PATH@."
-msgstr "既存のワークツリーを新しいPATH@@に移動します。"
+msgstr "既存のワークツリーを新しいPATHに移動します。"
 
 #. type: kindex
 #: sed-out/magit.texi:9463
@@ -20962,7 +20962,7 @@ msgid ""
 "To figure out whether that impacts performance, check whether performance is "
 "significantly worse, when many buffers exist and/or when some buffers visit "
 "files using TRAMP@.  If so, then this should help."
-msgstr "Magitは、アクセスしたファイル(visited files)がディスク上で変更されると、現在のリポジトリ内にあるアクセスしたファイルのバッファもrevertします。これは、組み込みライブラリ@code{autorevert}の@code{auto-revert-mode}の上に実装されています。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および/または一部のバッファがTRAMP@@を使用してファイルにアクセスする場合を確認します。 もしパフォーマンスに影響があるなら、この確認が役に立つはずです。"
+msgstr "Magitは、アクセスしたファイル(visited files)がディスク上で変更されると、現在のリポジトリ内にあるアクセスしたファイルのバッファもrevertします。これは、組み込みライブラリ@code{autorevert}の@code{auto-revert-mode}の上に実装されています。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および/または一部のバッファがTRAMPを使用してファイルにアクセスする場合を確認します。 もしパフォーマンスに影響があるなら、この確認が役に立つはずです。"
 
 #. type: lisp
 #: sed-out/magit.texi:10256
@@ -21232,7 +21232,7 @@ msgid ""
 "That needlessly copied GUI resources, which is expensive.  The result was "
 "that forking took about 30 times as long on Darwin than on Linux, and "
 "because Magit starts many @code{git} processes that made quite a difference."
-msgstr "Emacs 26.1より前は、macOS@@では@code{fork}を使用して子プロセスが作成されていました。それは不必要にGUIリソースをコピーしましたが、これは高コストです。その結果、DarwinではLinuxよりもフォークに約30倍の時間がかかり、Magitは多くの@code{git}プロセスを開始するため、かなりの違いが生じました。"
+msgstr "Emacs 26.1より前は、macOSでは@code{fork}を使用して子プロセスが作成されていました。それは不必要にGUIリソースをコピーしましたが、これは高コストです。その結果、DarwinではLinuxよりもフォークに約30倍の時間がかかり、Magitは多くの@code{git}プロセスを開始するため、かなりの違いが生じました。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10411
@@ -21652,7 +21652,7 @@ msgstr "magit-call-git &rest args"
 #. type: defun
 #: sed-out/magit.texi:10655
 msgid "Calls git synchronously with ARGS@."
-msgstr "ARGS@@を伴ってgitを同期的に呼び出します。"
+msgstr "ARGSを伴ってgitを同期的に呼び出します。"
 
 #. type: defun
 #: sed-out/magit.texi:10657
@@ -21663,7 +21663,7 @@ msgstr "magit-call-process program &rest args"
 #. type: defun
 #: sed-out/magit.texi:10660
 msgid "Calls PROGRAM synchronously with ARGS@."
-msgstr "ARGS@@を伴って同期的にPROGRAMを呼び出します。"
+msgstr "ARGSを伴って同期的にPROGRAMを呼び出します。"
 
 #. type: defun
 #: sed-out/magit.texi:10662
@@ -22033,7 +22033,7 @@ msgstr "magit-define-section-jumper sym title &optional value"
 msgid ""
 "Define an interactive function to go to section SYM@.  TITLE is the "
 "displayed title of the section."
-msgstr "現在挿入されているセクションSYM@@をキャンセルします。 これにより、@code{magit-insert-section}への最も内側の呼び出しが終了し、その呼び出し内ですでに発生したことのすべての痕跡が削除されます。"
+msgstr "現在挿入されているセクションSYMをキャンセルします。 これにより、@code{magit-insert-section}への最も内側の呼び出しが終了し、その呼び出し内ですでに発生したことのすべての痕跡が削除されます。"
 
 #. type: subsection
 #: sed-out/magit.texi:10867 sed-out/magit.texi:10868
@@ -22136,7 +22136,7 @@ msgstr "magit-section-ident section"
 msgid ""
 "Return an unique identifier for SECTION@.  The return value has the form "
 "@code{((TYPE . VALUE)...)}."
-msgstr "SECTION@@の一意のIDを返します。戻り値の形式は@code{((TYPE . VALUE)...)}です。"
+msgstr "SECTIONの一意のIDを返します。戻り値の形式は@code{((TYPE . VALUE)...)}です。"
 
 #. type: defun
 #: sed-out/magit.texi:10930
@@ -22149,7 +22149,7 @@ msgstr "magit-get-section ident &optional root"
 msgid ""
 "Return the section identified by IDENT@.  IDENT has to be a list as returned "
 "by @code{magit-section-ident}."
-msgstr "IDENT@@で識別されるセクションを返します。IDENTは、@code{magit-section-ident}によって返されるリストである必要があります。"
+msgstr "IDENTで識別されるセクションを返します。IDENTは、@code{magit-section-ident}によって返されるリストである必要があります。"
 
 #. type: defun
 #: sed-out/magit.texi:10936
@@ -22163,7 +22163,7 @@ msgid ""
 "Return @code{t} if SECTION matches CONDITION@.  SECTION defaults to the "
 "section at point.  If SECTION is not specified and there also is no section "
 "at point, then return @code{nil}."
-msgstr "SECTIONがCONDITION@@と一致する場合は、@code{t}を返します。SECTIONは、デフォルトでポイントのセクションになります。SECTIONが指定されておらず、ポイントにもセクションがない場合は、@code{nil}を返します。"
+msgstr "SECTIONがCONDITIONと一致する場合は、@code{t}を返します。SECTIONは、デフォルトでポイントのセクションになります。SECTIONが指定されておらず、ポイントにもセクションがない場合は、@code{nil}を返します。"
 
 #. type: defun
 #: sed-out/magit.texi:10944
@@ -22317,7 +22317,7 @@ msgstr "magit-diff-type &optional section"
 #. type: defun
 #: sed-out/magit.texi:11029
 msgid "Return the diff type of SECTION@."
-msgstr "別のタイプのSECTION@@を返します。"
+msgstr "別のタイプのSECTIONを返します。"
 
 #. type: defun
 #: sed-out/magit.texi:11036
@@ -22437,12 +22437,12 @@ msgid ""
 "REFRESH-FUNC and that of @code{magit-refresh-args} to REFRESH-ARGS@.  "
 "Finally it creates the buffer content by calling REFRESH-FUNC with "
 "REFRESH-ARGS as arguments."
-msgstr "この関数は、引数としてBUFFERとMODEとSWITCH-FUNCを指定して@code{magit-mode-display-buffer}を呼び出すことにより、BUFFERを表示し、オプションで選択します。次に、@code{magit-refresh-function}のローカル値をREFRESH-FUNCに設定し、@code{magit-refresh-args}のローカル値をREFRESH-ARGS@@に設定します。最後に、引数としてREFRESH-ARGSを指定してREFRESH-FUNCを呼び出すことにより、バッファー内容を作成します。"
+msgstr "この関数は、引数としてBUFFERとMODEとSWITCH-FUNCを指定して@code{magit-mode-display-buffer}を呼び出すことにより、BUFFERを表示し、オプションで選択します。次に、@code{magit-refresh-function}のローカル値をREFRESH-FUNCに設定し、@code{magit-refresh-args}のローカル値をREFRESH-ARGSに設定します。最後に、引数としてREFRESH-ARGSを指定してREFRESH-FUNCを呼び出すことにより、バッファー内容を作成します。"
 
 #. type: defmac
 #: sed-out/magit.texi:11097
 msgid "All arguments are evaluated before switching to BUFFER@."
-msgstr "BUFFER@@に切り替える前に、すべての引数が評価されます。"
+msgstr "BUFFERに切り替える前に、すべての引数が評価されます。"
 
 #. type: defun
 #: sed-out/magit.texi:11099
@@ -22472,7 +22472,7 @@ msgid ""
 "@code{nil} then @code{pop-to-buffer} is used if the current buffer's major "
 "mode derives from @code{magit-mode}.  Otherwise @code{switch-to-buffer} is "
 "used."
-msgstr "バッファが表示され、SWITCH-FUNCTION@@を使用してそのバッファが選択されます。それが@code{nil}の場合、現在のバッファのメジャーモードが@code{magit-mode}から派生していれば、@code{pop-to-buffer}が使用されます。それ以外の場合は、@code{switch-to-buffer}が使用されます。"
+msgstr "バッファが表示され、SWITCH-FUNCTIONを使用してそのバッファが選択されます。それが@code{nil}の場合、現在のバッファのメジャーモードが@code{magit-mode}から派生していれば、@code{pop-to-buffer}が使用されます。それ以外の場合は、@code{switch-to-buffer}が使用されます。"
 
 #. type: defvar
 #: sed-out/magit.texi:11114
@@ -22928,7 +22928,7 @@ msgid ""
 "We no longer recommend that you disable VC@.  Doing so would break useful "
 "third-party packages (such as @code{diff-hl}), which depend on VC being "
 "enabled."
-msgstr "我々は、あなたがVC@@を無効にすることはお勧めしません。これを行うと、有効になっているVCに依存する便利なサードパーティパッケージ(@code{diff-hl}など)が破損します。"
+msgstr "我々は、あなたがVCを無効にすることはお勧めしません。これを行うと、有効になっているVCに依存する便利なサードパーティパッケージ(@code{diff-hl}など)が破損します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11429
@@ -23155,7 +23155,7 @@ msgstr "同じ名前を共有するブランチとタグは何かを壊します
 #. type: Plain text
 #: sed-out/magit.texi:11554
 msgid "Or more generally, ambiguous refnames break SOMETHING@."
-msgstr "または、より一般的には、あいまいなrefnameはSOMETHING@@を壊します。"
+msgstr "または、より一般的には、あいまいなrefnameはSOMETHINGを壊します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11562

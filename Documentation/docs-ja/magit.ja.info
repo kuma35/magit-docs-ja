@@ -389,7 +389,7 @@ FAQ - How to ...?
 * How to show diffs for gpg-encrypted files?::
 * How does branching and pushing work?::
 * Magitをediff-version-control-packageとして使用できますか？::
-* VC@を無効にする必要がありますか？::
+* VCを無効にする必要がありますか？::
 
 
 
@@ -1326,9 +1326,9 @@ Magitバッファはネストされたセクションに編成され、Orgモー
 
 セクションの値とタイプを利用して、多くのコマンドが現在のセクションで動作
 します。または、リージョンがアクティブで同じタイプのセクションを選択する
-と、選択されたすべてのセクションが操作されます。特定のセクションタイプに
-対してのみ意味のあるコマンド(（タイプによって動作が異なるだけではなく）
-は、通常、セクションタイプのキーマップにバインドされます。
+と、選択されたすべてのセクションが操作されます。(タイプの違いのみよって
+動作が異なるだけではなく)特定のセクションタイプに対してのみ意味のあるコ
+マンドは、通常、セクションタイプのキーマップにバインドされます。
 
 * Menu:
 
@@ -1492,14 +1492,14 @@ Magitには、セクションの表示を変更するための多くのコマン
 ‘3’     (‘magit-section-show-level-3’)
 ‘4’     (‘magit-section-show-level-4’)
 
-     レベルN@までの現在のセクションを囲むセクションを表示します。
+     レベルNまでの現在のセクションを囲むセクションを表示します。
 
 ‘M-1’     (‘magit-section-show-level-1-all’)
 ‘M-2’     (‘magit-section-show-level-2-all’)
 ‘M-3’     (‘magit-section-show-level-3-all’)
 ‘M-4’     (‘magit-section-show-level-4-all’)
 
-     レベルN@までのすべてのセクションを表示します。
+     レベルNまでのすべてのセクションを表示します。
 
 上記のコマンドを実装するために使用される一部の関数は、コマンド自体として
 も公開されます。デフォルトでは、これらのコマンドに結び付けられているキー
@@ -1639,7 +1639,7 @@ File: magit.ja.info,  Node: Section Hooks,  Next: Section Types and Values,  Pre
  -- Function: magit-add-section-hook hook function &optional at append
           local
 
-     セクションフックFOOK@の値に関数FUNCTIONを追加します。
+     セクションフックFOOKの値に関数FUNCTIONを追加します。
 
      オプションのAPPENDがnil以外の場合を除き、フックリストの最初に
      FUNCTIONを追加します。APPENDがnil以外の場合、最後にFUNCTIONを追加し
@@ -1647,13 +1647,12 @@ File: magit.ja.info,  Node: Section Hooks,  Next: Section Types and Values,  Pre
      します。
 
      オプションのATがnil以外で、フックリストのメンバーである場合は、代わ
-     りにその脇にFUNCTIONを追加します。 APPEND@に応じて、ATの前または後
-     に追加するか、ATをFUNCTIONに置き換えます。APPENDがシンボル
-     ‘replace’の場合、ATをFUNCTION@に置き換えます。APPENDがその他のゼロ
-     以外の値の場合は、AT@の直後にFUNCTIONを配置します。nilの場合は、
-     AT@の直前にFUNCTIONを配置します。FUNCTIONがすでにリストのメンバーで
-     あるが、ATがメンバーでない場合は、FUNCTIONを既に存在する場所に残し
-     ます。
+     りにその脇にFUNCTIONを追加します。 APPENDに応じて、ATの前または後に
+     追加するか、ATをFUNCTIONに置き換えます。APPENDがシンボル‘replace’の
+     場合、ATをFUNCTIONに置き換えます。APPENDがその他のゼロ以外の値の場
+     合は、ATの直後にFUNCTIONを配置します。nilの場合は、ATの直前に
+     FUNCTIONを配置します。FUNCTIONがすでにリストのメンバーであるが、
+     ATがメンバーでない場合は、FUNCTIONを既に存在する場所に残します。
 
      オプションのLOCALがnil以外の場合は、フックのグローバル値ではなく、
      バッファローカル値を変更します。 これにより、デフォルト値をコピーし
@@ -2290,7 +2289,7 @@ Magitで他のEmacsとは異なる補完メカニズムを使用することも�
           ‘nil’であるかのように、常にユーザーに候補を選択するように求め
           ます。
 
-        • ": " がPROMPT@に追加されます。
+        • ": " がPROMPTに追加されます。
 
         • PROMPTは、\" (default DEF|FALLBACK): \"で終わるように変更され
           ます。ただし、DEFまたはFALLBACKがnil以外であり、‘ivy-mode’も
@@ -5470,13 +5469,13 @@ Using the Revision Stack
      に挿入されたエントリを見つけるために使用されます。最初の部分一致は
      インデックス番号と一致する必要があります。その番号が1ずつ増え、挿入
      されるエントリのインデックス番号になります。挿入されたリビジョンに
-     番号を付けたくない場合は、INDEX-REGEXP@にnilを使用します。
+     番号を付けたくない場合は、INDEX-REGEXPにnilを使用します。
 
      INDEX-REGEXPがnil以外の場合、POINT-FORMATとEOB-FORMATの両方に
      \"%N\" が含まれている必要があります。これは、前の手順で決定された番
      号に置き換えられます。
 
-     両方の書式は、nil以外の場合、%Nを削除した後、TOPLEVEL@内で‘git show
+     両方の書式は、nil以外の場合、%Nを削除した後、TOPLEVEL内で‘git show
      --format=FORMAT ...’を使用して展開されます。
 
      POINT-FORMATの展開はポイントに挿入され、EOB-FORMATの展開はバッファ
@@ -5968,11 +5967,11 @@ File: magit.ja.info,  Node: Branch Commands,  Next: Branch Git Variables,  Prev:
      は、‘((UPSTREAM . RULE)...)’の形式のalistです。最初に一致する要素が
      使用され、その後の要素は無視されます。
 
-     UPSTREAMは、RULE@で指定されたブランチのアップストリームとして使用さ
+     UPSTREAMは、RULEで指定されたブランチのアップストリームとして使用さ
      れるブランチです。ローカルブランチでもリモートブランチでもかまいま
      せん。
 
-     RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAM@で指
+     RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAMで指
      定されたのでべきであるブランチに一致します。または、UPSTREAMを使用
      してはならない単一のブランチのリストにすることもできます。他ブラン
      チは全てそうします。マッチングは、分岐元のブランチ名のリモート部分
@@ -6041,15 +6040,15 @@ File: magit.ja.info,  Node: Branch Git Variables,  Next: Auxiliary Branch Comman
 
  -- Variable: branch.NAME.merge
 
-     この変数は、‘branch.NAME.remote’とともに、NAME@という名前のローカル
+     この変数は、‘branch.NAME.remote’とともに、NAMEという名前のローカル
      ブランチのアップストリームブランチを定義します。 この変数の値は、ア
      ップストリーム「ブランチ」の完全なreferenceです。
 
  -- Variable: branch.NAME.remote
 
-     この変数は、‘branch.NAME.merge’とともに、NAME@という名前のローカル
-     ブランチのアップストリームブランチを定義します。 この変数の値は、ア
-     ップストリーム「リモート」の名前です。
+     この変数は、‘branch.NAME.merge’とともに、NAMEという名前のローカルブ
+     ランチのアップストリームブランチを定義します。 この変数の値は、アッ
+     プストリーム「リモート」の名前です。
 
  -- Variable: branch.NAME.rebase
 
@@ -6079,7 +6078,7 @@ File: magit.ja.info,  Node: Branch Git Variables,  Next: Auxiliary Branch Comman
 
  -- Variable: branch.NAME.description
 
-     この変数は、NAME@という名前のブランチを記述するために使用できます。
+     この変数は、NAMEという名前のブランチを記述するために使用できます。
      例えばブランチを一連のパッチに変えるとき、その説明が使用されます。
 
 以下の変数は、上記のブランチ固有の変数が設定されていない場合に使用される
@@ -6448,8 +6447,8 @@ Remotes::
 ‘r s’     (‘magit-rebase-subset’)
 
      このコマンドは、非対話型のリベースシーケンスを開始して、コミットを
-     STARTから‘HEAD’からNEWBASE@に転送します。STARTは、最近のコミットの
-     リストから選択する必要があります。
+     STARTから‘HEAD’からNEWBASEに転送します。STARTは、最近のコミットのリ
+     ストから選択する必要があります。
 
 デフォルトでは、Magitは‘--autostash’引数を使用します。これにより、コミッ
 トされていない変更がリベースが開始される前にスタッシュに格納されます。こ
@@ -7147,7 +7146,7 @@ File: magit.ja.info,  Node: Stashing,  Prev: Resetting,  Up: Manipulating
 
 ‘z b’     (‘magit-stash-branch’)
 
-     STASH@から新しいBRANCHを作成してチェックアウトします。ブランチは、
+     STASHから新しいBRANCHを作成してチェックアウトします。ブランチは、
      stashが作成されたときに現在のコミットで開始されます。
 
 ‘z B’     (‘magit-stash-branch-here’)
@@ -7158,12 +7157,12 @@ File: magit.ja.info,  Node: Stashing,  Prev: Resetting,  Up: Manipulating
 
 ‘z f’     (‘magit-stash-format-patch’)
 
-     STASH@からパッチを作成します。
+     STASHからパッチを作成します。
 
 ‘k’     (‘magit-stash-clear’)
 
-     REF@を削除して、REFのreflogに保存されているすべてのstashを削除しま
-     す。
+     REFを削除して、REFのreflogに保存されているすべてのstashを削除します
+     。
 
 ‘z l’     (‘magit-stash-list’)
 
@@ -7340,24 +7339,24 @@ File: magit.ja.info,  Node: Remote Git Variables,  Prev: Remote Commands,  Up: R
 
  -- Variable: remote.NAME.url
 
-     この変数は、NAME@という名前のリモートのURLを指定します。複数の値を
-     持つことができます。
+     この変数は、NAMEという名前のリモートのURLを指定します。複数の値を持
+     つことができます。
 
  -- Variable: remote.NAME.fetch
 
-     NAME@という名前のリモートからフェッチするときに使用されるrefspecで
-     す。複数の値を持つことができます。
+     NAMEという名前のリモートからフェッチするときに使用されるrefspecです
+     。複数の値を持つことができます。
 
  -- Variable: remote.NAME.pushurl
 
-     この変数は、NAME@という名前のリモートからのフェッチに使用される
-     URLを指定します。指定されていない場合は、代わりに
-     ‘remote.NAME.url’が使用されます。複数の値を持つことができます。
+     この変数は、NAMEという名前のリモートからのフェッチに使用されるURLを
+     指定します。指定されていない場合は、代わりに‘remote.NAME.url’が使用
+     されます。複数の値を持つことができます。
 
  -- Variable: remote.NAME.push
 
-     NAME@という名前のリモートにプッシュするときに使用されるrefspecです
-     。複数の値を持つことができます。
+     NAMEという名前のリモートにプッシュするときに使用されるrefspecです。
+     複数の値を持つことができます。
 
  -- Variable: remote.NAME.tagOpts
 
@@ -7729,9 +7728,9 @@ File: magit.ja.info,  Node: Tagging,  Next: Notes,  Up: Miscellaneous
 
 ‘t t’     (‘magit-tag-create’)
 
-     このコマンドは、REV@で指定されたNAMEを使用して新しいタグを作成しま
-     す。プレフィックス引数を使用して、注釈付きタグ(annotated tag)を作成
-     します。
+     このコマンドは、REVで指定されたNAMEを使用して新しいタグを作成します
+     。プレフィックス引数を使用して、注釈付きタグ(annotated tag)を作成し
+     ます。
 
 ‘t r’     (‘magit-tag-release’)
 
@@ -7910,7 +7909,7 @@ File: magit.ja.info,  Node: submodule用トランジェントコマンド,  Prev
 
      このコマンドは、URLのリポジトリをモジュールとして追加します。オプシ
      ョンのPATHは、スーパープロジェクトのルートを基準にしたモジュールへ
-     のパスです。nilの場合、パスはURL@に基づいて決定されます。
+     のパスです。nilの場合、パスはURLに基づいて決定されます。
 
 ‘o r’     (‘magit-submodule-register’)
 
@@ -7982,12 +7981,12 @@ File: magit.ja.info,  Node: Subtree,  Next: Worktree,  Prev: Submodules,  Up: Mi
 
 ‘O i a’     (‘magit-subtree-add’)
 
-     このコマンドは、REPOSITORYからのCOMMITをPREFIX@の新しいサブツリーと
+     このコマンドは、REPOSITORYからのCOMMITをPREFIXの新しいサブツリーと
      して追加します。
 
 ‘O i c’     (‘magit-subtree-add-commit’)
 
-     このコマンドは、COMMITをPREFIX@の新しいサブツリーとして追加します。
+     このコマンドは、COMMITをPREFIXの新しいサブツリーとして追加します。
 
 ‘O i m’     (‘magit-subtree-merge’)
 
@@ -8015,12 +8014,12 @@ File: magit.ja.info,  Node: Subtree,  Next: Worktree,  Prev: Submodules,  Up: Mi
 
 ‘O e p’     (‘magit-subtree-push’)
 
-     このコマンドは、サブツリーPREFIXの履歴を抽出し、それをREPOSITORY@の
+     このコマンドは、サブツリーPREFIXの履歴を抽出し、それをREPOSITORYの
      REFにプッシュします。
 
 ‘O e s’     (‘magit-subtree-split’)
 
-     このコマンドは、サブツリーPREFIX@の履歴を抽出します。
+     このコマンドは、サブツリーPREFIXの履歴を抽出します。
 
 
 File: magit.ja.info,  Node: Worktree,  Next: Common Commands,  Prev: Subtree,  Up: Miscellaneous
@@ -8039,16 +8038,16 @@ File: magit.ja.info,  Node: Worktree,  Next: Common Commands,  Prev: Subtree,  U
 
 ‘% b’     (‘magit-worktree-checkout’)
 
-     PATH@の新しいワークツリーでBRANCHをチェックアウトします。
+     PATHの新しいワークツリーでBRANCHをチェックアウトします。
 
 ‘% c’     (‘magit-worktree-branch’)
 
-     新しいBRANCHを作成し、PATH@の新しいワークツリーでチェックアウトしま
+     新しいBRANCHを作成し、PATHの新しいワークツリーでチェックアウトしま
      す。
 
 ‘% m’     (‘magit-worktree-move’)
 
-     既存のワークツリーを新しいPATH@に移動します。
+     既存のワークツリーを新しいPATHに移動します。
 
 ‘% k’     (‘magit-worktree-delete’)
 
@@ -8730,9 +8729,8 @@ Magitは、アクセスしたファイル(visited files)がディスク上で変
 れは、組み込みライブラリ‘autorevert’の‘auto-revert-mode’の上に実装されて
 います。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォ
 ーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および
-/または一部のバッファがTRAMP@を使用してファイルにアクセスする場合を確認
-します。 もしパフォーマンスに影響があるなら、この確認が役に立つはずです
-。
+/または一部のバッファがTRAMPを使用してファイルにアクセスする場合を確認し
+ます。 もしパフォーマンスに影響があるなら、この確認が役に立つはずです。
 
      (setq auto-revert-buffer-list-filter
            'magit-auto-revert-repository-buffer-p)
@@ -8877,7 +8875,7 @@ File: magit.ja.info,  Node: MacOS Performance,  Prev: Microsoft Windows Performa
 MacOS Performance
 .................
 
-Emacs 26.1より前は、macOS@では‘fork’を使用して子プロセスが作成されていま
+Emacs 26.1より前は、macOSでは‘fork’を使用して子プロセスが作成されていま
 した。それは不必要にGUIリソースをコピーしましたが、これは高コストです。
 その結果、DarwinではLinuxよりもフォークに約30倍の時間がかかり、Magitは多
 くの‘git’プロセスを開始するため、かなりの違いが生じました。
@@ -9126,11 +9124,11 @@ gitを非同期で実行すると便利な場合があります。たとえば�
 
  -- Function: magit-call-git &rest args
 
-     ARGS@を伴ってgitを同期的に呼び出します。
+     ARGSを伴ってgitを同期的に呼び出します。
 
  -- Function: magit-call-process program &rest args
 
-     ARGS@を伴って同期的にPROGRAMを呼び出します。
+     ARGSを伴って同期的にPROGRAMを呼び出します。
 
  -- Function: magit-run-git &rest args
 
@@ -9331,7 +9329,7 @@ File: magit.ja.info,  Node: Creating Sections,  Next: Section Selection,  Up: Se
 
  -- Function: magit-define-section-jumper sym title &optional value
 
-     現在挿入されているセクションSYM@をキャンセルします。 これにより、
+     現在挿入されているセクションSYMをキャンセルします。 これにより、
      ‘magit-insert-section’への最も内側の呼び出しが終了し、その呼び出し
      内ですでに発生したことのすべての痕跡が削除されます。
 
@@ -9390,17 +9388,17 @@ File: magit.ja.info,  Node: Matching Sections,  Prev: Section Selection,  Up: Se
 
  -- Function: magit-section-ident section
 
-     SECTION@の一意のIDを返します。戻り値の形式は‘((TYPE . VALUE)...)’で
+     SECTIONの一意のIDを返します。戻り値の形式は‘((TYPE . VALUE)...)’で
      す。
 
  -- Function: magit-get-section ident &optional root
 
-     IDENT@で識別されるセクションを返します。IDENTは、
+     IDENTで識別されるセクションを返します。IDENTは、
      ‘magit-section-ident’によって返されるリストである必要があります。
 
  -- Function: magit-section-match condition &optional section
 
-     SECTIONがCONDITION@と一致する場合は、‘t’を返します。SECTIONは、デフ
+     SECTIONがCONDITIONと一致する場合は、‘t’を返します。SECTIONは、デフ
      ォルトでポイントのセクションになります。SECTIONが指定されておらず、
      ポイントにもセクションがない場合は、‘nil’を返します。
 
@@ -9473,7 +9471,7 @@ diff関連のセクションには、いくつかの追加ツールがありま�
 
  -- Function: magit-diff-type &optional section
 
-     別のタイプのSECTION@を返します。
+     別のタイプのSECTIONを返します。
 
      返されるタイプは、‘staged’または‘unstaged’または‘committed’または
      ‘undefined’のいずれかのシンボルです。このタイプは、すべてのセクショ
@@ -9542,10 +9540,10 @@ File: magit.ja.info,  Node: Refreshing Buffers,  Next: 慣習,  Prev: Section Pl
      ‘magit-mode-display-buffer’を呼び出すことにより、BUFFERを表示し、オ
      プションで選択します。次に、‘magit-refresh-function’のローカル値を
      REFRESH-FUNCに設定し、‘magit-refresh-args’のローカル値を
-     REFRESH-ARGS@に設定します。最後に、引数としてREFRESH-ARGSを指定して
+     REFRESH-ARGSに設定します。最後に、引数としてREFRESH-ARGSを指定して
      REFRESH-FUNCを呼び出すことにより、バッファー内容を作成します。
 
-     BUFFER@に切り替える前に、すべての引数が評価されます。
+     BUFFERに切り替える前に、すべての引数が評価されます。
 
  -- Function: magit-mode-display-buffer buffer mode &optional
           switch-function
@@ -9558,8 +9556,8 @@ File: magit.ja.info,  Node: Refreshing Buffers,  Next: 慣習,  Prev: Section Pl
      ウ構成をバッファローカル値として保存し、後で
      ‘magit-mode-bury-buffer’で復元できるようにします。
 
-     バッファが表示され、SWITCH-FUNCTION@を使用してそのバッファが選択さ
-     れます。それが‘nil’の場合、現在のバッファのメジャーモードが
+     バッファが表示され、SWITCH-FUNCTIONを使用してそのバッファが選択され
+     ます。それが‘nil’の場合、現在のバッファのメジャーモードが
      ‘magit-mode’から派生していれば、‘pop-to-buffer’が使用されます。それ
      以外の場合は、‘switch-to-buffer’が使用されます。
 
@@ -9758,7 +9756,7 @@ A.1 FAQ - How to ...?
 * How to show diffs for gpg-encrypted files?::
 * How does branching and pushing work?::
 * Magitをediff-version-control-packageとして使用できますか？::
-* VC@を無効にする必要がありますか？::
+* VCを無効にする必要がありますか？::
 
 
 File: magit.ja.info,  Node: Magitの発音は？,  Next: How to show git's output?,  Up: FAQ - How to ...?
@@ -9843,7 +9841,7 @@ A.1.5 How does branching and pushing work?
 (<http://emacsair.me/2016/01/18/magit-2.4>)
 
 
-File: magit.ja.info,  Node: Magitをediff-version-control-packageとして使用できますか？,  Next: VC@を無効にする必要がありますか？,  Prev: How does branching and pushing work?,  Up: FAQ - How to ...?
+File: magit.ja.info,  Node: Magitをediff-version-control-packageとして使用できますか？,  Next: VCを無効にする必要がありますか？,  Prev: How does branching and pushing work?,  Up: FAQ - How to ...?
 
 A.1.6 Magitを‘ediff-version-control-package’として使用できますか？
 ------------------------------------------------------------------
@@ -9877,18 +9875,18 @@ A.1.6 Magitを‘ediff-version-control-package’として使用できますか�
 ‘magit-ediff-resolve’を提供します。
 
 
-File: magit.ja.info,  Node: VC@を無効にする必要がありますか？,  Prev: Magitをediff-version-control-packageとして使用できますか？,  Up: FAQ - How to ...?
+File: magit.ja.info,  Node: VCを無効にする必要がありますか？,  Prev: Magitをediff-version-control-packageとして使用できますか？,  Up: FAQ - How to ...?
 
-A.1.7 VC@を無効にする必要がありますか？
----------------------------------------
+A.1.7 VCを無効にする必要がありますか？
+--------------------------------------
 
 あなたはVC(組み込みのバージョン管理インターフェイス)を使用しない場合、あ
 なたは特に、VCを使用することを推奨していたため、無効にしたくなるかもしれ
 ません。
 
-我々は、あなたがVC@を無効にすることはお勧めしません。これを行うと、有効
-になっているVCに依存する便利なサードパーティパッケージ(‘diff-hl’など)が
-破損します。
+我々は、あなたがVCを無効にすることはお勧めしません。これを行うと、有効に
+なっているVCに依存する便利なサードパーティパッケージ(‘diff-hl’など)が破
+損します。
 
 あなたがとにかくVCを無効にすることを選択した場合は、
 ‘vc-handled-backends’の値を変更することで無効にできます。
@@ -10042,7 +10040,7 @@ File: magit.ja.info,  Node: 同じ名前を共有するブランチとタグは�
 A.2.9 同じ名前を共有するブランチとタグは何かを壊します
 ------------------------------------------------------
 
-または、より一般的には、あいまいなrefnameはSOMETHING@を壊します。
+または、より一般的には、あいまいなrefnameはSOMETHINGを壊します。
 
 Magitは、refが"refs/heads/"と"refs/tags/"と"refs/remotes/"名前空間全体で
 明確に名前が付けられていることを前提としています(つまり、これらのプレフ
@@ -11718,173 +11716,173 @@ Appendix F Variable Index
 
 Tag Table:
 Node: Top782
-Node: Introduction7594
-Node: Installation14163
-Node: Installing from Melpa14586
-Node: Installing from the Git Repository15939
-Node: Post-Installation Tasks19390
-Node: Getting Started21069
-Node: Interface Concepts28760
-Node: Modes and Buffers29200
-Node: バッファの切り替え31688
-Node: バッファの名付け37881
-Node: Quitting Windows42020
-Node: Automatic Refreshing of Magit Buffers44431
-Node: Automatic Saving of File-Visiting Buffers48348
-Node: Automatic Reverting of File-Visiting Buffers49848
-Node: Risk of Reverting Automatically56495
-Node: Sections59631
-Node: Section Movement60890
-Node: Section Visibility67003
-Node: Section Hooks75107
-Node: Section Types and Values78498
-Node: Section Options80250
-Node: トランジェントコマンド80836
-Node: トランジェントでの引数とバッファ変数82716
-Node: Completion Confirmation(確認補完)とSelection(選択範囲)92389
-Node: アクションの確認92920
-Node: 補完と確認103413
-Node: 選択範囲107647
-Node: ハンク内部リージョン111536
-Node: 補完フレームワークのサポート112999
-Node: 追加の補完オプション119028
-Node: Running Git119794
-Node: Viewing Git Output120100
-Node: Git Process Status121579
-Node: Gitを手動で実行122784
-Node: Git実行ファイル126189
-Node: Global Git Arguments130295
-Node: Inspecting131379
-Node: Status Buffer132630
-Node: Status Sections139159
-Node: Status Header Sections146739
-Node: Status Module Sections150058
-Node: Status Options153466
-Node: Repository List155356
-Node: Logging159503
-Node: Refreshing Logs163086
-Node: Log Buffer165120
-Node: Log Margin170987
-Node: Select from Log175200
-Node: Reflog178076
-Node: Cherries180147
-Node: Diffing182605
-Node: Refreshing Diffs186949
-Node: Commands Available in Diffs191716
-Node: Diff Options195075
-Node: Revision Buffer202116
-Node: Ediffing206424
-Node: References Buffer211859
-Node: References Sections225408
-Node: Bisecting226570
-Node: Visiting Files and Blobs229920
-Node: General-Purpose Visit Commands230528
-Node: Visiting Files and Blobs from a Diff231836
-Node: Blaming236690
-Node: Manipulating245279
-Node: Creating Repository245624
-Node: Cloning Repository246363
-Node: Staging and Unstaging253846
-Node: Staging from File-Visiting Buffers259797
-Node: Applying261614
-Node: Committing264542
-Node: コミット開始265312
-Node: コミットメッセージ編集270943
-Node: Using the Revision Stack274578
-Node: Commit Pseudo Headers278483
-Node: Commit Mode and Hooks280270
-Node: Commit Message Conventions284216
-Node: Branching286925
-Node: The Two Remotes287154
-Node: Branch Commands290928
-Node: Branch Git Variables308826
-Node: Auxiliary Branch Commands315793
-Node: Merging317252
-Node: Resolving Conflicts322765
-Node: Rebasing329082
-Node: Editing Rebase Sequences335952
-Node: Information About In-Progress Rebase341650
-Ref: Information About In-Progress Rebase-Footnote-1352827
-Node: Cherry Picking353588
-Node: Reverting359667
-Node: Resetting361950
-Node: Stashing364663
-Node: Transferring371463
-Node: Remotes371688
-Node: Remote Commands371843
-Node: Remote Git Variables377438
-Node: Fetching379109
-Node: Pulling382886
-Node: Pushing384492
-Node: Plain Patches390731
-Node: Maildir Patches393082
-Node: Miscellaneous395323
-Node: Tagging395640
-Node: Notes398447
-Node: Submodules401665
-Node: Listing Submodules401930
-Node: submodule用トランジェントコマンド403635
-Node: Subtree407311
-Node: Worktree410586
-Node: Common Commands412267
-Node: Wip Modes415523
-Node: Wip Graph422195
-Node: Legacy Wip Modes425074
-Node: Commands for Buffers Visiting Files428680
-Node: Minor Mode for Buffers Visiting Blobs436730
-Node: Customizing437751
-Node: Per-Repository Configuration439701
-Node: 基本設定442397
-Node: Safety442781
-Node: Performance445180
-Ref: Log Performance449461
-Ref: Diff Performance451220
-Ref: Refs Buffer Performance452917
-Ref: Committing Performance453703
-Node: Microsoft Windows Performance454847
-Node: MacOS Performance456350
-Ref: MacOS Performance-Footnote-1457223
-Node: Default Bindings457362
-Node: 配管コマンド(Plumbing)460303
-Node: Calling Git461357
-Node: Getting a Value from Git463318
-Node: Calling Git for Effect467997
-Node: Section Plumbing476125
-Node: Creating Sections476376
-Node: Section Selection481698
-Node: Matching Sections483896
-Node: Refreshing Buffers491719
-Node: 慣習495686
-Node: Theming Faces495895
-Node: FAQ506568
-Node: FAQ - How to ...?507093
-Node: Magitの発音は？507553
-Node: How to show git's output?508586
-Node: How to install the gitman info manual?509614
-Node: How to show diffs for gpg-encrypted files?510895
-Node: How does branching and pushing work?511598
-Node: Magitをediff-version-control-packageとして使用できますか？512005
-Node: VC@を無効にする必要がありますか？514591
-Node: FAQ - Issues and Errors515489
-Node: Magit is slow516841
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517081
-Node: コミットに問題があります518113
-Node: MS WindowsではMagitでpushできません518674
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません519375
-Node: ファイルを展開して差分を表示するとファイルが消えます520577
-Node: COMMIT_EDITMSGバッファのpointが間違っています521364
-Node: モード行の情報が常に最新ではない522739
-Node: 同じ名前を共有するブランチとタグは何かを壊します523911
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525065
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません526203
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります529260
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません530489
-Node: 私はポップアップのデフォルトを保存できなくなりました531668
-Node: Debugging Tools533075
-Node: Keystroke Index535913
-Node: Command Index570582
-Node: Function Index608782
-Node: Variable Index625871
+Node: Introduction7593
+Node: Installation14162
+Node: Installing from Melpa14585
+Node: Installing from the Git Repository15938
+Node: Post-Installation Tasks19389
+Node: Getting Started21068
+Node: Interface Concepts28759
+Node: Modes and Buffers29199
+Node: バッファの切り替え31687
+Node: バッファの名付け37880
+Node: Quitting Windows42019
+Node: Automatic Refreshing of Magit Buffers44430
+Node: Automatic Saving of File-Visiting Buffers48347
+Node: Automatic Reverting of File-Visiting Buffers49847
+Node: Risk of Reverting Automatically56494
+Node: Sections59630
+Node: Section Movement60896
+Node: Section Visibility67009
+Node: Section Hooks75111
+Node: Section Types and Values78491
+Node: Section Options80243
+Node: トランジェントコマンド80829
+Node: トランジェントでの引数とバッファ変数82709
+Node: Completion Confirmation(確認補完)とSelection(選択範囲)92382
+Node: アクションの確認92913
+Node: 補完と確認103406
+Node: 選択範囲107640
+Node: ハンク内部リージョン111529
+Node: 補完フレームワークのサポート112992
+Node: 追加の補完オプション119020
+Node: Running Git119786
+Node: Viewing Git Output120092
+Node: Git Process Status121571
+Node: Gitを手動で実行122776
+Node: Git実行ファイル126181
+Node: Global Git Arguments130287
+Node: Inspecting131371
+Node: Status Buffer132622
+Node: Status Sections139151
+Node: Status Header Sections146731
+Node: Status Module Sections150050
+Node: Status Options153458
+Node: Repository List155348
+Node: Logging159495
+Node: Refreshing Logs163078
+Node: Log Buffer165112
+Node: Log Margin170979
+Node: Select from Log175192
+Node: Reflog178068
+Node: Cherries180139
+Node: Diffing182597
+Node: Refreshing Diffs186941
+Node: Commands Available in Diffs191708
+Node: Diff Options195067
+Node: Revision Buffer202108
+Node: Ediffing206416
+Node: References Buffer211851
+Node: References Sections225400
+Node: Bisecting226562
+Node: Visiting Files and Blobs229912
+Node: General-Purpose Visit Commands230520
+Node: Visiting Files and Blobs from a Diff231828
+Node: Blaming236682
+Node: Manipulating245271
+Node: Creating Repository245616
+Node: Cloning Repository246355
+Node: Staging and Unstaging253838
+Node: Staging from File-Visiting Buffers259789
+Node: Applying261606
+Node: Committing264534
+Node: コミット開始265304
+Node: コミットメッセージ編集270935
+Node: Using the Revision Stack274570
+Node: Commit Pseudo Headers278473
+Node: Commit Mode and Hooks280260
+Node: Commit Message Conventions284206
+Node: Branching286915
+Node: The Two Remotes287144
+Node: Branch Commands290918
+Node: Branch Git Variables308814
+Node: Auxiliary Branch Commands315778
+Node: Merging317237
+Node: Resolving Conflicts322750
+Node: Rebasing329067
+Node: Editing Rebase Sequences335936
+Node: Information About In-Progress Rebase341634
+Ref: Information About In-Progress Rebase-Footnote-1352811
+Node: Cherry Picking353572
+Node: Reverting359651
+Node: Resetting361934
+Node: Stashing364647
+Node: Transferring371444
+Node: Remotes371669
+Node: Remote Commands371824
+Node: Remote Git Variables377419
+Node: Fetching379086
+Node: Pulling382863
+Node: Pushing384469
+Node: Plain Patches390708
+Node: Maildir Patches393059
+Node: Miscellaneous395300
+Node: Tagging395617
+Node: Notes398423
+Node: Submodules401641
+Node: Listing Submodules401906
+Node: submodule用トランジェントコマンド403611
+Node: Subtree407286
+Node: Worktree410557
+Node: Common Commands412235
+Node: Wip Modes415491
+Node: Wip Graph422163
+Node: Legacy Wip Modes425042
+Node: Commands for Buffers Visiting Files428648
+Node: Minor Mode for Buffers Visiting Blobs436698
+Node: Customizing437719
+Node: Per-Repository Configuration439669
+Node: 基本設定442365
+Node: Safety442749
+Node: Performance445148
+Ref: Log Performance449427
+Ref: Diff Performance451186
+Ref: Refs Buffer Performance452883
+Ref: Committing Performance453669
+Node: Microsoft Windows Performance454813
+Node: MacOS Performance456316
+Ref: MacOS Performance-Footnote-1457188
+Node: Default Bindings457327
+Node: 配管コマンド(Plumbing)460268
+Node: Calling Git461322
+Node: Getting a Value from Git463283
+Node: Calling Git for Effect467962
+Node: Section Plumbing476088
+Node: Creating Sections476339
+Node: Section Selection481660
+Node: Matching Sections483858
+Node: Refreshing Buffers491677
+Node: 慣習495641
+Node: Theming Faces495850
+Node: FAQ506523
+Node: FAQ - How to ...?507048
+Node: Magitの発音は？507507
+Node: How to show git's output?508540
+Node: How to install the gitman info manual?509568
+Node: How to show diffs for gpg-encrypted files?510849
+Node: How does branching and pushing work?511552
+Node: Magitをediff-version-control-packageとして使用できますか？511959
+Node: VCを無効にする必要がありますか？514544
+Node: FAQ - Issues and Errors515438
+Node: Magit is slow516790
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517030
+Node: コミットに問題があります518062
+Node: MS WindowsではMagitでpushできません518623
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません519324
+Node: ファイルを展開して差分を表示するとファイルが消えます520526
+Node: COMMIT_EDITMSGバッファのpointが間違っています521313
+Node: モード行の情報が常に最新ではない522688
+Node: 同じ名前を共有するブランチとタグは何かを壊します523860
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525013
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません526151
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります529208
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません530437
+Node: 私はポップアップのデフォルトを保存できなくなりました531616
+Node: Debugging Tools533023
+Node: Keystroke Index535861
+Node: Command Index570530
+Node: Function Index608730
+Node: Variable Index625819
 
 End Tag Table
 
