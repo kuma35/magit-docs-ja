@@ -402,7 +402,7 @@ FAQ - Issues and Errors
 * コミットに問題があります::
 * MS WindowsではMagitでpushできません::
 * 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません.
-* ファイルを展開して差分を表示するとファイルが消えます::
+* ファイルを展開してdiffを表示するとファイルが消えます::
 * COMMIT_EDITMSGバッファのpointが間違っています::
 * モード行の情報が常に最新ではない::
 * 同じ名前を共有するブランチとタグは何かを壊します::
@@ -546,8 +546,8 @@ MagitはMelpaおよびMelpa-Stableから入手できます。まだEmacsのパ�
 
      M-x package-install RET magit RET
 
-なお、インストール後にしなければならない作業があります。こちらを参照下さ
-い(*note Post-Installation Tasks::)。
+なお、インストール後にしなければならない作業があります。こちらを参照して
+下さい(*note Post-Installation Tasks::)。
 
 
 File: magit.ja.info,  Node: Installing from the Git Repository,  Next: Post-Installation Tasks,  Prev: Installing from Melpa,  Up: Installation
@@ -620,8 +620,8 @@ Magitを更新するには、以下を使用します:
 
 使用可能なすべてのターゲットを表示するには、‘make help’を使用します。
 
-なお、インストール後にしなければならない作業があります。こちらを参照下さ
-い(*note Post-Installation Tasks::)。
+なお、インストール後にしなければならない作業があります。こちらを参照して
+下さい(*note Post-Installation Tasks::)。
 
 
 File: magit.ja.info,  Node: Post-Installation Tasks,  Prev: Installing from the Git Repository,  Up: Installation
@@ -650,7 +650,8 @@ Magitを再起動する前にEmacsを再起動することをお勧めします�
 
 あなたがMagitを完全に初めて触る場合は→(*note Getting Started::)
 
-問題が発生した場合→*note FAQ:: こちらもどうぞ→*note Debugging Tools::
+問題が発生した場合は(*note FAQ::)や(*note Debugging Tools::)を参照して下
+さい。
 
 そして最後になりましたが、私がMagitに取り組み続けることができるように、
 寄付を検討してください。<https://magit.vc/donations>を参照してください。
@@ -725,7 +726,7 @@ Magitは、完全なファイルだけでなく、個々のハンクをステー
 れます。
 
 これで、2つの新しいバッファが表示されます。1つはコミットメッセージを書き
-込むためのもので、もう1つはコミットしようとしている変更との差分を示しま
+込むためのもので、もう1つはコミットしようとしている変更とのdiffを示しま
 す。メッセージを書き込んでから、‘C-c C-c’と入力して、実際にコミットを作
 成します。
 
@@ -782,7 +783,7 @@ File: magit.ja.info,  Node: Modes and Buffers,  Next: Sections,  Up: Interface C
 
 Magitはいくつかのメジャーモードを提供します。 これらのモードのそれぞれに
 ついて、通常、リポジトリごとに1つのバッファのみが存在します。個別のモー
-ドとそのためのバッファは、コミット、差分、ログ、およびその他のいくつかの
+ドとそのためのバッファは、コミット、diff、ログ、およびその他のいくつかの
 もののために存在します。
 
 これらの特別な目的のバッファに加えて、*ステータスバッファ*と呼ばれる概要
@@ -863,7 +864,8 @@ File: magit.ja.info,  Node: バッファの切り替え,  Next: バッファの�
      使用できます。その場合、代わりに‘display-buffer-alist’に追加して表
      示アクションを指定する必要があります。
 
-     表示アクションについては→*note (elisp)Choosing Window::
+     表示アクションについてはこちらを参照して下さい(*note
+     (elisp)Choosing Window::)。
 
  -- Function: magit-display-buffer-traditional buffer
 
@@ -1727,7 +1729,7 @@ File: magit.ja.info,  Node: トランジェントコマンド,  Next: Transient 
 は、パッケージ‘magit-popup’、さらに以前のバージョンではライブラリ
 ‘magit-key-mode’を使用していました。
 
-transientの文書は→*note (transient)Top::
+transientの文書はこちらを参照して下さい(*note (transient)Top::)。
 
 ‘C-c C-c’     (‘magit-dispatch’)
 
@@ -1754,9 +1756,9 @@ Magitのトランジェント(一時的)プレフィックス(接頭辞)コマ�
 ‘git’コマンドから帰って来ると、効果がなくなります。コミットを作成するコ
 マンドは、この良い例です。ユーザーがインフィックス引数を変更した場合、そ
 れはそれに続くサフィックス(接尾辞)コマンドの呼び出しにのみ影響します。同
-じトランジットプレフィックスコマンドが後で再度呼び出された場合、インフィ
-ックス引数は最初にデフォルト値にリセットされます。このデフォルト値は、現
-在のEmacsセッションに設定することも、永続的に保存することもできます
+じトランジェントプレフィックスコマンドが後で再度呼び出された場合、インフ
+ィックス引数は最初にデフォルト値にリセットされます。このデフォルト値は、
+現在のEmacsセッションに設定することも、永続的に保存することもできます
 (*note (transient)Saving Values::)。 ‘M-p’と‘M-n’を使用して、以前に使用
 した引数のセットを循環させることもできます(*note (transient)Using
 History::)。
@@ -1784,9 +1786,9 @@ History::)。
 意してください。(一方、‘d’と‘l’は、diffまたはログの表示方法を変更するこ
 とを*目的*としています。diffまたはログの*表示方法*を同時に変更することも
 できますが、後者のみを実行する場合は、refreshのバリエーションを使用する
-必要があります。）これらのセカンダリdiffおよびlogトランジットプレフィッ
-クスコマンドは、現在のバッファで使用される引数の*変更*に関するものである
-ため、常に、そのバッファで現在有効な引数のセットから開始します。
+必要があります。）これらのセカンダリdiffおよびlogトランジェントプレフィ
+ックスコマンドは、現在のバッファで使用される引数の*変更*に関するものであ
+るため、常に、そのバッファで現在有効な引数のセットから開始します。
 
 一部のコマンドは、トランジェントプレフィックスコマンドのサフィックスコマ
 ンドとして呼び出すこともできますが、通常は直接呼び出されます。その典型は
@@ -1797,7 +1799,7 @@ History::)。
 このようなコマンドを直接呼び出す場合は、デフォルトの引数を使用するのでは
 なく、それぞれのバッファローカル値で指定された引数を再利用することが重要
 です。 logで‘RET’を押して別のバッファ内のポイントでcommitを表示し、次に
-‘D’を使用してそのバッファでの差分の表示方法を変更するとします。次に、別
+‘D’を使用してそのバッファでのdiffの表示方法を変更するとします。次に、別
 のcommitで‘RET’を押して、代わりにdiff引数がデフォルトにリセットされるこ
 とを示します。クールじゃありません。したがって、Magitはデフォルトではそ
 れを行いません。
@@ -1919,7 +1921,7 @@ Magitに質問を少なくするように指示する別の方法について説
         • 変更の適用(applying changes):
 
              • ‘discard’ 1つ以上の変更(つまり、ファイルのハンクまたは完
-               全な差分)を破棄すると、明らかにその変更が失われます。
+               全なdiff)を破棄すると、明らかにその変更が失われます。
 
              • ‘reverse’ 1つ以上の変更をrevertするには、通常、
                reversionのrevertによって元通り(undo)にすることができます
@@ -2396,10 +2398,10 @@ MagitはGitと対話するための多くのEmacsコマンドを提供します�
 
 ‘!’     (‘magit-run’)
 
-     このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従
-     うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマン
-     ドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッ
-     ファ(temporary buffer)に表示します。
+     このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに
+     従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマ
+     ンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バ
+     ッファ(temporary buffer)に表示します。
 
 ‘! !’     (‘magit-git-command-topdir’)
 
@@ -2436,7 +2438,7 @@ MagitはGitと対話するための多くのEmacsコマンドを提供します�
      シェルコマンドを読み取るときに上記のコマンドで使用されるプロンプト
      が、それが実行されるディレクトリを表示しているかどうか。
 
-これらのサフィックスコマンドは、外部GUIツールを起動します。
+以下のサフィックスコマンドは、外部GUIツールを起動します。
 
 ‘! k’     (‘magit-run-gitk’)
 
@@ -2468,12 +2470,12 @@ Windowsバージョン)または‘darwin’(macOS)の場合、‘magit-git-exec
 Magitがロードされるときに絶対パスに設定されます。
 
 Windowsでは、絶対パスを使用する必要があります。Gitには実際の‘git’バイナ
-リ用のラッパースクリプトがいくつか付属しており、これらも‘$PATH’に配置さ
-れ、バイナリの代わりにこれらのラッパーの1つを使用すると パフォーマンスが
-ひどく低下します。一部のmacOSユーザーの場合、実行可能ファイルの名前だけ
-を使用するとパフォーマンスが低下するため、このプラットフォームでもそうい
-う実行を回避します。 他のプラットフォームでは、名前だけを使用しても問題
-なく機能するようです。
+リ用のラッパースクリプトがいくつか付属していて、これらも‘$PATH’に配置さ
+れており、バイナリの代わりにこれらのラッパーの1つを使用すると、パフォー
+マンスがひどく低下します。一部のmacOSユーザーの場合、実行可能ファイルの
+名前だけを使用するとパフォーマンスが低下するため、そのプラットフォームで
+もそういう実行を回避します。他のプラットフォームでは、名前だけを使用して
+も問題なく機能するようです。
 
 Trampを介してリモートマシンで‘git’を実行するときに絶対パスを使用すると、
 ローカルマシンに適した絶対パスを使用するのが問題になるため、リモートマシ
@@ -2554,9 +2556,9 @@ Magitが提供する機能は、既存のデータの検査、既存のデータ
 が続きます。
 
 もちろん、他の区別も意味があります。Gitでの磁器コマンドと配管コマンドの
-区別。これは、ほとんどの場合、Emacsでのインタラクティブコマンドと非イン
-タラクティブ機能の区別に相当します。前述のすべての節は、主に磁器に関係し
-ています。Magitの配管コマンド層については後で説明します。
+区別です。これは、ほとんどの場合、Emacsでのインタラクティブコマンドと非
+インタラクティブ機能の区別に相当します。前述のすべての節は、主に磁器に関
+係しています。Magitの配管コマンドレイヤーについては後で説明します。
 
 * Menu:
 
@@ -2576,9 +2578,9 @@ File: magit.ja.info,  Node: Status Buffer,  Next: Repository List,  Up: Inspecti
 5.1 Status Buffer
 =================
 
-他のMagitバッファ達では、例えば、1つの特定の差分または1つの特定のログや
+他のMagitバッファ達では、例えば、1つの特定のdiffまたは1つの特定のログや
 、ステータスバッファならばステージされた変更とステージされていない変更の
-差分、プッシュされていないコミットとプルされていないコミットのログ、スタ
+diff、プッシュされていないコミットとプルされていないコミットのログ、スタ
 ッシュと追跡されていないファイル(untracked files)のリスト、および現在の
 ブランチに関連する情報が含まれます。
 
@@ -2597,9 +2599,9 @@ File: magit.ja.info,  Node: Status Buffer,  Next: Repository List,  Up: Inspecti
      そのリポジトリのステータスを表示します。
 
      現在のディレクトリがGitリポジトリ内にない場合、このコマンドは、オプ
-     ション‘magit-repository-directories’に応じて、既存のリポジトリまた
-     は任意のディレクトリの入力を求め、その代わりに選択したリポジトリの
-     ステータスが表示されます。
+     ション‘magit-repository-directories’に応じて、代わりに既存のリポジ
+     トリまたは任意のディレクトリの入力を求め、選択したリポジトリのステ
+     ータスを表示します。
 
         • そのオプションで既存のリポジトリ達が指定されている場合、ユーザ
           ーはそれらの1つを選択するように求められます。
@@ -2661,9 +2663,9 @@ File: magit.ja.info,  Node: Status Buffer,  Next: Repository List,  Up: Inspecti
      これを行った後、バッファを再表示してすぐにリフレッシュする場合は、
      ‘C-x g’に続けて‘g’と入力します。
 
-     可能な代替コマンドは‘magit-display-repository-buffer’です。現在のリ
-     ポジトリに属する既存のMagitバッファの表示をサポートします。それはス
-     テータスバッファだけではありません。
+     可能な代替コマンドは‘magit-display-repository-buffer’です。ステータ
+     スバッファだけでなく、現在のリポジトリに属する既存のMagitバッファの
+     表示をサポートします。
 
  -- Command: ido-enter-magit-status
 
@@ -2700,8 +2702,8 @@ File: magit.ja.info,  Node: Status Sections,  Next: Status Header Sections,  Up:
 ---------------------
 
 ステータスバッファの内容は、フック‘magit-status-sections-hook’を使用して
-制御されます。このようなフックとそれらをカスタマイズする方法については
-→*note Section Hooks::
+制御されます。このようなフックとそれらをカスタマイズする方法についてはこ
+ちらを参照して下さい(*note Section Hooks::)。
 
  -- User Option: magit-status-sections-hook
 
@@ -2856,8 +2858,8 @@ File: magit.ja.info,  Node: Status Sections,  Next: Status Header Sections,  Up:
      はアップストリームコミットと共有されていません)の前に"+"を付け、他
      のすべてのコミットには"-"を付けます。
 
-ここで使用できるその他のセクションインサーターについては→*note
-References Buffer::
+ここで使用できるその他のセクションインサーターについてはこちらを参照して
+下さい(*note References Buffer::)。
 
 
 File: magit.ja.info,  Node: Status Header Sections,  Next: Status Module Sections,  Prev: Status Sections,  Up: Status Buffer
@@ -3175,8 +3177,8 @@ Transient Arguments and Buffer Variables::)。
 ‘--author-date-order’または‘--date-order’または‘--topo-order’のいずれか
 に変換されます。
 
-ログ用トランジェントコマンドには、いくつかのreflogコマンドもあります
-→*note Reflog::
+ログ用トランジェントコマンドには、いくつかのreflogコマンドもあります。こ
+ちらを参照して下さい(*note Reflog::)。
 
 ‘l’     (‘magit-log’)
 
@@ -3217,8 +3219,8 @@ Transient Arguments and Buffer Variables::)。
      すべての参照(reference)と‘HEAD’のログを表示します。
 
 現在のバッファでアクセスされているファイルまたはblobのログを表示する2つ
-の追加コマンドが存在します→*note Commands for Buffers Visiting Files:: コ
-マンド‘magit-cherry’もログを表示します→*note Cherries::
+の追加コマンドが存在します(*note Commands for Buffers Visiting Files::)。
+コマンド‘magit-cherry’もログを表示します(*note Cherries::)。
 
 * Menu:
 
@@ -3388,7 +3390,8 @@ Magitはデフォルトではコミットごとに1行しか使用しないた�
 ットオブジェクトの有効性を色分けして示します。各‘magit-signature-*’を参
 照して下さい。
 
-‘magit-log-margin’の説明については→*note Log Margin::
+‘magit-log-margin’の説明についてはこちらを参照して下さい(*note Log
+Margin::)。
 
 
 File: magit.ja.info,  Node: Log Margin,  Next: Select from Log,  Prev: Log Buffer,  Up: Logging
@@ -3528,8 +3531,8 @@ File: magit.ja.info,  Node: Reflog,  Next: Cherries,  Prev: Select from Log,  Up
 
 こちらもご覧下さい *note (gitman)git-reflog::
 
-これらのreflogコマンドは、ログ用トランジェントコマンド(transient)ら使用
-できます→*note Logging::
+これらのreflogコマンドは、ログ用トランジェントコマンドから使用できます。
+こちらを参照して下さい(*note Logging::)。
 
 ‘l r’     (‘magit-reflog-current’)
 
@@ -3695,10 +3698,11 @@ Transient Arguments and Buffer Variables::)。
 
 ‘d t’     (‘magit-stash-show’)
 
-     バッファ内のstashのすべての差分を表示します。
+     バッファ内のstashのすべてのdiffを表示します。
 
-現在のバッファでアクセスされているファイルまたはblobの差分を表示する2つ
-の追加コマンドが存在します→*note Commands for Buffers Visiting Files::
+現在のバッファでアクセスされているファイルまたはblobのdiffを表示する2つ
+の追加コマンドが存在します。こちらを参照して下さい(*note Commands for
+Buffers Visiting Files::)。
 
 * Menu:
 
@@ -3750,7 +3754,7 @@ File: magit.ja.info,  Node: Refreshing Diffs,  Next: Commands Available in Diffs
 
 ‘D r’     (‘magit-diff-switch-range-type’)
 
-     このコマンドは、差分範囲タイプを"revA..revB"から"revB...revA"に、ま
+     このコマンドは、diff範囲タイプを"revA..revB"から"revB...revA"に、ま
      たはその逆に変換します。
 
 ‘D f’     (‘magit-diff-flip-revs’)
@@ -3817,8 +3821,8 @@ File: magit.ja.info,  Node: Commands Available in Diffs,  Next: Diff Options,  P
 れているファイルの適切なバージョンにアクセスします。 同様に、
 ‘magit-diff-visit-worktree-file’および関連するコマンドは、その時点での
 diffが含まれているファイルのワークツリーバージョンにアクセスします。詳細
-とキーバインディングについては→*note Visiting Files and Blobs from a
-Diff::
+とキーバインディングについてはこちらを参照して下さい(*note Visiting
+Files and Blobs from a Diff::)。
 
 ‘C-c C-t’     (‘magit-diff-trace-definition’)
 
@@ -3922,7 +3926,7 @@ File: magit.ja.info,  Node: Diff Options,  Next: Revision Buffer,  Prev: Command
 
      ‘magit-diff-highlight-trailing’、
      ‘magit-diff-highlight-indentation’を参照してください。 シンボル
-     ‘t’はすべての差分を意味し、‘status’はステータスバッファ内のみを意味
+     ‘t’はすべてのdiffを意味し、‘status’はステータスバッファ内のみを意味
      し、nilはどこにも存在しないことを意味します。
 
         • ‘nil’ 空白エラーを強調表示(highlight)しません。
@@ -3984,8 +3988,8 @@ File: magit.ja.info,  Node: Diff Options,  Next: Revision Buffer,  Prev: Command
      ‘magit-diff-highlight-hunk-region-using-underline’は、前後に区切り
      の水平線を配置することで、regionを強調します。これらの機能には両方
      とも、Emacsのディスプレイエンジンの制限のために修正できない欠陥
-     (glitches)があります。詳細については
-     →<https://github.com/magit/magit/issues/2758> ff
+     (glitches)があります。詳細についてはこちらを参照して下さい
+     <https://github.com/magit/magit/issues/2758> ff
 
      境界線を強調する代わりに、またはそれに加えて、境界を強調するために
      、‘magit-diff-highlight-hunk-region-using-face’を使用して、テキスト
@@ -4081,8 +4085,8 @@ File: magit.ja.info,  Node: Revision Buffer,  Prev: Diff Options,  Up: Diffing
      グからのコミットの表示はログのファイルフィルターを無視します。そう
      することで、名前変更イベントの前にコミット用のリビジョンバッファに
      空のdiffが表示されないようにします。このような場合、ログ用トランジ
-     ットコマンドの‘--patch’引数を使用して、ファイル制限されたdiff達をイ
-     ンラインで表示できます。
+     ェントコマンドの‘--patch’引数を使用して、ファイル制限されたdiff達を
+     インラインで表示できます。
 
      ‘--follow’がログ引数に存在する場合でもログのファイル制限を維持する
      には、このオプションを非nilに設定します。
@@ -4097,7 +4101,8 @@ File: magit.ja.info,  Node: Ediffing,  Next: References Buffer,  Prev: Diffing, 
 ============
 
 このセクションでは、MagitバッファからEdiffを入力する方法について説明しま
-す。 Ediff自体の使用方法については→*note (ediff)Top::
+す。 Ediff自体の使用方法についてはこちらを参照して下さい(*note
+(ediff)Top::)。
 
 ‘e’     (‘magit-ediff-dwim’)
 
@@ -4115,10 +4120,10 @@ File: magit.ja.info,  Node: Ediffing,  Next: References Buffer,  Prev: Diffing, 
 
 ‘E’     (‘magit-ediff’)
 
-     このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従
-     うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマン
-     ドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッ
-     ファ(temporary buffer)に表示します。
+     このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに
+     従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマ
+     ンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バ
+     ッファ(temporary buffer)に表示します。
 
 ‘E r’     (‘magit-ediff-compare’)
 
@@ -4439,7 +4444,7 @@ File: magit.ja.info,  Node: References Buffer,  Next: Bisecting,  Prev: Ediffing
 
         • ‘checkout-branch’
 
-          ポイントでローカルブランチをcheck outしてください。
+          ポイントでローカルブランチをチェックアウトしてください。
 
           このシンボルを追加する代わりに、他のバッファで行うように、"b b
           RET"を押すことを検討してください。
@@ -4454,11 +4459,12 @@ File: magit.ja.info,  Node: References Sections,  Up: References Buffer
 5.6.1 References Sections
 -------------------------
 
-referenceバッファの内容は、フック‘magit-refs-sections-hook’を使用して制
-御されます。このようなフックとそれらをカスタマイズする方法については
-→*note Section Hooks:: 以下の関数はすべてデフォルト値のメンバーです。こ
-のフックをカスタマイズすることは、ステータスバッファに使用されるそれぞれ
-のフックよりもはるかに意味がないことに注意してください。
+参照バッファの内容は、フック‘magit-refs-sections-hook’を使用して制御され
+ます。このようなフックとそれらをカスタマイズする方法については、こちらを
+参照して下さい(*note Section Hooks::)。以下の関数はすべてデフォルト値の
+メンバーです。注意: このフックをカスタマイズすることは、ステータスバッフ
+ァに使用されるそれぞれのフックよりもはるかに意味がないことに注意してくだ
+さい。
 
  -- User Option: magit-refs-sections-hook
 
@@ -4487,10 +4493,10 @@ File: magit.ja.info,  Node: Bisecting,  Next: Visiting Files and Blobs,  Prev: R
 
 ‘B’     (‘magit-bisect’)
 
-     このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従
-     うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマン
-     ドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッ
-     ファ(temporary buffer)に表示します。
+     このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに
+     従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマ
+     ンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バ
+     ッファ(temporary buffer)に表示します。
 
 bisectが進行中でない場合、トランジェントコマンド(transient)にはそれに従
 うサフィックスコマンドがあります。
@@ -4943,7 +4949,8 @@ clone’を直接呼び出すことができます。
      ターゲットディレクトリがユーザーから読み取られます。
 
 以下のサフィックスコマンドはデフォルトで無効になっています。有効にする方
-法については→*note (transient)Enabling and Disabling Suffixes::
+法についてはこちらを参照して下さい(*note (transient)Enabling and
+Disabling Suffixes::)。
 
 ‘C d’     (‘magit-clone-shallow-since’)
 
@@ -5048,7 +5055,7 @@ File: magit.ja.info,  Node: Staging and Unstaging,  Next: Applying,  Prev: Cloni
 の適用バリエーション(apply variants)については、次の節で説明します。
 
 あなたはEdiffを使用してステージ(stage)およびステージ解除(unstage)するこ
-ともできます→*note Ediffing::
+ともできます。こちらを参照して下さい(*note Ediffing::)。
 
 ‘s’     (‘magit-stage’)
 
@@ -5743,10 +5750,10 @@ File: magit.ja.info,  Node: Branch Commands,  Next: Branch Git Variables,  Prev:
 
 ‘b’     (‘magit-branch’)
 
-     このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従
-     うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマン
-     ドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッ
-     ファ(temporary buffer)に表示します。
+     このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに
+     従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマ
+     ンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バ
+     ッファ(temporary buffer)に表示します。
 
      デフォルトでは、ブランチ関連のGit変数の値を結び付けて表示し、それら
      の値を変更することもできます。
@@ -5780,7 +5787,7 @@ File: magit.ja.info,  Node: Branch Commands,  Next: Branch Git Variables,  Prev:
      マンドを呼び出すことは役に立ちません。その場合、このコマンドはブラ
      ンチの入力を求めます。
 
-変数の説明についてはこちらを参照下さい→*note Branch Git Variables::
+変数の説明についてはこちらを参照して下さい(*note Branch Git Variables::)
 
 ‘b b’     (‘magit-checkout’)
 
@@ -6035,7 +6042,8 @@ File: magit.ja.info,  Node: Branch Git Variables,  Next: Auxiliary Branch Comman
 
 これらの変数は、トランジェントプレフィックスコマンド
 ‘magit-branch-configure’から設定できます。デフォルトでは、
-‘magit-branch’から設定することもできます→*note Branch Commands::
+‘magit-branch’から設定することもできます。こちらを参照して下さい(*note
+Branch Commands::)
 
  -- Variable: branch.NAME.merge
 
@@ -6383,8 +6391,9 @@ Smergeに指示します。‘C-c ^ m’(‘smerge-keep-mine’)を使用して�
 す。
 
 Ediffは他の目的にも使用できます。MagitからEdiffに入る方法の詳細について
-は→*note Ediffing:: Ediffの使用方法の説明は、このマニュアルの範囲を超え
-ています。代わりに→*note (ediff)Top::
+はこちらを参照して下さい(*note Ediffing::)。 Ediffの使用方法の説明は、こ
+のマニュアルの範囲を超えています。代わりにこちらを参照して下さい(*note
+(ediff)Top::)。
 
 SmergeとEdiffのどちらを使用すべきかわからない場合は、前者を使用してくだ
 さい。理解して使用する方がはるかに簡単であり、本当に複雑な競合を除いて、
@@ -6414,10 +6423,11 @@ File: magit.ja.info,  Node: Rebasing,  Next: Cherry Picking,  Prev: Resolving Co
 、途中で中断するように指示したか、競合が原因でコミットの適用が失敗したた
 めに中断する可能性があります。その場合、ステータスバッファには、ログセク
 ションと同様のセクションで進行中のリベースシーケンスに関する情報が表示さ
-れます→*note Information About In-Progress Rebase::
+れます。こちらを参照して下さい(*note Information About In-Progress
+Rebase::)。
 
-アップストリームとプッシュリモートの詳細については→*note The Two
-Remotes::
+アップストリームとプッシュリモートの詳細についてはこちらを参照して下さい
+(*note The Two Remotes::)。
 
 ‘r p’     (‘magit-rebase-onto-pushremote’)
 
@@ -7141,7 +7151,7 @@ File: magit.ja.info,  Node: Stashing,  Prev: Resetting,  Up: Manipulating
 
 ‘z v’     (‘magit-stash-show’)
 
-     バッファ内のstashのすべての差分を表示します。
+     バッファ内のstashのすべてのdiffを表示します。
 
 ‘z b’     (‘magit-stash-branch’)
 
@@ -7234,10 +7244,10 @@ File: magit.ja.info,  Node: Remote Commands,  Next: Remote Git Variables,  Up: R
 
 ‘M’     (‘magit-remote’)
 
-     このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従
-     うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマン
-     ドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッ
-     ファ(temporary buffer)に表示します。
+     このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに
+     従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマ
+     ンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バ
+     ッファ(temporary buffer)に表示します。
 
      デフォルトでは、リモート関連のGit変数の値を結び付けて表示し、それら
      の値を変更することもできます。
@@ -7270,7 +7280,7 @@ File: magit.ja.info,  Node: Remote Commands,  Next: Remote Git Variables,  Up: R
      コマンドを呼び出すことは意味がありません。その場合、このコマンドは
      リモートの入力を求めます。
 
-変数についてはこちらの説明をご覧ください→*note Remote Git Variables::
+変数についてはこちらの説明をご覧ください(*note Remote Git Variables::)。
 
 ‘M a’     (‘magit-remote-add’)
 
@@ -7334,7 +7344,8 @@ File: magit.ja.info,  Node: Remote Git Variables,  Prev: Remote Commands,  Up: R
 
 これらの変数達は、トランジェントプレフィックスコマンド
 ‘magit-remote-configure’から設定できます。デフォルトでは、
-‘magit-remote’から設定することもできます→*note Remote Commands::
+‘magit-remote’から設定することもできます。こちらを参照して下さい(*note
+Remote Commands::)。
 
  -- Variable: remote.NAME.url
 
@@ -7371,7 +7382,7 @@ File: magit.ja.info,  Node: Fetching,  Next: Pulling,  Prev: Remotes,  Up: Trans
 ============
 
 こちらもご覧下さい *note (gitman)git-fetch:: アップストリームとプッシュ
-リモートの詳細については→*note The Two Remotes::
+リモートの詳細についてはこちらを参照して下さい(*note The Two Remotes::)。
 
 ‘f’     (‘magit-fetch’)
 
@@ -7450,14 +7461,14 @@ File: magit.ja.info,  Node: Pulling,  Next: Pushing,  Prev: Fetching,  Up: Trans
 ===========
 
 こちらもご覧下さい *note (gitman)git-pull:: アップストリームとプッシュリ
-モートの詳細については→*note The Two Remotes::
+モートの詳細についてはこちらを参照して下さい(*note The Two Remotes::)。
 
 ‘F’     (‘magit-pull’)
 
-     このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従
-     うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマン
-     ドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッ
-     ファ(temporary buffer)に表示します。
+     このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに
+     従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマ
+     ンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バ
+     ッファ(temporary buffer)に表示します。
 
 ‘F p’     (‘magit-pull-from-pushremote’)
 
@@ -7486,7 +7497,7 @@ File: magit.ja.info,  Node: Pushing,  Next: Plain Patches,  Prev: Pulling,  Up: 
 ===========
 
 こちらもご覧下さい *note (gitman)git-push:: アップストリームとプッシュリ
-モートの詳細については→*note The Two Remotes::
+モートの詳細についてはこちらを参照して下さい(*note The Two Remotes::)。
 
 ‘P’     (‘magit-push’)
 
@@ -7632,7 +7643,7 @@ File: magit.ja.info,  Node: Plain Patches,  Next: Maildir Patches,  Prev: Pushin
 
 ‘W s’     (‘magit-patch-save’)
 
-     このコマンドは、currentの差分からパッチを作成します。
+     このコマンドは、currentのdiffからパッチを作成します。
 
      ‘magit-diff-mode’または‘magit-revision-mode’バッファ内では、‘C-x
      C-w’もこのコマンドに結び付けられています。
@@ -7669,9 +7680,9 @@ File: magit.ja.info,  Node: Maildir Patches,  Prev: Plain Patches,  Up: Transfer
 
 ‘w a’     (‘magit-patch-apply’)
 
-     このコマンドは、プレーンパッチを適用します。詳細はこちら→*note
-     Plain Patches:: このコマンドは、歴史的な理由から、‘magit-am’トラン
-     ジェントコマンドからのみ使用できます。
+     このコマンドは、プレーンパッチを適用します。詳細はこちらをご覧下さ
+     い(*note Plain Patches::)。 このコマンドは、歴史的な理由から、
+     ‘magit-am’トランジェントコマンドからのみ使用できます。
 
 "am"操作が進行中の場合、トランジェントコマンドには代わりのサフィックスコ
 マンドがあります。
@@ -8030,10 +8041,10 @@ File: magit.ja.info,  Node: Worktree,  Next: Common Commands,  Prev: Subtree,  U
 
 ‘%’     (‘magit-worktree’)
 
-     このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従
-     うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマン
-     ドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッ
-     ファ(temporary buffer)に表示します。
+     このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに
+     従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマ
+     ンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バ
+     ッファ(temporary buffer)に表示します。
 
 ‘% b’     (‘magit-worktree-checkout’)
 
@@ -8159,7 +8170,8 @@ refernceが使用されます。それは‘refs/wip/index/<branchref>’と
      歴史的な理由から、このモードは他の4つの‘magit-wip-*’モードの上に実
      装されています。これらのモードは、あなたが wip refsが更新されるタイ
      ミングをより細かく制御したい場合は、個別に使用することもできます。
-     しかし、それはお勧めできません→*note Legacy Wip Modes::
+     しかし、それはお勧めできません。こちらを参照して下さい(*note Legacy
+     Wip Modes::)。
 
 ブランチとそのwip refsのログを表示するには、コマンド‘magit-wip-log’と
 ‘magit-wip-log-current’を使用します。これらのコマンドを使用するときは、
@@ -8385,10 +8397,10 @@ Conventions::)
 
 ‘C-c M-g’     (‘magit-file-dispatch’)
 
-     このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従
-     うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマン
-     ドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッ
-     ファ(temporary buffer)に表示します。
+     このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに
+     従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマ
+     ンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バ
+     ッファ(temporary buffer)に表示します。
 
      ファイルにアクセスしないバッファで呼び出されると、通常の
      ‘magit-dispatch’にフォールバックします。
@@ -8430,7 +8442,7 @@ Conventions::)
  -- User Option: magit-diff-buffer-file-locked
 
      このオプションは、‘magit-diff-buffer-file’が専用のバッファを使用す
-     るかどうかを制御します。こちらを参照下さい(*note Modes and
+     るかどうかを制御します。こちらを参照して下さい(*note Modes and
      Buffers::)。
 
 ‘C-c M-g L’     (‘magit-log’)
@@ -8472,7 +8484,7 @@ Conventions::)
 
 ‘magit-blame’サブトランジェントコマンドに加えて、ディスパッチトランジェ
 ントコマンドはいくつかのblameサフィックスコマンドを直接結び付けます。こ
-れらのコマンドとバインディングについては、こちらを参照下さい(*note
+れらのコマンドとバインディングについては、こちらを参照して下さい(*note
 Blaming::)。
 
 ‘C-c M-g e’     (‘magit-edit-line-commit’)
@@ -8590,7 +8602,7 @@ Magitは、Git変数とEmacsオプションの両方を使用して、リポジ�
 。参照: *note (gitman)git-config::
 
 同様に、Emacsオプションは、‘/path/to/repo/.dir-locals.el’を編集すること
-によってあるリポジトリのみに設定できます。こちらを参照下さい(*note
+によってあるリポジトリのみに設定できます。こちらを参照して下さい(*note
 (emacs)Directory Variables::)。たとえば、1つの巨大なリポジトリでファイル
 アクセスバッファの自動リフレッシュを無効にするには、以下を使用します:
 
@@ -8667,7 +8679,7 @@ Gitは、ユーザーが誤って削除した変更を復元するのに十分�
 Magitを使用すると、コミットされていない変更を簡単に変更できるため、その
 過程で自分の足を簡単に撃つことができます。そのため、Magitは、特定のアク
 ションの前後に追跡されているファイルを進行中のreferenceに保存する3つのグ
-ローバルモードを提供します。こちらを参照下さい(*note Wip Modes::)。
+ローバルモードを提供します。こちらを参照して下さい(*note Wip Modes::)。
 
 これらのモードは、パフォーマンス上の懸念から、デフォルトでは有効になって
 いません。 代わりに、破壊的な可能性のあるコマンドの多くは、使用するたび
@@ -8684,8 +8696,8 @@ Magitを使用すると、コミットされていない変更を簡単に変更
 
 デフォルトでは、訪問したファイルがディスク上で変更されると、訪問したファ
 イルは自動的revertされます。 これは見た目ほど危険ではありませんが、十分
-な情報に基づいて決定を下すには確認が必要です。こちらを参照下さい(*note
-Risk of Reverting Automatically::)
+な情報に基づいて決定を下すには確認が必要です。こちらを参照して下さい
+(*note Risk of Reverting Automatically::)
 
 
 File: magit.ja.info,  Node: Performance,  Next: Default Bindings,  Prev: Safety,  Up: 基本設定
@@ -8744,10 +8756,10 @@ File-Visiting Buffers::)
 
 特定の異常に大きなリポジトリ内でのみパフォーマンスが低下する場合は、リポ
 ジトリごとまたはリポジトリクラスごとにのみ特定の機能を無効にすることをお
-勧めします。こちらを参照下さい(*note Per-Repository Configuration::)。た
-とえば、非常に多くのタグがあるリポジトリ内の次の現在のタグを判別するのに
-長い時間がかかります。したがって、前節で説明されているように、
-‘magit-insert-tags-headers’を無効にすることをお勧めします。
+勧めします。こちらを参照して下さい(*note Per-Repository
+Configuration::)。たとえば、非常に多くのタグがあるリポジトリ内の次の現在
+のタグを判別するのに長い時間がかかります。したがって、前節で説明されてい
+るように、‘magit-insert-tags-headers’を無効にすることをお勧めします。
 
 * Menu:
 
@@ -8802,10 +8814,11 @@ diffが遅い場合は、次の変数のすべてまたは一部を‘nil’に�
 ‘--irreversible-delete’引数を有効にすることをお勧めします。これを行うと
 、diffはファイルが削除されたことを示しはしますが、ファイルの完全に削除さ
 れた内容の表示は行いません。この引数はデフォルトでは使用できません。こち
-らを参照下さい(*note (transient)Enabling and Disabling Suffixes::。それ
-が完了したら、それを有効にしてその設定を保存する必要があります。こちらを
-参照下さい(*note (transient)Saving Values::。これは、diff(‘d’)とdiff
-refresh(‘D’)の両方のトランジェントポップアップで行う必要があります。
+らを参照して下さい(*note (transient)Enabling and Disabling Suffixes::。
+それが完了したら、それを有効にしてその設定を保存する必要があります。こち
+らを参照して下さい(*note (transient)Saving Values::。これは、diff(‘d’)と
+diff refresh(‘D’)の両方のトランジェントポップアップで行う必要があります
+。
 
 Refs Buffer Performance
 .......................
@@ -8834,7 +8847,7 @@ Committing Performance
 
      (remove-hook 'server-switch-hook 'magit-commit-diff)
 
-それからあなたは、‘C-c C-d’と入力して、実際に見たいときに差分を表示でき
+それからあなたは、‘C-c C-d’と入力して、実際に見たいときにdiffを表示でき
 ますが、それはそのときだけです。または、フックをそのままにして、diffの生
 成に時間がかかりすぎる場合は、‘C-g’と入力することもできます。これを行う
 と、diffバッファが壊れてしまいますが、この方法で行うと、通常はdiffを確認
@@ -8949,8 +8962,8 @@ File: magit.ja.info,  Node: 配管コマンド(Plumbing),  Next: FAQ,  Prev: Cus
 
 Magitで使用される低レベルの機能のいくつかは、個別の ライブラリ/パッケー
 ジ に分解されているため、Magitに依存することなく他のパッケージで使用でき
-ます。‘with-editor’については→*note (with-editor)Top:: ‘transient’にはま
-だマニュアルがありません。
+ます。‘with-editor’についてはこちらを参照して下さい(*note
+(with-editor)Top::)。 ‘transient’にはまだマニュアルがありません。
 
 独自のMagit拡張機能によって提供されるコマンドにバインドできる未使用のキ
 ーを見つけようとしている場合は、
@@ -9587,7 +9600,7 @@ File: magit.ja.info,  Node: 慣習,  Prev: Refreshing Buffers,  Up: 配管コマ
 10.4 慣習
 =========
 
-こちらもご覧ください→*note 補完と確認::
+こちらもご覧ください(*note 補完と確認::)。
 
 * Menu:
 
@@ -9734,7 +9747,7 @@ Appendix A FAQ
 *の質問、つまりまだマニュアルに記載されていない質問のリストについては
 →<https://github.com/magit/magit/wiki/FAQ>
 
-デバッグツールも使用できます→*note Debugging Tools::
+どうぞこちらも使ってやって下さい(*note Debugging Tools::)。
 
 * Menu:
 
@@ -9903,7 +9916,7 @@ A.2 FAQ - Issues and Errors
 * コミットに問題があります::
 * MS WindowsではMagitでpushできません::
 * 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません.
-* ファイルを展開して差分を表示するとファイルが消えます::
+* ファイルを展開してdiffを表示するとファイルが消えます::
 * COMMIT_EDITMSGバッファのpointが間違っています::
 * モード行の情報が常に最新ではない::
 * 同じ名前を共有するブランチとタグは何かを壊します::
@@ -9961,7 +9974,7 @@ pushできる場合、構成(configuration)の問題である可能性が限り�
 あります。
 
 
-File: magit.ja.info,  Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません,  Next: ファイルを展開して差分を表示するとファイルが消えます,  Prev: MS WindowsではMagitでpushできません,  Up: FAQ - Issues and Errors
+File: magit.ja.info,  Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません,  Next: ファイルを展開してdiffを表示するとファイルが消えます,  Prev: MS WindowsではMagitでpushできません,  Up: FAQ - Issues and Errors
 
 A.2.5 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません
 -----------------------------------------------------------------------------------
@@ -9977,9 +9990,9 @@ and/or tag signing")である場合、あなたは‘$GPG_AGENT_INFO’も同期
 があります。
 
 
-File: magit.ja.info,  Node: ファイルを展開して差分を表示するとファイルが消えます,  Next: COMMIT_EDITMSGバッファのpointが間違っています,  Prev: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません,  Up: FAQ - Issues and Errors
+File: magit.ja.info,  Node: ファイルを展開してdiffを表示するとファイルが消えます,  Next: COMMIT_EDITMSGバッファのpointが間違っています,  Prev: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません,  Up: FAQ - Issues and Errors
 
-A.2.6 ファイルを展開して差分を表示するとファイルが消えます
+A.2.6 ファイルを展開してdiffを表示するとファイルが消えます
 ----------------------------------------------------------
 
 これはおそらく、‘diff.*’ Git変数の変更が原因です。あなたはおそらく
@@ -9988,7 +10001,7 @@ A.2.6 ファイルを展開して差分を表示するとファイルが消え�
 (undo)だけです。
 
 
-File: magit.ja.info,  Node: COMMIT_EDITMSGバッファのpointが間違っています,  Next: モード行の情報が常に最新ではない,  Prev: ファイルを展開して差分を表示するとファイルが消えます,  Up: FAQ - Issues and Errors
+File: magit.ja.info,  Node: COMMIT_EDITMSGバッファのpointが間違っています,  Next: モード行の情報が常に最新ではない,  Prev: ファイルを展開してdiffを表示するとファイルが消えます,  Up: FAQ - Issues and Errors
 
 A.2.7 ‘COMMIT_EDITMSG’バッファのpointが間違っています
 -----------------------------------------------------
@@ -10025,7 +10038,7 @@ Magitは、モードラインに表示されている‘Git-master’のよう�
      (setq auto-revert-check-vc-info t)
 
 しかし、そうするとフォーマンスが悪化します。 より多くの(過度に楽観的な
-)情報については→*note (emacs)VC Mode Line::
+)情報についてはこちらを参照して下さい(*note (emacs)VC Mode Line::)。
 
 あなたがこの情報をモード行に表示するこをあまり気にしないなら、_不正確な
 _情報を単にモード行に表示しないことを検討してください。
@@ -10212,7 +10225,7 @@ Magitとその依存関係には、いくつかのデバッグツールが用意
      る情報を含むバッファを表示し、‘exec-path’の問題を調査するときに役立
      ちます。
 
-     こちらもご覧ください→*note Git実行ファイル::
+     こちらもご覧ください(*note Git実行ファイル::)。
 
 ‘M-x with-editor-debug’     (‘with-editor-debug’)
 
@@ -10221,9 +10234,9 @@ Magitとその依存関係には、いくつかのデバッグツールが用意
      適切な‘emacsclient’実行可能ファイルを見つけられない理由を調査すると
      きに役立ちます。
 
-     こちらもご覧ください→*note (with-editor)Debugging::
+     こちらもご覧ください(*note (with-editor)Debugging::)
 
-FAQもご覧ください→*note FAQ::
+どうぞこちらもご覧下さい(*note FAQ::)
 
 
 File: magit.ja.info,  Node: Keystroke Index,  Next: Command Index,  Prev: Debugging Tools,  Up: Top
@@ -10304,8 +10317,8 @@ Appendix C Keystroke Index
 * C b:                                   Cloning Repository.  (line  44)
 * C C:                                   Cloning Repository.  (line  32)
 * c c:                                   コミット開始.        (line  16)
-* C d:                                   Cloning Repository.  (line  57)
-* C e:                                   Cloning Repository.  (line  64)
+* C d:                                   Cloning Repository.  (line  58)
+* C e:                                   Cloning Repository.  (line  65)
 * c e:                                   コミット開始.        (line  25)
 * c f:                                   コミット開始.        (line  47)
 * c F:                                   コミット開始.        (line  56)
@@ -10421,18 +10434,18 @@ Appendix C Keystroke Index
 * DEL <2>:                               Blaming.             (line  93)
 * DEL <3>:                               Editing Rebase Sequences.
                                                               (line  27)
-* e:                                     Ediffing.            (line   9)
-* E:                                     Ediffing.            (line  23)
+* e:                                     Ediffing.            (line  10)
+* E:                                     Ediffing.            (line  24)
 * e <1>:                                 Editing Rebase Sequences.
                                                               (line  53)
-* E c:                                   Ediffing.            (line  73)
-* E i:                                   Ediffing.            (line  63)
-* E m:                                   Ediffing.            (line  39)
-* E r:                                   Ediffing.            (line  30)
-* E s:                                   Ediffing.            (line  52)
-* E u:                                   Ediffing.            (line  58)
-* E w:                                   Ediffing.            (line  68)
-* E z:                                   Ediffing.            (line  78)
+* E c:                                   Ediffing.            (line  74)
+* E i:                                   Ediffing.            (line  64)
+* E m:                                   Ediffing.            (line  40)
+* E r:                                   Ediffing.            (line  31)
+* E s:                                   Ediffing.            (line  53)
+* E u:                                   Ediffing.            (line  59)
+* E w:                                   Ediffing.            (line  69)
+* E z:                                   Ediffing.            (line  79)
 * f:                                     Editing Rebase Sequences.
                                                               (line  62)
 * f <1>:                                 Fetching.            (line   9)
@@ -10537,7 +10550,7 @@ Appendix C Keystroke Index
                                                               (line  20)
 * M-x magit-version:                     Git実行ファイル.     (line  61)
 * M-x magit-version <1>:                 Debugging Tools.     (line  10)
-* M-x magit-wip-commit:                  Wip Modes.           (line  90)
+* M-x magit-wip-commit:                  Wip Modes.           (line  91)
 * M-x with-editor-debug:                 Debugging Tools.     (line  45)
 * MM:                                    Editing Rebase Sequences.
                                                               (line 125)
@@ -10602,19 +10615,19 @@ Appendix C Keystroke Index
 * r:                                     Rebasing.            (line   9)
 * r <1>:                                 Editing Rebase Sequences.
                                                               (line  49)
-* r a:                                   Rebasing.            (line 127)
-* r e:                                   Rebasing.            (line  46)
-* r e <1>:                               Rebasing.            (line 122)
-* r f:                                   Rebasing.            (line  87)
-* r i:                                   Rebasing.            (line  83)
-* r k:                                   Rebasing.            (line 102)
-* r m:                                   Rebasing.            (line  92)
-* r p:                                   Rebasing.            (line  29)
-* r r:                                   Rebasing.            (line 109)
-* r s:                                   Rebasing.            (line  53)
-* r s <1>:                               Rebasing.            (line 117)
-* r u:                                   Rebasing.            (line  37)
-* r w:                                   Rebasing.            (line  97)
+* r a:                                   Rebasing.            (line 128)
+* r e:                                   Rebasing.            (line  47)
+* r e <1>:                               Rebasing.            (line 123)
+* r f:                                   Rebasing.            (line  88)
+* r i:                                   Rebasing.            (line  84)
+* r k:                                   Rebasing.            (line 103)
+* r m:                                   Rebasing.            (line  93)
+* r p:                                   Rebasing.            (line  30)
+* r r:                                   Rebasing.            (line 110)
+* r s:                                   Rebasing.            (line  54)
+* r s <1>:                               Rebasing.            (line 118)
+* r u:                                   Rebasing.            (line  38)
+* r w:                                   Rebasing.            (line  98)
 * RET:                                   References Buffer.   (line 172)
 * RET <1>:                               Visiting Files and Blobs from a Diff.
                                                               (line   8)
@@ -10681,7 +10694,7 @@ Appendix C Keystroke Index
 * X m:                                   Resetting.           (line  15)
 * X s:                                   Resetting.           (line  21)
 * X w:                                   Resetting.           (line  45)
-* X w <1>:                               Wip Modes.           (line  68)
+* X w <1>:                               Wip Modes.           (line  69)
 * Y:                                     Cherries.            (line  17)
 * y:                                     References Buffer.   (line   6)
 * y <1>:                                 Editing Rebase Sequences.
@@ -10853,8 +10866,8 @@ Appendix D Command Index
 * magit-clone-mirror:                    Cloning Repository.  (line  49)
 * magit-clone-regular:                   Cloning Repository.  (line  32)
 * magit-clone-shallow:                   Cloning Repository.  (line  37)
-* magit-clone-shallow-exclude:           Cloning Repository.  (line  64)
-* magit-clone-shallow-since:             Cloning Repository.  (line  57)
+* magit-clone-shallow-exclude:           Cloning Repository.  (line  65)
+* magit-clone-shallow-since:             Cloning Repository.  (line  58)
 * magit-commit:                          コミット開始.        (line   8)
 * magit-commit <1>:                      Commands for Buffers Visiting Files.
                                                               (line  43)
@@ -10924,16 +10937,16 @@ Appendix D Command Index
 * magit-dispatch:                        トランジェントコマンド.
                                                               (line  19)
 * magit-display-repository-buffer:       Common Commands.     (line   9)
-* magit-ediff:                           Ediffing.            (line  23)
-* magit-ediff-compare:                   Ediffing.            (line  30)
-* magit-ediff-dwim:                      Ediffing.            (line   9)
-* magit-ediff-resolve:                   Ediffing.            (line  39)
-* magit-ediff-show-commit:               Ediffing.            (line  73)
-* magit-ediff-show-staged:               Ediffing.            (line  63)
-* magit-ediff-show-stash:                Ediffing.            (line  78)
-* magit-ediff-show-unstaged:             Ediffing.            (line  58)
-* magit-ediff-show-working-tree:         Ediffing.            (line  68)
-* magit-ediff-stage:                     Ediffing.            (line  52)
+* magit-ediff:                           Ediffing.            (line  24)
+* magit-ediff-compare:                   Ediffing.            (line  31)
+* magit-ediff-dwim:                      Ediffing.            (line  10)
+* magit-ediff-resolve:                   Ediffing.            (line  40)
+* magit-ediff-show-commit:               Ediffing.            (line  74)
+* magit-ediff-show-staged:               Ediffing.            (line  64)
+* magit-ediff-show-stash:                Ediffing.            (line  79)
+* magit-ediff-show-unstaged:             Ediffing.            (line  59)
+* magit-ediff-show-working-tree:         Ediffing.            (line  69)
+* magit-ediff-stage:                     Ediffing.            (line  53)
 * magit-edit-line-commit:                Commands for Buffers Visiting Files.
                                                               (line 115)
 * magit-emacs-Q-command:                 Debugging Tools.     (line  16)
@@ -11048,19 +11061,19 @@ Appendix D Command Index
 * magit-push-tags:                       Pushing.             (line  63)
 * magit-push-to-remote remote args:      Pushing.             (line 107)
 * magit-rebase:                          Rebasing.            (line   9)
-* magit-rebase-abort:                    Rebasing.            (line 127)
-* magit-rebase-autosquash:               Rebasing.            (line  87)
-* magit-rebase-branch:                   Rebasing.            (line  46)
-* magit-rebase-continue:                 Rebasing.            (line 109)
-* magit-rebase-edit:                     Rebasing.            (line 122)
-* magit-rebase-edit-commit:              Rebasing.            (line  92)
-* magit-rebase-interactive:              Rebasing.            (line  83)
-* magit-rebase-onto-pushremote:          Rebasing.            (line  29)
-* magit-rebase-onto-upstream:            Rebasing.            (line  37)
-* magit-rebase-remove-commit:            Rebasing.            (line 102)
-* magit-rebase-reword-commit:            Rebasing.            (line  97)
-* magit-rebase-skip:                     Rebasing.            (line 117)
-* magit-rebase-subset:                   Rebasing.            (line  53)
+* magit-rebase-abort:                    Rebasing.            (line 128)
+* magit-rebase-autosquash:               Rebasing.            (line  88)
+* magit-rebase-branch:                   Rebasing.            (line  47)
+* magit-rebase-continue:                 Rebasing.            (line 110)
+* magit-rebase-edit:                     Rebasing.            (line 123)
+* magit-rebase-edit-commit:              Rebasing.            (line  93)
+* magit-rebase-interactive:              Rebasing.            (line  84)
+* magit-rebase-onto-pushremote:          Rebasing.            (line  30)
+* magit-rebase-onto-upstream:            Rebasing.            (line  38)
+* magit-rebase-remove-commit:            Rebasing.            (line 103)
+* magit-rebase-reword-commit:            Rebasing.            (line  98)
+* magit-rebase-skip:                     Rebasing.            (line 118)
+* magit-rebase-subset:                   Rebasing.            (line  54)
 * magit-reflog-current:                  Reflog.              (line  11)
 * magit-reflog-head:                     Reflog.              (line  19)
 * magit-reflog-other:                    Reflog.              (line  15)
@@ -11085,7 +11098,7 @@ Appendix D Command Index
 * magit-reset-quickly:                   Resetting.           (line   8)
 * magit-reset-soft:                      Resetting.           (line  21)
 * magit-reset-worktree:                  Resetting.           (line  45)
-* magit-reset-worktree <1>:              Wip Modes.           (line  68)
+* magit-reset-worktree <1>:              Wip Modes.           (line  69)
 * magit-reverse:                         Applying.            (line  46)
 * magit-reverse-in-index:                Staging and Unstaging.
                                                               (line  66)
@@ -11212,9 +11225,9 @@ Appendix D Command Index
 * magit-version:                         Git実行ファイル.     (line  61)
 * magit-version <1>:                     Debugging Tools.     (line  10)
 * magit-visit-ref:                       References Buffer.   (line 172)
-* magit-wip-commit:                      Wip Modes.           (line  90)
-* magit-wip-log:                         Wip Modes.           (line  48)
-* magit-wip-log-current:                 Wip Modes.           (line  58)
+* magit-wip-commit:                      Wip Modes.           (line  91)
+* magit-wip-log:                         Wip Modes.           (line  49)
+* magit-wip-log-current:                 Wip Modes.           (line  59)
 * magit-worktree:                        Worktree.            (line   8)
 * magit-worktree-branch:                 Worktree.            (line  19)
 * magit-worktree-checkout:               Worktree.            (line  15)
@@ -11293,14 +11306,14 @@ Appendix E Function Index
                                                               (line  31)
 * magit-display-buffer:                  バッファの切り替え.  (line   6)
 * magit-display-buffer-fullcolumn-most-v1: バッファの切り替え.
-                                                              (line  76)
+                                                              (line  77)
 * magit-display-buffer-fullframe-status-topleft-v1: バッファの切り替え.
-                                                              (line  66)
+                                                              (line  67)
 * magit-display-buffer-fullframe-status-v1: バッファの切り替え.
-                                                              (line  60)
+                                                              (line  61)
 * magit-display-buffer-same-window-except-diff-v1: バッファの切り替え.
-                                                              (line  53)
-* magit-display-buffer-traditional:      バッファの切り替え.  (line  45)
+                                                              (line  54)
+* magit-display-buffer-traditional:      バッファの切り替え.  (line  46)
 * magit-display-repository-buffer:       Common Commands.     (line   9)
 * magit-file-checkout:                   Commands for Buffers Visiting Files.
                                                               (line 145)
@@ -11359,7 +11372,7 @@ Appendix E Function Index
                                                               (line  42)
 * magit-insert-heading:                  Creating Sections.   (line  44)
 * magit-insert-ignored-files:            Status Sections.     (line 102)
-* magit-insert-local-branches:           References Sections. (line  16)
+* magit-insert-local-branches:           References Sections. (line  17)
 * magit-insert-merge-log:                Status Sections.     (line  18)
 * magit-insert-modules:                  Status Module Sections.
                                                               (line  12)
@@ -11377,7 +11390,7 @@ Appendix E Function Index
                                                               (line  52)
 * magit-insert-rebase-sequence:          Status Sections.     (line  23)
 * magit-insert-recent-commits:           Status Sections.     (line 135)
-* magit-insert-remote-branches:          References Sections. (line  20)
+* magit-insert-remote-branches:          References Sections. (line  21)
 * magit-insert-remote-header:            Status Header Sections.
                                                               (line  68)
 * magit-insert-repo-header:              Status Header Sections.
@@ -11389,7 +11402,7 @@ Appendix E Function Index
 * magit-insert-stashes:                  Status Sections.     (line  69)
 * magit-insert-status-headers:           Status Header Sections.
                                                               (line  12)
-* magit-insert-tags:                     References Sections. (line  25)
+* magit-insert-tags:                     References Sections. (line  26)
 * magit-insert-tags-header:              Status Header Sections.
                                                               (line  57)
 * magit-insert-tracked-files:            Status Sections.     (line  98)
@@ -11411,7 +11424,7 @@ Appendix E Function Index
 * magit-log-maybe-show-more-commits:     Section Movement.    (line  64)
 * magit-log-maybe-update-blob-buffer:    Section Movement.    (line  79)
 * magit-log-maybe-update-revision-buffer: Section Movement.   (line  72)
-* magit-maybe-set-dedicated:             バッファの切り替え.  (line 101)
+* magit-maybe-set-dedicated:             バッファの切り替え.  (line 102)
 * magit-mode-display-buffer:             Refreshing Buffers.  (line  32)
 * magit-mode-quit-window:                Quitting Windows.    (line  35)
 * magit-mode-setup:                      Refreshing Buffers.  (line  17)
@@ -11448,7 +11461,7 @@ Appendix E Function Index
                                                               (line  78)
 * magit-run-git-with-input:              Calling Git for Effect.
                                                               (line  40)
-* magit-save-window-configuration:       バッファの切り替え.  (line  90)
+* magit-save-window-configuration:       バッファの切り替え.  (line  91)
 * magit-section-case:                    Matching Sections.   (line  71)
 * magit-section-hide:                    Section Visibility.  (line  48)
 * magit-section-hide-children:           Section Visibility.  (line  63)
@@ -11475,8 +11488,8 @@ Appendix E Function Index
                                                               (line   8)
 * magit-switch-to-repository-buffer-other-window: Common Commands.
                                                               (line   7)
-* magit-wip-log:                         Wip Modes.           (line  48)
-* magit-wip-log-current:                 Wip Modes.           (line  58)
+* magit-wip-log:                         Wip Modes.           (line  49)
+* magit-wip-log-current:                 Wip Modes.           (line  59)
 * with-editor-usage-message:             Commit Mode and Hooks.
                                                               (line  60)
 
@@ -11502,19 +11515,19 @@ Appendix F Variable Index
 * auto-revert-verbose:                   Automatic Reverting of File-Visiting Buffers.
                                                               (line 106)
 * branch.autoSetupMerge:                 Branch Git Variables.
-                                                              (line  80)
+                                                              (line  81)
 * branch.autoSetupRebase:                Branch Git Variables.
-                                                              (line  95)
+                                                              (line  96)
 * branch.NAME.description:               Branch Git Variables.
-                                                              (line  48)
+                                                              (line  49)
 * branch.NAME.merge:                     Branch Git Variables.
-                                                              (line  10)
+                                                              (line  11)
 * branch.NAME.pushRemote:                Branch Git Variables.
-                                                              (line  35)
+                                                              (line  36)
 * branch.NAME.rebase:                    Branch Git Variables.
-                                                              (line  22)
+                                                              (line  23)
 * branch.NAME.remote:                    Branch Git Variables.
-                                                              (line  16)
+                                                              (line  17)
 * core.notesRef:                         Notes.               (line  61)
 * git-commit-fill-column:                Commit Message Conventions.
                                                               (line  18)
@@ -11561,11 +11574,11 @@ Appendix F Variable Index
 * magit-bury-buffer-function:            Quitting Windows.    (line  14)
 * magit-cherry-margin:                   Cherries.            (line  22)
 * magit-clone-always-transient:          Cloning Repository.  (line  13)
-* magit-clone-default-directory:         Cloning Repository.  (line  93)
-* magit-clone-name-alist:                Cloning Repository.  (line 106)
-* magit-clone-set-remote-head:           Cloning Repository.  (line  71)
-* magit-clone-set-remote.pushDefault:    Cloning Repository.  (line  81)
-* magit-clone-url-format:                Cloning Repository.  (line 126)
+* magit-clone-default-directory:         Cloning Repository.  (line  94)
+* magit-clone-name-alist:                Cloning Repository.  (line 107)
+* magit-clone-set-remote-head:           Cloning Repository.  (line  72)
+* magit-clone-set-remote.pushDefault:    Cloning Repository.  (line  82)
+* magit-clone-url-format:                Cloning Repository.  (line 127)
 * magit-commit-ask-to-stage:             コミット開始.        (line  82)
 * magit-commit-extend-override-date:     コミット開始.        (line  91)
 * magit-commit-reword-override-date:     コミット開始.        (line  96)
@@ -11594,9 +11607,9 @@ Appendix F Variable Index
 * magit-display-buffer-function:         バッファの切り替え.  (line  27)
 * magit-display-buffer-noselect:         バッファの切り替え.  (line  18)
 * magit-dwim-selection:                  補完と確認.          (line  38)
-* magit-ediff-dwim-show-on-hunks:        Ediffing.            (line  83)
-* magit-ediff-quit-hook:                 Ediffing.            (line  99)
-* magit-ediff-show-stash-with-index:     Ediffing.            (line  92)
+* magit-ediff-dwim-show-on-hunks:        Ediffing.            (line  84)
+* magit-ediff-quit-hook:                 Ediffing.            (line 100)
+* magit-ediff-show-stash-with-index:     Ediffing.            (line  93)
 * magit-generate-buffer-name-function:   バッファの名付け.    (line   6)
 * magit-git-debug:                       Viewing Git Output.  (line  28)
 * magit-git-debug <1>:                   Getting a Value from Git.
@@ -11625,10 +11638,10 @@ Appendix F Variable Index
 * magit-pop-revision-stack-format:       Using the Revision Stack.
                                                               (line  33)
 * magit-post-commit-hook:                コミット開始.        (line 110)
-* magit-post-display-buffer-hook:        バッファの切り替え.  (line  96)
-* magit-pre-display-buffer-hook:         バッファの切り替え.  (line  85)
+* magit-post-display-buffer-hook:        バッファの切り替え.  (line  97)
+* magit-pre-display-buffer-hook:         バッファの切り替え.  (line  86)
 * magit-prefer-remote-upstream:          Branch Git Variables.
-                                                              (line 122)
+                                                              (line 123)
 * magit-prefix-use-buffer-arguments:     Transient Arguments and Buffer Variables.
                                                               (line  59)
 * magit-process-raise-error:             Calling Git for Effect.
@@ -11647,7 +11660,7 @@ Appendix F Variable Index
 * magit-refs-margin-for-tags:            References Buffer.   (line 120)
 * magit-refs-pad-commit-counts:          References Buffer.   (line  49)
 * magit-refs-primary-column-width:       References Buffer.   (line  69)
-* magit-refs-sections-hook:              References Sections. (line  12)
+* magit-refs-sections-hook:              References Sections. (line  13)
 * magit-refs-show-commit-count:          References Buffer.   (line  36)
 * magit-refs-show-remote-prefix:         References Buffer.   (line  62)
 * magit-remote-add-set-remote.pushDefault: Remote Commands.   (line  96)
@@ -11693,195 +11706,195 @@ Appendix F Variable Index
 * magit-wip-initial-backup-mode-lighter: Legacy Wip Modes.    (line  64)
 * magit-wip-merge-branch:                Wip Graph.           (line   6)
 * magit-wip-mode:                        Wip Modes.           (line  30)
-* magit-wip-mode-lighter:                Wip Modes.           (line 107)
-* magit-wip-namespace:                   Wip Modes.           (line  99)
+* magit-wip-mode-lighter:                Wip Modes.           (line 108)
+* magit-wip-namespace:                   Wip Modes.           (line 100)
 * notes.displayRef:                      Notes.               (line  66)
 * pull.rebase:                           Branch Git Variables.
-                                                              (line  56)
+                                                              (line  57)
 * remote.NAME.fetch:                     Remote Git Variables.
-                                                              (line  15)
+                                                              (line  16)
 * remote.NAME.push:                      Remote Git Variables.
-                                                              (line  26)
+                                                              (line  27)
 * remote.NAME.pushurl:                   Remote Git Variables.
-                                                              (line  20)
+                                                              (line  21)
 * remote.NAME.tagOpts:                   Remote Git Variables.
-                                                              (line  31)
+                                                              (line  32)
 * remote.NAME.url:                       Remote Git Variables.
-                                                              (line  10)
+                                                              (line  11)
 * remote.pushDefault:                    Branch Git Variables.
-                                                              (line  71)
+                                                              (line  72)
 
 
 
 Tag Table:
 Node: Top782
-Node: Introduction7579
-Node: Installation14148
-Node: Installing from Melpa14571
-Node: Installing from the Git Repository15924
-Node: Post-Installation Tasks19375
-Node: Getting Started21054
-Node: Interface Concepts28745
-Node: Modes and Buffers29171
-Node: バッファの切り替え31659
-Node: バッファの名付け37852
-Node: Quitting Windows41991
-Node: Automatic Refreshing of Magit Buffers44402
-Node: Automatic Saving of File-Visiting Buffers48319
-Node: Automatic Reverting of File-Visiting Buffers49819
-Node: Risk of Reverting Automatically56466
-Node: Sections59602
-Node: Section Movement60868
-Node: Section Visibility66981
-Node: Section Hooks75053
-Node: Section Types and Values78423
-Node: Section Options80200
-Node: トランジェントコマンド80786
-Node: Transient Arguments and Buffer Variables82643
-Node: Completion Confirmation(確認補完)とSelection(選択範囲)92246
-Node: アクションの確認92763
-Node: 補完と確認103410
-Node: 選択範囲107660
-Node: ハンク内部リージョン111571
-Node: 補完フレームワークのサポート113034
-Node: 追加の補完オプション119097
-Node: Running Git119869
-Node: Viewing Git Output120175
-Node: Git Process Status121654
-Node: Gitを手動で実行122861
-Node: Git実行ファイル126266
-Node: Global Git Arguments130372
-Node: Inspecting131456
-Node: Status Buffer132707
-Node: Status Sections139226
-Node: Status Header Sections146806
-Node: Status Module Sections150125
-Node: Status Options153533
-Node: Repository List155423
-Node: Logging159565
-Node: Refreshing Logs163134
-Node: Log Buffer165168
-Node: Log Margin171035
-Node: Select from Log175248
-Node: Reflog178124
-Node: Cherries180195
-Node: Diffing182653
-Node: Refreshing Diffs186983
-Node: Commands Available in Diffs191750
-Node: Diff Options195109
-Node: Revision Buffer202150
-Node: Ediffing206444
-Node: References Buffer211879
-Node: References Sections225428
-Node: Bisecting226590
-Node: Visiting Files and Blobs229940
-Node: General-Purpose Visit Commands230548
-Node: Visiting Files and Blobs from a Diff231841
-Node: Blaming236675
-Node: Manipulating245264
-Node: Creating Repository245609
-Node: Cloning Repository246348
-Node: Staging and Unstaging253831
-Node: Staging from File-Visiting Buffers259782
-Node: Applying261599
-Node: Committing264527
-Node: コミット開始265297
-Node: コミットメッセージ編集270928
-Node: Using the Revision Stack274563
-Node: Commit Pseudo Headers278466
-Node: Commit Mode and Hooks280253
-Node: Commit Message Conventions284199
-Node: Branching286908
-Node: The Two Remotes287137
-Node: Branch Commands290911
-Node: Branch Git Variables308797
-Node: Auxiliary Branch Commands315761
-Node: Merging317210
-Node: Resolving Conflicts322723
-Node: Rebasing329040
-Node: Editing Rebase Sequences335909
-Node: Information About In-Progress Rebase341607
-Ref: Information About In-Progress Rebase-Footnote-1352784
-Node: Cherry Picking353545
-Node: Reverting359624
-Node: Resetting361907
-Node: Stashing364620
-Node: Transferring371417
-Node: Remotes371642
-Node: Remote Commands371797
-Node: Remote Git Variables377392
-Node: Fetching379059
-Node: Pulling382836
-Node: Pushing384442
-Node: Plain Patches390671
-Node: Maildir Patches393022
-Node: Miscellaneous395263
-Node: Tagging395580
-Node: Notes398386
-Node: Submodules401604
-Node: Listing Submodules401869
-Node: submodule用トランジェントコマンド403569
-Node: Subtree407244
-Node: Worktree410515
-Node: Common Commands412193
-Node: Wip Modes415429
-Node: Wip Graph422091
-Node: Legacy Wip Modes424970
-Node: Commands for Buffers Visiting Files428576
-Node: Minor Mode for Buffers Visiting Blobs436606
-Node: Customizing437627
-Node: Per-Repository Configuration439577
-Node: 基本設定442273
-Node: Safety442657
-Node: Performance445056
-Ref: Log Performance449335
-Ref: Diff Performance451094
-Ref: Refs Buffer Performance452791
-Ref: Committing Performance453577
-Node: Microsoft Windows Performance454721
-Node: MacOS Performance456224
-Ref: MacOS Performance-Footnote-1457096
-Node: Default Bindings457235
-Node: 配管コマンド(Plumbing)460176
-Node: Calling Git461230
-Node: Getting a Value from Git463191
-Node: Calling Git for Effect467870
-Node: Section Plumbing475996
-Node: Creating Sections476247
-Node: Section Selection481568
-Node: Matching Sections483767
-Node: Refreshing Buffers491586
-Node: 慣習495550
-Node: Theming Faces495759
-Node: FAQ506432
-Node: FAQ - How to ...?506957
-Node: Magitの発音は？507416
-Node: How to show git's output?508449
-Node: How to install the gitman info manual?509477
-Node: How to show diffs for gpg-encrypted files?510758
-Node: How does branching and pushing work?511461
-Node: Magitをediff-version-control-packageとして使用できますか？511868
-Node: VCを無効にする必要がありますか？514453
-Node: FAQ - Issues and Errors515347
-Node: Magit is slow516699
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました516939
-Node: コミットに問題があります517971
-Node: MS WindowsではMagitでpushできません518532
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません519233
-Node: ファイルを展開して差分を表示するとファイルが消えます520435
-Node: COMMIT_EDITMSGバッファのpointが間違っています521222
-Node: モード行の情報が常に最新ではない522597
-Node: 同じ名前を共有するブランチとタグは何かを壊します523769
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません524922
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません526060
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります529117
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません530346
-Node: 私はポップアップのデフォルトを保存できなくなりました531525
-Node: Debugging Tools532932
-Node: Keystroke Index535770
-Node: Command Index570439
-Node: Function Index608639
-Node: Variable Index625728
+Node: Introduction7577
+Node: Installation14146
+Node: Installing from Melpa14569
+Node: Installing from the Git Repository15928
+Node: Post-Installation Tasks19385
+Node: Getting Started21074
+Node: Interface Concepts28763
+Node: Modes and Buffers29189
+Node: バッファの切り替え31675
+Node: バッファの名付け37908
+Node: Quitting Windows42047
+Node: Automatic Refreshing of Magit Buffers44458
+Node: Automatic Saving of File-Visiting Buffers48375
+Node: Automatic Reverting of File-Visiting Buffers49875
+Node: Risk of Reverting Automatically56522
+Node: Sections59658
+Node: Section Movement60924
+Node: Section Visibility67037
+Node: Section Hooks75109
+Node: Section Types and Values78479
+Node: Section Options80256
+Node: トランジェントコマンド80842
+Node: Transient Arguments and Buffer Variables82734
+Node: Completion Confirmation(確認補完)とSelection(選択範囲)92341
+Node: アクションの確認92858
+Node: 補完と確認103503
+Node: 選択範囲107753
+Node: ハンク内部リージョン111664
+Node: 補完フレームワークのサポート113127
+Node: 追加の補完オプション119190
+Node: Running Git119962
+Node: Viewing Git Output120268
+Node: Git Process Status121747
+Node: Gitを手動で実行122954
+Node: Git実行ファイル126359
+Node: Global Git Arguments130475
+Node: Inspecting131559
+Node: Status Buffer132825
+Node: Status Sections139310
+Node: Status Header Sections146961
+Node: Status Module Sections150280
+Node: Status Options153688
+Node: Repository List155578
+Node: Logging159720
+Node: Refreshing Logs163330
+Node: Log Buffer165364
+Node: Log Margin171266
+Node: Select from Log175479
+Node: Reflog178355
+Node: Cherries180456
+Node: Diffing182914
+Node: Refreshing Diffs187278
+Node: Commands Available in Diffs192043
+Node: Diff Options195437
+Node: Revision Buffer202506
+Node: Ediffing206803
+Node: References Buffer212276
+Node: References Sections225837
+Node: Bisecting227042
+Node: Visiting Files and Blobs230395
+Node: General-Purpose Visit Commands231003
+Node: Visiting Files and Blobs from a Diff232296
+Node: Blaming237130
+Node: Manipulating245719
+Node: Creating Repository246064
+Node: Cloning Repository246803
+Node: Staging and Unstaging254321
+Node: Staging from File-Visiting Buffers260310
+Node: Applying262127
+Node: Committing265055
+Node: コミット開始265825
+Node: コミットメッセージ編集271456
+Node: Using the Revision Stack275091
+Node: Commit Pseudo Headers278994
+Node: Commit Mode and Hooks280781
+Node: Commit Message Conventions284727
+Node: Branching287436
+Node: The Two Remotes287665
+Node: Branch Commands291439
+Node: Branch Git Variables309333
+Node: Auxiliary Branch Commands316332
+Node: Merging317781
+Node: Resolving Conflicts323294
+Node: Rebasing329681
+Node: Editing Rebase Sequences336624
+Node: Information About In-Progress Rebase342322
+Ref: Information About In-Progress Rebase-Footnote-1353499
+Node: Cherry Picking354260
+Node: Reverting360339
+Node: Resetting362622
+Node: Stashing365335
+Node: Transferring372130
+Node: Remotes372355
+Node: Remote Commands372510
+Node: Remote Git Variables378110
+Node: Fetching379815
+Node: Pulling383627
+Node: Pushing385271
+Node: Plain Patches391535
+Node: Maildir Patches393884
+Node: Miscellaneous396146
+Node: Tagging396463
+Node: Notes399269
+Node: Submodules402487
+Node: Listing Submodules402752
+Node: submodule用トランジェントコマンド404452
+Node: Subtree408127
+Node: Worktree411398
+Node: Common Commands413079
+Node: Wip Modes416315
+Node: Wip Graph423020
+Node: Legacy Wip Modes425899
+Node: Commands for Buffers Visiting Files429505
+Node: Minor Mode for Buffers Visiting Blobs437550
+Node: Customizing438571
+Node: Per-Repository Configuration440521
+Node: 基本設定443223
+Node: Safety443607
+Node: Performance446019
+Ref: Log Performance450303
+Ref: Diff Performance452062
+Ref: Refs Buffer Performance453773
+Ref: Committing Performance454559
+Node: Microsoft Windows Performance455701
+Node: MacOS Performance457204
+Ref: MacOS Performance-Footnote-1458076
+Node: Default Bindings458215
+Node: 配管コマンド(Plumbing)461156
+Node: Calling Git462244
+Node: Getting a Value from Git464205
+Node: Calling Git for Effect468884
+Node: Section Plumbing477010
+Node: Creating Sections477261
+Node: Section Selection482582
+Node: Matching Sections484781
+Node: Refreshing Buffers492600
+Node: 慣習496564
+Node: Theming Faces496775
+Node: FAQ507448
+Node: FAQ - How to ...?507981
+Node: Magitの発音は？508440
+Node: How to show git's output?509473
+Node: How to install the gitman info manual?510501
+Node: How to show diffs for gpg-encrypted files?511782
+Node: How does branching and pushing work?512485
+Node: Magitをediff-version-control-packageとして使用できますか？512892
+Node: VCを無効にする必要がありますか？515477
+Node: FAQ - Issues and Errors516371
+Node: Magit is slow517721
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517961
+Node: コミットに問題があります518993
+Node: MS WindowsではMagitでpushできません519554
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520255
+Node: ファイルを展開してdiffを表示するとファイルが消えます521455
+Node: COMMIT_EDITMSGバッファのpointが間違っています522238
+Node: モード行の情報が常に最新ではない523611
+Node: 同じ名前を共有するブランチとタグは何かを壊します524818
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525971
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません527109
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります530166
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531395
+Node: 私はポップアップのデフォルトを保存できなくなりました532574
+Node: Debugging Tools533981
+Node: Keystroke Index536831
+Node: Command Index571500
+Node: Function Index609700
+Node: Variable Index626789
 
 End Tag Table
 

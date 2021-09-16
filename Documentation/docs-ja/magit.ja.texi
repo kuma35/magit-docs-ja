@@ -423,7 +423,7 @@ FAQ - Issues and Errors
 * コミットに問題があります::
 * MS WindowsではMagitでpushできません::
 * 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません.  
-* ファイルを展開して差分を表示するとファイルが消えます::
+* ファイルを展開してdiffを表示するとファイルが消えます::
 * @code{COMMIT_EDITMSG}バッファのpointが間違っています::
 * モード行の情報が常に最新ではない::
 * 同じ名前を共有するブランチとタグは何かを壊します::
@@ -534,7 +534,7 @@ M-x package-refresh-contents RET
 M-x package-install RET magit RET
 @end example
 
-なお、インストール後にしなければならない作業があります。こちらを参照下さい(@ref{Post-Installation Tasks})。
+なお、インストール後にしなければならない作業があります。こちらを参照して下さい(@ref{Post-Installation Tasks})。
 
 @node Installing from the Git Repository
 @section Installing from the Git Repository
@@ -608,7 +608,7 @@ $ make
 
 使用可能なすべてのターゲットを表示するには、@code{make help}を使用します。
 
-なお、インストール後にしなければならない作業があります。こちらを参照下さい(@ref{Post-Installation Tasks})。
+なお、インストール後にしなければならない作業があります。こちらを参照して下さい(@ref{Post-Installation Tasks})。
 
 @node Post-Installation Tasks
 @section Post-Installation Tasks
@@ -633,7 +633,7 @@ infoマニュアルを手動でインストールするか、@code{Info-follow-n
 
 あなたがMagitを完全に初めて触る場合は→(@ref{Getting Started})
 
-問題が発生した場合→@ref{FAQ} こちらもどうぞ→@ref{Debugging Tools}
+問題が発生した場合は(@ref{FAQ})や(@ref{Debugging Tools})を参照して下さい。
 
 そして最後になりましたが、私がMagitに取り組み続けることができるように、寄付を検討してください。@uref{https://magit.vc/donations}を参照してください。さまざまな寄付オプションがあります。
 
@@ -670,7 +670,7 @@ Magitは、完全なファイルだけでなく、個々のハンクをステー
 
 そしてもちろん、変更をコミットする必要があります。@code{c}と入力します。ここで、フレームの下部にあるバッファで使用可能なコミットコマンドと引数を示しています。各コマンドと引数には、それを呼び出す/設定するキーがプレフィックスとして付けられます。ここではこれについて気にする必要はありません。「通常の」コミットを作成します。これは、@code{c}をもう一度入力することで実行されます。
 
-これで、2つの新しいバッファが表示されます。1つはコミットメッセージを書き込むためのもので、もう1つはコミットしようとしている変更との差分を示します。メッセージを書き込んでから、@code{C-c
+これで、2つの新しいバッファが表示されます。1つはコミットメッセージを書き込むためのもので、もう1つはコミットしようとしている変更とのdiffを示します。メッセージを書き込んでから、@code{C-c
 C-c}と入力して、実際にコミットを作成します。
 
 ランダムな変更をコミットしただけなので、作成したばかりのコミットをプッシュしたくない場合がありますが、そうでない場合は、@code{P}と入力して、使用可能なすべてのプッシュコマンドと引数を表示してからプッシュできます。@code{p}は、ローカルブランチと同じ名前のブランチにpush-remoteとして構成されたremoteにプッシュします。(push-remoteがまだ構成されていない場合は、最初にプッシュするためのremoteを求められます。)
@@ -704,7 +704,7 @@ Visiting Files})。
 @section Modes and Buffers
 
 Magitはいくつかのメジャーモードを提供します。
-これらのモードのそれぞれについて、通常、リポジトリごとに1つのバッファのみが存在します。個別のモードとそのためのバッファは、コミット、差分、ログ、およびその他のいくつかのもののために存在します。
+これらのモードのそれぞれについて、通常、リポジトリごとに1つのバッファのみが存在します。個別のモードとそのためのバッファは、コミット、diff、ログ、およびその他のいくつかのもののために存在します。
 
 これらの特別な目的のバッファに加えて、@strong{ステータスバッファ}と呼ばれる概要バッファもあります。ユーザーがGitコマンドを呼び出すか、他のバッファを作成またはアクセスするのは、通常、このバッファからです。
 
@@ -758,7 +758,7 @@ Magitは、このオプションに適した値である、以下にリストさ
 
 @code{display-buffer}のラッパーを使用する代わりに、その関数自体をここで使用できます。その場合、代わりに@code{display-buffer-alist}に追加して表示アクションを指定する必要があります。
 
-表示アクションについては→@ref{Choosing Window,,,elisp,}
+表示アクションについてはこちらを参照して下さい(@ref{Choosing Window,,,elisp,})。
 @end defopt
 
 @defun magit-display-buffer-traditional buffer
@@ -1444,7 +1444,7 @@ BEGINNING-END>"として表示します。
 これは、ライブラリ@code{transient}で実装されています。
 以前のMagitリリースでは、パッケージ@code{magit-popup}、さらに以前のバージョンではライブラリ@code{magit-key-mode}を使用していました。
 
-transientの文書は→@ref{Top,,,transient,}
+transientの文書はこちらを参照して下さい(@ref{Top,,,transient,})。
 
 @table @asis
 @kindex C-c C-c
@@ -1464,7 +1464,7 @@ buffer)に表示します。このようなサブプレフィックスを呼び�
 @node Transient Arguments and Buffer Variables
 @section Transient Arguments and Buffer Variables
 
-Magitのトランジェント(一時的)プレフィックス(接頭辞)コマンドコマンドの多くのインフィックス(中置)引数は、それらのインフィックス引数で呼び出した@code{git}コマンドから帰って来ると、効果がなくなります。コミットを作成するコマンドは、この良い例です。ユーザーがインフィックス引数を変更した場合、それはそれに続くサフィックス(接尾辞)コマンドの呼び出しにのみ影響します。同じトランジットプレフィックスコマンドが後で再度呼び出された場合、インフィックス引数は最初にデフォルト値にリセットされます。このデフォルト値は、現在のEmacsセッションに設定することも、永続的に保存することもできます(@ref{Saving
+Magitのトランジェント(一時的)プレフィックス(接頭辞)コマンドコマンドの多くのインフィックス(中置)引数は、それらのインフィックス引数で呼び出した@code{git}コマンドから帰って来ると、効果がなくなります。コミットを作成するコマンドは、この良い例です。ユーザーがインフィックス引数を変更した場合、それはそれに続くサフィックス(接尾辞)コマンドの呼び出しにのみ影響します。同じトランジェントプレフィックスコマンドが後で再度呼び出された場合、インフィックス引数は最初にデフォルト値にリセットされます。このデフォルト値は、現在のEmacsセッションに設定することも、永続的に保存することもできます(@ref{Saving
 Values,,,transient,})。
 @code{M-p}と@code{M-n}を使用して、以前に使用した引数のセットを循環させることもできます(@ref{Using
 History,,,transient,})。
@@ -1475,12 +1475,12 @@ History,,,transient,})。
 
 上記のように、トランジェントなポップアップが表示されている間に、以前に使用された引数のセットを循環させることができます。つまり、既存のバッファでアクティブになっている引数のセットは@code{M-p}の数個しか離れていないため、インフィックス(中置)引数を常にデフォルトにリセットできます。Magitはそのように動作するように構成できますが、ほとんどのユーザーにとってはそれほど便利ではないと思うので、デフォルトではありません。
 
-また、@code{D}と@code{L}でそれぞれの"refresh"トランジェントプレフィックスコマンドを使用して、現在のバッファ(diffセクションとlogセクションの両方を含むステータスバッファを含む)で使用されるdiff引数とlog引数を変更できることにも注意してください。(一方、@code{d}と@code{l}は、diffまたはログの表示方法を変更することを@strong{目的}としています。diffまたはログの@strong{表示方法}を同時に変更することもできますが、後者のみを実行する場合は、refreshのバリエーションを使用する必要があります。）これらのセカンダリdiffおよびlogトランジットプレフィックスコマンドは、現在のバッファで使用される引数の@strong{変更}に関するものであるため、常に、そのバッファで現在有効な引数のセットから開始します。
+また、@code{D}と@code{L}でそれぞれの"refresh"トランジェントプレフィックスコマンドを使用して、現在のバッファ(diffセクションとlogセクションの両方を含むステータスバッファを含む)で使用されるdiff引数とlog引数を変更できることにも注意してください。(一方、@code{d}と@code{l}は、diffまたはログの表示方法を変更することを@strong{目的}としています。diffまたはログの@strong{表示方法}を同時に変更することもできますが、後者のみを実行する場合は、refreshのバリエーションを使用する必要があります。）これらのセカンダリdiffおよびlogトランジェントプレフィックスコマンドは、現在のバッファで使用される引数の@strong{変更}に関するものであるため、常に、そのバッファで現在有効な引数のセットから開始します。
 
 一部のコマンドは、トランジェントプレフィックスコマンドのサフィックスコマンドとして呼び出すこともできますが、通常は直接呼び出されます。その典型は@code{magit-show-commit}で、通常、ポイントがログのコミット中に@code{RET}と入力することで呼び出されますが、@code{magit-diff}トランジェントプレフィックスコマンドから呼び出すこともできます。
 
 このようなコマンドを直接呼び出す場合は、デフォルトの引数を使用するのではなく、それぞれのバッファローカル値で指定された引数を再利用することが重要です。
-logで@code{RET}を押して別のバッファ内のポイントでcommitを表示し、次に@code{D}を使用してそのバッファでの差分の表示方法を変更するとします。次に、別のcommitで@code{RET}を押して、代わりにdiff引数がデフォルトにリセットされることを示します。クールじゃありません。したがって、Magitはデフォルトではそれを行いません。
+logで@code{RET}を押して別のバッファ内のポイントでcommitを表示し、次に@code{D}を使用してそのバッファでのdiffの表示方法を変更するとします。次に、別のcommitで@code{RET}を押して、代わりにdiff引数がデフォルトにリセットされることを示します。クールじゃありません。したがって、Magitはデフォルトではそれを行いません。
 
 @defopt magit-prefix-use-buffer-arguments
 
@@ -1570,7 +1570,7 @@ diff用トランジェントプレフィックスコマンドを呼び出すと�
 
 @itemize
 @item
-@code{discard} 1つ以上の変更(つまり、ファイルのハンクまたは完全な差分)を破棄すると、明らかにその変更が失われます。
+@code{discard} 1つ以上の変更(つまり、ファイルのハンクまたは完全なdiff)を破棄すると、明らかにその変更が失われます。
 
 
 @item
@@ -1931,7 +1931,7 @@ MagitはGitと対話するための多くのEmacsコマンドを提供します�
 @cindex magit-run
 @item @kbd{!} @tie{}@tie{}@tie{}@tie{}(@code{magit-run})
 
-このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
+このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
 buffer)に表示します。
 
 @kindex ! !
@@ -1969,7 +1969,7 @@ buffer)に表示します。
 シェルコマンドを読み取るときに上記のコマンドで使用されるプロンプトが、それが実行されるディレクトリを表示しているかどうか。
 @end defopt
 
-これらのサフィックスコマンドは、外部GUIツールを起動します。
+以下のサフィックスコマンドは、外部GUIツールを起動します。
 
 @table @asis
 @kindex ! k
@@ -2005,9 +2005,7 @@ MagitがGitを呼び出すときは、@code{git}実行可能ファイルへの�
 @code{git}をローカルで実行し、かつ、@code{system-type}が@code{windows-nt}(任意のWindowsバージョン)または@code{darwin}(macOS)の場合、@code{magit-git-executable}は
 Magitがロードされるときに絶対パスに設定されます。
 
-Windowsでは、絶対パスを使用する必要があります。Gitには実際の@code{git}バイナリ用のラッパースクリプトがいくつか付属しており、これらも@code{$PATH}に配置され、バイナリの代わりにこれらのラッパーの1つを使用すると
-パフォーマンスがひどく低下します。一部のmacOSユーザーの場合、実行可能ファイルの名前だけを使用するとパフォーマンスが低下するため、このプラットフォームでもそういう実行を回避します。
-他のプラットフォームでは、名前だけを使用しても問題なく機能するようです。
+Windowsでは、絶対パスを使用する必要があります。Gitには実際の@code{git}バイナリ用のラッパースクリプトがいくつか付属していて、これらも@code{$PATH}に配置されており、バイナリの代わりにこれらのラッパーの1つを使用すると、パフォーマンスがひどく低下します。一部のmacOSユーザーの場合、実行可能ファイルの名前だけを使用するとパフォーマンスが低下するため、そのプラットフォームでもそういう実行を回避します。他のプラットフォームでは、名前だけを使用しても問題なく機能するようです。
 
 Trampを介してリモートマシンで@code{git}を実行するときに絶対パスを使用すると、ローカルマシンに適した絶対パスを使用するのが問題になるため、リモートマシンで使用される名前またはパスを制御するために別のオプションが使用されます。
 
@@ -2068,7 +2066,7 @@ the git(1) manpage.
 
 Magitが提供する機能は、既存のデータの検査、既存のデータの操作または新しいデータの追加、データの転送の3つのグループに大別できます。もちろん、それはかなり大雑把な区別であり、しばしば不十分ですが、まったく区別しないよりも便利です。この節はデータの検査に関係し、次の2つはデータの操作と転送に関係します。次に、この区別に簡単に当てはまらないその他の機能に関する節が続きます。
 
-もちろん、他の区別も意味があります。Gitでの磁器コマンドと配管コマンドの区別。これは、ほとんどの場合、Emacsでのインタラクティブコマンドと非インタラクティブ機能の区別に相当します。前述のすべての節は、主に磁器に関係しています。Magitの配管コマンド層については後で説明します。
+もちろん、他の区別も意味があります。Gitでの磁器コマンドと配管コマンドの区別です。これは、ほとんどの場合、Emacsでのインタラクティブコマンドと非インタラクティブ機能の区別に相当します。前述のすべての節は、主に磁器に関係しています。Magitの配管コマンドレイヤーについては後で説明します。
 
 @menu
 * Status Buffer::
@@ -2085,7 +2083,7 @@ Magitが提供する機能は、既存のデータの検査、既存のデータ
 @node Status Buffer
 @section Status Buffer
 
-他のMagitバッファ達では、例えば、1つの特定の差分または1つの特定のログや、ステータスバッファならばステージされた変更とステージされていない変更の差分、プッシュされていないコミットとプルされていないコミットのログ、スタッシュと追跡されていないファイル(untracked
+他のMagitバッファ達では、例えば、1つの特定のdiffまたは1つの特定のログや、ステータスバッファならばステージされた変更とステージされていない変更のdiff、プッシュされていないコミットとプルされていないコミットのログ、スタッシュと追跡されていないファイル(untracked
 files)のリスト、および現在のブランチに関連する情報が含まれます。
 
 特定の不完全な操作の途中(たとえば、マージによって競合が発生した場合)、操作の続行または中止に役立つ追加情報が表示されます。
@@ -2104,7 +2102,7 @@ g}をお勧めします:
 
 既存のGitリポジトリ内から呼び出されると、このコマンドはバッファ内のそのリポジトリのステータスを表示します。
 
-現在のディレクトリがGitリポジトリ内にない場合、このコマンドは、オプション@code{magit-repository-directories}に応じて、既存のリポジトリまたは任意のディレクトリの入力を求め、その代わりに選択したリポジトリのステータスが表示されます。
+現在のディレクトリがGitリポジトリ内にない場合、このコマンドは、オプション@code{magit-repository-directories}に応じて、代わりに既存のリポジトリまたは任意のディレクトリの入力を求め、選択したリポジトリのステータスを表示します。
 
 @itemize
 @item
@@ -2162,7 +2160,7 @@ DEPTH)}です。DIRECTORYは、ディレクトリまたはディレクトリフ�
 
 これを行った後、バッファを再表示してすぐにリフレッシュする場合は、@code{C-x g}に続けて@code{g}と入力します。
 
-可能な代替コマンドは@code{magit-display-repository-buffer}です。現在のリポジトリに属する既存のMagitバッファの表示をサポートします。それはステータスバッファだけではありません。
+可能な代替コマンドは@code{magit-display-repository-buffer}です。ステータスバッファだけでなく、現在のリポジトリに属する既存のMagitバッファの表示をサポートします。
 @end deffn
 
 @cindex ido-enter-magit-status
@@ -2198,8 +2196,8 @@ Emacs
 @node Status Sections
 @subsection Status Sections
 
-ステータスバッファの内容は、フック@code{magit-status-sections-hook}を使用して制御されます。このようなフックとそれらをカスタマイズする方法については→@ref{Section
-Hooks}
+ステータスバッファの内容は、フック@code{magit-status-sections-hook}を使用して制御されます。このようなフックとそれらをカスタマイズする方法についてはこちらを参照して下さい(@ref{Section
+Hooks})。
 
 @defopt magit-status-sections-hook
 
@@ -2339,7 +2337,7 @@ files)のツリーを挿入します。@code{magit-buffer-diff-files}の最初�
 プッシュされていないコミットを示すセクションを挿入します。@code{magit-insert-unpushed-commits}と同様ですが、アップストリームにまだ適用されていない各コミット(つまり、パッチID(patch-id)のあるコミットはアップストリームコミットと共有されていません)の前に"+"を付け、他のすべてのコミットには"-"を付けます。
 @end defun
 
-ここで使用できるその他のセクションインサーターについては→@ref{References Buffer}
+ここで使用できるその他のセクションインサーターについてはこちらを参照して下さい(@ref{References Buffer})。
 
 @node Status Header Sections
 @subsection Status Header Sections
@@ -2627,7 +2625,7 @@ the git-log(1) manpage.
 スイッチ@code{++order=VALUE}は、@code{git
 log}に渡される前に、@code{--author-date-order}または@code{--date-order}または@code{--topo-order}のいずれかに変換されます。
 
-ログ用トランジェントコマンドには、いくつかのreflogコマンドもあります→@ref{Reflog}
+ログ用トランジェントコマンドには、いくつかのreflogコマンドもあります。こちらを参照して下さい(@ref{Reflog})。
 
 @table @asis
 @kindex l
@@ -2674,8 +2672,8 @@ buffer)に表示します。
 すべての参照(reference)と@code{HEAD}のログを表示します。
 @end table
 
-現在のバッファでアクセスされているファイルまたはblobのログを表示する2つの追加コマンドが存在します→@ref{Commands for
-Buffers Visiting Files} コマンド@code{magit-cherry}もログを表示します→@ref{Cherries}
+現在のバッファでアクセスされているファイルまたはblobのログを表示する2つの追加コマンドが存在します(@ref{Commands for
+Buffers Visiting Files})。コマンド@code{magit-cherry}もログを表示します(@ref{Cherries})。
 
 @menu
 * Refreshing Logs::
@@ -2839,7 +2837,7 @@ feature origin/feature
 
 また、トランジェントコマンドには@code{--show-signature}引数がありますが、Magitはデフォルトではコミットごとに1行しか使用しないため、有効にすると実際には使用されないことに注意してください。代わりに、@code{magit-signature-*}という名前のface達を使用して、署名された(signed)コミットオブジェクトの有効性を色分けして示します。各@code{magit-signature-*}を参照して下さい。
 
-@code {magit-log-margin}の説明については→@ref{Log Margin}
+@code {magit-log-margin}の説明についてはこちらを参照して下さい(@ref{Log Margin})。
 
 @node Log Margin
 @subsection Log Margin
@@ -2975,7 +2973,7 @@ the <a href="http://git-scm.com/docs/git-reflog">git-reflog(1)</a> manpage.
 the git-reflog(1) manpage.
 @end iftex
 
-これらのreflogコマンドは、ログ用トランジェントコマンド(transient)ら使用できます→@ref{Logging}
+これらのreflogコマンドは、ログ用トランジェントコマンドから使用できます。こちらを参照して下さい(@ref{Logging})。
 
 @table @asis
 @kindex l r
@@ -3162,11 +3160,11 @@ A@dots{}B)である必要がありますが、単一のコミットにするこ�
 @cindex magit-stash-show
 @item @kbd{d t} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-show})
 
-バッファ内のstashのすべての差分を表示します。
+バッファ内のstashのすべてのdiffを表示します。
 @end table
 
-現在のバッファでアクセスされているファイルまたはblobの差分を表示する2つの追加コマンドが存在します→@ref{Commands for
-Buffers Visiting Files}
+現在のバッファでアクセスされているファイルまたはblobのdiffを表示する2つの追加コマンドが存在します。こちらを参照して下さい(@ref{Commands
+for Buffers Visiting Files})。
 
 @menu
 * Refreshing Diffs::
@@ -3216,7 +3214,7 @@ buffer)に表示します。
 @cindex magit-diff-switch-range-type
 @item @kbd{D r} @tie{}@tie{}@tie{}@tie{}(@code{magit-diff-switch-range-type})
 
-このコマンドは、差分範囲タイプを"revA..revB"から"revB@dots{}revA"に、またはその逆に変換します。
+このコマンドは、diff範囲タイプを"revA..revB"から"revB@dots{}revA"に、またはその逆に変換します。
 
 @kindex D f
 @cindex magit-diff-flip-revs
@@ -3283,8 +3281,8 @@ buffer)に表示します。
 一部のコマンドは、ポイントがdiff内にある場合にのみ使用できます。
 
 @code{magit-diff-visit-file}および関連するコマンドは、その時点でのdiffが含まれているファイルの適切なバージョンにアクセスします。
-同様に、@code{magit-diff-visit-worktree-file}および関連するコマンドは、その時点でのdiffが含まれているファイルのワークツリーバージョンにアクセスします。詳細とキーバインディングについては→@ref{Visiting
-Files and Blobs from a Diff}
+同様に、@code{magit-diff-visit-worktree-file}および関連するコマンドは、その時点でのdiffが含まれているファイルのワークツリーバージョンにアクセスします。詳細とキーバインディングについてはこちらを参照して下さい(@ref{Visiting
+Files and Blobs from a Diff})。
 
 @table @asis
 @kindex C-c C-t
@@ -3391,7 +3389,7 @@ NUMBER @code{always}と同様ですが、NUMBERバイトより大きいファイ
 空白エラー達を強調表示(highlight)する場所を指定します。
 
 @code{magit-diff-highlight-trailing}、@code{magit-diff-highlight-indentation}を参照してください。
-シンボル@code{t}はすべての差分を意味し、@code{status}はステータスバッファ内のみを意味し、nilはどこにも存在しないことを意味します。
+シンボル@code{t}はすべてのdiffを意味し、@code{status}はステータスバッファ内のみを意味し、nilはどこにも存在しないことを意味します。
 
 @itemize
 @item
@@ -3451,8 +3449,8 @@ diff達の行末の ^M 文字を非表示にするかどうか。
 internal
 selection)の外側に、追加および削除された行の背景色をコンテキスト行と同じにするfaceをオーバーレイします。この関数は、このオプションの値から削除すべきではありません。
 
-@code{magit-diff-highlight-hunk-region-using-overlays}と@code{magit-diff-highlight-hunk-region-using-underline}は、前後に区切りの水平線を配置することで、regionを強調します。これらの機能には両方とも、Emacsのディスプレイエンジンの制限のために修正できない欠陥(glitches)があります。詳細については→@uref{https://github.com/magit/magit/issues/2758}
-ff
+@code{magit-diff-highlight-hunk-region-using-overlays}と@code{magit-diff-highlight-hunk-region-using-underline}は、前後に区切りの水平線を配置することで、regionを強調します。これらの機能には両方とも、Emacsのディスプレイエンジンの制限のために修正できない欠陥(glitches)があります。詳細についてはこちらを参照して下さい
+@uref{https://github.com/magit/magit/issues/2758} ff
 
 境界線を強調する代わりに、またはそれに加えて、境界を強調するために、@code{magit-diff-highlight-hunk-region-using-face}を使用して、テキスト自体を強調することができます。
 
@@ -3543,7 +3541,7 @@ nilの場合、ハッシュはセクションに変換されませんが、「RE
 
 ログ引数に@code{--follow}が含まれている場合に、ログバッファからのコミットを表示するかどうかは、ログのファイルフィルターを尊重します。
 
-このオプションがnilの場合、ログ引数に@code{--follow}が含まれていると、ログからのコミットの表示はログのファイルフィルターを無視します。そうすることで、名前変更イベントの前にコミット用のリビジョンバッファに空のdiffが表示されないようにします。このような場合、ログ用トランジットコマンドの@code{--patch}引数を使用して、ファイル制限されたdiff達をインラインで表示できます。
+このオプションがnilの場合、ログ引数に@code{--follow}が含まれていると、ログからのコミットの表示はログのファイルフィルターを無視します。そうすることで、名前変更イベントの前にコミット用のリビジョンバッファに空のdiffが表示されないようにします。このような場合、ログ用トランジェントコマンドの@code{--patch}引数を使用して、ファイル制限されたdiff達をインラインで表示できます。
 
 @code{--follow}がログ引数に存在する場合でもログのファイル制限を維持するには、このオプションを非nilに設定します。
 @end defopt
@@ -3555,7 +3553,7 @@ Buffer Variables})。
 @section Ediffing
 
 このセクションでは、MagitバッファからEdiffを入力する方法について説明します。
-Ediff自体の使用方法については→@ref{Top,,,ediff,}
+Ediff自体の使用方法についてはこちらを参照して下さい(@ref{Top,,,ediff,})。
 
 @table @asis
 @kindex e
@@ -3570,7 +3568,7 @@ Ediffを使用して比較(compare)またはステージ(stage)または解決(r
 @cindex magit-ediff
 @item @kbd{E} @tie{}@tie{}@tie{}@tie{}(@code{magit-ediff})
 
-このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
+このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
 buffer)に表示します。
 
 @kindex E r
@@ -3871,7 +3869,7 @@ commitのリストを表示します。
 @item
 @code{checkout-branch}
 
-ポイントでローカルブランチをcheck outしてください。
+ポイントでローカルブランチをチェックアウトしてください。
 
 このシンボルを追加する代わりに、他のバッファで行うように、"b b RET"を押すことを検討してください。
 @end itemize
@@ -3884,9 +3882,9 @@ commitのリストを表示します。
 @node References Sections
 @subsection References Sections
 
-referenceバッファの内容は、フック@code{magit-refs-sections-hook}を使用して制御されます。このようなフックとそれらをカスタマイズする方法については→@ref{Section
-Hooks}
-以下の関数はすべてデフォルト値のメンバーです。このフックをカスタマイズすることは、ステータスバッファに使用されるそれぞれのフックよりもはるかに意味がないことに注意してください。
+参照バッファの内容は、フック@code{magit-refs-sections-hook}を使用して制御されます。このようなフックとそれらをカスタマイズする方法については、こちらを参照して下さい(@ref{Section
+Hooks})。以下の関数はすべてデフォルト値のメンバーです。注意:
+このフックをカスタマイズすることは、ステータスバッファに使用されるそれぞれのフックよりもはるかに意味がないことに注意してください。
 
 @defopt magit-refs-sections-hook
 
@@ -3929,7 +3927,7 @@ the git-bisect(1) manpage.
 @cindex magit-bisect
 @item @kbd{B} @tie{}@tie{}@tie{}@tie{}(@code{magit-bisect})
 
-このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
+このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
 buffer)に表示します。
 @end table
 
@@ -4370,8 +4368,8 @@ clone)を作成します。リポジトリとターゲットディレクトリ�
 このコマンドは、既存のリポジトリのミラーを作成します。リポジトリとターゲットディレクトリがユーザーから読み取られます。
 @end table
 
-以下のサフィックスコマンドはデフォルトで無効になっています。有効にする方法については→@ref{Enabling and Disabling
-Suffixes,,,transient,}
+以下のサフィックスコマンドはデフォルトで無効になっています。有効にする方法についてはこちらを参照して下さい(@ref{Enabling and
+Disabling Suffixes,,,transient,})。
 
 @table @asis
 @kindex C d
@@ -4457,7 +4455,7 @@ add --interactive}セッションの、モーダルでかなり不器用なイ�
 ステージ(stage)とステージ解除(unstage)に加えて、Magitは、ファイルや一度に複数のファイルやハンクや一度に複数のハンクやハンクの一部を操作できる他のいくつかの「適用バリエーション」(apply
 variants)も提供します。 これらの適用バリエーション(apply variants)については、次の節で説明します。
 
-あなたはEdiffを使用してステージ(stage)およびステージ解除(unstage)することもできます→@ref{Ediffing}
+あなたはEdiffを使用してステージ(stage)およびステージ解除(unstage)することもできます。こちらを参照して下さい(@ref{Ediffing})。
 
 @table @asis
 @kindex s
@@ -5070,7 +5068,7 @@ Git-Commitは、一般的に受け入れられているコミットメッセー�
 @cindex magit-branch
 @item @kbd{b} @tie{}@tie{}@tie{}@tie{}(@code{magit-branch})
 
-このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
+このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
 buffer)に表示します。
 
 デフォルトでは、ブランチ関連のGit変数の値を結び付けて表示し、それらの値を変更することもできます。
@@ -5104,7 +5102,7 @@ buffer)に表示します。
 プレフィックス引数がない場合、これは@code{magit-branch}のサフィックスコマンドとして呼び出されたかどうかと@code{magit-branch-direct-configure}オプションに依存します。@code{magit-branch}がすでに現在のブランチの変数を表示している場合、同じブランチの変数を表示する別のトランジェントコマンドを呼び出すことは役に立ちません。その場合、このコマンドはブランチの入力を求めます。
 @end table
 
-変数の説明についてはこちらを参照下さい→@ref{Branch Git Variables}
+変数の説明についてはこちらを参照して下さい(@ref{Branch Git Variables})
 
 @table @asis
 @kindex b b
@@ -5308,8 +5306,8 @@ UPSTREAMはローカルブランチにすることができます:
 @node Branch Git Variables
 @subsection Branch Git Variables
 
-これらの変数は、トランジェントプレフィックスコマンド@code{magit-branch-configure}から設定できます。デフォルトでは、@code{magit-branch}から設定することもできます→@ref{Branch
-Commands}
+これらの変数は、トランジェントプレフィックスコマンド@code{magit-branch-configure}から設定できます。デフォルトでは、@code{magit-branch}から設定することもできます。こちらを参照して下さい(@ref{Branch
+Commands})
 
 @defvar branch.NAME.merge
 
@@ -5657,8 +5655,8 @@ n}を使用して、同じファイル内の次の競合する領域に移動し
 あるいは、ファイルのバージョンごとに別々のバッファを使用するEdiffを使用することもできます。
 Ediffを使用してファイル内の競合を解決するには、ステータスバッファ内のそのようなファイル上にポイントがあるときに@code{e}を押します。
 
-Ediffは他の目的にも使用できます。MagitからEdiffに入る方法の詳細については→@ref{Ediffing}
-Ediffの使用方法の説明は、このマニュアルの範囲を超えています。代わりに→@ref{Top,,,ediff,}
+Ediffは他の目的にも使用できます。MagitからEdiffに入る方法の詳細についてはこちらを参照して下さい(@ref{Ediffing})。
+Ediffの使用方法の説明は、このマニュアルの範囲を超えています。代わりにこちらを参照して下さい(@ref{Top,,,ediff,})。
 
 SmergeとEdiffのどちらを使用すべきかわからない場合は、前者を使用してください。理解して使用する方がはるかに簡単であり、本当に複雑な競合を除いて、後者は通常やり過ぎです。
 
@@ -5691,10 +5689,10 @@ buffer)に表示します。
 リベースが進行中でない場合、トランジェントコマンドにはそれ従うサフィックスコマンドがあります。
 
 これらのコマンドの1つを使用して、リベースシーケンスを@emph{開始}します。
-Gitは、途中で中断するように指示したか、競合が原因でコミットの適用が失敗したために中断する可能性があります。その場合、ステータスバッファには、ログセクションと同様のセクションで進行中のリベースシーケンスに関する情報が表示されます→@ref{Information
-About In-Progress Rebase}
+Gitは、途中で中断するように指示したか、競合が原因でコミットの適用が失敗したために中断する可能性があります。その場合、ステータスバッファには、ログセクションと同様のセクションで進行中のリベースシーケンスに関する情報が表示されます。こちらを参照して下さい(@ref{Information
+About In-Progress Rebase})。
 
-アップストリームとプッシュリモートの詳細については→@ref{The Two Remotes}
+アップストリームとプッシュリモートの詳細についてはこちらを参照して下さい(@ref{The Two Remotes})。
 
 @table @asis
 @kindex r p
@@ -6428,7 +6426,7 @@ stashリストからstashを削除します。リージョンがアクティブ�
 @cindex magit-stash-show
 @item @kbd{z v} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-show})
 
-バッファ内のstashのすべての差分を表示します。
+バッファ内のstashのすべてのdiffを表示します。
 
 @kindex z b
 @cindex magit-stash-branch
@@ -6530,7 +6528,7 @@ the git-remote(1) manpage.
 @cindex magit-remote
 @item @kbd{M} @tie{}@tie{}@tie{}@tie{}(@code{magit-remote})
 
-このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
+このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
 buffer)に表示します。
 
 デフォルトでは、リモート関連のGit変数の値を結び付けて表示し、それらの値を変更することもできます。
@@ -6558,7 +6556,7 @@ buffer)に表示します。
 プレフィックス引数がない場合、これは@code{magit-remote}のサフィックスコマンドとして呼び出されたかどうかと@code{magit-remote-direct-configure}オプションに依存します。@code{magit-remote}がすでにアップストリームの変数を表示している場合、同じリモートの変数を表示する別のトランジェントコマンドを呼び出すことは意味がありません。その場合、このコマンドはリモートの入力を求めます。
 @end table
 
-変数についてはこちらの説明をご覧ください→@ref{Remote Git Variables}
+変数についてはこちらの説明をご覧ください(@ref{Remote Git Variables})。
 
 @table @asis
 @kindex M a
@@ -6616,8 +6614,8 @@ refspecが原因でフェッチされるブランチがリモートに1つも存
 @node Remote Git Variables
 @subsection Remote Git Variables
 
-これらの変数達は、トランジェントプレフィックスコマンド@code{magit-remote-configure}から設定できます。デフォルトでは、@code{magit-remote}から設定することもできます→@ref{Remote
-Commands}
+これらの変数達は、トランジェントプレフィックスコマンド@code{magit-remote-configure}から設定できます。デフォルトでは、@code{magit-remote}から設定することもできます。こちらを参照して下さい(@ref{Remote
+Commands})。
 
 @defvar remote.NAME.url
 
@@ -6659,7 +6657,7 @@ the <a href="http://git-scm.com/docs/git-fetch">git-fetch(1)</a> manpage.
 @iftex
 the git-fetch(1) manpage.
 @end iftex
- アップストリームとプッシュリモートの詳細については→@ref{The Two Remotes}
+ アップストリームとプッシュリモートの詳細についてはこちらを参照して下さい(@ref{The Two Remotes})。
 
 @table @asis
 @kindex f
@@ -6747,14 +6745,14 @@ the <a href="http://git-scm.com/docs/git-pull">git-pull(1)</a> manpage.
 @iftex
 the git-pull(1) manpage.
 @end iftex
- アップストリームとプッシュリモートの詳細については→@ref{The Two Remotes}
+ アップストリームとプッシュリモートの詳細についてはこちらを参照して下さい(@ref{The Two Remotes})。
 
 @table @asis
 @kindex F
 @cindex magit-pull
 @item @kbd{F} @tie{}@tie{}@tie{}@tie{}(@code{magit-pull})
 
-このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
+このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
 buffer)に表示します。
 
 @kindex F p
@@ -6795,7 +6793,7 @@ the <a href="http://git-scm.com/docs/git-push">git-push(1)</a> manpage.
 @iftex
 the git-push(1) manpage.
 @end iftex
- アップストリームとプッシュリモートの詳細については→@ref{The Two Remotes}
+ アップストリームとプッシュリモートの詳細についてはこちらを参照して下さい(@ref{The Two Remotes})。
 
 @table @asis
 @kindex P
@@ -6928,7 +6926,7 @@ commits)のパッチを作成します。リージョンが複数のコミット
 @cindex magit-patch-save
 @item @kbd{W s} @tie{}@tie{}@tie{}@tie{}(@code{magit-patch-save})
 
-このコマンドは、currentの差分からパッチを作成します。
+このコマンドは、currentのdiffからパッチを作成します。
 
 @code{magit-diff-mode}または@code{magit-revision-mode}バッファ内では、@code{C-x
 C-w}もこのコマンドに結び付けられています。
@@ -6989,7 +6987,7 @@ buffer)に表示します。
 @cindex magit-patch-apply
 @item @kbd{w a} @tie{}@tie{}@tie{}@tie{}(@code{magit-patch-apply})
 
-このコマンドは、プレーンパッチを適用します。詳細はこちら→@ref{Plain Patches}
+このコマンドは、プレーンパッチを適用します。詳細はこちらをご覧下さい(@ref{Plain Patches})。
 このコマンドは、歴史的な理由から、@code{magit-am}トランジェントコマンドからのみ使用できます。
 @end table
 
@@ -7396,7 +7394,7 @@ the git-worktree(1) manpage.
 @cindex magit-worktree
 @item @kbd{%} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree})
 
-このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
+このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
 buffer)に表示します。
 
 @kindex % b
@@ -7497,8 +7495,8 @@ files)を進行中のreferenceに保存するグローバルモードを提供�
 この変数を直接設定しても効果はありません。カスタムインターフェイスを使用してこれを行うか、それぞれのモード関数を呼び出します。
 
 歴史的な理由から、このモードは他の4つの@code{magit-wip-*}モードの上に実装されています。これらのモードは、あなたが wip
-refsが更新されるタイミングをより細かく制御したい場合は、個別に使用することもできます。しかし、それはお勧めできません→@ref{Legacy Wip
-Modes}
+refsが更新されるタイミングをより細かく制御したい場合は、個別に使用することもできます。しかし、それはお勧めできません。こちらを参照して下さい(@ref{Legacy
+Wip Modes})。
 @end defopt
 
 ブランチとそのwip
@@ -7702,7 +7700,7 @@ Bindings})と(@ref{Key Binding Conventions,,,elisp,})
 @cindex magit-file-dispatch
 @item @kbd{C-c M-g} @tie{}@tie{}@tie{}@tie{}(@code{magit-file-dispatch})
 
-このトランジット(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
+このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
 buffer)に表示します。
 
 ファイルにアクセスしないバッファで呼び出されると、通常の@code {magit-dispatch}にフォールバックします。
@@ -7743,7 +7741,7 @@ buffer)に表示します。
 
 @defopt magit-diff-buffer-file-locked
 
-このオプションは、@code{magit-diff-buffer-file}が専用のバッファを使用するかどうかを制御します。こちらを参照下さい(@ref{Modes
+このオプションは、@code{magit-diff-buffer-file}が専用のバッファを使用するかどうかを制御します。こちらを参照して下さい(@ref{Modes
 and Buffers})。
 @end defopt
 
@@ -7786,7 +7784,7 @@ and Buffers})。
 このコマンドと以下のコマンドの詳細については、こちらを参照(@ref{Blaming})。
 @end table
 
-@code{magit-blame}サブトランジェントコマンドに加えて、ディスパッチトランジェントコマンドはいくつかのblameサフィックスコマンドを直接結び付けます。これらのコマンドとバインディングについては、こちらを参照下さい(@ref{Blaming})。
+@code{magit-blame}サブトランジェントコマンドに加えて、ディスパッチトランジェントコマンドはいくつかのblameサフィックスコマンドを直接結び付けます。これらのコマンドとバインディングについては、こちらを参照して下さい(@ref{Blaming})。
 
 @table @asis
 @kindex C-c M-g e
@@ -7904,7 +7902,7 @@ the <a href="http://git-scm.com/docs/git-config">git-config(1)</a> manpage.
 the git-config(1) manpage.
 @end iftex
 
-同様に、Emacsオプションは、@code{/path/to/repo/.dir-locals.el}を編集することによってあるリポジトリのみに設定できます。こちらを参照下さい(@ref{Directory
+同様に、Emacsオプションは、@code{/path/to/repo/.dir-locals.el}を編集することによってあるリポジトリのみに設定できます。こちらを参照して下さい(@ref{Directory
 Variables,,,emacs,})。たとえば、1つの巨大なリポジトリでファイルアクセスバッファの自動リフレッシュを無効にするには、以下を使用します:
 
 @itemize
@@ -7984,7 +7982,7 @@ Variables,,,emacs,})。たとえば、1つの巨大なリポジトリでファ�
 
 この節では、安全上の理由から変更する(または変更しない)可能性のあるさまざまな変数について説明します。
 
-Gitは、ユーザーが誤って削除した変更を復元するのに十分な時間、コミットした変更を保持します。作業ツリーのコミットされていない変更に対しては同じことを行わず、インデックス(ステージ領域)に対しても同じことを行いません。Magitを使用すると、コミットされていない変更を簡単に変更できるため、その過程で自分の足を簡単に撃つことができます。そのため、Magitは、特定のアクションの前後に追跡されているファイルを進行中のreferenceに保存する3つのグローバルモードを提供します。こちらを参照下さい(@ref{Wip
+Gitは、ユーザーが誤って削除した変更を復元するのに十分な時間、コミットした変更を保持します。作業ツリーのコミットされていない変更に対しては同じことを行わず、インデックス(ステージ領域)に対しても同じことを行いません。Magitを使用すると、コミットされていない変更を簡単に変更できるため、その過程で自分の足を簡単に撃つことができます。そのため、Magitは、特定のアクションの前後に追跡されているファイルを進行中のreferenceに保存する3つのグローバルモードを提供します。こちらを参照して下さい(@ref{Wip
 Modes})。
 
 これらのモードは、パフォーマンス上の懸念から、デフォルトでは有効になっていません。
@@ -7995,8 +7993,8 @@ Modes})。
 それでも、@code{trash}は@code{magit-no-confirm}のメンバーではありません。あなたはこれを変更することをお勧めします。
 
 デフォルトでは、訪問したファイルがディスク上で変更されると、訪問したファイルは自動的revertされます。
-これは見た目ほど危険ではありませんが、十分な情報に基づいて決定を下すには確認が必要です。こちらを参照下さい(@ref{Risk of Reverting
-Automatically})
+これは見た目ほど危険ではありませんが、十分な情報に基づいて決定を下すには確認が必要です。こちらを参照して下さい(@ref{Risk of
+Reverting Automatically})
 
 @node Performance
 @subsection Performance
@@ -8030,7 +8028,7 @@ files)がディスク上で変更されると、現在のリポジトリ内に�
 
 あなたがデフォルトで無効になっている機能を有効にしている場合は、それらがパフォーマンスに大きな影響を与えるかどうかを確認する必要があります。少なくとも大規模なリポジトリではパフォーマンスが低下することがわかっているため、それらはデフォルトでは有効になっていない可能性があります。
 
-特定の異常に大きなリポジトリ内でのみパフォーマンスが低下する場合は、リポジトリごとまたはリポジトリクラスごとにのみ特定の機能を無効にすることをお勧めします。こちらを参照下さい(@ref{Per-Repository
+特定の異常に大きなリポジトリ内でのみパフォーマンスが低下する場合は、リポジトリごとまたはリポジトリクラスごとにのみ特定の機能を無効にすることをお勧めします。こちらを参照して下さい(@ref{Per-Repository
 Configuration})。たとえば、非常に多くのタグがあるリポジトリ内の次の現在のタグを判別するのに長い時間がかかります。したがって、前節で説明されているように、@code{magit-insert-tags-headers}を無効にすることをお勧めします。
 
 @menu
@@ -8060,9 +8058,9 @@ diffが遅い場合は、次の変数のすべてまたは一部を@code{nil}に
 
 任意のdiffの代わりにコミットを表示すると、いくつかの追加情報が表示されます。この情報の計算は、特定の状況を考えると非常にコストがかかる可能性があります。@code{magit-revision-mode}を使用してコミットを確認する方が、@code{magit-diff-mode}で同じコミットを確認するよりもかなり時間がかかる場合は、@code{magit-revision-insert-related-refs}を@code{nil}に設定することを検討してください。
 
-あなたが削除されたファイルを含むdiffに頻繁に直面する場合は、@code{--irreversible-delete}引数を有効にすることをお勧めします。これを行うと、diffはファイルが削除されたことを示しはしますが、ファイルの完全に削除された内容の表示は行いません。この引数はデフォルトでは使用できません。こちらを参照下さい(@ref{Enabling
+あなたが削除されたファイルを含むdiffに頻繁に直面する場合は、@code{--irreversible-delete}引数を有効にすることをお勧めします。これを行うと、diffはファイルが削除されたことを示しはしますが、ファイルの完全に削除された内容の表示は行いません。この引数はデフォルトでは使用できません。こちらを参照して下さい(@ref{Enabling
 and Disabling
-Suffixes,,,transient,}。それが完了したら、それを有効にしてその設定を保存する必要があります。こちらを参照下さい(@ref{Saving
+Suffixes,,,transient,}。それが完了したら、それを有効にしてその設定を保存する必要があります。こちらを参照して下さい(@ref{Saving
 Values,,,transient,}。これは、diff(@code{d})とdiff
 refresh(@code{D})の両方のトランジェントポップアップで行う必要があります。
 
@@ -8090,7 +8088,7 @@ buffer"のリフレッシュが遅い場合、それは通常、数百のrefsが
 @end lisp
 
 それからあなたは、@code{C-c
-C-d}と入力して、実際に見たいときに差分を表示できますが、それはそのときだけです。または、フックをそのままにして、diffの生成に時間がかかりすぎる場合は、@code{C-g}と入力することもできます。これを行うと、diffバッファが壊れてしまいますが、この方法で行うと、通常はdiffを確認できるという利点があります。これは、潜在的な問題を見つける可能性が高くなるため便利です。
+C-d}と入力して、実際に見たいときにdiffを表示できますが、それはそのときだけです。または、フックをそのままにして、diffの生成に時間がかかりすぎる場合は、@code{C-g}と入力することもできます。これを行うと、diffバッファが壊れてしまいますが、この方法で行うと、通常はdiffを確認できるという利点があります。これは、潜在的な問題を見つける可能性が高くなるため便利です。
 
 @node Microsoft Windows Performance
 @unnumberedsubsubsec Microsoft Windows Performance
@@ -8166,7 +8164,7 @@ Conventions,,,elisp,})
 以下の節では、Magitのコア部分の抽象化のいくつかを使用して、Magit自体を拡張する方法、または個別の拡張を実装する方法について説明します。
 
 Magitで使用される低レベルの機能のいくつかは、個別の ライブラリ/パッケージ
-に分解されているため、Magitに依存することなく他のパッケージで使用できます。@code{with-editor}については→@ref{Top,,,with-editor,}
+に分解されているため、Magitに依存することなく他のパッケージで使用できます。@code{with-editor}についてはこちらを参照して下さい(@ref{Top,,,with-editor,})。
 @code{transient}にはまだマニュアルがありません。
 
 独自のMagit拡張機能によって提供されるコマンドにバインドできる未使用のキーを見つけようとしている場合は、@uref{https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry}をチェックアウトしてください。
@@ -8609,7 +8607,7 @@ BUFFERに切り替える前に、すべての引数が評価されます。
 @node 慣習
 @section 慣習
 
-こちらもご覧ください→@ref{補完と確認}
+こちらもご覧ください(@ref{補完と確認})。
 
 @menu
 * Theming Faces::            
@@ -8661,7 +8659,7 @@ whitespace errors)を挿入します。テストに使用します。)
 
 次の2つのノードには、よくある質問が一覧表示されます。よくある@strong{および最近}の質問、つまりまだマニュアルに記載されていない質問のリストについては→@uref{https://github.com/magit/magit/wiki/FAQ}
 
-デバッグツールも使用できます→@ref{Debugging Tools}
+どうぞこちらも使ってやって下さい(@ref{Debugging Tools})。
 
 @menu
 * FAQ - How to @dots{}?::
@@ -8761,7 +8759,7 @@ echo "*.gpg filter=gpg diff=gpg" > .gitattributes
 * コミットに問題があります::
 * MS WindowsではMagitでpushできません::
 * 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません.  
-* ファイルを展開して差分を表示するとファイルが消えます::
+* ファイルを展開してdiffを表示するとファイルが消えます::
 * @code{COMMIT_EDITMSG}バッファのpointが間違っています::
 * モード行の情報が常に最新ではない::
 * 同じ名前を共有するブランチとタグは何かを壊します::
@@ -8806,8 +8804,8 @@ SOMETHINGが「コミットおよび/またはタグ署名のためのgpg-agent�
 caching with gpg-agent for commit and/or tag
 signing")である場合、あなたは@code{$GPG_AGENT_INFO}も同期する必要があります。
 
-@node ファイルを展開して差分を表示するとファイルが消えます
-@appendixsubsec ファイルを展開して差分を表示するとファイルが消えます
+@node ファイルを展開してdiffを表示するとファイルが消えます
+@appendixsubsec ファイルを展開してdiffを表示するとファイルが消えます
 
 これはおそらく、@code{diff.*}
 Git変数の変更が原因です。あなたはおそらく@code{magit-git-global-arguments}を何らかの理由で設定しています。よって、あなたはMagit内で@code{magit-git-global-arguments}をカスタマイズしたのを元に戻す(undo)だけです。
@@ -8840,7 +8838,8 @@ Magitは、モードラインに表示されている@code{Git-master}のよう�
 (setq auto-revert-check-vc-info t)
 @end lisp
 
-しかし、そうするとフォーマンスが悪化します。 より多くの(過度に楽観的な)情報については→@ref{VC Mode Line,,,emacs,}
+しかし、そうするとフォーマンスが悪化します。 より多くの(過度に楽観的な)情報についてはこちらを参照して下さい(@ref{VC Mode
+Line,,,emacs,})。
 
 あなたがこの情報をモード行に表示するこをあまり気にしないなら、@emph{不正確な}情報を単にモード行に表示しないことを検討してください。
 
@@ -8971,7 +8970,7 @@ Magitとその依存関係には、いくつかのデバッグツールが用意
 
 このコマンドは、使用可能で使用されている@code{git}実行可能ファイルに関する情報を含むバッファを表示し、@code{exec-path}の問題を調査するときに役立ちます。
 
-こちらもご覧ください→@ref{Git実行ファイル}
+こちらもご覧ください(@ref{Git実行ファイル})。
 
 @kindex M-x with-editor-debug
 @cindex with-editor-debug
@@ -8979,10 +8978,10 @@ Magitとその依存関係には、いくつかのデバッグツールが用意
 
 このコマンドは、使用可能で使用されている@code{emacsclient}実行可能ファイルに関する情報を含むバッファを表示し、Magit(または@code{with-editor})が適切な@code{emacsclient}実行可能ファイルを見つけられない理由を調査するときに役立ちます。
 
-こちらもご覧ください→@ref{Debugging,,,with-editor,}
+こちらもご覧ください(@ref{Debugging,,,with-editor,})
 @end table
 
-FAQもご覧ください→@ref{FAQ}
+どうぞこちらもご覧下さい(@ref{FAQ})
 
 @node Keystroke Index
 @appendix Keystroke Index
