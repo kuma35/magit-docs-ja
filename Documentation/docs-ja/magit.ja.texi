@@ -706,7 +706,7 @@ Visiting Files})。
 Magitはいくつかのメジャーモードを提供します。
 これらのモードのそれぞれについて、通常、リポジトリごとに1つのバッファのみが存在します。個別のモードとそのためのバッファは、コミット、diff、ログ、およびその他のいくつかのもののために存在します。
 
-これらの特別な目的のバッファに加えて、@strong{ステータスバッファ}と呼ばれる概要バッファもあります。ユーザーがGitコマンドを呼び出すか、他のバッファを作成またはアクセスするのは、通常、このバッファからです。
+これらの特別な目的のバッファに加えて、@strong{ステータスバッファ}と呼ばれる概要バッファもあります。ユーザーがGitコマンドを呼び出すか、他のバッファを作成または訪問するのは、通常、このバッファからです。
 
 このマニュアルでは、「Magitバッファ」についてよく話します。つまり、メジャーモードが@code{magit-mode}から派生するバッファを意味します。
 
@@ -943,13 +943,13 @@ Magitバッファ達を自動的にリフレッシュすると、表示される
 
 このコマンドは、メジャーモードが@code{magit-mode}および対応するステータスバッファから派生している場合、現在のバッファをリフレッシュします。
 
-オプション@code{magit-revert-buffers}がそれを要求する場合、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファもrvertします。
+オプション@code{magit-revert-buffers}がそれを要求する場合、現在のリポジトリで追跡されているファイルを訪問するすべての変更されていないバッファもrvertします。
 
 @kindex G
 @cindex magit-refresh-all
 @item @kbd{G} @tie{}@tie{}@tie{}@tie{}(@code{magit-refresh-all})
 
-このコマンドは、現在のリポジトリに属するすべてのMagitバッファをリフレッシュし、現在のリポジトリで追跡されているファイルにアクセスするすべての変更されていないバッファをrevertします。
+このコマンドは、現在のリポジトリに属するすべてのMagitバッファをリフレッシュし、現在のリポジトリで追跡されているファイルに訪問するすべての変更されていないバッファをrevertします。
 
 @code{magit-revert-buffers}がnilの場合でも、file-visitingバッファは常にrevertされます。
 
@@ -999,7 +999,7 @@ RET}と入力する必要があります。
 @defopt magit-auto-revert-mode
 
 このモードを有効にすると、追跡中のファイル(tracked
-files)にアクセスしたバッファは、アクセスしたファイルがディスク上で変更された後、自動的にrevertされます。
+files)を訪問したバッファは、訪問したファイルがディスク上で変更された後、自動的にrevertされます。
 @end defopt
 
 @defopt global-auto-revert-mode
@@ -1008,7 +1008,7 @@ files)にアクセスしたバッファは、アクセスしたファイルが�
 file)がディスク上で変更された後、file-visitingバッファが自動的にrevertされます。
 
 追跡中のファイル(tracked
-files)にアクセスするバッファを自動的にrevertする場合は、追跡中のファイルにアクセスするバッファだけでなく、任意のバッファをrevertすることもできます。その場合は、@code{magit-auto-revert-mode}の@emph{代わり}にこのモードを有効にしてください。
+files)を訪問するバッファを自動的にrevertする場合は、追跡中のファイルを訪問するバッファだけでなく、任意のバッファをrevertすることもできます。その場合は、@code{magit-auto-revert-mode}の@emph{代わり}にこのモードを有効にしてください。
 @end defopt
 
 @defopt magit-auto-revert-immediately
@@ -1082,7 +1082,7 @@ Magitがオンにしないバッファで@code{auto-revert-mode}をオンにす�
 hoc)の「ステージ領域」として使用する場合、自動revertによってデータが失われる可能性があります。
 これまでのところ、このようなワークフローを使用しているユーザーは私が知っている限りでは1人だけです。
 
-例：あなたはバッファ内のファイルにアクセスして編集し、変更を保存します。それから、Emacsの外部で(または少なくともMagitを使用しないか、バッファを保存することにより)、ディスク上のファイルを再度変更します。この時点で、バッファは中間バージョンがまだ存在する唯一の場所です。変更をディスクに保存しましたが、それ以降は上書きされています。一方、Emacsはバッファが変更されていないと見なし(最後にアクセスしたファイルに保存してから変更を加えていないため)、自動的にrevertされることに異議を唱えません。この時点で、自動revertモードが開始されます。バッファが変更されているかどうかがチェックされ、変更されていないため、バッファがrevertされます。中間バージョンは失われます。(実際には、いまだ、@code{undo}コマンドを使用して元に戻る(get
+例：あなたはバッファ内のファイルを訪問して編集し、変更を保存します。それから、Emacsの外部で(または少なくともMagitを使用しないか、バッファを保存することにより)、ディスク上のファイルを再度変更します。この時点で、バッファは中間バージョンがまだ存在する唯一の場所です。変更をディスクに保存しましたが、それ以降は上書きされています。一方、Emacsはバッファが変更されていないと見なし(最後に訪問したファイルに保存してから変更を加えていないため)、自動的にrevertされることに異議を唱えません。この時点で、自動revertモードが開始されます。バッファが変更されているかどうかがチェックされ、変更されていないため、バッファがrevertされます。中間バージョンは失われます。(実際には、いまだ、@code{undo}コマンドを使用して元に戻る(get
 it back)ことができます。)
 
 あなたのワークフローがバッファに中間バージョンを保持するEmacsに依存している場合は、すべての自動revertモードを無効にする必要があります。ただし、このようなワークフローは、自動revertモードを使用しなくても危険であるため、回避する必要があることを考慮してください。Emacsがクラッシュしたり、誤ってEmacsを終了したりすると、バッファの内容も失われます。中間バージョンがまだ含まれている自動保存ファイルはなく(バッファを保存したときに削除されたため)、バッファを保存するかどうかを尋ねられることはありません(変更されていないため)。
@@ -2204,7 +2204,7 @@ Hooks})。
 フックを実行して、セクションをステータスバッファに挿入します。
 @end defopt
 
-デフォルトでは、そのフックの最初の関数は@code{magit-insert-status-headers}です。次節で説明します。デフォルトでは、それに続く関数もそのフックのメンバーです。
+デフォルトでは、そのフックの最初の関数は@code{magit-insert-status-headers}です。次節で説明します。デフォルトでは、以下の関数もそのフックのメンバーです。
 
 @defun magit-insert-merge-log
 
@@ -2359,11 +2359,11 @@ files)のツリーを挿入します。@code{magit-buffer-diff-files}の最初�
 このフックは@code{magit-insert-status-headers}によって実行され、それらの関数は@code{magit-status-sections-hook}のメンバーである必要があります。
 @end defopt
 
-デフォルトでは、行か関数が上記のフックのメンバーです:
+デフォルトでは、以下の関数が上記フックのメンバーです:
 
 @defun magit-insert-error-header
 
-ちょうど今発生したGitエラーに関するメッセージを示すヘッダー行を挿入します。
+たった今発生したGitエラーに関するメッセージを示すヘッダー行を挿入します。
 
 この関数は、副作用のためにGitが実行されたときに発生した最後のエラーのみを認識します。たとえば、diffの生成中にエラーが発生した場合、そのエラーは挿入されません。ステータスバッファをリフレッシュすると、このセクションは再び表示されなくなります。
 @end defun
@@ -2375,7 +2375,7 @@ files)のツリーを挿入します。@code{magit-buffer-diff-files}の最初�
 
 @defun magit-insert-head-branch-header
 
-現在のブランチまたは切り離(detach)された@code{HEAD}に関するヘッダー行を挿入します。
+現在のブランチまたはdetachされた@code{HEAD}に関するヘッダー行を挿入します。
 @end defun
 
 @defun magit-insert-upstream-branch-header
@@ -2477,20 +2477,20 @@ files)のツリーを挿入します。@code{magit-buffer-diff-files}の最初�
 
 @defopt magit-status-margin
 
-このオプションは、マージン(margin)が最初にMagit-Statusモードのバッファーに表示されるかどうか、およびそのフォーマット方法を指定します。
+このオプションは、欄外(margin)が最初にMagit-Statusモードのバッファに表示されるかどうか、およびそのフォーマット方法を指定します。
 
 値の形式は@code{(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)}です。
 
 @itemize
 @item
-INITがnil以外の場合、マージン(margin)が最初に表示されます。
+INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
 @item
 STYLEは、作成者(author)またはコミッター(committer)の日付をフォーマットする方法を制御します。@code{age}(コミットの経過時間を示す)または@code{age-abbreviated}(時間単位を文字に短縮する)または実際の日付を表す文字列(@code{format-time-string}に適しています)のいずれかになります。オプション@code
 {magit-log-margin-show-committer-date}は、表示される日付を制御します。
 
 @item
-WIDTHは、マージンの幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
+WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
 
 @item
 AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御します。
@@ -2524,7 +2524,7 @@ HEADERは、ヘッダーに表示される文字列です。WIDTHは、列の幅
 あなたは列ごとに1文字だけを使用し、列間にパディングなしで数値列の範囲を表示したい場合があるかもしれません。その場合は、適切なHEADERを使用し、WIDTHを1に設定し、@code{:pad-right}を0に設定する必要があります。@code{+}は、9より大きい数値に置き換えられます。
 @end defopt
 
-上記のオプションに以下の機能を追加できます:
+上記のオプションに以下の関数を追加できます:
 
 @defun magit-repolist-column-ident
 
@@ -2578,7 +2578,7 @@ HEADERは、ヘッダーに表示される文字列です。WIDTHは、列の幅
 @code{S}ならばステージされたファイル(staged file)が少なくとも1つある。
 @end itemize
 
-適用されるこれらの最初のものだけが示されています。
+これら適用するもののうち、最初の１つだけが表示されます。
 @end defun
 
 @defun magit-repolist-column-unpulled-from-upstream
@@ -2604,7 +2604,7 @@ HEADERは、ヘッダーに表示される文字列です。WIDTHは、列の幅
 @node Logging
 @section Logging
 
-ステータスバッファには、プッシュされていないコミットとプルされていないコミットのログが含まれていますが、それだけでは明らかに不十分です。@code{l}上のトランジェントプレフィックスコマンド@code{magit-log}は、個別のログバッファに特定のログを表示するいくつかのサフィックスコマンドがあります。
+ステータスバッファには、プッシュされていないコミットとプルされていないコミットのログが含まれていますが、それだけでは明らかに不十分です。@code{l}のトランジェントプレフィックスコマンド@code{magit-log}には、個別のログバッファに特定のログを表示するいくつかのサフィックスコマンドがあります。
 
 他のトランジェントプレフィックスコマンドと同様に、@code{magit-log}にも、サフィックスコマンドの1つを呼び出す前に変更できるいくつかのインフィックス引数達があります。ただし、ログ用トランジェントコマンドの場合、これらの引数は、@code{magit-prefix-use-buffer-arguments}の値に応じて、現在のリポジトリのログバッファで現在使用されている引数から取得される場合があります(@ref{Transient
 Arguments and Buffer Variables})。
@@ -2639,13 +2639,13 @@ buffer)に表示します。
 @cindex magit-log-current
 @item @kbd{l l} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-current})
 
-現在のブランチのログを表示します。@code{HEAD}が切り離されている(detached)か、プレフィックス引数が付いている場合、ミニバッファから読み取られた1つ以上のrevのログを表示します。
+現在のブランチのログを表示します。@code{HEAD}が切り離されている(detached)か、プレフィックス引数が付いている場合、ミニバッファから読み取られた1つ以上のリビジョン(rev)のログを表示します。
 
 @kindex l o
 @cindex magit-log-other
 @item @kbd{l o} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-other})
 
-ミニバッファから読み取られた1つ以上のrevのログを表示します。ユーザーは、スペースまたは範囲で区切られた1つまたは複数のリビジョンを入力できますが、完了候補として使用できるのは、ブランチ、タグ、およびポイントでのコミットの表現のみです。
+ミニバッファから読み取られた1つ以上のリビジョン(rev)のログを表示します。ユーザーは、スペースまたは範囲で区切られた1つまたは複数のリビジョンを入力できますが、完了候補として使用できるのは、ブランチ、タグ、およびポイントでのコミットの表現のみです。
 
 @kindex l h
 @cindex magit-log-head
@@ -2672,8 +2672,8 @@ buffer)に表示します。
 すべての参照(reference)と@code{HEAD}のログを表示します。
 @end table
 
-現在のバッファでアクセスされているファイルまたはblobのログを表示する2つの追加コマンドが存在します(@ref{Commands for
-Buffers Visiting Files})。コマンド@code{magit-cherry}もログを表示します(@ref{Cherries})。
+現在のバッファが訪問しているファイルまたはblobのログを表示する2つの追加コマンドが存在します(@ref{Commands for Buffers
+Visiting Files})。コマンド@code{magit-cherry}もログを表示します(@ref{Cherries})。
 
 @menu
 * Refreshing Logs::
@@ -2721,7 +2721,7 @@ buffer)に表示します。
 @cindex magit-toggle-margin
 @item @kbd{L t} @tie{}@tie{}@tie{}@tie{}(@code{magit-toggle-margin})
 
-マージン(margin)を表示または非表示にします。
+欄外(margin)を表示または非表示にします。
 @end table
 
 @node Log Buffer
@@ -2735,7 +2735,7 @@ buffer)に表示します。
 このトランジェント(一時的)なプレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンドを適切なインフィックス(中置)引数とともに結び付け、いずれかのサフィックスコマンドを選択するまでの間、そのインフィックス引数達とサフィックスコマンド達を一時バッファ(temporary
 buffer)に表示します。
 
-@ref{Refreshing Logs}
+参照(@ref{Refreshing Logs})
 
 @kindex q
 @cindex magit-log-bury-buffer
@@ -2819,7 +2819,7 @@ buffer)に表示します。
 
 Magitは、Gitの表示方法とは少し異なる方法でreferenceをログに表示します。
 
-ローカルブランチは青で、リモートブランチは緑です。 もちろん、他の種類のreferenceに使用される色と同様に、使用するテーマによって異なります。
+ローカルブランチは青色で、リモートブランチは緑色です。 もちろん、他の種類のreferenceに使用される色と同様に、使用するテーマによって異なります。
 現在のブランチは、それぞれのリモートの@code{HEAD}ブランチであるリモートブランチと同様に、枠で囲まれています。
 
 ローカルブランチとそのプッシュターゲットポイントが同じコミットにある場合、スペースを保持し、その関係を表示するために、それらの名前が組み合わされます。
@@ -2829,7 +2829,7 @@ Magitは、Gitの表示方法とは少し異なる方法でreferenceをログに
 origin/feature
 [green][blue-]
 
-instead of
+は、下記の代わりです
 
 feature origin/feature
 [blue-] [green-------]
@@ -2852,14 +2852,14 @@ feature origin/feature
 
 @itemize
 @item
-INITがnil以外の場合、マージン(margin)が最初に表示されます。
+INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
 @item
 STYLEは、作成者(author)またはコミッター(committer)の日付をフォーマットする方法を制御します。@code{age}(コミットの経過時間を示す)または@code{age-abbreviated}(時間単位を文字に短縮する)または実際の日付を表す文字列(@code{format-time-string}に適しています)のいずれかになります。オプション@code
 {magit-log-margin-show-committer-date}は、表示される日付を制御します。
 
 @item
-WIDTHは、マージンの幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
+WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
 
 @item
 AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御します。
@@ -2882,10 +2882,10 @@ AUTHOR-WIDTHは整数である必要があります。作成者の名前が表�
 @cindex magit-margin-settings
 @item @kbd{L} @tie{}@tie{}@tie{}@tie{}(@code{magit-margin-settings})
 
-このトランジェントプレフィックスコマンド、それに従うサフィックスコマンドを結び付けます。各コマンドは、何らかの方法で欄外(margin)の外観を変更します。
+このトランジェントプレフィックスコマンドは、それに従うサフィックスコマンドを結び付けます。各コマンドは、何らかの方法で欄外(margin)の外観を変更します。
 @end table
 
-欄外(margin)をサポートする一部のバッファでは、@code{L}は代わりに@code{magit-log-refresh}に結び付けられますが、そのトランジェントコマンドは同じコマンドと、他のいくつかの無関係なコマンドがあります。
+欄外(margin)をサポートする一部のバッファでは、@code{L}は代わりに@code{magit-log-refresh}に結び付けられますが、そのトランジェントコマンドには同じコマンドと、他のいくつかの無関係なコマンドがあります。
 
 @table @asis
 @kindex L L
@@ -2910,11 +2910,11 @@ AUTHOR-WIDTHは整数である必要があります。作成者の名前が表�
 @node Select from Log
 @subsection Select from Log
 
-ユーザーが@code{HEAD}から到達可能な最近のコミットを選択する必要がある場合、通常の補完を使用するのは不便です(ほとんどの人間は、少なくともダブルチェックなしではハッシュまたは"HEAD~5"を覚えていないため)。代わりに、ログバッファを使用してコミットを選択します。これには、コミットが順番にコミットメッセージとともに表示されるという利点があります。
+ユーザーが@code{HEAD}から到達可能な最近のコミットを選択する必要がある場合、通常の補完を使用するのは不便です(ほとんどの人間は、少なくともダブルチェックなしではハッシュとかまたは"HEAD~5"とかを覚えていないため)。代わりに、ログバッファを使用してコミットを選択します。これには、コミットが順番にコミットメッセージとともに表示されるという利点があります。
 
-このような選択ログは、リベースの開始を選択するとき、およびsquashコミットを選択するときに使用されます。
+このような選択用ログは、リベースの開始を選択するとき、およびsquashコミットを選択するときに使用されます。
 
-すべてのログバッファで使用可能なキーバインディングに加えて、以下の追加のキーバインディングが選択ログバッファで使用できます:
+すべてのログバッファで使用可能なキーバインディングに加えて、以下の追加のキーバインディングが選択用ログバッファで使用できます:
 
 @table @asis
 @kindex C-c C-c
@@ -2940,14 +2940,14 @@ AUTHOR-WIDTHは整数である必要があります。作成者の名前が表�
 
 @itemize
 @item
-INITがnil以外の場合、マージン(margin)が最初に表示されます。
+INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
 @item
 STYLEは、作成者(author)またはコミッター(committer)の日付をフォーマットする方法を制御します。@code{age}(コミットの経過時間を示す)または@code{age-abbreviated}(時間単位を文字に短縮する)または実際の日付を表す文字列(@code{format-time-string}に適しています)のいずれかになります。オプション@code
 {magit-log-margin-show-committer-date}は、表示される日付を制御します。
 
 @item
-WIDTHは、マージンの幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
+WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
 
 @item
 AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御します。
@@ -3004,14 +3004,14 @@ the git-reflog(1) manpage.
 
 @itemize
 @item
-INITがnil以外の場合、マージン(margin)が最初に表示されます。
+INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
 @item
 STYLEは、作成者(author)またはコミッター(committer)の日付をフォーマットする方法を制御します。@code{age}(コミットの経過時間を示す)または@code{age-abbreviated}(時間単位を文字に短縮する)または実際の日付を表す文字列(@code{format-time-string}に適しています)のいずれかになります。オプション@code
 {magit-log-margin-show-committer-date}は、表示される日付を制御します。
 
 @item
-WIDTHは、マージンの幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
+WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
 
 @item
 AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御します。
@@ -3059,14 +3059,14 @@ the git-reflog(1) manpage.
 
 @itemize
 @item
-INITがnil以外の場合、マージン(margin)が最初に表示されます。
+INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
 @item
 STYLEは、作成者(author)またはコミッター(committer)の日付をフォーマットする方法を制御します。@code{age}(コミットの経過時間を示す)または@code{age-abbreviated}(時間単位を文字に短縮する)または実際の日付を表す文字列(@code{format-time-string}に適しています)のいずれかになります。オプション@code
 {magit-log-margin-show-committer-date}は、表示される日付を制御します。
 
 @item
-WIDTHは、マージンの幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
+WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
 
 @item
 AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御します。
@@ -3079,7 +3079,7 @@ AUTHOR-WIDTHは整数である必要があります。作成者の名前が表�
 @node Diffing
 @section Diffing
 
-ステータスバッファには、ステージされたコミットとステージされていないコミットのdiffが含まれていますが、それだけでは明らかに不十分です。@code{d}上のトランジェントプレフィックスコマンド@code{magit-diff}は、個別のdiffバッファに特定のdiffを表示するいくつかのサフィックスコマンドがあります。
+ステータスバッファには、ステージされたコミットとステージされていないコミットのdiffが含まれていますが、それだけでは明らかに不十分です。@code{d}のトランジェントプレフィックスコマンド@code{magit-diff}は、個別のdiffバッファに特定のdiffを表示するいくつかのサフィックスコマンドがあります。
 
 他のトランジェントプレフィックスコマンドと同様に、@code{magit-diff}も、サフィックスコマンドの1つを呼び出す前に変更できるいくつかのインフィックス引数達があります。ただし、diff用トランジェントコマンドの場合、これらの引数は、@code{magit-prefix-use-buffer-arguments}の値に応じて、現在のリポジトリのdiffバッファで現在使用されている引数から取得される場合があります(@ref{Transient
 Arguments and Buffer Variables})。
@@ -3109,7 +3109,7 @@ buffer)に表示します。
 @cindex magit-diff-dwim
 @item @kbd{d d} @tie{}@tie{}@tie{}@tie{}(@code{magit-diff-dwim})
 
-その時点での変更を表示します。
+そのポイントでの変更を表示します。
 
 @kindex d r
 @cindex magit-diff-range
@@ -3163,7 +3163,7 @@ A@dots{}B)である必要がありますが、単一のコミットにするこ�
 バッファ内のstashのすべてのdiffを表示します。
 @end table
 
-現在のバッファでアクセスされているファイルまたはblobのdiffを表示する2つの追加コマンドが存在します。こちらを参照して下さい(@ref{Commands
+現在のバッファで訪問しているファイルまたはblobのdiffを表示する2つの追加コマンドが存在します。こちらを参照して下さい(@ref{Commands
 for Buffers Visiting Files})。
 
 @menu
@@ -3251,7 +3251,7 @@ buffer)に表示します。
 このコマンドは、diffハンクのコンテキスト(the context)をデフォルトの行数にリセットします。
 @end table
 
-次のコマンドは、diff用トランジェントコマンドのいずれも使用せずに、表示されているdiffをすばやく変更します。
+以下のコマンドは、diff用トランジェントコマンドのいずれも使用せずに、表示されているdiffをすばやく変更します。
 
 @table @asis
 @kindex C-c C-d
@@ -3280,8 +3280,8 @@ buffer)に表示します。
 
 一部のコマンドは、ポイントがdiff内にある場合にのみ使用できます。
 
-@code{magit-diff-visit-file}および関連するコマンドは、その時点でのdiffが含まれているファイルの適切なバージョンにアクセスします。
-同様に、@code{magit-diff-visit-worktree-file}および関連するコマンドは、その時点でのdiffが含まれているファイルのワークツリーバージョンにアクセスします。詳細とキーバインディングについてはこちらを参照して下さい(@ref{Visiting
+@code{magit-diff-visit-file}および関連するコマンドは、その時点でのdiffが含まれているファイルの適切なバージョンを訪問します。
+同様に、@code{magit-diff-visit-worktree-file}および関連するコマンドは、その時点でのdiffが含まれているファイルのワークツリーバージョンを訪問します。詳細とキーバインディングについてはこちらを参照して下さい(@ref{Visiting
 Files and Blobs from a Diff})。
 
 @table @asis
@@ -3295,7 +3295,7 @@ Files and Blobs from a Diff})。
 
 @defopt magit-log-trace-definition-function
 
-このオプションで指定された関数は、@code{magit-log-trace-definition}によって使用され、ポイントでの関数を決定します。特別なニーズがあるメジャーモードの場合、モードのフックを使用してローカル値を設定できます。
+このオプションで指定された関数は、@code{magit-log-trace-definition}によって使用され、ポイントでの機能を決定します。特別なニーズがあるメジャーモードの場合、モードのフックを使用してローカル値を設定できます。
 @end defopt
 
 @table @asis
@@ -3303,11 +3303,11 @@ Files and Blobs from a Diff})。
 @cindex magit-diff-edit-hunk-commit
 @item @kbd{C-c C-e} @tie{}@tie{}@tie{}@tie{}(@code{magit-diff-edit-hunk-commit})
 
-このコマンドは、ハンクからそれぞれのコミットを編集し、ファイルにアクセスします。
+このコマンドは、ハンクからそれぞれのコミットを編集し、ファイルを訪問します。
 
-まず、@code{magit-diff-visit-file}を使用して、ハンクによって正しい場所で変更されているファイルにアクセスします。これは実際にblobを訪問します。ポイントが個々のハンク内ではなくdiffヘッダー上にある場合、これは最初のハンクが存在するblobにアクセスします。
+まず、@code{magit-diff-visit-file}を使用して、ハンクによって正しい場所で変更されているファイルを訪問します。これは実際にblobを訪問します。ポイントが個々のハンク内ではなくdiffヘッダー上にある場合、これは最初のハンクが存在するblobを訪問します。
 
-次に@code{magit-edit-line-commit}を呼び出し、@code{HEAD}からそのコミットを直接チェックチェックアウトすることで到達することは不可能な、インタラクティブなリベースを使用してコミットを編集可能にし、これにより実際の作業ツリーのファイルにもアクセスできます。
+次に@code{magit-edit-line-commit}を呼び出し、@code{HEAD}からそのコミットを直接チェックチェックアウトすることで到達することは不可能な、インタラクティブなリベースを使用してコミットを編集可能にし、これにより実際の作業ツリーのファイルも訪問できます。
 
 リベースの終了時に、blobもファイルバッファも強制終了(kill)されません。それが望ましくない場合は、このコマンドの代わりに@code{magit-rebase-edit-command}を使用する方がよい場合があります。
 
@@ -3319,7 +3319,7 @@ Files and Blobs from a Diff})。
 それ以外の場合は、diffstatセクションまたはその子にジャンプします。
 @end table
 
-次の2つのコマンドは、Magit-Diffモード(または、さらに言えばMagitバッファ)に固有のものではありませんが、ここでも使用できることを指摘しておく価値があります。
+以下の2つのコマンドは、Magit-Diffモード(または、さらに言えばMagitバッファ)に固有のものではありませんが、ここでも使用できることを指摘しておく価値があります。
 
 @table @asis
 @kindex SPC
@@ -3376,11 +3376,11 @@ diffでタブの幅を調整するかどうか。
 
 
 @item
-@code{always} そのようなバッファがない場合は、一時的(temporarily)にファイルにアクセスして値を決定します。
+@code{always} そのようなバッファがない場合は、一時的(temporarily)にファイルを訪問して値を決定します。
 
 
 @item
-NUMBER @code{always}と同様ですが、NUMBERバイトより大きいファイルにはアクセスしないでください。
+NUMBER @code{always}と同様ですが、NUMBERバイトより大きいファイルを訪問しないでください。
 @end itemize
 @end defopt
 
@@ -3532,7 +3532,7 @@ nil以外の場合、コミットメッセージ内のハッシュは@code{commi
 @code{quickest} 7文字以上の長さでかつ、1つ以上の数字かつ、1つ以上文字を含むすべての単語を使用します。
 @end itemize
 
-nilの場合、ハッシュはセクションに変換されませんが、「RET」を使用してその時点でコミットにアクセスできます。
+nilの場合、ハッシュはセクションに変換されませんが、「RET」を使用してその時点でコミットを訪問できます。
 @end defopt
 
 リビジョンバッファに表示されるdiff達は、変更されたファイルのサブセットに自動的に制限される場合があります。リビジョンバッファがログバッファから表示される場合、リビジョンバッファは、そのログバッファと同じファイル制限を共有します(コマンド@code{magit-diff-toggle-file-filter}も参照してください)。
@@ -3744,14 +3744,14 @@ v}を使用して、この列の詳細度を変更します。
 
 @itemize
 @item
-INITがnil以外の場合、マージン(margin)が最初に表示されます。
+INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
 @item
 STYLEは、作成者(author)またはコミッター(committer)の日付をフォーマットする方法を制御します。@code{age}(コミットの経過時間を示す)または@code{age-abbreviated}(時間単位を文字に短縮する)または実際の日付を表す文字列(@code{format-time-string}に適しています)のいずれかになります。オプション@code
 {magit-log-margin-show-committer-date}は、表示される日付を制御します。
 
 @item
-WIDTHは、マージンの幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
+WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
 
 @item
 AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御します。
@@ -3818,7 +3818,7 @@ AUTHOR-WIDTHは整数である必要があります。作成者の名前が表�
 @cindex magit-visit-ref
 @item @kbd{RET} @tie{}@tie{}@tie{}@tie{}(@code{magit-visit-ref})
 
-このコマンドは、別のバッファ内のポイントでreferenceまたはリビジョンにアクセスします。ポイントにリビジョンがない場合、またはプレフィックス引数がある場合は、リビジョンの入力を求められます。
+このコマンドは、別のバッファ内のポイントでreferenceまたはリビジョンを訪問します。ポイントにリビジョンがない場合、またはプレフィックス引数がある場合は、リビジョンの入力を求められます。
 
 このコマンドは、ポイントが@code{magit-refs-mode}バッファ内のreference上にある場合を除いて、上記の@code{magit-show-commit}と同じように動作します。あなたがオプション@code{magit-visit-ref-behavior}をカスタマイズした場合、動作は異なる可能性があります。
 
@@ -3994,7 +3994,7 @@ bisect後、bisect状態をクリーンアップし、元の@code{HEAD}に戻し
 @node Visiting Files and Blobs
 @section Visiting Files and Blobs
 
-Magitは、ファイルまたはblob(特定のコミットに保存されているファイルのバージョン)にアクセスするいくつかのコマンドを提供します。
+Magitは、ファイルまたはblob(特定のコミットに保存されているファイルのバージョン)を訪問するいくつかのコマンドを提供します。
 実際には、そのようなコマンドのいくつかの「グループ」と、各グループ内のいくつかの「バリエーション」を提供します。
 
 @menu
@@ -4010,19 +4010,19 @@ Magitは、ファイルまたはblob(特定のコミットに保存されてい�
 @cindex magit-find-file
 @deffn Command magit-find-file
 
-このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBにアクセスします。選択したウィンドウにバッファが表示されます。
+このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBを訪問します。選択したウィンドウにバッファが表示されます。
 @end deffn
 
 @cindex magit-find-file-other-window
 @deffn Command magit-find-file-other-window
 
-このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBにアクセスします。バッファは別のウィンドウに表示されます。
+このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBを訪問します。バッファは別のウィンドウに表示されます。
 @end deffn
 
 @cindex magit-find-file-other-frame
 @deffn Command magit-find-file-other-frame
 
-このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBにアクセスします。バッファは別のフレームに表示されます。
+このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBを訪問します。バッファは別のフレームに表示されます。
 @end deffn
 
 @node Visiting Files and Blobs from a Diff
@@ -4035,22 +4035,22 @@ Magitは、ファイルまたはblob(特定のコミットに保存されてい�
 @cindex magit-diff-visit-file
 @item @kbd{RET} @tie{}@tie{}@tie{}@tie{}(@code{magit-diff-visit-file})
 
-このコマンドは、その時点でのdiffが含まれているファイルの適切なバージョンにアクセスします。
+このコマンドは、その時点でのdiffが含まれているファイルの適切なバージョンを訪問します。
 
-このコマンドは、適切なファイルの作業ツリーバージョンにアクセスします。diff内のポイントの位置によって、アクセスされるファイルが決まります。訪問したバージョンは、diffがどのような変更であるかによって異なります。
+このコマンドは、適切なファイルの作業ツリーバージョンを訪問します。diff内のポイントの位置によって、訪問するファイルが決まります。訪問したバージョンは、diffがどのような変更であるかによって異なります。
 
 @itemize
 @item
 diffにコミットされていない変更(つまり、ステージされた変更(staged changes)またはステージされていない変更(unstaged
-changes)）が表示される場合は、作業ツリー内のファイル(つまり、@code{find-file}がアクセスするのと同じ「実際の」ファイル)にアクセスします。それ以外の場合は、「blob」にアクセスします。（つまり、コミットに保存されているファイルのバージョン）。
+changes)）が表示される場合は、作業ツリー内のファイル(つまり、@code{find-file}が訪問するのと同じ「実際の」ファイル)を訪問します。それ以外の場合は、「blob」を訪問します。（つまり、コミットに保存されているファイルのバージョン）。
 
 
 @item
-ポイントが削除された行にある場合は、その行を削除したコミットの最初の親、つまりその行がまだ存在する最後のコミットのblobにアクセスします。
+ポイントが削除された行にある場合は、その行を削除したコミットの最初の親、つまりその行がまだ存在する最後のコミットのblobを訪問します。
 
 
 @item
-ポイントが追加された行またはコンテキスト行にある場合は、その行を追加するblobにアクセスします。または、diffが複数のコミットから表示される場合は、これらの最後のコミットからblobにアクセスします。
+ポイントが追加された行またはコンテキスト行にある場合は、その行を追加するblobを訪問します。または、diffが複数のコミットから表示される場合は、これらの最後のコミットからblobを訪問します。
 @end itemize
 
 file-visitingバッファでは、このコマンドは、diffでポイントがオンになっている行に対応する行に移動します。
@@ -4061,11 +4061,11 @@ file-visitingバッファでは、このコマンドは、diffでポイントが
 
 @defopt magit-diff-visit-previous-blob
 
-このオプションは、@code{magit-diff-visit-file}が前のblobにアクセスできるかどうかを制御します。これが@code{t}（デフォルト）であり、コミットされた変更のdiff内の削除された行にポイントがある場合、@code{magit-diff-visit-file}はその行がまだ残っている最後のリビジョンのblobにアクセスします。
+このオプションは、@code{magit-diff-visit-file}が前のblobを訪問できるかどうかを制御します。これが@code{t}（デフォルト）であり、コミットされた変更のdiff内の削除された行にポイントがある場合、@code{magit-diff-visit-file}はその行がまだ残っている最後のリビジョンのblobを訪問します。
 
 現在、これはコミットされた変更に対してのみサポートされています。ステージされた変更(staged
 changes)とステージされていない変更(unstaged
-changes)の場合、@code{magit-diff-visit-file}は常に作業ツリー内のファイルにアクセスします。
+changes)の場合、@code{magit-diff-visit-file}は常に作業ツリー内のファイルを訪問します。
 @end defopt
 
 @table @asis
@@ -4073,14 +4073,14 @@ changes)の場合、@code{magit-diff-visit-file}は常に作業ツリー内の�
 @cindex magit-diff-visit-file-worktree
 @item @kbd{C-<return>} @tie{}@tie{}@tie{}@tie{}(@code{magit-diff-visit-file-worktree})
 
-このコマンドは、適切なファイルの作業ツリーバージョンにアクセスします。diff内のポイントの位置によって、アクセスされるファイルが決まります。@code{magit-diff-visit-file}とは異なり、常に作業ツリー内の「実際の」ファイル、つまりファイルの「現在のバージョン」にアクセスします。
+このコマンドは、適切なファイルの作業ツリーバージョンを訪問します。diff内のポイントの位置によって、訪問されるファイルが決まります。@code{magit-diff-visit-file}とは異なり、常に作業ツリー内の「実際の」ファイル、つまりファイルの「現在のバージョン」を訪問します。
 
 file-visitingバッファでは、このコマンドは、diffでポイントがオンになっている行に対応する行に移動します。作業ツリーで追加または削除された行、インデックス、およびその間のその他のコミットは、自動的に考慮されます。
 
 選択したウィンドウにバッファが表示されます。プレフィックス引数を使用すると、代わりにバッファが別のウィンドウに表示されます。
 @end table
 
-上記の2つのコマンドのバリエーションが存在しています。それは代わりに別のウィンドウまたは別のフレームでファイルにアクセスします。このような動作が必要な場合は、上記のキーバインディングを変更することをお勧めしますが、上記のコマンドは、プレフィックス引数を指定して呼び出されたときに別のウィンドウも使用することに注意してください。
+上記の2つのコマンドのバリエーションが存在しています。それは代わりに別のウィンドウまたは別のフレームでファイルを訪問します。このような動作が必要な場合は、上記のキーバインディングを変更することをお勧めしますが、上記のコマンドは、プレフィックス引数を指定して呼び出されたときに別のウィンドウも使用することに注意してください。
 
 @cindex magit-diff-visit-file-other-window
 @deffn Command magit-diff-visit-file-other-window
@@ -4139,11 +4139,11 @@ buffer)に表示します。
 @cindex magit-blame-addition
 @item @kbd{C-c M-g B b} @tie{}@tie{}@tie{}@tie{}(@code{magit-blame-addition})
 
-このコマンドは、現在のfile-visitingまたはblob-visitingバッファ内の各行または行のチャンクに、これらの行に最後にアクセスしたコミットに関する情報を追加します。
+このコマンドは、現在のfile-visitingまたはblob-visitingバッファ内の各行または行のチャンクに、これらの行に最後にアクセス(touch)したコミットに関する情報を追加します。
 
-バッファがそのファイルのリビジョンにアクセスすると、そのリビジョンまでの履歴が考慮されます。それ以外の場合は、コミットされていない変更を含む、ファイルの完全な履歴が考慮されます。
+バッファがそのファイルのリビジョンを訪問すると、そのリビジョンまでの履歴が考慮されます。それ以外の場合は、コミットされていない変更を含む、ファイルの完全な履歴が考慮されます。
 
-現在のバッファでMagit-Blameモードがすでにオンになっている場合は、REVISION:FILEにアクセスして(@code{magit-find-file}を使用)、再帰的にblameを行います。ここで、REVISIONは、現在の行または行のチャンクを追加したリビジョンの親です。
+現在のバッファでMagit-Blameモードがすでにオンになっている場合は、REVISION:FILEを訪問して(@code{magit-find-file}を使用)、再帰的にblameを行います。ここで、REVISIONは、現在の行または行のチャンクを追加したリビジョンの親です。
 
 @kindex C-c M-g r
 @cindex magit-blame-removal
@@ -4509,7 +4509,7 @@ file)(または複数のファイル)をポイントに指定して、ファイ�
 オプションで、コミットされていない変更がないことを確認します。
 
 @item
-@code{HEAD}コミットにアクセスし、そのコミットに含まれるべきではなかった変更に移動します。
+@code{HEAD}コミットを訪問し、そのコミットに含まれるべきではなかった変更に移動します。
 
 @item
 @code{u}(@code{magit-unstage})と入力して、インデックスで逆にします。これは、@code{magit-unstage-committed-changes}がnil以外であることを前提としています。
@@ -4536,7 +4536,7 @@ commit)。コミットはユーザーから読み取られ、デフォルトで�
 @node Staging from File-Visiting Buffers
 @subsection Staging from File-Visiting Buffers
 
-きめ細かいステージ/ステージ解除は、ステータスまたはdiffバッファから実行する必要がありますが、現在のバッファでアクセスされたファイルに加えられたすべての変更を、そのバッファ内から直接ステージ/ステージ解除することもできます。
+きめ細かいステージ/ステージ解除は、ステータスまたはdiffバッファから実行する必要がありますが、現在のバッファで訪問したファイルに加えられたすべての変更を、そのバッファ内から直接ステージ/ステージ解除することもできます。
 
 @table @asis
 @kindex M-x magit-stage-file
@@ -6468,14 +6468,14 @@ REFを削除して、REFのreflogに保存されているすべてのstashを削
 
 @itemize
 @item
-INITがnil以外の場合、マージン(margin)が最初に表示されます。
+INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
 @item
 STYLEは、作成者(author)またはコミッター(committer)の日付をフォーマットする方法を制御します。@code{age}(コミットの経過時間を示す)または@code{age-abbreviated}(時間単位を文字に短縮する)または実際の日付を表す文字列(@code{format-time-string}に適しています)のいずれかになります。オプション@code
 {magit-log-margin-show-committer-date}は、表示される日付を制御します。
 
 @item
-WIDTHは、マージンの幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
+WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のために存在し、現在値を変更すべきではありません。
 
 @item
 AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御します。
@@ -7628,8 +7628,8 @@ refのフォーク点は変更されません。フォーク点は、それぞ�
 
 @defopt magit-wip-after-save-mode
 
-このモードが有効になっている場合、Gitリポジトリで追跡されているファイルにアクセスするバッファを保存すると、現在の状態が現在のブランチの作業ツリー
-wip refにコミットされます。
+このモードが有効になっている場合、Gitリポジトリで追跡されているファイルを訪問するバッファを保存すると、現在の状態が現在のブランチの作業ツリー wip
+refにコミットされます。
 @end defopt
 
 @defopt magit-wip-after-apply-mode
@@ -7647,12 +7647,12 @@ Emacsを使用してファイルを編集し、Magitを使用してGitと対話�
 
 @defopt magit-wip-initial-backup-mode
 
-このモードを有効にすると、ファイルにアクセスするバッファが作成されてから初めて保存される前に、ファイルの現在のバージョンがワークツリーwip
+このモードを有効にすると、ファイルを訪問するバッファが作成されてから初めて保存される前に、ファイルの現在のバージョンがワークツリーwip
 refにコミットされます。
 
 これにより、@code{backup-buffer}が保存するのと同じバージョンのファイルがバックアップされます。@code{backup-buffer}はバックアップファイルを使用しますが、このモードは他のMagit
 Wipモードで使用されるものと同じワークツリーwip
-refを使用します。@code{backup-buffer}と同様に、これは1回だけ実行されます。バッファを強制終了してファイルに再度アクセスしない限り、Emacsセッションごとに1つのバックアップのみが作成されます。
+refを使用します。@code{backup-buffer}と同様に、これは1回だけ実行されます。バッファを強制終了してファイルに再度訪問しない限り、Emacsセッションごとに1つのバックアップのみが作成されます。
 
 このモードは、@code{backup-buffer}に影響を与える変数を無視し、その関数と一緒に使用できます。これは、Gitリポジトリで追跡されるファイルのみをバックアップするため推奨されます。
 @end defopt
@@ -7703,19 +7703,19 @@ Bindings})と(@ref{Key Binding Conventions,,,elisp,})
 このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
 buffer)に表示します。
 
-ファイルにアクセスしないバッファで呼び出されると、通常の@code {magit-dispatch}にフォールバックします。
+ファイルに訪問しないバッファで呼び出されると、通常の@code {magit-dispatch}にフォールバックします。
 
 @kindex C-c M-g s
 @cindex magit-stage-file
 @item @kbd{C-c M-g s} @tie{}@tie{}@tie{}@tie{}(@code{magit-stage-file})
 
-現在のバッファでアクセスされているファイルへのすべての変更をステージします。
+現在のバッファが訪問しているファイルのすべての変更をステージします。
 
 @kindex C-c M-g u
 @cindex magit-unstage-file
 @item @kbd{C-c M-g u} @tie{}@tie{}@tie{}@tie{}(@code{magit-unstage-file})
 
-現在のバッファでアクセスされているファイルへのすべての変更をステージ解除します。
+現在のバッファが訪問しているファイルのすべての変更をステージ解除します。
 
 @kindex C-c M-g c
 @cindex magit-commit
@@ -7758,7 +7758,7 @@ and Buffers})。
 @cindex magit-log-buffer-file
 @item @kbd{C-c M-g l} @tie{}@tie{}@tie{}@tie{}(@code{magit-log-buffer-file})
 
-このコマンドは、現在のバッファがアクセスするblobのファイルのログを表示します。プレフィックス引数が使用されている場合、または@code{--follow}がアクティブなログ引数である場合は、名前が変更されます。リージョンがアクティブな場合、ログは選択した行範囲に制限されます。
+このコマンドは、現在のバッファが訪問するblobのファイルのログを表示します。プレフィックス引数が使用されている場合、または@code{--follow}がアクティブなログ引数である場合は、名前が変更されます。リージョンがアクティブな場合、ログは選択した行範囲に制限されます。
 
 @kindex C-c M-g t
 @cindex magit-log-trace-definition
@@ -7903,7 +7903,7 @@ the git-config(1) manpage.
 @end iftex
 
 同様に、Emacsオプションは、@code{/path/to/repo/.dir-locals.el}を編集することによってあるリポジトリのみに設定できます。こちらを参照して下さい(@ref{Directory
-Variables,,,emacs,})。たとえば、1つの巨大なリポジトリでファイルアクセスバッファの自動リフレッシュを無効にするには、以下を使用します:
+Variables,,,emacs,})。たとえば、1つの巨大なリポジトリでfile-visitingバッファの自動リフレッシュを無効にするには、以下を使用します:
 
 @itemize
 @item
@@ -8015,8 +8015,8 @@ Magitは副作用のために@code{git}を実行した後、現在のMagitバッ
 Magitは、@code{M-x
 magit-toggle-verbose-refresh}を使用して詳細にバッファをリフレッシュするように指示できます。これを有効にすると、どのセクションがボトルネックであるかを把握するのに役立ちます。追加の出力は、@code{*Messages*}バッファにあります。
 
-Magitは、アクセスしたファイル(visited
-files)がディスク上で変更されると、現在のリポジトリ内にあるアクセスしたファイルのバッファもrevertします。これは、組み込みライブラリ@code{autorevert}の@code{auto-revert-mode}の上に実装されています。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および/または一部のバッファがTRAMPを使用してファイルにアクセスする場合を確認します。
+Magitは、訪問したファイル(visited
+files)がディスク上で変更されると、現在のリポジトリ内にある訪問したファイルのバッファもrevertします。これは、組み込みライブラリ@code{autorevert}の@code{auto-revert-mode}の上に実装されています。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および/または一部のバッファがTRAMPを使用してファイルを訪問する場合を確認します。
 もしパフォーマンスに影響があるなら、この確認が役に立つはずです。
 
 @lisp
@@ -8329,7 +8329,7 @@ Gitを開始(start)し、リフレッシュの準備をして、プロセスオ�
 
 エコー領域にコマンドライン引数を表示します。
 
-Gitから戻った後、いくつかのバッファがリフレッシュされます。それは、この関数が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファです。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルにアクセスしている変更されていないバッファはrevertされます。
+Gitから戻った後、いくつかのバッファがリフレッシュされます。それは、この関数が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファです。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルを訪問している変更されていないバッファはrevertされます。
 @end defun
 
 @defun magit-run-git-with-editor &rest args
@@ -8349,7 +8349,7 @@ INPUTがnilでない場合、それはバッファまたは既存のバッファ
 
 オプション@code{magit-git-executable}はGit実行可能ファイルを指定し、オプション@code{magit-git-global-arguments}は定数引数を指定します。残りの引数ARGSは、Gitへの引数を指定します。それらは使用前にフラット化されます。
 
-Gitから戻った後、いくつかのバッファがリフレッシュされます。それは、この関数が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファです。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルにアクセスしている変更されていないバッファはrevertされます。
+Gitから戻った後、いくつかのバッファがリフレッシュされます。それは、この関数が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファです。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルを訪問している変更されていないバッファはrevertされます。
 @end defun
 
 @defun magit-start-process &rest args
@@ -8361,7 +8361,7 @@ PROGRAMを開始し、リフレッシュの準備をして、プロセスオブ�
 プロセスは@code{start-file-process}を使用して開始され、センチネル(番兵)
 @code{magit-process-sentinel}とフィルター@code{magit-process-filter}を使用するようにセットアップされます。これらの関数に必要な情報は、プロセスオブジェクトに格納されます。この関数から戻ったとき、プロセスはまだ実行を開始していないため、監視者(sentinel)とフィルターをオーバーライドすることができます。
 
-プロセスから戻った後、@code{magit-process-sentinel}は、@code{magit-start-process}が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファをリフレッシュします。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルにアクセスしている変更されていないバッファはrevertされます。
+プロセスから戻った後、@code{magit-process-sentinel}は、@code{magit-start-process}が呼び出されたときに現在のバッファ(Magitバッファであり、まだ生きている場合)と、それぞれのMagitステータスバッファをリフレッシュします。@code{magit-revert-buffers}がnil以外の場合、現在のリポジトリで追跡されているファイルを訪問している変更されていないバッファはrevertされます。
 @end defun
 
 @defvar magit-this-process
@@ -8711,7 +8711,7 @@ Gitのmanpage達は、@code{gitman}というinfoマニュアルとしてエク�
 残念ながら、一部のディストリビューションではデフォルトで@code{gitman}マニュアルがインストールされていないため、入手するには別のドキュメントパッケージをインストールする必要があります。
 
 Magitは、それぞれのmanpageを表示する代わりに、@code{gitman}
-infoマニュアルへのリンクにアクセスする機能を追加するInfoにパッチを適用します。そのアプローチを好む場合は、@code{magit-view-git-manual-method}の値をサポートされているパッケージ@code{man}または@code{woman}のいずれかに設定します。例:
+infoマニュアルへのリンクを訪問する機能を追加するInfoにパッチを適用します。そのアプローチを好む場合は、@code{magit-view-git-manual-method}の値をサポートされているパッケージ@code{man}または@code{woman}のいずれかに設定します。例:
 
 @lisp
 (setq magit-view-git-manual-method 'man)
@@ -8914,7 +8914,7 @@ $ EDITOR="emacsclient --alternate-editor emacs" git commit
 @node file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります
 @appendixsubsec file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります
 
-これは、ハンクで@code{RET}と入力して、それぞれの位置にあるそれぞれのファイルにアクセスしたときに発生する可能性があります。この問題の1つの解決策は、@code{global-reveal-mode}を使用することです。ポイント周辺のテキストが常に表示されるようにします。それがあなたの好みに対してあまりにも刺激的である場合は、代わりに@code{magit-diff-visit-file-hook}を使用してテキストを表示することができます。おそらく、@code{reveal-post-command}を使用するか、Orgバッファ@code{org-reveal}を使用します。
+これは、ハンクで@code{RET}と入力して、それぞれの位置にあるそれぞれのファイルを訪問したときに発生する可能性があります。この問題の1つの解決策は、@code{global-reveal-mode}を使用することです。ポイント周辺のテキストが常に表示されるようにします。それがあなたの好みに対してあまりにも刺激的である場合は、代わりに@code{magit-diff-visit-file-hook}を使用してテキストを表示することができます。おそらく、@code{reveal-post-command}を使用するか、Orgバッファ@code{org-reveal}を使用します。
 
 @node MS-WindowsからEmacsのTrampモードを使用するとステージできません
 @appendixsubsec MS-WindowsからEmacsのTrampモードを使用するとステージできません

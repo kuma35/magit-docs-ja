@@ -788,7 +788,7 @@ Magitはいくつかのメジャーモードを提供します。 これらの�
 
 これらの特別な目的のバッファに加えて、*ステータスバッファ*と呼ばれる概要
 バッファもあります。ユーザーがGitコマンドを呼び出すか、他のバッファを作
-成またはアクセスするのは、通常、このバッファからです。
+成または訪問するのは、通常、このバッファからです。
 
 このマニュアルでは、「Magitバッファ」についてよく話します。つまり、メジ
 ャーモードが‘magit-mode’から派生するバッファを意味します。
@@ -1093,14 +1093,14 @@ Magitバッファ達を自動的にリフレッシュすると、表示される
      。
 
      オプション‘magit-revert-buffers’がそれを要求する場合、現在のリポジ
-     トリで追跡されているファイルにアクセスするすべての変更されていない
-     バッファもrvertします。
+     トリで追跡されているファイルを訪問するすべての変更されていないバッ
+     ファもrvertします。
 
 ‘G’     (‘magit-refresh-all’)
 
      このコマンドは、現在のリポジトリに属するすべてのMagitバッファをリフ
-     レッシュし、現在のリポジトリで追跡されているファイルにアクセスする
-     すべての変更されていないバッファをrevertします。
+     レッシュし、現在のリポジトリで追跡されているファイルに訪問するすべ
+     ての変更されていないバッファをrevertします。
 
      ‘magit-revert-buffers’がnilの場合でも、file-visitingバッファは常に
      revertされます。
@@ -1173,18 +1173,18 @@ revertするのはかなり重要な機能です。
 
  -- User Option: magit-auto-revert-mode
 
-     このモードを有効にすると、追跡中のファイル(tracked files)にアクセス
-     したバッファは、アクセスしたファイルがディスク上で変更された後、自
-     動的にrevertされます。
+     このモードを有効にすると、追跡中のファイル(tracked files)を訪問した
+     バッファは、訪問したファイルがディスク上で変更された後、自動的に
+     revertされます。
 
  -- User Option: global-auto-revert-mode
 
      このモードを有効にすると、訪問したファイル(visited file)がディスク
      上で変更された後、file-visitingバッファが自動的にrevertされます。
 
-     追跡中のファイル(tracked files)にアクセスするバッファを自動的に
-     revertする場合は、追跡中のファイルにアクセスするバッファだけでなく
-     、任意のバッファをrevertすることもできます。その場合は、
+     追跡中のファイル(tracked files)を訪問するバッファを自動的にrevertす
+     る場合は、追跡中のファイルを訪問するバッファだけでなく、任意のバッ
+     ファをrevertすることもできます。その場合は、
      ‘magit-auto-revert-mode’の_代わり_にこのモードを有効にしてください
      。
 
@@ -1293,16 +1293,16 @@ Risk of Reverting Automatically
 あります。 これまでのところ、このようなワークフローを使用しているユーザ
 ーは私が知っている限りでは1人だけです。
 
-例：あなたはバッファ内のファイルにアクセスして編集し、変更を保存します。
-それから、Emacsの外部で(または少なくともMagitを使用しないか、バッファを
-保存することにより)、ディスク上のファイルを再度変更します。この時点で、
-バッファは中間バージョンがまだ存在する唯一の場所です。変更をディスクに保
-存しましたが、それ以降は上書きされています。一方、Emacsはバッファが変更
-されていないと見なし(最後にアクセスしたファイルに保存してから変更を加え
-ていないため)、自動的にrevertされることに異議を唱えません。この時点で、
-自動revertモードが開始されます。バッファが変更されているかどうかがチェッ
-クされ、変更されていないため、バッファがrevertされます。中間バージョンは
-失われます。(実際には、いまだ、‘undo’コマンドを使用して元に戻る(get it
+例：あなたはバッファ内のファイルを訪問して編集し、変更を保存します。それ
+から、Emacsの外部で(または少なくともMagitを使用しないか、バッファを保存
+することにより)、ディスク上のファイルを再度変更します。この時点で、バッ
+ファは中間バージョンがまだ存在する唯一の場所です。変更をディスクに保存し
+ましたが、それ以降は上書きされています。一方、Emacsはバッファが変更され
+ていないと見なし(最後に訪問したファイルに保存してから変更を加えていない
+ため)、自動的にrevertされることに異議を唱えません。この時点で、自動
+revertモードが開始されます。バッファが変更されているかどうかがチェックさ
+れ、変更されていないため、バッファがrevertされます。中間バージョンは失わ
+れます。(実際には、いまだ、‘undo’コマンドを使用して元に戻る(get it
 back)ことができます。)
 
 あなたのワークフローがバッファに中間バージョンを保持するEmacsに依存して
@@ -2710,8 +2710,8 @@ File: magit.ja.info,  Node: Status Sections,  Next: Status Header Sections,  Up:
      フックを実行して、セクションをステータスバッファに挿入します。
 
 デフォルトでは、そのフックの最初の関数は‘magit-insert-status-headers’で
-す。次節で説明します。デフォルトでは、それに続く関数もそのフックのメンバ
-ーです。
+す。次節で説明します。デフォルトでは、以下の関数もそのフックのメンバーで
+す。
 
  -- Function: magit-insert-merge-log
 
@@ -2887,12 +2887,12 @@ File: magit.ja.info,  Node: Status Header Sections,  Next: Status Module Section
      このフックは‘magit-insert-status-headers’によって実行され、それらの
      関数は‘magit-status-sections-hook’のメンバーである必要があります。
 
-デフォルトでは、行か関数が上記のフックのメンバーです:
+デフォルトでは、以下の関数が上記フックのメンバーです:
 
  -- Function: magit-insert-error-header
 
-     ちょうど今発生したGitエラーに関するメッセージを示すヘッダー行を挿入
-     します。
+     たった今発生したGitエラーに関するメッセージを示すヘッダー行を挿入し
+     ます。
 
      この関数は、副作用のためにGitが実行されたときに発生した最後のエラー
      のみを認識します。たとえば、diffの生成中にエラーが発生した場合、そ
@@ -2905,8 +2905,8 @@ File: magit.ja.info,  Node: Status Header Sections,  Next: Status Module Section
 
  -- Function: magit-insert-head-branch-header
 
-     現在のブランチまたは切り離(detach)された‘HEAD’に関するヘッダー行を
-     挿入します。
+     現在のブランチまたはdetachされた‘HEAD’に関するヘッダー行を挿入しま
+     す。
 
  -- Function: magit-insert-upstream-branch-header
 
@@ -3022,13 +3022,12 @@ File: magit.ja.info,  Node: Status Options,  Prev: Status Module Sections,  Up: 
 
  -- User Option: magit-status-margin
 
-     このオプションは、マージン(margin)が最初にMagit-Statusモードのバッ
-     ファーに表示されるかどうか、およびそのフォーマット方法を指定します
-     。
+     このオプションは、欄外(margin)が最初にMagit-Statusモードのバッファ
+     に表示されるかどうか、およびそのフォーマット方法を指定します。
 
      値の形式は‘(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)’です。
 
-        • INITがnil以外の場合、マージン(margin)が最初に表示されます。
+        • INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
         • STYLEは、作成者(author)またはコミッター(committer)の日付をフォ
           ーマットする方法を制御します。‘age’(コミットの経過時間を示す
@@ -3037,8 +3036,8 @@ File: magit.ja.info,  Node: Status Options,  Prev: Status Module Sections,  Up: 
           になります。オプション‘magit-log-margin-show-committer-date’は
           、表示される日付を制御します。
 
-        • WIDTHは、マージンの幅を制御します。これは上位互換性のために存
-          在し、現在値を変更すべきではありません。
+        • WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のため
+          に存在し、現在値を変更すべきではありません。
 
         • AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御し
           ます。
@@ -3082,7 +3081,7 @@ File: magit.ja.info,  Node: Repository List,  Next: Logging,  Prev: Status Buffe
      使用し、WIDTHを1に設定し、‘:pad-right’を0に設定する必要があります。
      ‘+’は、9より大きい数値に置き換えられます。
 
-上記のオプションに以下の機能を追加できます:
+上記のオプションに以下の関数を追加できます:
 
  -- Function: magit-repolist-column-ident
 
@@ -3131,7 +3130,7 @@ File: magit.ja.info,  Node: Repository List,  Next: Logging,  Prev: Status Buffe
         • ‘S’ならばステージされたファイル(staged file)が少なくとも1つあ
           る。
 
-     適用されるこれらの最初のものだけが示されています。
+     これら適用するもののうち、最初の１つだけが表示されます。
 
  -- Function: magit-repolist-column-unpulled-from-upstream
 
@@ -3160,8 +3159,8 @@ File: magit.ja.info,  Node: Logging,  Next: Diffing,  Prev: Repository List,  Up
 ===========
 
 ステータスバッファには、プッシュされていないコミットとプルされていないコ
-ミットのログが含まれていますが、それだけでは明らかに不十分です。‘l’上の
-トランジェントプレフィックスコマンド‘magit-log’は、個別のログバッファに
+ミットのログが含まれていますが、それだけでは明らかに不十分です。‘l’のト
+ランジェントプレフィックスコマンド‘magit-log’には、個別のログバッファに
 特定のログを表示するいくつかのサフィックスコマンドがあります。
 
 他のトランジェントプレフィックスコマンドと同様に、‘magit-log’にも、サフ
@@ -3192,14 +3191,14 @@ Transient Arguments and Buffer Variables::)。
 
      現在のブランチのログを表示します。‘HEAD’が切り離されている
      (detached)か、プレフィックス引数が付いている場合、ミニバッファから
-     読み取られた1つ以上のrevのログを表示します。
+     読み取られた1つ以上のリビジョン(rev)のログを表示します。
 
 ‘l o’     (‘magit-log-other’)
 
-     ミニバッファから読み取られた1つ以上のrevのログを表示します。ユーザ
-     ーは、スペースまたは範囲で区切られた1つまたは複数のリビジョンを入力
-     できますが、完了候補として使用できるのは、ブランチ、タグ、およびポ
-     イントでのコミットの表現のみです。
+     ミニバッファから読み取られた1つ以上のリビジョン(rev)のログを表示し
+     ます。ユーザーは、スペースまたは範囲で区切られた1つまたは複数のリビ
+     ジョンを入力できますが、完了候補として使用できるのは、ブランチ、タ
+     グ、およびポイントでのコミットの表現のみです。
 
 ‘l h’     (‘magit-log-head’)
 
@@ -3218,9 +3217,9 @@ Transient Arguments and Buffer Variables::)。
 
      すべての参照(reference)と‘HEAD’のログを表示します。
 
-現在のバッファでアクセスされているファイルまたはblobのログを表示する2つ
-の追加コマンドが存在します(*note Commands for Buffers Visiting Files::)。
-コマンド‘magit-cherry’もログを表示します(*note Cherries::)。
+現在のバッファが訪問しているファイルまたはblobのログを表示する2つの追加
+コマンドが存在します(*note Commands for Buffers Visiting Files::)。コマ
+ンド‘magit-cherry’もログを表示します(*note Cherries::)。
 
 * Menu:
 
@@ -3270,7 +3269,7 @@ File: magit.ja.info,  Node: Refreshing Logs,  Next: Log Buffer,  Up: Logging
 
 ‘L t’     (‘magit-toggle-margin’)
 
-     マージン(margin)を表示または非表示にします。
+     欄外(margin)を表示または非表示にします。
 
 
 File: magit.ja.info,  Node: Log Buffer,  Next: Log Margin,  Prev: Refreshing Logs,  Up: Logging
@@ -3286,7 +3285,7 @@ File: magit.ja.info,  Node: Log Buffer,  Next: Log Margin,  Prev: Refreshing Log
      、そのインフィックス引数達とサフィックスコマンド達を一時バッファ
      (temporary buffer)に表示します。
 
-     *note Refreshing Logs::
+     参照(*note Refreshing Logs::)
 
 ‘q’     (‘magit-log-bury-buffer’)
 
@@ -3366,10 +3365,10 @@ File: magit.ja.info,  Node: Log Buffer,  Next: Log Margin,  Prev: Refreshing Log
 
 Magitは、Gitの表示方法とは少し異なる方法でreferenceをログに表示します。
 
-ローカルブランチは青で、リモートブランチは緑です。 もちろん、他の種類の
-referenceに使用される色と同様に、使用するテーマによって異なります。 現在
-のブランチは、それぞれのリモートの‘HEAD’ブランチであるリモートブランチと
-同様に、枠で囲まれています。
+ローカルブランチは青色で、リモートブランチは緑色です。 もちろん、他の種
+類のreferenceに使用される色と同様に、使用するテーマによって異なります。
+現在のブランチは、それぞれのリモートの‘HEAD’ブランチであるリモートブラン
+チと同様に、枠で囲まれています。
 
 ローカルブランチとそのプッシュターゲットポイントが同じコミットにある場合
 、スペースを保持し、その関係を表示するために、それらの名前が組み合わされ
@@ -3378,7 +3377,7 @@ referenceに使用される色と同様に、使用するテーマによって�
      origin/feature
      [green][blue-]
 
-     instead of
+     は、下記の代わりです
 
      feature origin/feature
      [blue-] [green-------]
@@ -3412,7 +3411,7 @@ File: magit.ja.info,  Node: Log Margin,  Next: Select from Log,  Prev: Log Buffe
 
      値の形式は‘(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)’です。
 
-        • INITがnil以外の場合、マージン(margin)が最初に表示されます。
+        • INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
         • STYLEは、作成者(author)またはコミッター(committer)の日付をフォ
           ーマットする方法を制御します。‘age’(コミットの経過時間を示す
@@ -3421,8 +3420,8 @@ File: magit.ja.info,  Node: Log Margin,  Next: Select from Log,  Prev: Log Buffe
           になります。オプション‘magit-log-margin-show-committer-date’は
           、表示される日付を制御します。
 
-        • WIDTHは、マージンの幅を制御します。これは上位互換性のために存
-          在し、現在値を変更すべきではありません。
+        • WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のため
+          に存在し、現在値を変更すべきではありません。
 
         • AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御し
           ます。
@@ -3449,13 +3448,13 @@ File: magit.ja.info,  Node: Log Margin,  Next: Select from Log,  Prev: Log Buffe
 
 ‘L’     (‘magit-margin-settings’)
 
-     このトランジェントプレフィックスコマンド、それに従うサフィックスコ
-     マンドを結び付けます。各コマンドは、何らかの方法で欄外(margin)の外
-     観を変更します。
+     このトランジェントプレフィックスコマンドは、それに従うサフィックス
+     コマンドを結び付けます。各コマンドは、何らかの方法で欄外(margin)の
+     外観を変更します。
 
 欄外(margin)をサポートする一部のバッファでは、‘L’は代わりに
-‘magit-log-refresh’に結び付けられますが、そのトランジェントコマンドは同
-じコマンドと、他のいくつかの無関係なコマンドがあります。
+‘magit-log-refresh’に結び付けられますが、そのトランジェントコマンドには
+同じコマンドと、他のいくつかの無関係なコマンドがあります。
 
 ‘L L’     (‘magit-toggle-margin’)
 
@@ -3477,15 +3476,15 @@ File: magit.ja.info,  Node: Select from Log,  Next: Reflog,  Prev: Log Margin,  
 
 ユーザーが‘HEAD’から到達可能な最近のコミットを選択する必要がある場合、通
 常の補完を使用するのは不便です(ほとんどの人間は、少なくともダブルチェッ
-クなしではハッシュまたは"HEAD~5"を覚えていないため)。代わりに、ログバッ
-ファを使用してコミットを選択します。これには、コミットが順番にコミットメ
-ッセージとともに表示されるという利点があります。
+クなしではハッシュとかまたは"HEAD~5"とかを覚えていないため)。代わりに、
+ログバッファを使用してコミットを選択します。これには、コミットが順番にコ
+ミットメッセージとともに表示されるという利点があります。
 
-このような選択ログは、リベースの開始を選択するとき、およびsquashコミット
-を選択するときに使用されます。
+このような選択用ログは、リベースの開始を選択するとき、およびsquashコミッ
+トを選択するときに使用されます。
 
 すべてのログバッファで使用可能なキーバインディングに加えて、以下の追加の
-キーバインディングが選択ログバッファで使用できます:
+キーバインディングが選択用ログバッファで使用できます:
 
 ‘C-c C-c’     (‘magit-log-select-pick’)
 
@@ -3504,7 +3503,7 @@ File: magit.ja.info,  Node: Select from Log,  Next: Reflog,  Prev: Log Margin,  
 
      値の形式は‘(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)’です。
 
-        • INITがnil以外の場合、マージン(margin)が最初に表示されます。
+        • INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
         • STYLEは、作成者(author)またはコミッター(committer)の日付をフォ
           ーマットする方法を制御します。‘age’(コミットの経過時間を示す
@@ -3513,8 +3512,8 @@ File: magit.ja.info,  Node: Select from Log,  Next: Reflog,  Prev: Log Margin,  
           になります。オプション‘magit-log-margin-show-committer-date’は
           、表示される日付を制御します。
 
-        • WIDTHは、マージンの幅を制御します。これは上位互換性のために存
-          在し、現在値を変更すべきではありません。
+        • WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のため
+          に存在し、現在値を変更すべきではありません。
 
         • AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御し
           ます。
@@ -3553,7 +3552,7 @@ File: magit.ja.info,  Node: Reflog,  Next: Cherries,  Prev: Select from Log,  Up
 
      値の形式は‘(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)’です。
 
-        • INITがnil以外の場合、マージン(margin)が最初に表示されます。
+        • INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
         • STYLEは、作成者(author)またはコミッター(committer)の日付をフォ
           ーマットする方法を制御します。‘age’(コミットの経過時間を示す
@@ -3562,8 +3561,8 @@ File: magit.ja.info,  Node: Reflog,  Next: Cherries,  Prev: Select from Log,  Up
           になります。オプション‘magit-log-margin-show-committer-date’は
           、表示される日付を制御します。
 
-        • WIDTHは、マージンの幅を制御します。これは上位互換性のために存
-          在し、現在値を変更すべきではありません。
+        • WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のため
+          に存在し、現在値を変更すべきではありません。
 
         • AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御し
           ます。
@@ -3601,7 +3600,7 @@ File: magit.ja.info,  Node: Cherries,  Prev: Reflog,  Up: Logging
 
      値の形式は‘(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)’です。
 
-        • INITがnil以外の場合、マージン(margin)が最初に表示されます。
+        • INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
         • STYLEは、作成者(author)またはコミッター(committer)の日付をフォ
           ーマットする方法を制御します。‘age’(コミットの経過時間を示す
@@ -3610,8 +3609,8 @@ File: magit.ja.info,  Node: Cherries,  Prev: Reflog,  Up: Logging
           になります。オプション‘magit-log-margin-show-committer-date’は
           、表示される日付を制御します。
 
-        • WIDTHは、マージンの幅を制御します。これは上位互換性のために存
-          在し、現在値を変更すべきではありません。
+        • WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のため
+          に存在し、現在値を変更すべきではありません。
 
         • AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御し
           ます。
@@ -3627,9 +3626,9 @@ File: magit.ja.info,  Node: Diffing,  Next: Ediffing,  Prev: Logging,  Up: Inspe
 ===========
 
 ステータスバッファには、ステージされたコミットとステージされていないコミ
-ットのdiffが含まれていますが、それだけでは明らかに不十分です。‘d’上のト
-ランジェントプレフィックスコマンド‘magit-diff’は、個別のdiffバッファに特
-定のdiffを表示するいくつかのサフィックスコマンドがあります。
+ットのdiffが含まれていますが、それだけでは明らかに不十分です。‘d’のトラ
+ンジェントプレフィックスコマンド‘magit-diff’は、個別のdiffバッファに特定
+のdiffを表示するいくつかのサフィックスコマンドがあります。
 
 他のトランジェントプレフィックスコマンドと同様に、‘magit-diff’も、サフィ
 ックスコマンドの1つを呼び出す前に変更できるいくつかのインフィックス引数
@@ -3650,7 +3649,7 @@ Transient Arguments and Buffer Variables::)。
 
 ‘d d’     (‘magit-diff-dwim’)
 
-     その時点での変更を表示します。
+     そのポイントでの変更を表示します。
 
 ‘d r’     (‘magit-diff-range’)
 
@@ -3700,9 +3699,9 @@ Transient Arguments and Buffer Variables::)。
 
      バッファ内のstashのすべてのdiffを表示します。
 
-現在のバッファでアクセスされているファイルまたはblobのdiffを表示する2つ
-の追加コマンドが存在します。こちらを参照して下さい(*note Commands for
-Buffers Visiting Files::)。
+現在のバッファで訪問しているファイルまたはblobのdiffを表示する2つの追加
+コマンドが存在します。こちらを参照して下さい(*note Commands for Buffers
+Visiting Files::)。
 
 * Menu:
 
@@ -3789,8 +3788,8 @@ File: magit.ja.info,  Node: Refreshing Diffs,  Next: Commands Available in Diffs
      このコマンドは、diffハンクのコンテキスト(the context)をデフォルトの
      行数にリセットします。
 
-次のコマンドは、diff用トランジェントコマンドのいずれも使用せずに、表示さ
-れているdiffをすばやく変更します。
+以下のコマンドは、diff用トランジェントコマンドのいずれも使用せずに、表示
+されているdiffをすばやく変更します。
 
 ‘C-c C-d’     (‘magit-diff-while-committing’)
 
@@ -3818,11 +3817,11 @@ File: magit.ja.info,  Node: Commands Available in Diffs,  Next: Diff Options,  P
 一部のコマンドは、ポイントがdiff内にある場合にのみ使用できます。
 
 ‘magit-diff-visit-file’および関連するコマンドは、その時点でのdiffが含ま
-れているファイルの適切なバージョンにアクセスします。 同様に、
+れているファイルの適切なバージョンを訪問します。 同様に、
 ‘magit-diff-visit-worktree-file’および関連するコマンドは、その時点での
-diffが含まれているファイルのワークツリーバージョンにアクセスします。詳細
-とキーバインディングについてはこちらを参照して下さい(*note Visiting
-Files and Blobs from a Diff::)。
+diffが含まれているファイルのワークツリーバージョンを訪問します。詳細とキ
+ーバインディングについてはこちらを参照して下さい(*note Visiting Files
+and Blobs from a Diff::)。
 
 ‘C-c C-t’     (‘magit-diff-trace-definition’)
 
@@ -3832,24 +3831,24 @@ Files and Blobs from a Diff::)。
  -- User Option: magit-log-trace-definition-function
 
      このオプションで指定された関数は、‘magit-log-trace-definition’によ
-     って使用され、ポイントでの関数を決定します。特別なニーズがあるメジ
+     って使用され、ポイントでの機能を決定します。特別なニーズがあるメジ
      ャーモードの場合、モードのフックを使用してローカル値を設定できます
      。
 
 ‘C-c C-e’     (‘magit-diff-edit-hunk-commit’)
 
-     このコマンドは、ハンクからそれぞれのコミットを編集し、ファイルにア
-     クセスします。
+     このコマンドは、ハンクからそれぞれのコミットを編集し、ファイルを訪
+     問します。
 
      まず、‘magit-diff-visit-file’を使用して、ハンクによって正しい場所で
-     変更されているファイルにアクセスします。これは実際にblobを訪問しま
-     す。ポイントが個々のハンク内ではなくdiffヘッダー上にある場合、これ
-     は最初のハンクが存在するblobにアクセスします。
+     変更されているファイルを訪問します。これは実際にblobを訪問します。
+     ポイントが個々のハンク内ではなくdiffヘッダー上にある場合、これは最
+     初のハンクが存在するblobを訪問します。
 
      次に‘magit-edit-line-commit’を呼び出し、‘HEAD’からそのコミットを直
      接チェックチェックアウトすることで到達することは不可能な、インタラ
      クティブなリベースを使用してコミットを編集可能にし、これにより実際
-     の作業ツリーのファイルにもアクセスできます。
+     の作業ツリーのファイルも訪問できます。
 
      リベースの終了時に、blobもファイルバッファも強制終了(kill)されませ
      ん。それが望ましくない場合は、このコマンドの代わりに
@@ -3862,9 +3861,9 @@ Files and Blobs from a Diff::)。
      ョンにジャンプします。 それ以外の場合は、diffstatセクションまたはそ
      の子にジャンプします。
 
-次の2つのコマンドは、Magit-Diffモード(または、さらに言えばMagitバッファ
-)に固有のものではありませんが、ここでも使用できることを指摘しておく価値
-があります。
+以下の2つのコマンドは、Magit-Diffモード(または、さらに言えばMagitバッフ
+ァ)に固有のものではありませんが、ここでも使用できることを指摘しておく価
+値があります。
 
 ‘SPC’     (‘scroll-up’)
 
@@ -3915,10 +3914,10 @@ File: magit.ja.info,  Node: Diff Options,  Next: Revision Buffer,  Prev: Command
           れます。
 
         • ‘always’ そのようなバッファがない場合は、一時的(temporarily)に
-          ファイルにアクセスして値を決定します。
+          ファイルを訪問して値を決定します。
 
-        • NUMBER ‘always’と同様ですが、NUMBERバイトより大きいファイルに
-          はアクセスしないでください。
+        • NUMBER ‘always’と同様ですが、NUMBERバイトより大きいファイルを
+          訪問しないでください。
 
  -- User Option: magit-diff-paint-whitespace
 
@@ -4069,7 +4068,7 @@ File: magit.ja.info,  Node: Revision Buffer,  Prev: Diff Options,  Up: Diffing
           字を含むすべての単語を使用します。
 
      nilの場合、ハッシュはセクションに変換されませんが、「RET」を使用し
-     てその時点でコミットにアクセスできます。
+     てその時点でコミットを訪問できます。
 
 リビジョンバッファに表示されるdiff達は、変更されたファイルのサブセットに
 自動的に制限される場合があります。リビジョンバッファがログバッファから表
@@ -4305,7 +4304,7 @@ File: magit.ja.info,  Node: References Buffer,  Next: Bisecting,  Prev: Ediffing
 
      値の形式は‘(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)’です。
 
-        • INITがnil以外の場合、マージン(margin)が最初に表示されます。
+        • INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
         • STYLEは、作成者(author)またはコミッター(committer)の日付をフォ
           ーマットする方法を制御します。‘age’(コミットの経過時間を示す
@@ -4314,8 +4313,8 @@ File: magit.ja.info,  Node: References Buffer,  Next: Bisecting,  Prev: Ediffing
           になります。オプション‘magit-log-margin-show-committer-date’は
           、表示される日付を制御します。
 
-        • WIDTHは、マージンの幅を制御します。これは上位互換性のために存
-          在し、現在値を変更すべきではありません。
+        • WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のため
+          に存在し、現在値を変更すべきではありません。
 
         • AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御し
           ます。
@@ -4379,8 +4378,8 @@ File: magit.ja.info,  Node: References Buffer,  Next: Bisecting,  Prev: Ediffing
 ‘RET’     (‘magit-visit-ref’)
 
      このコマンドは、別のバッファ内のポイントでreferenceまたはリビジョン
-     にアクセスします。ポイントにリビジョンがない場合、またはプレフィッ
-     クス引数がある場合は、リビジョンの入力を求められます。
+     を訪問します。ポイントにリビジョンがない場合、またはプレフィックス
+     引数がある場合は、リビジョンの入力を求められます。
 
      このコマンドは、ポイントが‘magit-refs-mode’バッファ内のreference上
      にある場合を除いて、上記の‘magit-show-commit’と同じように動作します
@@ -4562,9 +4561,9 @@ File: magit.ja.info,  Node: Visiting Files and Blobs,  Next: Blaming,  Prev: Bis
 ============================
 
 Magitは、ファイルまたはblob(特定のコミットに保存されているファイルのバー
-ジョン)にアクセスするいくつかのコマンドを提供します。 実際には、そのよう
-なコマンドのいくつかの「グループ」と、各グループ内のいくつかの「バリエー
-ション」を提供します。
+ジョン)を訪問するいくつかのコマンドを提供します。 実際には、そのようなコ
+マンドのいくつかの「グループ」と、各グループ内のいくつかの「バリエーショ
+ン」を提供します。
 
 * Menu:
 
@@ -4584,20 +4583,20 @@ File: magit.ja.info,  Node: General-Purpose Visit Commands,  Next: Visiting File
  -- Command: magit-find-file
 
      このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッ
-     ファ内のそれぞれのBLOBにアクセスします。選択したウィンドウにバッフ
-     ァが表示されます。
+     ファ内のそれぞれのBLOBを訪問します。選択したウィンドウにバッファが
+     表示されます。
 
  -- Command: magit-find-file-other-window
 
      このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッ
-     ファ内のそれぞれのBLOBにアクセスします。バッファは別のウィンドウに
-     表示されます。
+     ファ内のそれぞれのBLOBを訪問します。バッファは別のウィンドウに表示
+     されます。
 
  -- Command: magit-find-file-other-frame
 
      このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッ
-     ファ内のそれぞれのBLOBにアクセスします。バッファは別のフレームに表
-     示されます。
+     ファ内のそれぞれのBLOBを訪問します。バッファは別のフレームに表示さ
+     れます。
 
 
 File: magit.ja.info,  Node: Visiting Files and Blobs from a Diff,  Prev: General-Purpose Visit Commands,  Up: Visiting Files and Blobs
@@ -4610,28 +4609,26 @@ File: magit.ja.info,  Node: Visiting Files and Blobs from a Diff,  Prev: General
 ‘RET’     (‘magit-diff-visit-file’)
 
      このコマンドは、その時点でのdiffが含まれているファイルの適切なバー
-     ジョンにアクセスします。
+     ジョンを訪問します。
 
-     このコマンドは、適切なファイルの作業ツリーバージョンにアクセスしま
-     す。diff内のポイントの位置によって、アクセスされるファイルが決まり
-     ます。訪問したバージョンは、diffがどのような変更であるかによって異
-     なります。
+     このコマンドは、適切なファイルの作業ツリーバージョンを訪問します。
+     diff内のポイントの位置によって、訪問するファイルが決まります。訪問
+     したバージョンは、diffがどのような変更であるかによって異なります。
 
         • diffにコミットされていない変更(つまり、ステージされた変更
           (staged changes)またはステージされていない変更(unstaged
           changes)）が表示される場合は、作業ツリー内のファイル(つまり、
-          ‘find-file’がアクセスするのと同じ「実際の」ファイル)にアクセス
-          します。それ以外の場合は、「blob」にアクセスします。（つまり、
-          コミットに保存されているファイルのバージョン）。
+          ‘find-file’が訪問するのと同じ「実際の」ファイル)を訪問します。
+          それ以外の場合は、「blob」を訪問します。（つまり、コミットに保
+          存されているファイルのバージョン）。
 
         • ポイントが削除された行にある場合は、その行を削除したコミットの
-          最初の親、つまりその行がまだ存在する最後のコミットのblobにアク
-          セスします。
+          最初の親、つまりその行がまだ存在する最後のコミットのblobを訪問
+          します。
 
         • ポイントが追加された行またはコンテキスト行にある場合は、その行
-          を追加するblobにアクセスします。または、diffが複数のコミットか
-          ら表示される場合は、これらの最後のコミットからblobにアクセスし
-          ます。
+          を追加するblobを訪問します。または、diffが複数のコミットから表
+          示される場合は、これらの最後のコミットからblobを訪問します。
 
      file-visitingバッファでは、このコマンドは、diffでポイントがオンにな
      っている行に対応する行に移動します。
@@ -4641,23 +4638,23 @@ File: magit.ja.info,  Node: Visiting Files and Blobs from a Diff,  Prev: General
 
  -- User Option: magit-diff-visit-previous-blob
 
-     このオプションは、‘magit-diff-visit-file’が前のblobにアクセスできる
-     かどうかを制御します。これが‘t’（デフォルト）であり、コミットされた
-     変更のdiff内の削除された行にポイントがある場合、
+     このオプションは、‘magit-diff-visit-file’が前のblobを訪問できるかど
+     うかを制御します。これが‘t’（デフォルト）であり、コミットされた変更
+     のdiff内の削除された行にポイントがある場合、
      ‘magit-diff-visit-file’はその行がまだ残っている最後のリビジョンの
-     blobにアクセスします。
+     blobを訪問します。
 
      現在、これはコミットされた変更に対してのみサポートされています。ス
      テージされた変更(staged changes)とステージされていない変更(unstaged
      changes)の場合、‘magit-diff-visit-file’は常に作業ツリー内のファイル
-     にアクセスします。
+     を訪問します。
 
 ‘C-<return>’     (‘magit-diff-visit-file-worktree’)
 
-     このコマンドは、適切なファイルの作業ツリーバージョンにアクセスしま
-     す。diff内のポイントの位置によって、アクセスされるファイルが決まり
-     ます。‘magit-diff-visit-file’とは異なり、常に作業ツリー内の「実際の
-     」ファイル、つまりファイルの「現在のバージョン」にアクセスします。
+     このコマンドは、適切なファイルの作業ツリーバージョンを訪問します。
+     diff内のポイントの位置によって、訪問されるファイルが決まります。
+     ‘magit-diff-visit-file’とは異なり、常に作業ツリー内の「実際の」ファ
+     イル、つまりファイルの「現在のバージョン」を訪問します。
 
      file-visitingバッファでは、このコマンドは、diffでポイントがオンにな
      っている行に対応する行に移動します。作業ツリーで追加または削除され
@@ -4668,10 +4665,10 @@ File: magit.ja.info,  Node: Visiting Files and Blobs from a Diff,  Prev: General
      用すると、代わりにバッファが別のウィンドウに表示されます。
 
 上記の2つのコマンドのバリエーションが存在しています。それは代わりに別の
-ウィンドウまたは別のフレームでファイルにアクセスします。このような動作が
-必要な場合は、上記のキーバインディングを変更することをお勧めしますが、上
-記のコマンドは、プレフィックス引数を指定して呼び出されたときに別のウィン
-ドウも使用することに注意してください。
+ウィンドウまたは別のフレームでファイルを訪問します。このような動作が必要
+な場合は、上記のキーバインディングを変更することをお勧めしますが、上記の
+コマンドは、プレフィックス引数を指定して呼び出されたときに別のウィンドウ
+も使用することに注意してください。
 
  -- Command: magit-diff-visit-file-other-window
  -- Command: magit-diff-visit-file-other-frame
@@ -4713,17 +4710,17 @@ blameサブトランジェントコマンドを入力する必要があります
 ‘C-c M-g B b’     (‘magit-blame-addition’)
 
      このコマンドは、現在のfile-visitingまたはblob-visitingバッファ内の
-     各行または行のチャンクに、これらの行に最後にアクセスしたコミットに
-     関する情報を追加します。
+     各行または行のチャンクに、これらの行に最後にアクセス(touch)したコミ
+     ットに関する情報を追加します。
 
-     バッファがそのファイルのリビジョンにアクセスすると、そのリビジョン
-     までの履歴が考慮されます。それ以外の場合は、コミットされていない変
-     更を含む、ファイルの完全な履歴が考慮されます。
+     バッファがそのファイルのリビジョンを訪問すると、そのリビジョンまで
+     の履歴が考慮されます。それ以外の場合は、コミットされていない変更を
+     含む、ファイルの完全な履歴が考慮されます。
 
      現在のバッファでMagit-Blameモードがすでにオンになっている場合は、
-     REVISION:FILEにアクセスして(‘magit-find-file’を使用)、再帰的に
-     blameを行います。ここで、REVISIONは、現在の行または行のチャンクを追
-     加したリビジョンの親です。
+     REVISION:FILEを訪問して(‘magit-find-file’を使用)、再帰的にblameを行
+     います。ここで、REVISIONは、現在の行または行のチャンクを追加したリ
+     ビジョンの親です。
 
 ‘C-c M-g r’     (‘magit-blame-removal’)
 ‘C-c M-g B r’     (‘magit-blame-removal’)
@@ -5106,8 +5103,8 @@ File: magit.ja.info,  Node: Staging and Unstaging,  Next: Applying,  Prev: Cloni
 
         • オプションで、コミットされていない変更がないことを確認します。
 
-        • ‘HEAD’コミットにアクセスし、そのコミットに含まれるべきではなか
-          った変更に移動します。
+        • ‘HEAD’コミットを訪問し、そのコミットに含まれるべきではなかった
+          変更に移動します。
 
         • ‘u’(‘magit-unstage’)と入力して、インデックスで逆にします。これ
           は、‘magit-unstage-committed-changes’がnil以外であることを前提
@@ -5137,9 +5134,9 @@ File: magit.ja.info,  Node: Staging from File-Visiting Buffers,  Up: Staging and
 ----------------------------------------
 
 きめ細かいステージ/ステージ解除は、ステータスまたはdiffバッファから実行
-する必要がありますが、現在のバッファでアクセスされたファイルに加えられた
-すべての変更を、そのバッファ内から直接ステージ/ステージ解除することもで
-きます。
+する必要がありますが、現在のバッファで訪問したファイルに加えられたすべて
+の変更を、そのバッファ内から直接ステージ/ステージ解除することもできます
+。
 
 ‘M-x magit-stage-file’     (‘magit-stage-file’)
 
@@ -7184,7 +7181,7 @@ File: magit.ja.info,  Node: Stashing,  Prev: Resetting,  Up: Manipulating
 
      値の形式は‘(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)’です。
 
-        • INITがnil以外の場合、マージン(margin)が最初に表示されます。
+        • INITがnil以外の場合、欄外(margin)が最初に表示されます。
 
         • STYLEは、作成者(author)またはコミッター(committer)の日付をフォ
           ーマットする方法を制御します。‘age’(コミットの経過時間を示す
@@ -7193,8 +7190,8 @@ File: magit.ja.info,  Node: Stashing,  Prev: Resetting,  Up: Manipulating
           になります。オプション‘magit-log-margin-show-committer-date’は
           、表示される日付を制御します。
 
-        • WIDTHは、マージンの幅を制御します。これは上位互換性のために存
-          在し、現在値を変更すべきではありません。
+        • WIDTHは、欄外(margin)の幅を制御します。これは上位互換性のため
+          に存在し、現在値を変更すべきではありません。
 
         • AUTHORは、作成者の名前もデフォルトで表示されるかどうかを制御し
           ます。
@@ -8319,8 +8316,8 @@ File: magit.ja.info,  Node: Legacy Wip Modes,  Prev: Wip Graph,  Up: Wip Modes
  -- User Option: magit-wip-after-save-mode
 
      このモードが有効になっている場合、Gitリポジトリで追跡されているファ
-     イルにアクセスするバッファを保存すると、現在の状態が現在のブランチ
-     の作業ツリー wip refにコミットされます。
+     イルを訪問するバッファを保存すると、現在の状態が現在のブランチの作
+     業ツリー wip refにコミットされます。
 
  -- User Option: magit-wip-after-apply-mode
 
@@ -8341,16 +8338,16 @@ Emacsを使用してファイルを編集し、Magitを使用してGitと対話�
 
  -- User Option: magit-wip-initial-backup-mode
 
-     このモードを有効にすると、ファイルにアクセスするバッファが作成され
-     てから初めて保存される前に、ファイルの現在のバージョンがワークツリ
-     ーwip refにコミットされます。
+     このモードを有効にすると、ファイルを訪問するバッファが作成されてか
+     ら初めて保存される前に、ファイルの現在のバージョンがワークツリーwip
+     refにコミットされます。
 
      これにより、‘backup-buffer’が保存するのと同じバージョンのファイルが
      バックアップされます。‘backup-buffer’はバックアップファイルを使用し
      ますが、このモードは他のMagit Wipモードで使用されるものと同じワーク
      ツリーwip refを使用します。‘backup-buffer’と同様に、これは1回だけ実
-     行されます。バッファを強制終了してファイルに再度アクセスしない限り
-     、Emacsセッションごとに1つのバックアップのみが作成されます。
+     行されます。バッファを強制終了してファイルに再度訪問しない限り、
+     Emacsセッションごとに1つのバックアップのみが作成されます。
 
      このモードは、‘backup-buffer’に影響を与える変数を無視し、その関数と
      一緒に使用できます。これは、Gitリポジトリで追跡されるファイルのみを
@@ -8402,18 +8399,18 @@ Conventions::)
      ンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バ
      ッファ(temporary buffer)に表示します。
 
-     ファイルにアクセスしないバッファで呼び出されると、通常の
+     ファイルに訪問しないバッファで呼び出されると、通常の
      ‘magit-dispatch’にフォールバックします。
 
 ‘C-c M-g s’     (‘magit-stage-file’)
 
-     現在のバッファでアクセスされているファイルへのすべての変更をステー
-     ジします。
+     現在のバッファが訪問しているファイルのすべての変更をステージします
+     。
 
 ‘C-c M-g u’     (‘magit-unstage-file’)
 
-     現在のバッファでアクセスされているファイルへのすべての変更をステー
-     ジ解除します。
+     現在のバッファが訪問しているファイルのすべての変更をステージ解除し
+     ます。
 
 ‘C-c M-g c’     (‘magit-commit’)
 
@@ -8459,10 +8456,10 @@ Conventions::)
 
 ‘C-c M-g l’     (‘magit-log-buffer-file’)
 
-     このコマンドは、現在のバッファがアクセスするblobのファイルのログを
-     表示します。プレフィックス引数が使用されている場合、または
-     ‘--follow’がアクティブなログ引数である場合は、名前が変更されます。
-     リージョンがアクティブな場合、ログは選択した行範囲に制限されます。
+     このコマンドは、現在のバッファが訪問するblobのファイルのログを表示
+     します。プレフィックス引数が使用されている場合、または‘--follow’が
+     アクティブなログ引数である場合は、名前が変更されます。リージョンが
+     アクティブな場合、ログは選択した行範囲に制限されます。
 
 ‘C-c M-g t’     (‘magit-log-trace-definition’)
 
@@ -8603,8 +8600,9 @@ Magitは、Git変数とEmacsオプションの両方を使用して、リポジ�
 
 同様に、Emacsオプションは、‘/path/to/repo/.dir-locals.el’を編集すること
 によってあるリポジトリのみに設定できます。こちらを参照して下さい(*note
-(emacs)Directory Variables::)。たとえば、1つの巨大なリポジトリでファイル
-アクセスバッファの自動リフレッシュを無効にするには、以下を使用します:
+(emacs)Directory Variables::)。たとえば、1つの巨大なリポジトリで
+file-visitingバッファの自動リフレッシュを無効にするには、以下を使用しま
+す:
 
    • ‘/path/to/huge/repo/.dir-locals.el’
 
@@ -8735,13 +8733,13 @@ Magitは、‘M-x magit-toggle-verbose-refresh’を使用して詳細にバッ�
 トルネックであるかを把握するのに役立ちます。追加の出力は、‘*Messages*’バ
 ッファにあります。
 
-Magitは、アクセスしたファイル(visited files)がディスク上で変更されると、
-現在のリポジトリ内にあるアクセスしたファイルのバッファもrevertします。こ
-れは、組み込みライブラリ‘autorevert’の‘auto-revert-mode’の上に実装されて
-います。それがパフォーマンスに影響を与えるかどうかを判断するには、パフォ
-ーマンスが大幅に低下するかどうか、多数のバッファが存在する場合、および
-/または一部のバッファがTRAMPを使用してファイルにアクセスする場合を確認し
-ます。 もしパフォーマンスに影響があるなら、この確認が役に立つはずです。
+Magitは、訪問したファイル(visited files)がディスク上で変更されると、現在
+のリポジトリ内にある訪問したファイルのバッファもrevertします。これは、組
+み込みライブラリ‘autorevert’の‘auto-revert-mode’の上に実装されています。
+それがパフォーマンスに影響を与えるかどうかを判断するには、パフォーマンス
+が大幅に低下するかどうか、多数のバッファが存在する場合、および/または一
+部のバッファがTRAMPを使用してファイルを訪問する場合を確認します。 もしパ
+フォーマンスに影響があるなら、この確認が役に立つはずです。
 
      (setq auto-revert-buffer-list-filter
            'magit-auto-revert-repository-buffer-p)
@@ -9181,8 +9179,8 @@ gitを非同期で実行すると便利な場合があります。たとえば�
      この関数が呼び出されたときに現在のバッファ(Magitバッファであり、ま
      だ生きている場合)と、それぞれのMagitステータスバッファです。
      ‘magit-revert-buffers’がnil以外の場合、現在のリポジトリで追跡されて
-     いるファイルにアクセスしている変更されていないバッファはrevertされ
-     ます。
+     いるファイルを訪問している変更されていないバッファはrevertされます
+     。
 
  -- Function: magit-run-git-with-editor &rest args
 
@@ -9213,8 +9211,8 @@ gitを非同期で実行すると便利な場合があります。たとえば�
      この関数が呼び出されたときに現在のバッファ(Magitバッファであり、ま
      だ生きている場合)と、それぞれのMagitステータスバッファです。
      ‘magit-revert-buffers’がnil以外の場合、現在のリポジトリで追跡されて
-     いるファイルにアクセスしている変更されていないバッファはrevertされ
-     ます。
+     いるファイルを訪問している変更されていないバッファはrevertされます
+     。
 
  -- Function: magit-start-process &rest args
 
@@ -9236,8 +9234,8 @@ gitを非同期で実行すると便利な場合があります。たとえば�
      ‘magit-start-process’が呼び出されたときに現在のバッファ(Magitバッフ
      ァであり、まだ生きている場合)と、それぞれのMagitステータスバッファ
      をリフレッシュします。‘magit-revert-buffers’がnil以外の場合、現在の
-     リポジトリで追跡されているファイルにアクセスしている変更されていな
-     いバッファはrevertされます。
+     リポジトリで追跡されているファイルを訪問している変更されていないバ
+     ッファはrevertされます。
 
  -- Variable: magit-this-process
 
@@ -9824,9 +9822,9 @@ Gitのmanpage達は、‘gitman’というinfoマニュアルとしてエクス
 をインストールする必要があります。
 
 Magitは、それぞれのmanpageを表示する代わりに、‘gitman’ infoマニュアルへ
-のリンクにアクセスする機能を追加するInfoにパッチを適用します。そのアプロ
-ーチを好む場合は、‘magit-view-git-manual-method’の値をサポートされている
-パッケージ‘man’または‘woman’のいずれかに設定します。例:
+のリンクを訪問する機能を追加するInfoにパッチを適用します。そのアプローチ
+を好む場合は、‘magit-view-git-manual-method’の値をサポートされているパッ
+ケージ‘man’または‘woman’のいずれかに設定します。例:
 
      (setq magit-view-git-manual-method 'man)
 
@@ -10138,7 +10136,7 @@ A.2.12 file-visitingバッファにジャンプすると、ポイントは非表
 ------------------------------------------------------------------------------------
 
 これは、ハンクで‘RET’と入力して、それぞれの位置にあるそれぞれのファイル
-にアクセスしたときに発生する可能性があります。この問題の1つの解決策は、
+を訪問したときに発生する可能性があります。この問題の1つの解決策は、
 ‘global-reveal-mode’を使用することです。ポイント周辺のテキストが常に表示
 されるようにします。それがあなたの好みに対してあまりにも刺激的である場合
 は、代わりに‘magit-diff-visit-file-hook’を使用してテキストを表示すること
@@ -10328,7 +10326,7 @@ Appendix C Keystroke Index
 * c S:                                   コミット開始.        (line  69)
 * c w:                                   コミット開始.        (line  36)
 * C-<return>:                            Visiting Files and Blobs from a Diff.
-                                                              (line  53)
+                                                              (line  51)
 * C-<tab>:                               Section Visibility.  (line  13)
 * C-c C-a:                               Commit Pseudo Headers.
                                                               (line  18)
@@ -10920,15 +10918,15 @@ Appendix D Command Index
 * magit-diff-visit-file:                 Visiting Files and Blobs from a Diff.
                                                               (line   8)
 * magit-diff-visit-file-other-frame:     Visiting Files and Blobs from a Diff.
-                                                              (line  75)
+                                                              (line  73)
 * magit-diff-visit-file-other-window:    Visiting Files and Blobs from a Diff.
-                                                              (line  74)
+                                                              (line  72)
 * magit-diff-visit-file-worktree:        Visiting Files and Blobs from a Diff.
-                                                              (line  53)
+                                                              (line  51)
 * magit-diff-visit-worktree-file-other-frame: Visiting Files and Blobs from a Diff.
-                                                              (line  77)
+                                                              (line  75)
 * magit-diff-visit-worktree-file-other-window: Visiting Files and Blobs from a Diff.
-                                                              (line  76)
+                                                              (line  74)
 * magit-diff-while-committing:           Refreshing Diffs.    (line  81)
 * magit-diff-while-committing <1>:       コミットメッセージ編集.
                                                               (line  58)
@@ -11295,15 +11293,15 @@ Appendix E Function Index
 * magit-diff-scope:                      Matching Sections.   (line 116)
 * magit-diff-type:                       Matching Sections.   (line  94)
 * magit-diff-visit-file-other-frame:     Visiting Files and Blobs from a Diff.
-                                                              (line  75)
+                                                              (line  73)
 * magit-diff-visit-file-other-window:    Visiting Files and Blobs from a Diff.
-                                                              (line  74)
+                                                              (line  72)
 * magit-diff-visit-worktree-file-other-frame: Visiting Files and Blobs from a Diff.
-                                                              (line  77)
+                                                              (line  75)
 * magit-diff-visit-worktree-file-other-window: Visiting Files and Blobs from a Diff.
-                                                              (line  76)
+                                                              (line  74)
 * magit-disable-section-inserter:        Per-Repository Configuration.
-                                                              (line  31)
+                                                              (line  32)
 * magit-display-buffer:                  バッファの切り替え.  (line   6)
 * magit-display-buffer-fullcolumn-most-v1: バッファの切り替え.
                                                               (line  77)
@@ -11601,7 +11599,7 @@ Appendix F Variable Index
 * magit-diff-refine-ignore-whitespace:   Diff Options.        (line  18)
 * magit-diff-unmarked-lines-keep-foreground: Diff Options.    (line 125)
 * magit-diff-visit-previous-blob:        Visiting Files and Blobs from a Diff.
-                                                              (line  40)
+                                                              (line  38)
 * magit-direct-use-buffer-arguments:     Transient Arguments and Buffer Variables.
                                                               (line  68)
 * magit-display-buffer-function:         バッファの切り替え.  (line  27)
@@ -11736,165 +11734,165 @@ Node: Post-Installation Tasks19385
 Node: Getting Started21074
 Node: Interface Concepts28763
 Node: Modes and Buffers29189
-Node: バッファの切り替え31675
-Node: バッファの名付け37908
-Node: Quitting Windows42047
-Node: Automatic Refreshing of Magit Buffers44458
-Node: Automatic Saving of File-Visiting Buffers48375
-Node: Automatic Reverting of File-Visiting Buffers49875
-Node: Risk of Reverting Automatically56522
-Node: Sections59658
-Node: Section Movement60924
-Node: Section Visibility67037
-Node: Section Hooks75109
-Node: Section Types and Values78479
-Node: Section Options80256
-Node: トランジェントコマンド80842
-Node: Transient Arguments and Buffer Variables82734
-Node: Completion Confirmation(確認補完)とSelection(選択範囲)92341
-Node: アクションの確認92858
-Node: 補完と確認103503
-Node: 選択範囲107753
-Node: ハンク内部リージョン111664
-Node: 補完フレームワークのサポート113127
-Node: 追加の補完オプション119190
-Node: Running Git119962
-Node: Viewing Git Output120268
-Node: Git Process Status121747
-Node: Gitを手動で実行122954
-Node: Git実行ファイル126359
-Node: Global Git Arguments130475
-Node: Inspecting131559
-Node: Status Buffer132825
-Node: Status Sections139310
-Node: Status Header Sections146961
-Node: Status Module Sections150280
-Node: Status Options153688
-Node: Repository List155578
-Node: Logging159720
-Node: Refreshing Logs163330
-Node: Log Buffer165364
-Node: Log Margin171266
-Node: Select from Log175479
-Node: Reflog178355
-Node: Cherries180456
-Node: Diffing182914
-Node: Refreshing Diffs187278
-Node: Commands Available in Diffs192043
-Node: Diff Options195437
-Node: Revision Buffer202506
-Node: Ediffing206803
-Node: References Buffer212276
-Node: References Sections225837
-Node: Bisecting227042
-Node: Visiting Files and Blobs230395
-Node: General-Purpose Visit Commands231003
-Node: Visiting Files and Blobs from a Diff232296
-Node: Blaming237130
-Node: Manipulating245719
-Node: Creating Repository246064
-Node: Cloning Repository246803
-Node: Staging and Unstaging254321
-Node: Staging from File-Visiting Buffers260310
-Node: Applying262127
-Node: Committing265055
-Node: コミット開始265825
-Node: コミットメッセージ編集271456
-Node: Using the Revision Stack275091
-Node: Commit Pseudo Headers278994
-Node: Commit Mode and Hooks280781
-Node: Commit Message Conventions284727
-Node: Branching287436
-Node: The Two Remotes287665
-Node: Branch Commands291439
-Node: Branch Git Variables309333
-Node: Auxiliary Branch Commands316332
-Node: Merging317781
-Node: Resolving Conflicts323294
-Node: Rebasing329681
-Node: Editing Rebase Sequences336624
-Node: Information About In-Progress Rebase342322
-Ref: Information About In-Progress Rebase-Footnote-1353499
-Node: Cherry Picking354260
-Node: Reverting360339
-Node: Resetting362622
-Node: Stashing365335
-Node: Transferring372130
-Node: Remotes372355
-Node: Remote Commands372510
-Node: Remote Git Variables378110
-Node: Fetching379815
-Node: Pulling383627
-Node: Pushing385271
-Node: Plain Patches391535
-Node: Maildir Patches393884
-Node: Miscellaneous396146
-Node: Tagging396463
-Node: Notes399269
-Node: Submodules402487
-Node: Listing Submodules402752
-Node: submodule用トランジェントコマンド404452
-Node: Subtree408127
-Node: Worktree411398
-Node: Common Commands413079
-Node: Wip Modes416315
-Node: Wip Graph423020
-Node: Legacy Wip Modes425899
-Node: Commands for Buffers Visiting Files429505
-Node: Minor Mode for Buffers Visiting Blobs437550
-Node: Customizing438571
-Node: Per-Repository Configuration440521
-Node: 基本設定443223
-Node: Safety443607
-Node: Performance446019
-Ref: Log Performance450303
-Ref: Diff Performance452062
-Ref: Refs Buffer Performance453773
-Ref: Committing Performance454559
-Node: Microsoft Windows Performance455701
-Node: MacOS Performance457204
-Ref: MacOS Performance-Footnote-1458076
-Node: Default Bindings458215
-Node: 配管コマンド(Plumbing)461156
-Node: Calling Git462244
-Node: Getting a Value from Git464205
-Node: Calling Git for Effect468884
-Node: Section Plumbing477010
-Node: Creating Sections477261
-Node: Section Selection482582
-Node: Matching Sections484781
-Node: Refreshing Buffers492600
-Node: 慣習496564
-Node: Theming Faces496775
-Node: FAQ507448
-Node: FAQ - How to ...?507981
-Node: Magitの発音は？508440
-Node: How to show git's output?509473
-Node: How to install the gitman info manual?510501
-Node: How to show diffs for gpg-encrypted files?511782
-Node: How does branching and pushing work?512485
-Node: Magitをediff-version-control-packageとして使用できますか？512892
-Node: VCを無効にする必要がありますか？515477
-Node: FAQ - Issues and Errors516371
-Node: Magit is slow517721
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517961
-Node: コミットに問題があります518993
-Node: MS WindowsではMagitでpushできません519554
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520255
-Node: ファイルを展開してdiffを表示するとファイルが消えます521455
-Node: COMMIT_EDITMSGバッファのpointが間違っています522238
-Node: モード行の情報が常に最新ではない523611
-Node: 同じ名前を共有するブランチとタグは何かを壊します524818
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525971
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません527109
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります530166
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531395
-Node: 私はポップアップのデフォルトを保存できなくなりました532574
-Node: Debugging Tools533981
-Node: Keystroke Index536831
-Node: Command Index571500
-Node: Function Index609700
-Node: Variable Index626789
+Node: バッファの切り替え31669
+Node: バッファの名付け37902
+Node: Quitting Windows42041
+Node: Automatic Refreshing of Magit Buffers44452
+Node: Automatic Saving of File-Visiting Buffers48357
+Node: Automatic Reverting of File-Visiting Buffers49857
+Node: Risk of Reverting Automatically56480
+Node: Sections59604
+Node: Section Movement60870
+Node: Section Visibility66983
+Node: Section Hooks75055
+Node: Section Types and Values78425
+Node: Section Options80202
+Node: トランジェントコマンド80788
+Node: Transient Arguments and Buffer Variables82680
+Node: Completion Confirmation(確認補完)とSelection(選択範囲)92287
+Node: アクションの確認92804
+Node: 補完と確認103449
+Node: 選択範囲107699
+Node: ハンク内部リージョン111610
+Node: 補完フレームワークのサポート113073
+Node: 追加の補完オプション119136
+Node: Running Git119908
+Node: Viewing Git Output120214
+Node: Git Process Status121693
+Node: Gitを手動で実行122900
+Node: Git実行ファイル126305
+Node: Global Git Arguments130421
+Node: Inspecting131505
+Node: Status Buffer132771
+Node: Status Sections139256
+Node: Status Header Sections146901
+Node: Status Module Sections150206
+Node: Status Options153614
+Node: Repository List155485
+Node: Logging159636
+Node: Refreshing Logs163271
+Node: Log Buffer165299
+Node: Log Margin171234
+Node: Select from Log175449
+Node: Reflog178339
+Node: Cherries180436
+Node: Diffing182890
+Node: Refreshing Diffs187248
+Node: Commands Available in Diffs192016
+Node: Diff Options195374
+Node: Revision Buffer202428
+Node: Ediffing206719
+Node: References Buffer212192
+Node: References Sections225743
+Node: Bisecting226948
+Node: Visiting Files and Blobs230301
+Node: General-Purpose Visit Commands230903
+Node: Visiting Files and Blobs from a Diff232178
+Node: Blaming236896
+Node: Manipulating245480
+Node: Creating Repository245825
+Node: Cloning Repository246564
+Node: Staging and Unstaging254082
+Node: Staging from File-Visiting Buffers260065
+Node: Applying261873
+Node: Committing264801
+Node: コミット開始265571
+Node: コミットメッセージ編集271202
+Node: Using the Revision Stack274837
+Node: Commit Pseudo Headers278740
+Node: Commit Mode and Hooks280527
+Node: Commit Message Conventions284473
+Node: Branching287182
+Node: The Two Remotes287411
+Node: Branch Commands291185
+Node: Branch Git Variables309079
+Node: Auxiliary Branch Commands316078
+Node: Merging317527
+Node: Resolving Conflicts323040
+Node: Rebasing329427
+Node: Editing Rebase Sequences336370
+Node: Information About In-Progress Rebase342068
+Ref: Information About In-Progress Rebase-Footnote-1353245
+Node: Cherry Picking354006
+Node: Reverting360085
+Node: Resetting362368
+Node: Stashing365081
+Node: Transferring371872
+Node: Remotes372097
+Node: Remote Commands372252
+Node: Remote Git Variables377852
+Node: Fetching379557
+Node: Pulling383369
+Node: Pushing385013
+Node: Plain Patches391277
+Node: Maildir Patches393626
+Node: Miscellaneous395888
+Node: Tagging396205
+Node: Notes399011
+Node: Submodules402229
+Node: Listing Submodules402494
+Node: submodule用トランジェントコマンド404194
+Node: Subtree407869
+Node: Worktree411140
+Node: Common Commands412821
+Node: Wip Modes416057
+Node: Wip Graph422762
+Node: Legacy Wip Modes425641
+Node: Commands for Buffers Visiting Files429228
+Node: Minor Mode for Buffers Visiting Blobs437237
+Node: Customizing438258
+Node: Per-Repository Configuration440208
+Node: 基本設定442900
+Node: Safety443284
+Node: Performance445696
+Ref: Log Performance449962
+Ref: Diff Performance451721
+Ref: Refs Buffer Performance453432
+Ref: Committing Performance454218
+Node: Microsoft Windows Performance455360
+Node: MacOS Performance456863
+Ref: MacOS Performance-Footnote-1457735
+Node: Default Bindings457874
+Node: 配管コマンド(Plumbing)460815
+Node: Calling Git461903
+Node: Getting a Value from Git463864
+Node: Calling Git for Effect468543
+Node: Section Plumbing476651
+Node: Creating Sections476902
+Node: Section Selection482223
+Node: Matching Sections484422
+Node: Refreshing Buffers492241
+Node: 慣習496205
+Node: Theming Faces496416
+Node: FAQ507089
+Node: FAQ - How to ...?507622
+Node: Magitの発音は？508081
+Node: How to show git's output?509114
+Node: How to install the gitman info manual?510142
+Node: How to show diffs for gpg-encrypted files?511417
+Node: How does branching and pushing work?512120
+Node: Magitをediff-version-control-packageとして使用できますか？512527
+Node: VCを無効にする必要がありますか？515112
+Node: FAQ - Issues and Errors516006
+Node: Magit is slow517356
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517596
+Node: コミットに問題があります518628
+Node: MS WindowsではMagitでpushできません519189
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません519890
+Node: ファイルを展開してdiffを表示するとファイルが消えます521090
+Node: COMMIT_EDITMSGバッファのpointが間違っています521873
+Node: モード行の情報が常に最新ではない523246
+Node: 同じ名前を共有するブランチとタグは何かを壊します524453
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525606
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません526744
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります529801
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531024
+Node: 私はポップアップのデフォルトを保存できなくなりました532203
+Node: Debugging Tools533610
+Node: Keystroke Index536460
+Node: Command Index571129
+Node: Function Index609329
+Node: Variable Index626418
 
 End Tag Table
 
