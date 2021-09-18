@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
 "POT-Creation-Date: 2021-08-20 03:37+0900\n"
-"PO-Revision-Date: 2021-09-18 06:29+0900\n"
+"PO-Revision-Date: 2021-09-19 06:57+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -9021,7 +9021,7 @@ msgstr "@code{quickest} 7文字以上の長さでかつ、1つ以上の数字か
 msgid ""
 "If nil, then no hashes are turned into sections, but you can still visit the "
 "commit at point using \"RET\"."
-msgstr "nilの場合、ハッシュはセクションに変換されませんが、「RET」を使用してその時点でコミットを訪問できます。"
+msgstr "nilの場合、ハッシュはセクションに変換されませんが、そのポイントで「RET」を使用してコミットを訪問できます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:4548
@@ -9901,7 +9901,7 @@ msgstr "checkout-any"
 msgid ""
 "Check out the reference at point.  If that reference is a tag or a remote "
 "branch, then this results in a detached @code{HEAD}."
-msgstr "ポイントでリファレンスをチェックしてください。そのreferenceがタグまたはリモートブランチである場合、これにより@code{HEAD}がdetachされます。"
+msgstr "ポイントでreferenceをチェックアウトします。そのreferenceがタグまたはリモートブランチである場合、これにより@code{HEAD}がdetachされます。"
 
 #. type: itemize
 #: sed-out/magit.texi:4982 sed-out/magit.texi:4991
@@ -9929,7 +9929,7 @@ msgid ""
 "members of the default value.  Note that it makes much less sense to "
 "customize this hook than it does for the respective hook used for the status "
 "buffer."
-msgstr "参照バッファの内容は、フック@code{magit-refs-sections-hook}を使用して制御されます。このようなフックとそれらをカスタマイズする方法については、こちらを参照して下さい(@ref{Section Hooks})。以下の関数はすべてデフォルト値のメンバーです。注意: このフックをカスタマイズすることは、ステータスバッファに使用されるそれぞれのフックよりもはるかに意味がないことに注意してください。"
+msgstr "参照バッファ(references buffers)の内容は、フック@code{magit-refs-sections-hook}を使用して制御されます。このようなフックとそれらをカスタマイズする方法については、こちらを参照して下さい(@ref{Section Hooks})。以下の関数はすべてデフォルト値のメンバーです。注意: このフックをカスタマイズすることは、ステータスバッファに使用されるそれぞれのフックよりもはるかに意味がないことに注意してください。"
 
 #. type: defopt
 #: sed-out/magit.texi:5008
@@ -9940,7 +9940,7 @@ msgstr "magit-refs-sections-hook"
 #. type: defopt
 #: sed-out/magit.texi:5011
 msgid "Hook run to insert sections into a references buffer."
-msgstr "フックランを実行して、セクションをreferenceバッファに挿入します。"
+msgstr "フックを実行して、セクションをreferenceバッファに挿入します。"
 
 #. type: defun
 #: sed-out/magit.texi:5013
@@ -10046,6 +10046,7 @@ msgstr "@kbd{B B} @tie{}@tie{}@tie{}@tie{}(@code{magit-bisect-start})"
 msgid "Start a bisect session."
 msgstr "bisectセッションを開始します。"
 
+# git bookではbisect:二分探索 としている
 #. type: table
 #: sed-out/magit.texi:5069
 msgid ""
@@ -10054,7 +10055,7 @@ msgid ""
 "bad commit.  If you're bisecting a change that isn't a regression, you can "
 "select alternate terms that are conceptually more fitting than \"bad\" and "
 "\"good\", but the infix arguments to do so are disabled by default."
-msgstr "バグをbisectするということは、バグを引き起こしたコミットを見つけることを意味します。このコマンドは、既知の良好なコミットと既知の不良コミットを要求することにより、このようなbisectセッションを開始します。 あなたがデグレ(regression)ではない変更をbisectする場合は、\"bad\"と\"good\"よりも概念的に適切な代替用語を選択できますが、そうするためのインフィックス引数はデフォルトでは無効になっています。"
+msgstr "バグを二分探索(bisect)するということは、バグを引き起こしたコミットを見つけることを意味します。このコマンドは、既知の良好なコミットと既知の不良コミットを要求することにより、このようなbisectセッションを開始します。 あなたがデグレ(regression)ではない変更について二分探索する場合は、\"bad\"と\"good\"よりも概念的に適切な代替用語を選択できますが、そうするためのインフィックス引数はデフォルトでは無効になっています。"
 
 #. type: kindex
 #: sed-out/magit.texi:5070
@@ -10109,7 +10110,7 @@ msgstr "@kbd{B b} @tie{}@tie{}@tie{}@tie{}(@code{magit-bisect-bad})"
 msgid ""
 "Mark the current commit as bad.  Use this after you have asserted that the "
 "commit does contain the bug in question."
-msgstr "現在のコミットをbadとしてマークします。コミットに問題のバグが含まれていることを表明した後で、これを使用します。"
+msgstr "現在のコミットをbadとしてマークします。コミットに問題のバグが含まれていることを表明します。"
 
 #. type: kindex
 #: sed-out/magit.texi:5088
@@ -10134,7 +10135,7 @@ msgstr "@kbd{B g} @tie{}@tie{}@tie{}@tie{}(@code{magit-bisect-good})"
 msgid ""
 "Mark the current commit as good.  Use this after you have asserted that the "
 "commit does not contain the bug in question."
-msgstr "現在のコミットをgoodとしてマークします。 コミットに問題のバグが含まれていないことを表明した後で、これを使用します。"
+msgstr "現在のコミットをgoodとしてマークします。 コミットに問題のバグが含まれていないことを表明します。"
 
 #. type: kindex
 #: sed-out/magit.texi:5095
@@ -10186,7 +10187,7 @@ msgstr "@kbd{B k} @tie{}@tie{}@tie{}@tie{}(@code{magit-bisect-skip})"
 msgid ""
 "Skip the current commit.  Use this if for some reason the current commit is "
 "not a good one to test.  This command lets Git choose a different one."
-msgstr "現在のコミットをスキップします。何らかの理由で現在のコミットがテストに適していない場合は、これを使用します。このコマンドにより、Gitは別のコマンドを選択できます。"
+msgstr "現在のコミットをスキップします。何らかの理由で現在のコミットがテストに適していない場合に役立ちます。このコマンドにより、Gitは別のコミットを選択できます。"
 
 #. type: kindex
 #: sed-out/magit.texi:5112
@@ -10271,7 +10272,7 @@ msgid ""
 "This command reads a filename and revision from the user and visits the "
 "respective blob in a buffer.  The buffer is displayed in the selected "
 "window."
-msgstr "このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBを訪問します。選択したウィンドウにバッファが表示されます。"
+msgstr "このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内でそれぞれのBLOBを訪問します。選択したウィンドウにバッファが表示されます。"
 
 #. type: cindex
 #: sed-out/magit.texi:5157
@@ -10290,7 +10291,7 @@ msgstr "Command magit-find-file-other-window"
 msgid ""
 "This command reads a filename and revision from the user and visits the "
 "respective blob in a buffer.  The buffer is displayed in another window."
-msgstr "このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBを訪問します。バッファは別のウィンドウに表示されます。"
+msgstr "このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内でそれぞれのBLOBを訪問します。バッファは別のウィンドウに表示されます。"
 
 #. type: cindex
 #: sed-out/magit.texi:5165
@@ -10309,12 +10310,12 @@ msgstr "Command magit-find-file-other-frame"
 msgid ""
 "This command reads a filename and revision from the user and visits the "
 "respective blob in a buffer.  The buffer is displayed in another frame."
-msgstr "このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内のそれぞれのBLOBを訪問します。バッファは別のフレームに表示されます。"
+msgstr "このコマンドは、ユーザーからファイル名とリビジョンを読み取り、バッファ内でそれぞれのBLOBを訪問します。バッファは別のフレームに表示されます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:5177
 msgid "These commands can only be used when point is inside a diff."
-msgstr "これらのコマンドは、ポイントがdiff内にある場合にのみ使用できます。"
+msgstr "以下のコマンドは、ポイントがdiff内にある場合にのみ使用できます。"
 
 #. type: cindex
 #: sed-out/magit.texi:5180
@@ -10333,7 +10334,7 @@ msgstr "@kbd{RET} @tie{}@tie{}@tie{}@tie{}(@code{magit-diff-visit-file})"
 msgid ""
 "This command visits the appropriate version of the file that the diff at "
 "point is about."
-msgstr "このコマンドは、その時点でのdiffが含まれているファイルの適切なバージョンを訪問します。"
+msgstr "このコマンドは、diff内のポイントのところのファイルの適切なバージョンを訪問します。"
 
 #. type: table
 #: sed-out/magit.texi:5190
@@ -10350,7 +10351,7 @@ msgid ""
 "then visit the file in the working tree (i.e. the same \"real\" file that "
 "@code{find-file} would visit.  In all other cases visit a \"blob\" (i.e. the "
 "version of a file as stored in some commit)."
-msgstr "diffにコミットされていない変更(つまり、ステージされた変更(staged changes)またはステージされていない変更(unstaged changes)）が表示される場合は、作業ツリー内のファイル(つまり、@code{find-file}が訪問するのと同じ「実際の」ファイル)を訪問します。それ以外の場合は、「blob」を訪問します。（つまり、コミットに保存されているファイルのバージョン）。"
+msgstr "diffにコミットされていない変更(つまり、ステージされた変更(staged changes)またはステージされていない変更(unstaged changes))が表示される場合は、作業ツリー内のファイル(つまり、@code{find-file}が訪問するのと同じ「実際の」ファイル)を訪問します。それ以外の場合は、blob(つまり、コミットに保存されているファイルのバージョン)を訪問します。"
 
 #. type: itemize
 #: sed-out/magit.texi:5204
@@ -10358,7 +10359,7 @@ msgid ""
 "If point is on a removed line, then visit the blob for the first parent of "
 "the commit that removed that line, i.e. the last commit where that line "
 "still exists."
-msgstr "ポイントが削除された行にある場合は、その行を削除したコミットの最初の親、つまりその行がまだ存在する最後のコミットのblobを訪問します。"
+msgstr "ポイントが、削除された行にある場合は、その行を削除したコミットの最初の親、つまりその行がまだ存在する最後のコミットのblobを訪問します。"
 
 #. type: itemize
 #: sed-out/magit.texi:5211
@@ -10366,21 +10367,21 @@ msgid ""
 "If point is on an added or context line, then visit the blob that adds that "
 "line, or if the diff shows from more than a single commit, then visit the "
 "blob from the last of these commits."
-msgstr "ポイントが追加された行またはコンテキスト行にある場合は、その行を追加するblobを訪問します。または、diffが複数のコミットから表示される場合は、これらの最後のコミットからblobを訪問します。"
+msgstr "ポイントが、追加された行またはコンテキスト行にある場合は、その行を追加するblobを訪問します。または、diffが複数のコミットから表示される場合は、これらの最後のコミットからblobを訪問します。"
 
 #. type: table
 #: sed-out/magit.texi:5215
 msgid ""
 "In the file-visiting buffer this command goes to the line that corresponds "
 "to the line that point is on in the diff."
-msgstr "file-visitingバッファでは、このコマンドは、diffでポイントがオンになっている行に対応する行に移動します。"
+msgstr "file-visitingバッファでは、このコマンドは、diffでポイントがある行に対応する行に移動します。"
 
 #. type: table
 #: sed-out/magit.texi:5218 sed-out/magit.texi:5251
 msgid ""
 "The buffer is displayed in the selected window.  With a prefix argument the "
 "buffer is displayed in another window instead."
-msgstr "選択したウィンドウにバッファが表示されます。プレフィックス引数を使用すると、代わりにバッファが別のウィンドウに表示されます。"
+msgstr "選択したウィンドウにバッファが表示されます。プレフィックス引数を使用すると、その代わりにバッファが別のウィンドウに表示されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:5221
@@ -10442,7 +10443,7 @@ msgid ""
 "to the line that point is on in the diff.  Lines that were added or removed "
 "in the working tree, the index and other commits in between are "
 "automatically accounted for."
-msgstr "file-visitingバッファでは、このコマンドは、diffでポイントがオンになっている行に対応する行に移動します。作業ツリーで追加または削除された行、インデックス、およびその間のその他のコミットは、自動的に考慮されます。"
+msgstr "file-visitingバッファでは、このコマンドは、diffでポイントある行に対応する行に移動します。作業ツリーで追加または削除された行、インデックス、およびその間のその他のコミットは、自動的に考慮されます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:5258
@@ -10451,7 +10452,7 @@ msgid ""
 "another window or in another frame.  If you prefer such behavior, then you "
 "may want to change the above key bindings, but note that the above commands "
 "also use another window when invoked with a prefix argument."
-msgstr "上記の2つのコマンドのバリエーションが存在しています。それは代わりに別のウィンドウまたは別のフレームでファイルを訪問します。このような動作が必要な場合は、上記のキーバインディングを変更することをお勧めしますが、上記のコマンドは、プレフィックス引数を指定して呼び出されたときに別のウィンドウも使用することに注意してください。"
+msgstr "上記の2つのコマンドのバリエーションがあります。それらは上記の代わりに別のウィンドウまたは別のフレームでファイルを訪問します。このような動作が必要な場合は、上記のキーバインディングを変更することをお勧めしますが、上記のコマンドは、プレフィックス引数を指定して呼び出されたときに別のウィンドウも使用することに注意してください。"
 
 #. type: cindex
 #: sed-out/magit.texi:5259
@@ -10516,6 +10517,9 @@ msgstr "the <a href=\"http://git-scm.com/docs/git-blame\">git-blame(1)</a> manpa
 msgid "the git-blame(1) manpage."
 msgstr "the git-blame(1) manpage."
 
+# blame
+# ファイルの行ごとにコミットを表示する機能。
+# その行はどのコミットで変更されたかが分かる。コミットが分かるんだからコミットメッセージやコミッターも分かる。
 #. type: Plain text
 #: sed-out/magit.texi:5290
 msgid ""
@@ -11033,7 +11037,7 @@ msgid ""
 "This option lists incompatible minor-modes that should be disabled "
 "temporarily when a buffer contains blame information.  They are enabled "
 "again when the buffer no longer shows blame information."
-msgstr "このオプションは、バッファにblame情報が含まれている場合に一時的に無効にする必要がある互換性のないマイナーモードを一覧表示します。バッファにblame報が表示されなくなると、これらは再び有効になります。"
+msgstr "このオプションは、バッファにblame情報が含まれている場合に一時的に無効にする必要がある互換性のないマイナーモードを一覧表示します。バッファにblame情報が表示されなくなると、これらは再び有効になります。"
 
 #. type: defopt
 #: sed-out/magit.texi:5501
@@ -11116,7 +11120,7 @@ msgid ""
 "not.  If @code{t}, then that command always acts as a transient prefix.  If "
 "@code{nil}, then a prefix argument has to be used for it to act as a "
 "transient."
-msgstr "このオプションは、プレフィックス(接頭辞)引数が使用されているかどうかに関係なく、コマンド@code{magit-clone}が常トランジェントプレフィックスコマンドとして機能するかどうかを制御します。@code{t}の場合、そのコマンドは常にトランジェントプレフィックスコマンドとして機能します。@code{nil}の場合、トランジェントコマンドとして機能させるには、プレフィックス引数を使用する必要があります。"
+msgstr "このオプションは、プレフィックス(接頭辞)引数が使用されているかどうかに関係なく、コマンド@code{magit-clone}が常にトランジェントプレフィックスコマンドとして機能するかどうかを制御します。@code{t}の場合、そのコマンドは常にトランジェントプレフィックスコマンドとして機能します。@code{nil}の場合、トランジェントコマンドとして機能させるには、プレフィックス引数を使用する必要があります。"
 
 #. type: kindex
 #: sed-out/magit.texi:5560
@@ -11200,7 +11204,7 @@ msgid ""
 "repository and the target directory are read from the user.  By default the "
 "depth of the cloned history is a single commit, but with a prefix argument "
 "the depth is read from the user."
-msgstr "このコマンドは、既存のリポジトリの浅いクローン(shallow clone)を作成します。リポジトリとターゲットディレクトリがユーザーから読み取られます。 デフォルトでは、複製された履歴の深さは単一のコミットですが、プレフィックス引数を使用すると、深さはユーザーから読み取られます。"
+msgstr "このコマンドは、既存のリポジトリの浅いクローン(shallow clone)を作成します。リポジトリとターゲットディレクトリがユーザーから読み取られます。 デフォルトでは、複製される履歴の深さが1だけのコミットであるクローンですが、プレフィックス引数を使用すると、その深さはユーザーから読み取られます。"
 
 #. type: kindex
 #: sed-out/magit.texi:5587
@@ -11310,7 +11314,7 @@ msgid ""
 "a branch or tag from the user.  Commits that are reachable from that are not "
 "cloned.  The repository and the target directory are also read from the "
 "user."
-msgstr "このコマンドは、既存のリポジトリの浅い(shallow)クローンを作成します。 これにより、ユーザーからブランチまたはタグが読み取られます。そこから到達可能なコミットは複製されません。リポジトリとターゲットディレクトリもユーザーから読み取られます。"
+msgstr "このコマンドは、既存のリポジトリの浅い(shallow)クローンを作成します。ユーザーからブランチまたはタグが読み取られます。そのブランチまたはタグから到達可能なコミットを除外します。リポジトリとターゲットディレクトリもユーザーから読み取られます。"
 
 #. type: defopt
 #: sed-out/magit.texi:5626
@@ -11538,7 +11542,7 @@ msgid ""
 "of tracked files and remove tracked files that no longer exist in the "
 "working tree from the index also.  With a prefix argument also stage "
 "previously untracked (but not ignored) files."
-msgstr "ワークツリー内で変更されたファイルへのすべての変更をステージします。追跡中のファイルのすべての新しいコンテンツをステージし、作業ツリーに存在しなくなった追跡中のファイルもインデックスから削除します。プレフィックス引数を使用すると、まだ追跡中でない(ただし無視されない)ファイルもステージされます。"
+msgstr "ワークツリー内で変更されたファイルへのすべての変更をステージします。追跡中のファイル(tracked files)のすべての新しいコンテンツをステージし、もはや作業ツリーに存在しなくなった追跡中のファイル(訳注:つまり、削除されたファイル)をインデックスから削除します。プレフィックス引数を使用すると、まだ追跡中でない(ただし無視されない;訳注:つまり@code{.gitignore}の対象でない)ファイルもステージされます。"
 
 #. type: kindex
 #: sed-out/magit.texi:5747
@@ -11649,7 +11653,7 @@ msgstr "これにより、@code{HEAD}から変更を抽出し、作業ツリー�
 #. type: itemize
 #: sed-out/magit.texi:5790
 msgid "Optionally make sure that there are no uncommitted changes."
-msgstr "オプションで、コミットされていない変更がないことを確認します。"
+msgstr "(オプションで、コミットされていない変更がないことを確認します。)"
 
 #. type: itemize
 #: sed-out/magit.texi:5794
