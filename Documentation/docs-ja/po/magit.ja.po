@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
 "POT-Creation-Date: 2021-08-20 03:37+0900\n"
-"PO-Revision-Date: 2021-09-19 16:57+0900\n"
+"PO-Revision-Date: 2021-09-19 23:36+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -13735,7 +13735,7 @@ msgid ""
 "branches that should @strong{not} use UPSTREAM; all other branches will.  "
 "Matching is done after stripping the remote part of the name of the branch "
 "that is being branched from."
-msgstr "RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAMで指定されたのでべきであるブランチに一致します。または、UPSTREAMを使用してはならない単一のブランチのリストにすることもできます。他ブランチは全てそうします。マッチングは、分岐元のブランチ名のリモート部分を削除した後に行われます。"
+msgstr "RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAMで指定されるべきであるブランチに一致します。または、UPSTREAMを使用してはならない単一のブランチのリストにすることもできます。他ブランチは全てそうします。マッチングは、分岐元のブランチ名のリモート部分を削除した後に行われます。"
 
 #. type: defopt
 #: sed-out/magit.texi:6785
@@ -13843,7 +13843,7 @@ msgid ""
 "This command is a hybrid between @code{magit-checkout} and "
 "@code{magit-branch-and-checkout} and is intended as a replacement for the "
 "former in @code{magit-branch}."
-msgstr "このコマンドは、@code{magit-checkout}と@code{magit-branch-and-checkout}のハイブリッドであり、@code{magit-branch}の前者の代わりとして使用することを目的としています。"
+msgstr "このコマンドは、@code{magit-checkout}と@code{magit-branch-and-checkout}のハイブリッドであり、@code{magit-branch}で、@code{magit-checkout}の代わりとして使用することを目的としています。"
 
 #. type: deffn
 #: sed-out/magit.texi:6836
@@ -13936,7 +13936,7 @@ msgstr "この変数は、NAMEという名前のブランチへのプルが、�
 #. type: itemize
 #: sed-out/magit.texi:6879 sed-out/magit.texi:6922
 msgid "When @code{true} then pulling is done by rebasing."
-msgstr "@code{true}の場合、pullはリベースによって行われます。"
+msgstr "@code{true}の場合、プルはリベースによって行われます。"
 
 #. type: itemize
 #: sed-out/magit.texi:6882
@@ -13990,7 +13990,7 @@ msgstr "branch.NAME.description"
 msgid ""
 "This variable can be used to describe the branch named NAME@.  That "
 "description is used e.g. when turning the branch into a series of patches."
-msgstr "この変数は、NAMEという名前のブランチを記述するために使用できます。例えばブランチを一連のパッチに変えるとき、その説明が使用されます。"
+msgstr "この変数は、NAMEという名前のブランチを説明するために使用できます。例えばブランチを一連のパッチに変えるとき、その説明が使用されます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:6913
@@ -14024,7 +14024,7 @@ msgid ""
 "hotfix branch and most branches are such branches, you should consider "
 "setting this to @code{true}, and @code{branch.master.rebase} to "
 "@code{false}."
-msgstr "アップストリームブランチを、ほとんどのブランチはそのようなブランチであるところの、機能(feature)ブランチまたはホットフィックスブランチやマージすることは決して良い考えではなく、これを@code{true}に設定し、@code{branch.master.rebase}を@code{false}に設定することを検討する必要があります。"
+msgstr "アップストリームブランチを、機能(feature)ブランチまたはホットフィックスブランチ(ほとんどのブランチはそのようなブランチです)にマージすることは決して良い考えではなく、この変数を@code{true}に設定し、@code{branch.master.rebase}を@code{false}に設定することを検討する必要があります。"
 
 #. type: defvar
 #: sed-out/magit.texi:6933
@@ -14045,7 +14045,7 @@ msgid ""
 "The following variables are used during the creation of a branch and control "
 "whether the various branch-specific variables are automatically set at this "
 "time."
-msgstr "以下の変数達はブランチの作成中に使用され、さまざまなブランチ固有の変数達この時点で自動的に設定されるかどうかを制御します。"
+msgstr "以下の変数はブランチの作成中に使用され、さまざまなブランチ固有の変数がこの時点で自動的に設定されるかどうかを制御します。"
 
 #. type: defvar
 #: sed-out/magit.texi:6944
@@ -14138,12 +14138,12 @@ msgstr "git config --global remote.autoSetupMerge always\n"
 #. type: Plain text
 #: sed-out/magit.texi:6999
 msgid "For more information about these variables you should also see"
-msgstr "これらの変数の詳細については、こちらもご覧下さい→"
+msgstr "これらの変数の詳細については、以下もご覧下さい"
 
 #. type: ifinfo
 #: sed-out/magit.texi:7002 sed-out/magit.texi:10081
 msgid "@ref{git-config,,,gitman,}."
-msgstr "@ref{git-config,,,gitman,}"
+msgstr "(@ref{git-config,,,gitman,})"
 
 #. type: ifhtml
 #: sed-out/magit.texi:7007 sed-out/magit.texi:10086
@@ -14160,7 +14160,7 @@ msgstr "the git-config(1) manpage."
 #. type: ifinfo
 #: sed-out/magit.texi:7014
 msgid "@ref{git-branch,,,gitman,}."
-msgstr "@ref{git-branch,,,gitman,}"
+msgstr "(@ref{git-branch,,,gitman,})"
 
 #. type: ifhtml
 #: sed-out/magit.texi:7019
@@ -14182,7 +14182,7 @@ msgstr "と"
 #. type: ifinfo
 #: sed-out/magit.texi:7026
 msgid "@ref{git-checkout,,,gitman,}."
-msgstr "@ref{git-checkout,,,gitman,}"
+msgstr "(@ref{git-checkout,,,gitman,})"
 
 #. type: ifhtml
 #: sed-out/magit.texi:7031
@@ -14199,7 +14199,7 @@ msgstr "the git-checkout(1) manpage."
 #. type: Plain text
 #: sed-out/magit.texi:7036
 msgid "and @ref{Pushing}."
-msgstr "と @ref{Pushing}"
+msgstr "と(@ref{Pushing})"
 
 #. type: defopt
 #: sed-out/magit.texi:7037

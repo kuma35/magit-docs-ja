@@ -5979,10 +5979,10 @@ File: magit.ja.info,  Node: Branch Commands,  Next: Branch Git Variables,  Prev:
      せん。
 
      RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAMで指
-     定されたのでべきであるブランチに一致します。または、UPSTREAMを使用
-     してはならない単一のブランチのリストにすることもできます。他ブラン
-     チは全てそうします。マッチングは、分岐元のブランチ名のリモート部分
-     を削除した後に行われます。
+     定されるべきであるブランチに一致します。または、UPSTREAMを使用して
+     はならない単一のブランチのリストにすることもできます。他ブランチは
+     全てそうします。マッチングは、分岐元のブランチ名のリモート部分を削
+     除した後に行われます。
 
      あなたのすべてのリポジトリで永続的なブランチの限定セットを使用する
      場合、あなたは以下のようなものを使用できます:
@@ -6018,8 +6018,8 @@ File: magit.ja.info,  Node: Branch Commands,  Next: Branch Git Variables,  Prev:
  -- Command: magit-branch-or-checkout
 
      このコマンドは、‘magit-checkout’と‘magit-branch-and-checkout’のハイ
-     ブリッドであり、‘magit-branch’の前者の代わりとして使用することを目
-     的としています。
+     ブリッドであり、‘magit-branch’で、‘magit-checkout’の代わりとして使
+     用することを目的としています。
 
      最初に、既存のブランチまたはリビジョンをユーザーに要求します。ユー
      ザー入力が実際にブランチまたはリビジョンとして解決できる場合は、
@@ -6064,7 +6064,7 @@ Branch Commands::)
      われるか、フェッチされたブランチをマージすることによって行われるか
      を制御します。
 
-        • ‘true’の場合、pullはリベースによって行われます。
+        • ‘true’の場合、プルはリベースによって行われます。
 
         • ‘false’の場合、プルはマージによって行われます。
 
@@ -6086,7 +6086,7 @@ Branch Commands::)
 
  -- Variable: branch.NAME.description
 
-     この変数は、NAMEという名前のブランチを記述するために使用できます。
+     この変数は、NAMEという名前のブランチを説明するために使用できます。
      例えばブランチを一連のパッチに変えるとき、その説明が使用されます。
 
 以下の変数は、上記のブランチ固有の変数が設定されていない場合に使用される
@@ -6097,13 +6097,13 @@ Branch Commands::)
      この変数は、プルがリベースによって行われるか、マージによって行われ
      るかを指定します。‘branch.NAME.rebase’を使用して上書きできます。
 
-        • ‘true’の場合、pullはリベースによって行われます。
+        • ‘true’の場合、プルはリベースによって行われます。
 
         • ‘false’(デフォルト)の場合、プルはマージによって行われます。
 
-     アップストリームブランチを、ほとんどのブランチはそのようなブランチ
-     であるところの、機能(feature)ブランチまたはホットフィックスブランチ
-     やマージすることは決して良い考えではなく、これを‘true’に設定し、
+     アップストリームブランチを、機能(feature)ブランチまたはホットフィッ
+     クスブランチ(ほとんどのブランチはそのようなブランチです)にマージす
+     ることは決して良い考えではなく、この変数を‘true’に設定し、
      ‘branch.master.rebase’を‘false’に設定することを検討する必要がありま
      す。
 
@@ -6113,8 +6113,8 @@ Branch Commands::)
      す。これは、‘branch.NAME.pushRemote’を使用してブランチごとに上書き
      できます。
 
-以下の変数達はブランチの作成中に使用され、さまざまなブランチ固有の変数達
-この時点で自動的に設定されるかどうかを制御します。
+以下の変数はブランチの作成中に使用され、さまざまなブランチ固有の変数がこ
+の時点で自動的に設定されるかどうかを制御します。
 
  -- Variable: branch.autoSetupMerge
 
@@ -6153,10 +6153,11 @@ Branch Commands::)
 
      git config --global remote.autoSetupMerge always
 
-これらの変数の詳細については、こちらもご覧下さい→
+これらの変数の詳細については、以下もご覧下さい
 
-*note (gitman)git-config:: こちらもご覧下さい *note (gitman)git-branch::
-と *note (gitman)git-checkout:: と *note Pushing::
+(*note (gitman)git-config::) こちらもご覧下さい (*note
+(gitman)git-branch::) と (*note (gitman)git-checkout::) と(*note
+Pushing::)
 
  -- User Option: magit-prefer-remote-upstream
 
@@ -8600,7 +8601,7 @@ Magitは、Git変数とEmacsオプションの両方を使用して、リポジ�
 
 あるリポジトリのみのGit変数を設定するには、‘$HOME/.gitconfig’や
 ‘/etc/gitconfig’の代わりに‘/path/to/repo/.git/config’に設定するだけです
-。参照: *note (gitman)git-config::
+。参照: (*note (gitman)git-config::)
 
 同様に、Emacsオプションは、‘/path/to/repo/.dir-locals.el’を編集すること
 によってあるリポジトリのみに設定できます。こちらを参照して下さい(*note
@@ -11643,7 +11644,7 @@ Appendix F Variable Index
 * magit-post-display-buffer-hook:        バッファの切り替え.  (line  97)
 * magit-pre-display-buffer-hook:         バッファの切り替え.  (line  86)
 * magit-prefer-remote-upstream:          Branch Git Variables.
-                                                              (line 123)
+                                                              (line 124)
 * magit-prefix-use-buffer-arguments:     Transient Arguments and Buffer Variables.
                                                               (line  59)
 * magit-process-raise-error:             Calling Git for Effect.
@@ -11809,94 +11810,94 @@ Node: Commit Message Conventions284593
 Node: Branching287324
 Node: The Two Remotes287553
 Node: Branch Commands291350
-Node: Branch Git Variables309244
-Node: Auxiliary Branch Commands316243
-Node: Merging317692
-Node: Resolving Conflicts323205
-Node: Rebasing329592
-Node: Editing Rebase Sequences336535
-Node: Information About In-Progress Rebase342233
-Ref: Information About In-Progress Rebase-Footnote-1353410
-Node: Cherry Picking354171
-Node: Reverting360250
-Node: Resetting362533
-Node: Stashing365246
-Node: Transferring372037
-Node: Remotes372262
-Node: Remote Commands372417
-Node: Remote Git Variables378017
-Node: Fetching379722
-Node: Pulling383534
-Node: Pushing385178
-Node: Plain Patches391442
-Node: Maildir Patches393791
-Node: Miscellaneous396053
-Node: Tagging396370
-Node: Notes399176
-Node: Submodules402394
-Node: Listing Submodules402659
-Node: submodule用トランジェントコマンド404359
-Node: Subtree408034
-Node: Worktree411305
-Node: Common Commands412986
-Node: Wip Modes416222
-Node: Wip Graph422927
-Node: Legacy Wip Modes425806
-Node: Commands for Buffers Visiting Files429393
-Node: Minor Mode for Buffers Visiting Blobs437402
-Node: Customizing438423
-Node: Per-Repository Configuration440373
-Node: 基本設定443065
-Node: Safety443449
-Node: Performance445861
-Ref: Log Performance450127
-Ref: Diff Performance451886
-Ref: Refs Buffer Performance453597
-Ref: Committing Performance454383
-Node: Microsoft Windows Performance455525
-Node: MacOS Performance457028
-Ref: MacOS Performance-Footnote-1457900
-Node: Default Bindings458039
-Node: 配管コマンド(Plumbing)460980
-Node: Calling Git462068
-Node: Getting a Value from Git464029
-Node: Calling Git for Effect468708
-Node: Section Plumbing476816
-Node: Creating Sections477067
-Node: Section Selection482388
-Node: Matching Sections484587
-Node: Refreshing Buffers492406
-Node: 慣習496370
-Node: Theming Faces496581
-Node: FAQ507254
-Node: FAQ - How to ...?507787
-Node: Magitの発音は？508246
-Node: How to show git's output?509279
-Node: How to install the gitman info manual?510307
-Node: How to show diffs for gpg-encrypted files?511582
-Node: How does branching and pushing work?512285
-Node: Magitをediff-version-control-packageとして使用できますか？512692
-Node: VCを無効にする必要がありますか？515277
-Node: FAQ - Issues and Errors516171
-Node: Magit is slow517521
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517761
-Node: コミットに問題があります518793
-Node: MS WindowsではMagitでpushできません519354
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520055
-Node: ファイルを展開してdiffを表示するとファイルが消えます521255
-Node: COMMIT_EDITMSGバッファのpointが間違っています522038
-Node: モード行の情報が常に最新ではない523411
-Node: 同じ名前を共有するブランチとタグは何かを壊します524618
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525771
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません526909
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります529966
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531189
-Node: 私はポップアップのデフォルトを保存できなくなりました532368
-Node: Debugging Tools533775
-Node: Keystroke Index536625
-Node: Command Index571234
-Node: Function Index609374
-Node: Variable Index626463
+Node: Branch Git Variables309255
+Node: Auxiliary Branch Commands316246
+Node: Merging317695
+Node: Resolving Conflicts323208
+Node: Rebasing329595
+Node: Editing Rebase Sequences336538
+Node: Information About In-Progress Rebase342236
+Ref: Information About In-Progress Rebase-Footnote-1353413
+Node: Cherry Picking354174
+Node: Reverting360253
+Node: Resetting362536
+Node: Stashing365249
+Node: Transferring372040
+Node: Remotes372265
+Node: Remote Commands372420
+Node: Remote Git Variables378020
+Node: Fetching379725
+Node: Pulling383537
+Node: Pushing385181
+Node: Plain Patches391445
+Node: Maildir Patches393794
+Node: Miscellaneous396056
+Node: Tagging396373
+Node: Notes399179
+Node: Submodules402397
+Node: Listing Submodules402662
+Node: submodule用トランジェントコマンド404362
+Node: Subtree408037
+Node: Worktree411308
+Node: Common Commands412989
+Node: Wip Modes416225
+Node: Wip Graph422930
+Node: Legacy Wip Modes425809
+Node: Commands for Buffers Visiting Files429396
+Node: Minor Mode for Buffers Visiting Blobs437405
+Node: Customizing438426
+Node: Per-Repository Configuration440376
+Node: 基本設定443070
+Node: Safety443454
+Node: Performance445866
+Ref: Log Performance450132
+Ref: Diff Performance451891
+Ref: Refs Buffer Performance453602
+Ref: Committing Performance454388
+Node: Microsoft Windows Performance455530
+Node: MacOS Performance457033
+Ref: MacOS Performance-Footnote-1457905
+Node: Default Bindings458044
+Node: 配管コマンド(Plumbing)460985
+Node: Calling Git462073
+Node: Getting a Value from Git464034
+Node: Calling Git for Effect468713
+Node: Section Plumbing476821
+Node: Creating Sections477072
+Node: Section Selection482393
+Node: Matching Sections484592
+Node: Refreshing Buffers492411
+Node: 慣習496375
+Node: Theming Faces496586
+Node: FAQ507259
+Node: FAQ - How to ...?507792
+Node: Magitの発音は？508251
+Node: How to show git's output?509284
+Node: How to install the gitman info manual?510312
+Node: How to show diffs for gpg-encrypted files?511587
+Node: How does branching and pushing work?512290
+Node: Magitをediff-version-control-packageとして使用できますか？512697
+Node: VCを無効にする必要がありますか？515282
+Node: FAQ - Issues and Errors516176
+Node: Magit is slow517526
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517766
+Node: コミットに問題があります518798
+Node: MS WindowsではMagitでpushできません519359
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520060
+Node: ファイルを展開してdiffを表示するとファイルが消えます521260
+Node: COMMIT_EDITMSGバッファのpointが間違っています522043
+Node: モード行の情報が常に最新ではない523416
+Node: 同じ名前を共有するブランチとタグは何かを壊します524623
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525776
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません526914
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります529971
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531194
+Node: 私はポップアップのデフォルトを保存できなくなりました532373
+Node: Debugging Tools533780
+Node: Keystroke Index536630
+Node: Command Index571239
+Node: Function Index609379
+Node: Variable Index626468
 
 End Tag Table
 

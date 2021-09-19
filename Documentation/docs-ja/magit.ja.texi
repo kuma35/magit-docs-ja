@@ -5245,7 +5245,7 @@ branch)からローカルブランチを作成する場合。機能(feature)ブ�
 
 UPSTREAMは、RULEで指定されたブランチのアップストリームとして使用されるブランチです。ローカルブランチでもリモートブランチでもかまいません。
 
-RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAMで指定されたのでべきであるブランチに一致します。または、UPSTREAMを使用してはならない単一のブランチのリストにすることもできます。他ブランチは全てそうします。マッチングは、分岐元のブランチ名のリモート部分を削除した後に行われます。
+RULEは正規表現のいずれかであり、そのアップストリームがUPSTREAMで指定されるべきであるブランチに一致します。または、UPSTREAMを使用してはならない単一のブランチのリストにすることもできます。他ブランチは全てそうします。マッチングは、分岐元のブランチ名のリモート部分を削除した後に行われます。
 
 あなたのすべてのリポジトリで永続的なブランチの限定セットを使用する場合、あなたは以下のようなものを使用できます:
 
@@ -5289,7 +5289,7 @@ UPSTREAMはローカルブランチにすることができます:
 @cindex magit-branch-or-checkout
 @deffn Command magit-branch-or-checkout
 
-このコマンドは、@code{magit-checkout}と@code{magit-branch-and-checkout}のハイブリッドであり、@code{magit-branch}の前者の代わりとして使用することを目的としています。
+このコマンドは、@code{magit-checkout}と@code{magit-branch-and-checkout}のハイブリッドであり、@code{magit-branch}で、@code{magit-checkout}の代わりとして使用することを目的としています。
 
 最初に、既存のブランチまたはリビジョンをユーザーに要求します。ユーザー入力が実際にブランチまたはリビジョンとして解決できる場合は、@code{magit-checkout}と同じように、それをチェックアウトします。
 
@@ -5327,7 +5327,7 @@ Commands})
 
 @itemize
 @item
-@code{true}の場合、pullはリベースによって行われます。
+@code{true}の場合、プルはリベースによって行われます。
 
 @item
 @code{false}の場合、プルはマージによって行われます。
@@ -5348,7 +5348,7 @@ Commands})
 
 @defvar branch.NAME.description
 
-この変数は、NAMEという名前のブランチを記述するために使用できます。例えばブランチを一連のパッチに変えるとき、その説明が使用されます。
+この変数は、NAMEという名前のブランチを説明するために使用できます。例えばブランチを一連のパッチに変えるとき、その説明が使用されます。
 @end defvar
 
 以下の変数は、上記のブランチ固有の変数が設定されていない場合に使用されるデフォルトを指定します。
@@ -5359,13 +5359,13 @@ Commands})
 
 @itemize
 @item
-@code{true}の場合、pullはリベースによって行われます。
+@code{true}の場合、プルはリベースによって行われます。
 
 @item
 @code{false}(デフォルト)の場合、プルはマージによって行われます。
 @end itemize
 
-アップストリームブランチを、ほとんどのブランチはそのようなブランチであるところの、機能(feature)ブランチまたはホットフィックスブランチやマージすることは決して良い考えではなく、これを@code{true}に設定し、@code{branch.master.rebase}を@code{false}に設定することを検討する必要があります。
+アップストリームブランチを、機能(feature)ブランチまたはホットフィックスブランチ(ほとんどのブランチはそのようなブランチです)にマージすることは決して良い考えではなく、この変数を@code{true}に設定し、@code{branch.master.rebase}を@code{false}に設定することを検討する必要があります。
 @end defvar
 
 @defvar remote.pushDefault
@@ -5373,7 +5373,7 @@ Commands})
 この変数は、ローカルブランチが通常プッシュされるリモートを指定します。これは、@code{branch.NAME.pushRemote}を使用してブランチごとに上書きできます。
 @end defvar
 
-以下の変数達はブランチの作成中に使用され、さまざまなブランチ固有の変数達この時点で自動的に設定されるかどうかを制御します。
+以下の変数はブランチの作成中に使用され、さまざまなブランチ固有の変数がこの時点で自動的に設定されるかどうかを制御します。
 
 @defvar branch.autoSetupMerge
 
@@ -5417,10 +5417,10 @@ Commands})
 git config --global remote.autoSetupMerge always
 @end example
 
-これらの変数の詳細については、こちらもご覧下さい→
+これらの変数の詳細については、以下もご覧下さい
 
 @ifinfo
-@ref{git-config,,,gitman,}
+(@ref{git-config,,,gitman,})
 @end ifinfo
 @ifhtml
 @c html
@@ -5432,7 +5432,7 @@ the git-config(1) manpage.
 @end iftex
  こちらもご覧下さい 
 @ifinfo
-@ref{git-branch,,,gitman,}
+(@ref{git-branch,,,gitman,})
 @end ifinfo
 @ifhtml
 @c html
@@ -5444,7 +5444,7 @@ the git-branch(1) manpage.
 @end iftex
 と 
 @ifinfo
-@ref{git-checkout,,,gitman,}
+(@ref{git-checkout,,,gitman,})
 @end ifinfo
 @ifhtml
 @c html
@@ -5455,7 +5455,7 @@ manpage.
 @iftex
 the git-checkout(1) manpage.
 @end iftex
- と @ref{Pushing}
+ と(@ref{Pushing})
 
 @defopt magit-prefer-remote-upstream
 
@@ -7891,7 +7891,7 @@ Magitは、Git変数とEmacsオプションの両方を使用して、リポジ�
 
 あるリポジトリのみのGit変数を設定するには、@code{$HOME/.gitconfig}や@code{/etc/gitconfig}の代わりに@code{/path/to/repo/.git/config}に設定するだけです。参照: 
 @ifinfo
-@ref{git-config,,,gitman,}
+(@ref{git-config,,,gitman,})
 @end ifinfo
 @ifhtml
 @c html
