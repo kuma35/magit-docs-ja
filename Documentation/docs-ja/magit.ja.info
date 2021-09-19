@@ -235,7 +235,7 @@ Committing
 
 
 * コミット開始::
-* コミットメッセージ編集::
+* Editing Commit Messages::
 
 
 
@@ -5183,8 +5183,8 @@ variants")と呼ばれます。
 
    • 戻し(reverse)。作業ツリーの変更を元に戻します。 コミットされた変更
      とステージされた変更(staged changes)の両方を元に戻すことができます
-     。ステージされていない変更(unstaged changes)を元に戻すことはできま
-     せん。代わりにそれらを破棄(discard)してください。
+     。ステージされていない変更(unstaged changes)は元に戻すことはできな
+     いので破棄(discard)します。
 
    • 適用(apply)。作業ツリーに変更を適用します。コミットされた変更とステ
      ージされた変更(staged changes)の両方を適用できます。ステージされて
@@ -5232,10 +5232,10 @@ Magitは、そのエディターがEmacsclientになるように手配します�
 * Menu:
 
 * コミット開始::
-* コミットメッセージ編集::
+* Editing Commit Messages::
 
 
-File: magit.ja.info,  Node: コミット開始,  Next: コミットメッセージ編集,  Up: Committing
+File: magit.ja.info,  Node: コミット開始,  Next: Editing Commit Messages,  Up: Committing
 
 6.5.1 コミット開始
 ------------------
@@ -5287,8 +5287,8 @@ File: magit.ja.info,  Node: コミット開始,  Next: コミットメッセー�
 
      プレフィックス引数を使用して、ターゲットコミットを確認する必要があ
      ります。 それ以外の場合、オプション‘magit-commit-squash-confirm’の
-     値によっては、その時点でのコミットが確認なしで使用される可能性があ
-     ります。
+     値によっては、そのポイントでのコミットが確認なしで使用される可能性
+     があります。
 
 ‘c F’     (‘magit-commit-instant-fixup’)
 
@@ -5300,8 +5300,8 @@ File: magit.ja.info,  Node: コミット開始,  Next: コミットメッセー�
 
      プレフィックス引数を使用して、ターゲットコミットを確認する必要があ
      ります。 それ以外の場合、オプション‘magit-commit-squash-confirm’の
-     値によっては、その時点でのコミットが確認なしで使用される可能性があ
-     ります。
+     値によっては、そのポイントでのコミットが確認なしで使用される可能性
+     があります。
 
 ‘c S’     (‘magit-commit-instant-squash’)
 
@@ -5313,8 +5313,8 @@ File: magit.ja.info,  Node: コミット開始,  Next: コミットメッセー�
 
      プレフィックス引数を使用して、ターゲットコミットを確認する必要があ
      ります。 それ以外の場合、オプション‘magit-commit-squash-confirm’の
-     値によっては、その時点でのコミットが確認なしで使用される可能性があ
-     ります。
+     値によっては、そのポイントでのコミットが確認なしで使用される可能性
+     があります。
 
  -- User Option: magit-commit-ask-to-stage
 
@@ -5357,10 +5357,10 @@ File: magit.ja.info,  Node: コミット開始,  Next: コミットメッセー�
      こちらもご覧下さい→‘git-commit-post-finish-hook’
 
 
-File: magit.ja.info,  Node: コミットメッセージ編集,  Prev: コミット開始,  Up: Committing
+File: magit.ja.info,  Node: Editing Commit Messages,  Prev: コミット開始,  Up: Committing
 
-6.5.2 コミットメッセージ編集
-----------------------------
+6.5.2 Editing Commit Messages
+-----------------------------
 
 前節で説明したようにコミットを開始すると、2つの新しいバッファが表示され
 ます。1つはコミットされようとしている変更を示し、もう1つはメッセージの書
@@ -5397,14 +5397,14 @@ File: magit.ja.info,  Node: コミットメッセージ編集,  Prev: コミッ�
 ‘M-p’     (‘git-commit-prev-message’)
 
      現在のメッセージをリングに保存した後、コミットメッセージリングを逆
-     方向に循環します。数字の接頭辞ARGを付けて、コメントをARG個戻ります
-     。
+     方向に循環します。数字のプレフィックス引数を付けると、コメントをそ
+     の数字の個数分遡ります。
 
 ‘M-n’     (‘git-commit-next-message’)
 
      現在のメッセージをリングに保存した後、コミットメッセージリングを順
-     方向に循環します。数字の接頭辞ARGを付けて、コメントをARG個戻ります
-     。
+     方向に循環します。数字のプレフィックス引数を付けると、コメントをそ
+     の数字の個数分遡ります。
 
 デフォルトでは、コミットしようとしている変更のdiffは、コミットを呼び出す
 ときに自動的に表示されます。これを防ぐには、‘server-switch-hook’から
@@ -5428,7 +5428,7 @@ File: magit.ja.info,  Node: コミットメッセージ編集,  Prev: コミッ�
 * Commit Message Conventions::
 
 
-File: magit.ja.info,  Node: Using the Revision Stack,  Next: Commit Pseudo Headers,  Up: コミットメッセージ編集
+File: magit.ja.info,  Node: Using the Revision Stack,  Next: Commit Pseudo Headers,  Up: Editing Commit Messages
 
 Using the Revision Stack
 ........................
@@ -5489,7 +5489,7 @@ Using the Revision Stack
      挿入されます)。
 
 
-File: magit.ja.info,  Node: Commit Pseudo Headers,  Next: Commit Mode and Hooks,  Prev: Using the Revision Stack,  Up: コミットメッセージ編集
+File: magit.ja.info,  Node: Commit Pseudo Headers,  Next: Commit Mode and Hooks,  Prev: Using the Revision Stack,  Up: Editing Commit Messages
 
 Commit Pseudo Headers
 .....................
@@ -5539,7 +5539,7 @@ Commit Pseudo Headers
      変更を提案した人に言及するヘッダーを挿入します。
 
 
-File: magit.ja.info,  Node: Commit Mode and Hooks,  Next: Commit Message Conventions,  Prev: Commit Pseudo Headers,  Up: コミットメッセージ編集
+File: magit.ja.info,  Node: Commit Mode and Hooks,  Next: Commit Message Conventions,  Prev: Commit Pseudo Headers,  Up: Editing Commit Messages
 
 Commit Mode and Hooks
 .....................
@@ -5611,17 +5611,17 @@ Commit Mode and Hooks
      C-c’を押した後にのみ実行されます。ユーザーがバッファにメッセージを
      入力せずにコミットが作成された場合、このフックは実行されません。
 
-     このフックは、新しいコミットが作成されるまで実行されません。Gitに
-     1秒以上かかる場合、このフックはまったく実行されません。
-     ‘magit-rebase-continue’などの特定のコマンドでは、競合状態が発生する
-     ため、このフックは実行されません。
+     このフックは、新しいコミットが作成されるまで実行されません。Gitがコ
+     ミットを作成するのに1秒以上かかる場合、このフックはまったく実行され
+     ません。‘magit-rebase-continue’などの特定のコマンドでは、競合状態が
+     発生するため、このフックは実行されません。
 
      このフックは、‘magit’が利用可能な場合にのみ実行されます。
 
      こちらもご覧ください→‘magit-post-commit-hook’
 
 
-File: magit.ja.info,  Node: Commit Message Conventions,  Prev: Commit Mode and Hooks,  Up: コミットメッセージ編集
+File: magit.ja.info,  Node: Commit Message Conventions,  Prev: Commit Mode and Hooks,  Up: Editing Commit Messages
 
 Commit Message Conventions
 ..........................
@@ -5635,8 +5635,8 @@ Git-Commitは、一般的に受け入れられているコミットメッセー�
 
  -- User Option: git-commit-summary-max-length
 
-     コミットメッセージの要約行の意図された最大長。この列を超える文字は
-     、この設定に違反していることを示すために色分けされています。
+     コミットメッセージの要約行(summry line)の意図する最大桁数。この桁数
+     を超える文字は、この設定に違反していることを示すために色分します。
 
  -- User Option: git-commit-fill-column
 
@@ -5668,9 +5668,10 @@ Git-Commitは、一般的に受け入れられているコミットメッセー�
 
  -- User Option: git-commit-style-convention-checks
 
-     このオプションは、同じ名前の関数が適用しようとする規則を制御します
-     。値は、特定の規則を識別する自明のシンボルのリストです。それは
-     ‘non-empty-second-line’おと‘overlong-summary-line’です。
+     このオプションは、関数‘git-commit-check-style-conventions’が強制し
+     ようとする規則を制御します。値は、特定の規則を識別する自明のシンボ
+     ルのリストです。それは‘non-empty-second-line’と
+     ‘overlong-summary-line’です。
 
 
 File: magit.ja.info,  Node: Branching,  Next: Merging,  Prev: Committing,  Up: Manipulating
@@ -5709,24 +5710,24 @@ File: magit.ja.info,  Node: The Two Remotes,  Next: Branch Commands,  Up: Branch
 ッシュされます。
 
 ただし、新しい機能が最初の試行で完全になることはめったにないため、通常、
-機能(feature)ブランチを何度か確認、改善、および再プッシュする必要があり
-ます。したがって、プッシュは簡単に実行できるはずです。そのため、多くの
-Gitユーザーは、ローカル機能ブランチがプッシュされているリモートブランチ
-をアップストリームとして使用するのが最善であると結論付けています。
+機能(feature)ブランチを何度も確認、改善、および再プッシュする必要があり
+ます。したがって、プッシュは簡単に実行できるべきです。そういう理由から、
+多くのGitユーザーは、ローカル機能ブランチがプッシュされているリモートブ
+ランチをアップストリームとして使用するのが最善であると結論付けています。
 
 しかし幸運なことに、Gitは、変数‘branch.<name>.pushRemote’と
 ‘remote.pushDefault’を使用して、アップストリームブランチとは別に構成でき
-るプッシュリモートのサポートをずっと前に取得しました。 したがって、2つの
-リモートのどちらを「リモート」として使用するかを選択する必要がなくなりま
-した。
+るプッシュリモートのサポートをずっと前に手に入れています。だから私達は、
+2つのリモートのどちらを「リモート」として使用するかを選択する必要がなく
+なりました。
 
 トランジェントコマンドのフェッチ、プル、およびプッシュのそれぞれは、現在
 のブランチと他のいくつかのブランチに作用する3つのサフィックスコマンドが
 あります。これらのうち、‘p’はプッシュリモートで動作するコマンドに結び付
 けられ、‘u’はアップストリームで動作するコマンドに結び付けられ、‘e’は任意
 の他のブランチで動作するコマンドに結び付けられます。ステータスバッファに
-は、プッシュリモートとアップストリームの両方のプッシュされていないコミッ
-トとプルされていないコミットが表示されます。
+は、プッシュリモートとアップストリームの両方の、プッシュされていないコミ
+ットとプルされていないコミットが表示されます。
 
 これら2つのリモートを構成するのはかなり簡単です。フェッチ、プル、プッシ
 ュに関連するすべての変数(およびその他のブランチ関連の変数)の値は、コマン
@@ -10338,12 +10339,12 @@ Appendix C Keystroke Index
 * C-c C-c:                               トランジェントコマンド.
                                                               (line  19)
 * C-c C-c <1>:                           Select from Log.     (line  18)
-* C-c C-c <2>:                           コミットメッセージ編集.
+* C-c C-c <2>:                           Editing Commit Messages.
                                                               (line  17)
 * C-c C-c <3>:                           Editing Rebase Sequences.
                                                               (line   6)
 * C-c C-d:                               Refreshing Diffs.    (line  81)
-* C-c C-d <1>:                           コミットメッセージ編集.
+* C-c C-d <1>:                           Editing Commit Messages.
                                                               (line  58)
 * C-c C-e:                               Commands Available in Diffs.
                                                               (line  27)
@@ -10352,7 +10353,7 @@ Appendix C Keystroke Index
 * C-c C-i:                               Commit Pseudo Headers.
                                                               (line  14)
 * C-c C-k:                               Select from Log.     (line  23)
-* C-c C-k <1>:                           コミットメッセージ編集.
+* C-c C-k <1>:                           Editing Commit Messages.
                                                               (line  23)
 * C-c C-k <2>:                           Editing Rebase Sequences.
                                                               (line  11)
@@ -10406,7 +10407,7 @@ Appendix C Keystroke Index
                                                               (line  38)
 * C-c M-i:                               Commit Pseudo Headers.
                                                               (line  46)
-* C-c M-s:                               コミットメッセージ編集.
+* C-c M-s:                               Editing Commit Messages.
                                                               (line  34)
 * C-w:                                   Common Commands.     (line  22)
 * C-x g:                                 Status Buffer.       (line  21)
@@ -10521,12 +10522,12 @@ Appendix C Keystroke Index
 * M-4:                                   Section Visibility.  (line  35)
 * M-<tab>:                               Section Visibility.  (line  17)
 * M-n:                                   Section Movement.    (line  24)
-* M-n <1>:                               コミットメッセージ編集.
+* M-n <1>:                               Editing Commit Messages.
                                                               (line  44)
 * M-n <2>:                               Editing Rebase Sequences.
                                                               (line  45)
 * M-p:                                   Section Movement.    (line  19)
-* M-p <1>:                               コミットメッセージ編集.
+* M-p <1>:                               Editing Commit Messages.
                                                               (line  38)
 * M-p <2>:                               Editing Rebase Sequences.
                                                               (line  41)
@@ -10737,15 +10738,15 @@ Appendix D Command Index
                                                               (line  37)
 * git-commit-insert-pseudo-header:       Commit Pseudo Headers.
                                                               (line  14)
-* git-commit-next-message:               コミットメッセージ編集.
+* git-commit-next-message:               Editing Commit Messages.
                                                               (line  44)
-* git-commit-prev-message:               コミットメッセージ編集.
+* git-commit-prev-message:               Editing Commit Messages.
                                                               (line  38)
 * git-commit-reported:                   Commit Pseudo Headers.
                                                               (line  41)
 * git-commit-review:                     Commit Pseudo Headers.
                                                               (line  23)
-* git-commit-save-message:               コミットメッセージ編集.
+* git-commit-save-message:               Editing Commit Messages.
                                                               (line  34)
 * git-commit-signoff:                    Commit Pseudo Headers.
                                                               (line  28)
@@ -10931,7 +10932,7 @@ Appendix D Command Index
 * magit-diff-visit-worktree-file-other-window: Visiting Files and Blobs from a Diff.
                                                               (line  73)
 * magit-diff-while-committing:           Refreshing Diffs.    (line  81)
-* magit-diff-while-committing <1>:       コミットメッセージ編集.
+* magit-diff-while-committing <1>:       Editing Commit Messages.
                                                               (line  58)
 * magit-diff-working-tree:               Diffing.             (line  46)
 * magit-discard:                         Applying.            (line  42)
@@ -11239,12 +11240,12 @@ Appendix D Command Index
                                                               (line  61)
 * scroll-up:                             Commands Available in Diffs.
                                                               (line  57)
-* with-editor-cancel:                    コミットメッセージ編集.
+* with-editor-cancel:                    Editing Commit Messages.
                                                               (line  23)
 * with-editor-cancel <1>:                Editing Rebase Sequences.
                                                               (line  11)
 * with-editor-debug:                     Debugging Tools.     (line  45)
-* with-editor-finish:                    コミットメッセージ編集.
+* with-editor-finish:                    Editing Commit Messages.
                                                               (line  17)
 * with-editor-finish <1>:                Editing Rebase Sequences.
                                                               (line   6)
@@ -11729,173 +11730,173 @@ Appendix F Variable Index
 
 Tag Table:
 Node: Top782
-Node: Introduction7577
-Node: Installation14146
-Node: Installing from Melpa14569
-Node: Installing from the Git Repository15928
-Node: Post-Installation Tasks19385
-Node: Getting Started21074
-Node: Interface Concepts28763
-Node: Modes and Buffers29189
-Node: バッファの切り替え31669
-Node: バッファの名付け37902
-Node: Quitting Windows42041
-Node: Automatic Refreshing of Magit Buffers44452
-Node: Automatic Saving of File-Visiting Buffers48357
-Node: Automatic Reverting of File-Visiting Buffers49857
-Node: Risk of Reverting Automatically56480
-Node: Sections59604
-Node: Section Movement60870
-Node: Section Visibility66983
-Node: Section Hooks75055
-Node: Section Types and Values78425
-Node: Section Options80202
-Node: トランジェントコマンド80788
-Node: Transient Arguments and Buffer Variables82680
-Node: Completion Confirmation(確認補完)とSelection(選択範囲)92287
-Node: アクションの確認92804
-Node: 補完と確認103449
-Node: 選択範囲107699
-Node: ハンク内部リージョン111610
-Node: 補完フレームワークのサポート113073
-Node: 追加の補完オプション119136
-Node: Running Git119908
-Node: Viewing Git Output120214
-Node: Git Process Status121693
-Node: Gitを手動で実行122900
-Node: Git実行ファイル126305
-Node: Global Git Arguments130421
-Node: Inspecting131505
-Node: Status Buffer132771
-Node: Status Sections139256
-Node: Status Header Sections146901
-Node: Status Module Sections150206
-Node: Status Options153614
-Node: Repository List155485
-Node: Logging159636
-Node: Refreshing Logs163271
-Node: Log Buffer165299
-Node: Log Margin171234
-Node: Select from Log175449
-Node: Reflog178339
-Node: Cherries180436
-Node: Diffing182890
-Node: Refreshing Diffs187248
-Node: Commands Available in Diffs192016
-Node: Diff Options195374
-Node: Revision Buffer202428
-Node: Ediffing206725
-Node: References Buffer212198
-Node: References Sections225740
-Node: Bisecting226958
-Node: Visiting Files and Blobs230274
-Node: General-Purpose Visit Commands230876
-Node: Visiting Files and Blobs from a Diff232151
-Node: Blaming236821
-Node: Manipulating245408
-Node: Creating Repository245753
-Node: Cloning Repository246492
-Node: Staging and Unstaging254049
-Node: Staging from File-Visiting Buffers260174
-Node: Applying261982
-Node: Committing264910
-Node: コミット開始265680
-Node: コミットメッセージ編集271311
-Node: Using the Revision Stack274946
-Node: Commit Pseudo Headers278849
-Node: Commit Mode and Hooks280636
-Node: Commit Message Conventions284582
-Node: Branching287291
-Node: The Two Remotes287520
-Node: Branch Commands291294
-Node: Branch Git Variables309188
-Node: Auxiliary Branch Commands316187
-Node: Merging317636
-Node: Resolving Conflicts323149
-Node: Rebasing329536
-Node: Editing Rebase Sequences336479
-Node: Information About In-Progress Rebase342177
-Ref: Information About In-Progress Rebase-Footnote-1353354
-Node: Cherry Picking354115
-Node: Reverting360194
-Node: Resetting362477
-Node: Stashing365190
-Node: Transferring371981
-Node: Remotes372206
-Node: Remote Commands372361
-Node: Remote Git Variables377961
-Node: Fetching379666
-Node: Pulling383478
-Node: Pushing385122
-Node: Plain Patches391386
-Node: Maildir Patches393735
-Node: Miscellaneous395997
-Node: Tagging396314
-Node: Notes399120
-Node: Submodules402338
-Node: Listing Submodules402603
-Node: submodule用トランジェントコマンド404303
-Node: Subtree407978
-Node: Worktree411249
-Node: Common Commands412930
-Node: Wip Modes416166
-Node: Wip Graph422871
-Node: Legacy Wip Modes425750
-Node: Commands for Buffers Visiting Files429337
-Node: Minor Mode for Buffers Visiting Blobs437346
-Node: Customizing438367
-Node: Per-Repository Configuration440317
-Node: 基本設定443009
-Node: Safety443393
-Node: Performance445805
-Ref: Log Performance450071
-Ref: Diff Performance451830
-Ref: Refs Buffer Performance453541
-Ref: Committing Performance454327
-Node: Microsoft Windows Performance455469
-Node: MacOS Performance456972
-Ref: MacOS Performance-Footnote-1457844
-Node: Default Bindings457983
-Node: 配管コマンド(Plumbing)460924
-Node: Calling Git462012
-Node: Getting a Value from Git463973
-Node: Calling Git for Effect468652
-Node: Section Plumbing476760
-Node: Creating Sections477011
-Node: Section Selection482332
-Node: Matching Sections484531
-Node: Refreshing Buffers492350
-Node: 慣習496314
-Node: Theming Faces496525
-Node: FAQ507198
-Node: FAQ - How to ...?507731
-Node: Magitの発音は？508190
-Node: How to show git's output?509223
-Node: How to install the gitman info manual?510251
-Node: How to show diffs for gpg-encrypted files?511526
-Node: How does branching and pushing work?512229
-Node: Magitをediff-version-control-packageとして使用できますか？512636
-Node: VCを無効にする必要がありますか？515221
-Node: FAQ - Issues and Errors516115
-Node: Magit is slow517465
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517705
-Node: コミットに問題があります518737
-Node: MS WindowsではMagitでpushできません519298
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません519999
-Node: ファイルを展開してdiffを表示するとファイルが消えます521199
-Node: COMMIT_EDITMSGバッファのpointが間違っています521982
-Node: モード行の情報が常に最新ではない523355
-Node: 同じ名前を共有するブランチとタグは何かを壊します524562
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525715
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません526853
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります529910
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531133
-Node: 私はポップアップのデフォルトを保存できなくなりました532312
-Node: Debugging Tools533719
-Node: Keystroke Index536569
-Node: Command Index571238
-Node: Function Index609438
-Node: Variable Index626527
+Node: Introduction7567
+Node: Installation14136
+Node: Installing from Melpa14559
+Node: Installing from the Git Repository15918
+Node: Post-Installation Tasks19375
+Node: Getting Started21064
+Node: Interface Concepts28753
+Node: Modes and Buffers29179
+Node: バッファの切り替え31659
+Node: バッファの名付け37892
+Node: Quitting Windows42031
+Node: Automatic Refreshing of Magit Buffers44442
+Node: Automatic Saving of File-Visiting Buffers48347
+Node: Automatic Reverting of File-Visiting Buffers49847
+Node: Risk of Reverting Automatically56470
+Node: Sections59594
+Node: Section Movement60860
+Node: Section Visibility66973
+Node: Section Hooks75045
+Node: Section Types and Values78415
+Node: Section Options80192
+Node: トランジェントコマンド80778
+Node: Transient Arguments and Buffer Variables82670
+Node: Completion Confirmation(確認補完)とSelection(選択範囲)92277
+Node: アクションの確認92794
+Node: 補完と確認103439
+Node: 選択範囲107689
+Node: ハンク内部リージョン111600
+Node: 補完フレームワークのサポート113063
+Node: 追加の補完オプション119126
+Node: Running Git119898
+Node: Viewing Git Output120204
+Node: Git Process Status121683
+Node: Gitを手動で実行122890
+Node: Git実行ファイル126295
+Node: Global Git Arguments130411
+Node: Inspecting131495
+Node: Status Buffer132761
+Node: Status Sections139246
+Node: Status Header Sections146891
+Node: Status Module Sections150196
+Node: Status Options153604
+Node: Repository List155475
+Node: Logging159626
+Node: Refreshing Logs163261
+Node: Log Buffer165289
+Node: Log Margin171224
+Node: Select from Log175439
+Node: Reflog178329
+Node: Cherries180426
+Node: Diffing182880
+Node: Refreshing Diffs187238
+Node: Commands Available in Diffs192006
+Node: Diff Options195364
+Node: Revision Buffer202418
+Node: Ediffing206715
+Node: References Buffer212188
+Node: References Sections225730
+Node: Bisecting226948
+Node: Visiting Files and Blobs230264
+Node: General-Purpose Visit Commands230866
+Node: Visiting Files and Blobs from a Diff232141
+Node: Blaming236811
+Node: Manipulating245398
+Node: Creating Repository245743
+Node: Cloning Repository246482
+Node: Staging and Unstaging254039
+Node: Staging from File-Visiting Buffers260164
+Node: Applying261972
+Node: Committing264867
+Node: コミット開始265627
+Node: Editing Commit Messages271266
+Node: Using the Revision Stack274954
+Node: Commit Pseudo Headers278847
+Node: Commit Mode and Hooks280624
+Node: Commit Message Conventions284593
+Node: Branching287324
+Node: The Two Remotes287553
+Node: Branch Commands291350
+Node: Branch Git Variables309244
+Node: Auxiliary Branch Commands316243
+Node: Merging317692
+Node: Resolving Conflicts323205
+Node: Rebasing329592
+Node: Editing Rebase Sequences336535
+Node: Information About In-Progress Rebase342233
+Ref: Information About In-Progress Rebase-Footnote-1353410
+Node: Cherry Picking354171
+Node: Reverting360250
+Node: Resetting362533
+Node: Stashing365246
+Node: Transferring372037
+Node: Remotes372262
+Node: Remote Commands372417
+Node: Remote Git Variables378017
+Node: Fetching379722
+Node: Pulling383534
+Node: Pushing385178
+Node: Plain Patches391442
+Node: Maildir Patches393791
+Node: Miscellaneous396053
+Node: Tagging396370
+Node: Notes399176
+Node: Submodules402394
+Node: Listing Submodules402659
+Node: submodule用トランジェントコマンド404359
+Node: Subtree408034
+Node: Worktree411305
+Node: Common Commands412986
+Node: Wip Modes416222
+Node: Wip Graph422927
+Node: Legacy Wip Modes425806
+Node: Commands for Buffers Visiting Files429393
+Node: Minor Mode for Buffers Visiting Blobs437402
+Node: Customizing438423
+Node: Per-Repository Configuration440373
+Node: 基本設定443065
+Node: Safety443449
+Node: Performance445861
+Ref: Log Performance450127
+Ref: Diff Performance451886
+Ref: Refs Buffer Performance453597
+Ref: Committing Performance454383
+Node: Microsoft Windows Performance455525
+Node: MacOS Performance457028
+Ref: MacOS Performance-Footnote-1457900
+Node: Default Bindings458039
+Node: 配管コマンド(Plumbing)460980
+Node: Calling Git462068
+Node: Getting a Value from Git464029
+Node: Calling Git for Effect468708
+Node: Section Plumbing476816
+Node: Creating Sections477067
+Node: Section Selection482388
+Node: Matching Sections484587
+Node: Refreshing Buffers492406
+Node: 慣習496370
+Node: Theming Faces496581
+Node: FAQ507254
+Node: FAQ - How to ...?507787
+Node: Magitの発音は？508246
+Node: How to show git's output?509279
+Node: How to install the gitman info manual?510307
+Node: How to show diffs for gpg-encrypted files?511582
+Node: How does branching and pushing work?512285
+Node: Magitをediff-version-control-packageとして使用できますか？512692
+Node: VCを無効にする必要がありますか？515277
+Node: FAQ - Issues and Errors516171
+Node: Magit is slow517521
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517761
+Node: コミットに問題があります518793
+Node: MS WindowsではMagitでpushできません519354
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520055
+Node: ファイルを展開してdiffを表示するとファイルが消えます521255
+Node: COMMIT_EDITMSGバッファのpointが間違っています522038
+Node: モード行の情報が常に最新ではない523411
+Node: 同じ名前を共有するブランチとタグは何かを壊します524618
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525771
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません526909
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります529966
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531189
+Node: 私はポップアップのデフォルトを保存できなくなりました532368
+Node: Debugging Tools533775
+Node: Keystroke Index536625
+Node: Command Index571234
+Node: Function Index609374
+Node: Variable Index626463
 
 End Tag Table
 

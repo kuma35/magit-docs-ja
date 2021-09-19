@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
 "POT-Creation-Date: 2021-08-20 03:37+0900\n"
-"PO-Revision-Date: 2021-09-19 06:57+0900\n"
+"PO-Revision-Date: 2021-09-19 16:57+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -651,7 +651,7 @@ msgstr "コミット開始::"
 #: sed-out/magit.texi:221 sed-out/magit.texi:5932 sed-out/magit.texi:6083 sed-out/magit.texi:6084
 #, no-wrap
 msgid "Editing Commit Messages"
-msgstr "コミットメッセージ編集"
+msgstr "Editing Commit Messages"
 
 #. type: section
 #: sed-out/magit.texi:224 sed-out/magit.texi:6441 sed-out/magit.texi:6442
@@ -11820,7 +11820,7 @@ msgid ""
 "Reverse.  Reverse a change in the working tree.  Both committed and staged "
 "changes can be reversed.  Unstaged changes cannot be reversed.  Discard them "
 "instead."
-msgstr "戻し(reverse)。作業ツリーの変更を元に戻します。 コミットされた変更とステージされた変更(staged changes)の両方を元に戻すことができます。ステージされていない変更(unstaged changes)を元に戻すことはできません。代わりにそれらを破棄(discard)してください。"
+msgstr "戻し(reverse)。作業ツリーの変更を元に戻します。 コミットされた変更とステージされた変更(staged changes)の両方を元に戻すことができます。ステージされていない変更(unstaged changes)は元に戻すことはできないので破棄(discard)します。"
 
 #. type: itemize
 #: sed-out/magit.texi:5884
@@ -12098,7 +12098,7 @@ msgid ""
 "With a prefix argument the target commit has to be confirmed.  Otherwise the "
 "commit at point may be used without confirmation depending on the value of "
 "option @code{magit-commit-squash-confirm}."
-msgstr "プレフィックス引数を使用して、ターゲットコミットを確認する必要があります。 それ以外の場合、オプション@code{magit-commit-squash-confirm}の値によっては、その時点でのコミットが確認なしで使用される可能性があります。"
+msgstr "プレフィックス引数を使用して、ターゲットコミットを確認する必要があります。 それ以外の場合、オプション@code{magit-commit-squash-confirm}の値によっては、そのポイントでのコミットが確認なしで使用される可能性があります。"
 
 #. type: kindex
 #: sed-out/magit.texi:6006
@@ -12387,7 +12387,7 @@ msgstr "@kbd{M-p} @tie{}@tie{}@tie{}@tie{}(@code{git-commit-prev-message})"
 msgid ""
 "Cycle backward through the commit message ring, after saving the current "
 "message to the ring.  With a numeric prefix ARG, go back ARG comments."
-msgstr "現在のメッセージをリングに保存した後、コミットメッセージリングを逆方向に循環します。数字の接頭辞ARGを付けて、コメントをARG個戻ります。"
+msgstr "現在のメッセージをリングに保存した後、コミットメッセージリングを逆方向に循環します。数字のプレフィックス引数を付けると、コメントをその数字の個数分遡ります。"
 
 #. type: cindex
 #: sed-out/magit.texi:6135
@@ -12406,7 +12406,7 @@ msgstr "@kbd{M-n} @tie{}@tie{}@tie{}@tie{}(@code{git-commit-next-message})"
 msgid ""
 "Cycle forward through the commit message ring, after saving the current "
 "message to the ring.  With a numeric prefix ARG, go back ARG comments."
-msgstr "現在のメッセージをリングに保存した後、コミットメッセージリングを順方向に循環します。数字の接頭辞ARGを付けて、コメントをARG個戻ります。"
+msgstr "現在のメッセージをリングに保存した後、コミットメッセージリングを順方向に循環します。数字のプレフィックス引数を付けると、コメントをその数字の個数分遡ります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:6146
@@ -12927,7 +12927,7 @@ msgid ""
 "takes Git longer than one second, then this hook isn't run at all.  For "
 "certain commands such as @code{magit-rebase-continue} this hook is never run "
 "because doing so would lead to a race condition."
-msgstr "このフックは、新しいコミットが作成されるまで実行されません。Gitに1秒以上かかる場合、このフックはまったく実行されません。@code{magit-rebase-continue}などの特定のコマンドでは、競合状態が発生するため、このフックは実行されません。"
+msgstr "このフックは、新しいコミットが作成されるまで実行されません。Gitがコミットを作成するのに1秒以上かかる場合、このフックはまったく実行されません。@code{magit-rebase-continue}などの特定のコマンドでは、競合状態が発生するため、このフックは実行されません。"
 
 #. type: defopt
 #: sed-out/magit.texi:6382
@@ -12962,7 +12962,7 @@ msgid ""
 "The intended maximal length of the summary line of commit messages.  "
 "Characters beyond this column are colorized to indicate that this preference "
 "has been violated."
-msgstr "コミットメッセージの要約行の意図された最大長。この列を超える文字は、この設定に違反していることを示すために色分けされています。"
+msgstr "コミットメッセージの要約行(summry line)の意図する最大桁数。この桁数を超える文字は、この設定に違反していることを示すために色分します。"
 
 #. type: defopt
 #: sed-out/magit.texi:6403
@@ -13029,6 +13029,11 @@ msgstr "この関数は、特定の基本的なスタイル規則の違反をチ
 msgid "git-commit-style-convention-checks"
 msgstr "git-commit-style-convention-checks"
 
+# 訳注：同名の関数じゃないっぽいので直接関数名を埋め込むよう変更した
+# C-h v git-commit-style-convention-checks
+# List of checks performed by ‘git-commit-check-style-conventions’.
+# Valid members are ‘non-empty-second-line’ and ‘overlong-summary-line’.
+# That function is a member of ‘git-commit-finish-query-functions’.
 #. type: defopt
 #: sed-out/magit.texi:6439
 msgid ""
@@ -13036,7 +13041,7 @@ msgid ""
 "enforce.  The value is a list of self-explanatory symbols identifying "
 "certain conventions; @code{non-empty-second-line} and "
 "@code{overlong-summary-line}."
-msgstr "このオプションは、同じ名前の関数が適用しようとする規則を制御します。値は、特定の規則を識別する自明のシンボルのリストです。それは@code{non-empty-second-line}おと@code {overlong-summary-line}です。"
+msgstr "このオプションは、関数@code{git-commit-check-style-conventions}が強制しようとする規則を制御します。値は、特定の規則を識別する自明のシンボルのリストです。それは@code{non-empty-second-line}と@code {overlong-summary-line}です。"
 
 #. type: subsection
 #: sed-out/magit.texi:6451 sed-out/magit.texi:6452
@@ -13082,7 +13087,7 @@ msgid ""
 "times.  Pushing should therefore be easy to do, and for that reason many Git "
 "users have concluded that it is best to use the remote branch to which the "
 "local feature branch is being pushed as its upstream."
-msgstr "ただし、新しい機能が最初の試行で完全になることはめったにないため、通常、機能(feature)ブランチを何度か確認、改善、および再プッシュする必要があります。したがって、プッシュは簡単に実行できるはずです。そのため、多くのGitユーザーは、ローカル機能ブランチがプッシュされているリモートブランチをアップストリームとして使用するのが最善であると結論付けています。"
+msgstr "ただし、新しい機能が最初の試行で完全になることはめったにないため、通常、機能(feature)ブランチを何度も確認、改善、および再プッシュする必要があります。したがって、プッシュは簡単に実行できるべきです。そういう理由から、多くのGitユーザーは、ローカル機能ブランチがプッシュされているリモートブランチをアップストリームとして使用するのが最善であると結論付けています。"
 
 #. type: Plain text
 #: sed-out/magit.texi:6481
@@ -13092,7 +13097,7 @@ msgid ""
 "@code{branch.<name>.pushRemote} and @code{remote.pushDefault}.  So we no "
 "longer have to choose which of the two remotes should be used as \"the "
 "remote\"."
-msgstr "しかし幸運なことに、Gitは、変数@code{branch.<name>.pushRemote}と@code{remote.pushDefault}を使用して、アップストリームブランチとは別に構成できるプッシュリモートのサポートをずっと前に取得しました。 したがって、2つのリモートのどちらを「リモート」として使用するかを選択する必要がなくなりました。"
+msgstr "しかし幸運なことに、Gitは、変数@code{branch.<name>.pushRemote}と@code{remote.pushDefault}を使用して、アップストリームブランチとは別に構成できるプッシュリモートのサポートをずっと前に手に入れています。だから私達は、2つのリモートのどちらを「リモート」として使用するかを選択する必要がなくなりました。"
 
 #. type: Plain text
 #: sed-out/magit.texi:6489
@@ -13103,7 +13108,7 @@ msgid ""
 "@code{u} is bound to a command which acts on the upstream, and @code{e} is "
 "bound to a command which acts on any other branch.  The status buffer shows "
 "unpushed and unpulled commits for both the push-remote and the upstream."
-msgstr "トランジェントコマンドのフェッチ、プル、およびプッシュのそれぞれは、現在のブランチと他のいくつかのブランチに作用する3つのサフィックスコマンドがあります。これらのうち、@code{p}はプッシュリモートで動作するコマンドに結び付けられ、@code{u}はアップストリームで動作するコマンドに結び付けられ、@code{e}は任意の他のブランチで動作するコマンドに結び付けられます。ステータスバッファには、プッシュリモートとアップストリームの両方のプッシュされていないコミットとプルされていないコミットが表示されます。"
+msgstr "トランジェントコマンドのフェッチ、プル、およびプッシュのそれぞれは、現在のブランチと他のいくつかのブランチに作用する3つのサフィックスコマンドがあります。これらのうち、@code{p}はプッシュリモートで動作するコマンドに結び付けられ、@code{u}はアップストリームで動作するコマンドに結び付けられ、@code{e}は任意の他のブランチで動作するコマンドに結び付けられます。ステータスバッファには、プッシュリモートとアップストリームの両方の、プッシュされていないコミットとプルされていないコミットが表示されます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:6497
