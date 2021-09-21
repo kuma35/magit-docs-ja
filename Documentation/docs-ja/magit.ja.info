@@ -3697,7 +3697,7 @@ Transient Arguments and Buffer Variables::)。
 
 ‘d t’     (‘magit-stash-show’)
 
-     バッファ内のstashのすべてのdiffを表示します。
+     バッファ内のスタッシュのすべてのdiffを表示します。
 
 現在のバッファで訪問しているファイルまたはblobのdiffを表示する2つの追加
 コマンドが存在します。こちらを参照して下さい(*note Commands for Buffers
@@ -6369,10 +6369,9 @@ changes"または"Staged changes"セクションに一覧表示されます。 �
 "unresolved"の同義語です。
 
 ポイントがそのようなファイルセクションにあるときに‘RET’を押すと、そのフ
-ァイルを訪れている(visit)バッファが表示され、そのバッファで
-‘smerge-mode’がオンになり、競合のある最初の領域内にポイントが配置されま
-す。それから、あなたは、通常の編集コマンドやSmergeコマンドを使用してその
-競合を解決する必要があります。
+ァイルを訪れているバッファが表示され、そのバッファで‘smerge-mode’がオン
+になり、競合のある最初の領域内にポイントが配置されます。あなたは、通常の
+編集コマンドやSmergeコマンドを使用してその競合を解決する必要があります。
 
 残念ながら、Smergeにはマニュアルがありませんが、コマンドのリストを取得し
 て‘C-c ^ C-h’をバインドし、ポイントがコマンド名にあるときに‘RET’を押して
@@ -6422,18 +6421,18 @@ File: magit.ja.info,  Node: Rebasing,  Next: Cherry Picking,  Prev: Resolving Co
 スコマンドがあります。
 
 これらのコマンドの1つを使用して、リベースシーケンスを_開始_します。 Gitは
-、途中で中断するように指示したか、競合が原因でコミットの適用が失敗したた
-めに中断する可能性があります。その場合、ステータスバッファには、ログセク
-ションと同様のセクションで進行中のリベースシーケンスに関する情報が表示さ
-れます。こちらを参照して下さい(*note Information About In-Progress
-Rebase::)。
+、あなたが途中で中断するように指示したか、競合が原因でコミットの適用が失
+敗したために中断する可能性があります。その場合、ステータスバッファには、
+ログセクションに似たセクションで、進行中のリベースシーケンスに関する情報
+が表示されます。こちらを参照して下さい(*note Information About
+In-Progress Rebase::)。
 
-アップストリームとプッシュリモートの詳細についてはこちらを参照して下さい
-(*note The Two Remotes::)。
+アップストリーム(upstream)とプッシュリモート(push-remote)の詳細について
+はこちらを参照して下さい(*note The Two Remotes::)。
 
 ‘r p’     (‘magit-rebase-onto-pushremote’)
 
-     このコマンドは、現在のブランチをpush-remoteにリベースします。
+     このコマンドは、現在のブランチをプッシュリモートにリベースします。
 
      プレフィックス引数を使用する場合、またはプッシュリモートが構成され
      ていないか使用できない場合は、最初にユーザーにプッシュリモートを構
@@ -6452,57 +6451,56 @@ Rebase::)。
 
      このコマンドは、現在のブランチをミニバッファでユーザーから読み取っ
      たブランチにリベースします。ヘッドからは到達可能であるが、選択した
-     ブランチTARGETからは到達できないすべてのコミットがリベースされてい
-     ます。
+     ブランチTARGETからは到達できないすべてのコミットがリベースされます
+     。
 
 ‘r s’     (‘magit-rebase-subset’)
 
      このコマンドは、非対話型のリベースシーケンスを開始して、コミットを
-     STARTから‘HEAD’からNEWBASEに転送します。STARTは、最近のコミットのリ
-     ストから選択する必要があります。
+     STARTからNEWBASEの‘HEAD’に転送します。STARTは、最近のコミットのリス
+     トから選択する必要があります。
 
 デフォルトでは、Magitは‘--autostash’引数を使用します。これにより、コミッ
-トされていない変更がリベースが開始される前にスタッシュに格納されます。こ
+トされていない変更はリベースが開始される前にスタッシュに格納されます。こ
 れらの変更は、リベースが完了した後に復元され、可能であればスタッシュが削
 除されます。スタッシュがきれいに適用されない場合、スタッシュは削除されま
-せん。 競合を解決するときに問題が発生した場合は、最初からやり直すことが
-できます。
+せん。これにより、競合を解決するときに何か問題が発生した場合は、あなたは
+最初からやり直すことができます。
 
-アクションの1つは対話型リベース専用ですが、トランジェントコマンドにはイ
-ンフィックス引数‘--interactive’も含まれています。 これを使用して、他の非
-対話型リベースバリエーションの1つを対話型リベースに変えることができます
-。
+アクションの1つとして、対話型リベース専用のインフィックス引数
+‘--interactive’があります。これを使用して、非対話型リベースバリエーショ
+ンを対話型リベースに変えることができます。
 
 たとえば、機能(feature)ブランチをクリーンアップすると同時に、それを
-‘master’にリベースする場合は、‘r-iu’を使用できます。ただし、代わりに2つ
-のステップで行うことをお勧めします。最初に‘ri’を使用して機能ブランチをク
-リーンアップし、次に‘ru’を使用して‘master’にリベースします。 そうすれば
-、物事が思ったよりも複雑であることが判明した場合、および/または間違いを
-犯して最初からやり直さなければならない場合は、作業の半分をやり直すだけで
-済みます。
+‘master’にリベースする場合は、‘r-iu’を使用できますが、代わりに2つのステ
+ップで行うことをお勧めします。最初に‘ri’を使用して機能ブランチをクリーン
+アップし、次に‘ru’を使用して‘master’にリベースします。そうすれば、物事が
+思ったよりも複雑であることが判明した場合、および/または間違いを犯して最
+初からやり直さなければならない場合は、作業の半分をやり直すだけで済みます
+。
 
-‘--interactive’を明示的に有効にしても、トランジェントコマンド内で有効で
-ない場合でも、それに従うコマンドは常にその引数を使用するため、影響はあり
-ません。
+‘--interactive’を明示的に有効にしたあと、それに続く以下のトランジェント
+コマンド内では‘--interactive’が有効でない場合でも、常にその引数を使用す
+るため、影響はありません。
 
 ‘r i’     (‘magit-rebase-interactive’)
 
-     このコマンドは、インタラクティブなリベースシーケンスを開始します。
+     このコマンドは、対話的なリベースシーケンスを開始します。
 
 ‘r f’     (‘magit-rebase-autosquash’)
 
-     このコマンドは、スカッシュコミットとフィックスアップコミットを意図
-     したターゲットと組み合わせます。
+     このコマンドは、スカッシュコミットとフィックスアップコミットを、意
+     図したターゲットと組み合わせます。
 
 ‘r m’     (‘magit-rebase-edit-commit’)
 
-     このコマンドは、ユーザーが1つの古いコミットを編集できるようにするイ
-     ンタラクティブなリベースシーケンスを開始します。
+     このコマンドは、ユーザーが1つの古いコミットを編集できるようにする対
+     話的なリベースシーケンスを開始します。
 
 ‘r w’     (‘magit-rebase-reword-commit’)
 
-     このコマンドは、ユーザーが1つの古いコミットをrewordするインタラクテ
-     ィブなリベースシーケンスを開始します。
+     このコマンドは、ユーザーが1つの古いコミットをrewordする対話的なリベ
+     ースシーケンスを開始します。
 
 ‘r k’     (‘magit-rebase-remove-commit’)
 
@@ -6548,7 +6546,8 @@ File: magit.ja.info,  Node: Editing Rebase Sequences,  Next: Information About I
 ‘C-c C-c’     (‘with-editor-finish’)
 
      終了コード0で戻ることにより、現在の編集セッションを終了します。
-     Gitは、ファイル内で検出したリベース命令を使用します。
+     Gitは、ファイル内で検出したリベース命令(rebase instructions)を使用
+     します。
 
 ‘C-c C-k’     (‘with-editor-cancel’)
 
@@ -6598,17 +6597,17 @@ File: magit.ja.info,  Node: Editing Rebase Sequences,  Next: Information About I
 
 ‘s’     (‘git-rebase-squash’)
 
-     現在の行のコミットを前のコミットにマージし、メッセージを編集します
+     現在行のコミットを前行のコミットにマージし、メッセージを編集します
      。
 
 ‘f’     (‘git-rebase-fixup’)
 
-     現在の行のコミットを前のコミットにマージし、現在のコミットのメッセ
-     ージを破棄します。
+     現在行のコミットを前行コミットにマージし、現在のコミットのメッセー
+     ジを破棄します。
 
 ‘k’     (‘git-rebase-kill-line’)
 
-     現在の実行(action)行を強制終了します。
+     現在の実行行(action line)を強制終了します。
 
 ‘c’     (‘git-rebase-pick’)
 
@@ -6616,7 +6615,7 @@ File: magit.ja.info,  Node: Editing Rebase Sequences,  Next: Information About I
 
 ‘x’     (‘git-rebase-exec’)
 
-     続行するコミットの後に実行するシェルコマンドを挿入します。
+     進行中のコミットの後に実行されるシェルコマンドを挿入します。
 
      現在の行にそのようなコマンドがすでにある場合は、代わりにそれを編集
      します。プレフィックス引数を使用すると、現在の行にすでにコマンドが
@@ -6630,12 +6629,12 @@ File: magit.ja.info,  Node: Editing Rebase Sequences,  Next: Information About I
 
 ‘y’     (‘git-rebase-insert’)
 
-     任意のコミットを読み取り、現在の行の下に挿入します。
+     任意のコミットを読み取り、現在行の下に挿入します。
 
 ‘C-x u’     (‘git-rebase-undo’)
 
-     以前の変更を元に戻します。‘undo’と同様ですが、読み取り専用バッファ
-     で機能します。
+     直近の幾つかの変更を元に戻します。‘undo’と同様ですが、読み取り専用
+     バッファで機能します。
 
  -- User Option: git-rebase-auto-advance
 
@@ -6899,9 +6898,9 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 
 ‘A h’     (‘magit-cherry-harvest’)
 
-     このコマンドは、別のブランチに配置する必要がある選択されたCOMMITを
-     代わりに現在のブランチに移動し、前のブランチから削除します。このコ
-     マンドが成功すると、以前と同じ(same)ブランチがcurrentになります。
+     このコマンドは、別のブランチの選択したコミットを現在のブランチに移
+     動し、その、別のブランチから削除します。このコマンドが成功すると、
+     以前と同じ(same)ブランチがcurrentになります。
 
      現在のブランチにコミットを適用したり、他のブランチからコミットを削
      除したりすると、競合が発生する可能性があります。その場合、このコマ
@@ -6911,8 +6910,8 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 ‘A d’     (‘magit-cherry-donate’)
 
      このコマンドは、選択したCOMMITSを現在のブランチから別の既存のブラン
-     チに移動し、前のブランチから削除します。このコマンドが成功すると、
-     以前と同じ(same)ブランチがcurrentになります。
+     チに移動し、その、現在のブランチから削除します。このコマンドが成功
+     すると、以前と同じ(same)ブランチがcurrentになります。
 
      他のブランチにコミットを適用したり、現在のブランチからコミットを削
      除したりすると、競合が発生する可能性があります。その場合、このコマ
@@ -6922,8 +6921,8 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 ‘A n’     (‘magit-cherry-spinout’)
 
      このコマンドは、選択したCOMMITSを現在のブランチから新しいブランチ
-     BRANCHに移動し、前のブランチから削除します。 このコマンドが成功する
-     と、以前と同じ(same)ブランチがcurrentになります。
+     BRANCHに移動し、その、現在のブランチから削除します。 このコマンドが
+     成功すると、以前と同じ(same)ブランチがcurrentになります。
 
      他のブランチにコミットを適用したり、現在のブランチからコミットを削
      除したりすると、競合が発生する可能性があります。その場合、このコマ
@@ -6933,8 +6932,8 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 ‘A s’     (‘magit-cherry-spinoff’)
 
      このコマンドは、選択したCOMMITSを現在のブランチから新しいブランチ
-     BRANCHに移動し、前のブランチから削除します。このコマンドが成功する
-     と、新しいブランチがチェックアウトされます。
+     BRANCHに移動し、その、現在のブランチから削除します。このコマンドが
+     成功すると、新しいブランチがチェックアウトされます。
 
      他のブランチにコミットを適用したり、現在のブランチからコミットを削
      除したりすると、競合が発生する可能性があります。その場合、このコマ
@@ -6981,10 +6980,10 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 
 ‘V V’     (‘magit-revert-and-commit’)
 
-     新しいコミットを作成して、コミットをrevertします。プロンプトを出し
-     てコミットの入力を求めます。デフォルトでは、そのポイントでのコミッ
-     トになります。 リージョンが複数のコミットを選択した場合は、プロンプ
-     トを表示せずにすべてをrevertします。
+     新しいコミットの作成によってコミットをrevertします。プロンプトを出
+     してコミットの入力を求めます。デフォルトでは、そのポイントでのコミ
+     ットになります。 リージョンが複数のコミットを選択した場合は、プロン
+     プトを表示せずにすべてをrevertします。
 
 ‘V v’     (‘magit-revert-no-commit’)
 
@@ -7040,13 +7039,14 @@ File: magit.ja.info,  Node: Resetting,  Next: Stashing,  Prev: Cherry Picking,  
 ‘X h’     (‘magit-reset-hard’)
 
      ‘HEAD’、インデックス、および作業ツリーを、ユーザーから読み取られた
-     コミットにリセットし、デフォルトでその時点のコミットに設定します。
+     コミットにリセットし、デフォルトでそのポイントのコミットに設定しま
+     す。
 
 ‘X k’     (‘magit-reset-keep’)
 
      ‘HEAD’、インデックス、および作業ツリーを、ユーザーから読み取られた
-     コミットにリセットし、デフォルトでその時点のコミットに設定します。
-     コミットされていない変更はそのまま保持されます。
+     コミットにリセットし、デフォルトでそのポイントのコミットに設定しま
+     す。コミットされていない変更はそのまま保持されます。
 
 ‘X i’     (‘magit-reset-index’)
 
@@ -7088,36 +7088,36 @@ File: magit.ja.info,  Node: Stashing,  Prev: Resetting,  Up: Manipulating
      インデックスと作業ツリーのスタッシュを作成します。追跡されていない
      ファイル(untracked files)が含まれるかどうかはインフィックス引数の指
      定に依ります。1つのプレフィックス引数は‘--include-untracked’と同等
-     ですが、2つのプレフィックス引数は‘--all’と同等です。
+     で、2つのプレフィックス引数は‘--all’と同等です。
 
 ‘z i’     (‘magit-stash-index’)
 
-     インデックスのみのstashを作成します。ステージされていない変更
-     (unstaged changes)と追跡されていない変更(untracked changes)は
-     stashされません。
+     インデックスのみのスタッシュを作成します。ステージされていない変更
+     (unstaged changes)と追跡されていない変更(untracked changes)はスタッ
+     シュされません。
 
 ‘z w’     (‘magit-stash-worktree’)
 
      作業ツリーにステージされていない変更(unstaged changes)のスタッシュ
      を作成します。追跡されていないファイル(untracked files)は、インフィ
      ックス引数に依ります。1つのプレフィックス引数は
-     ‘--include-untracked’と同等ですが、2つのプレフィックス引数は
-     ‘--all’と同等です。
+     ‘--include-untracked’と同等で、2つのプレフィックス引数は‘--all’と同
+     等です。
 
 ‘z x’     (‘magit-stash-keep-index’)
 
      インデックスをそのままにして、インデックスと作業ツリーのスタッシュ
      を作成します。追跡されていないファイル(untracked files)は、インフィ
      ックス引数に依ります。1つのプレフィックス引数は
-     ‘--include-untracked’と同等ですが、2つのプレフィックス引数は
-     ‘--all’と同等です。
+     ‘--include-untracked’と同等で、2つのプレフィックス引数は‘--all’と同
+     等です。
 
 ‘z Z’     (‘magit-snapshot-both’)
 
      インデックスと作業ツリーのスナップショットを作成します。追跡されて
      いないファイル(untracked files)は、インフィックス引数に依ります。
-     1つのプレフィックス引数は‘--include-untracked’と同等ですが、2つのプ
-     レフィックス引数は‘--all’と同等です。
+     1つのプレフィックス引数は‘--include-untracked’と同等で、2つのプレフ
+     ィックス引数は‘--all’と同等です。
 
 ‘z I’     (‘magit-snapshot-index’)
 
@@ -7130,8 +7130,8 @@ File: magit.ja.info,  Node: Stashing,  Prev: Resetting,  Up: Manipulating
      作業ツリーでステージされていない変更(unstaged changes)のスナップシ
      ョットを作成します。追跡されていないファイル(untracked files)は、イ
      ンフィックス引数に依ります。1つのプレフィックス引数は
-     ‘--include-untracked’と同等ですが、2つのプレフィックス引数は
-     ‘--all’と同等です。
+     ‘--include-untracked’と同等で、2つのプレフィックス引数は‘--all’と同
+     等です。
 
 ‘z a’     (‘magit-stash-apply’)
 
@@ -7148,17 +7148,17 @@ File: magit.ja.info,  Node: Stashing,  Prev: Resetting,  Up: Manipulating
 
 ‘z k’     (‘magit-stash-drop’)
 
-     stashリストからstashを削除します。リージョンがアクティブになったら
-     、含まれているすべてのstashを削除することを提案します。
+     スタッシュリストからスタッシュを削除します。リージョンがアクティブ
+     になったら、含まれているすべてのスタッシュの削除を提案します。
 
 ‘z v’     (‘magit-stash-show’)
 
-     バッファ内のstashのすべてのdiffを表示します。
+     バッファ内のスタッシュのすべてのdiffを表示します。
 
 ‘z b’     (‘magit-stash-branch’)
 
-     STASHから新しいBRANCHを作成してチェックアウトします。ブランチは、
-     stashが作成されたときに現在のコミットで開始されます。
+     STASHから新しいBRANCHを作成してチェックアウトします。ブランチは、ス
+     タッシュが作成されたときの現在のコミットで開始されます。
 
 ‘z B’     (‘magit-stash-branch-here’)
 
@@ -7172,17 +7172,17 @@ File: magit.ja.info,  Node: Stashing,  Prev: Resetting,  Up: Manipulating
 
 ‘k’     (‘magit-stash-clear’)
 
-     REFを削除して、REFのreflogに保存されているすべてのstashを削除します
-     。
+     REFを削除して、REFのreflogに保存されているすべてのスタッシュを削除
+     します。
 
 ‘z l’     (‘magit-stash-list’)
 
-     バッファ内のすべてのstashを一覧表示します。
+     バッファ内のすべてのスタッシュを一覧表示します。
 
  -- User Option: magit-stashes-margin
 
-     このオプションは、欄外が最初にstashバッファに表示されるかどうか、お
-     よびそのフォーマット方法を指定します。
+     このオプションは、欄外が最初にスタッシュバッファに表示されるかどう
+     か、およびそのフォーマット方法を指定します。
 
      値の形式は‘(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)’です。
 
@@ -7239,8 +7239,8 @@ File: magit.ja.info,  Node: Remote Commands,  Next: Remote Git Variables,  Up: R
 
 トランジェントプレフィックスコマンド‘magit-remote’は、リモートを追加し、
 既存のリモートに変更を加えるために使用されます。このコマンドは、リモート
-自体のみを処理し、ブランチやコミットの転送は処理しません。これらの機能は
-、個別のトランジェントコマンドから利用できます。
+自体のみを処理し、ブランチやコミットの転送は処理しません。それらの機能は
+個別のトランジェントコマンドから利用できます。
 
 こちらもご覧下さい *note (gitman)git-remote::
 
@@ -7256,8 +7256,8 @@ File: magit.ja.info,  Node: Remote Commands,  Next: Remote Git Variables,  Up: R
 
  -- User Option: magit-remote-direct-configure
 
-     このオプションは、リモート関連のGit変数に一時的な‘magit-remote’から
-     直接アクセスできるかどうかを制御します。
+     このオプションは、リモート関連のGit変数にトランジェントコマンド
+     ‘magit-remote’から直接アクセスできるかどうかを制御します。
 
      ‘t’(デフォルト)でローカルブランチがチェックアウトされている場合、
      ‘magit-remote’はそのブランチのアップストリームリモートの変数、また
@@ -7296,8 +7296,8 @@ File: magit.ja.info,  Node: Remote Commands,  Next: Remote Git Variables,  Up: R
 
 ‘M u’     (‘magit-remote-set-url’)
 
-     このコマンドは、リモートのURLを変更します。リモートURLと新しいURLの
-     両方がミニバッファで読み取られます。
+     このコマンドは、リモートのURLを変更します。リモートと新しいURLの両
+     方がミニバッファで読み取られます。
 
 ‘M k’     (‘magit-remote-remove’)
 
@@ -7314,9 +7314,9 @@ File: magit.ja.info,  Node: Remote Commands,  Next: Remote Git Variables,  Up: R
      (stale)refspecを削除します。
 
      refspecが原因でフェッチされるブランチがリモートに1つも存在しない場
-     合、refspecは陳腐化しています。陳腐化したrefspecは、その存在によっ
-     てGitが残りの陳腐化してないrefspecに従ってフェッチを拒否するため、
-     問題があります。
+     合、refspecは陳腐化しています。陳腐化したrefspecの存在によってGitが
+     残りの陳腐化してないrefspecに従ってフェッチを拒否するため、問題があ
+     ります。
 
      陳腐化したrefspecのみが残っている場合、このコマンドは、リモートを削
      除するか、陳腐化したrefspecをデフォルトのrefspec
@@ -7383,8 +7383,9 @@ File: magit.ja.info,  Node: Fetching,  Next: Pulling,  Prev: Remotes,  Up: Trans
 7.2 Fetching
 ============
 
-こちらもご覧下さい *note (gitman)git-fetch:: アップストリームとプッシュ
-リモートの詳細についてはこちらを参照して下さい(*note The Two Remotes::)。
+こちらもご覧下さい *note (gitman)git-fetch:: アップストリーム
+(upstream)とプッシュリモート(push-remote)の詳細についてはこちらを参照し
+て下さい(*note The Two Remotes::)。
 
 ‘f’     (‘magit-fetch’)
 
@@ -7462,8 +7463,9 @@ File: magit.ja.info,  Node: Pulling,  Next: Pushing,  Prev: Fetching,  Up: Trans
 7.3 Pulling
 ===========
 
-こちらもご覧下さい *note (gitman)git-pull:: アップストリームとプッシュリ
-モートの詳細についてはこちらを参照して下さい(*note The Two Remotes::)。
+こちらもご覧下さい *note (gitman)git-pull:: アップストリーム(upstream)と
+プッシュリモート(push-remote)の詳細についてはこちらを参照して下さい
+(*note The Two Remotes::)。
 
 ‘F’     (‘magit-pull’)
 
@@ -7498,8 +7500,9 @@ File: magit.ja.info,  Node: Pushing,  Next: Plain Patches,  Prev: Pulling,  Up: 
 7.4 Pushing
 ===========
 
-こちらもご覧下さい *note (gitman)git-push:: アップストリームとプッシュリ
-モートの詳細についてはこちらを参照して下さい(*note The Two Remotes::)。
+こちらもご覧下さい *note (gitman)git-push:: アップストリーム(upstream)と
+プッシュリモート(push-remote)の詳細についてはこちらを参照して下さい
+(*note The Two Remotes::)。
 
 ‘P’     (‘magit-push’)
 
@@ -10292,7 +10295,7 @@ Appendix C Keystroke Index
 * b:                                     Blaming.             (line 105)
 * b <1>:                                 Branch Commands.     (line  13)
 * b <2>:                                 Editing Rebase Sequences.
-                                                              (line  84)
+                                                              (line  85)
 * B B:                                   Bisecting.           (line  18)
 * B b:                                   Bisecting.           (line  38)
 * b b:                                   Branch Commands.     (line  54)
@@ -10314,7 +10317,7 @@ Appendix C Keystroke Index
 * C:                                     Cloning Repository.  (line  22)
 * c <1>:                                 コミット開始.        (line   8)
 * c <2>:                                 Editing Rebase Sequences.
-                                                              (line  71)
+                                                              (line  72)
 * c a:                                   コミット開始.        (line  21)
 * c A:                                   コミット開始.        (line  73)
 * C b:                                   Cloning Repository.  (line  45)
@@ -10357,7 +10360,7 @@ Appendix C Keystroke Index
 * C-c C-k <1>:                           Editing Commit Messages.
                                                               (line  23)
 * C-c C-k <2>:                           Editing Rebase Sequences.
-                                                              (line  11)
+                                                              (line  12)
 * C-c C-n:                               Log Buffer.          (line  31)
 * C-c C-o:                               Commit Pseudo Headers.
                                                               (line  37)
@@ -10413,7 +10416,7 @@ Appendix C Keystroke Index
 * C-w:                                   Common Commands.     (line  22)
 * C-x g:                                 Status Buffer.       (line  21)
 * C-x u:                                 Editing Rebase Sequences.
-                                                              (line  93)
+                                                              (line  94)
 * d:                                     Diffing.             (line  20)
 * D:                                     Refreshing Diffs.    (line  11)
 * d c:                                   Diffing.             (line  70)
@@ -10436,11 +10439,11 @@ Appendix C Keystroke Index
                                                               (line  61)
 * DEL <2>:                               Blaming.             (line  93)
 * DEL <3>:                               Editing Rebase Sequences.
-                                                              (line  27)
+                                                              (line  28)
 * e:                                     Ediffing.            (line  10)
 * E:                                     Ediffing.            (line  24)
 * e <1>:                                 Editing Rebase Sequences.
-                                                              (line  53)
+                                                              (line  54)
 * E c:                                   Ediffing.            (line  74)
 * E i:                                   Ediffing.            (line  64)
 * E m:                                   Ediffing.            (line  40)
@@ -10450,21 +10453,21 @@ Appendix C Keystroke Index
 * E w:                                   Ediffing.            (line  69)
 * E z:                                   Ediffing.            (line  79)
 * f:                                     Editing Rebase Sequences.
-                                                              (line  62)
-* f <1>:                                 Fetching.            (line   9)
-* F:                                     Pulling.             (line   9)
-* f a:                                   Fetching.            (line  55)
+                                                              (line  63)
+* f <1>:                                 Fetching.            (line  10)
+* F:                                     Pulling.             (line  10)
+* f a:                                   Fetching.            (line  56)
 * f C:                                   Branch Commands.     (line  33)
 * F C:                                   Branch Commands.     (line  34)
-* f e:                                   Fetching.            (line  40)
-* F e:                                   Pulling.             (line  32)
-* f m:                                   Fetching.            (line  59)
-* f o:                                   Fetching.            (line  45)
-* f p:                                   Fetching.            (line  17)
-* F p:                                   Pulling.             (line  16)
-* f r:                                   Fetching.            (line  50)
-* f u:                                   Fetching.            (line  25)
-* F u:                                   Pulling.             (line  24)
+* f e:                                   Fetching.            (line  41)
+* F e:                                   Pulling.             (line  33)
+* f m:                                   Fetching.            (line  60)
+* f o:                                   Fetching.            (line  46)
+* f p:                                   Fetching.            (line  18)
+* F p:                                   Pulling.             (line  17)
+* f r:                                   Fetching.            (line  51)
+* f u:                                   Fetching.            (line  26)
+* F u:                                   Pulling.             (line  25)
 * g:                                     Automatic Refreshing of Magit Buffers.
                                                               (line  24)
 * G:                                     Automatic Refreshing of Magit Buffers.
@@ -10475,14 +10478,14 @@ Appendix C Keystroke Index
 * k:                                     Viewing Git Output.  (line  23)
 * k <1>:                                 Applying.            (line  42)
 * k <2>:                                 Editing Rebase Sequences.
-                                                              (line  67)
+                                                              (line  68)
 * k <3>:                                 Stashing.            (line 103)
 * l:                                     Logging.             (line  27)
 * L:                                     Refreshing Logs.     (line  11)
 * L <1>:                                 Log Buffer.          (line   6)
 * L <2>:                                 Log Margin.          (line  54)
 * l <1>:                                 Editing Rebase Sequences.
-                                                              (line 114)
+                                                              (line 115)
 * l a:                                   Logging.             (line  61)
 * l b:                                   Logging.             (line  56)
 * L d:                                   Log Margin.          (line  72)
@@ -10526,12 +10529,12 @@ Appendix C Keystroke Index
 * M-n <1>:                               Editing Commit Messages.
                                                               (line  44)
 * M-n <2>:                               Editing Rebase Sequences.
-                                                              (line  45)
+                                                              (line  46)
 * M-p:                                   Section Movement.    (line  19)
 * M-p <1>:                               Editing Commit Messages.
                                                               (line  38)
 * M-p <2>:                               Editing Rebase Sequences.
-                                                              (line  41)
+                                                              (line  42)
 * M-w:                                   Blaming.             (line 130)
 * M-w <1>:                               Common Commands.     (line  38)
 * M-x magit-debug-git-executable:        Git実行ファイル.     (line  55)
@@ -10556,14 +10559,14 @@ Appendix C Keystroke Index
 * M-x magit-wip-commit:                  Wip Modes.           (line  91)
 * M-x with-editor-debug:                 Debugging Tools.     (line  45)
 * MM:                                    Editing Rebase Sequences.
-                                                              (line 125)
+                                                              (line 126)
 * Mt:                                    Editing Rebase Sequences.
-                                                              (line 133)
+                                                              (line 134)
 * n:                                     Section Movement.    (line  15)
 * n <1>:                                 Blaming.             (line 109)
 * N:                                     Blaming.             (line 113)
 * n <2>:                                 Editing Rebase Sequences.
-                                                              (line  37)
+                                                              (line  38)
 * n <3>:                                 Minor Mode for Buffers Visiting Blobs.
                                                               (line  16)
 * o:                                     submodule用トランジェントコマンド.
@@ -10597,19 +10600,19 @@ Appendix C Keystroke Index
 * p <1>:                                 Blaming.             (line 117)
 * P:                                     Blaming.             (line 121)
 * p <2>:                                 Editing Rebase Sequences.
-                                                              (line  33)
-* P <1>:                                 Pushing.             (line   9)
+                                                              (line  34)
+* P <1>:                                 Pushing.             (line  10)
 * p <3>:                                 Minor Mode for Buffers Visiting Blobs.
                                                               (line  12)
 * P C:                                   Branch Commands.     (line  35)
-* P e:                                   Pushing.             (line  35)
-* P m:                                   Pushing.             (line  54)
-* P o:                                   Pushing.             (line  40)
-* P p:                                   Pushing.             (line  17)
-* P r:                                   Pushing.             (line  45)
-* P t:                                   Pushing.             (line  63)
-* P T:                                   Pushing.             (line  71)
-* P u:                                   Pushing.             (line  26)
+* P e:                                   Pushing.             (line  36)
+* P m:                                   Pushing.             (line  55)
+* P o:                                   Pushing.             (line  41)
+* P p:                                   Pushing.             (line  18)
+* P r:                                   Pushing.             (line  46)
+* P t:                                   Pushing.             (line  64)
+* P T:                                   Pushing.             (line  72)
+* P u:                                   Pushing.             (line  27)
 * q:                                     Quitting Windows.    (line   6)
 * q <1>:                                 Log Buffer.          (line  16)
 * q <2>:                                 Blaming.             (line 125)
@@ -10617,41 +10620,41 @@ Appendix C Keystroke Index
                                                               (line  20)
 * r:                                     Rebasing.            (line   9)
 * r <1>:                                 Editing Rebase Sequences.
-                                                              (line  49)
-* r a:                                   Rebasing.            (line 128)
+                                                              (line  50)
+* r a:                                   Rebasing.            (line 127)
 * r e:                                   Rebasing.            (line  47)
-* r e <1>:                               Rebasing.            (line 123)
-* r f:                                   Rebasing.            (line  88)
-* r i:                                   Rebasing.            (line  84)
-* r k:                                   Rebasing.            (line 103)
-* r m:                                   Rebasing.            (line  93)
+* r e <1>:                               Rebasing.            (line 122)
+* r f:                                   Rebasing.            (line  87)
+* r i:                                   Rebasing.            (line  83)
+* r k:                                   Rebasing.            (line 102)
+* r m:                                   Rebasing.            (line  92)
 * r p:                                   Rebasing.            (line  30)
-* r r:                                   Rebasing.            (line 110)
+* r r:                                   Rebasing.            (line 109)
 * r s:                                   Rebasing.            (line  54)
-* r s <1>:                               Rebasing.            (line 118)
+* r s <1>:                               Rebasing.            (line 117)
 * r u:                                   Rebasing.            (line  38)
-* r w:                                   Rebasing.            (line  98)
+* r w:                                   Rebasing.            (line  97)
 * RET:                                   References Buffer.   (line 172)
 * RET <1>:                               Visiting Files and Blobs from a Diff.
                                                               (line   8)
 * RET <2>:                               Blaming.             (line  80)
 * RET <3>:                               Editing Rebase Sequences.
-                                                              (line  16)
+                                                              (line  17)
 * s:                                     Staging and Unstaging.
                                                               (line  30)
 * S:                                     Staging and Unstaging.
                                                               (line  39)
 * s <1>:                                 Editing Rebase Sequences.
-                                                              (line  57)
+                                                              (line  58)
 * S-<tab>:                               Section Visibility.  (line  21)
 * SPC:                                   Log Buffer.          (line  47)
 * SPC <1>:                               Commands Available in Diffs.
                                                               (line  57)
 * SPC <2>:                               Blaming.             (line  84)
 * SPC <3>:                               Editing Rebase Sequences.
-                                                              (line  21)
+                                                              (line  22)
 * t:                                     Editing Rebase Sequences.
-                                                              (line 119)
+                                                              (line 120)
 * t <1>:                                 Tagging.             (line   8)
 * T:                                     Notes.               (line   8)
 * T a:                                   Notes.               (line  53)
@@ -10688,20 +10691,20 @@ Appendix C Keystroke Index
 * w w:                                   Maildir Patches.     (line  16)
 * w w <1>:                               Maildir Patches.     (line  36)
 * x:                                     Editing Rebase Sequences.
-                                                              (line  75)
+                                                              (line  76)
 * x <1>:                                 Resetting.           (line   8)
-* X f:                                   Resetting.           (line  51)
+* X f:                                   Resetting.           (line  52)
 * X h:                                   Resetting.           (line  27)
-* X i:                                   Resetting.           (line  38)
-* X k:                                   Resetting.           (line  32)
+* X i:                                   Resetting.           (line  39)
+* X k:                                   Resetting.           (line  33)
 * X m:                                   Resetting.           (line  15)
 * X s:                                   Resetting.           (line  21)
-* X w:                                   Resetting.           (line  45)
+* X w:                                   Resetting.           (line  46)
 * X w <1>:                               Wip Modes.           (line  69)
 * Y:                                     Cherries.            (line  17)
 * y:                                     References Buffer.   (line   6)
 * y <1>:                                 Editing Rebase Sequences.
-                                                              (line  89)
+                                                              (line  90)
 * y c:                                   References Buffer.   (line  25)
 * y o:                                   References Buffer.   (line  31)
 * y y:                                   References Buffer.   (line  20)
@@ -10732,7 +10735,7 @@ Appendix D Command Index
 * Menu:
 
 * forward-line:                          Editing Rebase Sequences.
-                                                              (line  37)
+                                                              (line  38)
 * git-commit-ack:                        Commit Pseudo Headers.
                                                               (line  18)
 * git-commit-cc:                         Commit Pseudo Headers.
@@ -10756,45 +10759,45 @@ Appendix D Command Index
 * git-commit-test:                       Commit Pseudo Headers.
                                                               (line  32)
 * git-rebase-backward-line:              Editing Rebase Sequences.
-                                                              (line  33)
+                                                              (line  34)
 * git-rebase-break:                      Editing Rebase Sequences.
-                                                              (line  84)
+                                                              (line  85)
 * git-rebase-edit:                       Editing Rebase Sequences.
-                                                              (line  53)
+                                                              (line  54)
 * git-rebase-exec:                       Editing Rebase Sequences.
-                                                              (line  75)
+                                                              (line  76)
 * git-rebase-fixup:                      Editing Rebase Sequences.
-                                                              (line  62)
+                                                              (line  63)
 * git-rebase-insert:                     Editing Rebase Sequences.
-                                                              (line  89)
+                                                              (line  90)
 * git-rebase-kill-line:                  Editing Rebase Sequences.
-                                                              (line  67)
+                                                              (line  68)
 * git-rebase-label:                      Editing Rebase Sequences.
-                                                              (line 114)
+                                                              (line 115)
 * git-rebase-merge:                      Editing Rebase Sequences.
-                                                              (line 125)
+                                                              (line 126)
 * git-rebase-merge-toggle-editmsg:       Editing Rebase Sequences.
-                                                              (line 133)
+                                                              (line 134)
 * git-rebase-move-line-down:             Editing Rebase Sequences.
-                                                              (line  45)
+                                                              (line  46)
 * git-rebase-move-line-up:               Editing Rebase Sequences.
-                                                              (line  41)
+                                                              (line  42)
 * git-rebase-pick:                       Editing Rebase Sequences.
-                                                              (line  71)
+                                                              (line  72)
 * git-rebase-reset:                      Editing Rebase Sequences.
-                                                              (line 119)
+                                                              (line 120)
 * git-rebase-reword:                     Editing Rebase Sequences.
-                                                              (line  49)
+                                                              (line  50)
 * git-rebase-show-commit:                Editing Rebase Sequences.
-                                                              (line  16)
+                                                              (line  17)
 * git-rebase-show-or-scroll-down:        Editing Rebase Sequences.
-                                                              (line  27)
+                                                              (line  28)
 * git-rebase-show-or-scroll-up:          Editing Rebase Sequences.
-                                                              (line  21)
+                                                              (line  22)
 * git-rebase-squash:                     Editing Rebase Sequences.
-                                                              (line  57)
+                                                              (line  58)
 * git-rebase-undo:                       Editing Rebase Sequences.
-                                                              (line  93)
+                                                              (line  94)
 * ido-enter-magit-status:                Status Buffer.       (line  95)
 * magit-am:                              Maildir Patches.     (line   8)
 * magit-am-abort:                        Maildir Patches.     (line  45)
@@ -10953,16 +10956,16 @@ Appendix D Command Index
 * magit-edit-line-commit:                Commands for Buffers Visiting Files.
                                                               (line 115)
 * magit-emacs-Q-command:                 Debugging Tools.     (line  16)
-* magit-fetch:                           Fetching.            (line   9)
-* magit-fetch-all:                       Fetching.            (line  55)
-* magit-fetch-branch:                    Fetching.            (line  45)
-* magit-fetch-from-pushremote:           Fetching.            (line  17)
-* magit-fetch-from-upstream:             Fetching.            (line  25)
+* magit-fetch:                           Fetching.            (line  10)
+* magit-fetch-all:                       Fetching.            (line  56)
+* magit-fetch-branch:                    Fetching.            (line  46)
+* magit-fetch-from-pushremote:           Fetching.            (line  18)
+* magit-fetch-from-upstream:             Fetching.            (line  26)
 * magit-fetch-modules:                   submodule用トランジェントコマンド.
                                                               (line  59)
-* magit-fetch-other:                     Fetching.            (line  40)
-* magit-fetch-refspec:                   Fetching.            (line  50)
-* magit-file-checkout:                   Resetting.           (line  51)
+* magit-fetch-other:                     Fetching.            (line  41)
+* magit-fetch-refspec:                   Fetching.            (line  51)
+* magit-file-checkout:                   Resetting.           (line  52)
 * magit-file-checkout <1>:               Commands for Buffers Visiting Files.
                                                               (line 145)
 * magit-file-delete:                     Commands for Buffers Visiting Files.
@@ -11048,34 +11051,34 @@ Appendix D Command Index
                                                               (line   6)
 * magit-process:                         Viewing Git Output.  (line  16)
 * magit-process-kill:                    Viewing Git Output.  (line  23)
-* magit-pull:                            Pulling.             (line   9)
-* magit-pull-branch:                     Pulling.             (line  32)
-* magit-pull-from-pushremote:            Pulling.             (line  16)
-* magit-pull-from-upstream:              Pulling.             (line  24)
-* magit-push:                            Pushing.             (line   9)
-* magit-push-current:                    Pushing.             (line  35)
-* magit-push-current-to-pushremote:      Pushing.             (line  17)
-* magit-push-current-to-upstream:        Pushing.             (line  26)
-* magit-push-implicitly args:            Pushing.             (line  89)
-* magit-push-matching:                   Pushing.             (line  54)
-* magit-push-other:                      Pushing.             (line  40)
-* magit-push-refspecs:                   Pushing.             (line  45)
-* magit-push-tag:                        Pushing.             (line  71)
-* magit-push-tags:                       Pushing.             (line  63)
-* magit-push-to-remote remote args:      Pushing.             (line 107)
+* magit-pull:                            Pulling.             (line  10)
+* magit-pull-branch:                     Pulling.             (line  33)
+* magit-pull-from-pushremote:            Pulling.             (line  17)
+* magit-pull-from-upstream:              Pulling.             (line  25)
+* magit-push:                            Pushing.             (line  10)
+* magit-push-current:                    Pushing.             (line  36)
+* magit-push-current-to-pushremote:      Pushing.             (line  18)
+* magit-push-current-to-upstream:        Pushing.             (line  27)
+* magit-push-implicitly args:            Pushing.             (line  90)
+* magit-push-matching:                   Pushing.             (line  55)
+* magit-push-other:                      Pushing.             (line  41)
+* magit-push-refspecs:                   Pushing.             (line  46)
+* magit-push-tag:                        Pushing.             (line  72)
+* magit-push-tags:                       Pushing.             (line  64)
+* magit-push-to-remote remote args:      Pushing.             (line 108)
 * magit-rebase:                          Rebasing.            (line   9)
-* magit-rebase-abort:                    Rebasing.            (line 128)
-* magit-rebase-autosquash:               Rebasing.            (line  88)
+* magit-rebase-abort:                    Rebasing.            (line 127)
+* magit-rebase-autosquash:               Rebasing.            (line  87)
 * magit-rebase-branch:                   Rebasing.            (line  47)
-* magit-rebase-continue:                 Rebasing.            (line 110)
-* magit-rebase-edit:                     Rebasing.            (line 123)
-* magit-rebase-edit-commit:              Rebasing.            (line  93)
-* magit-rebase-interactive:              Rebasing.            (line  84)
+* magit-rebase-continue:                 Rebasing.            (line 109)
+* magit-rebase-edit:                     Rebasing.            (line 122)
+* magit-rebase-edit-commit:              Rebasing.            (line  92)
+* magit-rebase-interactive:              Rebasing.            (line  83)
 * magit-rebase-onto-pushremote:          Rebasing.            (line  30)
 * magit-rebase-onto-upstream:            Rebasing.            (line  38)
-* magit-rebase-remove-commit:            Rebasing.            (line 103)
-* magit-rebase-reword-commit:            Rebasing.            (line  98)
-* magit-rebase-skip:                     Rebasing.            (line 118)
+* magit-rebase-remove-commit:            Rebasing.            (line 102)
+* magit-rebase-reword-commit:            Rebasing.            (line  97)
+* magit-rebase-skip:                     Rebasing.            (line 117)
 * magit-rebase-subset:                   Rebasing.            (line  54)
 * magit-reflog-current:                  Reflog.              (line  11)
 * magit-reflog-head:                     Reflog.              (line  19)
@@ -11095,12 +11098,12 @@ Appendix D Command Index
 * magit-reset-hard:                      Resetting.           (line  27)
 * magit-reset-index:                     Staging and Unstaging.
                                                               (line  94)
-* magit-reset-index <1>:                 Resetting.           (line  38)
-* magit-reset-keep:                      Resetting.           (line  32)
+* magit-reset-index <1>:                 Resetting.           (line  39)
+* magit-reset-keep:                      Resetting.           (line  33)
 * magit-reset-mixed:                     Resetting.           (line  15)
 * magit-reset-quickly:                   Resetting.           (line   8)
 * magit-reset-soft:                      Resetting.           (line  21)
-* magit-reset-worktree:                  Resetting.           (line  45)
+* magit-reset-worktree:                  Resetting.           (line  46)
 * magit-reset-worktree <1>:              Wip Modes.           (line  69)
 * magit-reverse:                         Applying.            (line  46)
 * magit-reverse-in-index:                Staging and Unstaging.
@@ -11182,7 +11185,7 @@ Appendix D Command Index
                                                               (line   6)
 * magit-submodule-add:                   submodule用トランジェントコマンド.
                                                               (line  22)
-* magit-submodule-fetch:                 Fetching.            (line  59)
+* magit-submodule-fetch:                 Fetching.            (line  60)
 * magit-submodule-populate:              submodule用トランジェントコマンド.
                                                               (line  35)
 * magit-submodule-register:              submodule用トランジェントコマンド.
@@ -11244,7 +11247,7 @@ Appendix D Command Index
 * with-editor-cancel:                    Editing Commit Messages.
                                                               (line  23)
 * with-editor-cancel <1>:                Editing Rebase Sequences.
-                                                              (line  11)
+                                                              (line  12)
 * with-editor-debug:                     Debugging Tools.     (line  45)
 * with-editor-finish:                    Editing Commit Messages.
                                                               (line  17)
@@ -11435,8 +11438,8 @@ Appendix E Function Index
                                                               (line  66)
 * magit-process-git:                     Getting a Value from Git.
                                                               (line  59)
-* magit-push-implicitly:                 Pushing.             (line  89)
-* magit-push-to-remote:                  Pushing.             (line 107)
+* magit-push-implicitly:                 Pushing.             (line  90)
+* magit-push-to-remote:                  Pushing.             (line 108)
 * magit-region-sections:                 Section Selection.   (line  10)
 * magit-region-values:                   Section Selection.   (line  36)
 * magit-repolist-column-branch:          Repository List.     (line  47)
@@ -11549,11 +11552,11 @@ Appendix F Variable Index
 * git-commit-summary-max-length:         Commit Message Conventions.
                                                               (line  13)
 * git-rebase-auto-advance:               Editing Rebase Sequences.
-                                                              (line  98)
+                                                              (line  99)
 * git-rebase-confirm-cancel:             Editing Rebase Sequences.
-                                                              (line 106)
+                                                              (line 107)
 * git-rebase-show-instructions:          Editing Rebase Sequences.
-                                                              (line 102)
+                                                              (line 103)
 * global-auto-revert-mode:               Automatic Reverting of File-Visiting Buffers.
                                                               (line  24)
 * magit-auto-revert-immediately:         Automatic Reverting of File-Visiting Buffers.
@@ -11649,7 +11652,7 @@ Appendix F Variable Index
                                                               (line  59)
 * magit-process-raise-error:             Calling Git for Effect.
                                                               (line 138)
-* magit-pull-or-fetch:                   Fetching.            (line  65)
+* magit-pull-or-fetch:                   Fetching.            (line  66)
 * magit-reflog-margin:                   Reflog.              (line  23)
 * magit-refresh-args:                    Refreshing Buffers.  (line  54)
 * magit-refresh-buffer-hook:             Automatic Refreshing of Magit Buffers.
@@ -11782,122 +11785,122 @@ Node: Select from Log175439
 Node: Reflog178329
 Node: Cherries180426
 Node: Diffing182880
-Node: Refreshing Diffs187238
-Node: Commands Available in Diffs192006
-Node: Diff Options195364
-Node: Revision Buffer202418
-Node: Ediffing206715
-Node: References Buffer212188
-Node: References Sections225730
-Node: Bisecting226948
-Node: Visiting Files and Blobs230264
-Node: General-Purpose Visit Commands230866
-Node: Visiting Files and Blobs from a Diff232141
-Node: Blaming236811
-Node: Manipulating245398
-Node: Creating Repository245743
-Node: Cloning Repository246482
-Node: Staging and Unstaging254039
-Node: Staging from File-Visiting Buffers260164
-Node: Applying261972
-Node: Committing264867
-Node: コミット開始265627
-Node: Editing Commit Messages271266
-Node: Using the Revision Stack274954
-Node: Commit Pseudo Headers278847
-Node: Commit Mode and Hooks280624
-Node: Commit Message Conventions284593
-Node: Branching287324
-Node: The Two Remotes287553
-Node: Branch Commands291350
-Node: Branch Git Variables309255
-Node: Auxiliary Branch Commands316246
-Node: Merging317695
-Node: Resolving Conflicts323208
-Node: Rebasing329595
-Node: Editing Rebase Sequences336538
-Node: Information About In-Progress Rebase342236
-Ref: Information About In-Progress Rebase-Footnote-1353413
-Node: Cherry Picking354174
-Node: Reverting360253
-Node: Resetting362536
-Node: Stashing365249
-Node: Transferring372040
-Node: Remotes372265
-Node: Remote Commands372420
-Node: Remote Git Variables378020
-Node: Fetching379725
-Node: Pulling383537
-Node: Pushing385181
-Node: Plain Patches391445
-Node: Maildir Patches393794
-Node: Miscellaneous396056
-Node: Tagging396373
-Node: Notes399179
-Node: Submodules402397
-Node: Listing Submodules402662
-Node: submodule用トランジェントコマンド404362
-Node: Subtree408037
-Node: Worktree411308
-Node: Common Commands412989
-Node: Wip Modes416225
-Node: Wip Graph422930
-Node: Legacy Wip Modes425809
-Node: Commands for Buffers Visiting Files429396
-Node: Minor Mode for Buffers Visiting Blobs437405
-Node: Customizing438426
-Node: Per-Repository Configuration440376
-Node: 基本設定443070
-Node: Safety443454
-Node: Performance445866
-Ref: Log Performance450132
-Ref: Diff Performance451891
-Ref: Refs Buffer Performance453602
-Ref: Committing Performance454388
-Node: Microsoft Windows Performance455530
-Node: MacOS Performance457033
-Ref: MacOS Performance-Footnote-1457905
-Node: Default Bindings458044
-Node: 配管コマンド(Plumbing)460985
-Node: Calling Git462073
-Node: Getting a Value from Git464034
-Node: Calling Git for Effect468713
-Node: Section Plumbing476821
-Node: Creating Sections477072
-Node: Section Selection482393
-Node: Matching Sections484592
-Node: Refreshing Buffers492411
-Node: 慣習496375
-Node: Theming Faces496586
-Node: FAQ507259
-Node: FAQ - How to ...?507792
-Node: Magitの発音は？508251
-Node: How to show git's output?509284
-Node: How to install the gitman info manual?510312
-Node: How to show diffs for gpg-encrypted files?511587
-Node: How does branching and pushing work?512290
-Node: Magitをediff-version-control-packageとして使用できますか？512697
-Node: VCを無効にする必要がありますか？515282
-Node: FAQ - Issues and Errors516176
-Node: Magit is slow517526
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517766
-Node: コミットに問題があります518798
-Node: MS WindowsではMagitでpushできません519359
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520060
-Node: ファイルを展開してdiffを表示するとファイルが消えます521260
-Node: COMMIT_EDITMSGバッファのpointが間違っています522043
-Node: モード行の情報が常に最新ではない523416
-Node: 同じ名前を共有するブランチとタグは何かを壊します524623
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525776
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません526914
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります529971
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531194
-Node: 私はポップアップのデフォルトを保存できなくなりました532373
-Node: Debugging Tools533780
-Node: Keystroke Index536630
-Node: Command Index571239
-Node: Function Index609379
-Node: Variable Index626468
+Node: Refreshing Diffs187248
+Node: Commands Available in Diffs192016
+Node: Diff Options195374
+Node: Revision Buffer202428
+Node: Ediffing206725
+Node: References Buffer212198
+Node: References Sections225740
+Node: Bisecting226958
+Node: Visiting Files and Blobs230274
+Node: General-Purpose Visit Commands230876
+Node: Visiting Files and Blobs from a Diff232151
+Node: Blaming236821
+Node: Manipulating245408
+Node: Creating Repository245753
+Node: Cloning Repository246492
+Node: Staging and Unstaging254049
+Node: Staging from File-Visiting Buffers260174
+Node: Applying261982
+Node: Committing264877
+Node: コミット開始265637
+Node: Editing Commit Messages271276
+Node: Using the Revision Stack274964
+Node: Commit Pseudo Headers278857
+Node: Commit Mode and Hooks280634
+Node: Commit Message Conventions284603
+Node: Branching287334
+Node: The Two Remotes287563
+Node: Branch Commands291360
+Node: Branch Git Variables309265
+Node: Auxiliary Branch Commands316256
+Node: Merging317705
+Node: Resolving Conflicts323218
+Node: Rebasing329582
+Node: Editing Rebase Sequences336506
+Node: Information About In-Progress Rebase342245
+Ref: Information About In-Progress Rebase-Footnote-1353422
+Node: Cherry Picking354183
+Node: Reverting360271
+Node: Resetting362557
+Node: Stashing365288
+Node: Transferring372137
+Node: Remotes372362
+Node: Remote Commands372517
+Node: Remote Git Variables378123
+Node: Fetching379828
+Node: Pulling383664
+Node: Pushing385332
+Node: Plain Patches391620
+Node: Maildir Patches393969
+Node: Miscellaneous396231
+Node: Tagging396548
+Node: Notes399354
+Node: Submodules402572
+Node: Listing Submodules402837
+Node: submodule用トランジェントコマンド404537
+Node: Subtree408212
+Node: Worktree411483
+Node: Common Commands413164
+Node: Wip Modes416400
+Node: Wip Graph423105
+Node: Legacy Wip Modes425984
+Node: Commands for Buffers Visiting Files429571
+Node: Minor Mode for Buffers Visiting Blobs437580
+Node: Customizing438601
+Node: Per-Repository Configuration440551
+Node: 基本設定443245
+Node: Safety443629
+Node: Performance446041
+Ref: Log Performance450307
+Ref: Diff Performance452066
+Ref: Refs Buffer Performance453777
+Ref: Committing Performance454563
+Node: Microsoft Windows Performance455705
+Node: MacOS Performance457208
+Ref: MacOS Performance-Footnote-1458080
+Node: Default Bindings458219
+Node: 配管コマンド(Plumbing)461160
+Node: Calling Git462248
+Node: Getting a Value from Git464209
+Node: Calling Git for Effect468888
+Node: Section Plumbing476996
+Node: Creating Sections477247
+Node: Section Selection482568
+Node: Matching Sections484767
+Node: Refreshing Buffers492586
+Node: 慣習496550
+Node: Theming Faces496761
+Node: FAQ507434
+Node: FAQ - How to ...?507967
+Node: Magitの発音は？508426
+Node: How to show git's output?509459
+Node: How to install the gitman info manual?510487
+Node: How to show diffs for gpg-encrypted files?511762
+Node: How does branching and pushing work?512465
+Node: Magitをediff-version-control-packageとして使用できますか？512872
+Node: VCを無効にする必要がありますか？515457
+Node: FAQ - Issues and Errors516351
+Node: Magit is slow517701
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517941
+Node: コミットに問題があります518973
+Node: MS WindowsではMagitでpushできません519534
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520235
+Node: ファイルを展開してdiffを表示するとファイルが消えます521435
+Node: COMMIT_EDITMSGバッファのpointが間違っています522218
+Node: モード行の情報が常に最新ではない523591
+Node: 同じ名前を共有するブランチとタグは何かを壊します524798
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525951
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません527089
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります530146
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531369
+Node: 私はポップアップのデフォルトを保存できなくなりました532548
+Node: Debugging Tools533955
+Node: Keystroke Index536805
+Node: Command Index571414
+Node: Function Index609554
+Node: Variable Index626643
 
 End Tag Table
 

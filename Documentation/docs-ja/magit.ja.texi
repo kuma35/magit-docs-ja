@@ -3160,7 +3160,7 @@ A@dots{}B)である必要がありますが、単一のコミットにするこ�
 @cindex magit-stash-show
 @item @kbd{d t} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-show})
 
-バッファ内のstashのすべてのdiffを表示します。
+バッファ内のスタッシュのすべてのdiffを表示します。
 @end table
 
 現在のバッファで訪問しているファイルまたはblobのdiffを表示する2つの追加コマンドが存在します。こちらを参照して下さい(@ref{Commands
@@ -5641,7 +5641,7 @@ Magitステータスバッファでは、競合が解決されていないファ
 changes"セクションに一覧表示されます。
 これらの前には"unmerged"という単語が付いています。これは、この文脈では本質的に"unresolved"の同義語です。
 
-ポイントがそのようなファイルセクションにあるときに@code{RET}を押すと、そのファイルを訪れている(visit)バッファが表示され、そのバッファで@code{smerge-mode}がオンになり、競合のある最初の領域内にポイントが配置されます。それから、あなたは、通常の編集コマンドやSmergeコマンドを使用してその競合を解決する必要があります。
+ポイントがそのようなファイルセクションにあるときに@code{RET}を押すと、そのファイルを訪れているバッファが表示され、そのバッファで@code{smerge-mode}がオンになり、競合のある最初の領域内にポイントが配置されます。あなたは、通常の編集コマンドやSmergeコマンドを使用してその競合を解決する必要があります。
 
 残念ながら、Smergeにはマニュアルがありませんが、コマンドのリストを取得して@code{C-c ^
 C-h}をバインドし、ポイントがコマンド名にあるときに@code{RET}を押してドキュメントを読むことができます。
@@ -5689,17 +5689,18 @@ buffer)に表示します。
 リベースが進行中でない場合、トランジェントコマンドにはそれ従うサフィックスコマンドがあります。
 
 これらのコマンドの1つを使用して、リベースシーケンスを@emph{開始}します。
-Gitは、途中で中断するように指示したか、競合が原因でコミットの適用が失敗したために中断する可能性があります。その場合、ステータスバッファには、ログセクションと同様のセクションで進行中のリベースシーケンスに関する情報が表示されます。こちらを参照して下さい(@ref{Information
+Gitは、あなたが途中で中断するように指示したか、競合が原因でコミットの適用が失敗したために中断する可能性があります。その場合、ステータスバッファには、ログセクションに似たセクションで、進行中のリベースシーケンスに関する情報が表示されます。こちらを参照して下さい(@ref{Information
 About In-Progress Rebase})。
 
-アップストリームとプッシュリモートの詳細についてはこちらを参照して下さい(@ref{The Two Remotes})。
+アップストリーム(upstream)とプッシュリモート(push-remote)の詳細についてはこちらを参照して下さい(@ref{The Two
+Remotes})。
 
 @table @asis
 @kindex r p
 @cindex magit-rebase-onto-pushremote
 @item @kbd{r p} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-onto-pushremote})
 
-このコマンドは、現在のブランチをpush-remoteにリベースします。
+このコマンドは、現在のブランチをプッシュリモートにリベースします。
 
 プレフィックス引数を使用する場合、またはプッシュリモートが構成されていないか使用できない場合は、最初にユーザーにプッシュリモートを構成させます。
 
@@ -5715,51 +5716,47 @@ About In-Progress Rebase})。
 @cindex magit-rebase-branch
 @item @kbd{r e} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-branch})
 
-このコマンドは、現在のブランチをミニバッファでユーザーから読み取ったブランチにリベースします。ヘッドからは到達可能であるが、選択したブランチTARGETからは到達できないすべてのコミットがリベースされています。
+このコマンドは、現在のブランチをミニバッファでユーザーから読み取ったブランチにリベースします。ヘッドからは到達可能であるが、選択したブランチTARGETからは到達できないすべてのコミットがリベースされます。
 
 @kindex r s
 @cindex magit-rebase-subset
 @item @kbd{r s} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-subset})
 
-このコマンドは、非対話型のリベースシーケンスを開始して、コミットをSTARTから@code
-{HEAD}からNEWBASEに転送します。STARTは、最近のコミットのリストから選択する必要があります。
+このコマンドは、非対話型のリベースシーケンスを開始して、コミットをSTARTからNEWBASEの@code{HEAD}に転送します。STARTは、最近のコミットのリストから選択する必要があります。
 @end table
 
-デフォルトでは、Magitは@code{--autostash}引数を使用します。これにより、コミットされていない変更がリベースが開始される前にスタッシュに格納されます。これらの変更は、リベースが完了した後に復元され、可能であればスタッシュが削除されます。スタッシュがきれいに適用されない場合、スタッシュは削除されません。
-競合を解決するときに問題が発生した場合は、最初からやり直すことができます。
+デフォルトでは、Magitは@code{--autostash}引数を使用します。これにより、コミットされていない変更はリベースが開始される前にスタッシュに格納されます。これらの変更は、リベースが完了した後に復元され、可能であればスタッシュが削除されます。スタッシュがきれいに適用されない場合、スタッシュは削除されません。これにより、競合を解決するときに何か問題が発生した場合は、あなたは最初からやり直すことができます。
 
-アクションの1つは対話型リベース専用ですが、トランジェントコマンドにはインフィックス引数@code{--interactive}も含まれています。
-これを使用して、他の非対話型リベースバリエーションの1つを対話型リベースに変えることができます。
+アクションの1つとして、対話型リベース専用のインフィックス引数@code{--interactive}があります。これを使用して、非対話型リベースバリエーションを対話型リベースに変えることができます。
 
-たとえば、機能(feature)ブランチをクリーンアップすると同時に、それを@code{master}にリベースする場合は、@code{r-iu}を使用できます。ただし、代わりに2つのステップで行うことをお勧めします。最初に@code{ri}を使用して機能ブランチをクリーンアップし、次に@code{ru}を使用して@code{master}にリベースします。
-そうすれば、物事が思ったよりも複雑であることが判明した場合、および/または間違いを犯して最初からやり直さなければならない場合は、作業の半分をやり直すだけで済みます。
+たとえば、機能(feature)ブランチをクリーンアップすると同時に、それを@code{master}にリベースする場合は、@code{r-iu}を使用できますが、代わりに2つのステップで行うことをお勧めします。最初に@code{ri}を使用して機能ブランチをクリーンアップし、次に@code{ru}を使用して@code{master}にリベースします。そうすれば、物事が思ったよりも複雑であることが判明した場合、および/または間違いを犯して最初からやり直さなければならない場合は、作業の半分をやり直すだけで済みます。
 
-@code{--interactive}を明示的に有効にしても、トランジェントコマンド内で有効でない場合でも、それに従うコマンドは常にその引数を使用するため、影響はありません。
+@code{--interactive}を明示的に有効にしたあと、それに続く以下のトランジェントコマンド内では@code{--interactive}が有効でない場合でも、常にその引数を使用するため、影響はありません。
 
 @table @asis
 @kindex r i
 @cindex magit-rebase-interactive
 @item @kbd{r i} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-interactive})
 
-このコマンドは、インタラクティブなリベースシーケンスを開始します。
+このコマンドは、対話的なリベースシーケンスを開始します。
 
 @kindex r f
 @cindex magit-rebase-autosquash
 @item @kbd{r f} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-autosquash})
 
-このコマンドは、スカッシュコミットとフィックスアップコミットを意図したターゲットと組み合わせます。
+このコマンドは、スカッシュコミットとフィックスアップコミットを、意図したターゲットと組み合わせます。
 
 @kindex r m
 @cindex magit-rebase-edit-commit
 @item @kbd{r m} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-edit-commit})
 
-このコマンドは、ユーザーが1つの古いコミットを編集できるようにするインタラクティブなリベースシーケンスを開始します。
+このコマンドは、ユーザーが1つの古いコミットを編集できるようにする対話的なリベースシーケンスを開始します。
 
 @kindex r w
 @cindex magit-rebase-reword-commit
 @item @kbd{r w} @tie{}@tie{}@tie{}@tie{}(@code{magit-rebase-reword-commit})
 
-このコマンドは、ユーザーが1つの古いコミットをrewordするインタラクティブなリベースシーケンスを開始します。
+このコマンドは、ユーザーが1つの古いコミットをrewordする対話的なリベースシーケンスを開始します。
 
 @kindex r k
 @cindex magit-rebase-remove-commit
@@ -5811,7 +5808,8 @@ About In-Progress Rebase})。
 @cindex with-editor-finish
 @item @kbd{C-c C-c} @tie{}@tie{}@tie{}@tie{}(@code{with-editor-finish})
 
-終了コード0で戻ることにより、現在の編集セッションを終了します。Gitは、ファイル内で検出したリベース命令を使用します。
+終了コード0で戻ることにより、現在の編集セッションを終了します。Gitは、ファイル内で検出したリベース命令(rebase
+instructions)を使用します。
 
 @kindex C-c C-k
 @cindex with-editor-cancel
@@ -5879,19 +5877,19 @@ About In-Progress Rebase})。
 @cindex git-rebase-squash
 @item @kbd{s} @tie{}@tie{}@tie{}@tie{}(@code{git-rebase-squash})
 
-現在の行のコミットを前のコミットにマージし、メッセージを編集します。
+現在行のコミットを前行のコミットにマージし、メッセージを編集します。
 
 @kindex f
 @cindex git-rebase-fixup
 @item @kbd{f} @tie{}@tie{}@tie{}@tie{}(@code{git-rebase-fixup})
 
-現在の行のコミットを前のコミットにマージし、現在のコミットのメッセージを破棄します。
+現在行のコミットを前行コミットにマージし、現在のコミットのメッセージを破棄します。
 
 @kindex k
 @cindex git-rebase-kill-line
 @item @kbd{k} @tie{}@tie{}@tie{}@tie{}(@code{git-rebase-kill-line})
 
-現在の実行(action)行を強制終了します。
+現在の実行行(action line)を強制終了します。
 
 @kindex c
 @cindex git-rebase-pick
@@ -5903,7 +5901,7 @@ About In-Progress Rebase})。
 @cindex git-rebase-exec
 @item @kbd{x} @tie{}@tie{}@tie{}@tie{}(@code{git-rebase-exec})
 
-続行するコミットの後に実行するシェルコマンドを挿入します。
+進行中のコミットの後に実行されるシェルコマンドを挿入します。
 
 現在の行にそのようなコマンドがすでにある場合は、代わりにそれを編集します。プレフィックス引数を使用すると、現在の行にすでにコマンドがある場合でも、新しいコマンドを挿入します。入力が空の場合、現在の行のコマンドを削除します(存在する場合)。
 
@@ -5917,13 +5915,13 @@ About In-Progress Rebase})。
 @cindex git-rebase-insert
 @item @kbd{y} @tie{}@tie{}@tie{}@tie{}(@code{git-rebase-insert})
 
-任意のコミットを読み取り、現在の行の下に挿入します。
+任意のコミットを読み取り、現在行の下に挿入します。
 
 @kindex C-x u
 @cindex git-rebase-undo
 @item @kbd{C-x u} @tie{}@tie{}@tie{}@tie{}(@code{git-rebase-undo})
 
-以前の変更を元に戻します。@code{undo}と同様ですが、読み取り専用バッファで機能します。
+直近の幾つかの変更を元に戻します。@code{undo}と同様ですが、読み取り専用バッファで機能します。
 
 @end table
 
@@ -6155,7 +6153,7 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 @cindex magit-cherry-harvest
 @item @kbd{A h} @tie{}@tie{}@tie{}@tie{}(@code{magit-cherry-harvest})
 
-このコマンドは、別のブランチに配置する必要がある選択されたCOMMITを代わりに現在のブランチに移動し、前のブランチから削除します。このコマンドが成功すると、以前と同じ(same)ブランチがcurrentになります。
+このコマンドは、別のブランチの選択したコミットを現在のブランチに移動し、その、別のブランチから削除します。このコマンドが成功すると、以前と同じ(same)ブランチがcurrentになります。
 
 現在のブランチにコミットを適用したり、他のブランチからコミットを削除したりすると、競合が発生する可能性があります。その場合、このコマンドは中断し、競合を解決してから手動でプロセスを終了する必要があります。
 
@@ -6163,7 +6161,7 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 @cindex magit-cherry-donate
 @item @kbd{A d} @tie{}@tie{}@tie{}@tie{}(@code{magit-cherry-donate})
 
-このコマンドは、選択したCOMMITSを現在のブランチから別の既存のブランチに移動し、前のブランチから削除します。このコマンドが成功すると、以前と同じ(same)ブランチがcurrentになります。
+このコマンドは、選択したCOMMITSを現在のブランチから別の既存のブランチに移動し、その、現在のブランチから削除します。このコマンドが成功すると、以前と同じ(same)ブランチがcurrentになります。
 
 他のブランチにコミットを適用したり、現在のブランチからコミットを削除したりすると、競合が発生する可能性があります。その場合、このコマンドは中断し、競合を解決してから手動でプロセスを終了する必要があります。
 
@@ -6171,7 +6169,7 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 @cindex magit-cherry-spinout
 @item @kbd{A n} @tie{}@tie{}@tie{}@tie{}(@code{magit-cherry-spinout})
 
-このコマンドは、選択したCOMMITSを現在のブランチから新しいブランチBRANCHに移動し、前のブランチから削除します。
+このコマンドは、選択したCOMMITSを現在のブランチから新しいブランチBRANCHに移動し、その、現在のブランチから削除します。
 このコマンドが成功すると、以前と同じ(same)ブランチがcurrentになります。
 
 他のブランチにコミットを適用したり、現在のブランチからコミットを削除したりすると、競合が発生する可能性があります。その場合、このコマンドは中断し、競合を解決してから手動でプロセスを終了する必要があります。
@@ -6180,7 +6178,7 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 @cindex magit-cherry-spinoff
 @item @kbd{A s} @tie{}@tie{}@tie{}@tie{}(@code{magit-cherry-spinoff})
 
-このコマンドは、選択したCOMMITSを現在のブランチから新しいブランチBRANCHに移動し、前のブランチから削除します。このコマンドが成功すると、新しいブランチがチェックアウトされます。
+このコマンドは、選択したCOMMITSを現在のブランチから新しいブランチBRANCHに移動し、その、現在のブランチから削除します。このコマンドが成功すると、新しいブランチがチェックアウトされます。
 
 他のブランチにコミットを適用したり、現在のブランチからコミットを削除したりすると、競合が発生する可能性があります。その場合、このコマンドは中断し、競合を解決してから手動でプロセスを終了する必要があります。
 @end table
@@ -6230,7 +6228,7 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 @cindex magit-revert-and-commit
 @item @kbd{V V} @tie{}@tie{}@tie{}@tie{}(@code{magit-revert-and-commit})
 
-新しいコミットを作成して、コミットをrevertします。プロンプトを出してコミットの入力を求めます。デフォルトでは、そのポイントでのコミットになります。
+新しいコミットの作成によってコミットをrevertします。プロンプトを出してコミットの入力を求めます。デフォルトでは、そのポイントでのコミットになります。
 リージョンが複数のコミットを選択した場合は、プロンプトを表示せずにすべてをrevertします。
 
 @kindex V v
@@ -6302,13 +6300,13 @@ the git-reset(1) manpage.
 @cindex magit-reset-hard
 @item @kbd{X h} @tie{}@tie{}@tie{}@tie{}(@code{magit-reset-hard})
 
-@code{HEAD}、インデックス、および作業ツリーを、ユーザーから読み取られたコミットにリセットし、デフォルトでその時点のコミットに設定します。
+@code{HEAD}、インデックス、および作業ツリーを、ユーザーから読み取られたコミットにリセットし、デフォルトでそのポイントのコミットに設定します。
 
 @kindex X k
 @cindex magit-reset-keep
 @item @kbd{X k} @tie{}@tie{}@tie{}@tie{}(@code{magit-reset-keep})
 
-@code{HEAD}、インデックス、および作業ツリーを、ユーザーから読み取られたコミットにリセットし、デフォルトでその時点のコミットに設定します。コミットされていない変更はそのまま保持されます。
+@code{HEAD}、インデックス、および作業ツリーを、ユーザーから読み取られたコミットにリセットし、デフォルトでそのポイントのコミットに設定します。コミットされていない変更はそのまま保持されます。
 
 @kindex X i
 @cindex magit-reset-index
@@ -6358,35 +6356,35 @@ buffer)に表示します。
 @item @kbd{z z} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-both})
 
 インデックスと作業ツリーのスタッシュを作成します。追跡されていないファイル(untracked
-files)が含まれるかどうかはインフィックス引数の指定に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等ですが、2つのプレフィックス引数は@code{--all}と同等です。
+files)が含まれるかどうかはインフィックス引数の指定に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等で、2つのプレフィックス引数は@code{--all}と同等です。
 
 @kindex z i
 @cindex magit-stash-index
 @item @kbd{z i} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-index})
 
-インデックスのみのstashを作成します。ステージされていない変更(unstaged changes)と追跡されていない変更(untracked
-changes)はstashされません。
+インデックスのみのスタッシュを作成します。ステージされていない変更(unstaged changes)と追跡されていない変更(untracked
+changes)はスタッシュされません。
 
 @kindex z w
 @cindex magit-stash-worktree
 @item @kbd{z w} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-worktree})
 
 作業ツリーにステージされていない変更(unstaged changes)のスタッシュを作成します。追跡されていないファイル(untracked
-files)は、インフィックス引数に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等ですが、2つのプレフィックス引数は@code{--all}と同等です。
+files)は、インフィックス引数に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等で、2つのプレフィックス引数は@code{--all}と同等です。
 
 @kindex z x
 @cindex magit-stash-keep-index
 @item @kbd{z x} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-keep-index})
 
 インデックスをそのままにして、インデックスと作業ツリーのスタッシュを作成します。追跡されていないファイル(untracked
-files)は、インフィックス引数に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等ですが、2つのプレフィックス引数は@code{--all}と同等です。
+files)は、インフィックス引数に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等で、2つのプレフィックス引数は@code{--all}と同等です。
 
 @kindex z Z
 @cindex magit-snapshot-both
 @item @kbd{z Z} @tie{}@tie{}@tie{}@tie{}(@code{magit-snapshot-both})
 
 インデックスと作業ツリーのスナップショットを作成します。追跡されていないファイル(untracked
-files)は、インフィックス引数に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等ですが、2つのプレフィックス引数は@code{--all}と同等です。
+files)は、インフィックス引数に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等で、2つのプレフィックス引数は@code{--all}と同等です。
 
 @kindex z I
 @cindex magit-snapshot-index
@@ -6400,7 +6398,7 @@ changes)はスタッシュされません。
 @item @kbd{z W} @tie{}@tie{}@tie{}@tie{}(@code{magit-snapshot-worktree})
 
 作業ツリーでステージされていない変更(unstaged changes)のスナップショットを作成します。追跡されていないファイル(untracked
-files)は、インフィックス引数に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等ですが、2つのプレフィックス引数は@code{--all}と同等です。
+files)は、インフィックス引数に依ります。1つのプレフィックス引数は@code{--include-untracked}と同等で、2つのプレフィックス引数は@code{--all}と同等です。
 
 @kindex z a
 @cindex magit-stash-apply
@@ -6420,19 +6418,19 @@ changes)があるためにそれが失敗した場合は、スタッシュイン
 @cindex magit-stash-drop
 @item @kbd{z k} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-drop})
 
-stashリストからstashを削除します。リージョンがアクティブになったら、含まれているすべてのstashを削除することを提案します。
+スタッシュリストからスタッシュを削除します。リージョンがアクティブになったら、含まれているすべてのスタッシュの削除を提案します。
 
 @kindex z v
 @cindex magit-stash-show
 @item @kbd{z v} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-show})
 
-バッファ内のstashのすべてのdiffを表示します。
+バッファ内のスタッシュのすべてのdiffを表示します。
 
 @kindex z b
 @cindex magit-stash-branch
 @item @kbd{z b} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-branch})
 
-STASHから新しいBRANCHを作成してチェックアウトします。ブランチは、stashが作成されたときに現在のコミットで開始されます。
+STASHから新しいBRANCHを作成してチェックアウトします。ブランチは、スタッシュが作成されたときの現在のコミットで開始されます。
 
 @kindex z B
 @cindex magit-stash-branch-here
@@ -6450,19 +6448,19 @@ STASHからパッチを作成します。
 @cindex magit-stash-clear
 @item @kbd{k} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-clear})
 
-REFを削除して、REFのreflogに保存されているすべてのstashを削除します。
+REFを削除して、REFのreflogに保存されているすべてのスタッシュを削除します。
 
 @kindex z l
 @cindex magit-stash-list
 @item @kbd{z l} @tie{}@tie{}@tie{}@tie{}(@code{magit-stash-list})
 
-バッファ内のすべてのstashを一覧表示します。
+バッファ内のすべてのスタッシュを一覧表示します。
 
 @end table
 
 @defopt magit-stashes-margin
 
-このオプションは、欄外が最初にstashバッファに表示されるかどうか、およびそのフォーマット方法を指定します。
+このオプションは、欄外が最初にスタッシュバッファに表示されるかどうか、およびそのフォーマット方法を指定します。
 
 値の形式は@code{(INIT STYLE WIDTH AUTHOR AUTHOR-WIDTH)}です。
 
@@ -6508,7 +6506,7 @@ AUTHOR-WIDTHは整数である必要があります。作成者の名前が表�
 @node Remote Commands
 @subsection Remote Commands
 
-トランジェントプレフィックスコマンド@code{magit-remote}は、リモートを追加し、既存のリモートに変更を加えるために使用されます。このコマンドは、リモート自体のみを処理し、ブランチやコミットの転送は処理しません。これらの機能は、個別のトランジェントコマンドから利用できます。
+トランジェントプレフィックスコマンド@code{magit-remote}は、リモートを追加し、既存のリモートに変更を加えるために使用されます。このコマンドは、リモート自体のみを処理し、ブランチやコミットの転送は処理しません。それらの機能は個別のトランジェントコマンドから利用できます。
 
 こちらもご覧下さい 
 @ifinfo
@@ -6537,7 +6535,7 @@ buffer)に表示します。
 
 @defopt magit-remote-direct-configure
 
-このオプションは、リモート関連のGit変数に一時的な@code{magit-remote}から直接アクセスできるかどうかを制御します。
+このオプションは、リモート関連のGit変数にトランジェントコマンド@code{magit-remote}から直接アクセスできるかどうかを制御します。
 
 @code{t}(デフォルト)でローカルブランチがチェックアウトされている場合、@code{magit-remote}はそのブランチのアップストリームリモートの変数、または@code{HEAD}がデタッチされている場合で、存在する場合、@code{origin}の変数を備えています。
 
@@ -6575,7 +6573,7 @@ buffer)に表示します。
 @cindex magit-remote-set-url
 @item @kbd{M u} @tie{}@tie{}@tie{}@tie{}(@code{magit-remote-set-url})
 
-このコマンドは、リモートのURLを変更します。リモートURLと新しいURLの両方がミニバッファで読み取られます。
+このコマンドは、リモートのURLを変更します。リモートと新しいURLの両方がミニバッファで読み取られます。
 
 @kindex M k
 @cindex magit-remote-remove
@@ -6595,7 +6593,7 @@ buffer)に表示します。
 
 このコマンドは、ミニバッファ内で読み取られたリモートの陳腐化した(stale)refspecを削除します。
 
-refspecが原因でフェッチされるブランチがリモートに1つも存在しない場合、refspecは陳腐化しています。陳腐化したrefspecは、その存在によってGitが残りの陳腐化してないrefspecに従ってフェッチを拒否するため、問題があります。
+refspecが原因でフェッチされるブランチがリモートに1つも存在しない場合、refspecは陳腐化しています。陳腐化したrefspecの存在によってGitが残りの陳腐化してないrefspecに従ってフェッチを拒否するため、問題があります。
 
 陳腐化したrefspecのみが残っている場合、このコマンドは、リモートを削除するか、陳腐化したrefspecをデフォルトのrefspec
 ("+refs/heads/*:refs/remotes/REMOTE/*") に置き換えることを提案します。
@@ -6657,7 +6655,8 @@ the <a href="http://git-scm.com/docs/git-fetch">git-fetch(1)</a> manpage.
 @iftex
 the git-fetch(1) manpage.
 @end iftex
- アップストリームとプッシュリモートの詳細についてはこちらを参照して下さい(@ref{The Two Remotes})。
+ アップストリーム(upstream)とプッシュリモート(push-remote)の詳細についてはこちらを参照して下さい(@ref{The Two
+Remotes})。
 
 @table @asis
 @kindex f
@@ -6745,7 +6744,8 @@ the <a href="http://git-scm.com/docs/git-pull">git-pull(1)</a> manpage.
 @iftex
 the git-pull(1) manpage.
 @end iftex
- アップストリームとプッシュリモートの詳細についてはこちらを参照して下さい(@ref{The Two Remotes})。
+ アップストリーム(upstream)とプッシュリモート(push-remote)の詳細についてはこちらを参照して下さい(@ref{The Two
+Remotes})。
 
 @table @asis
 @kindex F
@@ -6793,7 +6793,8 @@ the <a href="http://git-scm.com/docs/git-push">git-push(1)</a> manpage.
 @iftex
 the git-push(1) manpage.
 @end iftex
- アップストリームとプッシュリモートの詳細についてはこちらを参照して下さい(@ref{The Two Remotes})。
+ アップストリーム(upstream)とプッシュリモート(push-remote)の詳細についてはこちらを参照して下さい(@ref{The Two
+Remotes})。
 
 @table @asis
 @kindex P
