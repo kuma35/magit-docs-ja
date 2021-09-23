@@ -6593,7 +6593,7 @@ buffer)に表示します。
 
 このコマンドは、ミニバッファ内で読み取られたリモートの陳腐化した(stale)refspecを削除します。
 
-refspecが原因でフェッチされるブランチがリモートに1つも存在しない場合、refspecは陳腐化しています。陳腐化したrefspecの存在によってGitが残りの陳腐化してないrefspecに従ってフェッチを拒否するため、問題があります。
+refspecでフェッチされるブランチがリモートに1つも存在しない場合、そのrefspecは陳腐化しています。陳腐化したrefspecがあると、Gitがその行以降の陳腐化してないrefspecによるフェッチも拒否するため、問題があります。
 
 陳腐化したrefspecのみが残っている場合、このコマンドは、リモートを削除するか、陳腐化したrefspecをデフォルトのrefspec
 ("+refs/heads/*:refs/remotes/REMOTE/*") に置き換えることを提案します。
@@ -6612,7 +6612,7 @@ refspecが原因でフェッチされるブランチがリモートに1つも存
 @node Remote Git Variables
 @subsection Remote Git Variables
 
-これらの変数達は、トランジェントプレフィックスコマンド@code{magit-remote-configure}から設定できます。デフォルトでは、@code{magit-remote}から設定することもできます。こちらを参照して下さい(@ref{Remote
+これらの変数は、トランジェントプレフィックスコマンド@code{magit-remote-configure}から設定できます。デフォルトでは、@code{magit-remote}から設定することもできます。こちらを参照して下さい(@ref{Remote
 Commands})。
 
 @defvar remote.NAME.url
@@ -6670,7 +6670,7 @@ buffer)に表示します。
 @cindex magit-fetch-from-pushremote
 @item @kbd{f p} @tie{}@tie{}@tie{}@tie{}(@code{magit-fetch-from-pushremote})
 
-このコマンドは、currentのプッシュリモートからフェッチします。
+このコマンドは、現在のプッシュリモートからフェッチします。
 
 プレフィックス引数を使用する場合、またはプッシュリモートが構成されていないか使用できない場合は、最初にユーザーにプッシュリモートを構成させます。
 
@@ -6678,9 +6678,9 @@ buffer)に表示します。
 @cindex magit-fetch-from-upstream
 @item @kbd{f u} @tie{}@tie{}@tie{}@tie{}(@code{magit-fetch-from-upstream})
 
-このコマンドは、currentのブランチのアップストリームからフェッチします。
+このコマンドは、現在のブランチのアップストリームからフェッチします。
 
-アップストリームがcurrentのブランチ用に構成されていて、既存のリモートに名前を付けている場合は、それを使用します。それ以外の場合は、別のリモートを使用しyようと試みます。リモートが1つだけ構成されている場合は、それを使用します。それ以外の場合、"origin"という名前のリモートが存在する場合は、それを使用します。
+アップストリームが現在のブランチ用に構成されていて、既存のリモートに名前を付けている場合は、それを使用します。それ以外の場合は、別のリモートを使用しようと試みます。リモートが1つだけ構成されている場合は、それを使用します。それ以外の場合、"origin"という名前のリモートが存在する場合は、それを使用します。
 
 リモートを判別できない場合、このコマンドは@code{magit-fetch}トランジェントプレフィックスコマンドから使用できず、直接呼び出すとエラーになります。
 
@@ -6759,7 +6759,7 @@ buffer)に表示します。
 @cindex magit-pull-from-pushremote
 @item @kbd{F p} @tie{}@tie{}@tie{}@tie{}(@code{magit-pull-from-pushremote})
 
-このコマンドは、currentのブランチのプッシュリモートからプルします。
+このコマンドは、現在のブランチのプッシュリモートからプルします。
 
 プレフィックス引数を使用する場合、またはプッシュリモートが構成されていないか使用できない場合は、最初にユーザーにプッシュリモートを構成させます。
 
@@ -6767,7 +6767,7 @@ buffer)に表示します。
 @cindex magit-pull-from-upstream
 @item @kbd{F u} @tie{}@tie{}@tie{}@tie{}(@code{magit-pull-from-upstream})
 
-このコマンドは、currentのブランチのアップストリームからプルします。
+このコマンドは、現在のブランチのアップストリームからプルします。
 
 プレフィックス引数を使用する場合、またはアップストリームが構成されていないか使用できない場合は、ユーザーが最初にアップストリームを構成できるようにします。
 
@@ -6808,7 +6808,7 @@ buffer)に表示します。
 @cindex magit-push-current-to-pushremote
 @item @kbd{P p} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-current-to-pushremote})
 
-このコマンドは、currentのブランチをそのプッシュリモートにプッシュします。
+このコマンドは、現在のブランチをそのプッシュリモートにプッシュします。
 
 プレフィックス引数を使用する場合、またはプッシュリモートが構成されていないか使用できない場合は、最初にユーザーにプッシュリモートを構成させます。
 
@@ -6816,7 +6816,7 @@ buffer)に表示します。
 @cindex magit-push-current-to-upstream
 @item @kbd{P u} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-current-to-upstream})
 
-このコマンドは、currentのブランチをそのアップストリームブランチにプッシュします。
+このコマンドは、現在のブランチをそのアップストリームブランチにプッシュします。
 
 プレフィックス引数を使用する場合、またはアップストリームが構成されていないか使用できない場合は、ユーザーが最初にアップストリームを構成できるようにします。
 
@@ -6824,7 +6824,7 @@ buffer)に表示します。
 @cindex magit-push-current
 @item @kbd{P e} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-current})
 
-このコマンドは、currentのブランチをミニバッファで読み取られたブランチにプッシュします。
+このコマンドは、現在のブランチをミニバッファで読み取られたブランチにプッシュします。
 
 @kindex P o
 @cindex magit-push-other
@@ -6836,7 +6836,7 @@ buffer)に表示します。
 @cindex magit-push-refspecs
 @item @kbd{P r} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-refspecs})
 
-このコマンドは、1つまたは複数のrefspecをリモートにプッシュします。どちらもミニバッファで読み取られます。
+このコマンドは、1つまたは複数のrefspecを使用してリモートにプッシュします。どちらもミニバッファで読み取られます。
 
 複数のrefspecを使用するには、それらをコンマで区切ります。補完は、コロンの前の部分、またはコロンが使用されていない場合にのみ使用できます。
 
@@ -6869,7 +6869,7 @@ state of the remote-tracking
 refs)を制御または認識していないため、危険な場合があります。その場合は、@code{push.useForceIfIncludes}を@code{true}に設定することを検討する必要があります(Git
 2.30以降で使用可能)。
 
-さらに2つのプッシュコマンドが存在しますが、デフォルトではpushトランジェントコマンドからは使用できません。それらをトランジェントコマンドに追加する方法については、doc-stringsを参照してください。
+さらに2つのプッシュコマンドが存在しますが、デフォルトではプッシュトランジェントコマンドからは使用できません。それらをトランジェントコマンドに追加する方法については、doc-stringsを参照してください。
 
 @cindex magit-push-implicitly args
 @deffn Command magit-push-implicitly args
@@ -6927,7 +6927,7 @@ commits)のパッチを作成します。リージョンが複数のコミット
 @cindex magit-patch-save
 @item @kbd{W s} @tie{}@tie{}@tie{}@tie{}(@code{magit-patch-save})
 
-このコマンドは、currentのdiffからパッチを作成します。
+このコマンドは、現在のdiffからパッチを作成します。
 
 @code{magit-diff-mode}または@code{magit-revision-mode}バッファ内では、@code{C-x
 C-w}もこのコマンドに結び付けられています。
@@ -6999,7 +6999,7 @@ buffer)に表示します。
 @cindex magit-am-continue
 @item @kbd{w w} @tie{}@tie{}@tie{}@tie{}(@code{magit-am-continue})
 
-このコマンドは、currentのパッチ適用シーケンスを再開します。
+このコマンドは、現在のパッチ適用シーケンスを再開します。
 
 @kindex w s
 @cindex magit-am-skip
@@ -7083,7 +7083,7 @@ tag)を作成します。
 @cindex magit-tag-prune
 @item @kbd{t p} @tie{}@tie{}@tie{}@tie{}(@code{magit-tag-prune})
 
-このコマンドは、REMOTEからローカルに欠落しているタグを削除することを提案します。その逆も同様です。
+このコマンドは、REMOTEにありローカルに欠落しているタグを削除することを提案します。その逆も同様にします。
 @end table
 
 @node Notes
@@ -7114,7 +7114,7 @@ buffer)に表示します。
 @cindex magit-notes-edit
 @item @kbd{T T} @tie{}@tie{}@tie{}@tie{}(@code{magit-notes-edit})
 
-コミットに添付されたnoteを編集します。デフォルトでは、その時点でのコミットになります。
+コミットに添付されたnoteを編集します。デフォルトでは、そのポイントでのコミットになります。
 
 デフォルトでは、Git変数@code{core.notesRef}または
 "refs/notes/commits"の値が未定義の場合は、その値を使用します。
@@ -7235,14 +7235,14 @@ HEADERは、ヘッダーに表示される文字列です。WIDTHは、列の幅
 buffer)に表示します。
 @end table
 
-以下のコマンドのいくつかは、デフォルトで、リージョンを使用して選択されたモジュールに作用します。簡潔にするために、それらの説明は「選択されたモジュール」について説明していますが、モジュールが選択されていない場合は、代わりにcurrentのモジュールに作用します。ポイントがモジュール上にない場合は、単一のモジュールを読み取って作用します。プレフィックス引数を使用すると、これらのコマンドは選択とcurrentのモジュールを無視し、代わりにすべての適切なモジュールに作用します。
+以下のコマンドのいくつかは、デフォルトで、リージョンを使用して選択されたモジュールに作用します。簡潔にするために、それらの説明は「選択されたモジュール」について説明していますが、モジュールが選択されていない場合は、代わりに現在のモジュールに作用します。ポイントがモジュール上にない場合は、単一のモジュールを読み取って作用します。プレフィックス引数を使用すると、これらのコマンドは選択したのや現在のモジュールを無視し、その代わりにすべての適切なモジュールに作用します。
 
 @table @asis
 @kindex o a
 @cindex magit-submodule-add
 @item @kbd{o a} @tie{}@tie{}@tie{}@tie{}(@code{magit-submodule-add})
 
-このコマンドは、URLのリポジトリをモジュールとして追加します。オプションのPATHは、スーパープロジェクトのルートを基準にしたモジュールへのパスです。nilの場合、パスはURLに基づいて決定されます。
+このコマンドは、指定のURLのリポジトリをモジュールとして追加します。オプションのPATHは、スーパープロジェクトのルートを基準にしたモジュールへのパスです。nilの場合、パスはURLに基づいて決定されます。
 
 @kindex o r
 @cindex magit-submodule-register
@@ -7260,7 +7260,7 @@ buffer)に表示します。
 @cindex magit-submodule-update
 @item @kbd{o u} @tie{}@tie{}@tie{}@tie{}(@code{magit-submodule-update})
 
-このコマンドは、記録されたコミットをチェックアウトする選択されたモジュールを更新します。
+このコマンドは、記録されたコミットをチェックアウトする選択したモジュールを更新します。
 
 @kindex o s
 @cindex magit-submodule-synchronize
@@ -7287,7 +7287,7 @@ buffer)に表示します。
 このコマンドは、すべてのモジュールをフェッチします。
 
 オプション@code{magit-fetch-modules-jobs}は、並列にフェッチされるサブモジュールの数を制御します。@code{git
-fetch}はそれを行わないことをサポートしていないため、スーパーリポジトリもフェッチします。プレフィックス引数を使用して、すべてのリモートをフェッチします。
+fetch}はスーパーリポジトリのフェッチを行わないことをサポートしていないため、スーパーリポジトリもフェッチします。プレフィックス引数を使用すると、すべてのリモートをフェッチします。
 @end table
 
 @node Subtree
@@ -7402,33 +7402,33 @@ buffer)に表示します。
 @cindex magit-worktree-checkout
 @item @kbd{% b} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-checkout})
 
-PATHの新しいワークツリーでBRANCHをチェックアウトします。
+PATHの新しいworktreeでBRANCHをチェックアウトします。
 
 @kindex % c
 @cindex magit-worktree-branch
 @item @kbd{% c} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-branch})
 
-新しいBRANCHを作成し、PATHの新しいワークツリーでチェックアウトします。
+新しいBRANCHを作成し、PATHの新しいworktreeでチェックアウトします。
 
 @kindex % m
 @cindex magit-worktree-move
 @item @kbd{% m} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-move})
 
-既存のワークツリーを新しいPATHに移動します。
+既存のworktreeを新しいPATHに移動します。
 
 @kindex % k
 @cindex magit-worktree-delete
 @item @kbd{% k} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-delete})
 
-ワークツリーを削除します。デフォルトでは、ポイントのワークツリーになります。プライマリワークツリーは削除できません。
+worktreeを削除します。デフォルトでは、ポイントのworktreeになります。プライマリworktreeは削除できません。
 
 @kindex % g
 @cindex magit-worktree-status
 @item @kbd{% g} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-status})
 
-ポイントでのワークツリーのステータスを表示します。
+ポイントでのworktreeのステータスを表示します。
 
-ポイントにワークツリーがない場合は、ミニバッファでワークツリーを読み取ります。ポイントのワークツリーが、現在のバッファにステータスがすでに表示されているワークツリーである場合は、代わりにDiredで表示します。
+ポイントにworktreeがない場合は、ミニバッファでworktreeを読み取ります。ポイントのworktreeが、現在のバッファにステータスがすでに表示されているworktreeである場合は、代わりにDiredで表示します。
 @end table
 
 @node Common Commands
@@ -7451,7 +7451,7 @@ PATHの新しいワークツリーでBRANCHをチェックアウトします。
 最後のバリエーションは@code{magit-display-buffer}を使用してこれを行うため、@code{magit-display-buffer-function}を尊重します。
 @end deffn
 
-これらは、メジャーモードが@code{magit-mode}から派生するすべてのバッファで使用できるコマンドの一部です。以下のコマンドのほかに他の一般的なコマンドがありますが、これらは他のどこにもうまく適合しませんでした。
+これらは、メジャーモードが@code{magit-mode}から派生するすべてのバッファで使用できるコマンドの一部です。以下のコマンドのほかに他の一般的なコマンドがありますが、これらは他には当てはまりませんでした。
 
 @table @asis
 @kindex C-w
@@ -7487,7 +7487,7 @@ files)を進行中のreferenceに保存するグローバルモードを提供�
 
 インデックスと作業ツリーの状態を追跡するために、2つの別々の進行中のrefernceが使用されます。それは@code{refs/wip/index/<branchref>}と@code{refs/wip/wtree/<branchref>}です。ここで@code{<branchref>}は現在のブランチの完全なrefで、例えば@code{refs/heads/master}です。@code{HEAD}がデタッチされると、@code{<branchref>}の替わりに@code{HEAD}が使用されます。
 
-別のブランチをチェックアウトする(または@code{HEAD}をデタッチする)と、その後の変更に異なるwip refsが使用されます。
+別のブランチをチェックアウトする(または@code{HEAD}をデタッチする)と、その後の変更では異なるwip refsが使用されます。
 
 @defopt magit-wip-mode
 
@@ -7495,8 +7495,8 @@ files)を進行中のreferenceに保存するグローバルモードを提供�
 
 この変数を直接設定しても効果はありません。カスタムインターフェイスを使用してこれを行うか、それぞれのモード関数を呼び出します。
 
-歴史的な理由から、このモードは他の4つの@code{magit-wip-*}モードの上に実装されています。これらのモードは、あなたが wip
-refsが更新されるタイミングをより細かく制御したい場合は、個別に使用することもできます。しかし、それはお勧めできません。こちらを参照して下さい(@ref{Legacy
+歴史的な理由から、このモードは他の4つの@code{magit-wip-*}モードの上に実装されています。あなたが wip
+refsが更新されるタイミングをより細かく制御したい場合は、これらのモードを個別に使用することもできます。しかし、それはお勧めしません。こちらを参照して下さい(@ref{Legacy
 Wip Modes})。
 @end defopt
 
@@ -7506,7 +7506,7 @@ refsのログを表示するには、コマンド@code{magit-wip-log}と@code{ma
 @cindex magit-wip-log
 @deffn Command magit-wip-log
 
-このコマンドは、ブランチとそのwip refsのログを表示します。負のプレフィックス引数を使用すると、ワークツリー wip refs
+このコマンドは、ブランチとそのwip refsのログを表示します。負のプレフィックス引数を使用すると、worktree wip refs
 のみが表示されます。
 
 プレフィックス引数の絶対値は、表示される各wip
@@ -7516,7 +7516,7 @@ refsの「ブランチ」の数を制御します。これは、@code{magit-wip-
 @cindex magit-wip-log-current
 @deffn Command magit-wip-log-current
 
-このコマンドは、現在のブランチとそのwip refs のログを表示します。負のプレフィックス引数を使用すると、ワークツリー wip refs
+このコマンドは、現在のブランチとそのwip refs のログを表示します。負のプレフィックス引数を使用すると、worktree wip refs
 のみが表示されます。
 
 プレフィックス引数の絶対値は、表示される各wip
@@ -7573,10 +7573,10 @@ refsの名前は@code{<namespace>index/<branchref>}や@code{<namespace>wtree/<br
 
 このオプションは、ブランチで新しいコミットが作成された後に、現在のブランチを wip refs にマージするかどうかを制御します。
 
-nil以外で、現在のブランチに新しいコミットがある場合、新しいwipコミットを作成する前に、それがwip
+nil以外でかつ現在のブランチに新しいコミットがある場合、新しいwipコミットを作成する前に、それがwip
 refにマージされます。これにより、wip履歴の検査が容易になり、wipコミットがガベージコレクションされることはありません。
 
-nilで、現在のブランチに新しいコミットがある場合、新しいwipコミットを作成する前に、wip
+nilでかつ現在のブランチに新しいコミットがある場合、新しいwipコミットを作成する前に、wip
 refがブランチの先端(tip)にリセットされます。この設定では、wipコミットは最終的にガベージコレクションされます。
 @end defopt
 
@@ -7623,7 +7623,7 @@ refのフォーク点は変更されません。フォーク点は、それぞ�
 @node Legacy Wip Modes
 @subsection Legacy Wip Modes
 
-モード@code{magit-wip-mode}(を参照)を使用してください。歴史的な理由で保持されている以下のモードの存在は無視することをお勧めします。
+@code{magit-wip-mode}モード(を参照)を使用してください。以下のモードは歴史的な事情で残されています。無視することをお勧めします。
 
 以下の変数達を直接設定しても効果はありません。カスタムインターフェイスを使用してこれを行うか、それぞれのモード関数を呼び出します。
 

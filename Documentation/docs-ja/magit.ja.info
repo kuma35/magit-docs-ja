@@ -7313,10 +7313,10 @@ File: magit.ja.info,  Node: Remote Commands,  Next: Remote Git Variables,  Up: R
      このコマンドは、ミニバッファ内で読み取られたリモートの陳腐化した
      (stale)refspecを削除します。
 
-     refspecが原因でフェッチされるブランチがリモートに1つも存在しない場
-     合、refspecは陳腐化しています。陳腐化したrefspecの存在によってGitが
-     残りの陳腐化してないrefspecに従ってフェッチを拒否するため、問題があ
-     ります。
+     refspecでフェッチされるブランチがリモートに1つも存在しない場合、そ
+     のrefspecは陳腐化しています。陳腐化したrefspecがあると、Gitがその行
+     以降の陳腐化してないrefspecによるフェッチも拒否するため、問題があり
+     ます。
 
      陳腐化したrefspecのみが残っている場合、このコマンドは、リモートを削
      除するか、陳腐化したrefspecをデフォルトのrefspec
@@ -7344,7 +7344,7 @@ File: magit.ja.info,  Node: Remote Git Variables,  Prev: Remote Commands,  Up: R
 7.1.2 Remote Git Variables
 --------------------------
 
-これらの変数達は、トランジェントプレフィックスコマンド
+これらの変数は、トランジェントプレフィックスコマンド
 ‘magit-remote-configure’から設定できます。デフォルトでは、
 ‘magit-remote’から設定することもできます。こちらを参照して下さい(*note
 Remote Commands::)。
@@ -7397,7 +7397,7 @@ File: magit.ja.info,  Node: Fetching,  Next: Pulling,  Prev: Remotes,  Up: Trans
 
 ‘f p’     (‘magit-fetch-from-pushremote’)
 
-     このコマンドは、currentのプッシュリモートからフェッチします。
+     このコマンドは、現在のプッシュリモートからフェッチします。
 
      プレフィックス引数を使用する場合、またはプッシュリモートが構成され
      ていないか使用できない場合は、最初にユーザーにプッシュリモートを構
@@ -7405,14 +7405,14 @@ File: magit.ja.info,  Node: Fetching,  Next: Pulling,  Prev: Remotes,  Up: Trans
 
 ‘f u’     (‘magit-fetch-from-upstream’)
 
-     このコマンドは、currentのブランチのアップストリームからフェッチしま
-     す。
+     このコマンドは、現在のブランチのアップストリームからフェッチします
+     。
 
-     アップストリームがcurrentのブランチ用に構成されていて、既存のリモー
-     トに名前を付けている場合は、それを使用します。それ以外の場合は、別
-     のリモートを使用しyようと試みます。リモートが1つだけ構成されている
-     場合は、それを使用します。それ以外の場合、"origin"という名前のリモ
-     ートが存在する場合は、それを使用します。
+     アップストリームが現在のブランチ用に構成されていて、既存のリモート
+     に名前を付けている場合は、それを使用します。それ以外の場合は、別の
+     リモートを使用しようと試みます。リモートが1つだけ構成されている場合
+     は、それを使用します。それ以外の場合、"origin"という名前のリモート
+     が存在する場合は、それを使用します。
 
      リモートを判別できない場合、このコマンドは‘magit-fetch’トランジェン
      トプレフィックスコマンドから使用できず、直接呼び出すとエラーになり
@@ -7476,7 +7476,7 @@ File: magit.ja.info,  Node: Pulling,  Next: Pushing,  Prev: Fetching,  Up: Trans
 
 ‘F p’     (‘magit-pull-from-pushremote’)
 
-     このコマンドは、currentのブランチのプッシュリモートからプルします。
+     このコマンドは、現在のブランチのプッシュリモートからプルします。
 
      プレフィックス引数を使用する場合、またはプッシュリモートが構成され
      ていないか使用できない場合は、最初にユーザーにプッシュリモートを構
@@ -7484,7 +7484,7 @@ File: magit.ja.info,  Node: Pulling,  Next: Pushing,  Prev: Fetching,  Up: Trans
 
 ‘F u’     (‘magit-pull-from-upstream’)
 
-     このコマンドは、currentのブランチのアップストリームからプルします。
+     このコマンドは、現在のブランチのアップストリームからプルします。
 
      プレフィックス引数を使用する場合、またはアップストリームが構成され
      ていないか使用できない場合は、ユーザーが最初にアップストリームを構
@@ -7514,8 +7514,8 @@ File: magit.ja.info,  Node: Pushing,  Next: Plain Patches,  Prev: Pulling,  Up: 
 
 ‘P p’     (‘magit-push-current-to-pushremote’)
 
-     このコマンドは、currentのブランチをそのプッシュリモートにプッシュし
-     ます。
+     このコマンドは、現在のブランチをそのプッシュリモートにプッシュしま
+     す。
 
      プレフィックス引数を使用する場合、またはプッシュリモートが構成され
      ていないか使用できない場合は、最初にユーザーにプッシュリモートを構
@@ -7523,8 +7523,8 @@ File: magit.ja.info,  Node: Pushing,  Next: Plain Patches,  Prev: Pulling,  Up: 
 
 ‘P u’     (‘magit-push-current-to-upstream’)
 
-     このコマンドは、currentのブランチをそのアップストリームブランチにプ
-     ッシュします。
+     このコマンドは、現在のブランチをそのアップストリームブランチにプッ
+     シュします。
 
      プレフィックス引数を使用する場合、またはアップストリームが構成され
      ていないか使用できない場合は、ユーザーが最初にアップストリームを構
@@ -7532,8 +7532,8 @@ File: magit.ja.info,  Node: Pushing,  Next: Plain Patches,  Prev: Pulling,  Up: 
 
 ‘P e’     (‘magit-push-current’)
 
-     このコマンドは、currentのブランチをミニバッファで読み取られたブラン
-     チにプッシュします。
+     このコマンドは、現在のブランチをミニバッファで読み取られたブランチ
+     にプッシュします。
 
 ‘P o’     (‘magit-push-other’)
 
@@ -7542,8 +7542,8 @@ File: magit.ja.info,  Node: Pushing,  Next: Plain Patches,  Prev: Pulling,  Up: 
 
 ‘P r’     (‘magit-push-refspecs’)
 
-     このコマンドは、1つまたは複数のrefspecをリモートにプッシュします。
-     どちらもミニバッファで読み取られます。
+     このコマンドは、1つまたは複数のrefspecを使用してリモートにプッシュ
+     します。どちらもミニバッファで読み取られます。
 
      複数のrefspecを使用するには、それらをコンマで区切ります。補完は、コ
      ロンの前の部分、またはコロンが使用されていない場合にのみ使用できま
@@ -7580,9 +7580,9 @@ File: magit.ja.info,  Node: Pushing,  Next: Plain Patches,  Prev: Pulling,  Up: 
 ‘push.useForceIfIncludes’を‘true’に設定することを検討する必要があります
 (Git 2.30以降で使用可能)。
 
-さらに2つのプッシュコマンドが存在しますが、デフォルトではpushトランジェ
-ントコマンドからは使用できません。それらをトランジェントコマンドに追加す
-る方法については、doc-stringsを参照してください。
+さらに2つのプッシュコマンドが存在しますが、デフォルトではプッシュトラン
+ジェントコマンドからは使用できません。それらをトランジェントコマンドに追
+加する方法については、doc-stringsを参照してください。
 
  -- Command: magit-push-implicitly args
 
@@ -7648,7 +7648,7 @@ File: magit.ja.info,  Node: Plain Patches,  Next: Maildir Patches,  Prev: Pushin
 
 ‘W s’     (‘magit-patch-save’)
 
-     このコマンドは、currentのdiffからパッチを作成します。
+     このコマンドは、現在のdiffからパッチを作成します。
 
      ‘magit-diff-mode’または‘magit-revision-mode’バッファ内では、‘C-x
      C-w’もこのコマンドに結び付けられています。
@@ -7694,7 +7694,7 @@ File: magit.ja.info,  Node: Maildir Patches,  Prev: Plain Patches,  Up: Transfer
 
 ‘w w’     (‘magit-am-continue’)
 
-     このコマンドは、currentのパッチ適用シーケンスを再開します。
+     このコマンドは、現在のパッチ適用シーケンスを再開します。
 
 ‘w s’     (‘magit-am-skip’)
 
@@ -7775,8 +7775,8 @@ File: magit.ja.info,  Node: Tagging,  Next: Notes,  Up: Miscellaneous
 
 ‘t p’     (‘magit-tag-prune’)
 
-     このコマンドは、REMOTEからローカルに欠落しているタグを削除すること
-     を提案します。その逆も同様です。
+     このコマンドは、REMOTEにありローカルに欠落しているタグを削除するこ
+     とを提案します。その逆も同様にします。
 
 
 File: magit.ja.info,  Node: Notes,  Next: Submodules,  Prev: Tagging,  Up: Miscellaneous
@@ -7796,8 +7796,8 @@ File: magit.ja.info,  Node: Notes,  Next: Submodules,  Prev: Tagging,  Up: Misce
 
 ‘T T’     (‘magit-notes-edit’)
 
-     コミットに添付されたnoteを編集します。デフォルトでは、その時点での
-     コミットになります。
+     コミットに添付されたnoteを編集します。デフォルトでは、そのポイント
+     でのコミットになります。
 
      デフォルトでは、Git変数‘core.notesRef’または "refs/notes/commits"の
      値が未定義の場合は、その値を使用します。
@@ -7915,16 +7915,16 @@ File: magit.ja.info,  Node: submodule用トランジェントコマンド,  Prev
 以下のコマンドのいくつかは、デフォルトで、リージョンを使用して選択された
 モジュールに作用します。簡潔にするために、それらの説明は「選択されたモジ
 ュール」について説明していますが、モジュールが選択されていない場合は、代
-わりにcurrentのモジュールに作用します。ポイントがモジュール上にない場合
-は、単一のモジュールを読み取って作用します。プレフィックス引数を使用する
-と、これらのコマンドは選択とcurrentのモジュールを無視し、代わりにすべて
-の適切なモジュールに作用します。
+わりに現在のモジュールに作用します。ポイントがモジュール上にない場合は、
+単一のモジュールを読み取って作用します。プレフィックス引数を使用すると、
+これらのコマンドは選択したのや現在のモジュールを無視し、その代わりにすべ
+ての適切なモジュールに作用します。
 
 ‘o a’     (‘magit-submodule-add’)
 
-     このコマンドは、URLのリポジトリをモジュールとして追加します。オプシ
-     ョンのPATHは、スーパープロジェクトのルートを基準にしたモジュールへ
-     のパスです。nilの場合、パスはURLに基づいて決定されます。
+     このコマンドは、指定のURLのリポジトリをモジュールとして追加します。
+     オプションのPATHは、スーパープロジェクトのルートを基準にしたモジュ
+     ールへのパスです。nilの場合、パスはURLに基づいて決定されます。
 
 ‘o r’     (‘magit-submodule-register’)
 
@@ -7940,8 +7940,8 @@ File: magit.ja.info,  Node: submodule用トランジェントコマンド,  Prev
 
 ‘o u’     (‘magit-submodule-update’)
 
-     このコマンドは、記録されたコミットをチェックアウトする選択されたモ
-     ジュールを更新します。
+     このコマンドは、記録されたコミットをチェックアウトする選択したモジ
+     ュールを更新します。
 
 ‘o s’     (‘magit-submodule-synchronize’)
 
@@ -7962,9 +7962,10 @@ File: magit.ja.info,  Node: submodule用トランジェントコマンド,  Prev
      このコマンドは、すべてのモジュールをフェッチします。
 
      オプション‘magit-fetch-modules-jobs’は、並列にフェッチされるサブモ
-     ジュールの数を制御します。‘git fetch’はそれを行わないことをサポート
-     していないため、スーパーリポジトリもフェッチします。プレフィックス
-     引数を使用して、すべてのリモートをフェッチします。
+     ジュールの数を制御します。‘git fetch’はスーパーリポジトリのフェッチ
+     を行わないことをサポートしていないため、スーパーリポジトリもフェッ
+     チします。プレフィックス引数を使用すると、すべてのリモートをフェッ
+     チします。
 
 
 File: magit.ja.info,  Node: Subtree,  Next: Worktree,  Prev: Submodules,  Up: Miscellaneous
@@ -8053,30 +8054,28 @@ File: magit.ja.info,  Node: Worktree,  Next: Common Commands,  Prev: Subtree,  U
 
 ‘% b’     (‘magit-worktree-checkout’)
 
-     PATHの新しいワークツリーでBRANCHをチェックアウトします。
+     PATHの新しいworktreeでBRANCHをチェックアウトします。
 
 ‘% c’     (‘magit-worktree-branch’)
 
-     新しいBRANCHを作成し、PATHの新しいワークツリーでチェックアウトしま
-     す。
+     新しいBRANCHを作成し、PATHの新しいworktreeでチェックアウトします。
 
 ‘% m’     (‘magit-worktree-move’)
 
-     既存のワークツリーを新しいPATHに移動します。
+     既存のworktreeを新しいPATHに移動します。
 
 ‘% k’     (‘magit-worktree-delete’)
 
-     ワークツリーを削除します。デフォルトでは、ポイントのワークツリーに
-     なります。プライマリワークツリーは削除できません。
+     worktreeを削除します。デフォルトでは、ポイントのworktreeになります
+     。プライマリworktreeは削除できません。
 
 ‘% g’     (‘magit-worktree-status’)
 
-     ポイントでのワークツリーのステータスを表示します。
+     ポイントでのworktreeのステータスを表示します。
 
-     ポイントにワークツリーがない場合は、ミニバッファでワークツリーを読
-     み取ります。ポイントのワークツリーが、現在のバッファにステータスが
-     すでに表示されているワークツリーである場合は、代わりにDiredで表示し
-     ます。
+     ポイントにworktreeがない場合は、ミニバッファでworktreeを読み取りま
+     す。ポイントのworktreeが、現在のバッファにステータスがすでに表示さ
+     れているworktreeである場合は、代わりにDiredで表示します。
 
 
 File: magit.ja.info,  Node: Common Commands,  Next: Wip Modes,  Prev: Worktree,  Up: Miscellaneous
@@ -8098,7 +8097,7 @@ File: magit.ja.info,  Node: Common Commands,  Next: Wip Modes,  Prev: Worktree, 
 
 これらは、メジャーモードが‘magit-mode’から派生するすべてのバッファで使用
 できるコマンドの一部です。以下のコマンドのほかに他の一般的なコマンドがあ
-りますが、これらは他のどこにもうまく適合しませんでした。
+りますが、これらは他には当てはまりませんでした。
 
 ‘C-w’     (‘magit-copy-section-value’)
 
@@ -8161,7 +8160,7 @@ refernceが使用されます。それは‘refs/wip/index/<branchref>’と
 ‘<branchref>’の替わりに‘HEAD’が使用されます。
 
 別のブランチをチェックアウトする(または‘HEAD’をデタッチする)と、その後の
-変更に異なるwip refsが使用されます。
+変更では異なるwip refsが使用されます。
 
  -- User Option: magit-wip-mode
 
@@ -8173,10 +8172,10 @@ refernceが使用されます。それは‘refs/wip/index/<branchref>’と
      を使用してこれを行うか、それぞれのモード関数を呼び出します。
 
      歴史的な理由から、このモードは他の4つの‘magit-wip-*’モードの上に実
-     装されています。これらのモードは、あなたが wip refsが更新されるタイ
-     ミングをより細かく制御したい場合は、個別に使用することもできます。
-     しかし、それはお勧めできません。こちらを参照して下さい(*note Legacy
-     Wip Modes::)。
+     装されています。あなたが wip refsが更新されるタイミングをより細かく
+     制御したい場合は、これらのモードを個別に使用することもできます。し
+     かし、それはお勧めしません。こちらを参照して下さい(*note Legacy Wip
+     Modes::)。
 
 ブランチとそのwip refsのログを表示するには、コマンド‘magit-wip-log’と
 ‘magit-wip-log-current’を使用します。これらのコマンドを使用するときは、
@@ -8185,8 +8184,7 @@ refernceが使用されます。それは‘refs/wip/index/<branchref>’と
  -- Command: magit-wip-log
 
      このコマンドは、ブランチとそのwip refsのログを表示します。負のプレ
-     フィックス引数を使用すると、ワークツリー wip refs のみが表示されま
-     す。
+     フィックス引数を使用すると、worktree wip refs のみが表示されます。
 
      プレフィックス引数の絶対値は、表示される各wip refsの「ブランチ」の
      数を制御します。これは、‘magit-wip-merge-branch’の値が‘nil’の場合に
@@ -8195,8 +8193,8 @@ refernceが使用されます。それは‘refs/wip/index/<branchref>’と
  -- Command: magit-wip-log-current
 
      このコマンドは、現在のブランチとそのwip refs のログを表示します。負
-     のプレフィックス引数を使用すると、ワークツリー wip refs のみが表示
-     されます。
+     のプレフィックス引数を使用すると、worktree wip refs のみが表示され
+     ます。
 
      プレフィックス引数の絶対値は、表示される各wip refsの「ブランチ」の
      数を制御します。これは、‘magit-wip-merge-branch’の値が‘nil’の場合に
@@ -8261,14 +8259,14 @@ File: magit.ja.info,  Node: Wip Graph,  Next: Legacy Wip Modes,  Up: Wip Modes
      このオプションは、ブランチで新しいコミットが作成された後に、現在の
      ブランチを wip refs にマージするかどうかを制御します。
 
-     nil以外で、現在のブランチに新しいコミットがある場合、新しいwipコミ
-     ットを作成する前に、それがwip refにマージされます。これにより、
+     nil以外でかつ現在のブランチに新しいコミットがある場合、新しいwipコ
+     ミットを作成する前に、それがwip refにマージされます。これにより、
      wip履歴の検査が容易になり、wipコミットがガベージコレクションされる
      ことはありません。
 
-     nilで、現在のブランチに新しいコミットがある場合、新しいwipコミット
-     を作成する前に、wip refがブランチの先端(tip)にリセットされます。こ
-     の設定では、wipコミットは最終的にガベージコレクションされます。
+     nilでかつ現在のブランチに新しいコミットがある場合、新しいwipコミッ
+     トを作成する前に、wip refがブランチの先端(tip)にリセットされます。
+     この設定では、wipコミットは最終的にガベージコレクションされます。
 
 ‘magit-wip-merge-branch’が‘t’の場合、履歴は以下のようになります:
 
@@ -8315,8 +8313,8 @@ File: magit.ja.info,  Node: Legacy Wip Modes,  Prev: Wip Graph,  Up: Wip Modes
 8.7.2 Legacy Wip Modes
 ----------------------
 
-モード‘magit-wip-mode’(を参照)を使用してください。歴史的な理由で保持され
-ている以下のモードの存在は無視することをお勧めします。
+‘magit-wip-mode’モード(を参照)を使用してください。以下のモードは歴史的な
+事情で残されています。無視することをお勧めします。
 
 以下の変数達を直接設定しても効果はありません。カスタムインターフェイスを
 使用してこれを行うか、それぞれのモード関数を呼び出します。
@@ -10266,9 +10264,9 @@ Appendix C Keystroke Index
 * %:                                     Worktree.            (line   8)
 * % b:                                   Worktree.            (line  15)
 * % c:                                   Worktree.            (line  19)
-* % g:                                   Worktree.            (line  33)
-* % k:                                   Worktree.            (line  28)
-* % m:                                   Worktree.            (line  24)
+* % g:                                   Worktree.            (line  32)
+* % k:                                   Worktree.            (line  27)
+* % m:                                   Worktree.            (line  23)
 * +:                                     Log Buffer.          (line  73)
 * + <1>:                                 Refreshing Diffs.    (line  68)
 * -:                                     Log Buffer.          (line  77)
@@ -10556,7 +10554,7 @@ Appendix C Keystroke Index
                                                               (line  20)
 * M-x magit-version:                     Git実行ファイル.     (line  61)
 * M-x magit-version <1>:                 Debugging Tools.     (line  10)
-* M-x magit-wip-commit:                  Wip Modes.           (line  91)
+* M-x magit-wip-commit:                  Wip Modes.           (line  90)
 * M-x with-editor-debug:                 Debugging Tools.     (line  45)
 * MM:                                    Editing Rebase Sequences.
                                                               (line 126)
@@ -10700,7 +10698,7 @@ Appendix C Keystroke Index
 * X m:                                   Resetting.           (line  15)
 * X s:                                   Resetting.           (line  21)
 * X w:                                   Resetting.           (line  46)
-* X w <1>:                               Wip Modes.           (line  69)
+* X w <1>:                               Wip Modes.           (line  68)
 * Y:                                     Cherries.            (line  17)
 * y:                                     References Buffer.   (line   6)
 * y <1>:                                 Editing Rebase Sequences.
@@ -11104,7 +11102,7 @@ Appendix D Command Index
 * magit-reset-quickly:                   Resetting.           (line   8)
 * magit-reset-soft:                      Resetting.           (line  21)
 * magit-reset-worktree:                  Resetting.           (line  46)
-* magit-reset-worktree <1>:              Wip Modes.           (line  69)
+* magit-reset-worktree <1>:              Wip Modes.           (line  68)
 * magit-reverse:                         Applying.            (line  46)
 * magit-reverse-in-index:                Staging and Unstaging.
                                                               (line  67)
@@ -11231,15 +11229,15 @@ Appendix D Command Index
 * magit-version:                         Git実行ファイル.     (line  61)
 * magit-version <1>:                     Debugging Tools.     (line  10)
 * magit-visit-ref:                       References Buffer.   (line 172)
-* magit-wip-commit:                      Wip Modes.           (line  91)
+* magit-wip-commit:                      Wip Modes.           (line  90)
 * magit-wip-log:                         Wip Modes.           (line  49)
-* magit-wip-log-current:                 Wip Modes.           (line  59)
+* magit-wip-log-current:                 Wip Modes.           (line  58)
 * magit-worktree:                        Worktree.            (line   8)
 * magit-worktree-branch:                 Worktree.            (line  19)
 * magit-worktree-checkout:               Worktree.            (line  15)
-* magit-worktree-delete:                 Worktree.            (line  28)
-* magit-worktree-move:                   Worktree.            (line  24)
-* magit-worktree-status:                 Worktree.            (line  33)
+* magit-worktree-delete:                 Worktree.            (line  27)
+* magit-worktree-move:                   Worktree.            (line  23)
+* magit-worktree-status:                 Worktree.            (line  32)
 * scroll-down:                           Commands Available in Diffs.
                                                               (line  61)
 * scroll-up:                             Commands Available in Diffs.
@@ -11495,7 +11493,7 @@ Appendix E Function Index
 * magit-switch-to-repository-buffer-other-window: Common Commands.
                                                               (line   7)
 * magit-wip-log:                         Wip Modes.           (line  49)
-* magit-wip-log-current:                 Wip Modes.           (line  59)
+* magit-wip-log-current:                 Wip Modes.           (line  58)
 * with-editor-usage-message:             Commit Mode and Hooks.
                                                               (line  60)
 
@@ -11712,8 +11710,8 @@ Appendix F Variable Index
 * magit-wip-initial-backup-mode-lighter: Legacy Wip Modes.    (line  64)
 * magit-wip-merge-branch:                Wip Graph.           (line   6)
 * magit-wip-mode:                        Wip Modes.           (line  30)
-* magit-wip-mode-lighter:                Wip Modes.           (line 108)
-* magit-wip-namespace:                   Wip Modes.           (line 100)
+* magit-wip-mode-lighter:                Wip Modes.           (line 107)
+* magit-wip-namespace:                   Wip Modes.           (line  99)
 * notes.displayRef:                      Notes.               (line  66)
 * pull.rebase:                           Branch Git Variables.
                                                               (line  57)
@@ -11828,79 +11826,79 @@ Node: Stashing365288
 Node: Transferring372137
 Node: Remotes372362
 Node: Remote Commands372517
-Node: Remote Git Variables378123
-Node: Fetching379828
-Node: Pulling383664
-Node: Pushing385332
-Node: Plain Patches391620
-Node: Maildir Patches393969
-Node: Miscellaneous396231
-Node: Tagging396548
-Node: Notes399354
-Node: Submodules402572
-Node: Listing Submodules402837
-Node: submodule用トランジェントコマンド404537
-Node: Subtree408212
-Node: Worktree411483
-Node: Common Commands413164
-Node: Wip Modes416400
-Node: Wip Graph423105
-Node: Legacy Wip Modes425984
-Node: Commands for Buffers Visiting Files429571
-Node: Minor Mode for Buffers Visiting Blobs437580
-Node: Customizing438601
-Node: Per-Repository Configuration440551
-Node: 基本設定443245
-Node: Safety443629
-Node: Performance446041
-Ref: Log Performance450307
-Ref: Diff Performance452066
-Ref: Refs Buffer Performance453777
-Ref: Committing Performance454563
-Node: Microsoft Windows Performance455705
-Node: MacOS Performance457208
-Ref: MacOS Performance-Footnote-1458080
-Node: Default Bindings458219
-Node: 配管コマンド(Plumbing)461160
-Node: Calling Git462248
-Node: Getting a Value from Git464209
-Node: Calling Git for Effect468888
-Node: Section Plumbing476996
-Node: Creating Sections477247
-Node: Section Selection482568
-Node: Matching Sections484767
-Node: Refreshing Buffers492586
-Node: 慣習496550
-Node: Theming Faces496761
-Node: FAQ507434
-Node: FAQ - How to ...?507967
-Node: Magitの発音は？508426
-Node: How to show git's output?509459
-Node: How to install the gitman info manual?510487
-Node: How to show diffs for gpg-encrypted files?511762
-Node: How does branching and pushing work?512465
-Node: Magitをediff-version-control-packageとして使用できますか？512872
-Node: VCを無効にする必要がありますか？515457
-Node: FAQ - Issues and Errors516351
-Node: Magit is slow517701
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517941
-Node: コミットに問題があります518973
-Node: MS WindowsではMagitでpushできません519534
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520235
-Node: ファイルを展開してdiffを表示するとファイルが消えます521435
-Node: COMMIT_EDITMSGバッファのpointが間違っています522218
-Node: モード行の情報が常に最新ではない523591
-Node: 同じ名前を共有するブランチとタグは何かを壊します524798
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525951
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません527089
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります530146
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531369
-Node: 私はポップアップのデフォルトを保存できなくなりました532548
-Node: Debugging Tools533955
-Node: Keystroke Index536805
-Node: Command Index571414
-Node: Function Index609554
-Node: Variable Index626643
+Node: Remote Git Variables378120
+Node: Fetching379822
+Node: Pulling383654
+Node: Pushing385320
+Node: Plain Patches391625
+Node: Maildir Patches393973
+Node: Miscellaneous396234
+Node: Tagging396551
+Node: Notes399366
+Node: Submodules402590
+Node: Listing Submodules402855
+Node: submodule用トランジェントコマンド404555
+Node: Subtree408294
+Node: Worktree411565
+Node: Common Commands413124
+Node: Wip Modes416348
+Node: Wip Graph423024
+Node: Legacy Wip Modes425909
+Node: Commands for Buffers Visiting Files429490
+Node: Minor Mode for Buffers Visiting Blobs437499
+Node: Customizing438520
+Node: Per-Repository Configuration440470
+Node: 基本設定443164
+Node: Safety443548
+Node: Performance445960
+Ref: Log Performance450226
+Ref: Diff Performance451985
+Ref: Refs Buffer Performance453696
+Ref: Committing Performance454482
+Node: Microsoft Windows Performance455624
+Node: MacOS Performance457127
+Ref: MacOS Performance-Footnote-1457999
+Node: Default Bindings458138
+Node: 配管コマンド(Plumbing)461079
+Node: Calling Git462167
+Node: Getting a Value from Git464128
+Node: Calling Git for Effect468807
+Node: Section Plumbing476915
+Node: Creating Sections477166
+Node: Section Selection482487
+Node: Matching Sections484686
+Node: Refreshing Buffers492505
+Node: 慣習496469
+Node: Theming Faces496680
+Node: FAQ507353
+Node: FAQ - How to ...?507886
+Node: Magitの発音は？508345
+Node: How to show git's output?509378
+Node: How to install the gitman info manual?510406
+Node: How to show diffs for gpg-encrypted files?511681
+Node: How does branching and pushing work?512384
+Node: Magitをediff-version-control-packageとして使用できますか？512791
+Node: VCを無効にする必要がありますか？515376
+Node: FAQ - Issues and Errors516270
+Node: Magit is slow517620
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517860
+Node: コミットに問題があります518892
+Node: MS WindowsではMagitでpushできません519453
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520154
+Node: ファイルを展開してdiffを表示するとファイルが消えます521354
+Node: COMMIT_EDITMSGバッファのpointが間違っています522137
+Node: モード行の情報が常に最新ではない523510
+Node: 同じ名前を共有するブランチとタグは何かを壊します524717
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525870
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません527008
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります530065
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531288
+Node: 私はポップアップのデフォルトを保存できなくなりました532467
+Node: Debugging Tools533874
+Node: Keystroke Index536724
+Node: Command Index571333
+Node: Function Index609473
+Node: Variable Index626562
 
 End Tag Table
 

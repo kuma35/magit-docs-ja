@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
 "POT-Creation-Date: 2021-08-20 03:37+0900\n"
-"PO-Revision-Date: 2021-09-21 22:01+0900\n"
+"PO-Revision-Date: 2021-09-23 12:36+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -17311,6 +17311,10 @@ msgstr "magit-remote-prune-refspecs"
 msgid "@kbd{M P} @tie{}@tie{}@tie{}@tie{}(@code{magit-remote-prune-refspecs})"
 msgstr "@kbd{M P} @tie{}@tie{}@tie{}@tie{}(@code{magit-remote-prune-refspecs})"
 
+# git book
+# https://git-scm.com/book/ja/v2
+# 10.5 Gitの内側 - Refspec
+# 参照
 #. type: table
 #: sed-out/magit.texi:8499
 msgid "This command removes stale refspecs for a remote read in the minibuffer."
@@ -17323,7 +17327,7 @@ msgid ""
 "remote that would be fetched due to that refspec.  A stale refspec is "
 "problematic because its existence causes Git to refuse to fetch according to "
 "the remaining non-stale refspecs."
-msgstr "refspecが原因でフェッチされるブランチがリモートに1つも存在しない場合、refspecは陳腐化しています。陳腐化したrefspecの存在によってGitが残りの陳腐化してないrefspecに従ってフェッチを拒否するため、問題があります。"
+msgstr "refspecでフェッチされるブランチがリモートに1つも存在しない場合、そのrefspecは陳腐化しています。陳腐化したrefspecがあると、Gitがその行以降の陳腐化してないrefspecによるフェッチも拒否するため、問題があります。"
 
 #. type: table
 #: sed-out/magit.texi:8508
@@ -17369,7 +17373,7 @@ msgid ""
 "These variables can be set from the transient prefix command "
 "@code{magit-remote-configure}.  By default they can also be set from "
 "@code{magit-remote}.  See @ref{Remote Commands}."
-msgstr "これらの変数達は、トランジェントプレフィックスコマンド@code{magit-remote-configure}から設定できます。デフォルトでは、@code{magit-remote}から設定することもできます。こちらを参照して下さい(@ref{Remote Commands})。"
+msgstr "これらの変数は、トランジェントプレフィックスコマンド@code{magit-remote-configure}から設定できます。デフォルトでは、@code{magit-remote}から設定することもできます。こちらを参照して下さい(@ref{Remote Commands})。"
 
 #. type: defvar
 #: sed-out/magit.texi:8535
@@ -17390,6 +17394,10 @@ msgstr "この変数は、NAMEという名前のリモートのURLを指定し�
 msgid "remote.NAME.fetch"
 msgstr "remote.NAME.fetch"
 
+# git book
+# https://git-scm.com/book/ja/v2
+# 10.5 Gitの内側 - Refspec
+# 参照
 #. type: defvar
 #: sed-out/magit.texi:8545
 msgid ""
@@ -17493,7 +17501,7 @@ msgstr "@kbd{f p} @tie{}@tie{}@tie{}@tie{}(@code{magit-fetch-from-pushremote})"
 #. type: table
 #: sed-out/magit.texi:8600
 msgid "This command fetches from the current push-remote."
-msgstr "このコマンドは、currentのプッシュリモートからフェッチします。"
+msgstr "このコマンドは、現在のプッシュリモートからフェッチします。"
 
 #. type: kindex
 #: sed-out/magit.texi:8605
@@ -17516,7 +17524,7 @@ msgstr "@kbd{f u} @tie{}@tie{}@tie{}@tie{}(@code{magit-fetch-from-upstream})"
 #. type: table
 #: sed-out/magit.texi:8610
 msgid "This command fetch from the upstream of the current branch."
-msgstr "このコマンドは、currentのブランチのアップストリームからフェッチします。"
+msgstr "このコマンドは、現在のブランチのアップストリームからフェッチします。"
 
 #. type: table
 #: sed-out/magit.texi:8615
@@ -17525,7 +17533,7 @@ msgid ""
 "remote, then use that.  Otherwise try to use another remote: If only a "
 "single remote is configured, then use that.  Otherwise if a remote named "
 "\"origin\" exists, then use that."
-msgstr "アップストリームがcurrentのブランチ用に構成されていて、既存のリモートに名前を付けている場合は、それを使用します。それ以外の場合は、別のリモートを使用しyようと試みます。リモートが1つだけ構成されている場合は、それを使用します。それ以外の場合、\"origin\"という名前のリモートが存在する場合は、それを使用します。"
+msgstr "アップストリームが現在のブランチ用に構成されていて、既存のリモートに名前を付けている場合は、それを使用します。それ以外の場合は、別のリモートを使用しようと試みます。リモートが1つだけ構成されている場合は、それを使用します。それ以外の場合、\"origin\"という名前のリモートが存在する場合は、それを使用します。"
 
 #. type: table
 #: sed-out/magit.texi:8619
@@ -17749,7 +17757,7 @@ msgstr "@kbd{F p} @tie{}@tie{}@tie{}@tie{}(@code{magit-pull-from-pushremote})"
 #. type: table
 #: sed-out/magit.texi:8702
 msgid "This command pulls from the push-remote of the current branch."
-msgstr "このコマンドは、currentのブランチのプッシュリモートからプルします。"
+msgstr "このコマンドは、現在のブランチのプッシュリモートからプルします。"
 
 #. type: kindex
 #: sed-out/magit.texi:8707
@@ -17772,7 +17780,7 @@ msgstr "@kbd{F u} @tie{}@tie{}@tie{}@tie{}(@code{magit-pull-from-upstream})"
 #. type: table
 #: sed-out/magit.texi:8712
 msgid "This command pulls from the upstream of the current branch."
-msgstr "このコマンドは、currentのブランチのアップストリームからプルします。"
+msgstr "このコマンドは、現在のブランチのアップストリームからプルします。"
 
 #. type: kindex
 #: sed-out/magit.texi:8717
@@ -17851,7 +17859,7 @@ msgstr "@kbd{P p} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-current-to-pushremot
 #. type: table
 #: sed-out/magit.texi:8756
 msgid "This command pushes the current branch to its push-remote."
-msgstr "このコマンドは、currentのブランチをそのプッシュリモートにプッシュします。"
+msgstr "このコマンドは、現在のブランチをそのプッシュリモートにプッシュします。"
 
 #. type: kindex
 #: sed-out/magit.texi:8761
@@ -17874,7 +17882,7 @@ msgstr "@kbd{P u} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-current-to-upstream}
 #. type: table
 #: sed-out/magit.texi:8766
 msgid "This command pushes the current branch to its upstream branch."
-msgstr "このコマンドは、currentのブランチをそのアップストリームブランチにプッシュします。"
+msgstr "このコマンドは、現在のブランチをそのアップストリームブランチにプッシュします。"
 
 #. type: kindex
 #: sed-out/magit.texi:8771
@@ -17897,7 +17905,7 @@ msgstr "@kbd{P e} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-current})"
 #. type: table
 #: sed-out/magit.texi:8777
 msgid "This command pushes the current branch to a branch read in the minibuffer."
-msgstr "このコマンドは、currentのブランチをミニバッファで読み取られたブランチにプッシュします。"
+msgstr "このコマンドは、現在のブランチをミニバッファで読み取られたブランチにプッシュします。"
 
 #. type: kindex
 #: sed-out/magit.texi:8778
@@ -17947,7 +17955,7 @@ msgstr "@kbd{P r} @tie{}@tie{}@tie{}@tie{}(@code{magit-push-refspecs})"
 msgid ""
 "This command pushes one or multiple refspecs to a remote, both of which are "
 "read in the minibuffer."
-msgstr "このコマンドは、1つまたは複数のrefspecをリモートにプッシュします。どちらもミニバッファで読み取られます。"
+msgstr "このコマンドは、1つまたは複数のrefspecを使用してリモートにプッシュします。どちらもミニバッファで読み取られます。"
 
 #. type: table
 #: sed-out/magit.texi:8795
@@ -18051,7 +18059,7 @@ msgid ""
 "Two more push commands exist, which by default are not available from the "
 "push transient.  See their doc-strings for instructions on how to add them "
 "to the transient."
-msgstr "さらに2つのプッシュコマンドが存在しますが、デフォルトではpushトランジェントコマンドからは使用できません。それらをトランジェントコマンドに追加する方法については、doc-stringsを参照してください。"
+msgstr "さらに2つのプッシュコマンドが存在しますが、デフォルトではプッシュトランジェントコマンドからは使用できません。それらをトランジェントコマンドに追加する方法については、doc-stringsを参照してください。"
 
 #. type: cindex
 #: sed-out/magit.texi:8837
@@ -18229,7 +18237,7 @@ msgstr "@kbd{W s} @tie{}@tie{}@tie{}@tie{}(@code{magit-patch-save})"
 #. type: table
 #: sed-out/magit.texi:8910
 msgid "This command creates a patch from the current diff."
-msgstr "このコマンドは、currentのdiffからパッチを作成します。"
+msgstr "このコマンドは、現在のdiffからパッチを作成します。"
 
 #. type: table
 #: sed-out/magit.texi:8913
@@ -18377,7 +18385,7 @@ msgstr "@kbd{w w} @tie{}@tie{}@tie{}@tie{}(@code{magit-am-continue})"
 #. type: table
 #: sed-out/magit.texi:8988
 msgid "This command resumes the current patch applying sequence."
-msgstr "このコマンドは、currentのパッチ適用シーケンスを再開します。"
+msgstr "このコマンドは、現在のパッチ適用シーケンスを再開します。"
 
 #. type: kindex
 #: sed-out/magit.texi:8989
@@ -18575,7 +18583,7 @@ msgstr "@kbd{t p} @tie{}@tie{}@tie{}@tie{}(@code{magit-tag-prune})"
 msgid ""
 "This command offers to delete tags missing locally from REMOTE, and vice "
 "versa."
-msgstr "このコマンドは、REMOTEからローカルに欠落しているタグを削除することを提案します。その逆も同様です。"
+msgstr "このコマンドは、REMOTEにありローカルに欠落しているタグを削除することを提案します。その逆も同様にします。"
 
 #. type: section
 #: sed-out/magit.texi:9090 sed-out/magit.texi:9091
@@ -18637,7 +18645,7 @@ msgstr "@kbd{T T} @tie{}@tie{}@tie{}@tie{}(@code{magit-notes-edit})"
 #. type: table
 #: sed-out/magit.texi:9121
 msgid "Edit the note attached to a commit, defaulting to the commit at point."
-msgstr "コミットに添付されたnoteを編集します。デフォルトでは、その時点でのコミットになります。"
+msgstr "コミットに添付されたnoteを編集します。デフォルトでは、そのポイントでのコミットになります。"
 
 # Git variable : git book では 設定変数 となっている。 man git-config では単に variable
 # from man git-config:
@@ -18928,7 +18936,7 @@ msgid ""
 "module instead, or if point isn't on a module, then the read a single module "
 "to act on.  With a prefix argument these commands ignore the selection and "
 "the current module and instead act on all suitable modules."
-msgstr "以下のコマンドのいくつかは、デフォルトで、リージョンを使用して選択されたモジュールに作用します。簡潔にするために、それらの説明は「選択されたモジュール」について説明していますが、モジュールが選択されていない場合は、代わりにcurrentのモジュールに作用します。ポイントがモジュール上にない場合は、単一のモジュールを読み取って作用します。プレフィックス引数を使用すると、これらのコマンドは選択とcurrentのモジュールを無視し、代わりにすべての適切なモジュールに作用します。"
+msgstr "以下のコマンドのいくつかは、デフォルトで、リージョンを使用して選択されたモジュールに作用します。簡潔にするために、それらの説明は「選択されたモジュール」について説明していますが、モジュールが選択されていない場合は、代わりに現在のモジュールに作用します。ポイントがモジュール上にない場合は、単一のモジュールを読み取って作用します。プレフィックス引数を使用すると、これらのコマンドは選択したのや現在のモジュールを無視し、その代わりにすべての適切なモジュールに作用します。"
 
 #. type: kindex
 #: sed-out/magit.texi:9268
@@ -18954,7 +18962,7 @@ msgid ""
 "This commands adds the repository at URL as a module.  Optional PATH is the "
 "path to the module relative to the root of the super-project.  If it is nil "
 "then the path is determined based on URL@."
-msgstr "このコマンドは、URLのリポジトリをモジュールとして追加します。オプションのPATHは、スーパープロジェクトのルートを基準にしたモジュールへのパスです。nilの場合、パスはURLに基づいて決定されます。"
+msgstr "このコマンドは、指定のURLのリポジトリをモジュールとして追加します。オプションのPATHは、スーパープロジェクトのルートを基準にしたモジュールへのパスです。nilの場合、パスはURLに基づいて決定されます。"
 
 #. type: kindex
 #: sed-out/magit.texi:9276
@@ -19029,7 +19037,7 @@ msgstr "@kbd{o u} @tie{}@tie{}@tie{}@tie{}(@code{magit-submodule-update})"
 #. type: table
 #: sed-out/magit.texi:9298
 msgid "This command updates the selected modules checking out the recorded commits."
-msgstr "このコマンドは、記録されたコミットをチェックアウトする選択されたモジュールを更新します。"
+msgstr "このコマンドは、記録されたコミットをチェックアウトする選択したモジュールを更新します。"
 
 #. type: kindex
 #: sed-out/magit.texi:9299
@@ -19127,7 +19135,7 @@ msgid ""
 "being fetched in parallel.  Also fetch the super-repository, because "
 "@code{git fetch} does not support not doing that.  With a prefix argument "
 "fetch all remotes."
-msgstr "オプション@code{magit-fetch-modules-jobs}は、並列にフェッチされるサブモジュールの数を制御します。@code{git fetch}はそれを行わないことをサポートしていないため、スーパーリポジトリもフェッチします。プレフィックス引数を使用して、すべてのリモートをフェッチします。"
+msgstr "オプション@code{magit-fetch-modules-jobs}は、並列にフェッチされるサブモジュールの数を制御します。@code{git fetch}はスーパーリポジトリのフェッチを行わないことをサポートしていないため、スーパーリポジトリもフェッチします。プレフィックス引数を使用すると、すべてのリモートをフェッチします。"
 
 #. type: section
 #: sed-out/magit.texi:9331 sed-out/magit.texi:9332
@@ -19371,6 +19379,10 @@ msgstr "@kbd{O e s} @tie{}@tie{}@tie{}@tie{}(@code{magit-subtree-split})"
 msgid "This command extracts the history of the subtree PREFIX@."
 msgstr "このコマンドは、サブツリーPREFIXの履歴を抽出します。"
 
+# https://qiita.com/yoichi22/items/8f92110f24690ca8966f
+# git worktree を使うと、一つのローカルリポジトリで作業ツリーを複数同時に持てる。
+# このコマンドは Git 2.5.0 から導入されている。
+# Git - git-worktree Documentation
 #. type: section
 #: sed-out/magit.texi:9421 sed-out/magit.texi:9422
 #, no-wrap
@@ -19433,7 +19445,7 @@ msgstr "@kbd{% b} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-checkout})"
 #. type: table
 #: sed-out/magit.texi:9450
 msgid "Checkout BRANCH in a new worktree at PATH@."
-msgstr "PATHの新しいワークツリーでBRANCHをチェックアウトします。"
+msgstr "PATHの新しいworktreeでBRANCHをチェックアウトします。"
 
 #. type: kindex
 #: sed-out/magit.texi:9451
@@ -19456,7 +19468,7 @@ msgstr "@kbd{% c} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-branch})"
 #. type: table
 #: sed-out/magit.texi:9456
 msgid "Create a new BRANCH and check it out in a new worktree at PATH@."
-msgstr "新しいBRANCHを作成し、PATHの新しいワークツリーでチェックアウトします。"
+msgstr "新しいBRANCHを作成し、PATHの新しいworktreeでチェックアウトします。"
 
 #. type: kindex
 #: sed-out/magit.texi:9457
@@ -19479,7 +19491,7 @@ msgstr "@kbd{% m} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-move})"
 #. type: table
 #: sed-out/magit.texi:9462
 msgid "Move an existing worktree to a new PATH@."
-msgstr "既存のワークツリーを新しいPATHに移動します。"
+msgstr "既存のworktreeを新しいPATHに移動します。"
 
 #. type: kindex
 #: sed-out/magit.texi:9463
@@ -19504,7 +19516,7 @@ msgstr "@kbd{% k} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-delete})"
 msgid ""
 "Delete a worktree, defaulting to the worktree at point.  The primary "
 "worktree cannot be deleted."
-msgstr "ワークツリーを削除します。デフォルトでは、ポイントのワークツリーになります。プライマリワークツリーは削除できません。"
+msgstr "worktreeを削除します。デフォルトでは、ポイントのworktreeになります。プライマリworktreeは削除できません。"
 
 #. type: kindex
 #: sed-out/magit.texi:9470
@@ -19527,7 +19539,7 @@ msgstr "@kbd{% g} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-status})"
 #. type: table
 #: sed-out/magit.texi:9475
 msgid "Show the status for the worktree at point."
-msgstr "ポイントでのワークツリーのステータスを表示します。"
+msgstr "ポイントでのworktreeのステータスを表示します。"
 
 #. type: table
 #: sed-out/magit.texi:9479
@@ -19535,7 +19547,7 @@ msgid ""
 "If there is no worktree at point, then read one in the minibuffer.  If the "
 "worktree at point is the one whose status is already being displayed in the "
 "current buffer, then show it in Dired instead."
-msgstr "ポイントにワークツリーがない場合は、ミニバッファでワークツリーを読み取ります。ポイントのワークツリーが、現在のバッファにステータスがすでに表示されているワークツリーである場合は、代わりにDiredで表示します。"
+msgstr "ポイントにworktreeがない場合は、ミニバッファでworktreeを読み取ります。ポイントのworktreeが、現在のバッファにステータスがすでに表示されているworktreeである場合は、代わりにDiredで表示します。"
 
 #. type: section
 #: sed-out/magit.texi:9481 sed-out/magit.texi:9482
@@ -19612,7 +19624,7 @@ msgid ""
 "These are some of the commands that can be used in all buffers whose "
 "major-modes derive from @code{magit-mode}.  There are other common commands "
 "beside the ones below, but these didn't fit well anywhere else."
-msgstr "これらは、メジャーモードが@code{magit-mode}から派生するすべてのバッファで使用できるコマンドの一部です。以下のコマンドのほかに他の一般的なコマンドがありますが、これらは他のどこにもうまく適合しませんでした。"
+msgstr "これらは、メジャーモードが@code{magit-mode}から派生するすべてのバッファで使用できるコマンドの一部です。以下のコマンドのほかに他の一般的なコマンドがありますが、これらは他には当てはまりませんでした。"
 
 #. type: kindex
 #: sed-out/magit.texi:9509
@@ -19740,7 +19752,7 @@ msgstr "インデックスと作業ツリーの状態を追跡するために、
 msgid ""
 "Checking out another branch (or detaching @code{HEAD}) causes the use of "
 "different wip refs for subsequent changes."
-msgstr "別のブランチをチェックアウトする(または@code{HEAD}をデタッチする)と、その後の変更に異なるwip refsが使用されます。"
+msgstr "別のブランチをチェックアウトする(または@code{HEAD}をデタッチする)と、その後の変更では異なるwip refsが使用されます。"
 
 #. type: defopt
 #: sed-out/magit.texi:9577
@@ -19770,7 +19782,7 @@ msgid ""
 "@code{magit-wip-*} modes, which can also be used individually, if you want "
 "finer control over when the wip refs are updated; but that is discouraged.  "
 "See @ref{Legacy Wip Modes}."
-msgstr "歴史的な理由から、このモードは他の4つの@code{magit-wip-*}モードの上に実装されています。これらのモードは、あなたが wip refsが更新されるタイミングをより細かく制御したい場合は、個別に使用することもできます。しかし、それはお勧めできません。こちらを参照して下さい(@ref{Legacy Wip Modes})。"
+msgstr "歴史的な理由から、このモードは他の4つの@code{magit-wip-*}モードの上に実装されています。あなたが wip refsが更新されるタイミングをより細かく制御したい場合は、これらのモードを個別に使用することもできます。しかし、それはお勧めしません。こちらを参照して下さい(@ref{Legacy Wip Modes})。"
 
 #. type: Plain text
 #: sed-out/magit.texi:9595
@@ -19797,7 +19809,7 @@ msgstr "Command magit-wip-log"
 msgid ""
 "This command shows the log for a branch and its wip refs.  With a negative "
 "prefix argument only the worktree wip ref is shown."
-msgstr "このコマンドは、ブランチとそのwip refsのログを表示します。負のプレフィックス引数を使用すると、ワークツリー wip refs のみが表示されます。"
+msgstr "このコマンドは、ブランチとそのwip refsのログを表示します。負のプレフィックス引数を使用すると、worktree wip refs のみが表示されます。"
 
 #. type: deffn
 #: sed-out/magit.texi:9605 sed-out/magit.texi:9616
@@ -19824,7 +19836,7 @@ msgstr "Command magit-wip-log-current"
 msgid ""
 "This command shows the log for the current branch and its wip refs.  With a "
 "negative prefix argument only the worktree wip ref is shown."
-msgstr "このコマンドは、現在のブランチとそのwip refs のログを表示します。負のプレフィックス引数を使用すると、ワークツリー wip refs のみが表示されます。"
+msgstr "このコマンドは、現在のブランチとそのwip refs のログを表示します。負のプレフィックス引数を使用すると、worktree wip refs のみが表示されます。"
 
 #. type: table
 #: sed-out/magit.texi:9626
@@ -19942,7 +19954,7 @@ msgid ""
 "If non-nil and the current branch has new commits, then it is merged into "
 "the wip ref before creating a new wip commit.  This makes it easier to "
 "inspect wip history and the wip commits are never garbage collected."
-msgstr "nil以外で、現在のブランチに新しいコミットがある場合、新しいwipコミットを作成する前に、それがwip refにマージされます。これにより、wip履歴の検査が容易になり、wipコミットがガベージコレクションされることはありません。"
+msgstr "nil以外でかつ現在のブランチに新しいコミットがある場合、新しいwipコミットを作成する前に、それがwip refにマージされます。これにより、wip履歴の検査が容易になり、wipコミットがガベージコレクションされることはありません。"
 
 #. type: defopt
 #: sed-out/magit.texi:9692
@@ -19950,7 +19962,7 @@ msgid ""
 "If nil and the current branch has new commits, then the wip ref is reset to "
 "the tip of the branch before creating a new wip commit.  With this setting "
 "wip commits are eventually garbage collected."
-msgstr "nilで、現在のブランチに新しいコミットがある場合、新しいwipコミットを作成する前に、wip refがブランチの先端(tip)にリセットされます。この設定では、wipコミットは最終的にガベージコレクションされます。"
+msgstr "nilでかつ現在のブランチに新しいコミットがある場合、新しいwipコミットを作成する前に、wip refがブランチの先端(tip)にリセットされます。この設定では、wipコミットは最終的にガベージコレクションされます。"
 
 #. type: Plain text
 #: sed-out/magit.texi:9695
@@ -20047,7 +20059,7 @@ msgid ""
 "It is recommended that you use the mode @code{magit-wip-mode} (which see) "
 "and ignore the existence of the following modes, which are preserved for "
 "historic reasons."
-msgstr "モード@code{magit-wip-mode}(を参照)を使用してください。歴史的な理由で保持されている以下のモードの存在は無視することをお勧めします。"
+msgstr "@code{magit-wip-mode}モード(を参照)を使用してください。以下のモードは歴史的な事情で残されています。無視することをお勧めします。"
 
 #. type: Plain text
 #: sed-out/magit.texi:9749
