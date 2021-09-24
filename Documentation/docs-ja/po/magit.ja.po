@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
 "POT-Creation-Date: 2021-08-20 03:37+0900\n"
-"PO-Revision-Date: 2021-09-23 15:25+0900\n"
+"PO-Revision-Date: 2021-09-24 23:16+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -21666,7 +21666,7 @@ msgid ""
 "change may require that Magit buffers are refreshed to reflect the changed "
 "state of the repository.  But refreshing isn't always desirable, so only "
 "some of these functions do perform such a refresh after git has returned."
-msgstr "これらの機能は、2つの異なる方法で効果を発揮する可能性があります。まず、gitを実行すると何かが変わる可能性があります。つまり、新しいコミットを作成またはプッシュします。 次に、その変更では、リポジトリの変更された状態を反映するためにMagitバッファをリフレッシュする必要がある場合があります。 ただし、リフレッシュが常に望ましいとは限らないため、gitが戻った後、これらの関数の一部のみがそのようなリフレッシュを実行します。"
+msgstr "これらの関数は、2つの異なる方法で効果を発揮する可能性があります。まず、gitを実行すると何かが変わる可能性があります。つまり、新しいコミットを作成またはプッシュします。 次に、その変更では、リポジトリの変更された状態を反映するためにMagitバッファをリフレッシュする必要がある場合があります。 ただし、リフレッシュが常に望ましいとは限らないため、gitが戻った後、これらの関数の一部のみがそのようなリフレッシュを実行します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:10651
@@ -21677,7 +21677,7 @@ msgid ""
 "complete before letting the user do something else.  For example after "
 "staging a change it is useful to wait until after the refresh because that "
 "also automatically moves to the next change."
-msgstr "gitを非同期で実行すると便利な場合があります。たとえば、ユーザーがプッシュを開始したばかりの場合、それが完了するまでユーザーを待たせる理由はありません。それ以外の場合は、ユーザーに他のことをさせる前にgitが完了するのを待つのが理にかなっています。 たとえば、変更をステージした後は、リフレッシュが完了するまで待つと便利です。これも自動的に次の変更に移動するためです。"
+msgstr "gitを非同期で実行すると便利な場合があります。たとえば、ユーザーがプッシュを開始したばかりの場合、それが完了するまでユーザーを待たせる理由はありません。それ以外の場合は、ユーザーに他のことをさせる前にgitが完了するのを待つのが理にかなっています。 たとえば、変更をステージした後は、自動的に次の行の変更に移動するため、リフレッシュが完了するまで待つと便利です。"
 
 #. type: defun
 #: sed-out/magit.texi:10652
@@ -21765,7 +21765,7 @@ msgstr "ARGSを伴ってGitを実行して、洗浄された出力をポイン�
 #. type: Plain text
 #: sed-out/magit.texi:10694
 msgid "And now for the asynchronous variants."
-msgstr "そしてここからが非同期バリエーションについてです。"
+msgstr "以下は非同期バリエーションです。"
 
 #. type: defun
 #: sed-out/magit.texi:10695
@@ -21884,7 +21884,7 @@ msgid ""
 "stored in the process object.  When this function returns the process has "
 "not started to run yet so it is possible to override the sentinel and "
 "filter."
-msgstr "プロセスは@code{start-file-process}を使用して開始され、センチネル(番兵) @code{magit-process-sentinel}とフィルター@code{magit-process-filter}を使用するようにセットアップされます。これらの関数に必要な情報は、プロセスオブジェクトに格納されます。この関数から戻ったとき、プロセスはまだ実行を開始していないため、監視者(sentinel)とフィルターをオーバーライドすることができます。"
+msgstr "プロセスは@code{start-file-process}を使用して開始され、センチネル(番兵) @code{magit-process-sentinel}とフィルター@code{magit-process-filter}を使用するようにセットアップされます。これらの関数に必要な情報は、プロセスオブジェクトに格納されます。この関数から戻ったとき、プロセスはまだ実行を開始していないため、センチネルとフィルターをオーバーライドすることができます。"
 
 #. type: defun
 #: sed-out/magit.texi:10763
@@ -21920,7 +21920,7 @@ msgstr "magit-process-raise-error"
 msgid ""
 "When this is non-nil, then @code{magit-process-sentinel} raises an error if "
 "git exits with a non-zero exit status.  For debugging purposes."
-msgstr "これがnil以外の場合、gitがゼロ以外の終了ステータスで終了すると、@code{magit-process-sentinel}はエラーを発生させます。デバッグ目的のために。"
+msgstr "これがnil以外の場合、gitがゼロ以外の終了ステータスで終了すると、@code{magit-process-sentinel}はエラーを発生させます。これはデバッグ用です。"
 
 #. type: subsection
 #: sed-out/magit.texi:10786 sed-out/magit.texi:10787
@@ -21939,6 +21939,7 @@ msgstr "magit-insert-section &rest args"
 msgid "Insert a section at point."
 msgstr "ポイントにセクションを挿入します。"
 
+# 一部、原文にない文を C-h f で参照したdoc-stringを追加。
 #. type: defmac
 #: sed-out/magit.texi:10799
 msgid ""
@@ -21948,7 +21949,7 @@ msgid ""
 "@code{keymap} of all text belonging to the section (but this may be "
 "overwritten in subsections).  TYPE can also have the form @code{(eval FORM)} "
 "in which case FORM is evaluated at runtime."
-msgstr "TYPEはセクションタイプで、シンボルです。現在のセクションに作用する多くのコマンドは、そのタイプに応じて異なる動作をします。また、変数@code{magit-TYPE-section-map}が存在する場合は、それをセクションに属するすべてのテキストのテキストプロパティ@code{keymap}として使用します(ただし、これはサブセクションで上書きされる場合があります)。 TYPEは、@code{(eval FORM)}の形式にすることもできます。この場合、FORMは実行時に評価されます。"
+msgstr "TYPEのセクションオブジェクトを作成し、その@code{value}スロットにVALUEを格納して、ポイントにセクションを挿入します。TYPEはセクションタイプで、シンボルです。現在のセクションに作用する多くのコマンドは、そのタイプに応じて異なる動作をします。また、変数@code{magit-TYPE-section-map}が存在する場合は、それをセクションに属するすべてのテキストのテキストプロパティ@code{keymap}として使用します(ただし、これはサブセクションで上書きされる場合があります)。 TYPEは、@code{(eval FORM)}の形式にすることもできます。この場合、FORMは実行時に評価されます。"
 
 #. type: defmac
 #: sed-out/magit.texi:10802
@@ -22473,7 +22474,7 @@ msgid ""
 "REFRESH-FUNC and that of @code{magit-refresh-args} to REFRESH-ARGS@.  "
 "Finally it creates the buffer content by calling REFRESH-FUNC with "
 "REFRESH-ARGS as arguments."
-msgstr "この関数は、引数としてBUFFERとMODEとSWITCH-FUNCを指定して@code{magit-mode-display-buffer}を呼び出すことにより、BUFFERを表示し、オプションで選択します。次に、@code{magit-refresh-function}のローカル値をREFRESH-FUNCに設定し、@code{magit-refresh-args}のローカル値をREFRESH-ARGSに設定します。最後に、引数としてREFRESH-ARGSを指定してREFRESH-FUNCを呼び出すことにより、バッファー内容を作成します。"
+msgstr "この関数は、引数としてBUFFERとMODEとSWITCH-FUNCを指定して@code{magit-mode-display-buffer}を呼び出すことにより、BUFFERを表示し、オプションでBUFFERを選択します。次に、@code{magit-refresh-function}のローカル値をREFRESH-FUNCに設定し、@code{magit-refresh-args}のローカル値をREFRESH-ARGSに設定します。最後に、引数としてREFRESH-ARGSを指定してREFRESH-FUNCを呼び出すことにより、バッファ内容を作成します。"
 
 #. type: defmac
 #: sed-out/magit.texi:11097
@@ -22580,7 +22581,7 @@ msgid ""
 "face that uses a box, exactly so that it sticks out).  If the former also "
 "uses a box, then you have to make sure that it differs in some other way "
 "from the latter."
-msgstr "以前のリリースでは、これらの参照faceには背景色とその周囲のボックスがありました。基本的なデフォルトのfaceは、Magitバッファのノイズを大幅に減らすために、もはやそうしていません。少なくともボックスに関しては、その例に従う必要があります。(ボックスは、ハイライトオーバーレイとテキストプロパティの背景の間の競合を回避するために過去に使用されていました。ハイライトによって他の背景色が消えることがなくなったため、これは不要になりました)。または、背景色やボックスを保持することもできますが、次に、それに応じて@code{magit-branch-current}を調整するために特別な注意を払う必要があります。デフォルトでは、ほとんど@code{magit-branch-local}のように見えますが、ボックスがあります(デフォルトでは、前者がボックスを使用する唯一のfaceであり、正確に突き出ています(stick out))。前者もボックスを使用する場合は、後者とは別の方法で異なることを確認する必要があります。"
+msgstr "以前のリリースでは、これらの reference faceには背景色とその周囲のボックスがありました。基本的なデフォルトのfaceは、Magitバッファのノイズを大幅に減らすために、もはやそうしていません。少なくともボックスに関しては、その例に従う必要があります。(ボックスは、ハイライトオーバーレイとテキストプロパティの背景の間の競合を回避するために過去に使用されていました。ハイライトによって他の背景色が消えることがなくなったため、これは不要になりました)。または、背景色やボックスを保持することもできますが、次に、それに応じて@code{magit-branch-current}を調整するために特別な注意を払う必要があります。デフォルトでは、ほとんど@code{magit-branch-local}のように見えますが、ボックスがあります(デフォルトでは、前者がボックスを使用する唯一のfaceであり、正確に突き出ています(stick out))。前者もボックスを使用する場合は、後者とは別の方法で異なることを確認する必要があります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11171
@@ -22618,7 +22619,7 @@ msgid ""
 "face.  But if some other faces also set a light gray as background color, "
 "then you should also make sure it doesn't collide with those (in some cases "
 "it might be acceptable though)."
-msgstr "@code{region}のfaceを正しくするために行われた作業は、テーマの一般的な品質の良い指標であると思います。@code{region}のfaceの推奨事項は、次のとおりです。@code{default}のfaceの背景色とは少し異なる背景色を使用し、前景色をまったく設定しないでください。したがって、明るいテーマの場合、@code{default}の背景色として明るい(おそらく色付きの)灰色を使用し、@code{region}の背景としてやや暗い灰色を使用する場合があります。これは通常、他の顔の前景色と衝突しないように十分なはずです。ただし、他のfaceでも背景色としてライトグレーが設定されている場合は、それらのfaceと衝突しないようにする必要があります(ただし、許容できる場合もあります)。"
+msgstr "@code{region}のfaceを正しくするために行われた作業は、テーマの一般的な品質の良い指標であると思います。@code{region}のfaceの推奨事項は、次のとおりです: @code{default}のfaceの背景色とは少し異なる背景色を使用し、前景色をまったく設定しないでください。したがって、明るいテーマの場合、@code{default}の背景色として明るい(おそらく色付きの)灰色を使用し、@code{region}の背景としてやや暗い灰色を使用する場合があります。これは通常、他のfaceの前景色と衝突しないようにするには十分なはずです。ただし、他のfaceでも背景色として明るい灰色が設定されている場合は、それらのfaceと衝突しないようにする必要があります(ただし、許容できる場合もあります)。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11204
@@ -22684,7 +22685,7 @@ msgid ""
 "@code{magit-diff-hunk-heading-selection}.  These faces have to be different "
 "from the regular highlight variants to provide explicit visual indication "
 "that the region is active."
-msgstr "diff関連の兄弟セクション、つまり複数のファイルまたはハンクを選択する有効な領域がある場合、これらすべてのセクションの本文はそれぞれのハイライトfaceを使用しますが、見出しは代わりにface面の1つを使用します。それは@code{magit-diff-file -heading-selection}または@code{magit-diff-hunk-heading-selection}です。これらのfaceは、領域がアクティブであることを明確に視覚的に示すために、通常のハイライトバリエーションとは異なる必要があります。"
+msgstr "diff関連の兄弟セクション、つまり複数のファイルまたはハンクを選択する有効な領域がある場合、これらすべてのセクションの本文はそれぞれのハイライトfaceを使用しますが、見出しは代わりに @code{magit-diff-file-heading-selection} face または @code{magit-diff-hunk-heading-selection} face のどちらかを使用します。これらのfaceは、領域がアクティブであることを明確に視覚的に示すために、通常のハイライトバリエーションとは異なる必要があります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11245
@@ -22694,7 +22695,7 @@ msgid ""
 "only refine the current hunk or not use hunk refinement at all, but some of "
 "the users of your theme want all hunks to be refined, so you have to cater "
 "to that."
-msgstr "diff関連のfaceにテーマを設定するときは、オプション@code{magit-diff-refine-hunk}を@code{all}に設定することから始めます。個人的には、現在のハンクのみを改良するか、ハンクの改良をまったく使用しないことを好むかもしれませんが、テーマのユーザーの中には、すべてのハンクを改良することを望んでいるため、それに対応する必要があります。"
+msgstr "diff関連のfaceにテーマを設定するときは、オプション@code{magit-diff-refine-hunk}を@code{all}に設定することから始めます。個人的には、現在のハンクのみを改良するか、ハンクの改良をまったく使用しないことを好むかもしれません。しかし、テーマのユーザーの中には、すべてのハンクを改良することを望んでいる人がいるため、それに対応する必要があります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11249
@@ -22719,7 +22720,7 @@ msgid ""
 "nicely with context lines (e.g. make them look different).  Line faces "
 "should set both the foreground and the background color.  For example, for "
 "added lines use two different greens."
-msgstr "たとえば 「追加された行」では、@code{magit-diff-added}と@code{magit-diff-added-highlight}と@code{smerge-refined-added}の3つのfaceを調整する必要があります。後者が前者の両方、および@code{smerge-other}と@code{diff-added}でうまく機能することを確認してください。次に、削除された行、コンテキスト行、追加された行、およびそれらによって追加された行についても同じようにします。また、追加、削除、およびコンテキストのそれぞれのfaceが、強調表示されたバリエーションと強調表示されていないバリエーションの両方でほぼ同じ彩度を使用していることを確認してください。また、ファイルとdiffの見出しがコンテキスト行とうまく機能することを確認します(たとえば、見た目を変えます)。線のfaceは、前景色と背景色の両方を設定する必要があります。たとえば、追加された行には、2つの異なる緑を使用します。"
+msgstr "たとえば 「追加された行」では、@code{magit-diff-added}と@code{magit-diff-added-highlight}と@code{smerge-refined-added}の3つのfaceを調整する必要があります。後者が前者の両方、および@code{smerge-other}と@code{diff-added}でうまく機能することを確認してください。次に、削除された行、コンテキスト行、追加された行、およびそれらによって追加された行についても同じようにします。また、追加、削除、およびコンテキストのそれぞれのfaceが、強調表示されたバリエーションと強調表示されていないバリエーションの両方でほぼ同じ彩度を使用していることを確認してください。また、ファイルとdiffの見出しがコンテキスト行とうまく機能することを確認します(たとえば、見た目を変えます)。線のfaceは、前景色と背景色の両方を設定する必要があります。たとえば、追加された行には、2つの異なる緑色を使用します。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11275
@@ -22736,7 +22737,7 @@ msgid ""
 "added around the lines that fall within the region.  The background color of "
 "that has to be distinct enough from the various other involved background "
 "colors."
-msgstr "それはハイライトされたバリエーションとハイライトされていないバリエーションの両方の前景色が同じである場合に最適です。したがって、ハイライトとハイライトされていない背景、リファインされた背景、およびハイライトコンテキストの背景で適切に機能する色を見つける必要があります。ハンクの内部領域がある場合、追加行と削除行の背景色はその領域内でのみ使用されます。領域外では、強調表示されたコンテキストの背景色が使用されます。これにより、何がステージされているかを簡単に確認できます。ハンクの内部領域では、ハンクの見出しは@code{magit-diff-hunk-heading-selection}を使用して表示され、領域内にある線の周りに追加される細い線も同様です。その背景色は、他のさまざまな関連する背景色と十分に区別する必要があります。"
+msgstr "これはハイライトされたバリエーションとハイライトされていないバリエーションの両方の前景色が同じである場合に最適です。したがって、ハイライトとハイライトされていない背景、リファインされた背景、およびハイライトコンテキストの背景で適切に機能する色を見つける必要があります。ハンクの内部領域がある場合、追加行と削除行の背景色はその領域内でのみ使用されます。領域外では、強調表示されたコンテキストの背景色が使用されます。これにより、何がステージされているかを簡単に確認できます。ハンクの内部領域では、ハンクの見出しは@code{magit-diff-hunk-heading-selection}を使用して表示され、領域内にある線の周りに追加される細い線も同様です。その背景色は、他のさまざまな関連する背景色と十分に区別する必要があります。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11284
@@ -22748,7 +22749,7 @@ msgid ""
 "faces.  You have been warned.  Also please note that if you do not get this "
 "right, this will in some cases look to users like bugs in Magit - so please "
 "do it right or not at all."
-msgstr "これを行うのは簡単ではありません。テーマが特定の色のセットに制限されている場合は、ここで例外を作成する必要があります。そうでなければ、すべてのバリエーションでdiffの見栄えを良くすることは不可能です。実際には、これらのfaceのデフォルトの定義に固執したい場合があります。既に警告は行いました。また、これを正しく行わないと、ユーザーがMagitのバグのように見える場合があることに注意してください。正しく行うか、まったく行わないでください。"
+msgstr "これを行うのは簡単ではありません。テーマが特定の色のセットに制限されている場合は、ここで例外を作成する必要があります。そうでなければ、すべてのバリエーションでdiffの見栄えを良くすることは不可能です。実際には、これらのfaceのデフォルトの定義に固執したい場合があります。警告します！ 正しく行わないと、ユーザーからはMagitのバグのように見える場合があることに注意してください。正しく行うか、まったく行わないでください。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11292
@@ -22757,7 +22758,7 @@ msgid ""
 "frequently @strong{and recently} asked questions, i.e. questions that "
 "haven't made it into the manual yet, see "
 "@uref{https://github.com/magit/magit/wiki/FAQ}."
-msgstr "次の2つのノードには、よくある質問が一覧表示されます。よくある@strong{および最近}の質問、つまりまだマニュアルに記載されていない質問のリストについては→@uref{https://github.com/magit/magit/wiki/FAQ}"
+msgstr "以下の2つ節には、よくある質問が一覧表示してあります。@strong{よくある最近}の質問、つまりまだマニュアルに記載されていない質問のリストについては→@uref{https://github.com/magit/magit/wiki/FAQ}"
 
 #. type: Plain text
 #: sed-out/magit.texi:11294
@@ -23095,7 +23096,7 @@ msgstr "@code{COMMIT_EDITMSG}バッファのpointが間違っています"
 msgid ""
 "Neither Magit nor `git-commit` fiddle with point in the buffer used to write "
 "commit messages, so something else must be doing it."
-msgstr "Magitも `git-commit` も、コミットメッセージの書き込みに使用されるバッファ内のポイントをいじらないので、他のわるさをしているに違いありません。"
+msgstr "Magitも `git-commit` も、コミットメッセージの書き込みに使用されるバッファ内のポイントをいじらないので、他の何かがわるさをしているに違いありません。"
 
 #. type: Plain text
 #: sed-out/magit.texi:11512

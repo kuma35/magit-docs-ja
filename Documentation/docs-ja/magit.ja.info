@@ -9126,7 +9126,7 @@ File: magit.ja.info,  Node: Calling Git for Effect,  Prev: Getting a Value from 
 出力は代わりにリポジトリごとのバッファに記録されます。これは、Magitバッ
 ファの‘$’または、他の場所では‘M-x magit-process’を使用して表示できます。
 
-これらの機能は、2つの異なる方法で効果を発揮する可能性があります。まず、
+これらの関数は、2つの異なる方法で効果を発揮する可能性があります。まず、
 gitを実行すると何かが変わる可能性があります。つまり、新しいコミットを作
 成またはプッシュします。 次に、その変更では、リポジトリの変更された状態
 を反映するためにMagitバッファをリフレッシュする必要がある場合があります
@@ -9136,9 +9136,8 @@ gitを実行すると何かが変わる可能性があります。つまり、�
 gitを非同期で実行すると便利な場合があります。たとえば、ユーザーがプッシ
 ュを開始したばかりの場合、それが完了するまでユーザーを待たせる理由はあり
 ません。それ以外の場合は、ユーザーに他のことをさせる前にgitが完了するの
-を待つのが理にかなっています。 たとえば、変更をステージした後は、リフレ
-ッシュが完了するまで待つと便利です。これも自動的に次の変更に移動するため
-です。
+を待つのが理にかなっています。 たとえば、変更をステージした後は、自動的
+に次の行の変更に移動するため、リフレッシュが完了するまで待つと便利です。
 
  -- Function: magit-call-git &rest args
 
@@ -9174,7 +9173,7 @@ gitを非同期で実行すると便利な場合があります。たとえば�
      テキストのみ一時的にバッファをnarrowし、最初に移動してから、ARGSを
      唯一の引数として関数WASHERを呼び出します。
 
-そしてここからが非同期バリエーションについてです。
+以下は非同期バリエーションです。
 
  -- Function: magit-run-git-async &rest args
 
@@ -9235,8 +9234,8 @@ gitを非同期で実行すると便利な場合があります。たとえば�
      ‘magit-process-sentinel’とフィルター‘magit-process-filter’を使用す
      るようにセットアップされます。これらの関数に必要な情報は、プロセス
      オブジェクトに格納されます。この関数から戻ったとき、プロセスはまだ
-     実行を開始していないため、監視者(sentinel)とフィルターをオーバーラ
-     イドすることができます。
+     実行を開始していないため、センチネルとフィルターをオーバーライドす
+     ることができます。
 
      プロセスから戻った後、‘magit-process-sentinel’は、
      ‘magit-start-process’が呼び出されたときに現在のバッファ(Magitバッフ
@@ -9253,8 +9252,8 @@ gitを非同期で実行すると便利な場合があります。たとえば�
  -- Variable: magit-process-raise-error
 
      これがnil以外の場合、gitがゼロ以外の終了ステータスで終了すると、
-     ‘magit-process-sentinel’はエラーを発生させます。デバッグ目的のため
-     に。
+     ‘magit-process-sentinel’はエラーを発生させます。これはデバッグ用で
+     す。
 
 
 File: magit.ja.info,  Node: Section Plumbing,  Next: Refreshing Buffers,  Prev: Calling Git,  Up: 配管コマンド(Plumbing)
@@ -9278,8 +9277,10 @@ File: magit.ja.info,  Node: Creating Sections,  Next: Section Selection,  Up: Se
 
      ポイントにセクションを挿入します。
 
-     TYPEはセクションタイプで、シンボルです。現在のセクションに作用する
-     多くのコマンドは、そのタイプに応じて異なる動作をします。また、変数
+     TYPEのセクションオブジェクトを作成し、その‘value’スロットにVALUEを
+     格納して、ポイントにセクションを挿入します。TYPEはセクションタイプ
+     で、シンボルです。現在のセクションに作用する多くのコマンドは、その
+     タイプに応じて異なる動作をします。また、変数
      ‘magit-TYPE-section-map’が存在する場合は、それをセクションに属する
      すべてのテキストのテキストプロパティ‘keymap’として使用します(ただし
      、これはサブセクションで上書きされる場合があります)。 TYPEは、
@@ -9556,10 +9557,10 @@ File: magit.ja.info,  Node: Refreshing Buffers,  Next: 慣習,  Prev: Section Pl
 
      この関数は、引数としてBUFFERとMODEとSWITCH-FUNCを指定して
      ‘magit-mode-display-buffer’を呼び出すことにより、BUFFERを表示し、オ
-     プションで選択します。次に、‘magit-refresh-function’のローカル値を
-     REFRESH-FUNCに設定し、‘magit-refresh-args’のローカル値を
+     プションでBUFFERを選択します。次に、‘magit-refresh-function’のロー
+     カル値をREFRESH-FUNCに設定し、‘magit-refresh-args’のローカル値を
      REFRESH-ARGSに設定します。最後に、引数としてREFRESH-ARGSを指定して
-     REFRESH-FUNCを呼び出すことにより、バッファー内容を作成します。
+     REFRESH-FUNCを呼び出すことにより、バッファ内容を作成します。
 
      BUFFERに切り替える前に、すべての引数が評価されます。
 
@@ -9623,18 +9624,18 @@ File: magit.ja.info,  Node: Theming Faces,  Up: 慣習
 マを作成するときは、おそらくその例に従う必要があります。テーマがすでに他
 の色を使用している場合は、それに依ります。
 
-以前のリリースでは、これらの参照faceには背景色とその周囲のボックスがあり
-ました。基本的なデフォルトのfaceは、Magitバッファのノイズを大幅に減らす
-ために、もはやそうしていません。少なくともボックスに関しては、その例に従
-う必要があります。(ボックスは、ハイライトオーバーレイとテキストプロパテ
-ィの背景の間の競合を回避するために過去に使用されていました。ハイライトに
-よって他の背景色が消えることがなくなったため、これは不要になりました)。
-または、背景色やボックスを保持することもできますが、次に、それに応じて
-‘magit-branch-current’を調整するために特別な注意を払う必要があります。デ
-フォルトでは、ほとんど‘magit-branch-local’のように見えますが、ボックスが
-あります(デフォルトでは、前者がボックスを使用する唯一のfaceであり、正確
-に突き出ています(stick out))。前者もボックスを使用する場合は、後者とは別
-の方法で異なることを確認する必要があります。
+以前のリリースでは、これらの reference faceには背景色とその周囲のボック
+スがありました。基本的なデフォルトのfaceは、Magitバッファのノイズを大幅
+に減らすために、もはやそうしていません。少なくともボックスに関しては、そ
+の例に従う必要があります。(ボックスは、ハイライトオーバーレイとテキスト
+プロパティの背景の間の競合を回避するために過去に使用されていました。ハイ
+ライトによって他の背景色が消えることがなくなったため、これは不要になりま
+した)。または、背景色やボックスを保持することもできますが、次に、それに
+応じて‘magit-branch-current’を調整するために特別な注意を払う必要がありま
+す。デフォルトでは、ほとんど‘magit-branch-local’のように見えますが、ボッ
+クスがあります(デフォルトでは、前者がボックスを使用する唯一のfaceであり
+、正確に突き出ています(stick out))。前者もボックスを使用する場合は、後者
+とは別の方法で異なることを確認する必要があります。
 
 テーマにするのが最も難しいfaceは、diff、見出し、ハイライト、およびリージ
 ョンに関連するfaceです。4つのグループすべてに分類されるfaceがあります。
@@ -9650,14 +9651,14 @@ File: magit.ja.info,  Node: Theming Faces,  Up: 慣習
 われることも意味します。
 
 ‘region’のfaceを正しくするために行われた作業は、テーマの一般的な品質の良
-い指標であると思います。‘region’のfaceの推奨事項は、次のとおりです。
+い指標であると思います。‘region’のfaceの推奨事項は、次のとおりです:
 ‘default’のfaceの背景色とは少し異なる背景色を使用し、前景色をまったく設
 定しないでください。したがって、明るいテーマの場合、‘default’の背景色と
 して明るい(おそらく色付きの)灰色を使用し、‘region’の背景としてやや暗い灰
-色を使用する場合があります。これは通常、他の顔の前景色と衝突しないように
-十分なはずです。ただし、他のfaceでも背景色としてライトグレーが設定されて
-いる場合は、それらのfaceと衝突しないようにする必要があります(ただし、許
-容できる場合もあります)。
+色を使用する場合があります。これは通常、他のfaceの前景色と衝突しないよう
+にするには十分なはずです。ただし、他のfaceでも背景色として明るい灰色が設
+定されている場合は、それらのfaceと衝突しないようにする必要があります(た
+だし、許容できる場合もあります)。
 
 Magitは、リージョンが独自の定義で「無効」である場合にのみ‘region’の
 faceを使用します。Magitバッファでは、領域を使用して複数の兄弟セクション
@@ -9696,17 +9697,16 @@ faceの‘magit-diff-hunk-heading’は、‘magit-diff-hunk-heading-highlight�
 
 diff関連の兄弟セクション、つまり複数のファイルまたはハンクを選択する有効
 な領域がある場合、これらすべてのセクションの本文はそれぞれのハイライト
-faceを使用しますが、見出しは代わりにface面の1つを使用します。それは
-‘magit-diff-file -heading-selection’または
-‘magit-diff-hunk-heading-selection’です。これらのfaceは、領域がアクティ
-ブであることを明確に視覚的に示すために、通常のハイライトバリエーションと
-は異なる必要があります。
+faceを使用しますが、見出しは代わりに ‘magit-diff-file-heading-selection’
+face または ‘magit-diff-hunk-heading-selection’ face のどちらかを使用し
+ます。これらのfaceは、領域がアクティブであることを明確に視覚的に示すため
+に、通常のハイライトバリエーションとは異なる必要があります。
 
 diff関連のfaceにテーマを設定するときは、オプション
 ‘magit-diff-refine-hunk’を‘all’に設定することから始めます。個人的には、
 現在のハンクのみを改良するか、ハンクの改良をまったく使用しないことを好む
-かもしれませんが、テーマのユーザーの中には、すべてのハンクを改良すること
-を望んでいるため、それに対応する必要があります。
+かもしれません。しかし、テーマのユーザーの中には、すべてのハンクを改良す
+ることを望んでいる人がいるため、それに対応する必要があります。
 
 (また、‘magit-diff-highlight-indentation’と
 ‘magit-diff-highlight-trailing’と‘magit-diff-paint-whitespace’をオンにし
@@ -9723,9 +9723,9 @@ diff関連のfaceにテーマを設定するときは、オプション
 を使用していることを確認してください。また、ファイルとdiffの見出しがコン
 テキスト行とうまく機能することを確認します(たとえば、見た目を変えます)。
 線のfaceは、前景色と背景色の両方を設定する必要があります。たとえば、追加
-された行には、2つの異なる緑を使用します。
+された行には、2つの異なる緑色を使用します。
 
-それはハイライトされたバリエーションとハイライトされていないバリエーショ
+これはハイライトされたバリエーションとハイライトされていないバリエーショ
 ンの両方の前景色が同じである場合に最適です。したがって、ハイライトとハイ
 ライトされていない背景、リファインされた背景、およびハイライトコンテキス
 トの背景で適切に機能する色を見つける必要があります。ハンクの内部領域があ
@@ -9739,9 +9739,9 @@ diff関連のfaceにテーマを設定するときは、オプション
 これを行うのは簡単ではありません。テーマが特定の色のセットに制限されてい
 る場合は、ここで例外を作成する必要があります。そうでなければ、すべてのバ
 リエーションでdiffの見栄えを良くすることは不可能です。実際には、これらの
-faceのデフォルトの定義に固執したい場合があります。既に警告は行いました。
-また、これを正しく行わないと、ユーザーがMagitのバグのように見える場合が
-あることに注意してください。正しく行うか、まったく行わないでください。
+faceのデフォルトの定義に固執したい場合があります。警告します！ 正しく行
+わないと、ユーザーからはMagitのバグのように見える場合があることに注意し
+てください。正しく行うか、まったく行わないでください。
 
 
 File: magit.ja.info,  Node: FAQ,  Next: Debugging Tools,  Prev: 配管コマンド(Plumbing),  Up: Top
@@ -9749,8 +9749,8 @@ File: magit.ja.info,  Node: FAQ,  Next: Debugging Tools,  Prev: 配管コマン�
 Appendix A FAQ
 **************
 
-次の2つのノードには、よくある質問が一覧表示されます。よくある*および最近
-*の質問、つまりまだマニュアルに記載されていない質問のリストについては
+以下の2つ節には、よくある質問が一覧表示してあります。*よくある最近*の質
+問、つまりまだマニュアルに記載されていない質問のリストについては
 →<https://github.com/magit/magit/wiki/FAQ>
 
 どうぞこちらも使ってやって下さい(*note Debugging Tools::)。
@@ -10013,7 +10013,8 @@ A.2.7 ‘COMMIT_EDITMSG’バッファのpointが間違っています
 -----------------------------------------------------
 
 Magitも ‘git-commit‘ も、コミットメッセージの書き込みに使用されるバッフ
-ァ内のポイントをいじらないので、他のわるさをしているに違いありません。
+ァ内のポイントをいじらないので、他の何かがわるさをしているに違いありませ
+ん。
 
 あなたはfile-visitingバッファのポイントを復元するモードをグローバルに有
 効にしている可能性があります。少し意外かもしれませんが、コミットメッセー
@@ -11290,14 +11291,14 @@ Appendix E Function Index
 * magit-builtin-completing-read:         補完フレームワークのサポート.
                                                               (line  42)
 * magit-call-git:                        Calling Git for Effect.
-                                                              (line  28)
+                                                              (line  27)
 * magit-call-process:                    Calling Git for Effect.
-                                                              (line  32)
-* magit-cancel-section:                  Creating Sections.   (line  71)
+                                                              (line  31)
+* magit-cancel-section:                  Creating Sections.   (line  73)
 * magit-completing-read:                 補完フレームワークのサポート.
                                                               (line  60)
 * magit-current-section:                 Section Selection.   (line   6)
-* magit-define-section-jumper:           Creating Sections.   (line  77)
+* magit-define-section-jumper:           Creating Sections.   (line  79)
 * magit-diff-scope:                      Matching Sections.   (line 116)
 * magit-diff-type:                       Matching Sections.   (line  94)
 * magit-diff-visit-file-other-frame:     Visiting Files and Blobs from a Diff.
@@ -11339,7 +11340,7 @@ Appendix E Function Index
                                                               (line  17)
 * magit-get-section:                     Matching Sections.   (line  16)
 * magit-git:                             Calling Git for Effect.
-                                                              (line  49)
+                                                              (line  48)
 * magit-git-exit-code:                   Getting a Value from Git.
                                                               (line  10)
 * magit-git-failure:                     Getting a Value from Git.
@@ -11361,7 +11362,7 @@ Appendix E Function Index
 * magit-git-true:                        Getting a Value from Git.
                                                               (line  24)
 * magit-git-wash:                        Calling Git for Effect.
-                                                              (line  54)
+                                                              (line  53)
 * magit-hunk-set-window-start:           Section Movement.    (line  50)
 * magit-ido-completing-read:             補完フレームワークのサポート.
                                                               (line  48)
@@ -11376,7 +11377,7 @@ Appendix E Function Index
                                                               (line  28)
 * magit-insert-head-branch-header:       Status Header Sections.
                                                               (line  42)
-* magit-insert-heading:                  Creating Sections.   (line  44)
+* magit-insert-heading:                  Creating Sections.   (line  46)
 * magit-insert-ignored-files:            Status Sections.     (line 102)
 * magit-insert-local-branches:           References Sections. (line  17)
 * magit-insert-merge-log:                Status Sections.     (line  18)
@@ -11460,13 +11461,13 @@ Appendix E Function Index
 * magit-repolist-column-version:         Repository List.     (line  43)
 * magit-restore-window-configuration:    Quitting Windows.    (line  24)
 * magit-run-git:                         Calling Git for Effect.
-                                                              (line  36)
+                                                              (line  35)
 * magit-run-git-async:                   Calling Git for Effect.
-                                                              (line  64)
+                                                              (line  63)
 * magit-run-git-with-editor:             Calling Git for Effect.
-                                                              (line  78)
+                                                              (line  77)
 * magit-run-git-with-input:              Calling Git for Effect.
-                                                              (line  40)
+                                                              (line  39)
 * magit-save-window-configuration:       バッファの切り替え.  (line  91)
 * magit-section-case:                    Matching Sections.   (line  71)
 * magit-section-hide:                    Section Visibility.  (line  48)
@@ -11480,9 +11481,9 @@ Appendix E Function Index
 * magit-section-toggle-children:         Section Visibility.  (line  67)
 * magit-section-value-if:                Matching Sections.   (line  60)
 * magit-start-git:                       Calling Git for Effect.
-                                                              (line  90)
+                                                              (line  89)
 * magit-start-process:                   Calling Git for Effect.
-                                                              (line 110)
+                                                              (line 109)
 * magit-stashes-maybe-update-stash-buffer: Section Movement.  (line 103)
 * magit-status-maybe-update-blob-buffer: Section Movement.    (line  97)
 * magit-status-maybe-update-revision-buffer: Section Movement.
@@ -11651,7 +11652,7 @@ Appendix F Variable Index
 * magit-prefix-use-buffer-arguments:     Transient Arguments and Buffer Variables.
                                                               (line  59)
 * magit-process-raise-error:             Calling Git for Effect.
-                                                              (line 138)
+                                                              (line 137)
 * magit-pull-or-fetch:                   Fetching.            (line  66)
 * magit-reflog-margin:                   Reflog.              (line  23)
 * magit-refresh-args:                    Refreshing Buffers.  (line  54)
@@ -11696,7 +11697,7 @@ Appendix F Variable Index
 * magit-status-sections-hook:            Status Sections.     (line  10)
 * magit-submodule-list-columns:          Listing Submodules.  (line  21)
 * magit-this-process:                    Calling Git for Effect.
-                                                              (line 133)
+                                                              (line 132)
 * magit-uniquify-buffer-names:           バッファの名付け.    (line  74)
 * magit-unstage-committed:               Staging and Unstaging.
                                                               (line  61)
@@ -11865,42 +11866,42 @@ Node: 配管コマンド(Plumbing)461078
 Node: Calling Git462193
 Node: Getting a Value from Git464154
 Node: Calling Git for Effect468936
-Node: Section Plumbing477044
-Node: Creating Sections477295
-Node: Section Selection482616
-Node: Matching Sections484815
-Node: Refreshing Buffers492634
-Node: 慣習496598
-Node: Theming Faces496809
-Node: FAQ507482
-Node: FAQ - How to ...?508015
-Node: Magitの発音は？508474
-Node: How to show git's output?509507
-Node: How to install the gitman info manual?510535
-Node: How to show diffs for gpg-encrypted files?511810
-Node: How does branching and pushing work?512513
-Node: Magitをediff-version-control-packageとして使用できますか？512920
-Node: VCを無効にする必要がありますか？515505
-Node: FAQ - Issues and Errors516399
-Node: Magit is slow517749
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました517989
-Node: コミットに問題があります519021
-Node: MS WindowsではMagitでpushできません519582
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520283
-Node: ファイルを展開してdiffを表示するとファイルが消えます521483
-Node: COMMIT_EDITMSGバッファのpointが間違っています522266
-Node: モード行の情報が常に最新ではない523639
-Node: 同じ名前を共有するブランチとタグは何かを壊します524846
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません525999
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません527137
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります530194
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531417
-Node: 私はポップアップのデフォルトを保存できなくなりました532596
-Node: Debugging Tools534003
-Node: Keystroke Index536853
-Node: Command Index571462
-Node: Function Index609602
-Node: Variable Index626691
+Node: Section Plumbing477003
+Node: Creating Sections477254
+Node: Section Selection482748
+Node: Matching Sections484947
+Node: Refreshing Buffers492766
+Node: 慣習496736
+Node: Theming Faces496947
+Node: FAQ507625
+Node: FAQ - How to ...?508149
+Node: Magitの発音は？508608
+Node: How to show git's output?509641
+Node: How to install the gitman info manual?510669
+Node: How to show diffs for gpg-encrypted files?511944
+Node: How does branching and pushing work?512647
+Node: Magitをediff-version-control-packageとして使用できますか？513054
+Node: VCを無効にする必要がありますか？515639
+Node: FAQ - Issues and Errors516533
+Node: Magit is slow517883
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました518123
+Node: コミットに問題があります519155
+Node: MS WindowsではMagitでpushできません519716
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520417
+Node: ファイルを展開してdiffを表示するとファイルが消えます521617
+Node: COMMIT_EDITMSGバッファのpointが間違っています522400
+Node: モード行の情報が常に最新ではない523783
+Node: 同じ名前を共有するブランチとタグは何かを壊します524990
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません526143
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません527281
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります530338
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531561
+Node: 私はポップアップのデフォルトを保存できなくなりました532740
+Node: Debugging Tools534147
+Node: Keystroke Index536997
+Node: Command Index571606
+Node: Function Index609746
+Node: Variable Index626835
 
 End Tag Table
 
