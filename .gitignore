@@ -20,4 +20,5 @@
 /Documentation/docs-ja/*.epub
 /Documentation/docs-ja/*.html
 /Documentation/docs-ja/mimetype
+/Documentation/docs-ja/sed-out/
 /Documentation/docs-ja/translate-raw/
