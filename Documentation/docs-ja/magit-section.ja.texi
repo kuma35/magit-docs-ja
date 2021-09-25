@@ -35,7 +35,7 @@ more details.
 @finalout
 @titlepage
 @title Magit-Section Developer Manual
-@subtitle for version 3.2.1
+@subtitle for version 3.2.1 (v3.2.1-33-g421be65a3+1)
 @author Jonas Bernoulli
 @page
 @vskip 0pt plus 1filll
@@ -54,7 +54,7 @@ more details.
 このマニュアルでは、あなた独自のパッケージでセクションを使用する方法について説明します。
 
 @noindent
-このマニュアルは、Magit-Sectionバージョン3.2.1を対象としています。
+このマニュアルは、Magit-Sectionバージョン3.2.1 (v3.2.1-33-g421be65a3+1) を対象としています。
 
 @quotation
 Copyright (C) 2015-2021 Jonas Bernoulli <jonas@@bernoul.li>
@@ -91,7 +91,7 @@ more details.
 @node Creating Sections
 @chapter Creating Sections
 
-@defun magit-insert-section [name] (type &optional value hide) &rest body
+@defmac magit-insert-section [name] (type &optional value hide) &rest body
 
 タイプCLASSのセクションオブジェクトを作成し、その@code{value}スロットにVALUEを格納し、ポイントにセクションを挿入します。
 CLASSは`magit-section'のサブクラスであるか、@code{(eval
@@ -111,7 +111,7 @@ BODYは、セクションの見出しと本文を実際に挿入する任意の�
 BODYが評価される前に、セクションオブジェクトの@code{start}が`point'の値に設定され、BODYが評価された後、その@code{end}が@code{point}の新しい値に設定されます。BODYは、@code{point}を前進させる責任があります。
 
 セクションが空であることがBODY内で判明した場合は、@code{magit-cancel-section}を使用して、部分的に挿入されたセクションのすべてのトレースを中止して削除できます。これは、Gitの出力を洗浄(wash)してセクションを作成し、Gitが今回は実際には何も出力しなかった場合に発生する可能性があります。
-@end defun
+@end defmac
 
 @defun magit-insert-heading &rest args
 

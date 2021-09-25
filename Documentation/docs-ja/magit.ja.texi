@@ -35,7 +35,7 @@ more details.
 @finalout
 @titlepage
 @title Magit User Manual
-@subtitle for version 3.2.1 (v3.2.1-24-gb8e64dcb9+1)
+@subtitle for version 3.2.1 (v3.2.1-64-g8771401d4+1)
 @author Jonas Bernoulli
 @page
 @vskip 0pt plus 1filll
@@ -51,7 +51,7 @@ more details.
 Magitは、バージョン管理システムGitへのインターフェースであり、Emacsパッケージとして実装されています。Magitは完全なGit磁器を目指しています。MagitがすべてのGitコマンドをラップして改善するとは(まだ)主張できませんが、経験豊富なGitユーザーでさえEmacs内から直接毎日のバージョン管理タスクのほとんどすべてを実行できるほど十分に完全です。多くの優れたGitクライアントが存在しますが、磁器と呼ばれるのはMagitとGit自体だけです。(訳注:低レベルのを配管(plumbing)コマンド、よりユーザーフレンドリーなのを磁器(porcelain)コマンドと称する)
 
 @noindent
-This manual is for Magit version 3.2.1 (v3.2.1-24-gb8e64dcb9+1).
+This manual is for Magit version 3.2.1 (v3.2.1-64-g8771401d4+1).
 
 @quotation
 Copyright (C) 2015-2021 Jonas Bernoulli <jonas@@bernoul.li>
@@ -317,6 +317,7 @@ Miscellaneous
 * Submodules::
 * Subtree::
 * Worktree::
+* Bundle::
 * Common Commands::
 * Wip Modes::
 * Commands for Buffers Visiting Files::
@@ -1413,13 +1414,20 @@ HOOKはシンボルであるべきです。HOOKが無効の場合、最初にnil
 ユーザーは通常、セクションのタイプと値について心配する必要はありませんが、それらを知っていると便利な場合があります。
 
 @table @asis
-@kindex M-x magit-describe-section-briefly
-@cindex magit-describe-section-briefly
-@item @kbd{M-x magit-describe-section-briefly} @tie{}@tie{}@tie{}@tie{}(@code{magit-describe-section-briefly})
+@kindex H
+@cindex magit-describe-section
+@item @kbd{H} @tie{}@tie{}@tie{}@tie{}(@code{magit-describe-section})
 
-エコー領域内に、ポイントのあるセクションに関する情報を"#<magit-section VALUE [TYPE PARENT-TYPE@dots{}]
-BEGINNING-END>"として表示します。
+このコマンドは、別のバッファ内のポイントのセクションに関する情報を表示します。
+
 @end table
+
+@cindex magit-describe-section-briefly
+@deffn Command magit-describe-section-briefly
+
+このコマンドは、エコー領域のポイントのセクションに関する情報を@code{#<magit-section VALUE [TYPE
+PARENT-TYPE...] BEGINNING-END>}として表示します。
+@end deffn
 
 多くのコマンドは、ポイントのある場所でのセクションのタイプに応じて異なる動作をしたり、何らかの形でそのセクションの値を消費したりします。しかし、それは、現在のセクションに応じて、同じキーが異なることを行う可能性がある理由の1つにすぎません。
 
@@ -1901,10 +1909,25 @@ Magitは、副作用(プッシュ時など)または何らかの値(現在のブ
 
 @end table
 
-@defopt magit-git-debug
+@defvar magit-git-debug
 
-これがnil以外の場合、gitへのすべての呼び出しの出力はプロセスバッファーに記録されます。これはデバッグ時に役立ちます。デバッグ時以外はパフォーマンスに悪影響を与えるだけです。
-@end defopt
+このオプションは、gitエラーの追加レポートを有効にするかどうかを制御します。
+
+Magitは基本的に次の2つの理由のいずれかでgitを呼び出します: 副作用のため、または標準出力を使って何かをするためです。
+
+gitが副作用のために実行されると、エラーメッセージを含むその出力は、@code{$}を使用したときに表示されるプロセスバッファに送られます。
+
+gitの出力が何らかの方法で消費されると、それもこのバッファに挿入するにはコストがかかりすぎますが、このオプションがnil以外で、gitがゼロ以外の終了ステータスで返される場合、少なくともこのバッファにその標準エラーが挿入されます。
+
+これは、デバッグのみを目的としています。これを永続的に有効にしないでください。パフォーマンスに悪影響を及ぼします。
+@end defvar
+
+@defvar magit-process-extreme-logging
+
+このオプションは、@code{magit-process-file}が@code{*Messages*}バッファにロギングするかどうかを制御します。
+
+Magitが舞台裏でGitをどのように使用しているかを理解しようとするときに、一時的に使用することのみを目的としています。通常magit-processバッファに送られる出力は、引き続きそこに送られます。なお、すべての出力がこれら2つのバッファのいずれかに送られるわけではありません。
+@end defvar
 
 @node Git Process Status
 @subsection Git Process Status
@@ -1942,6 +1965,9 @@ buffer)に表示します。
 
 文字列「git」は、ユーザーにコマンドの入力を求めるときの初期入力として使用されます。別のコマンドを実行するために削除できます。
 
+@kindex :
+@cindex magit-git-command
+@item @kbd{:} @tie{}@tie{}@tie{}@tie{}(@code{magit-git-command})
 @kindex ! p
 @cindex magit-git-command
 @item @kbd{! p} @tie{}@tie{}@tie{}@tie{}(@code{magit-git-command})
@@ -3682,6 +3708,12 @@ changes)とステージされていない変更(unstaged changes)を表示しま
 
 このコマンドは、専用バッファ内のブランチとタグを一覧表示します。各referenceは、ユーザーから読み取られたブランチと比較されています。
 
+@kindex y r
+@cindex magit-refs-set-show-commit-count
+@item @kbd{y r} @tie{}@tie{}@tie{}@tie{}(@code{magit-refs-set-show-commit-count})
+
+このコマンドは、コミットカウント(the commit count)が表示されるrefsを変更します。
+
 @end table
 
 @defopt magit-refs-show-commit-count
@@ -4313,9 +4345,9 @@ blameは、以下のオプションを使用して制御されます。
 @section Creating Repository
 
 @table @asis
-@kindex M-x magit-init
+@kindex I
 @cindex magit-init
-@item @kbd{M-x magit-init} @tie{}@tie{}@tie{}@tie{}(@code{magit-init})
+@item @kbd{I} @tie{}@tie{}@tie{}@tie{}(@code{magit-init})
 
 このコマンドは、リポジトリを初期化してから、新しいリポジトリのステータスバッファを表示します。
 
@@ -4605,6 +4637,8 @@ changes)は適用できません。なぜならそれはすでに適用されて
 
 ポイントでの変更を作業ツリーから削除します。
 
+競合が解決されていないハンクまたはファイルでは、どちらの側を保持するかを確認します(もう一方を破棄します)。ポイントがそのどちらか側のテキスト内にある場合は、プロンプトを表示せずにその側を保持します。
+
 @kindex v
 @cindex magit-reverse
 @item @kbd{v} @tie{}@tie{}@tie{}@tie{}(@code{magit-reverse})
@@ -4757,6 +4791,21 @@ squashとfixupの対象となるコミットを確認する必要があるかど
 @code{this-command}が@code{magit-post-stage-hook-commands}のメンバーである場合、このフックは@code{magit-refresh}によって実行されます。これには、@code{magit-commit-*}という名前のコマンドのみが含まれ、ユーザーがバッファ内のコミットメッセージを編集する必要は「ありません」。
 
 こちらもご覧下さい→@code{git-commit-post-finish-hook}
+@end defopt
+
+@defopt magit-commit-diff-inhibit-same-window
+
+コミット中にdiffを表示するときに同じウィンドウの使用を禁止するかどうか。
+
+コミットを書き込むと、コミットされる変更のdiffが自動的に表示されます。このアイデアは、diffが同じフレームの別のウィンドウに表示され、ほとんどのユーザーにとっては正常に機能するというものです。言い換えると、ほとんどのユーザーは、このオプションの値がユーザーに違いをもたらさないため、このオプションを完全に無視できます。
+
+ただし、パッケージが明示的に作成しようとしても新しいウィンドウを作成しないようにEmacsを構成したユーザーにとって、2つの新しいバッファを表示すると、必然的に最初のバッファがすぐに2番目のバッファに置き換えられます。
+私たちの場合、メッセージバッファはすぐにdiffバッファに置き換えられますが、これはもちろん非常に望ましくありません。
+
+回避策としては、この特定の場合にこのユーザー構成を抑制することです。
+ユーザーは、このオプション切り替えに関して明示的に事前に同意(opt-in)を取る要があります。この回避策を無条件に有効にすることはできません。これも他のユーザーに問題を引き起こすためです。フレームが小さすぎるか、関連する設定が強すぎると、diffバッファが新しいフレームに表示されることになります。
+
+こちらも参照下さい(@uref{https://github.com/magit/magit/issues/4132})。
 @end defopt
 
 @node Editing Commit Messages
@@ -5651,6 +5700,9 @@ m}(@code{smerge-keep-mine})を使用して@code{HEAD}バージョンを保持す
 o}(@code{smerge-keep-other})を使用して"|||||||"に続くバージョンを保持します。次に、@code{C-c ^
 n}を使用して、同じファイル内の次の競合する領域に移動します。競合の解決が完了したら、Magitステータスバッファに戻ります。
 最後の競合を解決した後にバッファを保存すると、Smergeがファイルを自動的にステージするため、ファイルは"unmerged"として表示されなくなり、"modified"として表示されます。
+
+Magitは、前述のSmergeコマンドをラップするようになり、ファイル訪問バッファに移動することなく、これらのキーバインディングを使用できるようになりました。
+さらに、競合が解決されていないハンクの@code{k}(@code{magit-discard})は、どちらの側を保持するかを尋ねます。ポイントがそのどちらかの側にある場合は、プロンプトを表示せずに保持します。同様に、未解決のファイルの@code{k}は、どちらの側を保持するかを尋ねます。
 
 あるいは、ファイルのバージョンごとに別々のバッファを使用するEdiffを使用することもできます。
 Ediffを使用してファイル内の競合を解決するには、ステータスバッファ内のそのようなファイル上にポイントがあるときに@code{e}を押します。
@@ -7023,6 +7075,7 @@ buffer)に表示します。
 * Submodules::
 * Subtree::
 * Worktree::
+* Bundle::
 * Common Commands::
 * Wip Modes::
 * Commands for Buffers Visiting Files::
@@ -7391,45 +7444,69 @@ the git-worktree(1) manpage.
 @end iftex
 
 @table @asis
-@kindex %
+@kindex Z
 @cindex magit-worktree
-@item @kbd{%} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree})
+@item @kbd{Z} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree})
 
 このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、それに従うサフィックス(接尾辞)コマンド群を結びつけ、そのサフィックスコマンドのどれかを選ぶまでの間、サフィックス(接尾辞)コマンド群を一時バッファ(temporary
 buffer)に表示します。
 
-@kindex % b
+@kindex Z b
 @cindex magit-worktree-checkout
-@item @kbd{% b} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-checkout})
+@item @kbd{Z b} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-checkout})
 
 PATHの新しいworktreeでBRANCHをチェックアウトします。
 
-@kindex % c
+@kindex Z c
 @cindex magit-worktree-branch
-@item @kbd{% c} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-branch})
+@item @kbd{Z c} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-branch})
 
 新しいBRANCHを作成し、PATHの新しいworktreeでチェックアウトします。
 
-@kindex % m
+@kindex Z m
 @cindex magit-worktree-move
-@item @kbd{% m} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-move})
+@item @kbd{Z m} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-move})
 
 既存のworktreeを新しいPATHに移動します。
 
-@kindex % k
+@kindex Z k
 @cindex magit-worktree-delete
-@item @kbd{% k} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-delete})
+@item @kbd{Z k} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-delete})
 
 worktreeを削除します。デフォルトでは、ポイントのworktreeになります。プライマリworktreeは削除できません。
 
-@kindex % g
+@kindex Z g
 @cindex magit-worktree-status
-@item @kbd{% g} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-status})
+@item @kbd{Z g} @tie{}@tie{}@tie{}@tie{}(@code{magit-worktree-status})
 
 ポイントでのworktreeのステータスを表示します。
 
 ポイントにworktreeがない場合は、ミニバッファでworktreeを読み取ります。ポイントのworktreeが、現在のバッファにステータスがすでに表示されているworktreeである場合は、代わりにDiredで表示します。
 @end table
+
+@node Bundle
+@section Bundle
+
+こちらもご覧下さい 
+@ifinfo
+@ref{git-bundle,,,gitman,}.
+@end ifinfo
+@ifhtml
+@c html
+@c end html
+the <a href="http://git-scm.com/docs/git-bundle">git-bundle(1)</a> manpage.
+@end ifhtml
+@iftex
+the git-bundle(1) manpage.
+@end iftex
+
+@cindex magit-bundle
+@deffn Command magit-bundle
+
+このトランジェント(一時的)プレフィックス(接頭辞)コマンドは、@code{git
+bundle}サブコマンドを実行するためのいくつかのサフィックス(接尾辞)コマンドを結び付け、サフィックスコマンドが呼び出されるまでそれらを一時バッファ(temporary
+buffer)に表示します。
+@end deffn
 
 @node Common Commands
 @section Common Commands
