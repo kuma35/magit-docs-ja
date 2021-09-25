@@ -257,9 +257,15 @@ Then show the status buffer for the new repository."
               str
             (magit-clone--name-to-url str))))
     (?p "[p]ath"
-        (read-directory-name "Clone repository: "))
-    (?l "or [l]ocal url"
-        (concat "file://" (read-directory-name "Clone repository: file://")))))
+        (magit-convert-filename-for-git
+         (read-directory-name "Clone repository: ")))
+    (?l "[l]ocal url"
+        (concat "file://"
+                (magit-convert-filename-for-git
+                 (read-directory-name "Clone repository: file://"))))
+    (?b "or [b]undle"
+        (magit-convert-filename-for-git
+         (read-file-name "Clone from bundle: ")))))
 
 (defun magit-clone--url-to-name (url)
   (and (string-match "\\([^/:]+?\\)\\(/?\\.git\\)?$" url)

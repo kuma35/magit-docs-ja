@@ -222,8 +222,9 @@ option is non-nil and git returns with a non-zero exit status,
 then at least its standard error is inserted into this buffer.
 
 This is only intended for debugging purposes.  Do not enable this
-permanently, that would negatively affect performance.")
+permanently, that would negatively affect performance.
 
+Also see `magit-process-extreme-logging'.")
 
 (defcustom magit-prefer-remote-upstream nil
   "Whether to favor remote branches when reading the upstream branch.
@@ -2212,6 +2213,14 @@ and this option only controls what face is used.")
 
 (defvar magit-revision-history nil)
 
+(defun magit--minibuf-default-add-commit ()
+  (let ((fn minibuffer-default-add-function))
+    (lambda ()
+      (if-let ((commit (with-selected-window (minibuffer-selected-window)
+                         (magit-commit-at-point))))
+          (cons commit (delete commit (funcall fn)))
+        (funcall fn)))))
+
 (defun magit-read-branch (prompt &optional secondary-default)
   (magit-completing-read prompt (magit-list-branch-names)
                          nil t nil 'magit-revision-history
@@ -2220,12 +2229,13 @@ and this option only controls what face is used.")
                              (magit-get-current-branch))))
 
 (defun magit-read-branch-or-commit (prompt &optional secondary-default)
-  (or (magit-completing-read prompt (magit-list-refnames nil t)
-                             nil nil nil 'magit-revision-history
-                             (or (magit-branch-or-commit-at-point)
-                                 secondary-default
-                                 (magit-get-current-branch)))
-      (user-error "Nothing selected")))
+  (let ((minibuffer-default-add-function (magit--minibuf-default-add-commit)))
+    (or (magit-completing-read prompt (magit-list-refnames nil t)
+                               nil nil nil 'magit-revision-history
+                               (or (magit-branch-or-commit-at-point)
+                                   secondary-default
+                                   (magit-get-current-branch)))
+        (user-error "Nothing selected"))))
 
 (defun magit-read-range-or-commit (prompt &optional secondary-default)
   (magit-read-range
@@ -2238,7 +2248,8 @@ and this option only controls what face is used.")
        (magit-get-current-branch))))
 
 (defun magit-read-range (prompt &optional default)
-  (let ((crm-separator "\\.\\.\\.?"))
+  (let ((minibuffer-default-add-function (magit--minibuf-default-add-commit))
+        (crm-separator "\\.\\.\\.?"))
     (magit-completing-read-multiple*
      (concat prompt ": ")
      (magit-list-refnames)
@@ -2273,7 +2284,8 @@ and this option only controls what face is used.")
                              (magit-get-current-branch))))
 
 (defun magit-read-local-branch-or-commit (prompt)
-  (let ((choices (nconc (magit-list-local-branch-names)
+  (let ((minibuffer-default-add-function (magit--minibuf-default-add-commit))
+        (choices (nconc (magit-list-local-branch-names)
                         (magit-list-special-refnames)))
         (commit (magit-commit-at-point)))
     (when commit
@@ -2306,7 +2318,8 @@ and this option only controls what face is used.")
 
 (defun magit-read-other-branch-or-commit
     (prompt &optional exclude secondary-default)
-  (let* ((current (magit-get-current-branch))
+  (let* ((minibuffer-default-add-function (magit--minibuf-default-add-commit))
+         (current (magit-get-current-branch))
          (atpoint (magit-branch-or-commit-at-point))
          (exclude (or exclude current))
          (default (or (and (not (equal atpoint exclude))

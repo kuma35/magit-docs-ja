@@ -110,7 +110,7 @@ inside your function."
   :type 'hook)
 
 (defcustom magit-display-buffer-function 'magit-display-buffer-traditional
-  "The function used display a Magit buffer.
+  "The function used to display a Magit buffer.
 
 All Magit buffers (buffers whose major-modes derive from
 `magit-mode') are displayed using `magit-display-buffer',
@@ -1094,8 +1094,8 @@ Run hooks `magit-pre-refresh-hook' and `magit-post-refresh-hook'."
                        (or (nreverse (get-buffer-window-list buffer nil t))
                            (list (selected-window))))))
         (deactivate-mark)
+        (setq magit-section-pre-command-section nil)
         (setq magit-section-highlight-overlays nil)
-        (setq magit-section-highlighted-section nil)
         (setq magit-section-highlighted-sections nil)
         (setq magit-section-unhighlight-sections nil)
         (magit-process-unset-mode-line-error-status)

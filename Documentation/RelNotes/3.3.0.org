@@ -29,6 +29,14 @@
 - Added new command ~magit-dired-am-apply-patches~ for use in Dired.
   #4094.
 
+- Added new tranient prefix command ~magit-bundle~, which provides
+  support for ~git bundle~.  #4392
+
+- When minibuffer completion allows for a branch or a commit to be
+  selected and the former is preferred and thus offered as default
+  if possible, then offer the commit at point as the first choice
+  initially accessible with ~next-history-element~.  #4291
+
 ** Fixes since v3.2.0
 
 - Make ~magit-branch-remote-head~ and ~magit-branch-current~ fall back
@@ -39,3 +47,11 @@
 
 - In some cases refreshing a buffer caused the cursor to jump to a
   different position.  #4148
+
+- Due to a regression in v2.90.0, ~magit-wip-log~ and
+  ~magit-wip-log-current~ failed to extract the previous tips of the
+  wip refs from the reflog (which is relevant when
+  ~~magit-wip-merge-branch~ is nil).
+
+- An old attempt to avoid needlessly updating section highlighting
+  did not actually succeed.  #3976

@@ -97,11 +97,14 @@ When this is nil, no sections are ever removed."
   :type '(choice (const :tag "Never remove old sections" nil) integer))
 
 (defvar magit-process-extreme-logging nil
-  "Whether `magit-process-file' logs to *Messages* buffer.
+  "Whether `magit-process-file' logs to the *Messages* buffer.
+
 Only intended for temporary use when you try to figure out how
 Magit uses Git behind the scene.  Output that normally goes to
 the magit-process buffer continues to go there.  Not all output
-goes to either of these two buffers.")
+goes to either of these two buffers.
+
+Also see `magit-git-debug'.")
 
 (defcustom magit-process-error-tooltip-max-lines 20
   "The number of lines for `magit-process-error-lines' to return.
@@ -772,7 +775,9 @@ Magit status buffer."
   (let ((map (cl-gensym)))
     `(let ((,map (make-sparse-keymap)))
        (set-keymap-parent ,map minibuffer-local-map)
-       (define-key ,map (kbd "C-g")
+       ;; Note: Leaving (kbd ...) unevaluated leads to the
+       ;; magit-process:password-prompt test failing.
+       (define-key ,map ,(kbd "C-g")
          (lambda ()
            (interactive)
            (ignore-errors (kill-process ,proc))
@@ -853,8 +858,8 @@ be translated on the fly by doing this once
   "Authenticate using `git-credential-manager-core'.
 
 To use this function add it to the appropriate hook
-  (add-hook 'magit-process-prompt-functions
-            'magit-process-git-credential-manager-core)"
+  (add-hook \\='magit-process-prompt-functions
+            \\='magit-process-git-credential-manager-core)"
   (and (string-match "^option (enter for default): $" string)
        (progn
          (magit-process-buffer)
@@ -868,7 +873,7 @@ To use this function add it to the appropriate hook
 Use `magit-process-password-prompt-regexps' to find a known
 prompt.  If and only if one is found, then call functions in
 `magit-process-find-password-functions' until one of them returns
-the password.  If all function return nil, then read the password
+the password.  If all functions return nil, then read the password
 from the user."
   (when-let ((prompt (magit-process-match-prompt
                       magit-process-password-prompt-regexps string)))

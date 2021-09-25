@@ -8,7 +8,7 @@
 #+TEXINFO_DIR_CATEGORY: Emacs
 #+TEXINFO_DIR_TITLE: Magit: (magit).
 #+TEXINFO_DIR_DESC: Using Git from Emacs with Magit.
-#+SUBTITLE: for version 3.2.1 (v3.2.1-24-gb8e64dcb9+1)
+#+SUBTITLE: for version 3.2.1 (v3.2.1-64-g8771401d4+1)
 
 #+TEXINFO_DEFFN: t
 #+OPTIONS: H:4 num:3 toc:2
@@ -25,7 +25,7 @@ directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
 #+TEXINFO: @noindent
-This manual is for Magit version 3.2.1 (v3.2.1-24-gb8e64dcb9+1).
+This manual is for Magit version 3.2.1 (v3.2.1-64-g8771401d4+1).
 
 #+BEGIN_QUOTE
 Copyright (C) 2015-2021 Jonas Bernoulli <jonas@bernoul.li>
@@ -1215,10 +1215,16 @@ section of type ~file~, for example, is a file name.
 Users usually do not have to worry about a section's type and value,
 but knowing them can be handy at times.
 
-- Key: M-x magit-describe-section-briefly, magit-describe-section-briefly
+- Key: H, magit-describe-section
 
-  Show information about the section at point in the echo area, as
-  "#<magit-section VALUE [TYPE PARENT-TYPE...] BEGINNING-END>".
+  This command shows information about the section at point in a
+  separate buffer.
+
+- Command: magit-describe-section-briefly
+
+  This command shows information about the section at point in the
+  echo area, as ~#<magit-section VALUE [TYPE PARENT-TYPE...]
+  BEGINNING-END>~.
 
 Many commands behave differently depending on the type of the section
 at point and/or somehow consume the value of that section.  But that
@@ -1810,11 +1816,34 @@ sections are available.  There is one additional command.
 
   This command kills the process represented by the section at point.
 
-- User Option: magit-git-debug
+- Variable: magit-git-debug
 
-  When this is non-nil then the output of all calls to git are logged
-  in the process buffer.  This is useful when debugging, otherwise it
-  just negatively affects performance.
+  This option controls whether additional reporting of git errors is
+  enabled.
+
+  Magit basically calls git for one of these two reasons: for
+  side-effects or to do something with its standard output.
+
+  When git is run for side-effects then its output, including error
+  messages, go into the process buffer which is shown when using ~$~.
+
+  When git's output is consumed in some way, then it would be too
+  expensive to also insert it into this buffer, but when this
+  option is non-nil and git returns with a non-zero exit status,
+  then at least its standard error is inserted into this buffer.
+
+  This is only intended for debugging purposes.  Do not enable this
+  permanently, that would negatively affect performance.
+
+- Variable: magit-process-extreme-logging
+
+  This option controls whether ~magit-process-file~ logs to the
+  ~*Messages*~ buffer.
+
+  Only intended for temporary use when you try to figure out how
+  Magit uses Git behind the scene.  Output that normally goes to
+  the magit-process buffer continues to go there.  Not all output
+  goes to either of these two buffers.
 
 *** Git Process Status
 
@@ -1857,6 +1886,7 @@ switch to a shell.
   The string "git " is used as initial input when prompting the user
   for the command.  It can be removed to run another command.
 
+- Key: :, magit-git-command
 - Key: ! p, magit-git-command
 
   This command reads a command from the user and executes it in
@@ -3501,6 +3531,10 @@ which all the other references are compared.
   This command lists branches and tags in a dedicated buffer.  Each
   reference is being compared with a branch read from the user.
 
+- Key: y r, magit-refs-set-show-commit-count
+
+  This command changes for which refs the commit count is shown.
+
 - User Option: magit-refs-show-commit-count
 
   Whether to show commit counts in Magit-Refs mode buffers.
@@ -4065,7 +4099,7 @@ Blaming is also controlled using the following options.
 * Manipulating
 ** Creating Repository
 
-- Key: M-x magit-init, magit-init
+- Key: I, magit-init
 
   This command initializes a repository and then shows the status
   buffer for the new repository.
@@ -4343,6 +4377,10 @@ variants.
 
   Remove the change at point from the working tree.
 
+  On a hunk or file with unresolved conflicts prompt which side to
+  keep (while discarding the other).  If point is within the text
+  of a side, then keep that side without prompting.
+
 - Key: v, magit-reverse
 
   Reverse the change at point in the working tree.
@@ -4470,6 +4508,33 @@ Also see [[man:git-commit]]
   the commit message in a buffer.
 
   Also see ~git-commit-post-finish-hook~.
+
+- User Option: magit-commit-diff-inhibit-same-window
+
+  Whether to inhibit use of same window when showing diff while
+  committing.
+
+  When writing a commit, then a diff of the changes to be committed
+  is automatically shown.  The idea is that the diff is shown in a
+  different window of the same frame and for most users that just
+  works.  In other words most users can completely ignore this
+  option because its value doesn't make a difference for them.
+
+  However for users who configured Emacs to never create a new
+  window even when the package explicitly tries to do so, then
+  displaying two new buffers necessarily means that the first is
+  immediately replaced by the second.  In our case the message
+  buffer is immediately replaced by the diff buffer, which is of
+  course highly undesirable.
+
+  A workaround is to suppress this user configuration in this
+  particular case.  Users have to explicitly opt-in by toggling
+  this option.  We cannot enable the workaround unconditionally
+  because that again causes issues for other users: if the frame
+  is too tiny or the relevant settings too aggressive, then the
+  diff buffer would end up being displayed in a new frame.
+
+  Also see https://github.com/magit/magit/issues/4132.
 
 *** Editing Commit Messages
 
@@ -5444,6 +5509,13 @@ to the Magit status buffer.  The file should now be shown as
 "modified", no longer as "unmerged", because Smerge automatically
 stages the file when you save the buffer after resolving the last
 conflict.
+
+Magit now wraps the mentioned Smerge commands, allowing you to use
+these key bindings without having to go to the file-visiting buffer.
+Additionally ~k~ (~magit-discard~) on a hunk with unresolved conflicts
+asks which side to keep or, if point is on a side, then it keeps it
+without prompting.  Similarly ~k~ on a unresolved file ask which side
+to keep.
 
 Alternatively you could use Ediff, which uses separate buffers for the
 different versions of the file.  To resolve conflicts in a file using
@@ -6897,35 +6969,45 @@ Also see [[man:git-subtree]]
 
 Also see [[man:git-worktree]]
 
-- Key: %, magit-worktree
+- Key: Z, magit-worktree
 
   This transient prefix command binds the following suffix commands
   and displays them in a temporary buffer until a suffix is invoked.
 
-- Key: % b, magit-worktree-checkout
+- Key: Z b, magit-worktree-checkout
 
   Checkout BRANCH in a new worktree at PATH.
 
-- Key: % c, magit-worktree-branch
+- Key: Z c, magit-worktree-branch
 
   Create a new BRANCH and check it out in a new worktree at PATH.
 
-- Key: % m, magit-worktree-move
+- Key: Z m, magit-worktree-move
 
   Move an existing worktree to a new PATH.
 
-- Key: % k, magit-worktree-delete
+- Key: Z k, magit-worktree-delete
 
   Delete a worktree, defaulting to the worktree at point.
   The primary worktree cannot be deleted.
 
-- Key: % g, magit-worktree-status
+- Key: Z g, magit-worktree-status
 
   Show the status for the worktree at point.
 
   If there is no worktree at point, then read one in the minibuffer.
   If the worktree at point is the one whose status is already being
   displayed in the current buffer, then show it in Dired instead.
+
+** Bundle
+
+Also see [[man:git-bundle]]
+
+- Command: magit-bundle
+
+  This transient prefix command binds several suffix commands for
+  running ~git bundle~ subcommands and displays them in a temporary
+  buffer until a suffix is invoked.
 
 ** Common Commands
 
