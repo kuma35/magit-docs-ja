@@ -17,3 +17,7 @@
 /config.mk
 /lisp/magit-autoloads.el
 /lisp/magit-version.el
+/Documentation/docs-ja/*.epub
+/Documentation/docs-ja/*.html
+/Documentation/docs-ja/mimetype
+/Documentation/docs-ja/translate-raw/
