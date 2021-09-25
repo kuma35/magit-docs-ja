@@ -6223,8 +6223,9 @@ File: magit.ja.info,  Node: Merging,  Next: Resolving Conflicts,  Prev: Branchin
 ‘m m’     (‘magit-merge-plain’)
 
      このコマンドは、別のブランチまたは任意のリビジョンを現在のブランチ
-     にマージします。 マージされるブランチまたはリビジョンはミニバッファ
-     に読み込まれ、デフォルトでその時点のブランチになります。
+     にマージします。 マージされるその別のブランチまたは任意のリビジョン
+     はミニバッファで読み込まれ、デフォルトでポイントのブランチになりま
+     す。
 
      競合があるか、プレフィックス引数が使用されていない限り、結果のマー
      ジコミットは一般的なコミットメッセージを使用し、ユーザーはコミット
@@ -10505,21 +10506,21 @@ Appendix C Keystroke Index
 * L w:                                   Refreshing Logs.     (line  30)
 * m:                                     Merging.             (line   9)
 * M:                                     Remote Commands.     (line  13)
-* m a:                                   Merging.             (line  47)
-* m a <1>:                               Merging.             (line  92)
+* m a:                                   Merging.             (line  48)
+* m a <1>:                               Merging.             (line  93)
 * M a:                                   Remote Commands.     (line  53)
 * M C:                                   Remote Commands.     (line  35)
-* m e:                                   Merging.             (line  33)
-* m i:                                   Merging.             (line  59)
+* m e:                                   Merging.             (line  34)
+* m i:                                   Merging.             (line  60)
 * M k:                                   Remote Commands.     (line  68)
 * m m:                                   Merging.             (line  20)
-* m m <1>:                               Merging.             (line  87)
-* m n:                                   Merging.             (line  40)
-* m p:                                   Merging.             (line  79)
+* m m <1>:                               Merging.             (line  88)
+* m n:                                   Merging.             (line  41)
+* m p:                                   Merging.             (line  80)
 * M p:                                   Remote Commands.     (line  72)
 * M P:                                   Remote Commands.     (line  77)
 * M r:                                   Remote Commands.     (line  58)
-* m s:                                   Merging.             (line  71)
+* m s:                                   Merging.             (line  72)
 * M u:                                   Remote Commands.     (line  63)
 * M-1:                                   Section Visibility.  (line  32)
 * M-2:                                   Section Visibility.  (line  33)
@@ -11026,15 +11027,15 @@ Appendix D Command Index
                                                               (line  92)
 * magit-margin-settings:                 Log Margin.          (line  54)
 * magit-merge:                           Merging.             (line   9)
-* magit-merge <1>:                       Merging.             (line  87)
-* magit-merge-abort:                     Merging.             (line  92)
-* magit-merge-absorb:                    Merging.             (line  47)
-* magit-merge-editmsg:                   Merging.             (line  33)
-* magit-merge-into:                      Merging.             (line  59)
-* magit-merge-nocommit:                  Merging.             (line  40)
+* magit-merge <1>:                       Merging.             (line  88)
+* magit-merge-abort:                     Merging.             (line  93)
+* magit-merge-absorb:                    Merging.             (line  48)
+* magit-merge-editmsg:                   Merging.             (line  34)
+* magit-merge-into:                      Merging.             (line  60)
+* magit-merge-nocommit:                  Merging.             (line  41)
 * magit-merge-plain:                     Merging.             (line  20)
-* magit-merge-preview:                   Merging.             (line  79)
-* magit-merge-squash:                    Merging.             (line  71)
+* magit-merge-preview:                   Merging.             (line  80)
+* magit-merge-squash:                    Merging.             (line  72)
 * magit-mode-bury-buffer:                Quitting Windows.    (line   6)
 * magit-notes:                           Notes.               (line   8)
 * magit-notes-edit:                      Notes.               (line  16)
@@ -11817,91 +11818,91 @@ Node: Branch Commands291360
 Node: Branch Git Variables309265
 Node: Auxiliary Branch Commands316256
 Node: Merging317705
-Node: Resolving Conflicts323218
-Node: Rebasing329582
-Node: Editing Rebase Sequences336506
-Node: Information About In-Progress Rebase342245
-Ref: Information About In-Progress Rebase-Footnote-1353422
-Node: Cherry Picking354183
-Node: Reverting360271
-Node: Resetting362557
-Node: Stashing365288
-Node: Transferring372137
-Node: Remotes372362
-Node: Remote Commands372517
-Node: Remote Git Variables378120
-Node: Fetching379822
-Node: Pulling383654
-Node: Pushing385320
-Node: Plain Patches391625
-Node: Maildir Patches393973
-Node: Miscellaneous396234
-Node: Tagging396551
-Node: Notes399366
-Node: Submodules402590
-Node: Listing Submodules402855
-Node: submodule用トランジェントコマンド404555
-Node: Subtree408294
-Node: Worktree411565
-Node: Common Commands413124
-Node: Wip Modes416348
-Node: Wip Graph423024
-Node: Legacy Wip Modes425909
-Node: Commands for Buffers Visiting Files429486
-Node: Minor Mode for Buffers Visiting Blobs437506
-Node: Customizing438532
-Node: Per-Repository Configuration440482
-Node: 基本設定443176
-Node: Safety443560
-Node: Performance445978
-Ref: Log Performance450232
-Ref: Diff Performance451991
-Ref: Refs Buffer Performance453704
-Ref: Committing Performance454490
-Node: Microsoft Windows Performance455638
-Node: MacOS Performance457142
-Ref: MacOS Performance-Footnote-1457993
-Node: Default Bindings458132
-Node: 配管コマンド(Plumbing)461078
-Node: Calling Git462193
-Node: Getting a Value from Git464154
-Node: Calling Git for Effect468936
-Node: Section Plumbing477003
-Node: Creating Sections477254
-Node: Section Selection482748
-Node: Matching Sections484947
-Node: Refreshing Buffers492766
-Node: 慣習496736
-Node: Theming Faces496947
-Node: FAQ507625
-Node: FAQ - How to ...?508149
-Node: Magitの発音は？508608
-Node: How to show git's output?509641
-Node: How to install the gitman info manual?510669
-Node: How to show diffs for gpg-encrypted files?511944
-Node: How does branching and pushing work?512647
-Node: Magitをediff-version-control-packageとして使用できますか？513054
-Node: VCを無効にする必要がありますか？515639
-Node: FAQ - Issues and Errors516533
-Node: Magit is slow517883
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました518123
-Node: コミットに問題があります519155
-Node: MS WindowsではMagitでpushできません519716
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520417
-Node: ファイルを展開してdiffを表示するとファイルが消えます521617
-Node: COMMIT_EDITMSGバッファのpointが間違っています522400
-Node: モード行の情報が常に最新ではない523783
-Node: 同じ名前を共有するブランチとタグは何かを壊します524990
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません526143
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません527281
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります530338
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531561
-Node: 私はポップアップのデフォルトを保存できなくなりました532740
-Node: Debugging Tools534147
-Node: Keystroke Index536997
-Node: Command Index571606
-Node: Function Index609746
-Node: Variable Index626835
+Node: Resolving Conflicts323245
+Node: Rebasing329609
+Node: Editing Rebase Sequences336533
+Node: Information About In-Progress Rebase342272
+Ref: Information About In-Progress Rebase-Footnote-1353449
+Node: Cherry Picking354210
+Node: Reverting360298
+Node: Resetting362584
+Node: Stashing365315
+Node: Transferring372164
+Node: Remotes372389
+Node: Remote Commands372544
+Node: Remote Git Variables378147
+Node: Fetching379849
+Node: Pulling383681
+Node: Pushing385347
+Node: Plain Patches391652
+Node: Maildir Patches394000
+Node: Miscellaneous396261
+Node: Tagging396578
+Node: Notes399393
+Node: Submodules402617
+Node: Listing Submodules402882
+Node: submodule用トランジェントコマンド404582
+Node: Subtree408321
+Node: Worktree411592
+Node: Common Commands413151
+Node: Wip Modes416375
+Node: Wip Graph423051
+Node: Legacy Wip Modes425936
+Node: Commands for Buffers Visiting Files429513
+Node: Minor Mode for Buffers Visiting Blobs437533
+Node: Customizing438559
+Node: Per-Repository Configuration440509
+Node: 基本設定443203
+Node: Safety443587
+Node: Performance446005
+Ref: Log Performance450259
+Ref: Diff Performance452018
+Ref: Refs Buffer Performance453731
+Ref: Committing Performance454517
+Node: Microsoft Windows Performance455665
+Node: MacOS Performance457169
+Ref: MacOS Performance-Footnote-1458020
+Node: Default Bindings458159
+Node: 配管コマンド(Plumbing)461105
+Node: Calling Git462220
+Node: Getting a Value from Git464181
+Node: Calling Git for Effect468963
+Node: Section Plumbing477030
+Node: Creating Sections477281
+Node: Section Selection482775
+Node: Matching Sections484974
+Node: Refreshing Buffers492793
+Node: 慣習496763
+Node: Theming Faces496974
+Node: FAQ507652
+Node: FAQ - How to ...?508176
+Node: Magitの発音は？508635
+Node: How to show git's output?509668
+Node: How to install the gitman info manual?510696
+Node: How to show diffs for gpg-encrypted files?511971
+Node: How does branching and pushing work?512674
+Node: Magitをediff-version-control-packageとして使用できますか？513081
+Node: VCを無効にする必要がありますか？515666
+Node: FAQ - Issues and Errors516560
+Node: Magit is slow517910
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました518150
+Node: コミットに問題があります519182
+Node: MS WindowsではMagitでpushできません519743
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません520444
+Node: ファイルを展開してdiffを表示するとファイルが消えます521644
+Node: COMMIT_EDITMSGバッファのpointが間違っています522427
+Node: モード行の情報が常に最新ではない523810
+Node: 同じ名前を共有するブランチとタグは何かを壊します525017
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません526170
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません527308
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります530365
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません531588
+Node: 私はポップアップのデフォルトを保存できなくなりました532767
+Node: Debugging Tools534174
+Node: Keystroke Index537024
+Node: Command Index571633
+Node: Function Index609773
+Node: Variable Index626862
 
 End Tag Table
 

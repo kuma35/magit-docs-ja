@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
 "POT-Creation-Date: 2021-08-20 03:37+0900\n"
-"PO-Revision-Date: 2021-09-24 23:16+0900\n"
+"PO-Revision-Date: 2021-09-25 09:03+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -14355,7 +14355,7 @@ msgid ""
 "This command merges another branch or an arbitrary revision into the current "
 "branch.  The branch or revision to be merged is read in the minibuffer and "
 "defaults to the branch at point."
-msgstr "このコマンドは、別のブランチまたは任意のリビジョンを現在のブランチにマージします。 マージされるブランチまたはリビジョンはミニバッファに読み込まれ、デフォルトでその時点のブランチになります。"
+msgstr "このコマンドは、別のブランチまたは任意のリビジョンを現在のブランチにマージします。 マージされるその別のブランチまたは任意のリビジョンはミニバッファで読み込まれ、デフォルトでポイントのブランチになります。"
 
 #. type: table
 #: sed-out/magit.texi:7124
