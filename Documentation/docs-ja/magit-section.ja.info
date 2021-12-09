@@ -33,8 +33,7 @@ Magitの一部として配布されていました。しかし今やMagitやGit�
 いては→*note (magit)Sections:: このマニュアルでは、あなた独自のパッケー
 ジでセクションを使用する方法について説明します。
 
-このマニュアルは、Magit-Sectionバージョン3.2.1 (v3.2.1-33-g421be65a3+1)
-を対象としています。
+このマニュアルは、Magit-Sectionバージョン3.3.0 を対象としています。
 
      Copyright (C) 2015-2021 Jonas Bernoulli <jonas@bernoul.li>
 
@@ -273,10 +272,10 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
 
 Tag Table:
 Node: Top889
-Node: Introduction2482
-Node: Creating Sections3586
-Node: Core Functions9568
-Node: Matching Functions11234
+Node: Introduction2457
+Node: Creating Sections3561
+Node: Core Functions9543
+Node: Matching Functions11209
 
 End Tag Table
 

@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
-"POT-Creation-Date: 2021-09-25 15:24+0900\n"
-"PO-Revision-Date: 2021-09-25 15:59+0900\n"
+"POT-Creation-Date: 2021-12-09 11:24+0900\n"
+"PO-Revision-Date: 2021-12-09 11:32+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -75,8 +75,8 @@ msgstr "あなた独自のパッケージでMagit sectionを使用します。"
 #. type: subtitle
 #: sed-out/magit-section.texi:34
 #, no-wrap
-msgid "for version 3.2.1 (v3.2.1-33-g421be65a3+1)"
-msgstr "for version 3.2.1 (v3.2.1-33-g421be65a3+1)"
+msgid "for version 3.3.0"
+msgstr "for version 3.3.0"
 
 #. type: author
 #: sed-out/magit-section.texi:35
@@ -116,9 +116,8 @@ msgstr ""
 
 #. type: ifnottex
 #: sed-out/magit-section.texi:58
-msgid ""
-"This manual is for Magit-Section version 3.2.1 (v3.2.1-33-g421be65a3+1)."
-msgstr "このマニュアルは、Magit-Sectionバージョン3.2.1 (v3.2.1-33-g421be65a3+1) を対象としています。"
+msgid "This manual is for Magit-Section version 3.3.0."
+msgstr "このマニュアルは、Magit-Sectionバージョン3.3.0 を対象としています。"
 
 #. type: menuentry
 #: sed-out/magit-section.texi:80

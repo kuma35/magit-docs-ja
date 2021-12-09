@@ -33,7 +33,7 @@ MagitがすべてのGitコマンドをラップして改善するとは(まだ)�
 ルのを配管(plumbing)コマンド、よりユーザーフレンドリーなのを磁器
 (porcelain)コマンドと称する)
 
-This manual is for Magit version 3.2.1 (v3.2.1-64-g8771401d4+1).
+This manual is for Magit version 3.3.0 (v3.3.0-53-g463a3550+1).
 
      Copyright (C) 2015-2021 Jonas Bernoulli <jonas@bernoul.li>
 
@@ -471,8 +471,8 @@ MagitはGitの専門家だけのものではありませんが、GitやEmacsで�
 Magitを最大限に活用するにはEmacsの基本機能を知っている必要がありますが、
 他のエディターを好むユーザーにとっても、十分なEmacsスキルを習得するのに
 時間はかからず、それだけの価値があります。 Vimユーザーは、Evil
-(https://bitbucket.org/lyro/evil/wiki/Home)「Extensible VI Layer for
-Emacs」、およびSpacemacs (https://github.com/syl20bnr/spacemacs)「Emacs
+(https://github.com/emacs-evil/evil)「Extensible VI Layer for Emacs」、
+およびSpacemacs (https://github.com/syl20bnr/spacemacs)「Emacs
 starter-kit focused on Evil」を試してみることをお勧めします。
 
 Magitは、一貫性のある効率的なGit磁器を提供します。短い学習期間の後、コマ
@@ -6984,7 +6984,8 @@ cherry-pickまたはrevertが進行中でない場合、トランジェントコ
 
      このコマンドは、選択したCOMMITSを現在のブランチから別の既存のブラン
      チに移動し、その、現在のブランチから削除します。このコマンドが成功
-     すると、以前と同じ(same)ブランチがcurrentになります。
+     すると、以前と同じ(same)ブランチがcurrentになります。 ‘HEAD’ は最初
+     に切り離し(detach)することができます。
 
      他のブランチにコミットを適用したり、現在のブランチからコミットを削
      除したりすると、競合が発生する可能性があります。その場合、このコマ
@@ -9802,7 +9803,7 @@ diff関連のfaceにテーマを設定するときは、オプション
 て、コードに空白エラー(some whitespace errors)を挿入します。テストに使用
 します。)
 
-たとえば 「追加された行」では、‘magit-diff-added’と
+追加された行については、‘magit-diff-added’と
 ‘magit-diff-added-highlight’と‘smerge-refined-added’の3つのfaceを調整す
 る必要があります。後者が前者の両方、および‘smerge-other’と‘diff-added’で
 うまく機能することを確認してください。次に、削除された行、コンテキスト行
@@ -10369,13 +10370,13 @@ Appendix C Keystroke Index
 * A:                                     Cherry Picking.      (line   8)
 * A A:                                   Cherry Picking.      (line  19)
 * A a:                                   Cherry Picking.      (line  26)
-* A A <1>:                               Cherry Picking.      (line  92)
-* A a <1>:                               Cherry Picking.      (line 101)
+* A A <1>:                               Cherry Picking.      (line  93)
+* A a <1>:                               Cherry Picking.      (line 102)
 * A d:                                   Cherry Picking.      (line  56)
 * A h:                                   Cherry Picking.      (line  45)
-* A n:                                   Cherry Picking.      (line  67)
-* A s:                                   Cherry Picking.      (line  78)
-* A s <1>:                               Cherry Picking.      (line  96)
+* A n:                                   Cherry Picking.      (line  68)
+* A s:                                   Cherry Picking.      (line  79)
+* A s <1>:                               Cherry Picking.      (line  97)
 * B:                                     Bisecting.           (line   8)
 * b:                                     Blaming.             (line 105)
 * b <1>:                                 Branch Commands.     (line  13)
@@ -10958,8 +10959,8 @@ Appendix D Command Index
 * magit-cherry-donate:                   Cherry Picking.      (line  56)
 * magit-cherry-harvest:                  Cherry Picking.      (line  45)
 * magit-cherry-pick:                     Cherry Picking.      (line   8)
-* magit-cherry-spinoff:                  Cherry Picking.      (line  78)
-* magit-cherry-spinout:                  Cherry Picking.      (line  67)
+* magit-cherry-spinoff:                  Cherry Picking.      (line  79)
+* magit-cherry-spinout:                  Cherry Picking.      (line  68)
 * magit-clone:                           Cloning Repository.  (line  22)
 * magit-clone-bare:                      Cloning Repository.  (line  45)
 * magit-clone-mirror:                    Cloning Repository.  (line  50)
@@ -11236,11 +11237,11 @@ Appendix D Command Index
 * magit-section-toggle:                  Section Visibility.  (line   9)
 * magit-section-toggle-children:         Section Visibility.  (line  67)
 * magit-section-up:                      Section Movement.    (line  29)
-* magit-sequence-abort:                  Cherry Picking.      (line 101)
+* magit-sequence-abort:                  Cherry Picking.      (line 102)
 * magit-sequence-abort <1>:              Reverting.           (line  43)
-* magit-sequence-continue:               Cherry Picking.      (line  92)
+* magit-sequence-continue:               Cherry Picking.      (line  93)
 * magit-sequence-continue <1>:           Reverting.           (line  34)
-* magit-sequence-skip:                   Cherry Picking.      (line  96)
+* magit-sequence-skip:                   Cherry Picking.      (line  97)
 * magit-sequence-skip <1>:               Reverting.           (line  38)
 * magit-shell-command:                   Gitを手動で実行.     (line  42)
 * magit-shell-command-topdir:            Gitを手動で実行.     (line  37)
@@ -11836,174 +11837,174 @@ Appendix F Variable Index
 
 Tag Table:
 Node: Top782
-Node: Introduction7578
-Node: Installation14147
-Node: Installing from Melpa14570
-Node: Installing from the Git Repository15929
-Node: Post-Installation Tasks19386
-Node: Getting Started21075
-Node: Interface Concepts28764
-Node: Modes and Buffers29190
-Node: バッファの切り替え31670
-Node: バッファの名付け37903
-Node: Quitting Windows42042
-Node: Automatic Refreshing of Magit Buffers44453
-Node: Automatic Saving of File-Visiting Buffers48358
-Node: Automatic Reverting of File-Visiting Buffers49858
-Node: Risk of Reverting Automatically56481
-Node: Sections59605
-Node: Section Movement60871
-Node: Section Visibility66984
-Node: Section Hooks75056
-Node: Section Types and Values78426
-Node: Section Options80353
-Node: トランジェントコマンド80939
-Node: Transient Arguments and Buffer Variables82831
-Node: Completion Confirmation(確認補完)とSelection(選択範囲)92438
-Node: アクションの確認92955
-Node: 補完と確認103600
-Node: 選択範囲107850
-Node: ハンク内部リージョン111761
-Node: 補完フレームワークのサポート113224
-Node: 追加の補完オプション119287
-Node: Running Git120059
-Node: Viewing Git Output120365
-Node: Git Process Status123214
-Node: Gitを手動で実行124421
-Node: Git実行ファイル127864
-Node: Global Git Arguments131980
-Node: Inspecting133064
-Node: Status Buffer134330
-Node: Status Sections140815
-Node: Status Header Sections148460
-Node: Status Module Sections151765
-Node: Status Options155173
-Node: Repository List157044
-Node: Logging161195
-Node: Refreshing Logs164830
-Node: Log Buffer166858
-Node: Log Margin172793
-Node: Select from Log177008
-Node: Reflog179898
-Node: Cherries181995
-Node: Diffing184449
-Node: Refreshing Diffs188817
-Node: Commands Available in Diffs193585
-Node: Diff Options196943
-Node: Revision Buffer203997
-Node: Ediffing208294
-Node: References Buffer213767
-Node: References Sections227487
-Node: Bisecting228705
-Node: Visiting Files and Blobs232021
-Node: General-Purpose Visit Commands232623
-Node: Visiting Files and Blobs from a Diff233898
-Node: Blaming238568
-Node: Manipulating247155
-Node: Creating Repository247500
-Node: Cloning Repository248226
-Node: Staging and Unstaging255783
-Node: Staging from File-Visiting Buffers261908
-Node: Applying263716
-Node: Committing266926
-Node: コミット開始267686
-Node: Editing Commit Messages275164
-Node: Using the Revision Stack278852
-Node: Commit Pseudo Headers282745
-Node: Commit Mode and Hooks284522
-Node: Commit Message Conventions288491
-Node: Branching291222
-Node: The Two Remotes291451
-Node: Branch Commands295248
-Node: Branch Git Variables313153
-Node: Auxiliary Branch Commands320144
-Node: Merging321593
-Node: Resolving Conflicts327133
-Node: Rebasing334079
-Node: Editing Rebase Sequences341003
-Node: Information About In-Progress Rebase346742
-Ref: Information About In-Progress Rebase-Footnote-1357919
-Node: Cherry Picking358680
-Node: Reverting364768
-Node: Resetting367054
-Node: Stashing369785
-Node: Transferring376634
-Node: Remotes376859
-Node: Remote Commands377014
-Node: Remote Git Variables382617
-Node: Fetching384319
-Node: Pulling388151
-Node: Pushing389817
-Node: Plain Patches396122
-Node: Maildir Patches398470
-Node: Miscellaneous400731
-Node: Tagging401059
-Node: Notes403874
-Node: Submodules407098
-Node: Listing Submodules407363
-Node: submodule用トランジェントコマンド409063
-Node: Subtree412802
-Node: Worktree416073
-Node: Bundle417623
-Node: Common Commands418199
-Node: Wip Modes421421
-Node: Wip Graph428097
-Node: Legacy Wip Modes430982
-Node: Commands for Buffers Visiting Files434559
-Node: Minor Mode for Buffers Visiting Blobs442579
-Node: Customizing443607
-Node: Per-Repository Configuration445557
-Node: 基本設定448251
-Node: Safety448635
-Node: Performance451053
-Ref: Log Performance455307
-Ref: Diff Performance457066
-Ref: Refs Buffer Performance458779
-Ref: Committing Performance459565
-Node: Microsoft Windows Performance460713
-Node: MacOS Performance462217
-Ref: MacOS Performance-Footnote-1463068
-Node: Default Bindings463207
-Node: 配管コマンド(Plumbing)466153
-Node: Calling Git467268
-Node: Getting a Value from Git469229
-Node: Calling Git for Effect474011
-Node: Section Plumbing482078
-Node: Creating Sections482329
-Node: Section Selection487823
-Node: Matching Sections490022
-Node: Refreshing Buffers497841
-Node: 慣習501811
-Node: Theming Faces502022
-Node: FAQ512700
-Node: FAQ - How to ...?513224
-Node: Magitの発音は？513683
-Node: How to show git's output?514716
-Node: How to install the gitman info manual?515744
-Node: How to show diffs for gpg-encrypted files?517019
-Node: How does branching and pushing work?517722
-Node: Magitをediff-version-control-packageとして使用できますか？518129
-Node: VCを無効にする必要がありますか？520714
-Node: FAQ - Issues and Errors521608
-Node: Magit is slow522958
-Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました523198
-Node: コミットに問題があります524230
-Node: MS WindowsではMagitでpushできません524791
-Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません525492
-Node: ファイルを展開してdiffを表示するとファイルが消えます526692
-Node: COMMIT_EDITMSGバッファのpointが間違っています527475
-Node: モード行の情報が常に最新ではない528858
-Node: 同じ名前を共有するブランチとタグは何かを壊します530065
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません531218
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません532356
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります535413
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません536636
-Node: 私はポップアップのデフォルトを保存できなくなりました537815
-Node: Debugging Tools539222
-Node: Keystroke Index542072
-Node: Command Index576833
-Node: Function Index615338
-Node: Variable Index632640
+Node: Introduction7577
+Node: Installation14140
+Node: Installing from Melpa14563
+Node: Installing from the Git Repository15922
+Node: Post-Installation Tasks19379
+Node: Getting Started21068
+Node: Interface Concepts28757
+Node: Modes and Buffers29183
+Node: バッファの切り替え31663
+Node: バッファの名付け37896
+Node: Quitting Windows42035
+Node: Automatic Refreshing of Magit Buffers44446
+Node: Automatic Saving of File-Visiting Buffers48351
+Node: Automatic Reverting of File-Visiting Buffers49851
+Node: Risk of Reverting Automatically56474
+Node: Sections59598
+Node: Section Movement60864
+Node: Section Visibility66977
+Node: Section Hooks75049
+Node: Section Types and Values78419
+Node: Section Options80346
+Node: トランジェントコマンド80932
+Node: Transient Arguments and Buffer Variables82824
+Node: Completion Confirmation(確認補完)とSelection(選択範囲)92431
+Node: アクションの確認92948
+Node: 補完と確認103593
+Node: 選択範囲107843
+Node: ハンク内部リージョン111754
+Node: 補完フレームワークのサポート113217
+Node: 追加の補完オプション119280
+Node: Running Git120052
+Node: Viewing Git Output120358
+Node: Git Process Status123207
+Node: Gitを手動で実行124414
+Node: Git実行ファイル127857
+Node: Global Git Arguments131973
+Node: Inspecting133057
+Node: Status Buffer134323
+Node: Status Sections140808
+Node: Status Header Sections148453
+Node: Status Module Sections151758
+Node: Status Options155166
+Node: Repository List157037
+Node: Logging161188
+Node: Refreshing Logs164823
+Node: Log Buffer166851
+Node: Log Margin172786
+Node: Select from Log177001
+Node: Reflog179891
+Node: Cherries181988
+Node: Diffing184442
+Node: Refreshing Diffs188810
+Node: Commands Available in Diffs193578
+Node: Diff Options196936
+Node: Revision Buffer203990
+Node: Ediffing208287
+Node: References Buffer213760
+Node: References Sections227480
+Node: Bisecting228698
+Node: Visiting Files and Blobs232014
+Node: General-Purpose Visit Commands232616
+Node: Visiting Files and Blobs from a Diff233891
+Node: Blaming238561
+Node: Manipulating247148
+Node: Creating Repository247493
+Node: Cloning Repository248219
+Node: Staging and Unstaging255776
+Node: Staging from File-Visiting Buffers261901
+Node: Applying263709
+Node: Committing266919
+Node: コミット開始267679
+Node: Editing Commit Messages275157
+Node: Using the Revision Stack278845
+Node: Commit Pseudo Headers282738
+Node: Commit Mode and Hooks284515
+Node: Commit Message Conventions288484
+Node: Branching291215
+Node: The Two Remotes291444
+Node: Branch Commands295241
+Node: Branch Git Variables313146
+Node: Auxiliary Branch Commands320137
+Node: Merging321586
+Node: Resolving Conflicts327126
+Node: Rebasing334072
+Node: Editing Rebase Sequences340996
+Node: Information About In-Progress Rebase346735
+Ref: Information About In-Progress Rebase-Footnote-1357912
+Node: Cherry Picking358673
+Node: Reverting364841
+Node: Resetting367127
+Node: Stashing369858
+Node: Transferring376707
+Node: Remotes376932
+Node: Remote Commands377087
+Node: Remote Git Variables382690
+Node: Fetching384392
+Node: Pulling388224
+Node: Pushing389890
+Node: Plain Patches396195
+Node: Maildir Patches398543
+Node: Miscellaneous400804
+Node: Tagging401132
+Node: Notes403947
+Node: Submodules407171
+Node: Listing Submodules407436
+Node: submodule用トランジェントコマンド409136
+Node: Subtree412875
+Node: Worktree416146
+Node: Bundle417696
+Node: Common Commands418272
+Node: Wip Modes421494
+Node: Wip Graph428170
+Node: Legacy Wip Modes431055
+Node: Commands for Buffers Visiting Files434632
+Node: Minor Mode for Buffers Visiting Blobs442652
+Node: Customizing443680
+Node: Per-Repository Configuration445630
+Node: 基本設定448324
+Node: Safety448708
+Node: Performance451126
+Ref: Log Performance455380
+Ref: Diff Performance457139
+Ref: Refs Buffer Performance458852
+Ref: Committing Performance459638
+Node: Microsoft Windows Performance460786
+Node: MacOS Performance462290
+Ref: MacOS Performance-Footnote-1463141
+Node: Default Bindings463280
+Node: 配管コマンド(Plumbing)466226
+Node: Calling Git467341
+Node: Getting a Value from Git469302
+Node: Calling Git for Effect474084
+Node: Section Plumbing482151
+Node: Creating Sections482402
+Node: Section Selection487896
+Node: Matching Sections490095
+Node: Refreshing Buffers497914
+Node: 慣習501884
+Node: Theming Faces502095
+Node: FAQ512763
+Node: FAQ - How to ...?513287
+Node: Magitの発音は？513746
+Node: How to show git's output?514779
+Node: How to install the gitman info manual?515807
+Node: How to show diffs for gpg-encrypted files?517082
+Node: How does branching and pushing work?517785
+Node: Magitをediff-version-control-packageとして使用できますか？518192
+Node: VCを無効にする必要がありますか？520777
+Node: FAQ - Issues and Errors521671
+Node: Magit is slow523021
+Node: 一度に数千のファイルを変更したらMagitが使用できなくなりました523261
+Node: コミットに問題があります524293
+Node: MS WindowsではMagitでpushできません524854
+Node: 私はOS Xを使用しています。その何かはシェルでは動きますが、Magitでは動きません525555
+Node: ファイルを展開してdiffを表示するとファイルが消えます526755
+Node: COMMIT_EDITMSGバッファのpointが間違っています527538
+Node: モード行の情報が常に最新ではない528921
+Node: 同じ名前を共有するブランチとタグは何かを壊します530128
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません531281
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません532419
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります535476
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません536699
+Node: 私はポップアップのデフォルトを保存できなくなりました537878
+Node: Debugging Tools539285
+Node: Keystroke Index542135
+Node: Command Index576896
+Node: Function Index615401
+Node: Variable Index632703
 
 End Tag Table
 
