@@ -2,19 +2,19 @@
 :PREAMBLE:
 #+AUTHOR: Jonas Bernoulli
 #+EMAIL: jonas@bernoul.li
-#+DATE: 2015-2021
+#+DATE: 2015-{{{year}}}
 #+LANGUAGE: en
 
 #+TEXINFO_DIR_CATEGORY: Emacs
 #+TEXINFO_DIR_TITLE: Magit: (magit).
 #+TEXINFO_DIR_DESC: Using Git from Emacs with Magit.
-#+SUBTITLE: for version 3.2.1 (v3.2.1-64-g8771401d4+1)
+#+SUBTITLE: for version {{{version}}}
 
 #+TEXINFO_DEFFN: t
 #+OPTIONS: H:4 num:3 toc:2
 #+PROPERTY: header-args :eval never
-#+BIND: ox-texinfo+-before-export-hook ox-texinfo+-update-copyright-years
-#+BIND: ox-texinfo+-before-export-hook ox-texinfo+-update-version-strings
+#+MACRO: version (eval (ox-texinfo+-get-version 'mixed))
+#+MACRO: year (eval (format-time-string "%Y"))
 
 Magit is an interface to the version control system Git, implemented
 as an Emacs package.  Magit aspires to be a complete Git porcelain.
@@ -25,10 +25,10 @@ directly from within Emacs.  While many fine Git clients exist, only
 Magit and Git itself deserve to be called porcelains.
 
 #+TEXINFO: @noindent
-This manual is for Magit version 3.2.1 (v3.2.1-64-g8771401d4+1).
+This manual is for Magit version {{{version}}}.
 
 #+BEGIN_QUOTE
-Copyright (C) 2015-2021 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-{{{year}}} Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -90,7 +90,7 @@ gotten their hands on Magit earlier.
 While one has to know the basic features of Emacs to be able to make
 full use of Magit, acquiring just enough Emacs skills doesn't take
 long and is worth it, even for users who prefer other editors.  Vim
-users are advised to give [[https://bitbucket.org/lyro/evil/wiki/Home][Evil]], the "Extensible VI Layer for Emacs",
+users are advised to give [[https://github.com/emacs-evil/evil][Evil]], the "Extensible VI Layer for Emacs",
 and [[https://github.com/syl20bnr/spacemacs][Spacemacs]], an "Emacs starter-kit focused on Evil" a try.
 
 Magit provides a consistent and efficient Git porcelain.  After a
@@ -120,7 +120,6 @@ porcelain commands: ~add~, ~am~, ~bisect~, ~blame~, ~branch~, ~checkout~, ~cherr
 commands are implemented on top of Git plumbing commands.
 
 * Installation
-** _ :ignore:
 
 Magit can be installed using Emacs' package manager or manually from
 its development repository.
@@ -379,7 +378,6 @@ then it is highly recommended that you read the next section too.
 
 * Interface Concepts
 ** Modes and Buffers
-*** _ :ignore:
 
 Magit provides several major-modes.  For each of these modes there
 usually exists only one buffer per repository.  Separate modes and
@@ -873,7 +871,6 @@ buffer) and you would not be asked whether you want to save the buffer
 (because it isn't modified).
 
 ** Sections
-*** _ :ignore:
 
 Magit buffers are organized into nested sections, which can be
 collapsed and expanded, similar to how sections are handled in Org
@@ -2008,7 +2005,6 @@ Emacs is searching for ~git~.
   used every time Magit runs Git for any purpose.
 
 * Inspecting
-** _ :ignore:
 
 The functionality provided by Magit can be roughly divided into three
 groups: inspecting existing data, manipulating existing data or adding
@@ -2027,7 +2023,6 @@ mainly concerned with the porcelain -- Magit's plumbing layer is
 described later.
 
 ** Status Buffer
-*** _ :ignore:
 
 While other Magit buffers contain e.g. one particular diff or one
 particular log, the status buffer contains the diffs for staged and
@@ -2570,7 +2565,6 @@ The following functions can be added to the above option:
   but not its push branch.
 
 ** Logging
-*** _ :ignore:
 
 The status buffer contains logs for the unpushed and unpulled commits,
 but that obviously isn't enough.  The transient prefix command
@@ -2977,7 +2971,6 @@ Also see [[man:git-reflog]]
     is shown, then this specifies how much space is used to do so.
 
 ** Diffing
-*** _ :ignore:
 
 The status buffer contains diffs for the staged and unstaged commits,
 but that obviously isn't enough.  The transient prefix command
@@ -3498,7 +3491,6 @@ information on how to use Ediff itself, see info:ediff.
   that were created using a Magit command.
 
 ** References Buffer
-*** _ :ignore:
 
 - Key: y, magit-show-refs
 
@@ -4231,7 +4223,6 @@ The following suffixes are disabled by default. See
   including the name of the owner.
 
 ** Staging and Unstaging
-*** _ :ignore:
 
 Like Git, Magit can of course stage and unstage complete files.
 Unlike Git, it also allows users to gracefully un-/stage
@@ -4392,7 +4383,6 @@ With a prefix argument all apply variants attempt a 3-way merge when
 appropriate (i.e. when ~git apply~ is used internally).
 
 ** Committing
-*** _ :ignore:
 
 When the user initiates a commit, Magit calls ~git commit~ without any
 arguments, so Git has to get it from the user.  It creates the file
@@ -5530,7 +5520,6 @@ former.  It is much easier to understand and use, and except for
 truly complex conflicts, the latter is usually overkill.
 
 ** Rebasing
-*** _ :ignore:
 
 Also see [[man:git-rebase]]  For information on how to resolve
 conflicts that occur during rebases see the preceding section.
@@ -5960,7 +5949,6 @@ calculating this hash.  The patch-ids of two commits can be used to
 answer the question "Do these commits make the same change?".
 
 ** Cherry Picking
-*** _ :ignore:
 
 Also see [[man:git-cherry-pick]]
 
@@ -6014,7 +6002,8 @@ same way you would have to if these commands didn't exist at all.
 
   This command moves the selected COMMITS from the current branch onto
   another existing BRANCH, removing them from the former.  When this
-  command succeeds, then the same branch is current as before.
+  command succeeds, then the same branch is current as before.  ~HEAD~
+  is allowed to be detached initially.
 
   Applying the commits on the other branch or removing them from the
   current branch can lead to conflicts.  When that happens, then this
@@ -6812,7 +6801,6 @@ values are displayed and can be modified.
   ~refs/notes/~ namespace (or ~**~ if some names contain slashes).
 
 ** Submodules
-*** _ :ignore:
 
 Also see [[man:git-submodule]]
 
@@ -7064,7 +7052,6 @@ Therefore when the region is active, then both of these commands
 behave like ~kill-ring-save~ instead of as described above.
 
 ** Wip Modes
-*** _ :ignore:
 
 Git keeps *committed* changes around long enough for users to recover
 changes they have accidentally deleted.  It does so by not garbage
@@ -7459,7 +7446,6 @@ bindings, but this might be extended.
   Kill the current buffer.
 
 * Customizing
-** _ :ignore:
 
 Both Git and Emacs are highly customizable.  Magit is both a Git
 porcelain as well as an Emacs package, so it makes sense to customize
@@ -7558,7 +7544,6 @@ For example:
   #+END_SRC
 
 ** Essential Settings
-*** _ :ignore:
 
 The next two sections list and discuss several variables that many
 users might want to customize, for safety and/or performance reasons.
@@ -7597,7 +7582,6 @@ but to make an informed decision you should see [[*Risk of Reverting
 Automatically]].
 
 *** Performance
-**** _ :ignore:
 
 After Magit has run ~git~ for side-effects, it also refreshes the
 current Magit buffer and the respective status buffer.  This is
@@ -7854,7 +7838,6 @@ for more information.
   Binding Conventions]].
 
 * Plumbing
-** _ :ignore:
 
 The following sections describe how to use several of Magit's core
 abstractions to extend Magit itself or implement a separate extension.
@@ -7869,7 +7852,6 @@ command provided by your own Magit extension, then checkout
 https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry.
 
 ** Calling Git
-*** _ :ignore:
 
 Magit provides many specialized functions for calling Git.  All of
 these functions are defined in either ~magit-git.el~ or ~magit-process.el~
@@ -8439,7 +8421,6 @@ where ~*~ may be something like ~diff~) with the value of
   of this variable and then calling this ~magit-refresh-function~.
 
 ** Conventions
-*** _ :ignore:
 
 Also see [[*Completion and Confirmation]].
 
@@ -8546,9 +8527,9 @@ cater to that.
 ~magit-diff-highlight-trailing~, and ~magit-diff-paint-whitespace~; and
 insert some whitespace errors into the code you use for testing.)
 
-For e.g. "added lines" you have to adjust three faces:
+For added lines you have to adjust three faces:
 ~magit-diff-added~, ~magit-diff-added-highlight~, and
-~smerge-refined-added~.  Make sure that the latter works well with both
+~diff-refined-added~.  Make sure that the latter works well with both
 of the former, as well as ~smerge-other~ and ~diff-added~.  Then do the
 same for the removed lines, context lines, lines added by us, and
 lines added by them.  Also make sure the respective added, removed,
@@ -8585,7 +8566,6 @@ all.
 :PROPERTIES:
 :APPENDIX:   t
 :END:
-** _ :ignore:
 
 The next two nodes lists frequently asked questions.  For a list of
 frequently *and recently* asked questions, i.e. questions that haven't
@@ -8993,13 +8973,13 @@ Please also see the [[*FAQ]].
 :INDEX:      vr
 :END:
 
-* _ Copying
+* Copying
 :PROPERTIES:
 :COPYING:    t
 :END:
 
 #+BEGIN_QUOTE
-Copyright (C) 2015-2021 Jonas Bernoulli <jonas@bernoul.li>
+Copyright (C) 2015-{{{year}}} Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -9011,8 +8991,6 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 General Public License for more details.
 #+END_QUOTE
-
-* _ :ignore:
 
 #  LocalWords:  ARG ARGS CONDITIONs ChangeLog DNS Dired Ediff Ediffing
 #  LocalWords:  Elpa Emacsclient FUNC Flyspell Git Git's Gitk HOOK's
@@ -9037,11 +9015,8 @@ General Public License for more details.
 # IMPORTANT: Also update ORG_ARGS and ORG_EVAL in the Makefile.
 # Local Variables:
 # eval: (require 'magit-utils nil t)
-# eval: (require 'org-man     nil t)
 # eval: (require 'ol-man      nil t)
-# eval: (require 'ox-extra    nil t)
 # eval: (require 'ox-texinfo+ nil t)
-# eval: (and (featurep 'ox-extra) (ox-extras-activate '(ignore-headlines)))
 # indent-tabs-mode: nil
 # org-src-preserve-indentation: nil
 # End:

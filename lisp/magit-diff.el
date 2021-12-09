@@ -35,20 +35,22 @@
 
 (eval-when-compile (require 'ansi-color))
 (require 'diff-mode)
+(require 'image)
 (require 'smerge-mode)
 
 ;; For `magit-diff-popup'
 (declare-function magit-stash-show "magit-stash" (stash &optional args files))
 ;; For `magit-diff-visit-file'
-(declare-function dired-jump "dired-x" (&optional other-window file-name))
+(declare-function dired-jump "dired" ; dired-x before 27.1
+                  (&optional other-window file-name))
 (declare-function magit-find-file-noselect "magit-files" (rev file))
-(declare-function magit-status-setup-buffer "magit-status" (directory))
+(declare-function magit-status-setup-buffer "magit-status" (&optional directory))
 ;; For `magit-diff-while-committing'
 (declare-function magit-commit-message-buffer "magit-commit" ())
 ;; For `magit-insert-revision-gravatar'
 (defvar gravatar-size)
 ;; For `magit-show-commit' and `magit-diff-show-or-scroll'
-(declare-function magit-current-blame-chunk "magit-blame" ())
+(declare-function magit-current-blame-chunk "magit-blame" (&optional type noerror))
 (declare-function magit-blame-mode "magit-blame" (&optional arg))
 (defvar magit-blame-mode)
 ;; For `magit-diff-show-or-scroll'
@@ -61,7 +63,7 @@
                   (pullreq &optional endpoints))
 (declare-function forge--pullreq-ref "forge-pullreq" (pullreq))
 ;; For `magit-diff-wash-diff'
-(declare-function ansi-color-apply-on-region "ansi-color" (begin end))
+(declare-function ansi-color-apply-on-region "ansi-color")
 
 (eval-when-compile
   (cl-pushnew 'orig-rev eieio--known-slot-names)
@@ -1099,8 +1101,8 @@ If no DWIM context is found, nil is returned."
       ([* unstaged] 'unstaged)
       ([* staged] 'staged)
       (unmerged 'unmerged)
-      (unpushed (oref it value))
-      (unpulled (oref it value))
+      (unpushed (magit-diff--range-to-endpoints (oref it value)))
+      (unpulled (magit-diff--range-to-endpoints (oref it value)))
       (branch (let ((current (magit-get-current-branch))
                     (atpoint (oref it value)))
                 (if (equal atpoint current)
@@ -1118,6 +1120,11 @@ If no DWIM context is found, nil is returned."
        (cons 'commit (oref (oref (oref it parent) parent) value)))
       (stash (cons 'stash (oref it value)))
       (pullreq (forge--pullreq-range (oref it value) t))))))
+
+(defun magit-diff--range-to-endpoints (range)
+  (cond ((string-match "\\.\\.\\." range) (replace-match ".."  nil nil range))
+        ((string-match "\\.\\."    range) (replace-match "..." nil nil range))
+        (t range)))
 
 (defun magit-diff-read-range-or-commit (prompt &optional secondary-default mbase)
   "Read range or revision with special diff range treatment.
@@ -2268,6 +2275,7 @@ section or a child thereof."
           (unless (equal (match-string 1) "/dev/null")
             (setq file (match-string 1))))
          ((looking-at "Binary files .+ and .+ differ\n"))
+         ((looking-at "Binary files differ\n"))
          ;; TODO Use all combined diff extended headers.
          ((looking-at "mode .+\n"))
          (t
@@ -2337,7 +2345,7 @@ section or a child thereof."
              (equal (match-string 1) module))
         (magit-bind-match-strings (_module range rewind) nil
           (magit-delete-line)
-          (while (looking-at "^  \\([<>]\\) \\(.+\\)$")
+          (while (looking-at "^  \\([<>]\\) \\(.*\\)$")
             (magit-delete-line))
           (when rewind
             (setq range (replace-regexp-in-string "[^.]\\(\\.\\.\\)[^.]"
@@ -2710,7 +2718,8 @@ or a ref which is not a branch, then it inserts nothing."
       (when-let ((window (get-buffer-window)))
         (let* ((column   (length (match-string 0)))
                (font-obj (query-font (font-at (point) window)))
-               (size     (* 2 (aref font-obj 4)))
+               (size     (* 2 (+ (aref font-obj 4)
+                                 (aref font-obj 5))))
                (align-to (+ column
                             (ceiling (/ size (aref font-obj 7) 1.0))
                             1))
@@ -2735,12 +2744,13 @@ or a ref which is not a branch, then it inserts nothing."
                                (car-safe
                                 (get-text-property (point) 'display)))
                               'image)))
-            (let ((top `((,@image
-                          :ascent center :relief 1 :scale 1 :height ,size)
-                         (slice 0.0 0.0 1.0 0.5)))
-                  (bot `((,@image
-                          :ascent center :relief 1 :scale 1 :height ,size)
-                         (slice 0.0 0.5 1.0 1.0)))
+            ;; `image-property' wasn't added until 26.1.
+            (setcdr image (plist-put (cdr image) :ascent 'center))
+            (setcdr image (plist-put (cdr image) :relief 1))
+            (setcdr image (plist-put (cdr image) :scale  1))
+            (setcdr image (plist-put (cdr image) :height size))
+            (let ((top (list image '(slice 0.0 0.0 1.0 0.5)))
+                  (bot (list image '(slice 0.0 0.5 1.0 1.0)))
                   (align `((space :align-to ,align-to))))
               (when magit-revision-use-gravatar-kludge
                 (cl-rotatef top bot))

@@ -53,7 +53,8 @@
 ;; From `magit-process'.
 (declare-function magit-call-git "magit-process" (&rest args))
 (declare-function magit-process-buffer "magit-process" (&optional nodisplay))
-(declare-function magit-process-file "magit-process" (&rest args))
+(declare-function magit-process-file "magit-process"
+                  (process &optional infile buffer display &rest args))
 (declare-function magit-process-git "magit-process" (destination &rest args))
 (declare-function magit-process-insert-section "magit-process"
                   (pwd program args &optional errcode errlog))
@@ -1394,7 +1395,7 @@ to, or to some other symbolic-ref that points to the same ref."
 (defun magit-remote-at-point ()
   (magit-section-case
     (remote (oref it value))
-    (branch (magit-section-parent-value it))))
+    ([branch remote] (magit-section-parent-value it))))
 
 (defun magit-module-at-point (&optional predicate)
   (when (magit-section-match 'magit-module-section)
@@ -1452,7 +1453,7 @@ remote-tracking branch ref."
 It BRANCH is nil, then return the upstream of the current branch
 if any, nil otherwise.  If the upstream is not configured, the
 configured remote is an url, or the named branch does not exist,
-then return nil.  I.e.  return the name of an existing local or
+then return nil.  I.e. return the name of an existing local or
 remote-tracking branch.  The returned string is colorized
 according to the branch type."
   (magit--with-refresh-cache (list 'magit-get-upstream-branch branch)
@@ -1823,14 +1824,23 @@ PATH has to be relative to the super-repository."
   (magit-git-string "submodule--helper" "name" path))
 
 (defun magit-list-worktrees ()
-  (let (worktrees worktree)
+  (let ((remote (file-remote-p default-directory))
+        worktrees worktree)
     (dolist (line (let ((magit-git-global-arguments
                          ;; KLUDGE At least in v2.8.3 this triggers a segfault.
                          (remove "--no-pager" magit-git-global-arguments)))
                     (magit-git-lines "worktree" "list" "--porcelain")))
       (cond ((string-prefix-p "worktree" line)
-             (push (setq worktree (list (substring line 9) nil nil nil))
-                   worktrees))
+             (let ((path (substring line 9)))
+               (when remote
+                 (setq path (concat remote path)))
+               ;; If the git directory is separate from the main
+               ;; worktree, then "git worktree" returns the git
+               ;; directory instead of the worktree, which isn't
+               ;; what it is supposed to do and not what we want.
+               (setq path (magit-toplevel path))
+               (setq worktree (list path nil nil nil))
+               (push worktree worktrees)))
             ((string-equal line "bare")
              (let* ((default-directory (car worktree))
                     (wt (and (not (magit-get-boolean "core.bare"))

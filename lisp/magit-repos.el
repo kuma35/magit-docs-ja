@@ -33,7 +33,7 @@
 
 (require 'magit-core)
 
-(declare-function magit-status-setup-buffer "magit-status" (directory))
+(declare-function magit-status-setup-buffer "magit-status" (&optional directory))
 
 (defvar x-stretch-cursor)
 
@@ -213,7 +213,7 @@ repositories are displayed."
                         (magit-list-repos)))))
   (message "Listing repositories...")
   (tabulated-list-init-header)
-  (tabulated-list-print)
+  (tabulated-list-print t)
   (message "Listing repositories...done"))
 
 ;;;; Columns
@@ -234,15 +234,25 @@ Usually this is just its basename."
                     (magit-git-string "show" "--no-patch" "--format=%cd-g%h"
                                       "--date=format:%Y%m%d.%H%M"))))
     (save-match-data
-      (when (string-match "-dirty\\'" v)
-        (magit--put-face (1+ (match-beginning 0)) (length v) 'error v))
+      (when (string-match
+             "\\(?:-\\([0-9]*\\)-g[a-z0-9]*\\)?\\(?:-\\(dirty\\)\\)?\\'" v)
+        (magit--put-face (match-beginning 0) (match-end 0) 'shadow v)
+        (when (match-end 1)
+          (magit--put-face (match-beginning 1) (match-end 1) 'bold v))
+        (when (match-end 2)
+          (magit--put-face (match-beginning 2) (match-end 2) 'error v)))
       (if (and v (string-match "\\`[0-9]" v))
           (concat " " v)
+        (when (and v (string-match "\\`[^0-9]+" v))
+          (magit--put-face 0 (match-end 0) 'shadow v))
         v))))
 
 (defun magit-repolist-column-branch (_)
   "Insert the current branch."
-  (magit-get-current-branch))
+  (let ((branch (magit-get-current-branch)))
+    (if (member branch magit-main-branch-names)
+        (magit--propertize-face branch 'shadow)
+      branch)))
 
 (defun magit-repolist-column-upstream (_)
   "Insert the upstream branch of the current branch."

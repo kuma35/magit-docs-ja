@@ -49,7 +49,7 @@
 ;; For `magit-refresh-buffer'
 (declare-function magit-process-unset-mode-line-error-status "magit-process" ())
 ;; For `magit-refresh-get-relative-position'
-(declare-function magit-hunk-section-p "magit-diff" (obj))
+(declare-function magit-hunk-section-p "magit-diff" (section) t)
 ;; For `magit-mode-setup-internal'
 (declare-function magit-status-goto-initial-section "magit-status" ())
 ;; For `magit-mode' from `bookmark'
@@ -1206,7 +1206,7 @@ buffer which visits a file in the current repository.  Optional
 argument (the prefix) non-nil means save all with no questions."
   (interactive "P")
   (when-let ((topdir (magit-rev-parse-safe "--show-toplevel")))
-    (let ((remote (file-remote-p topdir))
+    (let ((remote (file-remote-p default-directory))
           (save-some-buffers-action-alist
            `((?Y (lambda (buffer)
                    (with-current-buffer buffer
@@ -1220,18 +1220,19 @@ argument (the prefix) non-nil means save all with no questions."
              ,@save-some-buffers-action-alist)))
       (save-some-buffers
        arg (lambda ()
-             (and (not magit-inhibit-refresh-save)
-                  buffer-file-name
-                  ;; Avoid needlessly connecting to unrelated remotes.
-                  (equal (file-remote-p buffer-file-name)
-                         remote)
-                  ;; For remote files this makes network requests and
-                  ;; therefore has to come after the above to avoid
-                  ;; unnecessarily waiting for unrelated hosts.
-                  (file-exists-p (file-name-directory buffer-file-name))
-                  (string-prefix-p topdir (file-truename buffer-file-name))
-                  (equal (magit-rev-parse-safe "--show-toplevel")
-                         topdir)))))))
+             (and buffer-file-name
+                  ;; - Check whether refreshing is disabled.
+                  (not magit-inhibit-refresh-save)
+                  ;; - Check whether the visited file is either on the
+                  ;;   same remote as the repository, or both are on
+                  ;;   the local system.
+                  (equal (file-remote-p buffer-file-name) remote)
+                  ;; Delayed checks that are more expensive for remote
+                  ;; repositories, due to the required network access.
+                  ;; - Check whether the file is inside the repository.
+                  (equal (magit-rev-parse-safe "--show-toplevel") topdir)
+                  ;; - Check whether the file is actually writable.
+                  (file-writable-p buffer-file-name)))))))
 
 ;;; Restore Window Configuration
 

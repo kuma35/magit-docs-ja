@@ -10,8 +10,8 @@
 
 ;; Keywords: tools
 ;; Homepage: https://github.com/magit/magit
-;; Package-Requires: ((emacs "25.1") (dash "2.18.1"))
-;; Package-Version: 3.2.1
+;; Package-Requires: ((emacs "25.1") (dash "2.19.1"))
+;; Package-Version: 3.3.0
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;; Magit-Section is free software; you can redistribute it and/or modify
@@ -87,7 +87,7 @@ succeed.")
 (defcustom magit-section-show-child-count t
   "Whether to append the number of children to section headings.
 This only applies to sections for which doing so makes sense."
-  :package-version '(magit . "2.1.0")
+  :package-version '(magit-section . "2.1.0")
   :group 'magit-section
   :type 'boolean)
 
@@ -102,7 +102,7 @@ the case.
 If t, then cache the visibility of all sections.  If a list of
 section types, then only do so for matching sections.  If nil,
 then don't do so for any sections."
-  :package-version '(magit . "2.12.0")
+  :package-version '(magit-section . "2.12.0")
   :group 'magit-section
   :type '(choice (const  :tag "Don't cache visibility" nil)
                  (const  :tag "Cache visibility of all sections" t)
@@ -129,7 +129,7 @@ An entry whose key is `magit-status-initial-section' specifies
 the visibility of the section `magit-status-goto-initial-section'
 jumps to.  This does not only override defaults, but also other
 entries of this alist."
-  :package-version '(magit . "2.12.0")
+  :package-version '(magit-section . "2.12.0")
   :group 'magit-section
   :type '(alist :key-type (sexp :tag "Section type/lineage")
                 :value-type (choice (const hide)
@@ -163,7 +163,7 @@ Otherwise the value has to have one of these two forms:
   these ellipsis take section highlighting into account.  Doing
   so might potentially have an impact on performance, while not
   doing so is kinda ugly."
-  :package-version '(magit . "3.0.0")
+  :package-version '(magit-section . "3.0.0")
   :group 'magit-section
   :type '(choice (const :tag "No indicators" nil)
                  (cons  :tag "Use +- fringe indicators"
@@ -184,7 +184,9 @@ Otherwise the value has to have one of these two forms:
                                 (const :tag "Yes (potentially slow)" t)
                                 (const :tag "No (kinda ugly)" nil)))))
 
-(defcustom magit-keep-region-overlay nil
+(define-obsolete-variable-alias 'magit-keep-region-overlay
+  'magit-section-keep-region-overlay "Magit-Section 3.4.0")
+(defcustom magit-section-keep-region-overlay nil
   "Whether to keep the region overlay when there is a valid selection.
 
 By default Magit removes the regular region overlay if, and only
@@ -227,7 +229,7 @@ visualized, but since it has been requested a few times and
 because it doesn't cost much to offer this option we do so.
 However that might change.  If the existence of this option
 starts complicating other things, then it will be removed."
-  :package-version '(magit . "2.3.0")
+  :package-version '(magit-section . "2.3.0")
   :group 'magit-section
   :type 'boolean)
 
@@ -240,7 +242,7 @@ to be displayed everywhere except in Magit buffers.  Other users
 do not expect Magit buffers to be treated differently.  At least
 in theory users in the first group should not use the global mode,
 but that ship has sailed, thus this option."
-  :package-version '(magit . "3.0.0")
+  :package-version '(magit-section . "3.0.0")
   :group 'magit-section
   :type 'boolean)
 
@@ -603,7 +605,7 @@ With a prefix argument also expand it." heading)
           (oset section content (point-marker))
           (funcall washer)
           (oset section end (point-marker)))))
-    (magit-section-update-highlight)))
+    (magit-section-update-highlight t)))
 
 (defun magit-section-hide (section)
   "Hide the body of the current section."
@@ -1241,12 +1243,14 @@ evaluated its BODY.  Admittedly that's a bit of a hack."
 
 ;;; Highlight
 
+(defvar-local magit-section-pre-command-region-p nil)
 (defvar-local magit-section-pre-command-section nil)
 (defvar-local magit-section-highlight-overlays nil)
 (defvar-local magit-section-highlighted-sections nil)
 (defvar-local magit-section-unhighlight-sections nil)
 
 (defun magit-section-pre-command-hook ()
+  (setq magit-section-pre-command-region-p (region-active-p))
   (setq magit-section-pre-command-section (magit-current-section)))
 
 (defun magit-section-deactivate-mark ()
@@ -1254,7 +1258,11 @@ evaluated its BODY.  Admittedly that's a bit of a hack."
 
 (defun magit-section-update-highlight (&optional force)
   (let ((section (magit-current-section)))
-    (when (or force (not (eq magit-section-pre-command-section section)))
+    (when (or force
+              (cond ; `xor' wasn't added until 27.1.
+               ((not magit-section-pre-command-region-p) (region-active-p))
+               ((not (region-active-p)) magit-section-pre-command-region-p))
+              (not (eq magit-section-pre-command-section section)))
       (let ((inhibit-read-only t)
             (deactivate-mark nil)
             (selection (magit-region-sections)))
@@ -1320,7 +1328,7 @@ invisible."
 (defun magit-section-make-overlay (start end face)
   ;; Yes, this doesn't belong here.  But the alternative of
   ;; spreading this hack across the code base is even worse.
-  (when (and magit-keep-region-overlay
+  (when (and magit-section-keep-region-overlay
              (memq face '(magit-section-heading-selection
                           magit-diff-file-heading-selection
                           magit-diff-hunk-heading-selection)))
@@ -1375,7 +1383,7 @@ invisible."
 
 (defun magit-section--highlight-region (start end window rol)
   (magit-section--delete-region-overlays)
-  (if (and (not magit-keep-region-overlay)
+  (if (and (not magit-section-keep-region-overlay)
            (or (magit-region-sections)
                (run-hook-with-args-until-success 'magit-region-highlight-hook
                                                  (magit-current-section)))
