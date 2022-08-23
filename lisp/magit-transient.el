@@ -1,19 +1,16 @@
-;;; magit-transient.el --- support for transients  -*- lexical-binding: t -*-
+;;; magit-transient.el --- Support for transients  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2008-2021  The Magit Project Contributors
-;;
-;; You should have received a copy of the AUTHORS.md file which
-;; lists all contributors.  If not, see http://magit.vc/authors.
+;; Copyright (C) 2008-2022 The Magit Project Contributors
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Maintainer: Jonas Bernoulli <jonas@bernoul.li>
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
-;; Magit is free software; you can redistribute it and/or modify it
+;; Magit is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 3, or (at your option)
-;; any later version.
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 ;;
 ;; Magit is distributed in the hope that it will be useful, but WITHOUT
 ;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
@@ -21,7 +18,7 @@
 ;; License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with Magit.  If not, see http://www.gnu.org/licenses.
+;; along with Magit.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -39,12 +36,16 @@
 ;;; Classes
 
 (defclass magit--git-variable (transient-variable)
-  ((scope       :initarg :scope)))
+  ((scope       :initarg :scope)
+   (global      :initarg :global      :initform nil)))
 
 (defclass magit--git-variable:choices (magit--git-variable)
   ((choices     :initarg :choices)
    (fallback    :initarg :fallback    :initform nil)
    (default     :initarg :default     :initform nil)))
+
+(defclass magit--git-variable:boolean (magit--git-variable:choices)
+  ((choices     :initarg :choices     :initform '("true" "false"))))
 
 (defclass magit--git-variable:urls (magit--git-variable)
   ((seturl-arg  :initarg :seturl-arg  :initform nil)))
@@ -61,22 +62,32 @@
 
 (cl-defmethod transient-init-value ((obj magit--git-variable))
   (let ((variable (format (oref obj variable)
-                          (oref obj scope))))
+                          (oref obj scope)))
+        (arg (if (oref obj global) "--global" "--local")))
     (oset obj variable variable)
     (oset obj value
           (cond ((oref obj multi-value)
-                 (magit-get-all variable))
+                 (magit-get-all arg variable))
                 (t
-                 (magit-git-string "config" "--local" variable))))))
+                 (magit-get arg variable))))))
+
+(cl-defmethod transient-init-value ((obj magit--git-variable:boolean))
+  (let ((variable (format (oref obj variable)
+                          (oref obj scope)))
+        (arg (if (oref obj global) "--global" "--local")))
+    (oset obj variable variable)
+    (oset obj value (if (magit-get-boolean arg variable) "true" "false"))))
 
 ;;;; Read
 
 (cl-defmethod transient-infix-read :around ((obj magit--git-variable:urls))
-  (mapcar (lambda (url)
-            (if (string-prefix-p "~" url)
-                (expand-file-name url)
-              url))
-          (cl-call-next-method obj)))
+  (transient--with-emergency-exit
+    (transient--with-suspended-override
+     (mapcar (lambda (url)
+               (if (string-prefix-p "~" url)
+                   (expand-file-name url)
+                 url))
+             (cl-call-next-method obj)))))
 
 (cl-defmethod transient-infix-read ((obj magit--git-variable:choices))
   (let ((choices (oref obj choices)))
@@ -108,11 +119,12 @@
 ;;;; Set
 
 (cl-defmethod transient-infix-set ((obj magit--git-variable) value)
-  (let ((variable (oref obj variable)))
+  (let ((variable (oref obj variable))
+        (arg (if (oref obj global) "--global" "--local")))
     (oset obj value value)
     (if (oref obj multi-value)
-        (magit-set-all value variable)
-      (magit-set value variable))
+        (magit-set-all value arg variable)
+      (magit-set value arg variable))
     (magit-refresh)
     (unless (or value transient--prefix)
       (message "Unset %s" variable))))
@@ -151,25 +163,31 @@
 (cl-defmethod transient-format-value ((obj magit--git-variable:choices))
   (let* ((variable (oref obj variable))
          (choices  (oref obj choices))
-         (local    (magit-git-string "config" "--local"  variable))
+         (globalp  (oref obj global))
+         (value    nil)
          (global   (magit-git-string "config" "--global" variable))
-         (default  (oref obj default))
+         (defaultp (oref obj default))
+         (default  (if (functionp defaultp) (funcall defaultp obj) defaultp))
          (fallback (oref obj fallback))
          (fallback (and fallback
-                        (when-let ((val (magit-get fallback)))
+                        (and-let* ((val (magit-get fallback)))
                           (concat fallback ":" val)))))
+    (if (not globalp)
+        (setq value (magit-git-string "config" "--local"  variable))
+      (setq value global)
+      (setq global nil))
     (when (functionp choices)
       (setq choices (funcall choices)))
     (concat
      (propertize "[" 'face 'transient-inactive-value)
      (mapconcat (lambda (choice)
-                  (propertize choice 'face (if (equal choice local)
+                  (propertize choice 'face (if (equal choice value)
                                                (if (member choice choices)
                                                    'transient-value
                                                  'font-lock-warning-face)
                                              'transient-inactive-value)))
-                (if (and local (not (member local choices)))
-                    (cons local choices)
+                (if (and value (not (member value choices)))
+                    (cons value choices)
                   choices)
                 (propertize "|" 'face 'transient-inactive-value))
      (and (or global fallback default)
@@ -177,7 +195,7 @@
            (propertize "|" 'face 'transient-inactive-value)
            (cond (global
                   (propertize (concat "global:" global)
-                              'face (cond (local
+                              'face (cond (value
                                            'transient-inactive-value)
                                           ((member global choices)
                                            'transient-value)
@@ -185,14 +203,16 @@
                                            'font-lock-warning-face))))
                  (fallback
                   (propertize fallback
-                              'face (if local
+                              'face (if value
                                         'transient-inactive-value
                                       'transient-value)))
                  (default
-                   (propertize (concat "default:" default)
-                               'face (if local
-                                         'transient-inactive-value
-                                       'transient-value))))))
+                  (propertize (if (functionp defaultp)
+                                  (concat "dwim:" default)
+                                (concat "default:" default))
+                              'face (if value
+                                        'transient-inactive-value
+                                      'transient-value))))))
      (propertize "]" 'face 'transient-inactive-value))))
 
 ;;; _

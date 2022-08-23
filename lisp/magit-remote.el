@@ -1,19 +1,16 @@
-;;; magit-remote.el --- transfer Git commits  -*- lexical-binding: t -*-
+;;; magit-remote.el --- Transfer Git commits  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2008-2021  The Magit Project Contributors
-;;
-;; You should have received a copy of the AUTHORS.md file which
-;; lists all contributors.  If not, see http://magit.vc/authors.
+;; Copyright (C) 2008-2022 The Magit Project Contributors
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Maintainer: Jonas Bernoulli <jonas@bernoul.li>
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
-;; Magit is free software; you can redistribute it and/or modify it
+;; Magit is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 3, or (at your option)
-;; any later version.
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 ;;
 ;; Magit is distributed in the hope that it will be useful, but WITHOUT
 ;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
@@ -21,7 +18,7 @@
 ;; License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with Magit.  If not, see http://www.gnu.org/licenses.
+;; along with Magit.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -114,7 +111,7 @@ has to be used to view and change remote related variables."
   (if (pcase (list magit-remote-add-set-remote.pushDefault
                    (magit-get "remote.pushDefault"))
         (`(,(pred stringp) ,_) t)
-        ((or `(ask ,_) `(ask-if-unset nil))
+        ((or `(ask ,_) '(ask-if-unset nil))
          (y-or-n-p (format "Set `remote.pushDefault' to \"%s\"? " remote))))
       (progn (magit-call-git "remote" "add" args remote url)
              (setf (magit-get "remote.pushDefault") remote)
@@ -205,7 +202,7 @@ the now stale refspecs.  Other stale branches are not removed."
                 (magit-call-git "remote" "rm" remote))
             (?a "or [a]abort"
                 (user-error "Abort")))
-        (if (if (= (length stale) 1)
+        (if (if (length= stale 1)
                 (pcase-let ((`(,refspec . ,refs) (car stale)))
                   (magit-confirm 'prune-stale-refspecs
                     (format "Prune stale refspec %s and branch %%s" refspec)
@@ -268,8 +265,8 @@ refspec."
                          (magit-read-remote "Delete remote"))))
   (let ((refspecs (magit-get-all "remote" remote "fetch"))
         (standard (format "+refs/heads/*:refs/remotes/%s/*" remote)))
-    (when (and (= (length refspecs) 1)
-               (not (string-match-p "\\*" (car refspecs)))
+    (when (and (length= refspecs 1)
+               (not (string-search "*" (car refspecs)))
                (yes-or-no-p (format "Also replace refspec %s with %s? "
                                     (car refspecs)
                                     standard)))
@@ -309,20 +306,20 @@ refspec."
 
 (transient-define-infix magit-remote.<remote>.url ()
   :class 'magit--git-variable:urls
-  :scope 'magit--read-remote-scope
+  :scope #'magit--read-remote-scope
   :variable "remote.%s.url"
   :multi-value t
   :history-key 'magit-remote.<remote>.*url)
 
 (transient-define-infix magit-remote.<remote>.fetch ()
   :class 'magit--git-variable
-  :scope 'magit--read-remote-scope
+  :scope #'magit--read-remote-scope
   :variable "remote.%s.fetch"
   :multi-value t)
 
 (transient-define-infix magit-remote.<remote>.pushurl ()
   :class 'magit--git-variable:urls
-  :scope 'magit--read-remote-scope
+  :scope #'magit--read-remote-scope
   :variable "remote.%s.pushurl"
   :multi-value t
   :history-key 'magit-remote.<remote>.*url
@@ -330,12 +327,12 @@ refspec."
 
 (transient-define-infix magit-remote.<remote>.push ()
   :class 'magit--git-variable
-  :scope 'magit--read-remote-scope
+  :scope #'magit--read-remote-scope
   :variable "remote.%s.push")
 
 (transient-define-infix magit-remote.<remote>.tagopt ()
   :class 'magit--git-variable:choices
-  :scope 'magit--read-remote-scope
+  :scope #'magit--read-remote-scope
   :variable "remote.%s.tagOpt"
   :choices '("--no-tags" "--tags"))
 

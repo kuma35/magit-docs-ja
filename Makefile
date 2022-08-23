@@ -3,7 +3,7 @@ include default.mk
 
 ## ###################################################################
 
-.PHONY: lisp \
+.PHONY: lisp docs \
 	install install-lisp install-docs install-info \
 	test test-interactive magit \
 	clean clean-lisp clean-docs clean-archives \
@@ -58,14 +58,14 @@ help:
 	$(info ==================)
 	$(info )
 	$(info make texi             - regenerate texi from org)
-	$(info make stats            - regenerate statistics)
 	$(info make authors          - regenerate AUTHORS.md)
-	$(info make publish-stats    - publish statistics)
-	$(info make publish-manuals  - publish snapshot manuals)
-	$(info make release-manuals  - publish release manuals)
+	$(info make publish          - publish snapshot manuals)
+	$(info make release          - publish release manuals)
 	$(info make dist             - create tarballs)
 	$(info make bump-versions    - bump versions for release)
 	$(info make bump-snapshots   - bump versions after release)
+	$(info make stats            - regenerate statistics)
+	$(info make stats-upload     - publish statistics)
 	@printf "\n"
 
 ## Build #############################################################
@@ -74,22 +74,22 @@ lisp:
 	@$(MAKE) -C lisp lisp
 
 docs:
-	@$(MAKE) -C Documentation all
+	@$(MAKE) -C docs all
 
 info:
-	@$(MAKE) -C Documentation info
+	@$(MAKE) -C docs info
 
 html:
-	@$(MAKE) -C Documentation html
+	@$(MAKE) -C docs html
 
 html-dir:
-	@$(MAKE) -C Documentation html-dir
+	@$(MAKE) -C docs html-dir
 
 pdf:
-	@$(MAKE) -C Documentation pdf
+	@$(MAKE) -C docs pdf
 
 epub:
-	@$(MAKE) -C Documentation epub
+	@$(MAKE) -C docs epub
 
 ## Install ###########################################################
 
@@ -99,26 +99,21 @@ install-lisp: lisp
 	@$(MAKE) -C lisp install
 
 install-docs: docs
-	@$(MAKE) -C Documentation install-docs
+	@$(MAKE) -C docs install-docs
 
 install-info: info
-	@$(MAKE) -C Documentation install-info
+	@$(MAKE) -C docs install-info
 
 ## Test ##############################################################
 
 test:
-	@$(BATCH) --eval "(progn\
-        $$suppress_warnings\
-	(load-file \"t/magit-tests.el\")\
-	(ert-run-tests-batch-and-exit))"
+	@$(MAKE) -C test test
 
 test-interactive:
-	@$(EMACSBIN) -Q $(LOAD_PATH) --eval "(progn\
-	(load-file \"t/magit-tests.el\")\
-	(ert t))"
+	@$(MAKE) -C test test-interactive
 
 emacs-Q: clean-lisp
-	@$(EMACSBIN) -Q $(LOAD_PATH) --debug-init --eval "(progn\
+	@$(EMACS) -Q $(LOAD_PATH) --debug-init --eval "(progn\
 	(setq debug-on-error t)\
 	(require 'magit)\
 	(global-set-key \"\\C-xg\" 'magit-status))"
@@ -131,14 +126,14 @@ check-declare:
 clean: clean-lisp clean-docs clean-archives
 	@printf "Cleaning...\n"
 	@$(RM) *.elc $(ELGS) # temporary cleanup kludge
-	@$(RM) Documentation/*.texi~ Documentation/*.info-1 Documentation/*.info-2
+	@$(RM) docs/*.texi~ docs/*.info-1 docs/*.info-2
 	@$(RM) magit-pkg.el t/magit-tests.elc
 
 clean-lisp:
 	@$(MAKE) -C lisp clean
 
 clean-docs:
-	@$(MAKE) -C Documentation clean
+	@$(MAKE) -C docs clean
 
 clean-archives:
 	@$(RM) *.tar.gz *.tar lisp/magit-version.el
@@ -147,30 +142,24 @@ clean-archives:
 clean-all: clean clean-stats
 
 clean-stats:
-	@$(RMDIR) $(statsdir)
+	@$(MAKE) -C docs clean-stats
 
 ## Release management ################################################
 
 texi:
-	@$(MAKE) -C Documentation texi
-
-stats:
-	@$(MAKE) -C Documentation stats
+	@$(MAKE) -C docs texi
 
 authors:
-	@$(MAKE) -C Documentation authors
+	@$(MAKE) -C docs authors
 	@git commit --gpg-sign -m "AUTHORS.md: Update list of contributors" \
-	-o -- Documentation/AUTHORS.md
+	-o -- docs/AUTHORS.md .mailmap
 	@git show --pretty= -p HEAD
 
-publish-stats:
-	@$(MAKE) -C Documentation publish-stats
+publish:
+	@$(MAKE) -C docs publish
 
-publish-manuals:
-	@$(MAKE) -C Documentation publish-manuals
-
-release-manuals:
-	@$(MAKE) -C Documentation release-manuals
+release:
+	@$(MAKE) -C docs release
 
 dist: magit-$(VERSION).tar.gz
 
@@ -179,9 +168,9 @@ versionlib:
 
 DIST_ROOT_FILES = LICENSE default.mk Makefile README.md
 DIST_LISP_FILES = $(addprefix lisp/,$(ELS) magit-version.el Makefile)
-DIST_DOCS_FILES = $(addprefix Documentation/,$(TEXIPAGES) AUTHORS.md Makefile)
-ifneq ("$(wildcard Documentation/RelNotes/$(VERSION).txt)","")
-  DIST_DOCS_FILES += Documentation/RelNotes/$(VERSION).txt
+DIST_DOCS_FILES = $(addprefix docs/,$(TEXIPAGES) AUTHORS.md Makefile)
+ifneq ("$(wildcard docs/RelNotes/$(VERSION).txt)","")
+  DIST_DOCS_FILES += docs/RelNotes/$(VERSION).txt
 endif
 
 magit-$(VERSION).tar.gz: lisp versionlib info
@@ -190,8 +179,8 @@ magit-$(VERSION).tar.gz: lisp versionlib info
 	@$(CP) $(DIST_ROOT_FILES) magit-$(VERSION)
 	@$(MKDIR) magit-$(VERSION)/lisp
 	@$(CP) $(DIST_LISP_FILES) magit-$(VERSION)/lisp
-	@$(MKDIR) magit-$(VERSION)/Documentation
-	@$(CP) $(DIST_DOCS_FILES) magit-$(VERSION)/Documentation
+	@$(MKDIR) magit-$(VERSION)/docs
+	@$(CP) $(DIST_DOCS_FILES) magit-$(VERSION)/docs
 	@$(TAR) cz --mtime=./magit-$(VERSION) -f magit-$(VERSION).tar.gz magit-$(VERSION)
 	@$(RMDIR) magit-$(VERSION)
 
@@ -254,10 +243,9 @@ define set_package_requires_melpa
 
 (with-temp-file "lisp/git-commit-pkg.el"
   (insert (format
-"(define-package \"git-commit\" \"$(GIT_COMMIT_VERSION)\"
+"(define-package \"git-commit\" \"$(GIT_COMMIT_VERSION)$(DEV_SUFFIX)\"
   \"Edit Git commit messages.\"
   '((emacs %S)
-    (dash %S)
     (transient %S)
     (with-editor %S))
   :homepage \"https://magit.vc\"
@@ -269,7 +257,7 @@ define set_package_requires_melpa
 
 (with-temp-file "lisp/magit-pkg.el"
   (insert (format
-"(define-package \"magit\" \"$(MAGIT_VERSION)\"
+"(define-package \"magit\" \"$(MAGIT_VERSION)$(DEV_SUFFIX)\"
   \"A Git porcelain inside Emacs.\"
   '((emacs %S)
     (dash %S)
@@ -288,7 +276,7 @@ define set_package_requires_melpa
 
 (with-temp-file "lisp/magit-libgit-pkg.el"
   (insert (format
-"(define-package \"magit-libgit\" \"$(MAGIT_LIBGIT_VERSION)\"
+"(define-package \"magit-libgit\" \"$(MAGIT_LIBGIT_VERSION)$(DEV_SUFFIX)\"
   \".\"
   '((emacs %S)
     (libgit %S)
@@ -301,7 +289,7 @@ define set_package_requires_melpa
 
 (with-temp-file "lisp/magit-section-pkg.el"
   (insert (format
-"(define-package \"magit-section\" \"$(MAGIT_SECTION_VERSION)\"
+"(define-package \"magit-section\" \"$(MAGIT_SECTION_VERSION)$(DEV_SUFFIX)\"
   \"Sections for read-only buffers\"
   '((emacs %S)
     (dash %S))
@@ -346,6 +334,7 @@ _bump-versions:
         $$set_package_requires_melpa)"
 
 bump-snapshots:
+	@$(eval DEV_SUFFIX := -git)
 	@$(BATCH) --eval "(let (\
         $$set_package_versions)\
         $$set_package_requires_nongnu)"
@@ -354,3 +343,12 @@ bump-snapshots:
         $$set_package_requires_melpa)"
 	@git commit -a --gpg-sign -m "Reset Package-Requires for Melpa"
 	@git show --pretty= -p HEAD
+
+## Statistics ########################################################
+
+stats:
+	@$(MAKE) -C docs stats
+
+stats-upload:
+	@$(MAKE) -C docs stats-upload
+

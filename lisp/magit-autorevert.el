@@ -1,19 +1,16 @@
-;;; magit-autorevert.el --- revert buffers when files in repository change  -*- lexical-binding: t -*-
+;;; magit-autorevert.el --- Revert buffers when files in repository change  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2010-2021  The Magit Project Contributors
-;;
-;; You should have received a copy of the AUTHORS.md file which
-;; lists all contributors.  If not, see http://magit.vc/authors.
+;; Copyright (C) 2008-2022 The Magit Project Contributors
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Maintainer: Jonas Bernoulli <jonas@bernoul.li>
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
-;; Magit is free software; you can redistribute it and/or modify it
+;; Magit is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 3, or (at your option)
-;; any later version.
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 ;;
 ;; Magit is distributed in the hope that it will be useful, but WITHOUT
 ;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
@@ -21,7 +18,7 @@
 ;; License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with Magit.  If not, see http://www.gnu.org/licenses.
+;; along with Magit.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Code:
 
@@ -105,18 +102,14 @@ seconds of user inactivity.  That is not desirable."
       (--when-let (find-buffer-visiting file)
         (with-current-buffer it
           (magit-turn-on-auto-revert-mode-if-desired)))
-    (when (and buffer-file-name
+    (when (and (not auto-revert-mode)        ; see #3014
+               (not global-auto-revert-mode) ; see #3460
+               buffer-file-name
                (file-readable-p buffer-file-name)
-               (or (< emacs-major-version 27)
-                   (with-no-warnings
-                     (condition-case nil
-                         (executable-find magit-git-executable t) ; see #3684
-                       (wrong-number-of-arguments t)))) ; very old 27 built
+               (compat-executable-find (magit-git-executable) t)
                (magit-toplevel)
                (or (not magit-auto-revert-tracked-only)
-                   (magit-file-tracked-p buffer-file-name))
-               (not auto-revert-mode)         ; see #3014
-               (not global-auto-revert-mode)) ; see #3460
+                   (magit-file-tracked-p buffer-file-name)))
       (auto-revert-mode 1))))
 
 ;;;###autoload
@@ -261,7 +254,7 @@ defaults to nil) for any BUFFER."
       (auto-revert-set-timer))))
 
 (advice-add 'auto-revert-buffers :around
-            'auto-revert-buffers--buffer-list-filter)
+            #'auto-revert-buffers--buffer-list-filter)
 
 ;;; _
 (provide 'magit-autorevert)

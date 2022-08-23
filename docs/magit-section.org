@@ -1,20 +1,15 @@
-#+TITLE: Magit-Section Developer Manual
+#+title: Magit-Section Developer Manual
 :PREAMBLE:
-#+AUTHOR: Jonas Bernoulli
-#+EMAIL: jonas@bernoul.li
-#+DATE: 2015-{{{year}}}
-#+LANGUAGE: en
+#+author: Jonas Bernoulli
+#+email: jonas@bernoul.li
+#+date: 2015-{{{year}}}
 
-#+TEXINFO_DIR_CATEGORY: Emacs
-#+TEXINFO_DIR_TITLE: Magit-Section: (magit-section).
-#+TEXINFO_DIR_DESC: Use Magit sections in your own packages.
-#+SUBTITLE: for version {{{version}}}
+#+texinfo_dir_category: Emacs
+#+texinfo_dir_title: Magit-Section: (magit-section).
+#+texinfo_dir_desc: Use Magit sections in your own packages.
+#+subtitle: for version 3.3.0-git
 
-#+TEXINFO_DEFFN: t
-#+OPTIONS: H:4 num:3 toc:2
-#+PROPERTY: header-args :eval never
-#+MACRO: version (eval (ox-texinfo+-get-version 'mixed))
-#+MACRO: year (eval (format-time-string "%Y"))
+#+setupfile: .orgconfig
 
 This package implements the main user interface of Magit — the
 collapsible sections that make up its buffers.  This package used
@@ -25,22 +20,10 @@ To learn more about the section abstraction and available commands and
 user options see [[info:magit#Sections]].  This manual documents how you
 can use sections in your own packages.
 
-#+TEXINFO: @noindent
-This manual is for Magit-Section version {{{version}}}.
+#+texinfo: @noindent
+This manual is for Magit-Section version 3.3.0-git.
 
-#+BEGIN_QUOTE
-Copyright (C) 2015-{{{year}}} Jonas Bernoulli <jonas@bernoul.li>
-
-You can redistribute this document and/or modify it under the terms
-of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any
-later version.
-
-This document is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-General Public License for more details.
-#+END_QUOTE
+#+texinfo: @insertcopying
 :END:
 * Introduction
 
@@ -57,10 +40,9 @@ When the documentation leaves something unaddressed, then please
 consider that Magit uses this library extensively and search its
 source for suitable examples before asking me for help.  Thanks!
 
-
 * Creating Sections
 
-- Macro: magit-insert-section [name] (type &optional value hide) &rest body
+- Macro: magit-insert-section [name] (type &optional value hide) &rest body ::
 
   Create a section object of type CLASS, storing VALUE in its
   ~value~ slot, and insert the section at point.  CLASS is a
@@ -104,7 +86,7 @@ source for suitable examples before asking me for help.  Thanks!
   a section by washing Git's output and Git didn't actually output
   anything this time around.
 
-- Function: magit-insert-heading &rest args
+- Function: magit-insert-heading &rest args ::
 
   Insert the heading for the section currently being inserted.
 
@@ -133,19 +115,19 @@ source for suitable examples before asking me for help.  Thanks!
   getting it right.  The only exception is that this function does
   insert a newline character if necessary.
 
-- Macro: magit-insert-section-body &rest body
+- Macro: magit-insert-section-body &rest body ::
 
   Use BODY to insert the section body, once the section is expanded.
   If the section is expanded when it is created, then this is
   like ~progn~.  Otherwise BODY isn't evaluated until the section
   is explicitly expanded.
 
-- Function: magit-cancel-section
+- Function: magit-cancel-section ::
 
   Cancel inserting the section that is currently being inserted.
   Remove all traces of that section.
 
-- Function: magit-wash-sequence function
+- Function: magit-wash-sequence function ::
 
   Repeatedly call FUNCTION until it returns ~nil~ or the end of the
   buffer is reached.  FUNCTION has to move point forward or return
@@ -153,16 +135,24 @@ source for suitable examples before asking me for help.  Thanks!
 
 * Core Functions
 
-- Function: magit-current-section
+- Function: magit-current-section ::
 
-  Return the section at point.
+  Return the section at point or where the context menu was invoked.
+  When using the context menu, return the section that the user
+  clicked on, provided the current buffer is the buffer in which
+  the click occurred.  Otherwise return the section at point.
 
-- Function: magit-section-ident section
+- Function magit-section-at &optional position ::
+
+  Return the section at POSITION, defaulting to point.  Default to
+  point even when the context menu is used.
+
+- Function: magit-section-ident section ::
 
   Return an unique identifier for SECTION. The return value has the
   form ~((TYPE . VALUE)...)~.
 
-- Function: magit-section-ident-value value
+- Function: magit-section-ident-value value ::
 
   Return a constant representation of VALUE.
 
@@ -174,21 +164,50 @@ source for suitable examples before asking me for help.  Thanks!
   catch-all method is used, which just returns the argument
   itself.
 
-- Function: magit-get-section ident &optional root
+- Function: magit-get-section ident &optional root ::
 
   Return the section identified by IDENT.
   IDENT has to be a list as returned by ~magit-section-ident~.
   If optional ROOT is non-nil, then search in that section tree
   instead of in the one whose root ~magit-root-section~ is.
 
-- Function: magit-section-lineage section
+- Function: magit-section-lineage section ::
 
   Return the lineage of SECTION.
   The return value has the form ~(TYPE...)~.
 
+- Function: magit-section-content-p section ::
+
+  Return non-nil if SECTION has content or an unused washer function.
+
+The next two functions are replacements for the Emacs functions that
+have the same name except for the ~magit-~ prefix.  Like
+~magit-current-section~ they do not act on point, the cursors position,
+but on the position where the user clicked to invoke the context menu.
+
+If your package provides a context menu and some of its commands act
+on the "thing at point", even if just as a default, then use the
+prefixed functions to teach them to instead use the click location
+when appropriate.
+
+- Function magit-point ::
+
+  Return point or the position where the context menu was invoked.
+  When using the context menu, return the position the user clicked
+  on, provided the current buffer is the buffer in which the click
+  occurred.  Otherwise return the same value as ~point~.
+
+- Function magit-thing-at-point thing &optional no-properties ::
+
+  Return the THING at point or where the context menu was invoked.
+  When using the context menu, return the thing the user clicked
+  on, provided the current buffer is the buffer in which the click
+  occurred.  Otherwise return the same value as ~thing-at-point~.
+  For the meaning of THING and NO-PROPERTIES see that function.
+
 * Matching Functions
 
-- Function: magit-section-match condition &optional (section (magit-current-section))
+- Function: magit-section-match condition &optional (section (magit-current-section)) ::
 
   Return t if SECTION matches CONDITION.
 
@@ -222,7 +241,7 @@ source for suitable examples before asking me for help.  Thanks!
   lineage as printed by ~magit-describe-section-briefly~, unless
   of course you want to be that precise.
 
-- Function: magit-section-value-if condition &optional section
+- Function: magit-section-value-if condition &optional section ::
 
   If the section at point matches CONDITION, then return its value.
 
@@ -233,7 +252,7 @@ source for suitable examples before asking me for help.  Thanks!
 
   See ~magit-section-match~ for the forms CONDITION can take.
 
-- Macro: magit-section-case &rest clauses
+- Macro: magit-section-case &rest clauses ::
 
   Choose among clauses on the type of the section at point.
 
@@ -254,7 +273,7 @@ source for suitable examples before asking me for help.  Thanks!
 :COPYING:    t
 :END:
 
-#+BEGIN_QUOTE
+#+begin_quote
 Copyright (C) 2015-{{{year}}} Jonas Bernoulli <jonas@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
@@ -266,7 +285,7 @@ This document is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 General Public License for more details.
-#+END_QUOTE
+#+end_quote
 
 #  LocalWords:  ARGS CONDITIONs EVAL Git Git's IDENT
 #  LocalWords:  LocalWords MERCHANTABILITY Magit Makefile
@@ -275,9 +294,8 @@ General Public License for more details.
 
 # IMPORTANT: Also update ORG_ARGS and ORG_EVAL in the Makefile.
 # Local Variables:
-# eval: (require 'magit-utils nil t)
-# eval: (require 'ol-man      nil t)
-# eval: (require 'ox-texinfo+ nil t)
+# eval: (require 'magit-base nil t)
+# eval: (require 'ol-man nil t)
 # indent-tabs-mode: nil
 # org-src-preserve-indentation: nil
 # End:

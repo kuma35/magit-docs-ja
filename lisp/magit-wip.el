@@ -1,19 +1,16 @@
-;;; magit-wip.el --- commit snapshots to work-in-progress refs  -*- lexical-binding: t -*-
+;;; magit-wip.el --- Commit snapshots to work-in-progress refs  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2010-2021  The Magit Project Contributors
-;;
-;; You should have received a copy of the AUTHORS.md file which
-;; lists all contributors.  If not, see http://magit.vc/authors.
+;; Copyright (C) 2008-2022 The Magit Project Contributors
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Maintainer: Jonas Bernoulli <jonas@bernoul.li>
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
-;; Magit is free software; you can redistribute it and/or modify it
+;; Magit is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 3, or (at your option)
-;; any later version.
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 ;;
 ;; Magit is distributed in the hope that it will be useful, but WITHOUT
 ;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
@@ -21,7 +18,7 @@
 ;; License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with Magit.  If not, see http://www.gnu.org/licenses.
+;; along with Magit.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -140,10 +137,10 @@ variant `magit-wip-after-save-mode'."
   :lighter magit-wip-after-save-local-mode-lighter
   (if magit-wip-after-save-local-mode
       (if (and buffer-file-name (magit-inside-worktree-p t))
-          (add-hook 'after-save-hook 'magit-wip-commit-buffer-file t t)
+          (add-hook 'after-save-hook #'magit-wip-commit-buffer-file t t)
         (setq magit-wip-after-save-local-mode nil)
         (user-error "Need a worktree and a file"))
-    (remove-hook 'after-save-hook 'magit-wip-commit-buffer-file t)))
+    (remove-hook 'after-save-hook #'magit-wip-commit-buffer-file t)))
 
 (defun magit-wip-after-save-local-mode-turn-on ()
   (and buffer-file-name
@@ -224,8 +221,8 @@ command which is about to be called are committed."
   :lighter magit-wip-initial-backup-mode-lighter
   :global t
   (if magit-wip-initial-backup-mode
-      (add-hook  'before-save-hook 'magit-wip-commit-initial-backup)
-    (remove-hook 'before-save-hook 'magit-wip-commit-initial-backup)))
+      (add-hook  'before-save-hook #'magit-wip-commit-initial-backup)
+    (remove-hook 'before-save-hook #'magit-wip-commit-initial-backup)))
 
 (defun magit--any-wip-mode-enabled-p ()
   "Return non-nil if any global wip mode is enabled."
@@ -301,15 +298,7 @@ commit message."
                        ;; deleted in the temporary index.
                        (magit-call-git
                         "update-index" "--add" "--remove"
-                        (and (pcase (magit-repository-local-get
-                                     'update-index-has-ignore-sw-p 'unset)
-                               (`unset
-                                (let ((val (version<= "2.25.0"
-                                                      (magit-git-version))))
-                                  (magit-repository-local-set
-                                   'update-index-has-ignore-sw-p val)
-                                  val))
-                               (val val))
+                        (and (magit-git-version>= "2.25.0")
                              "--ignore-skip-worktree-entries")
                         "--" files)
                      (magit-with-toplevel
@@ -377,7 +366,7 @@ commit message."
 (defun magit--wip-ref (namespace &optional ref)
   (concat magit-wip-namespace namespace
           (or (and ref (string-prefix-p "refs/" ref) ref)
-              (when-let ((branch (and (not (equal ref "HEAD"))
+              (and-let* ((branch (and (not (equal ref "HEAD"))
                                       (or ref (magit-get-current-branch)))))
                 (concat "refs/heads/" branch))
               "HEAD")))
@@ -385,7 +374,7 @@ commit message."
 (defun magit-wip-maybe-add-commit-hook ()
   (when (and magit-wip-merge-branch
              (magit-wip-any-enabled-p))
-    (add-hook 'git-commit-post-finish-hook 'magit-wip-commit nil t)))
+    (add-hook 'git-commit-post-finish-hook #'magit-wip-commit nil t)))
 
 (defun magit-wip-any-enabled-p ()
   (or magit-wip-mode
@@ -444,7 +433,7 @@ many \"branches\" of each wip ref are shown."
                           args files))
 
 (defun magit-wip-log-get-tips (wipref count)
-  (when-let ((reflog (magit-git-lines "reflog" wipref)))
+  (and-let* ((reflog (magit-git-lines "reflog" wipref)))
     (let (tips)
       (while (and reflog (> count 1))
         ;; "start autosaving ..." is the current message, but it used

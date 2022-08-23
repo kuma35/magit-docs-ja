@@ -1,8 +1,21 @@
-;;; magit-tests.el --- tests for Magit
+;;; magit-tests.el --- Tests for Magit  -*- lexical-binding:t; coding:utf-8 -*-
 
-;; Copyright (C) 2011-2021  The Magit Project Contributors
+;; Copyright (C) 2008-2022 The Magit Project Contributors
+
+;; SPDX-License-Identifier: GPL-3.0-or-later
+
+;; Magit is free software: you can redistribute it and/or modify it
+;; under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 ;;
-;; License: GPLv3
+;; Magit is distributed in the hope that it will be useful, but WITHOUT
+;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+;; or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public
+;; License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with Magit.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Code:
 
@@ -289,6 +302,48 @@ Enter passphrase for key '/home/user/.ssh/id_rsa': "
         (magit-process-filter test-proc prompt)
         (should (equal (pop sent-strings) "mypasswd\n")))
       (should (null sent-strings)))))
+
+;;; Clone
+
+(ert-deftest magit-clone:--name-to-url-format-single-string ()
+  (let ((magit-clone-url-format "bird@%h:%n.git")
+        (magit-clone-name-alist
+         '(("\\`\\(?:github:\\|gh:\\)?\\([^:]+\\)\\'" "github.com" "u")
+           ("\\`\\(?:gitlab:\\|gl:\\)\\([^:]+\\)\\'" "gitlab.com" "u"))))
+    (should (string-equal (magit-clone--name-to-url "gh:a/b")
+                          "bird@github.com:a/b.git"))
+    (should (string-equal (magit-clone--name-to-url "gl:a/b")
+                          "bird@gitlab.com:a/b.git"))
+    (should (string-equal (magit-clone--name-to-url "github:c/d")
+                          "bird@github.com:c/d.git"))
+    (should (string-equal (magit-clone--name-to-url "gitlab:c/d")
+                          "bird@gitlab.com:c/d.git"))))
+
+(ert-deftest magit-clone:--name-to-url-format-bad-type-throws-error ()
+  (let ((magit-clone-url-format 3))
+    (should-error (magit-clone--name-to-url "gh:a/b")
+                  :type 'user-error)))
+
+(ert-deftest magit-clone:--name-to-url-format-alist-different-urls-per-hostname ()
+  (let ((magit-clone-name-alist
+         '(("\\`\\(?:example:\\|ex:\\)\\([^:]+\\)\\'" "git.example.com" "foouser")
+           ("\\`\\(?:gh:\\)?\\([^:]+\\)\\'" "github.com" "u")))
+        (magit-clone-url-format
+         '(("git.example.com" . "cow@%h:~%n")
+           (nil . "git@%h:%n.git"))))
+    (should (string-equal (magit-clone--name-to-url "gh:a/b")
+                          "git@github.com:a/b.git"))
+    (should (string-equal (magit-clone--name-to-url "ex:a/b")
+                          "cow@git.example.com:~a/b"))
+    (should (string-equal (magit-clone--name-to-url "example:x/y")
+                          "cow@git.example.com:~x/y"))
+    (should (string-equal (magit-clone--name-to-url "ex:c")
+                          "cow@git.example.com:~foouser/c"))))
+
+(ert-deftest magit-clone:--name-to-url-format-alist-no-fallback-throws-error ()
+  (let ((magit-clone-url-format '(("fail.example.com" . "git@%h:~%n"))))
+    (should-error (magit-clone--name-to-url "gh:a/b")
+                  :type 'user-error)))
 
 ;;; Status
 

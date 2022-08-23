@@ -1,19 +1,16 @@
-;;; magit-commit.el --- create Git commits  -*- lexical-binding: t -*-
+;;; magit-commit.el --- Create Git commits  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2008-2021  The Magit Project Contributors
-;;
-;; You should have received a copy of the AUTHORS.md file which
-;; lists all contributors.  If not, see http://magit.vc/authors.
+;; Copyright (C) 2008-2022 The Magit Project Contributors
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Maintainer: Jonas Bernoulli <jonas@bernoul.li>
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
-;; Magit is free software; you can redistribute it and/or modify it
+;; Magit is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 3, or (at your option)
-;; any later version.
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 ;;
 ;; Magit is distributed in the hope that it will be useful, but WITHOUT
 ;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
@@ -21,7 +18,7 @@
 ;; License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with Magit.  If not, see http://www.gnu.org/licenses.
+;; along with Magit.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -33,9 +30,6 @@
 
 (require 'magit)
 (require 'magit-sequence)
-
-(eval-when-compile (require 'epa)) ; for `epa-protocol'
-(eval-when-compile (require 'epg))
 
 ;;; Options
 
@@ -119,13 +113,6 @@ Also see https://github.com/magit/magit/issues/4132."
   :group 'magit-commands
   :type 'boolean)
 
-(defvar magit-post-commit-hook-commands
-  '(magit-commit-extend
-    magit-commit-fixup
-    magit-commit-augment
-    magit-commit-instant-fixup
-    magit-commit-instant-squash))
-
 ;;; Popup
 
 ;;;###autoload (autoload 'magit-commit "magit-commit" nil t)
@@ -168,58 +155,12 @@ Also see https://github.com/magit/magit/issues/4132."
 (defun magit-commit-arguments nil
   (transient-args 'magit-commit))
 
-(transient-define-argument magit:--gpg-sign ()
-  :description "Sign using gpg"
-  :class 'transient-option
-  :shortarg "-S"
-  :argument "--gpg-sign="
-  :allow-empty t
-  :reader 'magit-read-gpg-signing-key)
-
-(defvar magit-gpg-secret-key-hist nil)
-
-(defun magit-read-gpg-secret-key
-    (prompt &optional initial-input history predicate)
-  (require 'epa)
-  (let* ((keys (cl-mapcan
-                (lambda (cert)
-                  (and (or (not predicate)
-                           (funcall predicate cert))
-                       (let* ((key (car (epg-key-sub-key-list cert)))
-                              (fpr (epg-sub-key-fingerprint key))
-                              (id  (epg-sub-key-id key))
-                              (author
-                               (when-let ((id-obj
-                                           (car (epg-key-user-id-list cert))))
-                                 (let ((id-str (epg-user-id-string id-obj)))
-                                   (if (stringp id-str)
-                                       id-str
-                                     (epg-decode-dn id-obj))))))
-                         (list
-                          (propertize fpr 'display
-                                      (concat (substring fpr 0 (- (length id)))
-                                              (propertize id 'face 'highlight)
-                                              " " author))))))
-                (epg-list-keys (epg-make-context epa-protocol) nil t)))
-         (choice (completing-read prompt keys nil nil nil
-                                  history nil initial-input)))
-    (set-text-properties 0 (length choice) nil choice)
-    choice))
-
-(defun magit-read-gpg-signing-key (prompt &optional initial-input history)
-  (magit-read-gpg-secret-key
-   prompt initial-input history
-   (lambda (cert)
-     (cl-some (lambda (key)
-                (memq 'sign (epg-sub-key-capability key)))
-              (epg-key-sub-key-list cert)))))
-
 (transient-define-argument magit-commit:--reuse-message ()
   :description "Reuse commit message"
   :class 'transient-option
   :shortarg "-C"
   :argument "--reuse-message="
-  :reader 'magit-read-reuse-message
+  :reader #'magit-read-reuse-message
   :history-key 'magit-revision-history)
 
 (defun magit-read-reuse-message (prompt &optional default history)
@@ -240,7 +181,7 @@ With a prefix argument, amend to the commit at `HEAD' instead.
                    (list (cons "--amend" (magit-commit-arguments)))
                  (list (magit-commit-arguments))))
   (when (member "--all" args)
-    (setq this-command 'magit-commit-all))
+    (setq this-command 'magit-commit--all))
   (when (setq args (magit-commit-assert args))
     (let ((default-directory (magit-toplevel)))
       (magit-run-git-with-editor "commit" args))))
@@ -267,10 +208,11 @@ to inverse the meaning of the prefix argument.  \n(git commit
                        magit-commit-extend-override-date)))
   (when (setq args (magit-commit-assert args))
     (magit-commit-amend-assert)
-    (let ((process-environment process-environment))
-      (unless override-date
-        (push (magit-rev-format "GIT_COMMITTER_DATE=%cD") process-environment))
-      (magit-run-git-with-editor "commit" "--amend" "--no-edit" args))))
+    (if override-date
+        (magit-run-git-with-editor "commit" "--amend" "--no-edit" args)
+      (with-environment-variables
+          (("GIT_COMMITTER_DATE" (magit-rev-format "%cD")))
+        (magit-run-git-with-editor "commit" "--amend" "--no-edit" args)))))
 
 ;;;###autoload
 (defun magit-commit-reword (&optional args override-date)
@@ -288,11 +230,12 @@ and ignore the option.
                          (not magit-commit-reword-override-date)
                        magit-commit-reword-override-date)))
   (magit-commit-amend-assert)
-  (let ((process-environment process-environment))
-    (unless override-date
-      (push (magit-rev-format "GIT_COMMITTER_DATE=%cD") process-environment))
-    (cl-pushnew "--allow-empty" args :test #'equal)
-    (magit-run-git-with-editor "commit" "--amend" "--only" args)))
+  (cl-pushnew "--allow-empty" args :test #'equal)
+  (if override-date
+      (magit-run-git-with-editor "commit" "--amend" "--only" args)
+    (with-environment-variables
+        (("GIT_COMMITTER_DATE" (magit-rev-format "%cD")))
+      (magit-run-git-with-editor "commit" "--amend" "--only" args))))
 
 ;;;###autoload
 (defun magit-commit-fixup (&optional commit args)
@@ -370,7 +313,7 @@ depending on the value of option `magit-commit-squash-confirm'."
                 (magit-call-git
                  "commit" "--no-gpg-sign"
                  (-remove-first
-                  (apply-partially #'string-match-p "\\`--gpg-sign=")
+                  (apply-partially #'string-prefix-p "--gpg-sign=")
                   args)))
             (magit-run-git-with-editor "commit" args))
           t) ; The commit was created; used by below lambda.
@@ -417,7 +360,7 @@ depending on the value of option `magit-commit-squash-confirm'."
    ((and (magit-rebase-in-progress-p)
          (not (magit-anything-unstaged-p))
          (y-or-n-p "Nothing staged.  Continue in-progress rebase? "))
-    (setq this-command 'magit-rebase-continue)
+    (setq this-command #'magit-rebase-continue)
     (magit-run-git-sequencer "rebase" "--continue")
     nil)
    ((and (file-exists-p (magit-git-dir "MERGE_MSG"))
@@ -429,9 +372,10 @@ depending on the value of option `magit-commit-squash-confirm'."
     (when (eq magit-commit-ask-to-stage 'verbose)
       (magit-diff-unstaged))
     (prog1 (when (or (eq magit-commit-ask-to-stage 'stage)
-                     (y-or-n-p "Nothing staged.  Stage and commit all unstaged changes? "))
-             (magit-run-git "add" "-u" ".")
-             (or args (list "--")))
+                     (y-or-n-p
+                      "Nothing staged.  Commit all uncommitted changes? "))
+             (setq this-command 'magit-commit--all)
+             (cons "--all" (or args (list "--"))))
       (when (and (eq magit-commit-ask-to-stage 'verbose)
                  (derived-mode-p 'magit-diff-mode))
         (magit-mode-bury-buffer))))
@@ -467,8 +411,7 @@ is updated:
                         'magit--reshelve-history)
            update-author
            (magit-commit-arguments))))
-  (let ((process-environment process-environment))
-    (push (concat "GIT_COMMITTER_DATE=" date) process-environment)
+  (with-environment-variables (("GIT_COMMITTER_DATE" date))
     (magit-run-git "commit" "--amend" "--no-edit"
                    (and update-author (concat "--date=" date))
                    args)))
@@ -516,7 +459,7 @@ See `magit-commit-autofixup' for an alternative implementation."
                        (transient-args 'magit-commit-absorb))))
   (if (eq phase 'transient)
       (transient-setup 'magit-commit-absorb)
-    (unless (executable-find "git-absorb")
+    (unless (compat-executable-find "git-absorb" t)
       (user-error "This command requires the git-absorb executable, which %s"
                   "is available from https://github.com/tummychow/git-absorb"))
     (unless (magit-anything-staged-p)
@@ -559,7 +502,7 @@ See `magit-commit-absorb' for an alternative implementation."
                        (transient-args 'magit-commit-autofixup))))
   (if (eq phase 'transient)
       (transient-setup 'magit-commit-autofixup)
-    (unless (executable-find "git-autofixup")
+    (unless (compat-executable-find "git-autofixup" t)
       (user-error "This command requires the git-autofixup script, which %s"
                   "is available from https://github.com/torbiak/git-autofixup"))
     (unless (magit-anything-modified-p)
@@ -579,56 +522,108 @@ See `magit-commit-absorb' for an alternative implementation."
   :class 'transient-option
   :shortarg "-c"
   :argument "--context="
-  :reader 'transient-read-number-N0)
+  :reader #'transient-read-number-N0)
 
 (transient-define-argument magit-autofixup:--strict ()
   :description "Strictness"
   :class 'transient-option
   :shortarg "-s"
   :argument "--strict="
-  :reader 'transient-read-number-N0)
+  :reader #'transient-read-number-N0)
+
+(defvar magit-post-commit-hook-commands
+  '(magit-commit-extend
+    magit-commit-fixup
+    magit-commit-augment
+    magit-commit-instant-fixup
+    magit-commit-instant-squash))
+
+(defun magit-run-post-commit-hook ()
+  (when (and (not this-command)
+             (memq last-command magit-post-commit-hook-commands))
+    (run-hooks 'magit-post-commit-hook)))
 
 ;;; Pending Diff
 
 (defun magit-commit-diff ()
+  (magit-repository-local-set 'this-commit-command
+                              (if (eq this-command 'with-editor-finish)
+                                  'magit-commit--rebase
+                                last-command))
   (when (and git-commit-mode magit-commit-show-diff)
     (when-let ((diff-buffer (magit-get-mode-buffer 'magit-diff-mode)))
       ;; This window just started displaying the commit message
       ;; buffer.  Without this that buffer would immediately be
       ;; replaced with the diff buffer.  See #2632.
       (unrecord-window-buffer nil diff-buffer))
-    (condition-case nil
-        (let ((args (car (magit-diff-arguments)))
-              (magit-inhibit-save-previous-winconf 'unset)
-              (magit-display-buffer-noselect t)
-              (inhibit-quit nil)
-              (display-buffer-overriding-action
-               display-buffer-overriding-action))
-          (when magit-commit-diff-inhibit-same-window
-            (setq display-buffer-overriding-action
-                  '(nil (inhibit-same-window t))))
-          (message "Diffing changes to be committed (C-g to abort diffing)")
-          (cl-case last-command
-            (magit-commit
-             (magit-diff-staged nil args))
-            (magit-commit-all
-             (magit-diff-working-tree nil args))
-            ((magit-commit-amend
-              magit-commit-reword
-              magit-rebase-reword-commit)
-             (magit-diff-while-amending args))
-            (t (if (magit-anything-staged-p)
-                   (magit-diff-staged nil args)
-                 (magit-diff-while-amending args)))))
-      (quit))))
+    (message "Diffing changes to be committed (C-g to abort diffing)")
+    (let ((inhibit-quit nil))
+      (condition-case nil
+          (magit-commit-diff-1)
+        (quit)))))
 
-;; Mention `magit-diff-while-committing' because that's
-;; always what I search for when I try to find this line.
-(add-hook 'server-switch-hook 'magit-commit-diff)
-(add-hook 'with-editor-filter-visit-hook 'magit-commit-diff)
+(defun magit-commit-diff-1 ()
+  (let ((rev nil)
+        (arg "--cached")
+        (command (magit-repository-local-get 'this-commit-command))
+        (staged (magit-anything-staged-p))
+        (unstaged
+         ;; Escape $GIT_DIR because `magit-anything-unstaged-p'
+         ;; requires a working tree.
+         (magit-with-toplevel
+           (magit-anything-unstaged-p)))
+        (squash (let ((f (magit-git-dir "rebase-merge/rewritten-pending")))
+                  (and (file-exists-p f) (length (magit-file-lines f)))))
+        (noalt nil))
+    (pcase (list staged unstaged command)
+      ((and `(,_ ,_ magit-commit--rebase)
+            (guard (integerp squash)))
+       (setq rev (format "HEAD~%s" squash)))
+      (`(,_ ,_ magit-commit-amend)
+       (setq rev "HEAD^"))
+      ((or `(,_ ,_ magit-commit-reword)
+           `(nil nil ,_))
+       (setq rev "HEAD^..HEAD")
+       (setq arg nil))
+      (`(,_ t magit-commit--all)
+       (setq rev "HEAD")
+       (setq arg nil))
+      (`(nil t handle-switch-frame)
+       ;; Either --all or --allow-empty. Assume it is the former.
+       (setq rev "HEAD")
+       (setq arg nil)))
+    (cond
+     ((not
+       (and (eq this-command 'magit-diff-while-committing)
+            (and-let* ((buf (magit-get-mode-buffer
+                             'magit-diff-mode nil 'selected)))
+              (and (equal rev (buffer-local-value 'magit-buffer-range buf))
+                   (equal arg (buffer-local-value 'magit-buffer-typearg buf)))))))
+     ((eq command 'magit-commit-amend)
+      (setq rev nil))
+     ((or squash (file-exists-p (magit-git-dir "rebase-merge/amend")))
+      (setq rev "HEAD^"))
+     (t
+      (message "No alternative diff while committing")
+      (setq noalt t)))
+    (unless noalt
+      (let ((magit-inhibit-save-previous-winconf 'unset)
+            (magit-display-buffer-noselect t)
+            (display-buffer-overriding-action
+             display-buffer-overriding-action))
+        (when magit-commit-diff-inhibit-same-window
+          (setq display-buffer-overriding-action
+                '(nil (inhibit-same-window t))))
+        (magit-diff-setup-buffer rev arg (car (magit-diff-arguments)) nil)))))
+
+(add-hook 'server-switch-hook #'magit-commit-diff)
+(add-hook 'with-editor-filter-visit-hook #'magit-commit-diff)
 
 (add-to-list 'with-editor-server-window-alist
-             (cons git-commit-filename-regexp 'switch-to-buffer))
+             (cons git-commit-filename-regexp #'switch-to-buffer))
+
+(defun magit-commit--reset-command ()
+  (magit-repository-local-delete 'this-commit-command))
 
 ;;; Message Utilities
 
@@ -640,7 +635,7 @@ See `magit-commit-absorb' for an alternative implementation."
              (append (buffer-list (selected-frame))
                      (buffer-list)))))
 
-(defvar magit-commit-add-log-insert-function 'magit-commit-add-log-insert
+(defvar magit-commit-add-log-insert-function #'magit-commit-add-log-insert
   "Used by `magit-commit-add-log' to insert a single entry.")
 
 (defun magit-commit-add-log ()

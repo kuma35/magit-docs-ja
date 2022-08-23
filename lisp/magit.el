@@ -1,42 +1,49 @@
-;;; magit.el --- A Git porcelain inside Emacs  -*- lexical-binding: t; coding: utf-8 -*-
+;;; magit.el --- A Git porcelain inside Emacs  -*- lexical-binding:t; coding:utf-8 -*-
 
-;; Copyright (C) 2008-2021  The Magit Project Contributors
-;;
-;; You should have received a copy of the AUTHORS.md file which
-;; lists all contributors.  If not, see http://magit.vc/authors.
+;; Copyright (C) 2008-2022 The Magit Project Contributors
 
 ;; Author: Marius Vollmer <marius.vollmer@gmail.com>
-;;      Jonas Bernoulli <jonas@bernoul.li>
+;;     Jonas Bernoulli <jonas@bernoul.li>
 ;; Maintainer: Jonas Bernoulli <jonas@bernoul.li>
-;;      Kyle Meyer <kyle@kyleam.com>
-;;      Noam Postavsky <npostavs@users.sourceforge.net>
+;;     Kyle Meyer <kyle@kyleam.com>
 ;; Former-Maintainers:
-;;      Nicolas Dudebout <nicolas.dudebout@gatech.edu>
-;;      Peter J. Weisberg <pj@irregularexpressions.net>
-;;      Phil Jackson <phil@shellarchive.co.uk>
-;;      Rémi Vanicat <vanicat@debian.org>
-;;      Yann Hodique <yann.hodique@gmail.com>
+;;     Nicolas Dudebout <nicolas.dudebout@gatech.edu>
+;;     Noam Postavsky <npostavs@users.sourceforge.net>
+;;     Peter J. Weisberg <pj@irregularexpressions.net>
+;;     Phil Jackson <phil@shellarchive.co.uk>
+;;     Rémi Vanicat <vanicat@debian.org>
+;;     Yann Hodique <yann.hodique@gmail.com>
 
-;; Keywords: git tools vc
 ;; Homepage: https://github.com/magit/magit
-;; Package-Requires: ((emacs "25.1") (dash "2.19.1") (git-commit "3.3.0") (magit-section "3.3.0") (transient "0.3.6") (with-editor "3.0.5"))
-;; Package-Version: 3.3.0
+;; Keywords: git tools vc
+
+;; Package-Version: 3.3.0-git
+;; Package-Requires: (
+;;     (emacs "25.1")
+;;     (compat "28.1.1.2")
+;;     (dash "2.19.1")
+;;     (git-commit "3.3.0")
+;;     (magit-section "3.3.0")
+;;     (transient "0.3.6")
+;;     (with-editor "3.0.5"))
+
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
-;; Magit is free software; you can redistribute it and/or modify it
-;; under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 3, or (at your option)
-;; any later version.
+;; Magit is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published
+;; by the Free Software Foundation, either version 3 of the License,
+;; or (at your option) any later version.
 ;;
-;; Magit is distributed in the hope that it will be useful, but WITHOUT
-;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
-;; or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public
-;; License for more details.
+;; Magit is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with Magit.  If not, see http://www.gnu.org/licenses.
+;; along with Magit.  If not, see <https://www.gnu.org/licenses/>.
 
-;; Magit requires at least GNU Emacs 25.1 and Git 2.2.0.
+;; You should have received a copy of the AUTHORS.md file, which
+;; lists all contributors.  If not, see https://magit.vc/authors.
 
 ;;; Commentary:
 
@@ -65,8 +72,21 @@
 (require 'package nil t) ; used in `magit-version'
 (require 'with-editor)
 
-(defconst magit--minimal-git "2.2.0")
-(defconst magit--minimal-emacs "25.1")
+;; For `magit:--gpg-sign'
+(declare-function epg-list-keys "epg" (context &optional name mode))
+(declare-function epg-decode-dn "epg" (alist))
+
+;;; Options
+
+(defcustom magit-openpgp-default-signing-key nil
+  "Fingerprint of your default Openpgp key used for signing.
+If the specified primary key has signing capacity then it is used
+as the value of the `--gpg-sign' argument without prompting, even
+when other such keys exist.  To be able to select another key you
+must then use a prefix argument."
+  :package-version '(magit . "3.4.0")
+  :group 'magit-commands
+  :type 'string)
 
 ;;; Faces
 
@@ -92,7 +112,7 @@ own faces for the `header-line', or for parts of the
 (defface magit-hash
   '((((class color) (background light)) :foreground "grey60")
     (((class color) (background  dark)) :foreground "grey40"))
-  "Face for the sha1 part of the log output."
+  "Face for the commit object name in the log output."
   :group 'magit-faces)
 
 (defface magit-tag
@@ -279,7 +299,7 @@ Also see info node `(magit)Commands for Buffers Visiting Files'."
 
 ;;;###autoload
 (progn
-  (defun magit-maybe-define-global-key-bindings ()
+  (defun magit-maybe-define-global-key-bindings (&optional force)
     (when magit-define-global-key-bindings
       (let ((map (current-global-map)))
         (dolist (elt '(("C-x g"   . magit-status)
@@ -287,12 +307,13 @@ Also see info node `(magit)Commands for Buffers Visiting Files'."
                        ("C-c M-g" . magit-file-dispatch)))
           (let ((key (kbd (car elt)))
                 (def (cdr elt)))
-            (unless (or (lookup-key map key)
-                        (where-is-internal def (make-sparse-keymap) t))
+            (when (or force
+                      (not (or (lookup-key map key)
+                               (where-is-internal def (make-sparse-keymap) t))))
               (define-key map key def)))))))
   (if after-init-time
       (magit-maybe-define-global-key-bindings)
-    (add-hook 'after-init-hook 'magit-maybe-define-global-key-bindings t)))
+    (add-hook 'after-init-hook #'magit-maybe-define-global-key-bindings t)))
 
 ;;; Dispatch Popup
 
@@ -317,7 +338,7 @@ Also see info node `(magit)Commands for Buffers Visiting Files'."
     ("F" "Pull"           magit-pull)
     ;; g                  ↓
     ;; G                → magit-refresh-all
-    ("h" "Help"           magit-help)
+    ("h" "Help"           magit-info)
     ("H" "Section info"   magit-describe-section :if-derived magit-mode)]
    [("i" "Ignore"         magit-gitignore)
     ("I" "Init"           magit-init)
@@ -368,10 +389,12 @@ Also see info node `(magit)Commands for Buffers Visiting Files'."
     ("U" "Unstage all"    magit-unstage-all)]]
   ["Essential commands"
    :if-derived magit-mode
-   ("g" "       refresh current buffer"   magit-refresh)
-   ("<tab>" "   toggle section at point"  magit-section-toggle)
-   ("<return>" "visit thing at point"     magit-visit-thing)
-   ("C-x m" "   show all key bindings"    describe-mode)])
+   [("g" "       refresh current buffer"   magit-refresh)
+    ("q" "       bury current buffer"      magit-mode-bury-buffer)
+    ("<tab>" "   toggle section at point"  magit-section-toggle)
+    ("<return>" "visit thing at point"     magit-visit-thing)]
+   [("C-x m"    "show all key bindings"    describe-mode)
+    ("C-x i"    "show Info manual"         magit-info)]])
 
 ;;; Git Popup
 
@@ -398,7 +421,8 @@ This affects `magit-git-command', `magit-git-command-topdir',
     ("k" "gitk"                 magit-run-gitk)
     ("a" "gitk --all"           magit-run-gitk-all)
     ("b" "gitk --branches"      magit-run-gitk-branches)
-    ("g" "git gui"              magit-run-git-gui)]])
+    ("g" "git gui"              magit-run-git-gui)
+    ("m" "git mergetool --gui"  magit-git-mergetool)]])
 
 ;;;###autoload
 (defun magit-git-command (command)
@@ -444,24 +468,76 @@ is run in the top-level directory of the current working tree."
   (magit--shell-command command (magit-toplevel)))
 
 (defun magit--shell-command (command &optional directory)
-  (let ((default-directory (or directory default-directory))
-        (process-environment process-environment))
-    (push "GIT_PAGER=cat" process-environment)
-    (magit-start-process shell-file-name nil
-                         shell-command-switch command))
+  (let ((default-directory (or directory default-directory)))
+    (with-environment-variables (("GIT_PAGER" "cat"))
+      (magit--with-connection-local-variables
+       (magit-start-process shell-file-name nil
+                            shell-command-switch command))))
   (magit-process-buffer))
 
 (defun magit-read-shell-command (&optional toplevel initial-input)
   (let ((default-directory
-          (if (or toplevel current-prefix-arg)
-              (or (magit-toplevel)
-                  (magit--not-inside-repository-error))
-            default-directory)))
+         (if (or toplevel current-prefix-arg)
+             (or (magit-toplevel)
+                 (magit--not-inside-repository-error))
+           default-directory)))
     (read-shell-command (if magit-shell-command-verbose-prompt
                             (format "Async shell command in %s: "
                                     (abbreviate-file-name default-directory))
                           "Async shell command: ")
                         initial-input 'magit-git-command-history)))
+
+;;; Shared Infix Arguments
+
+(transient-define-argument magit:--gpg-sign ()
+  :description "Sign using gpg"
+  :class 'transient-option
+  :shortarg "-S"
+  :argument "--gpg-sign="
+  :allow-empty t
+  :reader #'magit-read-gpg-signing-key)
+
+(defvar magit-gpg-secret-key-hist nil)
+
+(defun magit-read-gpg-secret-key
+    (prompt &optional initial-input history predicate default)
+  (require 'epa)
+  (let* ((keys (cl-mapcan
+                (lambda (cert)
+                  (and (or (not predicate)
+                           (funcall predicate cert))
+                       (let* ((key (car (epg-key-sub-key-list cert)))
+                              (fpr (epg-sub-key-fingerprint key))
+                              (id  (epg-sub-key-id key))
+                              (author
+                               (and-let* ((id-obj
+                                           (car (epg-key-user-id-list cert))))
+                                 (let ((id-str (epg-user-id-string id-obj)))
+                                   (if (stringp id-str)
+                                       id-str
+                                     (epg-decode-dn id-obj))))))
+                         (list
+                          (propertize fpr 'display
+                                      (concat (substring fpr 0 (- (length id)))
+                                              (propertize id 'face 'highlight)
+                                              " " author))))))
+                (epg-list-keys (epg-make-context epa-protocol) nil t)))
+         (choice (or (and (not current-prefix-arg)
+                          (or (and (length= keys 1) (car keys))
+                              (and default (car (member default keys)))))
+                     (completing-read prompt keys nil nil nil
+                                      history nil initial-input))))
+    (set-text-properties 0 (length choice) nil choice)
+    choice))
+
+(defun magit-read-gpg-signing-key (prompt &optional initial-input history)
+  (magit-read-gpg-secret-key
+   prompt initial-input history
+   (lambda (cert)
+     (cl-some (lambda (key)
+                (memq 'sign (epg-sub-key-capability key)))
+              (epg-key-sub-key-list cert)))
+   magit-openpgp-default-signing-key))
 
 ;;; Font-Lock Keywords
 
@@ -485,7 +561,7 @@ is run in the top-level directory of the current working tree."
 
 ;;; Version
 
-(defvar magit-version 'undefined
+(defvar magit-version #'undefined
   "The version of Magit that you're using.
 Use the function by the same name instead of this variable.")
 
@@ -566,7 +642,8 @@ and Emacs to it."
         (when print-dest
           (princ (format "Magit %s%s, Git %s, Emacs %s, %s"
                          (or magit-version "(unknown)")
-                         (or (and (ignore-errors (version< "2008" magit-version))
+                         (or (and (ignore-errors
+                                    (magit--version>= magit-version "2008"))
                                   (ignore-errors
                                     (require 'lisp-mnt)
                                     (and (fboundp 'lm-header)
@@ -577,12 +654,7 @@ and Emacs to it."
                                              (locate-library "magit.el" t))
                                             (lm-header "Package-Version"))))))
                              "")
-                         (or (let ((magit-git-debug
-                                    (lambda (err)
-                                      (display-warning '(magit git)
-                                                       err :error))))
-                               (magit-git-version t))
-                             "(unknown)")
+                         (magit--safe-git-version)
                          emacs-version
                          system-type)
                  print-dest))
@@ -595,75 +667,26 @@ and Emacs to it."
         (message "Cannot determine Magit's version %S" debug)))
     magit-version))
 
-;;; Debugging Tools
-
-(defun magit-debug-git-executable ()
-  "Display a buffer with information about `magit-git-executable'.
-Also include information about `magit-remote-git-executable'.
-See info node `(magit)Debugging Tools' for more information."
-  (interactive)
-  (with-current-buffer (get-buffer-create "*magit-git-debug*")
-    (pop-to-buffer (current-buffer))
-    (erase-buffer)
-    (insert (format "magit-remote-git-executable: %S\n"
-                    magit-remote-git-executable))
-    (insert (concat
-             (format "magit-git-executable: %S" magit-git-executable)
-             (and (not (file-name-absolute-p magit-git-executable))
-                  (format " [%S]" (executable-find magit-git-executable)))
-             (format " (%s)\n"
-                     (let* ((errmsg nil)
-                            (magit-git-debug (lambda (err) (setq errmsg err))))
-                       (or (magit-git-version t) errmsg)))))
-    (insert (format "exec-path: %S\n" exec-path))
-    (--when-let (cl-set-difference
-                 (-filter #'file-exists-p (remq nil (parse-colon-path
-                                                     (getenv "PATH"))))
-                 (-filter #'file-exists-p (remq nil exec-path))
-                 :test #'file-equal-p)
-      (insert (format "  entries in PATH, but not in exec-path: %S\n" it)))
-    (dolist (execdir exec-path)
-      (insert (format "  %s (%s)\n" execdir (car (file-attributes execdir))))
-      (when (file-directory-p execdir)
-        (dolist (exec (directory-files
-                       execdir t (concat
-                                  "\\`git" (regexp-opt exec-suffixes) "\\'")))
-          (insert (format "    %s (%s)\n" exec
-                          (let* ((magit-git-executable exec)
-                                 (errmsg nil)
-                                 (magit-git-debug (lambda (err) (setq errmsg err))))
-                            (or (magit-git-version t) errmsg)))))))))
-
 ;;; Startup Asserts
 
 (defun magit-startup-asserts ()
   (when-let ((val (getenv "GIT_DIR")))
     (setenv "GIT_DIR")
-    (message "Magit unset $GIT_DIR (was %S).  See \
-https://github.com/magit/magit/wiki/Don't-set-$GIT_DIR-and-alike" val))
+    (message
+     "Magit unset $GIT_DIR (was %S).  See %s" val
+     ;; Note: Pass URL as argument rather than embedding in the format
+     ;; string to prevent the single quote from being rendered
+     ;; according to `text-quoting-style'.
+     "https://github.com/magit/magit/wiki/Don't-set-$GIT_DIR-and-alike"))
   (when-let ((val (getenv "GIT_WORK_TREE")))
     (setenv "GIT_WORK_TREE")
-    (message "Magit unset $GIT_WORK_TREE (was %S).  See \
-https://github.com/magit/magit/wiki/Don't-set-$GIT_DIR-and-alike" val))
-  (let ((version (magit-git-version)))
-    (when (and version
-               (version< version magit--minimal-git)
-               (not (equal (getenv "CI") "true")))
-      (display-warning 'magit (format "\
-Magit requires Git >= %s, you are using %s.
-
-If this comes as a surprise to you, because you do actually have
-a newer version installed, then that probably means that the
-older version happens to appear earlier on the `$PATH'.  If you
-always start Emacs from a shell, then that can be fixed in the
-shell's init file.  If you start Emacs by clicking on an icon,
-or using some sort of application launcher, then you probably
-have to adjust the environment as seen by graphical interface.
-For X11 something like ~/.xinitrc should work.
-
-If you use Tramp to work inside remote Git repositories, then you
-have to make sure a suitable Git is used on the remote machines
-too.\n" magit--minimal-git version) :error)))
+    (message
+     "Magit unset $GIT_WORK_TREE (was %S).  See %s" val
+     ;; See comment above.
+     "https://github.com/magit/magit/wiki/Don't-set-$GIT_DIR-and-alike"))
+  ;; Git isn't required while building Magit.
+  (unless (bound-and-true-p byte-compile-current-file)
+    (magit-git-version-assert))
   (when (version< emacs-version magit--minimal-emacs)
     (display-warning 'magit (format "\
 Magit requires Emacs >= %s, you are using %s.
@@ -710,18 +733,19 @@ For X11 something like ~/.xinitrc should work.\n"
     (require 'magit-subtree)
     (require 'magit-ediff)
     (require 'magit-gitignore)
+    (require 'magit-sparse-checkout)
     (require 'magit-extras)
     (require 'git-rebase)
-    (require 'magit-imenu)
     (require 'magit-bookmark)))
 
 (with-eval-after-load 'bookmark
   (require 'magit-bookmark))
 
-(if after-init-time
-    (progn (magit-startup-asserts)
-           (magit-version))
-  (add-hook 'after-init-hook #'magit-startup-asserts t)
-  (add-hook 'after-init-hook #'magit-version t))
+(unless (bound-and-true-p byte-compile-current-file)
+  (if after-init-time
+      (progn (magit-startup-asserts)
+             (magit-version))
+    (add-hook 'after-init-hook #'magit-startup-asserts t)
+    (add-hook 'after-init-hook #'magit-version t)))
 
 ;;; magit.el ends here

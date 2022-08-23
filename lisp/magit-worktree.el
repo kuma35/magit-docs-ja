@@ -1,19 +1,16 @@
-;;; magit-worktree.el --- worktree support  -*- lexical-binding: t -*-
+;;; magit-worktree.el --- Worktree support  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2010-2021  The Magit Project Contributors
-;;
-;; You should have received a copy of the AUTHORS.md file which
-;; lists all contributors.  If not, see http://magit.vc/authors.
+;; Copyright (C) 2008-2022 The Magit Project Contributors
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Maintainer: Jonas Bernoulli <jonas@bernoul.li>
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
-;; Magit is free software; you can redistribute it and/or modify it
+;; Magit is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 3, or (at your option)
-;; any later version.
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 ;;
 ;; Magit is distributed in the hope that it will be useful, but WITHOUT
 ;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
@@ -21,7 +18,7 @@
 ;; License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with Magit.  If not, see http://www.gnu.org/licenses.
+;; along with Magit.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -33,7 +30,7 @@
 
 ;;; Options
 
-(defcustom magit-worktree-read-directory-name-function 'read-directory-name
+(defcustom magit-worktree-read-directory-name-function #'read-directory-name
   "Function used to read a directory for worktree commands.
 This is called with one argument, the prompt, and can be used
 to e.g. use a base directory other than `default-directory'.
@@ -150,8 +147,10 @@ then show it in Dired instead."
 
 (defvar magit-worktree-section-map
   (let ((map (make-sparse-keymap)))
-    (define-key map [remap magit-visit-thing]  'magit-worktree-status)
-    (define-key map [remap magit-delete-thing] 'magit-worktree-delete)
+    (magit-menu-set map [magit-visit-thing]  #'magit-worktree-status "Visit %s")
+    (magit-menu-set map [magit-delete-thing] #'magit-worktree-delete "Delete %m")
+    (define-key-after map [separator-magit-worktree] menu-bar-separator)
+    (magit-menu-set map [magit-worktree ] #'magit-worktree "Worktree commands...")
     map)
   "Keymap for `worktree' sections.")
 
@@ -159,7 +158,7 @@ then show it in Dired instead."
   "Insert sections for all worktrees.
 If there is only one worktree, then insert nothing."
   (let ((worktrees (magit-list-worktrees)))
-    (when (> (length worktrees) 1)
+    (when (length> worktrees 1)
       (magit-insert-section (worktrees)
         (magit-insert-heading "Worktrees:")
         (let* ((cols

@@ -8,7 +8,7 @@
 
 @copying
 @quotation
-Copyright (C) 2015-2021 Jonas Bernoulli <jonas@@bernoul.li>
+Copyright (C) 2015-2022 Jonas Bernoulli <jonas@@bernoul.li>
 
 You can redistribute this document and/or modify it under the terms
 of the GNU General Public License as published by the Free Software
@@ -31,7 +31,7 @@ General Public License for more details.
 @finalout
 @titlepage
 @title Magit-Section Developer Manual
-@subtitle for version 3.3.0
+@subtitle for version 3.3.0-git
 @author Jonas Bernoulli
 @page
 @vskip 0pt plus 1filll
@@ -54,22 +54,9 @@ user options see @ref{Sections,,,magit,}.  This manual documents how you
 can use sections in your own packages.
 
 @noindent
-This manual is for Magit-Section version 3.3.0.
+This manual is for Magit-Section version 3.3.0-git.
 
-@quotation
-Copyright (C) 2015-2021 Jonas Bernoulli <jonas@@bernoul.li>
-
-You can redistribute this document and/or modify it under the terms
-of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any
-later version.
-
-This document is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE@.  See the GNU
-General Public License for more details.
-
-@end quotation
+@insertcopying
 @end ifnottex
 
 @menu
@@ -99,7 +86,6 @@ source for suitable examples before asking me for help.  Thanks!
 @chapter Creating Sections
 
 @defmac magit-insert-section [name] (type &optional value hide) &rest body
-
 Create a section object of type CLASS, storing VALUE in its
 @code{value} slot, and insert the section at point.  CLASS is a
 subclass of `magit-section' or has the form @code{(eval FORM)}, in
@@ -144,7 +130,6 @@ anything this time around.
 @end defmac
 
 @defun magit-insert-heading &rest args
-
 Insert the heading for the section currently being inserted.
 
 This function should only be used inside @code{magit-insert-section}.
@@ -174,7 +159,6 @@ insert a newline character if necessary.
 @end defun
 
 @defmac magit-insert-section-body &rest body
-
 Use BODY to insert the section body, once the section is expanded.
 If the section is expanded when it is created, then this is
 like @code{progn}.  Otherwise BODY isn't evaluated until the section
@@ -182,13 +166,11 @@ is explicitly expanded.
 @end defmac
 
 @defun magit-cancel-section
-
 Cancel inserting the section that is currently being inserted.
 Remove all traces of that section.
 @end defun
 
 @defun magit-wash-sequence function
-
 Repeatedly call FUNCTION until it returns @code{nil} or the end of the
 buffer is reached.  FUNCTION has to move point forward or return
 @code{nil}.
@@ -198,18 +180,24 @@ buffer is reached.  FUNCTION has to move point forward or return
 @chapter Core Functions
 
 @defun magit-current-section
-
-Return the section at point.
+Return the section at point or where the context menu was invoked.
+When using the context menu, return the section that the user
+clicked on, provided the current buffer is the buffer in which
+the click occurred.  Otherwise return the section at point.
 @end defun
 
-@defun magit-section-ident section
+@table @asis
+@item Function magit-section-at &optional position
+Return the section at POSITION, defaulting to point.  Default to
+point even when the context menu is used.
+@end table
 
+@defun magit-section-ident section
 Return an unique identifier for SECTION@. The return value has the
 form @code{((TYPE . VALUE)...)}.
 @end defun
 
 @defun magit-section-ident-value value
-
 Return a constant representation of VALUE@.
 
 VALUE is the value of a @code{magit-section} object.  If that is an
@@ -222,7 +210,6 @@ itself.
 @end defun
 
 @defun magit-get-section ident &optional root
-
 Return the section identified by IDENT@.
 IDENT has to be a list as returned by @code{magit-section-ident}.
 If optional ROOT is non-nil, then search in that section tree
@@ -230,16 +217,43 @@ instead of in the one whose root @code{magit-root-section} is.
 @end defun
 
 @defun magit-section-lineage section
-
 Return the lineage of SECTION@.
 The return value has the form @code{(TYPE...)}.
 @end defun
+
+@defun magit-section-content-p section
+Return non-nil if SECTION has content or an unused washer function.
+@end defun
+
+The next two functions are replacements for the Emacs functions that
+have the same name except for the @code{magit-} prefix.  Like
+@code{magit-current-section} they do not act on point, the cursors position,
+but on the position where the user clicked to invoke the context menu.
+
+If your package provides a context menu and some of its commands act
+on the "thing at point", even if just as a default, then use the
+prefixed functions to teach them to instead use the click location
+when appropriate.
+
+@table @asis
+@item Function magit-point
+Return point or the position where the context menu was invoked.
+When using the context menu, return the position the user clicked
+on, provided the current buffer is the buffer in which the click
+occurred.  Otherwise return the same value as @code{point}.
+
+@item Function magit-thing-at-point thing &optional no-properties
+Return the THING at point or where the context menu was invoked.
+When using the context menu, return the thing the user clicked
+on, provided the current buffer is the buffer in which the click
+occurred.  Otherwise return the same value as @code{thing-at-point}.
+For the meaning of THING and NO-PROPERTIES see that function.
+@end table
 
 @node Matching Functions
 @chapter Matching Functions
 
 @defun magit-section-match condition &optional (section (magit-current-section))
-
 Return t if SECTION matches CONDITION@.
 
 SECTION defaults to the section at point.  If SECTION is not
@@ -251,18 +265,15 @@ CONDITION can take the following forms:
 @itemize
 @item
 @code{(CONDITION...)} matches if any of the CONDITIONs matches.
-
 @item
 @code{[CLASS...]} matches if the section's class is the same
 as the first CLASS or a subclass of that;
 the section's parent class matches the
 second CLASS; and so on.
 
-
 @item
 @code{[* CLASS...]} matches sections that match [CLASS@dots{}] and
 also recursively all their child sections.
-
 @item
 @code{CLASS} matches if the section's class is the same
 as CLASS or a subclass of that; regardless
@@ -283,7 +294,6 @@ of course you want to be that precise.
 @end defun
 
 @defun magit-section-value-if condition &optional section
-
 If the section at point matches CONDITION, then return its value.
 
 If optional SECTION is non-nil then test whether that matches
@@ -295,7 +305,6 @@ See @code{magit-section-match} for the forms CONDITION can take.
 @end defun
 
 @defmac magit-section-case &rest clauses
-
 Choose among clauses on the type of the section at point.
 
 Each clause looks like @code{(CONDITION BODY...)}.  The type of the

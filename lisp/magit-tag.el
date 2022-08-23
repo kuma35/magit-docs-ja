@@ -1,19 +1,16 @@
-;;; magit-tag.el --- tag functionality  -*- lexical-binding: t -*-
+;;; magit-tag.el --- Tag functionality  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2010-2021  The Magit Project Contributors
-;;
-;; You should have received a copy of the AUTHORS.md file which
-;; lists all contributors.  If not, see http://magit.vc/authors.
+;; Copyright (C) 2008-2022 The Magit Project Contributors
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Maintainer: Jonas Bernoulli <jonas@bernoul.li>
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
-;; Magit is free software; you can redistribute it and/or modify it
+;; Magit is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 3, or (at your option)
-;; any later version.
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 ;;
 ;; Magit is distributed in the hope that it will be useful, but WITHOUT
 ;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
@@ -21,7 +18,7 @@
 ;; License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with Magit.  If not, see http://www.gnu.org/licenses.
+;; along with Magit.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -33,6 +30,8 @@
 
 ;; For `magit-tag-delete'.
 (defvar helm-comp-read-use-marked)
+
+;;; Commands
 
 ;;;###autoload (autoload 'magit-tag "magit" nil t)
 (transient-define-prefix magit-tag ()
@@ -58,7 +57,7 @@
   :class 'transient-option
   :shortarg "-u"
   :argument "--local-user="
-  :reader 'magit-read-gpg-signing-key
+  :reader #'magit-read-gpg-signing-key
   :history-key 'magit:--gpg-sign)
 
 ;;;###autoload
@@ -140,15 +139,21 @@ If this matches versions that are not dot separated numbers,
 then `magit-tag-version-regexp-alist' has to contain entries
 for the separators allowed here.")
 
+(defvar magit-release-commit-regexp "\\`Release version \\(.+\\)\\'"
+  "Regexp used by `magit-tag-release' to parse release commit messages.
+The first submatch must match the version string.")
+
 ;;;###autoload
 (defun magit-tag-release (tag msg &optional args)
-  "Create a release tag.
+  "Create a release tag for `HEAD'.
 
 Assume that release tags match `magit-release-tag-regexp'.
 
-First prompt for the name of the new tag using the highest
-existing tag as initial input and leaving it to the user to
-increment the desired part of the version string.
+If `HEAD's message matches `magit-release-commit-regexp', then
+base the tag on the version string specified by that.  Otherwise
+prompt for the name of the new tag using the highest existing
+tag as initial input and leaving it to the user to increment the
+desired part of the version string.
 
 If `--annotate' is enabled, then prompt for the message of the
 new tag.  Base the proposed tag message on the message of the
@@ -161,7 +166,28 @@ like \"/path/to/foo-bar\"."
    (save-match-data
      (pcase-let*
          ((`(,pver ,ptag ,pmsg) (car (magit--list-releases)))
-          (tag (read-string "Create release tag: " ptag))
+          (msg (magit-rev-format "%s"))
+          (ver (and (string-match magit-release-commit-regexp msg)
+                    (match-string 1 msg)))
+          (_   (and (not ver)
+                    (require (quote sisyphus) nil t)
+                    (string-match magit-release-commit-regexp
+                                  (magit-rev-format "%s" ptag))
+                    (user-error "Use `sisyphus-create-release' first")))
+          (tag (cond
+                ((not ptag)
+                 (read-string "Create first release tag: "
+                              (if (string-match-p "\\`[0-9]" ver)
+                                  (concat "v" ver)
+                                ver)))
+                (ver
+                 (concat (and (string-match magit-release-tag-regexp ptag)
+                              (match-string 1 ptag))
+                         ver))
+                (t
+                 (read-string
+                  (format "Create release tag (previous was %s): " ptag)
+                  ptag))))
           (ver (and (string-match magit-release-tag-regexp tag)
                     (match-string 2 tag)))
           (args (magit-tag-arguments)))

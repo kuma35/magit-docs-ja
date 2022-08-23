@@ -1,19 +1,16 @@
-;;; magit-reflog.el --- inspect ref history  -*- lexical-binding: t -*-
+;;; magit-reflog.el --- Inspect ref history  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2010-2021  The Magit Project Contributors
-;;
-;; You should have received a copy of the AUTHORS.md file which
-;; lists all contributors.  If not, see http://magit.vc/authors.
+;; Copyright (C) 2008-2022 The Magit Project Contributors
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Maintainer: Jonas Bernoulli <jonas@bernoul.li>
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
-;; Magit is free software; you can redistribute it and/or modify it
+;; Magit is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 3, or (at your option)
-;; any later version.
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 ;;
 ;; Magit is distributed in the hope that it will be useful, but WITHOUT
 ;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
@@ -21,7 +18,7 @@
 ;; License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with Magit.  If not, see http://www.gnu.org/licenses.
+;; along with Magit.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -68,7 +65,7 @@ AUTHOR-WIDTH has to be an integer.  When the name of the author
   :group 'magit-log
   :group 'magit-margin
   :type magit-log-margin--custom-type
-  :initialize 'magit-custom-initialize-reset
+  :initialize #'magit-custom-initialize-reset
   :set-after '(magit-log-margin)
   :set (apply-partially #'magit-margin-set-variable 'magit-reflog-mode))
 
@@ -136,8 +133,8 @@ If `HEAD' is detached, then show the reflog for that instead."
 (defvar magit-reflog-mode-map
   (let ((map (make-sparse-keymap)))
     (set-keymap-parent map magit-log-mode-map)
-    (define-key map (kbd "C-c C-n") 'undefined)
-    (define-key map (kbd "L")       'magit-margin-settings)
+    (define-key map (kbd "C-c C-n") #'undefined)
+    (define-key map (kbd "L")       #'magit-margin-settings)
     map)
   "Keymap for `magit-reflog-mode'.")
 
@@ -156,7 +153,8 @@ Type \\[magit-reset] to reset `HEAD' to the commit at point.
 
 \\{magit-reflog-mode-map}"
   :group 'magit-log
-  (hack-dir-local-variables-non-file-buffer))
+  (hack-dir-local-variables-non-file-buffer)
+  (setq magit--imenu-item-types 'commit))
 
 (defun magit-reflog-setup-buffer (ref)
   (require 'magit)
@@ -167,7 +165,7 @@ Type \\[magit-reset] to reset `HEAD' to the commit at point.
 (defun magit-reflog-refresh-buffer ()
   (magit-set-header-line-format (concat "Reflog for " magit-buffer-refname))
   (magit-insert-section (reflogbuf)
-    (magit-git-wash (apply-partially 'magit-log-wash-log 'reflog)
+    (magit-git-wash (apply-partially #'magit-log-wash-log 'reflog)
       "reflog" "show" "--format=%h%x00%aN%x00%gd%x00%gs" "--date=raw"
       magit-buffer-log-args magit-buffer-refname "--")))
 

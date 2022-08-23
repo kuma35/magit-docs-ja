@@ -1,19 +1,16 @@
-;;; magit-fetch.el --- download objects and refs  -*- lexical-binding: t -*-
+;;; magit-fetch.el --- Download objects and refs  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2008-2021  The Magit Project Contributors
-;;
-;; You should have received a copy of the AUTHORS.md file which
-;; lists all contributors.  If not, see http://magit.vc/authors.
+;; Copyright (C) 2008-2022 The Magit Project Contributors
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Maintainer: Jonas Bernoulli <jonas@bernoul.li>
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
-;; Magit is free software; you can redistribute it and/or modify it
+;; Magit is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 3, or (at your option)
-;; any later version.
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 ;;
 ;; Magit is distributed in the hope that it will be useful, but WITHOUT
 ;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
@@ -21,7 +18,7 @@
 ;; License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with Magit.  If not, see http://www.gnu.org/licenses.
+;; along with Magit.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -73,7 +70,7 @@
 With a prefix argument or when the push-remote is either not
 configured or unusable, then let the user first configure the
 push-remote."
-  :description 'magit-fetch--pushremote-description
+  :description #'magit-fetch--pushremote-description
   (interactive (list (magit-fetch-arguments)))
   (let ((remote (magit-get-push-remote)))
     (when (or current-prefix-arg
@@ -181,7 +178,6 @@ with a prefix argument."
                      (t "--jobs=4")))
   ["Arguments"
    ("-v" "verbose"        "--verbose")
-   ("-a" "all remotes"    "--all")
    ("-j" "number of jobs" "--jobs=" :reader transient-read-number-N+)]
   ["Action"
    ("m" "fetch modules" magit-fetch-modules)]
@@ -190,11 +186,11 @@ with a prefix argument."
                  (list nil (transient-args 'magit-fetch-modules))))
   (if transient
       (transient-setup 'magit-fetch-modules)
-    (let ((git-version (magit-git-version)))
-      (when (version<= "2.8.0" git-version)
-        (when-let ((value (transient-arg-value "--jobs=" args)))
-          (message "Dropping --jobs; not supported by Git v%s" git-version)
-          (setq args (remove (format "--jobs=%s" value) args)))))
+    (when (magit-git-version< "2.8.0")
+      (when-let ((value (transient-arg-value "--jobs=" args)))
+        (message "Dropping --jobs; not supported by Git v%s"
+                 (magit-git-version))
+        (setq args (remove (format "--jobs=%s" value) args))))
     (magit-with-toplevel
       (magit-run-git-async "fetch" "--recurse-submodules" args))))
 

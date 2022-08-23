@@ -1,19 +1,16 @@
-;;; magit-bisect.el --- bisect support for Magit  -*- lexical-binding: t -*-
+;;; magit-bisect.el --- Bisect support for Magit  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2011-2021  The Magit Project Contributors
-;;
-;; You should have received a copy of the AUTHORS.md file which
-;; lists all contributors.  If not, see http://magit.vc/authors.
+;; Copyright (C) 2008-2022 The Magit Project Contributors
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Maintainer: Jonas Bernoulli <jonas@bernoul.li>
 
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
-;; Magit is free software; you can redistribute it and/or modify it
+;; Magit is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 3, or (at your option)
-;; any later version.
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 ;;
 ;; Magit is distributed in the hope that it will be useful, but WITHOUT
 ;; ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
@@ -21,7 +18,7 @@
 ;; License for more details.
 ;;
 ;; You should have received a copy of the GNU General Public License
-;; along with Magit.  If not, see http://www.gnu.org/licenses.
+;; along with Magit.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -65,11 +62,11 @@
    ["Arguments"
     ("-n" "Don't checkout commits"              "--no-checkout")
     ("-p" "Follow only first parent of a merge" "--first-parent"
-     :if (lambda () (version<= "2.29" (magit-git-version))))
+     :if (lambda () (magit-git-version>= "2.29")))
     (6 magit-bisect:--term-old
-       :if (lambda () (version<= "2.7" (magit-git-version))))
+       :if (lambda () (magit-git-version>= "2.7")))
     (6 magit-bisect:--term-new
-       :if (lambda () (version<= "2.7" (magit-git-version))))]
+       :if (lambda () (magit-git-version>= "2.7")))]
    ["Actions"
     ("B" "Start"        magit-bisect-start)
     ("s" "Start script" magit-bisect-run)]]
@@ -78,7 +75,7 @@
    ("B" "Bad"          magit-bisect-bad)
    ("g" "Good"         magit-bisect-good)
    (6 "m" "Mark"       magit-bisect-mark
-      :if (lambda () (version<= "2.7" (magit-git-version))))
+      :if (lambda () (magit-git-version>= "2.7")))
    ("k" "Skip"         magit-bisect-skip)
    ("r" "Reset"        magit-bisect-reset)
    ("s" "Run script"   magit-bisect-run)])
@@ -204,7 +201,9 @@ bisect run'."
        (magit-process-git-arguments
         (list "bisect" "start" bad good args)))
       (magit-refresh)))
-  (magit-git-bisect "run" (list shell-file-name shell-command-switch cmdline)))
+  (magit--with-connection-local-variables
+   (magit-git-bisect "run" (list shell-file-name
+                                 shell-command-switch cmdline))))
 
 (defun magit-git-bisect (subcommand &optional args no-assert)
   (unless (or no-assert (magit-bisect-in-progress-p))
@@ -222,10 +221,10 @@ bisect run'."
          (magit-process-sentinel process event)
          (when (buffer-live-p (process-buffer process))
            (with-current-buffer (process-buffer process)
-             (when-let ((section (get-text-property (point) 'magit-section))
-                        (output (buffer-substring-no-properties
-                                 (oref section content)
-                                 (oref section end))))
+             (when-let* ((section (magit-section-at))
+                         (output (buffer-substring-no-properties
+                                  (oref section content)
+                                  (oref section end))))
                (with-temp-file (magit-git-dir "BISECT_CMD_OUTPUT")
                  (insert output)))))
          (magit-refresh))
@@ -248,7 +247,7 @@ bisect run'."
                       "It appears you have invoked `git bisect' from a shell."
                       "There is nothing wrong with that, we just cannot display"
                       "anything useful here.  Consult the shell output instead.")))
-           (done-re "^\\([a-z0-9]\\{40\\}\\) is the first bad commit$")
+           (done-re "^\\([a-z0-9]\\{40,\\}\\) is the first bad commit$")
            (bad-line (or (and (string-match done-re (car lines))
                               (pop lines))
                          (--first (string-match done-re it) lines))))
@@ -266,7 +265,7 @@ bisect run'."
   (when (magit-bisect-in-progress-p)
     (magit-insert-section (bisect-view)
       (magit-insert-heading "Bisect Rest:")
-      (magit-git-wash (apply-partially 'magit-log-wash-log 'bisect-vis)
+      (magit-git-wash (apply-partially #'magit-log-wash-log 'bisect-vis)
         "bisect" "visualize" "git" "log"
         "--format=%h%x00%D%x00%s" "--decorate=full"
         (and magit-bisect-show-graph "--graph")))))
@@ -293,11 +292,11 @@ bisect run'."
                                 'magit-section-secondary-heading))
             (magit-insert-heading)
             (magit-wash-sequence
-             (apply-partially 'magit-log-wash-rev 'bisect-log
+             (apply-partially #'magit-log-wash-rev 'bisect-log
                               (magit-abbrev-length)))
             (insert ?\n)))))
     (when (re-search-forward
-           "# first bad commit: \\[\\([a-z0-9]\\{40\\}\\)\\] [^\n]+\n" nil t)
+           "# first bad commit: \\[\\([a-z0-9]\\{40,\\}\\)\\] [^\n]+\n" nil t)
       (magit-bind-match-strings (hash) nil
         (magit-delete-match)
         (magit-insert-section (bisect-item)
