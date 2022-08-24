@@ -1,7 +1,7 @@
 This is magit-section.ja.info, produced by makeinfo version 6.7 from
 magit-section.ja.texi.
 
-     Copyright (C) 2015-2021 Jonas Bernoulli <jonas@bernoul.li>
+     Copyright (C) 2015-2022 Jonas Bernoulli <jonas@bernoul.li>
 
      You can redistribute this document and/or modify it under the terms
      of the GNU General Public License as published by the Free Software
@@ -33,9 +33,9 @@ Magitの一部として配布されていました。しかし今やMagitやGit�
 いては→*note (magit)Sections:: このマニュアルでは、あなた独自のパッケー
 ジでセクションを使用する方法について説明します。
 
-このマニュアルは、Magit-Sectionバージョン3.3.0 を対象としています。
+このマニュアルは、Magit-Sectionバージョン 3.3.0-git を対象としています。
 
-     Copyright (C) 2015-2021 Jonas Bernoulli <jonas@bernoul.li>
+     Copyright (C) 2015-2022 Jonas Bernoulli <jonas@bernoul.li>
 
      You can redistribute this document and/or modify it under the terms
      of the GNU General Public License as published by the Free Software
@@ -81,7 +81,6 @@ File: magit-section.ja.info,  Node: Creating Sections,  Next: Core Functions,  P
 
  -- Macro: magit-insert-section [name] (type &optional value hide) &rest
           body
-
      タイプCLASSのセクションオブジェクトを作成し、その‘value’スロットに
      VALUEを格納し、ポイントにセクションを挿入します。 CLASSは
      ‘magit-section’のサブクラスであるか、‘(eval FORM)’の形式です。この
@@ -121,7 +120,6 @@ File: magit-section.ja.info,  Node: Creating Sections,  Next: Core Functions,  P
      場合に発生する可能性があります。
 
  -- Function: magit-insert-heading &rest args
-
      現在挿入されているセクションの見出しを挿入します。
 
      この関数は、‘magit-insert-section’内でのみ使用する必要があります。
@@ -148,19 +146,16 @@ File: magit-section.ja.info,  Node: Creating Sections,  Next: Core Functions,  P
      外は、この関数が必要に応じて改行文字を挿入することです。
 
  -- Macro: magit-insert-section-body &rest body
-
      セクションが展開されたら、BODYを使用してセクション本体を挿入します
      。セクションの作成時にセクションが展開されている場合、これは
      ‘progn’のようになります。それ以外の場合、セクションが明示的に展開さ
      れるまで、BODYは評価されません。
 
  -- Function: magit-cancel-section
-
      現在挿入されているセクションの挿入をキャンセルします。そのセクショ
      ンのすべての痕跡を削除します。
 
  -- Function: magit-wash-sequence function
-
      ‘nil’が返されるか、バッファの終わりに達するまで、FUNCTIONを繰り返し
      呼び出します。FUNCTIONは、ポイントを前方に移動するか、‘nil’を返す必
      要があります。
@@ -172,16 +167,21 @@ File: magit-section.ja.info,  Node: Core Functions,  Next: Matching Functions,  
 ****************
 
  -- Function: magit-current-section
+     ポイントまたはコンテキストメニューが呼び出された場所のセクションを
+     返します。 コンテキストメニューを使用する場合、クリックが発生したバ
+     ッファーが現在のバッファーである場合、ユーザーがクリックしたセクシ
+     ョンを返します。 それ以外の場合は、ポイントのセクションを返します。
 
-     ポイントのセクションを返します。
+Function magit-section-at &optional position
+     POSITION のセクションを返します。デフォルトはポイントです。 コンテ
+     キストメニューが使用されている場合でも、デフォルトでポイントします
+     。
 
  -- Function: magit-section-ident section
-
      SECTION@の一意(unique)の識別子(identifier)を返します。戻り値の形式
      は‘((TYPE . VALUE)...)’です。
 
  -- Function: magit-section-ident-value value
-
      VALUE@の定数表現(constant representation)を返します。
 
      VALUEは、‘magit-section’オブジェクトの値です。それ自体がオブジェク
@@ -192,15 +192,40 @@ File: magit-section.ja.info,  Node: Core Functions,  Next: Matching Functions,  
      catch-allメソッドが使用されます。
 
  -- Function: magit-get-section ident &optional root
-
      IDENT@で識別されるセクションを返します。 IDENTは、
      ‘magit-section-ident’によって返されるリストである必要があります。オ
      プションのROOTがnil以外の場合は、rootが‘magit-root-section’であるセ
      クションツリーではなく、そのセクションツリーを検索します。
 
  -- Function: magit-section-lineage section
-
      SECTION@の系統(lineage)を返します。戻り値の形式は‘(TYPE...)’です。
+
+ -- Function: magit-section-content-p section
+     SECTION にコンテンツまたは未使用のウォッシャー関数がある場合、非
+     nil を返します。
+
+次の 2 つの関数は、 ‘magit-’ プレフィックスを除いて同じ名前を持つ Emacs
+関数の置き換えです。 ‘magit-current-section’ のように、カーソルの位置で
+はなく、ユーザーがコンテキストメニューを呼び出すためにクリックした位置で
+動作します。
+
+あなたのパッケージがコンテキストメニューを提供し、そのコマンドの一部がデ
+フォルトであっても「ポイントにあるもの」に作用する場合は、接頭辞付きの関
+数を使用して、必要に応じて代わりにクリック位置を使用するように教えてくだ
+さい。
+
+Function magit-point
+     コンテキストメニューが呼び出されたリターンポイントまたは位置。 コン
+     テキストメニューを使用する場合、現在のバッファーがクリックが発生し
+     たバッファーである場合、ユーザーがクリックした位置を返します。 それ
+     以外の場合は、‘point’ と同じ値を返します。
+
+Function magit-thing-at-point thing &optional no-properties
+     ポイントまたはコンテキストメニューが呼び出された場所でTHINGを返しま
+     す。 コンテキストメニューを使用する場合、現在のバッファがクリックが
+     発生したバッファである場合、ユーザーがクリックしたものを返します。
+     それ以外の場合は、‘thing-at-point’ と同じ値を返します。 THING と
+     NO-PROPERTIES の意味については、当該の関数を参照してください。
 
 
 File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  Up: Top
@@ -210,7 +235,6 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
 
  -- Function: magit-section-match condition &optional (section
           (magit-current-section))
-
      SECTIONがCONDITION@と一致する場合は、tを返します。
 
      SECTIONは、デフォルトでポイントのセクションになります。SECTIONが指
@@ -220,14 +244,12 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
 
         • ‘(CONDITION...)’ 条件(CONDITION)のいずれかが一致する場合に一致
           します。
-
         • ‘[CLASS...]’ セクションのクラスが最初のクラス(CLASS)またはその
           サブクラスと同じである場合に一致します。 セクションの親クラス
           は2番目のクラス(CLASS)と一致します。等々。
 
         • ‘[* CLASS...]’ [CLASS...]に一致するセクションと、それらのすべ
           ての子セクションを再帰的に一致させます。
-
         • ‘CLASS’ 親セクションのクラスには関係なく、セクションのクラスが
           CLASSまたはそのサブクラスと同じである場合に一致します。
 
@@ -244,7 +266,6 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
      系統を指定する必要はないことに注意してください。
 
  -- Function: magit-section-value-if condition &optional section
-
      ポイントのセクションがCONDITIONと一致する場合は、その値を返します。
 
      オプションのSECTIONがnil以外の場合は、代わりにそれが一致するかどう
@@ -254,7 +275,6 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
      CONDITIONが取ることができる形式については→‘magit-section-match’
 
  -- Macro: magit-section-case &rest clauses
-
      ポイントのセクションのタイプに関する条項(clauses)から選択します。
 
      各句は‘(CONDITION BODY...)’のようになります。セクションのタイプは、
@@ -272,10 +292,10 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
 
 Tag Table:
 Node: Top889
-Node: Introduction2457
-Node: Creating Sections3561
+Node: Introduction2462
+Node: Creating Sections3566
 Node: Core Functions9543
-Node: Matching Functions11209
+Node: Matching Functions13643
 
 End Tag Table
 

@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
-"POT-Creation-Date: 2021-12-09 11:24+0900\n"
-"PO-Revision-Date: 2021-12-09 11:32+0900\n"
+"POT-Creation-Date: 2022-08-23 22:53+0900\n"
+"PO-Revision-Date: 2022-08-25 02:33+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -28,12 +28,12 @@ msgid "@documentencoding UTF-8 @documentlanguage en"
 msgstr "@documentencoding UTF-8 @documentlanguage en"
 
 #. type: quotation
-#: sed-out/magit-section.texi:12 sed-out/magit-section.texi:61
-msgid "Copyright (C) 2015-2021 Jonas Bernoulli <jonas@@bernoul.li>"
-msgstr "Copyright (C) 2015-2021 Jonas Bernoulli <jonas@@bernoul.li>"
+#: sed-out/magit-section.texi:12
+msgid "Copyright (C) 2015-2022 Jonas Bernoulli <jonas@@bernoul.li>"
+msgstr "Copyright (C) 2015-2022 Jonas Bernoulli <jonas@@bernoul.li>"
 
 #. type: quotation
-#: sed-out/magit-section.texi:17 sed-out/magit-section.texi:66
+#: sed-out/magit-section.texi:17
 msgid ""
 "You can redistribute this document and/or modify it under the terms of the "
 "GNU General Public License as published by the Free Software Foundation, "
@@ -44,7 +44,7 @@ msgstr ""
 "either version 3 of the License, or (at your option) any later version."
 
 #. type: quotation
-#: sed-out/magit-section.texi:22 sed-out/magit-section.texi:71
+#: sed-out/magit-section.texi:22
 msgid ""
 "This document is distributed in the hope that it will be useful, but WITHOUT "
 "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
@@ -75,8 +75,8 @@ msgstr "あなた独自のパッケージでMagit sectionを使用します。"
 #. type: subtitle
 #: sed-out/magit-section.texi:34
 #, no-wrap
-msgid "for version 3.3.0"
-msgstr "for version 3.3.0"
+msgid "for version 3.3.0-git"
+msgstr "for version 3.3.0-git"
 
 #. type: author
 #: sed-out/magit-section.texi:35
@@ -91,7 +91,7 @@ msgid "Top"
 msgstr "Top"
 
 #. type: Plain text
-#: sed-out/magit-section.texi:51 sed-out/magit-section.texi:89
+#: sed-out/magit-section.texi:51 sed-out/magit-section.texi:76
 msgid ""
 "This package implements the main user interface of Magit — the collapsible "
 "sections that make up its buffers.  This package used to be distributed as "
@@ -104,7 +104,7 @@ msgstr ""
 "どのようにすれば使用できるかを示しています。"
 
 #. type: Plain text
-#: sed-out/magit-section.texi:55 sed-out/magit-section.texi:93
+#: sed-out/magit-section.texi:55 sed-out/magit-section.texi:80
 msgid ""
 "To learn more about the section abstraction and available commands and user "
 "options see @ref{Sections,,,magit,}.  This manual documents how you can use "
@@ -116,39 +116,39 @@ msgstr ""
 
 #. type: ifnottex
 #: sed-out/magit-section.texi:58
-msgid "This manual is for Magit-Section version 3.3.0."
-msgstr "このマニュアルは、Magit-Sectionバージョン3.3.0 を対象としています。"
+msgid "This manual is for Magit-Section version 3.3.0-git."
+msgstr "このマニュアルは、Magit-Sectionバージョン 3.3.0-git を対象としています。"
 
 #. type: menuentry
-#: sed-out/magit-section.texi:80
+#: sed-out/magit-section.texi:67
 msgid "Introduction::"
 msgstr "Introduction::"
 
 #. type: menuentry
-#: sed-out/magit-section.texi:80
+#: sed-out/magit-section.texi:67
 msgid "Creating Sections::"
 msgstr "Creating Sections::"
 
 #. type: menuentry
-#: sed-out/magit-section.texi:80
+#: sed-out/magit-section.texi:67
 msgid "Core Functions::"
 msgstr "Core Functions::"
 
 #. type: chapter
-#: sed-out/magit-section.texi:80 sed-out/magit-section.texi:238
-#: sed-out/magit-section.texi:239
+#: sed-out/magit-section.texi:67 sed-out/magit-section.texi:253
+#: sed-out/magit-section.texi:254
 #, no-wrap
 msgid "Matching Functions"
 msgstr "Matching Functions"
 
 #. type: chapter
-#: sed-out/magit-section.texi:82 sed-out/magit-section.texi:83
+#: sed-out/magit-section.texi:69 sed-out/magit-section.texi:70
 #, no-wrap
 msgid "Introduction"
 msgstr "Introduction"
 
 #. type: Plain text
-#: sed-out/magit-section.texi:97
+#: sed-out/magit-section.texi:84
 msgid ""
 "When the documentation leaves something unaddressed, then please consider "
 "that Magit uses this library extensively and search its source for suitable "
@@ -159,19 +159,19 @@ msgstr ""
 "を検索してください。宜しくお願いします。"
 
 #. type: chapter
-#: sed-out/magit-section.texi:98 sed-out/magit-section.texi:99
+#: sed-out/magit-section.texi:85 sed-out/magit-section.texi:86
 #, no-wrap
 msgid "Creating Sections"
 msgstr "Creating Sections"
 
 #. type: defmac
-#: sed-out/magit-section.texi:101
+#: sed-out/magit-section.texi:88
 #, no-wrap
 msgid "magit-insert-section [name] (type &optional value hide) &rest body"
 msgstr "magit-insert-section [name] (type &optional value hide) &rest body"
 
 #. type: defmac
-#: sed-out/magit-section.texi:109
+#: sed-out/magit-section.texi:95
 msgid ""
 "Create a section object of type CLASS, storing VALUE in its @code{value} "
 "slot, and insert the section at point.  CLASS is a subclass of `magit-"
@@ -186,7 +186,7 @@ msgstr ""
 "「タイプ」と呼ばれます。"
 
 #. type: defmac
-#: sed-out/magit-section.texi:115
+#: sed-out/magit-section.texi:101
 msgid ""
 "Many commands behave differently depending on the class of the current "
 "section and sections of a certain class can have their own keymap, which is "
@@ -199,7 +199,7 @@ msgstr ""
 "あります。"
 
 #. type: defmac
-#: sed-out/magit-section.texi:120
+#: sed-out/magit-section.texi:106
 msgid ""
 "For historic reasons Magit and Forge in most cases use symbols as CLASS that "
 "don't actually identify a class and that lack the appropriate package "
@@ -212,7 +212,7 @@ msgstr ""
 "機能します。"
 
 #. type: defmac
-#: sed-out/magit-section.texi:128
+#: sed-out/magit-section.texi:114
 msgid ""
 "When optional HIDE is non-nil collapse the section body by default, i.e. "
 "when first creating the section, but not when refreshing the buffer.  Else "
@@ -229,7 +229,7 @@ msgstr ""
 "き続き尊重されます）。"
 
 #. type: defmac
-#: sed-out/magit-section.texi:133
+#: sed-out/magit-section.texi:119
 msgid ""
 "BODY is any number of forms that actually insert the section's heading and "
 "body.  Optional NAME, if specified, has to be a symbol, which is then bound "
@@ -240,7 +240,7 @@ msgstr ""
 "は、挿入されるセクションのオブジェクトに結び付けられます。"
 
 #. type: defmac
-#: sed-out/magit-section.texi:138
+#: sed-out/magit-section.texi:124
 msgid ""
 "Before BODY is evaluated the @code{start} of the section object is set to "
 "the value of `point' and after BODY was evaluated its @code{end} is set to "
@@ -252,7 +252,7 @@ msgstr ""
 "す。BODYは、@code{point}を前進させる責任があります。"
 
 #. type: defmac
-#: sed-out/magit-section.texi:144
+#: sed-out/magit-section.texi:130
 msgid ""
 "If it turns out inside BODY that the section is empty, then @code{magit-"
 "cancel-section} can be used to abort and remove all traces of the partially "
@@ -265,24 +265,24 @@ msgstr ""
 "は何も出力しなかった場合に発生する可能性があります。"
 
 #. type: defun
-#: sed-out/magit-section.texi:146
+#: sed-out/magit-section.texi:132
 #, no-wrap
 msgid "magit-insert-heading &rest args"
 msgstr "magit-insert-heading &rest args"
 
 #. type: defun
-#: sed-out/magit-section.texi:149
+#: sed-out/magit-section.texi:134
 msgid "Insert the heading for the section currently being inserted."
 msgstr "現在挿入されているセクションの見出しを挿入します。"
 
 #. type: defun
-#: sed-out/magit-section.texi:151
+#: sed-out/magit-section.texi:136
 msgid "This function should only be used inside @code{magit-insert-section}."
 msgstr ""
 "この関数は、@code{magit-insert-section}内でのみ使用する必要があります。"
 
 #. type: defun
-#: sed-out/magit-section.texi:156
+#: sed-out/magit-section.texi:141
 msgid ""
 "When called without any arguments, then just set the @code{content} slot of "
 "the object representing the section being inserted to a marker at "
@@ -294,7 +294,7 @@ msgstr ""
 "このように使用する場合、セクションには1行のみを含める必要があります。"
 
 #. type: defun
-#: sed-out/magit-section.texi:164
+#: sed-out/magit-section.texi:149
 msgid ""
 "When called with arguments ARGS, which have to be strings, or nil, then "
 "insert those strings at point.  The section should not contain any text "
@@ -311,7 +311,7 @@ msgstr ""
 "てのテキストに `magit-section-heading' faceを使用します。"
 
 #. type: defun
-#: sed-out/magit-section.texi:174
+#: sed-out/magit-section.texi:159
 msgid ""
 "The @code{content} property of the section object is the end of the heading "
 "(which lasts from @code{start} to @code{content}) and the beginning of the "
@@ -331,13 +331,13 @@ msgstr ""
 "に応じて改行文字を挿入することです。"
 
 #. type: defmac
-#: sed-out/magit-section.texi:176
+#: sed-out/magit-section.texi:161
 #, no-wrap
 msgid "magit-insert-section-body &rest body"
 msgstr "magit-insert-section-body &rest body"
 
 #. type: defmac
-#: sed-out/magit-section.texi:182
+#: sed-out/magit-section.texi:166
 msgid ""
 "Use BODY to insert the section body, once the section is expanded.  If the "
 "section is expanded when it is created, then this is like @code{progn}.  "
@@ -349,13 +349,13 @@ msgstr ""
 "ん。"
 
 #. type: defun
-#: sed-out/magit-section.texi:184
+#: sed-out/magit-section.texi:168
 #, no-wrap
 msgid "magit-cancel-section"
 msgstr "magit-cancel-section"
 
 #. type: defun
-#: sed-out/magit-section.texi:188
+#: sed-out/magit-section.texi:171
 msgid ""
 "Cancel inserting the section that is currently being inserted.  Remove all "
 "traces of that section."
@@ -364,13 +364,13 @@ msgstr ""
 "の痕跡を削除します。"
 
 #. type: defun
-#: sed-out/magit-section.texi:190
+#: sed-out/magit-section.texi:173
 #, no-wrap
 msgid "magit-wash-sequence function"
 msgstr "magit-wash-sequence function"
 
 #. type: defun
-#: sed-out/magit-section.texi:195
+#: sed-out/magit-section.texi:177
 msgid ""
 "Repeatedly call FUNCTION until it returns @code{nil} or the end of the "
 "buffer is reached.  FUNCTION has to move point forward or return @code{nil}."
@@ -380,30 +380,47 @@ msgstr ""
 "ます。"
 
 #. type: chapter
-#: sed-out/magit-section.texi:197 sed-out/magit-section.texi:198
+#: sed-out/magit-section.texi:179 sed-out/magit-section.texi:180
 #, no-wrap
 msgid "Core Functions"
 msgstr "Core Functions"
 
 #. type: defun
-#: sed-out/magit-section.texi:200
+#: sed-out/magit-section.texi:182
 #, no-wrap
 msgid "magit-current-section"
 msgstr "magit-current-section"
 
 #. type: defun
-#: sed-out/magit-section.texi:203
-msgid "Return the section at point."
-msgstr "ポイントのセクションを返します。"
+#: sed-out/magit-section.texi:187
+msgid ""
+"Return the section at point or where the context menu was invoked.  When "
+"using the context menu, return the section that the user clicked on, "
+"provided the current buffer is the buffer in which the click occurred.  "
+"Otherwise return the section at point."
+msgstr "ポイントまたはコンテキストメニューが呼び出された場所のセクションを返します。 コンテキストメニューを使用する場合、クリックが発生したバッファーが現在のバッファーである場合、ユーザーがクリックしたセクションを返します。 それ以外の場合は、ポイントのセクションを返します。"
+
+#. type: item
+#: sed-out/magit-section.texi:190
+#, no-wrap
+msgid "Function magit-section-at &optional position"
+msgstr "Function magit-section-at &optional position"
+
+#. type: table
+#: sed-out/magit-section.texi:193
+msgid ""
+"Return the section at POSITION, defaulting to point.  Default to point even "
+"when the context menu is used."
+msgstr "POSITION のセクションを返します。デフォルトはポイントです。 コンテキストメニューが使用されている場合でも、デフォルトでポイントします。"
 
 #. type: defun
-#: sed-out/magit-section.texi:205
+#: sed-out/magit-section.texi:195
 #, no-wrap
 msgid "magit-section-ident section"
 msgstr "magit-section-ident section"
 
 #. type: defun
-#: sed-out/magit-section.texi:209
+#: sed-out/magit-section.texi:198
 msgid ""
 "Return an unique identifier for SECTION@. The return value has the form "
 "@code{((TYPE . VALUE)...)}."
@@ -412,18 +429,18 @@ msgstr ""
 "@code{((TYPE . VALUE)...)}です。"
 
 #. type: defun
-#: sed-out/magit-section.texi:211
+#: sed-out/magit-section.texi:200
 #, no-wrap
 msgid "magit-section-ident-value value"
 msgstr "magit-section-ident-value value"
 
 #. type: defun
-#: sed-out/magit-section.texi:214
+#: sed-out/magit-section.texi:202
 msgid "Return a constant representation of VALUE@."
 msgstr "VALUE@@の定数表現(constant representation)を返します。"
 
 #. type: defun
-#: sed-out/magit-section.texi:222
+#: sed-out/magit-section.texi:210
 msgid ""
 "VALUE is the value of a @code{magit-section} object.  If that is an object "
 "itself, then that is not suitable to be used to identify the section because "
@@ -439,13 +456,13 @@ msgstr ""
 "の場合は、引数自体を返すだけのcatch-allメソッドが使用されます。"
 
 #. type: defun
-#: sed-out/magit-section.texi:224
+#: sed-out/magit-section.texi:212
 #, no-wrap
 msgid "magit-get-section ident &optional root"
 msgstr "magit-get-section ident &optional root"
 
 #. type: defun
-#: sed-out/magit-section.texi:230
+#: sed-out/magit-section.texi:217
 msgid ""
 "Return the section identified by IDENT@.  IDENT has to be a list as returned "
 "by @code{magit-section-ident}.  If optional ROOT is non-nil, then search in "
@@ -458,13 +475,13 @@ msgstr ""
 "ションツリーを検索します。"
 
 #. type: defun
-#: sed-out/magit-section.texi:232
+#: sed-out/magit-section.texi:219
 #, no-wrap
 msgid "magit-section-lineage section"
 msgstr "magit-section-lineage section"
 
 #. type: defun
-#: sed-out/magit-section.texi:236
+#: sed-out/magit-section.texi:222
 msgid ""
 "Return the lineage of SECTION@.  The return value has the form "
 "@code{(TYPE...)}."
@@ -472,18 +489,77 @@ msgstr ""
 "SECTION@@の系統(lineage)を返します。戻り値の形式は@code{(TYPE...)}です。"
 
 #. type: defun
-#: sed-out/magit-section.texi:241
+#: sed-out/magit-section.texi:224
+#, no-wrap
+msgid "magit-section-content-p section"
+msgstr "magit-section-content-p section"
+
+#. type: defun
+#: sed-out/magit-section.texi:226
+msgid "Return non-nil if SECTION has content or an unused washer function."
+msgstr "SECTION にコンテンツまたは未使用のウォッシャー関数がある場合、非 nil を返します。"
+
+#. type: Plain text
+#: sed-out/magit-section.texi:232
+msgid ""
+"The next two functions are replacements for the Emacs functions that have "
+"the same name except for the @code{magit-} prefix.  Like @code{magit-current-"
+"section} they do not act on point, the cursors position, but on the position "
+"where the user clicked to invoke the context menu."
+msgstr "次の 2 つの関数は、 @code{magit-} プレフィックスを除いて同じ名前を持つ Emacs 関数の置き換えです。 @code{magit-current-section} のように、カーソルの位置ではなく、ユーザーがコンテキストメニューを呼び出すためにクリックした位置で動作します。"
+
+#. type: Plain text
+#: sed-out/magit-section.texi:237
+msgid ""
+"If your package provides a context menu and some of its commands act on the "
+"\"thing at point\", even if just as a default, then use the prefixed "
+"functions to teach them to instead use the click location when appropriate."
+msgstr "あなたのパッケージがコンテキストメニューを提供し、そのコマンドの一部がデフォルトであっても「ポイントにあるもの」に作用する場合は、接頭辞付きの関数を使用して、必要に応じて代わりにクリック位置を使用するように教えてください。"
+
+#. type: item
+#: sed-out/magit-section.texi:239
+#, no-wrap
+msgid "Function magit-point"
+msgstr "Function magit-point"
+
+#. type: table
+#: sed-out/magit-section.texi:244
+msgid ""
+"Return point or the position where the context menu was invoked.  When using "
+"the context menu, return the position the user clicked on, provided the "
+"current buffer is the buffer in which the click occurred.  Otherwise return "
+"the same value as @code{point}."
+msgstr "コンテキストメニューが呼び出されたリターンポイントまたは位置。 コンテキストメニューを使用する場合、現在のバッファーがクリックが発生したバッファーである場合、ユーザーがクリックした位置を返します。 それ以外の場合は、@code{point} と同じ値を返します。"
+
+#. type: item
+#: sed-out/magit-section.texi:245
+#, no-wrap
+msgid "Function magit-thing-at-point thing &optional no-properties"
+msgstr "Function magit-thing-at-point thing &optional no-properties"
+
+#. type: table
+#: sed-out/magit-section.texi:251
+msgid ""
+"Return the THING at point or where the context menu was invoked.  When using "
+"the context menu, return the thing the user clicked on, provided the current "
+"buffer is the buffer in which the click occurred.  Otherwise return the same "
+"value as @code{thing-at-point}.  For the meaning of THING and NO-PROPERTIES "
+"see that function."
+msgstr "ポイントまたはコンテキストメニューが呼び出された場所でTHINGを返します。 コンテキストメニューを使用する場合、現在のバッファがクリックが発生したバッファである場合、ユーザーがクリックしたものを返します。 それ以外の場合は、@code{thing-at-point} と同じ値を返します。 THING と NO-PROPERTIES の意味については、当該の関数を参照してください。"
+
+#. type: defun
+#: sed-out/magit-section.texi:256
 #, no-wrap
 msgid "magit-section-match condition &optional (section (magit-current-section))"
 msgstr "magit-section-match condition &optional (section (magit-current-section))"
 
 #. type: defun
-#: sed-out/magit-section.texi:244
+#: sed-out/magit-section.texi:258
 msgid "Return t if SECTION matches CONDITION@."
 msgstr "SECTIONがCONDITION@@と一致する場合は、tを返します。"
 
 #. type: defun
-#: sed-out/magit-section.texi:248
+#: sed-out/magit-section.texi:262
 msgid ""
 "SECTION defaults to the section at point.  If SECTION is not specified and "
 "there also is no section at point, then return nil."
@@ -492,18 +568,18 @@ msgstr ""
 "らず、ポイントにもセクションがない場合は、nilを返します。"
 
 #. type: defun
-#: sed-out/magit-section.texi:250
+#: sed-out/magit-section.texi:264
 msgid "CONDITION can take the following forms:"
 msgstr "CONDITIONは、以下の形式をとることができます:"
 
 #. type: itemize
-#: sed-out/magit-section.texi:254
+#: sed-out/magit-section.texi:268
 msgid "@code{(CONDITION...)} matches if any of the CONDITIONs matches."
 msgstr ""
 "@code{(CONDITION...)} 条件(CONDITION)のいずれかが一致する場合に一致します。"
 
 #. type: itemize
-#: sed-out/magit-section.texi:260
+#: sed-out/magit-section.texi:273
 msgid ""
 "@code{[CLASS...]} matches if the section's class is the same as the first "
 "CLASS or a subclass of that; the section's parent class matches the second "
@@ -514,7 +590,7 @@ msgstr ""
 "致します。等々。"
 
 #. type: itemize
-#: sed-out/magit-section.texi:265
+#: sed-out/magit-section.texi:277
 msgid ""
 "@code{[* CLASS...]} matches sections that match [CLASS@dots{}] and also "
 "recursively all their child sections."
@@ -523,7 +599,7 @@ msgstr ""
 "セクションを再帰的に一致させます。"
 
 #. type: itemize
-#: sed-out/magit-section.texi:270
+#: sed-out/magit-section.texi:281
 msgid ""
 "@code{CLASS} matches if the section's class is the same as CLASS or a "
 "subclass of that; regardless of the classes of the parent sections."
@@ -532,7 +608,7 @@ msgstr ""
 "はそのサブクラスと同じである場合に一致します。"
 
 #. type: defun
-#: sed-out/magit-section.texi:279
+#: sed-out/magit-section.texi:290
 msgid ""
 "Each CLASS should be a class symbol, identifying a class that derives from "
 "@code{magit-section}.  For backward compatibility CLASS can also be a \"type "
@@ -549,7 +625,7 @@ msgstr ""
 "セクションもそのタイプに一致します。"
 
 #. type: defun
-#: sed-out/magit-section.texi:283
+#: sed-out/magit-section.texi:294
 msgid ""
 "Note that it is not necessary to specify the complete section lineage as "
 "printed by @code{magit-describe-section-briefly}, unless of course you want "
@@ -560,18 +636,18 @@ msgstr ""
 "してください。"
 
 #. type: defun
-#: sed-out/magit-section.texi:285
+#: sed-out/magit-section.texi:296
 #, no-wrap
 msgid "magit-section-value-if condition &optional section"
 msgstr "magit-section-value-if condition &optional section"
 
 #. type: defun
-#: sed-out/magit-section.texi:288
+#: sed-out/magit-section.texi:298
 msgid "If the section at point matches CONDITION, then return its value."
 msgstr "ポイントのセクションがCONDITIONと一致する場合は、その値を返します。"
 
 #. type: defun
-#: sed-out/magit-section.texi:293
+#: sed-out/magit-section.texi:303
 msgid ""
 "If optional SECTION is non-nil then test whether that matches instead.  If "
 "there is no section at point and SECTION is nil, then return nil.  If the "
@@ -582,23 +658,23 @@ msgstr ""
 "クションが一致しない場合は、nilを返します。"
 
 #. type: defun
-#: sed-out/magit-section.texi:295
+#: sed-out/magit-section.texi:305
 msgid "See @code{magit-section-match} for the forms CONDITION can take."
 msgstr "CONDITIONが取ることができる形式については→@code{magit-section-match}"
 
 #. type: defmac
-#: sed-out/magit-section.texi:297
+#: sed-out/magit-section.texi:307
 #, no-wrap
 msgid "magit-section-case &rest clauses"
 msgstr "magit-section-case &rest clauses"
 
 #. type: defmac
-#: sed-out/magit-section.texi:300
+#: sed-out/magit-section.texi:309
 msgid "Choose among clauses on the type of the section at point."
 msgstr "ポイントのセクションのタイプに関する条項(clauses)から選択します。"
 
 #. type: defmac
-#: sed-out/magit-section.texi:307
+#: sed-out/magit-section.texi:316
 msgid ""
 "Each clause looks like @code{(CONDITION BODY...)}.  The type of the section "
 "is compared against each CONDITION; the BODY forms of the first match are "
@@ -613,7 +689,7 @@ msgstr ""
 "を返します。"
 
 #. type: defmac
-#: sed-out/magit-section.texi:312
+#: sed-out/magit-section.texi:321
 msgid ""
 "See @code{magit-section-match} for the forms CONDITION can take.  "
 "Additionally a CONDITION of t is allowed in the final clause, and matches if "
