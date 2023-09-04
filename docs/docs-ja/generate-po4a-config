@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -eu
+
+cat <<EOF
+[po4a_langs] ja
+[po4a_paths] $PO_DIR/\$master.pot \$lang:$PO_DIR/\$master.\$lang.po
+
+[options]                   \\
+  --master-charset UTF-8    \\
+  --localized-charset UTF-8 \\
+  --master-language en      \\
+  --keep 0
+
+EOF
+
+for package in $PACKAGES
+do
+    echo "[type:texinfo] $SED_OUT_DIR/$package.texi \$lang:$TRANSLATE_RAW_DIR/$package.\$lang.texi pot=$package"
+done
