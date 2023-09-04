@@ -43,6 +43,7 @@ pdf:  $(PDFFILES)
 epub: $(EPUBFILES)
 
 $(TARGET_SED_OUT): $(SED_OUT_DIR)/%.texi : $(SRC_DIR)/%.texi
+	@$(MKDIR) $(SED_OUT_DIR)
 	sed -f ./html-out.sed < $< > $@
 
 $(TARGET_PO): $(PO_DIR)/%.ja.po : $(SED_OUT_DIR)/%.texi

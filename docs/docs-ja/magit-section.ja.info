@@ -1,5 +1,5 @@
-This is magit-section.ja.info, produced by makeinfo version 6.7 from
-magit-section.ja.texi.
+This is magit-section.ja.info, produced by .texi2any-real version 7.0.3
+from magit-section.ja.texi.
 
      Copyright (C) 2015-2022 Jonas Bernoulli <jonas@bernoul.li>
 
@@ -49,10 +49,10 @@ Magitの一部として配布されていました。しかし今やMagitやGit�
 
 * Menu:
 
-* Introduction::
-* Creating Sections::
-* Core Functions::
-* Matching Functions::
+* Introduction::             Introduction
+* Creating Sections::        Creating Sections
+* Core Functions::           Core Functions
+* Matching Functions::       Matching Functions
 
 
 File: magit-section.ja.info,  Node: Introduction,  Next: Creating Sections,  Prev: Top,  Up: Top
@@ -291,11 +291,11 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
 
 
 Tag Table:
-Node: Top889
-Node: Introduction2462
-Node: Creating Sections3566
-Node: Core Functions9543
-Node: Matching Functions13643
+Node: Top897
+Node: Introduction2570
+Node: Creating Sections3674
+Node: Core Functions9651
+Node: Matching Functions13751
 
 End Tag Table
 

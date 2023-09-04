@@ -4,6 +4,7 @@
 @c This file was generated with po4a. Translate the source file.
 @c
 @c ===========================================================================
+
 @c %**start of header
 @setfilename magit.info
 @settitle Magit User Manual
@@ -57,21 +58,21 @@ This manual is for Magit version 3.3.0-git.
 @end ifnottex
 
 @menu
-* Introduction::
-* Installation::
-* Getting Started::
-* Interface Concepts::
-* Inspecting::
-* Manipulating::
-* Transferring::
-* Miscellaneous::
-* Customizing::
-* 配管コマンド(Plumbing)::
-* FAQ::
-* Debugging Tools::
-* Keystroke Index::
-* Function and Command Index::
-* Variable Index::           
+* Introduction::             Introduction
+* Installation::             Installation
+* Getting Started::          Getting Started
+* Interface Concepts::       Interface Concepts
+* Inspecting::               Inspecting
+* Manipulating::             Manipulating
+* Transferring::             Transferring
+* Miscellaneous::            Miscellaneous
+* Customizing::              Customizing
+* 配管コマンド(Plumbing)::  配管コマンド(Plumbing)
+* FAQ::                      FAQ
+* Debugging Tools::          Debugging Tools
+* Keystroke Index::          Keystroke Index
+* Function and Command Index::  Function and Command Index
+* Variable Index::           Variable Index
 
 @detailmenu
 --- The Detailed Node Listing ---
@@ -82,32 +83,38 @@ Installation
 
 
 
-* Installing from Melpa::
-* Installing from the Git Repository::
-* Post-Installation Tasks::  
+* Installing from Melpa::    Installing from Melpa
+* Installing from the Git Repository::  Installing from the Git Repository
+* Post-Installation Tasks::  Post-Installation Tasks
 
 Interface Concepts
 
 
 
-* Modes and Buffers::
-* Sections::
-* トランジェントコマンド::
-* Transient Arguments and Buffer Variables::
-* Completion(補完)とConfirmation(確認)とSelection(選択範囲): Completion Confirmation(確認補完)とSelection(選択範囲).  
-* Mouse Support::
-* Running Git::              
+* Modes and Buffers::        Modes and Buffers
+* Sections::                 Sections
+* トランジェントコマンド::  トランジェントコマンド
+* Transient Arguments and Buffer Variables::  Transient Arguments and Buffer 
+                                                Variables
+* Completion(補完)とConfirmation(確認)とSelection(選択範囲): Completion Confirmation(確認補完)とSelection(選択範囲).  Completion(補完)とConfirmation(確認)とSelection(選択範囲): 
+                                                                                                                                           Completion 
+                                                                                                                                           Confirmation(確認補完)とSelection(選択範囲)
+* Mouse Support::            Mouse Support
+* Running Git::              Running Git
 
 Modes and Buffers
 
 
 
-* バッファの切り替え::
-* バッファの名付け::
-* Quitting Windows::
-* Automatic Refreshing of Magit Buffers::
-* Automatic Saving of File-Visiting Buffers::
-* Automatic Reverting of File-Visiting Buffers::  
+* バッファの切り替え::  バッファの切り替え
+* バッファの名付け::  バッファの名付け
+* Quitting Windows::         Quitting Windows
+* Automatic Refreshing of Magit Buffers::  Automatic Refreshing of Magit 
+                                             Buffers
+* Automatic Saving of File-Visiting Buffers::  Automatic Saving of 
+                                                 File-Visiting Buffers
+* Automatic Reverting of File-Visiting Buffers::  Automatic Reverting of 
+                                                    File-Visiting Buffers
 
 
 
@@ -115,11 +122,11 @@ Sections
 
 
 
-* Section Movement::
-* Section Visibility::
-* Section Hooks::
-* Section Types and Values::
-* Section Options::          
+* Section Movement::         Section Movement
+* Section Visibility::       Section Visibility
+* Section Hooks::            Section Hooks
+* Section Types and Values::  Section Types and Values
+* Section Options::          Section Options
 
 
 
@@ -127,12 +134,12 @@ Completion(補完)とConfirmation(確認)とSelection(選択範囲)
 
 
 
-* アクションの確認::
-* 補完と確認::
-* 選択範囲::
-* ハンク内部リージョン::
-* 補完フレームワークのサポート::
-* 追加の補完オプション::  
+* アクションの確認::  アクションの確認
+* 補完と確認::          補完と確認
+* 選択範囲::             選択範囲
+* ハンク内部リージョン::  ハンク内部リージョン
+* 補完フレームワークのサポート::  補完フレームワークのサポート
+* 追加の補完オプション::  追加の補完オプション
 
 
 
@@ -140,11 +147,11 @@ Running Git
 
 
 
-* Viewing Git Output::
-* Git Process Status::
-* Gitを手動で実行::
-* Git実行ファイル::
-* Global Git Arguments::     
+* Viewing Git Output::       Viewing Git Output
+* Git Process Status::       Git Process Status
+* Gitを手動で実行::    Gitを手動で実行
+* Git実行ファイル::    Git実行ファイル
+* Global Git Arguments::     Global Git Arguments
 
 
 
@@ -152,24 +159,24 @@ Inspecting
 
 
 
-* Status Buffer::
-* Repository List::
-* Logging::
-* Diffing::
-* Ediffing::
-* References Buffer::
-* Bisecting::
-* Visiting Files and Blobs::
-* Blaming::                  
+* Status Buffer::            Status Buffer
+* Repository List::          Repository List
+* Logging::                  Logging
+* Diffing::                  Diffing
+* Ediffing::                 Ediffing
+* References Buffer::        References Buffer
+* Bisecting::                Bisecting
+* Visiting Files and Blobs::  Visiting Files and Blobs
+* Blaming::                  Blaming
 
 Status Buffer
 
 
 
-* Status Sections::
-* Status Header Sections::
-* Status Module Sections::
-* Status Options::           
+* Status Sections::          Status Sections
+* Status Header Sections::   Status Header Sections
+* Status Module Sections::   Status Module Sections
+* Status Options::           Status Options
 
 
 
@@ -177,12 +184,12 @@ Logging
 
 
 
-* Refreshing Logs::
-* Log Buffer::
-* Log Margin::
-* Select from Log::
-* Reflog::
-* Cherries::                 
+* Refreshing Logs::          Refreshing Logs
+* Log Buffer::               Log Buffer
+* Log Margin::               Log Margin
+* Select from Log::          Select from Log
+* Reflog::                   Reflog
+* Cherries::                 Cherries
 
 
 
@@ -190,10 +197,10 @@ Diffing
 
 
 
-* Refreshing Diffs::
-* Commands Available in Diffs::
-* Diff Options::
-* Revision Buffer::          
+* Refreshing Diffs::         Refreshing Diffs
+* Commands Available in Diffs::  Commands Available in Diffs
+* Diff Options::             Diff Options
+* Revision Buffer::          Revision Buffer
 
 
 
@@ -201,7 +208,7 @@ References Buffer
 
 
 
-* References Sections::      
+* References Sections::      References Sections
 
 
 
@@ -209,8 +216,9 @@ Visiting Files and Blobs
 
 
 
-* General-Purpose Visit Commands::
-* Visiting Files and Blobs from a Diff::  
+* General-Purpose Visit Commands::  General-Purpose Visit Commands
+* Visiting Files and Blobs from a Diff::  Visiting Files and Blobs from a 
+                                            Diff
 
 
 
@@ -218,24 +226,24 @@ Manipulating
 
 
 
-* Creating Repository::
-* Cloning Repository::
-* Staging and Unstaging::
-* Applying::
-* Committing::
-* Branching::
-* Merging::
-* Resolving Conflicts::
-* Rebasing::
-* Cherry Picking::
-* Resetting::
-* Stashing::                 
+* Creating Repository::      Creating Repository
+* Cloning Repository::       Cloning Repository
+* Staging and Unstaging::    Staging and Unstaging
+* Applying::                 Applying
+* Committing::               Committing
+* Branching::                Branching
+* Merging::                  Merging
+* Resolving Conflicts::      Resolving Conflicts
+* Rebasing::                 Rebasing
+* Cherry Picking::           Cherry Picking
+* Resetting::                Resetting
+* Stashing::                 Stashing
 
 Staging and Unstaging
 
 
 
-* Staging from File-Visiting Buffers::  
+* Staging from File-Visiting Buffers::  Staging from File-Visiting Buffers
 
 
 
@@ -243,8 +251,8 @@ Committing
 
 
 
-* コミット開始::
-* Editing Commit Messages::  
+* コミット開始::       コミット開始
+* Editing Commit Messages::  Editing Commit Messages
 
 
 
@@ -252,10 +260,10 @@ Branching
 
 
 
-* The Two Remotes::
-* Branch Commands::
-* Branch Git Variables::
-* Auxiliary Branch Commands::  
+* The Two Remotes::          The Two Remotes
+* Branch Commands::          Branch Commands
+* Branch Git Variables::     Branch Git Variables
+* Auxiliary Branch Commands::  Auxiliary Branch Commands
 
 
 
@@ -263,8 +271,9 @@ Rebasing
 
 
 
-* Editing Rebase Sequences::
-* Information About In-Progress Rebase::  
+* Editing Rebase Sequences::  Editing Rebase Sequences
+* Information About In-Progress Rebase::  Information About In-Progress 
+                                            Rebase
 
 
 
@@ -272,7 +281,7 @@ Cherry Picking
 
 
 
-* Reverting::                
+* Reverting::                Reverting
 
 
 
@@ -280,19 +289,19 @@ Transferring
 
 
 
-* Remotes::
-* Fetching::
-* Pulling::
-* Pushing::
-* Plain Patches::
-* Maildir Patches::          
+* Remotes::                  Remotes
+* Fetching::                 Fetching
+* Pulling::                  Pulling
+* Pushing::                  Pushing
+* Plain Patches::            Plain Patches
+* Maildir Patches::          Maildir Patches
 
 Remotes
 
 
 
-* Remote Commands::
-* Remote Git Variables::     
+* Remote Commands::          Remote Commands
+* Remote Git Variables::     Remote Git Variables
 
 
 
@@ -300,24 +309,25 @@ Miscellaneous
 
 
 
-* Tagging::
-* Notes::
-* Submodules::
-* Subtree::
-* Worktree::
-* Sparse checkouts::
-* Bundle::
-* Common Commands::
-* Wip Modes::
-* Commands for Buffers Visiting Files::
-* Minor Mode for Buffers Visiting Blobs::  
+* Tagging::                  Tagging
+* Notes::                    Notes
+* Submodules::               Submodules
+* Subtree::                  Subtree
+* Worktree::                 Worktree
+* Sparse checkouts::         Sparse checkouts
+* Bundle::                   Bundle
+* Common Commands::          Common Commands
+* Wip Modes::                Wip Modes
+* Commands for Buffers Visiting Files::  Commands for Buffers Visiting Files
+* Minor Mode for Buffers Visiting Blobs::  Minor Mode for Buffers Visiting 
+                                             Blobs
 
 Submodules
 
 
 
-* Listing Submodules::
-* submodule用トランジェントコマンド::  
+* Listing Submodules::       Listing Submodules
+* submodule用トランジェントコマンド::  submodule用トランジェントコマンド
 
 
 
@@ -325,8 +335,8 @@ Wip Modes
 
 
 
-* Wip Graph::
-* Legacy Wip Modes::         
+* Wip Graph::                Wip Graph
+* Legacy Wip Modes::         Legacy Wip Modes
 
 
 
@@ -334,16 +344,16 @@ Customizing
 
 
 
-* Per-Repository Configuration::
-* 基本設定::             
+* Per-Repository Configuration::  Per-Repository Configuration
+* 基本設定::             基本設定
 
 基本設定
 
 
 
-* Safety::
-* Performance::
-* Default Bindings::         
+* Safety::                   Safety
+* Performance::              Performance
+* Default Bindings::         Default Bindings
 
 
 
@@ -351,17 +361,17 @@ Customizing
 
 
 
-* Calling Git::
-* Section Plumbing::
-* Refreshing Buffers::
-* 慣習::                   
+* Calling Git::              Calling Git
+* Section Plumbing::         Section Plumbing
+* Refreshing Buffers::       Refreshing Buffers
+* 慣習::                   慣習
 
 Calling Git
 
 
 
-* Getting a Value from Git::
-* Calling Git for Effect::   
+* Getting a Value from Git::  Getting a Value from Git
+* Calling Git for Effect::   Calling Git for Effect
 
 
 
@@ -369,9 +379,9 @@ Section Plumbing
 
 
 
-* Creating Sections::
-* Section Selection::
-* Matching Sections::        
+* Creating Sections::        Creating Sections
+* Section Selection::        Section Selection
+* Matching Sections::        Matching Sections
 
 
 
@@ -379,7 +389,7 @@ Section Plumbing
 
 
 
-* Theming Faces::            
+* Theming Faces::            Theming Faces
 
 
 
@@ -387,19 +397,22 @@ FAQ
 
 
 
-* FAQ - How to @dots{}?::
-* FAQ - Issues and Errors::  
+* FAQ - How to @dots{}?::    FAQ - How to @dots{}?
+* FAQ - Issues and Errors::  FAQ - Issues and Errors
 
 FAQ - How to @dots{}?
 
 
 
-* Magitの発音は？::
-* How to show git's output?::
-* How to install the gitman info manual?::
-* How to show diffs for gpg-encrypted files?::
-* How does branching and pushing work?::
-* VCを無効にする必要がありますか？::  
+* Magitの発音は？::     Magitの発音は？
+* How to show git's output?::  How to show git's output?
+* How to install the gitman info manual?::  How to install the gitman info 
+                                              manual?
+* How to show diffs for gpg-encrypted files?::  How to show diffs for 
+                                                  gpg-encrypted files?
+* How does branching and pushing work?::  How does branching and pushing 
+                                            work?
+* VCを無効にする必要がありますか？::  VCを無効にする必要がありますか？
 
 
 
@@ -407,20 +420,37 @@ FAQ - Issues and Errors
 
 
 
-* Magit is slow::
-* I changed several thousand files at once and now Magit is unusable::
-* コミットに問題があります::
-* MS WindowsではMagitでpushできません::
-* 私は macOS を使用しています。その何かはシェルでは動きますが、Magitでは動きません: 私は macOS を使用しています。その何かはシェルでは動きますが、Magitでは動きません.  
-* ファイルを展開してdiffを表示するとファイルが消えます::
-* @code{COMMIT_EDITMSG}バッファのpointが間違っています::
-* モード行の情報が常に最新ではない::
-* 同じ名前を共有するブランチとタグは何かを壊します::
-* 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません::
-* コマンドラインからコミットする場合、@code{git-commit-mode}は使用されません::
-* file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります::
-* MS-WindowsからEmacsのTrampモードを使用するとステージできません::
-* 私はポップアップのデフォルトを保存できなくなりました::  
+* Magit is slow::            Magit is slow
+* I changed several thousand files at once and now Magit is unusable::  I 
+                                                                          changed 
+                                                                          several 
+                                                                          thousand 
+                                                                          files 
+                                                                          at 
+                                                                          once 
+                                                                          and 
+                                                                          now 
+                                                                          Magit 
+                                                                          is 
+                                                                          unusable
+* コミットに問題があります::  コミットに問題があります
+* MS WindowsではMagitでpushできません::  MS 
+                                                   WindowsではMagitでpushできません
+* 私は macOS を使用しています。その何かはシェルでは動きますが、Magitでは動きません: 私は macOS を使用しています。その何かはシェルでは動きますが、Magitでは動きません.  私は 
+                                                                                                                                                                                                                                             macOS 
+                                                                                                                                                                                                                                             を使用しています。その何かはシェルでは動きますが、Magitでは動きません: 
+                                                                                                                                                                                                                                             私は 
+                                                                                                                                                                                                                                             macOS 
+                                                                                                                                                                                                                                             を使用しています。その何かはシェルでは動きますが、Magitでは動きません
+* ファイルを展開してdiffを表示するとファイルが消えます::  ファイルを展開してdiffを表示するとファイルが消えます
+* @code{COMMIT_EDITMSG}バッファのpointが間違っています::  @code{COMMIT_EDITMSG}バッファのpointが間違っています
+* モード行の情報が常に最新ではない::  モード行の情報が常に最新ではない
+* 同じ名前を共有するブランチとタグは何かを壊します::  同じ名前を共有するブランチとタグは何かを壊します
+* 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません::  私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません
+* コマンドラインからコミットする場合、@code{git-commit-mode}は使用されません::  コマンドラインからコミットする場合、@code{git-commit-mode}は使用されません
+* file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります::  file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります
+* MS-WindowsからEmacsのTrampモードを使用するとステージできません::  MS-WindowsからEmacsのTrampモードを使用するとステージできません
+* 私はポップアップのデフォルトを保存できなくなりました::  私はポップアップのデフォルトを保存できなくなりました
 
 
 
@@ -479,9 +509,9 @@ Magitはラップすることにより、多くの場合、少なくとも次の
 Magitは、Emacsのパッケージマネージャーを使用してインストールすることも、開発リポジトリから手動でインストールすることもできます。
 
 @menu
-* Installing from Melpa::
-* Installing from the Git Repository::
-* Post-Installation Tasks::  
+* Installing from Melpa::    Installing from Melpa
+* Installing from the Git Repository::  Installing from the Git Repository
+* Post-Installation Tasks::  Post-Installation Tasks
 @end menu
 
 @node Installing from Melpa
@@ -683,13 +713,16 @@ Magit は、コンテキストメニューやその他マウスコマンドも�
 @chapter Interface Concepts
 
 @menu
-* Modes and Buffers::
-* Sections::
-* トランジェントコマンド::
-* Transient Arguments and Buffer Variables::
-* Completion(補完)とConfirmation(確認)とSelection(選択範囲): Completion Confirmation(確認補完)とSelection(選択範囲).  
-* Mouse Support::
-* Running Git::              
+* Modes and Buffers::        Modes and Buffers
+* Sections::                 Sections
+* トランジェントコマンド::  トランジェントコマンド
+* Transient Arguments and Buffer Variables::  Transient Arguments and Buffer 
+                                                Variables
+* Completion(補完)とConfirmation(確認)とSelection(選択範囲): Completion Confirmation(確認補完)とSelection(選択範囲).  Completion(補完)とConfirmation(確認)とSelection(選択範囲): 
+                                                                                                                                           Completion 
+                                                                                                                                           Confirmation(確認補完)とSelection(選択範囲)
+* Mouse Support::            Mouse Support
+* Running Git::              Running Git
 @end menu
 
 @node Modes and Buffers
@@ -715,12 +748,15 @@ Magitはいくつかのメジャーモードを提供します。
 @end table
 
 @menu
-* バッファの切り替え::
-* バッファの名付け::
-* Quitting Windows::
-* Automatic Refreshing of Magit Buffers::
-* Automatic Saving of File-Visiting Buffers::
-* Automatic Reverting of File-Visiting Buffers::  
+* バッファの切り替え::  バッファの切り替え
+* バッファの名付け::  バッファの名付け
+* Quitting Windows::         Quitting Windows
+* Automatic Refreshing of Magit Buffers::  Automatic Refreshing of Magit 
+                                             Buffers
+* Automatic Saving of File-Visiting Buffers::  Automatic Saving of 
+                                                 File-Visiting Buffers
+* Automatic Reverting of File-Visiting Buffers::  Automatic Reverting of 
+                                                    File-Visiting Buffers
 @end menu
 
 @node バッファの切り替え
@@ -1014,7 +1050,7 @@ Magitがオンにしないバッファで@code{auto-revert-mode}をオンにす�
 @code{auto-revert-}接頭辞が付いたオプションは、@code{auto-revert}という名前のカスタムグループにあります。他のMagit固有のオプションは、@code{magit}グループにあります。
 
 @menu
-* Risk of Reverting Automatically::  
+* Risk of Reverting Automatically::  Risk of Reverting Automatically
 @end menu
 
 @node Risk of Reverting Automatically
@@ -1041,11 +1077,11 @@ Magitバッファはネストされたセクションに編成され、Orgモー
 セクションの値とタイプを利用して、多くのコマンドが現在のセクションで動作します。または、リージョンがアクティブで同じタイプのセクションを選択すると、選択されたすべてのセクションが操作されます。(タイプの違いのみよって動作が異なるだけではなく)特定のセクションタイプに対してのみ意味のあるコマンドは、通常、セクションタイプのキーマップにバインドされます。
 
 @menu
-* Section Movement::
-* Section Visibility::
-* Section Hooks::
-* Section Types and Values::
-* Section Options::          
+* Section Movement::         Section Movement
+* Section Visibility::       Section Visibility
+* Section Hooks::            Section Hooks
+* Section Types and Values::  Section Types and Values
+* Section Options::          Section Options
 @end menu
 
 @node Section Movement
@@ -1441,12 +1477,12 @@ diff用トランジェントプレフィックスコマンドを呼び出すと�
 @section Completion(補完)とConfirmation(確認)とSelection(選択範囲)
 
 @menu
-* アクションの確認::
-* 補完と確認::
-* 選択範囲::
-* ハンク内部リージョン::
-* 補完フレームワークのサポート::
-* 追加の補完オプション::  
+* アクションの確認::  アクションの確認
+* 補完と確認::          補完と確認
+* 選択範囲::             選択範囲
+* ハンク内部リージョン::  ハンク内部リージョン
+* 補完フレームワークのサポート::  補完フレームワークのサポート
+* 追加の補完オプション::  追加の補完オプション
 @end menu
 
 @node アクションの確認
@@ -1739,11 +1775,11 @@ for-each-ref}の@code{--sort}フラグで受け入れられるすべてのキー
 @section Running Git
 
 @menu
-* Viewing Git Output::
-* Git Process Status::
-* Gitを手動で実行::
-* Git実行ファイル::
-* Global Git Arguments::     
+* Viewing Git Output::       Viewing Git Output
+* Git Process Status::       Git Process Status
+* Gitを手動で実行::    Gitを手動で実行
+* Git実行ファイル::    Git実行ファイル
+* Global Git Arguments::     Global Git Arguments
 @end menu
 
 @node Viewing Git Output
@@ -1950,15 +1986,15 @@ Magitが提供する機能は、既存のデータの検査、既存のデータ
 もちろん、他の区別も意味があります。Gitでの磁器コマンドと配管コマンドの区別です。これは、ほとんどの場合、Emacsでのインタラクティブコマンドと非インタラクティブ機能の区別に相当します。前述のすべての節は、主に磁器に関係しています。Magitの配管コマンドレイヤーについては後で説明します。
 
 @menu
-* Status Buffer::
-* Repository List::
-* Logging::
-* Diffing::
-* Ediffing::
-* References Buffer::
-* Bisecting::
-* Visiting Files and Blobs::
-* Blaming::                  
+* Status Buffer::            Status Buffer
+* Repository List::          Repository List
+* Logging::                  Logging
+* Diffing::                  Diffing
+* Ediffing::                 Ediffing
+* References Buffer::        References Buffer
+* Bisecting::                Bisecting
+* Visiting Files and Blobs::  Visiting Files and Blobs
+* Blaming::                  Blaming
 @end menu
 
 @node Status Buffer
@@ -2058,10 +2094,10 @@ Emacs
 @end deffn
 
 @menu
-* Status Sections::
-* Status Header Sections::
-* Status Module Sections::
-* Status Options::           
+* Status Sections::          Status Sections
+* Status Header Sections::   Status Header Sections
+* Status Module Sections::   Status Module Sections
+* Status Options::           Status Options
 @end menu
 
 @node Status Sections
@@ -2518,12 +2554,12 @@ buffer)に表示します。
 Visiting Files})。コマンド@code{magit-cherry}もログを表示します(@ref{Cherries})。
 
 @menu
-* Refreshing Logs::
-* Log Buffer::
-* Log Margin::
-* Select from Log::
-* Reflog::
-* Cherries::                 
+* Refreshing Logs::          Refreshing Logs
+* Log Buffer::               Log Buffer
+* Log Margin::               Log Margin
+* Select from Log::          Select from Log
+* Reflog::                   Reflog
+* Cherries::                 Cherries
 @end menu
 
 @node Refreshing Logs
@@ -2947,10 +2983,10 @@ A@dots{}B)である必要がありますが、単一のコミットにするこ�
 for Buffers Visiting Files})。
 
 @menu
-* Refreshing Diffs::
-* Commands Available in Diffs::
-* Diff Options::
-* Revision Buffer::          
+* Refreshing Diffs::         Refreshing Diffs
+* Commands Available in Diffs::  Commands Available in Diffs
+* Diff Options::             Diff Options
+* Revision Buffer::          Revision Buffer
 @end menu
 
 @node Refreshing Diffs
@@ -3604,7 +3640,7 @@ commitのリストを表示します。
 @end defopt
 
 @menu
-* References Sections::      
+* References Sections::      References Sections
 @end menu
 
 @node References Sections
@@ -3714,8 +3750,9 @@ Magitは、ファイルまたはblob(特定のコミットに保存されてい�
 実際には、そのようなコマンドのいくつかの「グループ」と、各グループ内のいくつかの「バリエーション」を提供します。
 
 @menu
-* General-Purpose Visit Commands::
-* Visiting Files and Blobs from a Diff::  
+* General-Purpose Visit Commands::  General-Purpose Visit Commands
+* Visiting Files and Blobs from a Diff::  Visiting Files and Blobs from a 
+                                            Diff
 @end menu
 
 @node General-Purpose Visit Commands
@@ -3968,18 +4005,18 @@ blameは、以下のオプションを使用して制御されます。
 @chapter Manipulating
 
 @menu
-* Creating Repository::
-* Cloning Repository::
-* Staging and Unstaging::
-* Applying::
-* Committing::
-* Branching::
-* Merging::
-* Resolving Conflicts::
-* Rebasing::
-* Cherry Picking::
-* Resetting::
-* Stashing::                 
+* Creating Repository::      Creating Repository
+* Cloning Repository::       Cloning Repository
+* Staging and Unstaging::    Staging and Unstaging
+* Applying::                 Applying
+* Committing::               Committing
+* Branching::                Branching
+* Merging::                  Merging
+* Resolving Conflicts::      Resolving Conflicts
+* Rebasing::                 Rebasing
+* Cherry Picking::           Cherry Picking
+* Resetting::                Resetting
+* Stashing::                 Stashing
 @end menu
 
 @node Creating Repository
@@ -4196,7 +4233,7 @@ commit)。コミットはユーザーから読み取られ、デフォルトで�
 @end table
 
 @menu
-* Staging from File-Visiting Buffers::  
+* Staging from File-Visiting Buffers::  Staging from File-Visiting Buffers
 @end menu
 
 @node Staging from File-Visiting Buffers
@@ -4280,8 +4317,8 @@ apply}が内部で使用される場合）に3方向マージを試行します�
 commit}を呼び出すため、Gitはユーザーからコミットを取得する必要があります。ファイル@code{.git/COMMIT_EDITMSG}を作成し、そのファイルをエディターで開きます。Magitは、そのエディターがEmacsclientになるように手配します。ユーザーが編集セッションを終了すると、Emacsclientが終了し、Gitはファイルのコンテンツをメッセージとして使用してコミットを作成します。
 
 @menu
-* コミット開始::
-* Editing Commit Messages::  
+* コミット開始::       コミット開始
+* Editing Commit Messages::  Editing Commit Messages
 @end menu
 
 @node コミット開始
@@ -4463,10 +4500,10 @@ commit}によって使用されることに加えて、メッセージはEmacs�
 @end table
 
 @menu
-* Using the Revision Stack::
-* Commit Pseudo Headers::
-* Commit Mode and Hooks::
-* Commit Message Conventions::  
+* Using the Revision Stack::  Using the Revision Stack
+* Commit Pseudo Headers::    Commit Pseudo Headers
+* Commit Mode and Hooks::    Commit Mode and Hooks
+* Commit Message Conventions::  Commit Message Conventions
 @end menu
 
 @node Using the Revision Stack
@@ -4654,10 +4691,10 @@ Git-Commitは、一般的に受け入れられているコミットメッセー�
 @section Branching
 
 @menu
-* The Two Remotes::
-* Branch Commands::
-* Branch Git Variables::
-* Auxiliary Branch Commands::  
+* The Two Remotes::          The Two Remotes
+* Branch Commands::          Branch Commands
+* Branch Git Variables::     Branch Git Variables
+* Auxiliary Branch Commands::  Auxiliary Branch Commands
 @end menu
 
 @node The Two Remotes
@@ -5346,8 +5383,9 @@ Remotes})。
 @end table
 
 @menu
-* Editing Rebase Sequences::
-* Information About In-Progress Rebase::  
+* Editing Rebase Sequences::  Editing Rebase Sequences
+* Information About In-Progress Rebase::  Information About In-Progress 
+                                            Rebase
 @end menu
 
 @node Editing Rebase Sequences
@@ -5709,7 +5747,7 @@ cherry-pickまたはrevertシーケンス中にコミットで中断したもの
 @end table
 
 @menu
-* Reverting::                
+* Reverting::                Reverting
 @end menu
 
 @node Reverting
@@ -5953,20 +5991,20 @@ AUTHOR-WIDTHは整数である必要があります。作成者の名前が表�
 @chapter Transferring
 
 @menu
-* Remotes::
-* Fetching::
-* Pulling::
-* Pushing::
-* Plain Patches::
-* Maildir Patches::          
+* Remotes::                  Remotes
+* Fetching::                 Fetching
+* Pulling::                  Pulling
+* Pushing::                  Pushing
+* Plain Patches::            Plain Patches
+* Maildir Patches::          Maildir Patches
 @end menu
 
 @node Remotes
 @section Remotes
 
 @menu
-* Remote Commands::
-* Remote Git Variables::     
+* Remote Commands::          Remote Commands
+* Remote Git Variables::     Remote Git Variables
 @end menu
 
 @node Remote Commands
@@ -6430,17 +6468,18 @@ buffer)に表示します。
 @chapter Miscellaneous
 
 @menu
-* Tagging::
-* Notes::
-* Submodules::
-* Subtree::
-* Worktree::
-* Sparse checkouts::
-* Bundle::
-* Common Commands::
-* Wip Modes::
-* Commands for Buffers Visiting Files::
-* Minor Mode for Buffers Visiting Blobs::  
+* Tagging::                  Tagging
+* Notes::                    Notes
+* Submodules::               Submodules
+* Subtree::                  Subtree
+* Worktree::                 Worktree
+* Sparse checkouts::         Sparse checkouts
+* Bundle::                   Bundle
+* Common Commands::          Common Commands
+* Wip Modes::                Wip Modes
+* Commands for Buffers Visiting Files::  Commands for Buffers Visiting Files
+* Minor Mode for Buffers Visiting Blobs::  Minor Mode for Buffers Visiting 
+                                             Blobs
 @end menu
 
 @node Tagging
@@ -6595,8 +6634,8 @@ the git-submodule(1) manpage.
 @end iftex
 
 @menu
-* Listing Submodules::
-* submodule用トランジェントコマンド::  
+* Listing Submodules::       Listing Submodules
+* submodule用トランジェントコマンド::  submodule用トランジェントコマンド
 @end menu
 
 @node Listing Submodules
@@ -7021,8 +7060,8 @@ refsの名前は@code{<namespace>index/<branchref>}や@code{<namespace>wtree/<br
 @end defopt
 
 @menu
-* Wip Graph::
-* Legacy Wip Modes::         
+* Wip Graph::                Wip Graph
+* Legacy Wip Modes::         Legacy Wip Modes
 @end menu
 
 @node Wip Graph
@@ -7304,8 +7343,8 @@ GitとEmacsはどちらも高度にカスタマイズ可能です。MagitはGit�
 今後のリリースで、これらの問題や同様の問題に対処する予定です。
 
 @menu
-* Per-Repository Configuration::
-* 基本設定::             
+* Per-Repository Configuration::  Per-Repository Configuration
+* 基本設定::             基本設定
 @end menu
 
 @node Per-Repository Configuration
@@ -7392,9 +7431,9 @@ Variables,,,emacs,})。たとえば、1つの巨大なリポジトリでfile-vis
 次の2つの節は、安全性やパフォーマンス上の理由から、多くのユーザーがカスタマイズする可能性のあるいくつかの変数について説明します。
 
 @menu
-* Safety::
-* Performance::
-* Default Bindings::         
+* Safety::                   Safety
+* Performance::              Performance
+* Default Bindings::         Default Bindings
 @end menu
 
 @node Safety
@@ -7451,8 +7490,8 @@ Magitは、訪問したファイルがディスク上で変更されると、現
 Configuration})。たとえば、非常に多くのタグがあるリポジトリ内の次の現在のタグを判別するのに長い時間がかかります。したがって、前節で説明されているように、@code{magit-insert-tags-headers}を無効にすることをお勧めします。
 
 @menu
-* Microsoft Windows Performance::
-* MacOS Performance::        
+* Microsoft Windows Performance::  Microsoft Windows Performance
+* MacOS Performance::        MacOS Performance
 @end menu
 
 @anchor{Log Performance}
@@ -7590,10 +7629,10 @@ Magitで使用される低レベルの機能のいくつかは、個別の ラ�
 独自のMagit拡張機能によって提供されるコマンドにバインドできる未使用のキーを見つけようとしている場合は、@uref{https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry}をチェックアウトしてください。
 
 @menu
-* Calling Git::
-* Section Plumbing::
-* Refreshing Buffers::
-* 慣習::                   
+* Calling Git::              Calling Git
+* Section Plumbing::         Section Plumbing
+* Refreshing Buffers::       Refreshing Buffers
+* 慣習::                   慣習
 @end menu
 
 @node Calling Git
@@ -7608,8 +7647,8 @@ Magitは、Gitを呼び出すための多くの特殊な関数を提供します
 値のみのグループの関数は常に同期的に実行され、リフレッシュをトリガーすることはありません。副作用グループの関数は、Gitを同期的に実行するか非同期的に実行するか、および実行可能ファイルの終了時にリフレッシュをトリガーするかどうかに応じて、さらにサブグループに分割できます。
 
 @menu
-* Getting a Value from Git::
-* Calling Git for Effect::   
+* Getting a Value from Git::  Getting a Value from Git
+* Calling Git for Effect::   Calling Git for Effect
 @end menu
 
 @node Getting a Value from Git
@@ -7772,9 +7811,9 @@ PROGRAMを開始し、リフレッシュの準備をして、プロセスオブ�
 @section Section Plumbing
 
 @menu
-* Creating Sections::
-* Section Selection::
-* Matching Sections::        
+* Creating Sections::        Creating Sections
+* Section Selection::        Section Selection
+* Matching Sections::        Matching Sections
 @end menu
 
 @node Creating Sections
@@ -7979,7 +8018,7 @@ BUFFERに切り替える前に、すべての引数が評価されます。
 こちらもご覧ください(@ref{補完と確認})。
 
 @menu
-* Theming Faces::            
+* Theming Faces::            Theming Faces
 @end menu
 
 @node Theming Faces
@@ -8035,20 +8074,23 @@ whitespace errors)を挿入します。テストに使用します。)
 どうぞこちらご覧下さい @ref{Debugging Tools}
 
 @menu
-* FAQ - How to @dots{}?::
-* FAQ - Issues and Errors::  
+* FAQ - How to @dots{}?::    FAQ - How to @dots{}?
+* FAQ - Issues and Errors::  FAQ - Issues and Errors
 @end menu
 
 @node FAQ - How to @dots{}?
 @appendixsec FAQ - How to @dots{}?
 
 @menu
-* Magitの発音は？::
-* How to show git's output?::
-* How to install the gitman info manual?::
-* How to show diffs for gpg-encrypted files?::
-* How does branching and pushing work?::
-* VCを無効にする必要がありますか？::  
+* Magitの発音は？::     Magitの発音は？
+* How to show git's output?::  How to show git's output?
+* How to install the gitman info manual?::  How to install the gitman info 
+                                              manual?
+* How to show diffs for gpg-encrypted files?::  How to show diffs for 
+                                                  gpg-encrypted files?
+* How does branching and pushing work?::  How does branching and pushing 
+                                            work?
+* VCを無効にする必要がありますか？::  VCを無効にする必要がありますか？
 @end menu
 
 @node Magitの発音は？
@@ -8117,20 +8159,37 @@ echo "*.gpg filter=gpg diff=gpg" > .gitattributes
 @appendixsec FAQ - Issues and Errors
 
 @menu
-* Magit is slow::
-* I changed several thousand files at once and now Magit is unusable::
-* コミットに問題があります::
-* MS WindowsではMagitでpushできません::
-* 私は macOS を使用しています。その何かはシェルでは動きますが、Magitでは動きません: 私は macOS を使用しています。その何かはシェルでは動きますが、Magitでは動きません.  
-* ファイルを展開してdiffを表示するとファイルが消えます::
-* @code{COMMIT_EDITMSG}バッファのpointが間違っています::
-* モード行の情報が常に最新ではない::
-* 同じ名前を共有するブランチとタグは何かを壊します::
-* 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません::
-* コマンドラインからコミットする場合、@code{git-commit-mode}は使用されません::
-* file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります::
-* MS-WindowsからEmacsのTrampモードを使用するとステージできません::
-* 私はポップアップのデフォルトを保存できなくなりました::  
+* Magit is slow::            Magit is slow
+* I changed several thousand files at once and now Magit is unusable::  I 
+                                                                          changed 
+                                                                          several 
+                                                                          thousand 
+                                                                          files 
+                                                                          at 
+                                                                          once 
+                                                                          and 
+                                                                          now 
+                                                                          Magit 
+                                                                          is 
+                                                                          unusable
+* コミットに問題があります::  コミットに問題があります
+* MS WindowsではMagitでpushできません::  MS 
+                                                   WindowsではMagitでpushできません
+* 私は macOS を使用しています。その何かはシェルでは動きますが、Magitでは動きません: 私は macOS を使用しています。その何かはシェルでは動きますが、Magitでは動きません.  私は 
+                                                                                                                                                                                                                                             macOS 
+                                                                                                                                                                                                                                             を使用しています。その何かはシェルでは動きますが、Magitでは動きません: 
+                                                                                                                                                                                                                                             私は 
+                                                                                                                                                                                                                                             macOS 
+                                                                                                                                                                                                                                             を使用しています。その何かはシェルでは動きますが、Magitでは動きません
+* ファイルを展開してdiffを表示するとファイルが消えます::  ファイルを展開してdiffを表示するとファイルが消えます
+* @code{COMMIT_EDITMSG}バッファのpointが間違っています::  @code{COMMIT_EDITMSG}バッファのpointが間違っています
+* モード行の情報が常に最新ではない::  モード行の情報が常に最新ではない
+* 同じ名前を共有するブランチとタグは何かを壊します::  同じ名前を共有するブランチとタグは何かを壊します
+* 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません::  私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません
+* コマンドラインからコミットする場合、@code{git-commit-mode}は使用されません::  コマンドラインからコミットする場合、@code{git-commit-mode}は使用されません
+* file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります::  file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります
+* MS-WindowsからEmacsのTrampモードを使用するとステージできません::  MS-WindowsからEmacsのTrampモードを使用するとステージできません
+* 私はポップアップのデフォルトを保存できなくなりました::  私はポップアップのデフォルトを保存できなくなりました
 @end menu
 
 @node Magit is slow

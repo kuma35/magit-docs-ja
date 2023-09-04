@@ -4,6 +4,7 @@
 @c This file was generated with po4a. Translate the source file.
 @c
 @c ===========================================================================
+
 @c %**start of header
 @setfilename magit-section.info
 @settitle Magit-Section Developer Manual
@@ -60,10 +61,10 @@ more details.
 @end ifnottex
 
 @menu
-* Introduction::
-* Creating Sections::
-* Core Functions::
-* Matching Functions::       
+* Introduction::             Introduction
+* Creating Sections::        Creating Sections
+* Core Functions::           Core Functions
+* Matching Functions::       Matching Functions
 @end menu
 
 @node Introduction

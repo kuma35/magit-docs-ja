@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.0\n"
-"POT-Creation-Date: 2022-08-23 22:53+0900\n"
+"POT-Creation-Date: 2023-09-04 09:25+0900\n"
 "PO-Revision-Date: 2022-08-25 02:33+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
@@ -117,22 +117,29 @@ msgstr ""
 #. type: ifnottex
 #: sed-out/magit-section.texi:58
 msgid "This manual is for Magit-Section version 3.3.0-git."
-msgstr "このマニュアルは、Magit-Sectionバージョン 3.3.0-git を対象としています。"
+msgstr ""
+"このマニュアルは、Magit-Sectionバージョン 3.3.0-git を対象としています。"
 
-#. type: menuentry
-#: sed-out/magit-section.texi:67
-msgid "Introduction::"
-msgstr "Introduction::"
+#. type: chapter
+#: sed-out/magit-section.texi:67 sed-out/magit-section.texi:69
+#: sed-out/magit-section.texi:70
+#, no-wrap
+msgid "Introduction"
+msgstr "Introduction"
 
-#. type: menuentry
-#: sed-out/magit-section.texi:67
-msgid "Creating Sections::"
-msgstr "Creating Sections::"
+#. type: chapter
+#: sed-out/magit-section.texi:67 sed-out/magit-section.texi:85
+#: sed-out/magit-section.texi:86
+#, no-wrap
+msgid "Creating Sections"
+msgstr "Creating Sections"
 
-#. type: menuentry
-#: sed-out/magit-section.texi:67
-msgid "Core Functions::"
-msgstr "Core Functions::"
+#. type: chapter
+#: sed-out/magit-section.texi:67 sed-out/magit-section.texi:179
+#: sed-out/magit-section.texi:180
+#, no-wrap
+msgid "Core Functions"
+msgstr "Core Functions"
 
 #. type: chapter
 #: sed-out/magit-section.texi:67 sed-out/magit-section.texi:253
@@ -140,12 +147,6 @@ msgstr "Core Functions::"
 #, no-wrap
 msgid "Matching Functions"
 msgstr "Matching Functions"
-
-#. type: chapter
-#: sed-out/magit-section.texi:69 sed-out/magit-section.texi:70
-#, no-wrap
-msgid "Introduction"
-msgstr "Introduction"
 
 #. type: Plain text
 #: sed-out/magit-section.texi:84
@@ -157,12 +158,6 @@ msgstr ""
 "ドキュメントに対処されていないものが残っている場合は、Magitがこのライブラリを"
 "広範囲に使用していることを鑑み、助けを求める前にまずはMagit関係の方で適切な例"
 "を検索してください。宜しくお願いします。"
-
-#. type: chapter
-#: sed-out/magit-section.texi:85 sed-out/magit-section.texi:86
-#, no-wrap
-msgid "Creating Sections"
-msgstr "Creating Sections"
 
 #. type: defmac
 #: sed-out/magit-section.texi:88
@@ -379,12 +374,6 @@ msgstr ""
 "出します。FUNCTIONは、ポイントを前方に移動するか、@code{nil}を返す必要があり"
 "ます。"
 
-#. type: chapter
-#: sed-out/magit-section.texi:179 sed-out/magit-section.texi:180
-#, no-wrap
-msgid "Core Functions"
-msgstr "Core Functions"
-
 #. type: defun
 #: sed-out/magit-section.texi:182
 #, no-wrap
@@ -398,7 +387,11 @@ msgid ""
 "using the context menu, return the section that the user clicked on, "
 "provided the current buffer is the buffer in which the click occurred.  "
 "Otherwise return the section at point."
-msgstr "ポイントまたはコンテキストメニューが呼び出された場所のセクションを返します。 コンテキストメニューを使用する場合、クリックが発生したバッファーが現在のバッファーである場合、ユーザーがクリックしたセクションを返します。 それ以外の場合は、ポイントのセクションを返します。"
+msgstr ""
+"ポイントまたはコンテキストメニューが呼び出された場所のセクションを返します。 "
+"コンテキストメニューを使用する場合、クリックが発生したバッファーが現在のバッ"
+"ファーである場合、ユーザーがクリックしたセクションを返します。 それ以外の場合"
+"は、ポイントのセクションを返します。"
 
 #. type: item
 #: sed-out/magit-section.texi:190
@@ -411,7 +404,9 @@ msgstr "Function magit-section-at &optional position"
 msgid ""
 "Return the section at POSITION, defaulting to point.  Default to point even "
 "when the context menu is used."
-msgstr "POSITION のセクションを返します。デフォルトはポイントです。 コンテキストメニューが使用されている場合でも、デフォルトでポイントします。"
+msgstr ""
+"POSITION のセクションを返します。デフォルトはポイントです。 コンテキストメ"
+"ニューが使用されている場合でも、デフォルトでポイントします。"
 
 #. type: defun
 #: sed-out/magit-section.texi:195
@@ -497,7 +492,9 @@ msgstr "magit-section-content-p section"
 #. type: defun
 #: sed-out/magit-section.texi:226
 msgid "Return non-nil if SECTION has content or an unused washer function."
-msgstr "SECTION にコンテンツまたは未使用のウォッシャー関数がある場合、非 nil を返します。"
+msgstr ""
+"SECTION にコンテンツまたは未使用のウォッシャー関数がある場合、非 nil を返しま"
+"す。"
 
 #. type: Plain text
 #: sed-out/magit-section.texi:232
@@ -506,7 +503,11 @@ msgid ""
 "the same name except for the @code{magit-} prefix.  Like @code{magit-current-"
 "section} they do not act on point, the cursors position, but on the position "
 "where the user clicked to invoke the context menu."
-msgstr "次の 2 つの関数は、 @code{magit-} プレフィックスを除いて同じ名前を持つ Emacs 関数の置き換えです。 @code{magit-current-section} のように、カーソルの位置ではなく、ユーザーがコンテキストメニューを呼び出すためにクリックした位置で動作します。"
+msgstr ""
+"次の 2 つの関数は、 @code{magit-} プレフィックスを除いて同じ名前を持つ Emacs "
+"関数の置き換えです。 @code{magit-current-section} のように、カーソルの位置で"
+"はなく、ユーザーがコンテキストメニューを呼び出すためにクリックした位置で動作"
+"します。"
 
 #. type: Plain text
 #: sed-out/magit-section.texi:237
@@ -514,7 +515,10 @@ msgid ""
 "If your package provides a context menu and some of its commands act on the "
 "\"thing at point\", even if just as a default, then use the prefixed "
 "functions to teach them to instead use the click location when appropriate."
-msgstr "あなたのパッケージがコンテキストメニューを提供し、そのコマンドの一部がデフォルトであっても「ポイントにあるもの」に作用する場合は、接頭辞付きの関数を使用して、必要に応じて代わりにクリック位置を使用するように教えてください。"
+msgstr ""
+"あなたのパッケージがコンテキストメニューを提供し、そのコマンドの一部がデフォ"
+"ルトであっても「ポイントにあるもの」に作用する場合は、接頭辞付きの関数を使用"
+"して、必要に応じて代わりにクリック位置を使用するように教えてください。"
 
 #. type: item
 #: sed-out/magit-section.texi:239
@@ -529,7 +533,11 @@ msgid ""
 "the context menu, return the position the user clicked on, provided the "
 "current buffer is the buffer in which the click occurred.  Otherwise return "
 "the same value as @code{point}."
-msgstr "コンテキストメニューが呼び出されたリターンポイントまたは位置。 コンテキストメニューを使用する場合、現在のバッファーがクリックが発生したバッファーである場合、ユーザーがクリックした位置を返します。 それ以外の場合は、@code{point} と同じ値を返します。"
+msgstr ""
+"コンテキストメニューが呼び出されたリターンポイントまたは位置。 コンテキストメ"
+"ニューを使用する場合、現在のバッファーがクリックが発生したバッファーである場"
+"合、ユーザーがクリックした位置を返します。 それ以外の場合は、@code{point} と"
+"同じ値を返します。"
 
 #. type: item
 #: sed-out/magit-section.texi:245
@@ -545,7 +553,12 @@ msgid ""
 "buffer is the buffer in which the click occurred.  Otherwise return the same "
 "value as @code{thing-at-point}.  For the meaning of THING and NO-PROPERTIES "
 "see that function."
-msgstr "ポイントまたはコンテキストメニューが呼び出された場所でTHINGを返します。 コンテキストメニューを使用する場合、現在のバッファがクリックが発生したバッファである場合、ユーザーがクリックしたものを返します。 それ以外の場合は、@code{thing-at-point} と同じ値を返します。 THING と NO-PROPERTIES の意味については、当該の関数を参照してください。"
+msgstr ""
+"ポイントまたはコンテキストメニューが呼び出された場所でTHINGを返します。 コン"
+"テキストメニューを使用する場合、現在のバッファがクリックが発生したバッファで"
+"ある場合、ユーザーがクリックしたものを返します。 それ以外の場合は、"
+"@code{thing-at-point} と同じ値を返します。 THING と NO-PROPERTIES の意味につ"
+"いては、当該の関数を参照してください。"
 
 #. type: defun
 #: sed-out/magit-section.texi:256
@@ -698,3 +711,12 @@ msgstr ""
 "CONDITIONが取ることができる形式については→@code{magit-section-match}を参照し"
 "てください。 さらに、tの条件(CONDITION)は最後の節で許可され、他の条件"
 "(CONDITIO)Nが一致しない場合は、ポイントにセクションがない場合でも一致します。"
+
+#~ msgid "Introduction::"
+#~ msgstr "Introduction::"
+
+#~ msgid "Creating Sections::"
+#~ msgstr "Creating Sections::"
+
+#~ msgid "Core Functions::"
+#~ msgstr "Core Functions::"
