@@ -23,10 +23,6 @@ TARGET_PO = $(addprefix $(PO_DIR)/,$(POFILES))
 TARGET_TEXI = $(TEXIPAGES)
 TARGET_TRANSLATE_RAW_TEXI = $(addprefix $(TRANSLATE_RAW_DIR)/,$(TEXIPAGES))
 
-# target_dir/hoge.ja.info -> src_dir/hoge.texi
-# $1 SRC_DIR, $2 target $3 .texi
-src_file = $(addsuffix $(3),$(addprefix $(1)/,$(notdir $(basename $(basename $(2))))))
-
 ## ###################################################################
 
 .PHONY: texi install clean AUTHORS.md stats
@@ -43,13 +39,21 @@ pdf:  $(PDFFILES)
 epub: $(EPUBFILES)
 
 $(TARGET_SED_OUT): $(SED_OUT_DIR)/%.texi : $(SRC_DIR)/%.texi
+	@$(MKDIR) $(SED_OUT_DIR)
 	sed -f ./html-out.sed < $< > $@
 
-$(TARGET_PO): $(PO_DIR)/%.ja.po : $(SED_OUT_DIR)/%.texi
-	po4a-updatepo -M utf8 -f texinfo -m $< -p $@
+PO4A_CONFIG := po4a.cfg
 
-$(TARGET_TRANSLATE_RAW_TEXI): $(TRANSLATE_RAW_DIR)/%.ja.texi : $(PO_DIR)/%.ja.po
-	po4a-translate -f texinfo -keep 0 -M utf8 -m $(call src_file,$(SED_OUT_DIR),$@,.texi) -p $< -l $@
+$(PO4A_CONFIG):
+	PACKAGES='$(filter-out git-commit,$(PACKAGES))'	\
+	PO_DIR=$(PO_DIR)				\
+	SED_OUT_DIR=$(SED_OUT_DIR)			\
+	TARGET_PO='$(addprefix ja:,$(TARGET_PO))'	\
+	TRANSLATE_RAW_DIR=$(TRANSLATE_RAW_DIR)		\
+		./generate-po4a-config > $@
+
+$(TARGET_TRANSLATE_RAW_TEXI) &: $(TARGET_SED_OUT) $(TARGET_PO) $(PO4A_CONFIG)
+	po4a $(PO4A_CONFIG)
 
 $(TARGET_TEXI): %.ja.texi : $(TRANSLATE_RAW_DIR)/%.ja.texi
 	gawk -f fix-menu-wrap.awk $< > $@

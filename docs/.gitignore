@@ -15,5 +15,7 @@ stats/
 docs-ja/*.epub
 docs-ja/*.html
 docs-ja/mimetype
+docs-ja/po/*.pot
+docs-ja/po4a.cfg
 docs-ja/sed-out/
 docs-ja/translate-raw/

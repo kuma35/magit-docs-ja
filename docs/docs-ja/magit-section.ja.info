@@ -1,5 +1,5 @@
-This is magit-section.ja.info, produced by makeinfo version 6.7 from
-magit-section.ja.texi.
+This is magit-section.ja.info, produced by .texi2any-real version 7.0.3
+from magit-section.ja.texi.
 
      Copyright (C) 2015-2022 Jonas Bernoulli <jonas@bernoul.li>
 
@@ -49,10 +49,10 @@ Magitの一部として配布されていました。しかし今やMagitやGit�
 
 * Menu:
 
-* Introduction::
-* Creating Sections::
-* Core Functions::
-* Matching Functions::
+* Introduction::             Introduction
+* Creating Sections::        Creating Sections
+* Core Functions::           Core Functions
+* Matching Functions::       Matching Functions
 
 
 File: magit-section.ja.info,  Node: Introduction,  Next: Creating Sections,  Prev: Top,  Up: Top
@@ -254,9 +254,9 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
           CLASSまたはそのサブクラスと同じである場合に一致します。
 
      各CLASSは、‘magit-section’から派生したクラスを識別するクラスシンボ
-     ルである必要があります。下位互換性のために、CLASSは"type symbol"に
-     することもできます。‘type’スロットの値が‘eq’の場合、セクションはそ
-     のようなシンボルに一致します。タイプシンボルの
+     ルである必要があります。下位互換性のために、CLASSは「タイプシンボル
+     」にすることもできます。‘type’スロットの値が‘eq’の場合、セクション
+     はそのようなシンボルに一致します。タイプシンボルの
      ‘magit--section-type-alist’にエントリがある場合、そのクラスがその
      alistのタイプに対応するクラスのサブクラスであれば、セクションもその
      タイプに一致します。
@@ -272,7 +272,8 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
      かをテストします。ポイントにセクションがなく、SECTIONがnilの場合は
      、nilを返します。 セクションが一致しない場合は、nilを返します。
 
-     CONDITIONが取ることができる形式については→‘magit-section-match’
+     CONDITIONが取ることができる形式については、‘magit-section-match’を
+     参照してください。
 
  -- Macro: magit-section-case &rest clauses
      ポイントのセクションのタイプに関する条項(clauses)から選択します。
@@ -291,11 +292,11 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
 
 
 Tag Table:
-Node: Top889
-Node: Introduction2462
-Node: Creating Sections3566
-Node: Core Functions9543
-Node: Matching Functions13643
+Node: Top897
+Node: Introduction2570
+Node: Creating Sections3674
+Node: Core Functions9651
+Node: Matching Functions13751
 
 End Tag Table
 

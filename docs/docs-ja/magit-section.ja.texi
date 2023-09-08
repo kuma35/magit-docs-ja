@@ -4,6 +4,7 @@
 @c This file was generated with po4a. Translate the source file.
 @c
 @c ===========================================================================
+
 @c %**start of header
 @setfilename magit-section.info
 @settitle Magit-Section Developer Manual
@@ -60,10 +61,10 @@ more details.
 @end ifnottex
 
 @menu
-* Introduction::
-* Creating Sections::
-* Core Functions::
-* Matching Functions::       
+* Introduction::             Introduction
+* Creating Sections::        Creating Sections
+* Core Functions::           Core Functions
+* Matching Functions::       Matching Functions
 @end menu
 
 @node Introduction
@@ -205,8 +206,7 @@ CONDITIONは、以下の形式をとることができます:
 @code{CLASS} 親セクションのクラスには関係なく、セクションのクラスがCLASSまたはそのサブクラスと同じである場合に一致します。
 @end itemize
 
-各CLASSは、@code{magit-section}から派生したクラスを識別するクラスシンボルである必要があります。下位互換性のために、CLASSは"type
-symbol"にすることもできます。@code{type}スロットの値が@code{eq}の場合、セクションはそのようなシンボルに一致します。タイプシンボルの@code{magit--section-type-alist}にエントリがある場合、そのクラスがそのalistのタイプに対応するクラスのサブクラスであれば、セクションもそのタイプに一致します。
+各CLASSは、@code{magit-section}から派生したクラスを識別するクラスシンボルである必要があります。下位互換性のために、CLASSは「タイプシンボル」にすることもできます。@code{type}スロットの値が@code{eq}の場合、セクションはそのようなシンボルに一致します。タイプシンボルの@code{magit--section-type-alist}にエントリがある場合、そのクラスがそのalistのタイプに対応するクラスのサブクラスであれば、セクションもそのタイプに一致します。
 
 注意:
 もちろん、正確にしたい場合を除いて、@code{magit-describe-section-briefly}によって出力される完全なセクション系統を指定する必要はないことに注意してください。
@@ -218,7 +218,7 @@ symbol"にすることもできます。@code{type}スロットの値が@code{eq
 オプションのSECTIONがnil以外の場合は、代わりにそれが一致するかどうかをテストします。ポイントにセクションがなく、SECTIONがnilの場合は、nilを返します。
 セクションが一致しない場合は、nilを返します。
 
-CONDITIONが取ることができる形式については→@code{magit-section-match}
+CONDITIONが取ることができる形式については、@code{magit-section-match}を参照してください。
 @end defun
 
 @defmac magit-section-case &rest clauses
