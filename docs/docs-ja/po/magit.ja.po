@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: magit-docs-ja 0.1\n"
-"POT-Creation-Date: 2023-09-08 20:03+0900\n"
-"PO-Revision-Date: 2022-08-25 02:14+0900\n"
+"POT-Creation-Date: 2023-09-08 20:19+0900\n"
+"PO-Revision-Date: 2023-09-08 20:25+0900\n"
 "Last-Translator: kuma35\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
@@ -26090,23 +26090,16 @@ msgstr ""
 
 #. type: defmac
 #: sed-out/magit.texi:10282 sed-out/magit-section.texi:130
-#, fuzzy
 msgid ""
 "If it turns out inside BODY that the section is empty, then @code{magit-"
 "cancel-section} can be used to abort and remove all traces of the partially "
 "inserted section.  This can happen when creating a section by washing Git's "
 "output and Git didn't actually output anything this time around."
 msgstr ""
-"#-#-#-#-#  magit-section.ja.po (magit-docs-ja 0.0)  #-#-#-#-#\n"
 "セクションが空であることがBODY内で判明した場合は、@code{magit-cancel-section}"
 "を使用して、部分的に挿入されたセクションのすべてのトレースを中止して削除でき"
 "ます。これは、Gitの出力を洗浄(wash)してセクションを作成し、Gitが今回は実際に"
-"は何も出力しなかった場合に発生する可能性があります。\n"
-"#-#-#-#-#  magit.ja.po (magit-docs-ja 0.1)  #-#-#-#-#\n"
-"セクションが空であることがBODY内で判明した場合は、@code{magit-cancel-section}"
-"を使用して、部分的に挿入されたセクションのすべてのトレースを中止および削除で"
-"きます。これは、Gitの出力を洗浄してセクションを作成し、Gitが今回は実際には何"
-"も出力しなかった場合に発生する可能性があります。"
+"は何も出力しなかった場合に発生する可能性があります。"
 
 #. type: defun
 #: sed-out/magit.texi:10284 sed-out/magit-section.texi:132
@@ -26424,7 +26417,6 @@ msgstr ""
 
 #. type: defun
 #: sed-out/magit.texi:10425 sed-out/magit-section.texi:290
-#, fuzzy
 msgid ""
 "Each CLASS should be a class symbol, identifying a class that derives from "
 "@code{magit-section}.  For backward compatibility CLASS can also be a \"type "
@@ -26433,14 +26425,6 @@ msgid ""
 "type-alist}, then a section also matches that type if its class is a "
 "subclass of the class that corresponds to the type as per that alist."
 msgstr ""
-"#-#-#-#-#  magit-section.ja.po (magit-docs-ja 0.0)  #-#-#-#-#\n"
-"各CLASSは、@code{magit-section}から派生したクラスを識別するクラスシンボルであ"
-"る必要があります。下位互換性のために、CLASSは\"type symbol\"にすることもでき"
-"ます。@code{type}スロットの値が@code{eq}の場合、セクションはそのようなシンボ"
-"ルに一致します。タイプシンボルの@code{magit--section-type-alist}にエントリが"
-"ある場合、そのクラスがそのalistのタイプに対応するクラスのサブクラスであれば、"
-"セクションもそのタイプに一致します。\n"
-"#-#-#-#-#  magit.ja.po (magit-docs-ja 0.1)  #-#-#-#-#\n"
 "各CLASSは、@code{magit-section}から派生したクラスを識別するクラスシンボルであ"
 "る必要があります。下位互換性のために、CLASSは「タイプシンボル」にすることもで"
 "きます。@code{type}スロットの値が@code{eq}の場合、セクションはそのようなシン"
@@ -26450,18 +26434,12 @@ msgstr ""
 
 #. type: defun
 #: sed-out/magit.texi:10429 sed-out/magit-section.texi:294
-#, fuzzy
 msgid ""
 "Note that it is not necessary to specify the complete section lineage as "
 "printed by @code{magit-describe-section-briefly}, unless of course you want "
 "to be that precise."
 msgstr ""
-"#-#-#-#-#  magit-section.ja.po (magit-docs-ja 0.0)  #-#-#-#-#\n"
 "注意: もちろん、正確にしたい場合を除いて、@code{magit-describe-section-"
-"briefly}によって出力される完全なセクション系統を指定する必要はないことに注意"
-"してください。\n"
-"#-#-#-#-#  magit.ja.po (magit-docs-ja 0.1)  #-#-#-#-#\n"
-"注意: もちろん正確にしたい場合を除いて、あなたは@code{magit-describe-section-"
 "briefly}によって出力される完全なセクション系統を指定する必要はないことに注意"
 "してください。"
 
@@ -26489,12 +26467,8 @@ msgstr ""
 
 #. type: defun
 #: sed-out/magit.texi:10440 sed-out/magit-section.texi:305
-#, fuzzy
 msgid "See @code{magit-section-match} for the forms CONDITION can take."
 msgstr ""
-"#-#-#-#-#  magit-section.ja.po (magit-docs-ja 0.0)  #-#-#-#-#\n"
-"CONDITIONが取ることができる形式については→@code{magit-section-match}\n"
-"#-#-#-#-#  magit.ja.po (magit-docs-ja 0.1)  #-#-#-#-#\n"
 "CONDITIONが取ることができる形式については、@code{magit-section-match}を参照し"
 "てください。"
 

@@ -8911,11 +8911,11 @@ File: magit.ja.info,  Node: Creating Sections,  Next: Section Selection,  Up: Se
      に設定され、BODYが評価された後、その‘end’が‘point’の新しい値に設定
      されます。 BODYは、‘point’を前進させる責任があります。
 
-     If it turns out inside BODY that the section is empty, then
-     ‘magit-cancel-section’ can be used to abort and remove all traces
-     of the partially inserted section.  This can happen when creating a
-     section by washing Git’s output and Git didn’t actually output
-     anything this time around.
+     セクションが空であることがBODY内で判明した場合は、
+     ‘magit-cancel-section’を使用して、部分的に挿入されたセクションのす
+     べてのトレースを中止して削除できます。これは、Gitの出力を洗浄
+     (wash)してセクションを作成し、Gitが今回は実際には何も出力しなかった
+     場合に発生する可能性があります。
 
  -- Function: magit-insert-heading &rest args
      現在挿入されているセクションの見出しを挿入します。
@@ -9036,17 +9036,17 @@ File: magit.ja.info,  Node: Matching Sections,  Prev: Section Selection,  Up: Se
           セクションのクラスがCLASSまたはそのサブクラスと同じである場合
           に一致します。親セクションのクラスに関係なくです。
 
-     Each CLASS should be a class symbol, identifying a class that
-     derives from ‘magit-section’.  For backward compatibility CLASS can
-     also be a "type symbol".  A section matches such a symbol if the
-     value of its ‘type’ slot is ‘eq’.  If a type symbol has an entry in
-     ‘magit--section-type-alist’, then a section also matches that type
-     if its class is a subclass of the class that corresponds to the
-     type as per that alist.
+     各CLASSは、‘magit-section’から派生したクラスを識別するクラスシンボ
+     ルである必要があります。下位互換性のために、CLASSは「タイプシンボル
+     」にすることもできます。‘type’スロットの値が‘eq’の場合、セクション
+     はそのようなシンボルに一致します。タイプシンボルの
+     ‘magit--section-type-alist’にエントリがある場合、そのクラスがその
+     alistのタイプに対応するクラスのサブクラスであれば、セクションもその
+     タイプに一致します。
 
-     Note that it is not necessary to specify the complete section
-     lineage as printed by ‘magit-describe-section-briefly’, unless of
-     course you want to be that precise.
+     注意: もちろん、正確にしたい場合を除いて、
+     ‘magit-describe-section-briefly’によって出力される完全なセクション
+     系統を指定する必要はないことに注意してください。
 
  -- Function: magit-section-value-if condition &optional section
      ポイントのセクションがCONDITIONと一致する場合は、その値を返します。
@@ -9055,7 +9055,8 @@ File: magit.ja.info,  Node: Matching Sections,  Prev: Section Selection,  Up: Se
      かをテストします。ポイントにセクションがなく、SECTIONがnilの場合は
      、nilを返します。 セクションが一致しない場合は、nilを返します。
 
-     See ‘magit-section-match’ for the forms CONDITION can take.
+     CONDITIONが取ることができる形式については、‘magit-section-match’を
+     参照してください。
 
  -- Function: magit-section-case &rest clauses
      ポイントのセクションのタイプに関する条項(clauses)から選択します。
@@ -10526,7 +10527,7 @@ Appendix D Function and Command Index
 * magit-diff-refresh:                    Refreshing Diffs.    (line  12)
 * magit-diff-refresh <1>:                Refreshing Diffs.    (line  19)
 * magit-diff-save-default-arguments:     Refreshing Diffs.    (line  28)
-* magit-diff-scope:                      Matching Sections.   (line 107)
+* magit-diff-scope:                      Matching Sections.   (line 108)
 * magit-diff-set-default-arguments:      Refreshing Diffs.    (line  23)
 * magit-diff-show-or-scroll-down:        Log Buffer.          (line  51)
 * magit-diff-show-or-scroll-down <1>:    Blaming.             (line  87)
@@ -10538,7 +10539,7 @@ Appendix D Function and Command Index
 * magit-diff-toggle-refine-hunk:         Refreshing Diffs.    (line  34)
 * magit-diff-trace-definition:           Commands Available in Diffs.
                                                               (line  16)
-* magit-diff-type:                       Matching Sections.   (line  86)
+* magit-diff-type:                       Matching Sections.   (line  87)
 * magit-diff-unstaged:                   Diffing.             (line  54)
 * magit-diff-visit-file:                 Visiting Files and Blobs from a Diff.
                                                               (line   9)
@@ -10885,7 +10886,7 @@ Appendix D Function and Command Index
 * magit-save-window-configuration:       バッファの切り替え.  (line  82)
 * magit-section-backward:                Section Movement.    (line  11)
 * magit-section-backward-siblings:       Section Movement.    (line  18)
-* magit-section-case:                    Matching Sections.   (line  65)
+* magit-section-case:                    Matching Sections.   (line  66)
 * magit-section-cycle:                   Section Visibility.  (line  13)
 * magit-section-cycle-diffs:             Section Visibility.  (line  16)
 * magit-section-cycle-global:            Section Visibility.  (line  19)
@@ -11226,7 +11227,7 @@ Appendix E Variable Index
 * magit-revision-insert-related-refs:    Revision Buffer.     (line   6)
 * magit-revision-show-gravatars:         Revision Buffer.     (line  15)
 * magit-revision-use-hash-sections:      Revision Buffer.     (line  30)
-* magit-root-section:                    Matching Sections.   (line  79)
+* magit-root-section:                    Matching Sections.   (line  80)
 * magit-save-repository-buffers:         Automatic Saving of File-Visiting Buffers.
                                                               (line  12)
 * magit-section-cache-visibility:        Section Visibility.  (line  82)
@@ -11418,38 +11419,38 @@ Node: Getting a Value from Git492357
 Node: Calling Git for Effect497126
 Node: Section Plumbing505181
 Node: Creating Sections505507
-Node: Section Selection510888
-Node: Matching Sections513084
-Node: Refreshing Buffers520571
-Node: 慣習524537
-Node: Theming Faces524773
-Node: FAQ535441
-Node: FAQ - How to ...?535992
-Node: Magitの発音は？536741
-Node: How to show git's output?537774
-Node: How to install the gitman info manual?538802
-Node: How to show diffs for gpg-encrypted files?540077
-Node: How does branching and pushing work?540780
-Node: VCを無効にする必要がありますか？541162
-Node: FAQ - Issues and Errors542022
-Node: Magit is slow546561
-Node: I changed several thousand files at once and now Magit is unusable546883
-Node: コミットに問題があります547934
-Node: MS WindowsではMagitでpushできません548472
-Node: 私は macOS を使用しています。その何かはシェルでは動きますが、Magitでは動きません549176
-Node: ファイルを展開してdiffを表示するとファイルが消えます550385
-Node: COMMIT_EDITMSGバッファのpointが間違っています551171
-Node: モード行の情報が常に最新ではない552554
-Node: 同じ名前を共有するブランチとタグは何かを壊します553761
-Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません554914
-Node: コマンドラインからコミットする場合、git-commit-modeは使用されません556052
-Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります559109
-Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません560332
-Node: 私はポップアップのデフォルトを保存できなくなりました561511
-Node: Debugging Tools562918
-Node: Keystroke Index567206
-Node: Function and Command Index601838
-Node: Variable Index654416
+Node: Section Selection511000
+Node: Matching Sections513196
+Node: Refreshing Buffers520954
+Node: 慣習524920
+Node: Theming Faces525156
+Node: FAQ535824
+Node: FAQ - How to ...?536375
+Node: Magitの発音は？537124
+Node: How to show git's output?538157
+Node: How to install the gitman info manual?539185
+Node: How to show diffs for gpg-encrypted files?540460
+Node: How does branching and pushing work?541163
+Node: VCを無効にする必要がありますか？541545
+Node: FAQ - Issues and Errors542405
+Node: Magit is slow546944
+Node: I changed several thousand files at once and now Magit is unusable547266
+Node: コミットに問題があります548317
+Node: MS WindowsではMagitでpushできません548855
+Node: 私は macOS を使用しています。その何かはシェルでは動きますが、Magitでは動きません549559
+Node: ファイルを展開してdiffを表示するとファイルが消えます550768
+Node: COMMIT_EDITMSGバッファのpointが間違っています551554
+Node: モード行の情報が常に最新ではない552937
+Node: 同じ名前を共有するブランチとタグは何かを壊します554144
+Node: 私のGitフックはコマンドラインでは機能しますが、Magit内では機能しません555297
+Node: コマンドラインからコミットする場合、git-commit-modeは使用されません556435
+Node: file-visitingバッファにジャンプすると、ポイントは非表示のテキスト内にあります559492
+Node: MS-WindowsからEmacsのTrampモードを使用するとステージできません560715
+Node: 私はポップアップのデフォルトを保存できなくなりました561894
+Node: Debugging Tools563301
+Node: Keystroke Index567589
+Node: Function and Command Index602221
+Node: Variable Index654799
 
 End Tag Table
 

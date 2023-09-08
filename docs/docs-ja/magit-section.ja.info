@@ -113,11 +113,11 @@ File: magit-section.ja.info,  Node: Creating Sections,  Next: Core Functions,  P
      に設定され、BODYが評価された後、その‘end’が‘point’の新しい値に設定
      されます。BODYは、‘point’を前進させる責任があります。
 
-     If it turns out inside BODY that the section is empty, then
-     ‘magit-cancel-section’ can be used to abort and remove all traces
-     of the partially inserted section.  This can happen when creating a
-     section by washing Git’s output and Git didn’t actually output
-     anything this time around.
+     セクションが空であることがBODY内で判明した場合は、
+     ‘magit-cancel-section’を使用して、部分的に挿入されたセクションのす
+     べてのトレースを中止して削除できます。これは、Gitの出力を洗浄
+     (wash)してセクションを作成し、Gitが今回は実際には何も出力しなかった
+     場合に発生する可能性があります。
 
  -- Function: magit-insert-heading &rest args
      現在挿入されているセクションの見出しを挿入します。
@@ -253,17 +253,17 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
         • ‘CLASS’ 親セクションのクラスには関係なく、セクションのクラスが
           CLASSまたはそのサブクラスと同じである場合に一致します。
 
-     Each CLASS should be a class symbol, identifying a class that
-     derives from ‘magit-section’.  For backward compatibility CLASS can
-     also be a "type symbol".  A section matches such a symbol if the
-     value of its ‘type’ slot is ‘eq’.  If a type symbol has an entry in
-     ‘magit--section-type-alist’, then a section also matches that type
-     if its class is a subclass of the class that corresponds to the
-     type as per that alist.
+     各CLASSは、‘magit-section’から派生したクラスを識別するクラスシンボ
+     ルである必要があります。下位互換性のために、CLASSは「タイプシンボル
+     」にすることもできます。‘type’スロットの値が‘eq’の場合、セクション
+     はそのようなシンボルに一致します。タイプシンボルの
+     ‘magit--section-type-alist’にエントリがある場合、そのクラスがその
+     alistのタイプに対応するクラスのサブクラスであれば、セクションもその
+     タイプに一致します。
 
-     Note that it is not necessary to specify the complete section
-     lineage as printed by ‘magit-describe-section-briefly’, unless of
-     course you want to be that precise.
+     注意: もちろん、正確にしたい場合を除いて、
+     ‘magit-describe-section-briefly’によって出力される完全なセクション
+     系統を指定する必要はないことに注意してください。
 
  -- Function: magit-section-value-if condition &optional section
      ポイントのセクションがCONDITIONと一致する場合は、その値を返します。
@@ -272,7 +272,8 @@ File: magit-section.ja.info,  Node: Matching Functions,  Prev: Core Functions,  
      かをテストします。ポイントにセクションがなく、SECTIONがnilの場合は
      、nilを返します。 セクションが一致しない場合は、nilを返します。
 
-     See ‘magit-section-match’ for the forms CONDITION can take.
+     CONDITIONが取ることができる形式については、‘magit-section-match’を
+     参照してください。
 
  -- Macro: magit-section-case &rest clauses
      ポイントのセクションのタイプに関する条項(clauses)から選択します。
@@ -294,8 +295,8 @@ Tag Table:
 Node: Top897
 Node: Introduction2570
 Node: Creating Sections3674
-Node: Core Functions9539
-Node: Matching Functions13639
+Node: Core Functions9651
+Node: Matching Functions13751
 
 End Tag Table
 

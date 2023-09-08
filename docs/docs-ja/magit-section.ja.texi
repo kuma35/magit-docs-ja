@@ -98,11 +98,7 @@ BODYは、セクションの見出しと本文を実際に挿入する任意の�
 
 BODYが評価される前に、セクションオブジェクトの@code{start}が`point'の値に設定され、BODYが評価された後、その@code{end}が@code{point}の新しい値に設定されます。BODYは、@code{point}を前進させる責任があります。
 
-If it turns out inside BODY that the section is empty, then
-@code{magit-cancel-section} can be used to abort and remove all traces of
-the partially inserted section.  This can happen when creating a section by
-washing Git's output and Git didn't actually output anything this time
-around.
+セクションが空であることがBODY内で判明した場合は、@code{magit-cancel-section}を使用して、部分的に挿入されたセクションのすべてのトレースを中止して削除できます。これは、Gitの出力を洗浄(wash)してセクションを作成し、Gitが今回は実際には何も出力しなかった場合に発生する可能性があります。
 @end defmac
 
 @defun magit-insert-heading &rest args
@@ -210,17 +206,10 @@ CONDITIONは、以下の形式をとることができます:
 @code{CLASS} 親セクションのクラスには関係なく、セクションのクラスがCLASSまたはそのサブクラスと同じである場合に一致します。
 @end itemize
 
-Each CLASS should be a class symbol, identifying a class that derives from
-@code{magit-section}.  For backward compatibility CLASS can also be a "type
-symbol".  A section matches such a symbol if the value of its @code{type}
-slot is @code{eq}.  If a type symbol has an entry in
-@code{magit--section-type-alist}, then a section also matches that type if
-its class is a subclass of the class that corresponds to the type as per
-that alist.
+各CLASSは、@code{magit-section}から派生したクラスを識別するクラスシンボルである必要があります。下位互換性のために、CLASSは「タイプシンボル」にすることもできます。@code{type}スロットの値が@code{eq}の場合、セクションはそのようなシンボルに一致します。タイプシンボルの@code{magit--section-type-alist}にエントリがある場合、そのクラスがそのalistのタイプに対応するクラスのサブクラスであれば、セクションもそのタイプに一致します。
 
-Note that it is not necessary to specify the complete section lineage as
-printed by @code{magit-describe-section-briefly}, unless of course you want
-to be that precise.
+注意:
+もちろん、正確にしたい場合を除いて、@code{magit-describe-section-briefly}によって出力される完全なセクション系統を指定する必要はないことに注意してください。
 @end defun
 
 @defun magit-section-value-if condition &optional section
@@ -229,7 +218,7 @@ to be that precise.
 オプションのSECTIONがnil以外の場合は、代わりにそれが一致するかどうかをテストします。ポイントにセクションがなく、SECTIONがnilの場合は、nilを返します。
 セクションが一致しない場合は、nilを返します。
 
-See @code{magit-section-match} for the forms CONDITION can take.
+CONDITIONが取ることができる形式については、@code{magit-section-match}を参照してください。
 @end defun
 
 @defmac magit-section-case &rest clauses
